@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aera — Privacy & Support</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0b0b0d;
+      --surface: #141418;
+      --text: #f4f4f6;
+      --muted: #9a9aa5;
+      --accent: #b794f6;
+      --border: rgba(255,255,255,0.08);
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fafafa;
+        --surface: #ffffff;
+        --text: #101015;
+        --muted: #5a5a66;
+        --border: rgba(0,0,0,0.08);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 96px;
+    }
+    header {
+      margin-bottom: 48px;
+    }
+    .brand {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    h1 {
+      font-size: 40px;
+      line-height: 1.15;
+      margin: 8px 0 16px;
+      letter-spacing: -0.02em;
+    }
+    .lede {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      gap: 8px;
+      margin: 32px 0 48px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.15s ease;
+    }
+    nav a:hover { background: var(--surface); }
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 24px;
+      margin: 0 0 20px;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 24px 0 8px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    p, li { font-size: 15px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--accent); }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+    code {
+      font-family: "SF Mono", Menlo, monospace;
+      font-size: 13px;
+      background: rgba(127,127,127,0.12);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .contact {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: #0b0b0d;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">Aera</div>
+      <h1>Privacy &amp; Support</h1>
+      <p class="lede">Aera is an on-device health intelligence app. Your data never leaves your iPhone.</p>
+    </header>
+
+    <nav>
+      <a href="#privacy">Privacy Policy</a>
+      <a href="#support">Support</a>
+      <a href="#terms">Terms</a>
+    </nav>
+
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+
+      <p><strong>Summary:</strong> Aera reads health data from Apple Health with your permission, processes it on your device, and keeps the results on your device. There are no accounts, no servers, no analytics, and no third-party tracking.</p>
+
+      <h3>What Aera accesses</h3>
+      <ul>
+        <li><strong>Apple Health data</strong> (sleep, heart rate, heart rate variability, workouts, activity, and related metrics). Used to compute your daily sleep, strain, recovery, and readiness scores. Read access is granted by you in the Health permission sheet and can be revoked anytime in Settings &rarr; Privacy &amp; Security &rarr; Health.</li>
+        <li><strong>Menstrual cycle data</strong> that you log in Aera is written back to Apple Health so it stays in sync with your other health apps. You can revoke write access anytime in Settings.</li>
+        <li><strong>Photo library</strong> (optional). Only used when you choose to save a workout replay video. Aera never reads your existing photos.</li>
+      </ul>
+
+      <h3>What Aera sends to Apple services</h3>
+      <p>Two features rely on Apple-hosted services. Data sent is governed by Apple's privacy terms, not Aera's:</p>
+      <ul>
+        <li><strong>WeatherKit.</strong> When you complete an outdoor workout with a recorded route, Aera sends the workout's start location and timestamp to Apple's WeatherKit to retrieve historical weather. Apple's WeatherKit privacy terms apply.</li>
+        <li><strong>Maps.</strong> When you view a workout route, heatmap, or flyover, MapKit loads map tiles from Apple. Apple's Maps privacy terms apply.</li>
+      </ul>
+
+      <h3>What Aera does <em>not</em> do</h3>
+      <ul>
+        <li>No user accounts, no login, no profile.</li>
+        <li>No third-party analytics, advertising, or tracking SDKs.</li>
+        <li>No cloud sync, no backup to any server operated by Aera.</li>
+        <li>No selling or sharing of data. Aera has no servers that could receive it.</li>
+      </ul>
+
+      <h3>Subscriptions</h3>
+      <p>Premium subscriptions are handled entirely by Apple through StoreKit and the App Store. Aera does not see your payment details. Subscription status is verified on-device against Apple's receipt. Apple's App Store privacy terms apply to purchases.</p>
+
+      <h3>Children</h3>
+      <p>Aera is not directed at children under 13 and does not knowingly collect data from them. There are no accounts, so no personal information is collected regardless of age.</p>
+
+      <h3>Data retention</h3>
+      <p>All data Aera generates (scores, baselines, logs) is stored in a local database on your device. Deleting the app removes all of it. Aera cannot recover data from a deleted install because it never left your device.</p>
+
+      <h3>Changes to this policy</h3>
+      <p>If this policy changes, the updated version will be posted on this page. The "Last updated" date below will reflect the change.</p>
+
+      <p class="meta">Last updated: 17 April 2026</p>
+    </section>
+
+    <section id="support">
+      <h2>Support</h2>
+      <p>Questions, bug reports, or feedback? Email us and we'll get back to you within 2 business days.</p>
+      <a class="contact" href="mailto:9qdf7rnr7z@privaterelay.appleid.com">Email Aera Support</a>
+
+      <h3>Common questions</h3>
+      <ul>
+        <li><strong>Aera can't see my health data.</strong> Open iOS Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; Aera and make sure all categories are enabled.</li>
+        <li><strong>My subscription didn't activate.</strong> Open Aera, go to Settings, tap "Restore Purchases." If it still fails, email us with your Apple ID region so we can check.</li>
+        <li><strong>I want to delete my data.</strong> Delete the Aera app. All on-device data is removed with it. Apple Health data is unaffected.</li>
+      </ul>
+    </section>
+
+    <section id="terms">
+      <h2>Terms of Use</h2>
+      <p>Aera is distributed under Apple's Standard End User License Agreement for apps on the App Store. By using Aera you agree to those terms.</p>
+      <p>Aera provides information about your health metrics for personal use. It is not a medical device and does not diagnose, treat, cure, or prevent any disease. Always consult a qualified health professional for medical advice.</p>
+    </section>
+
+    <p class="meta" style="text-align:center">&copy; 2026 Aera. All rights reserved.</p>
+  </div>
+</body>
+</html>
