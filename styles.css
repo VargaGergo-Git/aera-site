@@ -112,12 +112,12 @@ a:hover { color: var(--text); }
 
 .hero h1 {
   font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
-  font-size: clamp(38px, 7vw, 62px);
-  line-height: 1.05;
+  font-size: clamp(36px, 5.2vw, 58px);
+  line-height: 1.06;
   letter-spacing: -0.035em;
   font-weight: 680;
   margin: 0 0 20px;
-  max-width: 15ch;
+  text-wrap: balance;
 }
 
 .hero h1 em {
@@ -177,6 +177,47 @@ a:hover { color: var(--text); }
 
 .btn-ghost:hover { color: var(--text); }
 
+/* ---------- landing layout ---------- */
+
+/* Wider container for the landing page. Legal pages keep the 760px measure. */
+.wrap-wide {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Hero becomes two columns once there is room, so the right half is never empty. */
+.hero-grid {
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+    gap: 56px;
+  }
+  .hero { padding: 96px 0 80px; }
+}
+
+/* Section content sits in two columns: heading on the left, prose on the right. */
+.split {
+  display: grid;
+  gap: 10px 56px;
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+  }
+  .split > h2 { margin-top: 0; }
+  .split .split-body > :first-child { margin-top: 0; }
+}
+
+.split .section-lede { max-width: 62ch; }
+
 /* ---------- gallery ---------- */
 
 .gallery {
@@ -187,6 +228,31 @@ a:hover { color: var(--text); }
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
+
+/* One large poster beside the hero copy. */
+.hero-shot img {
+  width: 100%;
+  max-width: 330px;
+  height: auto;
+  aspect-ratio: 520 / 1130;
+  border-radius: 26px;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 899px) {
+  .hero-shot { display: flex; justify-content: center; }
+  .hero-shot img { max-width: 280px; }
+}
+
+/* Full-width poster strip below the hero. */
+.strip {
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.strip .gallery { padding: 0; }
 
 .gallery::-webkit-scrollbar { height: 0; }
 
@@ -200,13 +266,24 @@ a:hover { color: var(--text); }
   border: 1px solid var(--border);
 }
 
-@media (min-width: 820px) {
+/* Must match the breakpoint where .strip .gallery img starts shrinking (900px),
+   otherwise fixed-width posters plus overflow:visible push the document wide. */
+@media (min-width: 900px) {
   .gallery {
     justify-content: center;
     overflow-x: visible;
     padding-bottom: 48px;
   }
   .gallery img { width: 236px; }
+}
+
+@media (min-width: 900px) {
+  /* The strip shares its row evenly rather than using a fixed width. */
+  .strip .gallery img {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
 }
 
 /* ---------- sections ---------- */
@@ -246,9 +323,14 @@ li { margin-bottom: 9px; }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 14px;
   margin-top: 8px;
+}
+
+/* Six cards, so hold three per row rather than letting auto-fit make 4 + 2. */
+@media (min-width: 900px) {
+  .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 }
 
 .card {
