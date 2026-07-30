@@ -586,7 +586,13 @@ li { margin-bottom: 9px; }
 
 /* ---------- legal pages ---------- */
 
-.page-head { padding: 56px 0 8px; }
+/* Longhand on purpose. This class sits on the same element as .wrap, so the
+   padding shorthand would wipe out .wrap's 24px side padding and run the
+   heading into the screen edge on phones. */
+.page-head {
+  padding-top: 56px;
+  padding-bottom: 8px;
+}
 
 .page-head h1 {
   font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
