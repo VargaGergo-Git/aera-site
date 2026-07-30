@@ -297,7 +297,17 @@
   window.addEventListener('scroll', onFrame, { passive: true });
   window.addEventListener('resize', onFrame, { passive: true });
   window.addEventListener('load', onFrame);
+  window.addEventListener('pageshow', onFrame);   // back/forward cache restore
   onFrame();
+
+  // Last line of defence. However this goes wrong, nothing stays invisible:
+  // after ten seconds anything still waiting is simply shown. Long enough that
+  // ordinary scrolling still gets the entrance, short enough that no one sits
+  // looking at a gap wondering why the images did not load.
+  setTimeout(function () {
+    pending.forEach(function (el) { el.classList.add('in'); });
+    pending = [];
+  }, 10000);
 })();
 </script>
 
