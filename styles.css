@@ -193,6 +193,8 @@ a:hover { color: var(--text); }
 .gallery img {
   flex: 0 0 auto;
   width: 260px;
+  height: auto;          /* the width/height attributes are for CLS only, never the used size */
+  aspect-ratio: 520 / 1130;
   border-radius: 22px;
   scroll-snap-align: center;
   border: 1px solid var(--border);
