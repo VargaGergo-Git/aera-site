@@ -67,10 +67,18 @@ a:hover { color: var(--text); }
   -webkit-backdrop-filter: saturate(160%) blur(18px);
   background: var(--bg);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid transparent;
+  transition: border-color 260ms ease, box-shadow 260ms ease;
 }
 
-.topbar .wrap {
+/* The bar only earns its edge once the page has actually moved. */
+.topbar.scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.06);
+}
+
+.topbar .wrap,
+.topbar .wrap-wide {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,11 +87,20 @@ a:hover { color: var(--text); }
 }
 
 .mark {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-weight: 620;
   letter-spacing: -0.01em;
   font-size: 18px;
   text-decoration: none;
   color: var(--text);
+}
+
+.mark img {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
 }
 
 .topnav {
@@ -101,14 +118,33 @@ a:hover { color: var(--text); }
 
 /* ---------- hero ---------- */
 
+/* Dark hero panel, the shape Gentler Streak uses. It gives the device shot a
+   background to sit on instead of a hard rectangle against a pale page, and it
+   is the app's own colour world. Deliberately dark in both colour schemes. */
 .hero {
   position: relative;
-  padding: 88px 0 64px;
+  padding: 76px 0 0;
   background:
-    radial-gradient(120% 80% at 50% 0%, var(--bg-warm) 0%, transparent 70%),
-    var(--bg);
+    radial-gradient(120% 90% at 50% 8%, #241a12 0%, transparent 62%),
+    linear-gradient(180deg, #14100f 0%, #0d0b0c 100%);
+  color: #f6f4f2;
   overflow: hidden;
 }
+
+.hero h1 { color: #fbf9f7; }
+.hero .lede { color: #b3aca8; }
+.hero .eyebrow { color: #8b837e; }
+.hero .trust { color: #857d78; }
+
+.hero .btn-ghost {
+  color: #f6f4f2;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero .btn-ghost:hover { color: #fff; }
+
+.hero .app-icon { border-color: rgba(255, 255, 255, 0.12); }
 
 .hero h1 {
   font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
@@ -177,6 +213,161 @@ a:hover { color: var(--text); }
 
 .btn-ghost:hover { color: var(--text); }
 
+/* ---------- motion ---------- */
+
+/* Everything renders visible by default. The hidden state is only applied once
+   the script confirms motion is welcome and IntersectionObserver exists, so a
+   blocked or failed script can never leave a blank page. Entrances are one
+   shot: the observer unobserves on first hit and nothing loops or breathes. */
+.motion .reveal,
+.motion .rise,
+.motion .lift {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.motion .reveal,
+.motion .rise { transform: translate3d(0, 16px, 0); }
+
+.motion .lift { transform: translate3d(0, 30px, 0) scale(0.975); }
+
+.motion .reveal,
+.motion .rise,
+.motion .lift {
+  transition:
+    opacity 620ms cubic-bezier(0.22, 0.61, 0.24, 1) var(--d, 0ms),
+    transform 720ms cubic-bezier(0.22, 0.61, 0.24, 1) var(--d, 0ms);
+}
+
+.motion .reveal.in,
+.motion .rise.in,
+.motion .lift.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Once an entrance has played, stop paying for the compositor hint. */
+.motion .reveal.in,
+.motion .rise.in,
+.motion .lift.in { will-change: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .motion .reveal,
+  .motion .rise,
+  .motion .lift {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html { scroll-behavior: auto; }
+}
+
+.btn { will-change: auto; }
+
+/* ---------- centred landing composition ---------- */
+
+/* Gentler Streak and Bevel both centre the hero and lead with the app icon.
+   Centring reads as a product page; the old left column read as a document. */
+.centered { text-align: center; }
+
+.centered .lede,
+.centered .section-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered h1, .centered h2 { margin-left: auto; margin-right: auto; }
+
+/* Hold the hero headline to two lines. Both references break theirs; a single
+   1000px line reads as a banner rather than a statement. */
+.centered h1 { max-width: 19ch; }
+.centered h2 { max-width: 22ch; }
+
+.centered-row { justify-content: center; }
+
+.centered-head { text-align: center; margin-bottom: 28px; }
+
+.app-icon {
+  width: 82px;
+  height: 82px;
+  border-radius: 20px;
+  margin: 0 auto 18px;
+  border: 1px solid var(--border);
+}
+
+/* Stands in for the ratings line Bevel runs and the award laurels Gentler runs.
+   Aera has neither yet, so the honest differentiator takes the slot. */
+.trust {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 22px;
+  font-size: 14.5px;
+  color: var(--faint);
+}
+
+.trust li { margin: 0; display: flex; align-items: center; gap: 8px; }
+
+.trust li + li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ---------- statement band ---------- */
+
+/* The three centred manifesto lines on the Gentler Streak page do more work
+   than a grid of feature cards. Accent lead-in, then the plain continuation. */
+.band-statements {
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.statements { display: grid; gap: 40px; }
+
+.statement {
+  font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
+  font-size: clamp(22px, 2.9vw, 31px);
+  line-height: 1.28;
+  letter-spacing: -0.022em;
+  font-weight: 600;
+  text-align: center;
+  text-wrap: balance;
+  margin: 0;
+  color: var(--text);
+}
+
+.statement em { font-style: normal; color: var(--accent); }
+
+.statement.closing { margin: 30px auto; max-width: 24ch; }
+
+/* ---------- dark band ---------- */
+
+.band-dark {
+  background: #100d10;
+  color: #f6f4f2;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.band-dark h2 { color: #f6f4f2; }
+.band-dark .section-lede { color: #a49ea4; }
+.band-dark .btn-ghost {
+  color: #f6f4f2;
+  border-color: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+}
+.band-dark .btn-ghost:hover { color: #fff; }
+
+.section-lede.small { font-size: 15.5px; }
+
 /* ---------- landing layout ---------- */
 
 /* Wider container for the landing page. Legal pages keep the 760px measure. */
@@ -218,72 +409,99 @@ a:hover { color: var(--text); }
 
 .split .section-lede { max-width: 62ch; }
 
-/* ---------- gallery ---------- */
+/* ---------- device frame ---------- */
 
-.gallery {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  padding: 8px 24px 32px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+/* The screenshots are raw app pixels, so the bezel is drawn in CSS. It stays
+   sharp at any density, costs nothing to download, and lets one screenshot
+   serve every size. Percentage radii keep the corner shape correct as it
+   scales: roughly 15.8% of width and 7.3% of height on current iPhones. */
+.phone {
+  position: relative;
+  padding: 1.5%;
+  border-radius: 15.8% / 7.3%;
+  background: linear-gradient(150deg, #6a6a72 0%, #202024 22%, #2b2b31 55%, #1b1b1f 78%, #74747d 100%);
+  box-shadow:
+    0 26px 50px -18px rgba(0, 0, 0, 0.5),
+    0 3px 10px rgba(0, 0, 0, 0.28);
 }
 
-/* One large poster beside the hero copy. */
-.hero-shot img {
+.phone img {
+  display: block;
   width: 100%;
-  max-width: 330px;
-  height: auto;
-  aspect-ratio: 520 / 1130;
-  border-radius: 26px;
-  border: 1px solid var(--border);
+  height: auto;                 /* never let the width/height attributes size it */
+  border-radius: 14.4% / 6.6%;
+  background: #0d0b0c;
 }
 
-@media (max-width: 899px) {
-  .hero-shot { display: flex; justify-content: center; }
-  .hero-shot img { max-width: 280px; }
+.phone .island {
+  position: absolute;
+  top: 2.4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28%;
+  aspect-ratio: 6 / 1.7;
+  border-radius: 999px;
+  background: #000;
+  pointer-events: none;
 }
 
-/* Full-width poster strip below the hero. */
+/* ---------- hero device ---------- */
+
+.hero-shot {
+  margin: 54px auto 0;
+  max-width: 320px;
+  max-height: 430px;
+  overflow: hidden;             /* the phone runs on past the band edge */
+}
+
+@media (max-width: 620px) {
+  .hero-shot { max-width: 264px; max-height: 350px; margin-top: 42px; }
+}
+
+/* ---------- screenshot strip ---------- */
+
 .strip {
   background: var(--bg-warm);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 40px 0;
+  padding: 48px 0 52px;
 }
 
-.strip .gallery { padding: 0; }
+.gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 4px 24px 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
 
 .gallery::-webkit-scrollbar { height: 0; }
 
-.gallery img {
+.shot {
   flex: 0 0 auto;
-  width: 260px;
-  height: auto;          /* the width/height attributes are for CLS only, never the used size */
-  aspect-ratio: 520 / 1130;
-  border-radius: 22px;
+  width: 240px;
+  margin: 0;
   scroll-snap-align: center;
-  border: 1px solid var(--border);
 }
 
-/* Must match the breakpoint where .strip .gallery img starts shrinking (900px),
-   otherwise fixed-width posters plus overflow:visible push the document wide. */
-@media (min-width: 900px) {
+.shot figcaption {
+  margin-top: 16px;
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (min-width: 1000px) {
   .gallery {
-    justify-content: center;
     overflow-x: visible;
-    padding-bottom: 48px;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 24px;
   }
-  .gallery img { width: 236px; }
-}
-
-@media (min-width: 900px) {
-  /* The strip shares its row evenly rather than using a fixed width. */
-  .strip .gallery img {
-    width: auto;
-    flex: 1 1 0;
-    min-width: 0;
-  }
+  .shot { flex: 1 1 0; width: auto; min-width: 0; }
 }
 
 /* ---------- sections ---------- */
@@ -421,7 +639,7 @@ li { margin-bottom: 9px; }
 
 footer {
   border-top: 1px solid var(--border);
-  padding: 40px 0 60px;
+  padding: 52px 0 40px;
   color: var(--faint);
   font-size: 14.5px;
 }
@@ -438,6 +656,47 @@ footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
 
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
+
+/* Grouped multi-column footer, the shape both reference sites use. */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 760px) {
+  .footer-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+}
+
+.footer-grid h4 {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+.footer-grid > div > a {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--muted);
+}
+
+.footer-brand img { width: 34px; height: 34px; border-radius: 9px; margin-bottom: 10px; }
+.footer-brand p { margin: 0; color: var(--text); font-weight: 620; }
+.footer-brand .footer-note { color: var(--faint); font-weight: 400; margin-top: 2px; }
+
+.footer-base {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 44px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
 
 @media (max-width: 520px) {
   body { font-size: 16.5px; }

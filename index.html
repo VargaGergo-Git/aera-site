@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aera — Your body, explained</title>
+<title>Aera: Sleep, HRV &amp; Recovery — Your body, explained</title>
 <meta name="description" content="Aera reads your sleep, recovery, stress and training against your own baseline, then explains itself. Everything runs on your iPhone.">
-<meta property="og:title" content="Aera — Your body, explained">
+<meta property="og:title" content="Aera: Sleep, HRV &amp; Recovery">
 <meta property="og:description" content="Health reads measured against you, not a population average. On-device, and honest about its limits.">
 <meta property="og:type" content="website">
+<link rel="icon" href="assets/icon.png">
+<link rel="preload" as="image" href="shots/home-720.webp">
 <link rel="stylesheet" href="styles.css">
 <script>
 // The old single-page site lived at /#privacy, /#support, /#terms and /#eula.
@@ -22,80 +24,145 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="wrap">
-    <a class="mark" href="/">Aera</a>
+<div class="topbar" id="topbar">
+  <div class="wrap-wide">
+    <a class="mark" href="/"><img src="assets/icon.png" alt="" width="256" height="256"> Aera</a>
     <nav class="topnav">
-      <a href="#what">What it does</a>
-      <a href="#privacy-stance">Privacy</a>
+      <a href="#reads">What it reads</a>
+      <a href="privacy.html">Privacy</a>
       <a href="support.html">Support</a>
     </nav>
   </div>
 </div>
 
 <header class="hero">
-  <div class="wrap-wide hero-grid">
-    <div>
-      <p class="eyebrow">On-device health intelligence for iPhone</p>
-      <h1>Your body doesn't run on <em>averages</em>.</h1>
-      <p class="lede">So Aera doesn't score you against one. It reads your sleep, recovery, stress and training against a baseline learned from your own nights and your own sessions. Then it explains itself, every time.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#what">See what it reads</a>
-        <a class="btn btn-ghost" href="privacy.html">How your data is handled</a>
-      </div>
+  <div class="wrap-wide centered">
+    <img class="app-icon rise" style="--d:0ms" src="assets/icon.png" alt="The Aera app icon" width="256" height="256">
+    <p class="eyebrow rise" style="--d:60ms">Aera for iPhone</p>
+    <h1 class="rise" style="--d:110ms">Your body doesn't run on <em>averages</em>.</h1>
+    <p class="lede rise" style="--d:180ms">So Aera doesn't score you against one. It reads your sleep, recovery, stress and training against a baseline learned from your own nights and your own sessions. Then it explains itself, every time.</p>
+
+    <div class="cta-row centered-row rise" style="--d:250ms">
+      <a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Download on the App Store</a>
+      <a class="btn btn-ghost" href="#reads">See what it reads</a>
     </div>
-    <div class="hero-shot">
-      <img src="assets/hero.jpg" alt="Aera's home screen showing a recovery read against the user's usual range" width="520" height="1130">
+
+    <ul class="trust rise" style="--d:310ms">
+      <li>Runs entirely on your iPhone</li>
+      <li>No account</li>
+      <li>Your health data is never uploaded</li>
+    </ul>
+
+    <div class="hero-shot lift" style="--d:380ms">
+      <div class="phone">
+        <img src="shots/home-360.webp"
+             srcset="shots/home-360.webp 360w, shots/home-720.webp 720w"
+             sizes="(max-width: 620px) 264px, 320px"
+             width="1206" height="2622" fetchpriority="high"
+             alt="Aera's home screen showing a recovery read against the user's usual range">
+        <span class="island"></span>
+      </div>
     </div>
   </div>
 </header>
 
+<section class="band-statements">
+  <div class="wrap statements">
+    <p class="statement reveal"><em>Measured against you.</em> Not a lab average, not a 25 year old athlete. Aera learns your own rhythm over weeks and moves the baseline as you change.</p>
+    <p class="statement reveal"><em>It explains itself.</em> Every number opens an article that states how it was calculated, the research it rests on, and what it cannot tell you.</p>
+    <p class="statement reveal"><em>It admits what it doesn't know.</em> When there isn't enough of your history yet, Aera says so instead of guessing at a cause.</p>
+  </div>
+</section>
+
 <div class="strip">
   <div class="wrap-wide gallery">
-    <img src="assets/training.jpg" alt="Training readiness and the session Aera suggests for today" width="520" height="1130" loading="lazy">
-    <img src="assets/sleep.jpg" alt="The sleep screen with the week measured against your sleep need" width="520" height="1130" loading="lazy">
-    <img src="assets/age.jpg" alt="Aera's biological age screen with the factors that shape the estimate" width="520" height="1130" loading="lazy">
-    <img src="assets/route.jpg" alt="A 3D flyover replay of a recorded run with its elevation profile" width="520" height="1130" loading="lazy">
+    <figure class="shot reveal" style="--d:0ms">
+      <div class="phone">
+        <img src="shots/fitness-360.webp" srcset="shots/fitness-360.webp 360w, shots/fitness-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="Training readiness and the session Aera suggests for today">
+        <span class="island"></span>
+      </div>
+      <figcaption>How hard to train today</figcaption>
+    </figure>
+    <figure class="shot reveal" style="--d:70ms">
+      <div class="phone">
+        <img src="shots/sleep-360.webp" srcset="shots/sleep-360.webp 360w, shots/sleep-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="The sleep screen with the week measured against your sleep need">
+        <span class="island"></span>
+      </div>
+      <figcaption>Whether the week met your need</figcaption>
+    </figure>
+    <figure class="shot reveal" style="--d:140ms">
+      <div class="phone">
+        <img src="shots/bioage-360.webp" srcset="shots/bioage-360.webp 360w, shots/bioage-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="Biological age with the factors that shape the estimate">
+        <span class="island"></span>
+      </div>
+      <figcaption>What shapes your age estimate</figcaption>
+    </figure>
+    <figure class="shot reveal" style="--d:210ms">
+      <div class="phone">
+        <img src="shots/flyover-360.webp" srcset="shots/flyover-360.webp 360w, shots/flyover-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="A 3D flyover replay of a recorded run with its elevation profile">
+        <span class="island"></span>
+      </div>
+      <figcaption>The route you ran, replayed</figcaption>
+    </figure>
+    <figure class="shot reveal" style="--d:280ms">
+      <div class="phone">
+        <img src="shots/season-360.webp" srcset="shots/season-360.webp 360w, shots/season-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="A season view showing every week trained and how the training base moved">
+        <span class="island"></span>
+      </div>
+      <figcaption>What has actually moved</figcaption>
+    </figure>
+    <figure class="shot reveal" style="--d:350ms">
+      <div class="phone">
+        <img src="shots/workout-360.webp" srcset="shots/workout-360.webp 360w, shots/workout-720.webp 720w"
+             sizes="(max-width: 899px) 240px, 200px" width="1206" height="2622" loading="lazy"
+             alt="A workout broken down by heart rate zone with running form measures">
+        <span class="island"></span>
+      </div>
+      <figcaption>How your body responded</figcaption>
+    </figure>
   </div>
 </div>
 
-<section id="what">
+<section id="reads">
   <div class="wrap-wide">
-    <div class="split">
-      <h2>Most health apps hand you a number.</h2>
-      <div class="split-body">
-        <p class="section-lede">Aera hands you the reason. Wake up to a low recovery and it looks at what actually landed yesterday, a hard session, a short night, or both, and tells you what a day like that usually costs you, measured against your own comparable days. If yesterday was an ordinary walk, it says so instead of blaming it.</p>
-        <div class="pull">And when it doesn't know, it says that too. No invented causes.</div>
-      </div>
-    </div>
-
+    <h2 class="centered-head reveal">What Aera reads</h2>
     <div class="cards">
-      <div class="card">
+      <div class="card reveal" style="--d:0ms">
         <span class="tag">Sleep</span>
         <h3>Five signals, not one number</h3>
         <p>How long you slept, your stages, how unbroken the night was, your sleeping heart rate and your overnight heart rate variability. Watch-estimated stages are noisy, so they carry less weight, and Aera says so.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--d:60ms">
         <span class="tag">Recovery</span>
         <h3>What moved with it</h3>
         <p>An overnight autonomic read built from your own 28-day baseline, alongside the training and sleep that co-occurred with it. Stated as association, never as cause.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--d:120ms">
         <span class="tag">Training</span>
         <h3>Readiness, then a session</h3>
         <p>A clear go hard, go easy or rest call, and a session built from the week you actually had. Load states named the way athletes name them, with no softened euphemisms.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--d:0ms">
         <span class="tag">Workouts</span>
         <h3>Depth that holds up</h3>
         <p>A 3D flyover of any route. Splits by heart rate zone. Grade adjusted pace on hills. Whether you finished stronger or eased off. How your pace held against your heart rate.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--d:60ms">
         <span class="tag">Places</span>
         <h3>The ground you keep running</h3>
         <p>Aera recognises the routes and stretches you return to, entirely on device, and times every pass against your own history.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--d:120ms">
         <span class="tag">Longevity</span>
         <h3>Biological age, with limits</h3>
         <p>Seven signals, each showing what it adds or takes away, and a candid account of where the estimate ends.</p>
@@ -104,51 +171,135 @@
   </div>
 </section>
 
-<section id="explained">
-  <div class="wrap-wide split">
-    <h2>Every number has an article behind it</h2>
-    <div class="split-body">
-      <p class="section-lede">Tap any read and Aera explains how it was calculated, which research it rests on, and what it cannot tell you. The honest limits are part of the product, not a disclaimer buried in a settings screen. Where the science is contested, Aera says that rather than picking the flattering side.</p>
-      <p class="section-lede">Baselines are learned from you. Most apps compare you to a lab average or a 25 year old athlete. Aera watches your own rhythm over weeks and moves the baseline as you do.</p>
-    </div>
-  </div>
-</section>
-
-<section id="privacy-stance">
-  <div class="wrap-wide split">
-    <h2>Built to keep your health data on your phone</h2>
-    <div class="split-body">
-      <p class="section-lede">Apple Health is the only source Aera reads from, and every score, baseline and trend is computed on the device. There is no account, no server and no health data upload. Nothing about your body is sold or shared.</p>
-      <p class="section-lede">Aera does include two standard developer tools, Mixpanel for anonymous product analytics and Sentry for crash reports, so problems can be found and fixed. Neither receives health data and neither is tied to your identity. The <a href="privacy.html">privacy policy</a> sets out exactly what each one sees.</p>
-      <div class="cta-row">
-        <a class="btn btn-ghost" href="privacy.html">Read the privacy policy</a>
-      </div>
+<section class="band-dark" id="privacy-stance">
+  <div class="wrap centered">
+    <h2 class="reveal">Your health data stays on your phone</h2>
+    <p class="section-lede reveal">Apple Health is the only source Aera reads from, and every score, baseline and trend is computed on the device. There is no account, no server and no health data upload. Nothing about your body is sold or shared.</p>
+    <p class="section-lede small reveal">Aera does include two standard developer tools, Mixpanel for anonymous product analytics and Sentry for crash reports, so problems can be found and fixed. Neither receives health data and neither is tied to your identity.</p>
+    <div class="cta-row centered-row reveal">
+      <a class="btn btn-ghost" href="privacy.html">Read the privacy policy</a>
     </div>
   </div>
 </section>
 
 <section id="who">
-  <div class="wrap-wide split">
-    <h2>Who it's for</h2>
-    <div class="split-body">
-      <p class="section-lede">People who want to understand their body, not compete with strangers. Runners, sleepers, parents, students, anyone who has been told their numbers are normal when their body clearly isn't.</p>
-      <p class="section-lede">Aera is free to use. A subscription unlocks the Sleep Bank, Biological Age, Today's Session, Flyover replay, the Monthly Review, Your Places, Personal Bests, extended history and the Export Center.</p>
-      <div class="pull">If you trust your own rhythm more than the average, Aera was built for you.</div>
+  <div class="wrap centered">
+    <h2 class="reveal">Who it's for</h2>
+    <p class="section-lede reveal">People who want to understand their body, not compete with strangers. Runners, sleepers, parents, students, anyone who has been told their numbers are normal when their body clearly isn't.</p>
+    <p class="statement closing reveal"><em>If you trust your own rhythm more than the average,</em> Aera was built for you.</p>
+    <p class="section-lede small reveal">Aera is free to use. A subscription unlocks the Sleep Bank, Biological Age, Today's Session, Flyover replay, the Monthly Review, Your Places, Personal Bests, extended history and the Export Center.</p>
+    <div class="cta-row centered-row reveal">
+      <a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Download on the App Store</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <span>&copy; 2026 Aera</span>
-    <nav>
-      <a href="privacy.html">Privacy</a>
+  <div class="wrap-wide footer-grid">
+    <div class="footer-brand">
+      <img src="assets/icon.png" alt="" width="256" height="256">
+      <p>Aera</p>
+      <p class="footer-note">Your body, explained.</p>
+    </div>
+    <div>
+      <h4>App</h4>
+      <a href="#reads">What it reads</a>
       <a href="support.html">Support</a>
-      <a href="terms.html">Terms</a>
+      <a href="https://apps.apple.com/app/id6762456252">Download</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
       <a href="terms.html#eula">EULA</a>
-    </nav>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:9qdf7rnr7z@privaterelay.appleid.com">Email support</a>
+    </div>
+  </div>
+  <div class="wrap-wide footer-base">
+    <span>&copy; 2026 Aera</span>
+    <span>Computed on device.</span>
   </div>
 </footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  var bar = document.getElementById('topbar');
+
+  // Everything is visible by default in the stylesheet. Only opt into the
+  // hidden-then-revealed state when motion is welcome and JS is running, so a
+  // failed script can never leave the page blank.
+  //
+  // Deliberately a scroll/resize pass rather than IntersectionObserver: the
+  // observer did not deliver reliably in every environment tested, and a missed
+  // callback here means permanently invisible content. A geometry check on each
+  // frame cannot silently fail, and the list shrinks to nothing as items reveal.
+  var pending = [];
+
+  // If anything below throws, the hidden state is removed so the page is
+  // readable no matter what. Invisible content is a far worse failure than
+  // a missing animation.
+  function abandonMotion() {
+    root.classList.remove('motion');
+    pending = [];
+  }
+
+  try {
+    if (!reduced) {
+      root.classList.add('motion');
+      pending = [].slice.call(document.querySelectorAll('.reveal'));
+
+      // The hero is above the fold, so it plays on load rather than on scroll.
+      requestAnimationFrame(function () {
+        document.querySelectorAll('.hero .rise, .hero .lift').forEach(function (el) {
+          el.classList.add('in');
+        });
+      });
+    }
+  } catch (e) {
+    abandonMotion();
+  }
+
+  function revealVisible() {
+    if (!pending.length) return;
+    var limit = window.innerHeight * 0.92;   // a touch before the bottom edge
+    pending = pending.filter(function (el) {
+      if (el.getBoundingClientRect().top > limit) return true;
+      el.classList.add('in');                // one shot, then dropped from the list
+      return false;
+    });
+  }
+
+  var ticking = false;
+  function onFrame() {
+    if (ticking) return;
+    ticking = true;
+    var run = function () {
+      try {
+        bar.classList.toggle('scrolled', window.scrollY > 8);
+        revealVisible();
+      } catch (e) {
+        abandonMotion();
+      }
+      ticking = false;
+    };
+    // rAF is the right place for this, but if frames never arrive (some
+    // headless and background-tab cases) the timeout still lets content in.
+    requestAnimationFrame(run);
+    setTimeout(function () { if (ticking) run(); }, 250);
+  }
+
+  window.addEventListener('scroll', onFrame, { passive: true });
+  window.addEventListener('resize', onFrame, { passive: true });
+  window.addEventListener('load', onFrame);
+  onFrame();
+})();
+</script>
 
 </body>
 </html>
