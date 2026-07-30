@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Aera</title>
+<meta name="description" content="What Aera reads, what stays on your device, and the two developer tools that see anonymous app usage.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="mark" href="index.html">Aera</a>
+    <nav class="topnav">
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap page-head">
+  <p class="eyebrow">Aera</p>
+  <h1>Privacy Policy</h1>
+</div>
+
+<div class="wrap legal">
+
+  <div class="note">
+    <strong>The short version.</strong> Aera reads health data from Apple Health with your permission, analyses it on your iPhone, and keeps the results there. There is no account and no server, and your health data is never uploaded. Two standard developer tools receive anonymous app usage and crash reports, which is described in full below.
+  </div>
+
+  <h2>What Aera reads</h2>
+
+  <h3>Apple Health, read only</h3>
+  <p>Aera reads sleep, heart rate, heart rate variability, resting and walking heart rate, VO&#8322; max, oxygen saturation, respiratory rate, wrist temperature, steps, active and basal energy, walking and running distance, cycling and swimming distance, flights climbed, stand and exercise time, walking and stair speed, walking asymmetry and steadiness, running dynamics, time in daylight, mindful sessions, workouts, workout routes and date of birth.</p>
+  <p><strong>Aera writes nothing back to Apple Health.</strong> Access is read only. You grant it in the Health permission sheet and can revoke it at any time in iOS Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; Aera.</p>
+
+  <h3>Weather recorded with your workouts</h3>
+  <p>Some workout screens show the temperature or humidity of a session. That value is read from the workout's own Apple Health metadata, recorded by your Apple Watch at the time you trained. Aera does not perform a weather lookup, does not use WeatherKit, and sends nothing to a weather service.</p>
+
+  <h3>Maps</h3>
+  <p>When you view a route, a place or a flyover, MapKit loads map tiles from Apple. Apple's Maps privacy terms govern that request.</p>
+
+  <h3>Your photo library, only if you turn it on</h3>
+  <p>Aera can attach photos to a workout. There are two ways this happens:</p>
+  <ul>
+    <li><strong>Choosing photos yourself.</strong> The default. Aera uses the system photo picker, which hands over only the images you select. No library access is granted and nothing else is read.</li>
+    <li><strong>Photo suggestions, off by default.</strong> If you switch this on and grant photo access, Aera looks for photos whose capture time falls inside a workout and whose location sits close to the recorded route, so it can offer them for that session. This runs on your device. Nothing is uploaded, nothing is modified, and your originals are untouched. Aera keeps a bounded copy of any photo you approve, with location and other metadata stripped, in its own protected storage.</li>
+  </ul>
+
+  <h2>What leaves your device</h2>
+  <p>No health data. There is no Aera server, so there is nowhere for it to go. Scores, baselines, sleep history, workouts, routes and every article you read stay in a local database on your iPhone.</p>
+  <p>Two standard developer tools are built into the app, and both are declared in the App Store privacy label:</p>
+  <ul>
+    <li><strong>Mixpanel</strong> receives anonymous product analytics: which screens are opened, which features are used, and whether a sync succeeded. Events are keyed to a random identifier generated on install, not to a name, an email or an Apple ID.</li>
+    <li><strong>Sentry</strong> receives crash reports and performance traces so faults can be diagnosed and fixed.</li>
+  </ul>
+  <p>Neither receives your health data, and neither is used to build an advertising profile. Aera contains no advertising SDK and does not track you across other apps or websites.</p>
+
+  <h2>What Aera does not do</h2>
+  <ul>
+    <li>No user account, no login, no profile.</li>
+    <li>No advertising, no ad networks, no cross-app or cross-site tracking.</li>
+    <li>No cloud sync and no backup to any server operated by Aera.</li>
+    <li>No selling or sharing of your health data with anyone.</li>
+  </ul>
+
+  <h2>Exports</h2>
+  <p>You can export your own data as JSON, a spreadsheet or a PDF report. Files are written on your device and handed to the standard iOS share sheet, where you decide what happens next. Aera does not upload them anywhere.</p>
+
+  <h2>Notifications</h2>
+  <p>If you allow them, Aera sends a small number of local notifications: an optional bedtime reminder, a morning read, and a note when a workout syncs. All are scheduled on your device. There is no push server.</p>
+
+  <h2>Subscriptions</h2>
+  <p>Purchases are handled entirely by Apple through StoreKit. Aera never sees your payment details. Subscription status is checked on device against Apple's transaction records. Apple's App Store privacy terms apply to the purchase itself.</p>
+
+  <h2>Children</h2>
+  <p>Aera is not directed at children under 13 and does not knowingly collect data from them. There are no accounts, so no personal information is collected regardless of age.</p>
+
+  <h2>Retention and deletion</h2>
+  <p>Everything Aera generates lives in a local database on your iPhone. Deleting the app removes all of it, and your Apple Health data is unaffected. Because nothing was ever uploaded, there is no copy for Aera to delete or return. To stop the anonymous analytics and crash reporting described above, delete the app.</p>
+
+  <h2>Your rights</h2>
+  <p>If you are in the EU, the UK or another region with data protection rights, you may ask what is held about you. In practice the answer is: your health data is on your device and has never been sent to us, and the analytics and crash data is anonymous and not linked to your identity. Questions go to the support address below.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the updated version is posted here and the date below changes with it.</p>
+
+  <p><a class="contact" href="mailto:9qdf7rnr7z@privaterelay.appleid.com">Email Aera Support</a></p>
+
+  <p class="meta">Last updated: 30 July 2026</p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Aera</span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="terms.html#eula">EULA</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

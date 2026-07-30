@@ -1,237 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aera — Privacy, Support &amp; Terms</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #0b0b0d;
-      --surface: #141418;
-      --text: #f4f4f6;
-      --muted: #9a9aa5;
-      --accent: #b794f6;
-      --border: rgba(255,255,255,0.08);
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #fafafa;
-        --surface: #ffffff;
-        --text: #101015;
-        --muted: #5a5a66;
-        --border: rgba(0,0,0,0.08);
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 56px 24px 96px;
-    }
-    header {
-      margin-bottom: 48px;
-    }
-    .brand {
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    h1 {
-      font-size: 40px;
-      line-height: 1.15;
-      margin: 8px 0 16px;
-      letter-spacing: -0.02em;
-    }
-    .lede {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0;
-    }
-    nav {
-      display: flex;
-      gap: 8px;
-      margin: 32px 0 48px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      padding: 8px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      transition: background 0.15s ease;
-    }
-    nav a:hover { background: var(--surface); }
-    section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 24px;
-    }
-    h2 {
-      font-size: 24px;
-      margin: 0 0 20px;
-      letter-spacing: -0.01em;
-    }
-    h3 {
-      font-size: 16px;
-      margin: 24px 0 8px;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    p, li { font-size: 15px; }
-    ul { padding-left: 20px; }
-    li { margin-bottom: 6px; }
-    a { color: var(--accent); }
-    .meta {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 24px;
-    }
-    code {
-      font-family: "SF Mono", Menlo, monospace;
-      font-size: 13px;
-      background: rgba(127,127,127,0.12);
-      padding: 1px 6px;
-      border-radius: 4px;
-    }
-    .contact {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: #0b0b0d;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aera — Your body, explained</title>
+<meta name="description" content="Aera reads your sleep, recovery, stress and training against your own baseline, then explains itself. Everything runs on your iPhone.">
+<meta property="og:title" content="Aera — Your body, explained">
+<meta property="og:description" content="Health reads measured against you, not a population average. On-device, and honest about its limits.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="styles.css">
+<script>
+// The old single-page site lived at /#privacy, /#support, /#terms and /#eula.
+// Those URLs are registered with the App Store, so keep them working.
+(function () {
+  var legacy = { '#privacy': 'privacy.html', '#support': 'support.html',
+                 '#terms': 'terms.html', '#eula': 'terms.html#eula' };
+  var target = legacy[location.hash];
+  if (target) location.replace(target);
+})();
+</script>
 </head>
 <body>
+
+<div class="topbar">
   <div class="wrap">
-    <header>
-      <div class="brand">Aera</div>
-      <h1>Privacy, Support &amp; Terms</h1>
-      <p class="lede">Aera is an on-device health intelligence app. Your data never leaves your iPhone.</p>
-    </header>
-
-    <nav>
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#support">Support</a>
-      <a href="#terms">Terms of Use</a>
-      <a href="#eula">EULA</a>
+    <a class="mark" href="/">Aera</a>
+    <nav class="topnav">
+      <a href="#what">What it does</a>
+      <a href="#privacy-stance">Privacy</a>
+      <a href="support.html">Support</a>
     </nav>
-
-    <section id="privacy">
-      <h2>Privacy Policy</h2>
-
-      <p><strong>Summary:</strong> Aera reads health data from Apple Health with your permission, processes it on your device, and keeps the results on your device. There are no accounts, no servers, no analytics, and no third-party tracking.</p>
-
-      <h3>What Aera accesses</h3>
-      <ul>
-        <li><strong>Apple Health data (read-only)</strong>. Aera reads sleep, heart rate, heart rate variability, resting and walking heart rate, VO&#8322; max, oxygen saturation, respiratory rate, wrist temperature, steps, active and basal energy, walking and running distance, cycling and swimming distance, flights climbed, stand and exercise time, walking and stair speed, walking asymmetry and steadiness, running dynamics, time in daylight, workouts, workout routes, mindful sessions, and date of birth. Aera writes only completed breathing sessions back to Apple Health as mindful minutes. Read access is granted by you in the Health permission sheet and can be revoked anytime in iOS Settings &rarr; Privacy &amp; Security &rarr; Health.</li>
-        <li><strong>Photo library</strong> (optional). Only used when you choose to save a workout replay video. Aera never reads your existing photos.</li>
-      </ul>
-
-      <h3>What Aera sends to Apple services</h3>
-      <p>Two features rely on Apple-hosted services. Data sent is governed by Apple's privacy terms, not Aera's:</p>
-      <ul>
-        <li><strong>WeatherKit.</strong> When you complete an outdoor workout with a recorded route, Aera sends the workout's start location and timestamp to Apple's WeatherKit to retrieve historical weather. Apple's WeatherKit privacy terms apply.</li>
-        <li><strong>Maps.</strong> When you view a workout route, heatmap, or flyover, MapKit loads map tiles from Apple. Apple's Maps privacy terms apply.</li>
-      </ul>
-
-      <h3>What Aera does <em>not</em> do</h3>
-      <ul>
-        <li>No user accounts, no login, no profile.</li>
-        <li>No third-party analytics, advertising, or tracking SDKs.</li>
-        <li>No cloud sync, no backup to any server operated by Aera.</li>
-        <li>No selling or sharing of data. Aera has no servers that could receive it.</li>
-      </ul>
-
-      <h3>Subscriptions</h3>
-      <p>Premium subscriptions are handled entirely by Apple through StoreKit and the App Store. Aera does not see your payment details. Subscription status is verified on-device against Apple's receipt. Apple's App Store privacy terms apply to purchases. For full subscription, cancellation, and refund terms, see <a href="#terms">Terms of Use</a> below.</p>
-
-      <h3>Children</h3>
-      <p>Aera is not directed at children under 13 and does not knowingly collect data from them. There are no accounts, so no personal information is collected regardless of age.</p>
-
-      <h3>Data retention</h3>
-      <p>All data Aera generates (scores, baselines, logs) is stored in a local database on your device. Deleting the app removes all of it. Aera cannot recover data from a deleted install because it never left your device.</p>
-
-      <h3>Changes to this policy</h3>
-      <p>If this policy changes, the updated version will be posted on this page. The "Last updated" date below will reflect the change.</p>
-
-      <p class="meta">Last updated: 21 April 2026</p>
-    </section>
-
-    <section id="support">
-      <h2>Support</h2>
-      <p>Questions, bug reports, or feedback? Email us and we'll get back to you within 2 business days.</p>
-      <a class="contact" href="mailto:9qdf7rnr7z@privaterelay.appleid.com">Email Aera Support</a>
-
-      <h3>Common questions</h3>
-      <ul>
-        <li><strong>Aera can't see my health data.</strong> Open iOS Settings &rarr; Privacy &amp; Security &rarr; Health &rarr; Aera and make sure all categories are enabled.</li>
-        <li><strong>My subscription didn't activate.</strong> Open Aera, go to Settings, tap "Restore Purchases." If it still fails, email us with your Apple ID region so we can check.</li>
-        <li><strong>I want to cancel my subscription.</strong> Open iOS Settings &rarr; tap your name at the top &rarr; Subscriptions &rarr; Aera &rarr; Cancel Subscription. Cancellation takes effect at the end of the current billing period.</li>
-        <li><strong>I want a refund.</strong> Refunds for App Store subscriptions are handled by Apple. Visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> and follow Apple's refund request flow.</li>
-        <li><strong>I want to delete my data.</strong> Delete the Aera app. All on-device data is removed with it. Apple Health data is unaffected.</li>
-      </ul>
-    </section>
-
-    <section id="terms">
-      <h2>Terms of Use</h2>
-
-      <h3>Agreement</h3>
-      <p>By installing and using Aera you agree to these terms. If you do not agree, please do not use the app.</p>
-
-      <h3>Not a medical device</h3>
-      <p>Aera is a wellness and informational tool. It is not a medical device, it does not diagnose or treat any condition, and its scores and insights should not replace professional medical advice. If you have a health concern, consult a licensed healthcare provider.</p>
-
-      <h3>Subscriptions</h3>
-      <p>Aera Premium is available as a Monthly subscription, an Annual subscription, or a one-time Lifetime purchase. Monthly and Annual plans renew automatically through your Apple ID unless cancelled at least 24 hours before the end of the current period. Your Apple ID is charged at confirmation and at each renewal. You can cancel any active subscription at any time in iOS Settings &rarr; [Your Name] &rarr; Subscriptions. Refunds are handled by Apple and may be requested at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p>
-
-      <h3>Introductory offers</h3>
-      <p>Aera may offer a discounted introductory price for new subscribers. The exact price and duration are displayed on the subscription screen before you confirm. When the introductory period ends, the subscription continues at the standard rate unless cancelled at least 24 hours before the period ends.</p>
-
-      <h3>Ownership</h3>
-      <p>Aera, its brand, its visuals, and its algorithms are owned by its developer. You are granted a personal, non-transferable license to use the app. You may not decompile, reverse-engineer, or redistribute any part of the app.</p>
-
-      <h3>Warranty disclaimer</h3>
-      <p>Aera is provided as is. No warranty is offered regarding accuracy, fitness for a particular purpose, or uninterrupted operation. Your use of the app is at your own discretion and risk.</p>
-
-      <h3>Limitation of liability</h3>
-      <p>To the fullest extent permitted by applicable law, the developer is not liable for any indirect, incidental, or consequential damages arising from your use of the app, including but not limited to decisions you make based on Aera's insights.</p>
-
-      <h3>Termination</h3>
-      <p>The developer may terminate or suspend access to the app at any time, with or without cause. You may stop using the app at any time by deleting it and, if applicable, cancelling your subscription through Apple.</p>
-
-      <h3>Governing law</h3>
-      <p>These terms are governed by the laws of the developer's country of residence. Any dispute that cannot be resolved amicably will be submitted to the courts of that jurisdiction.</p>
-
-      <h3>Changes</h3>
-      <p>These terms may change over time. The "Last updated" date below reflects the most recent revision. Continued use after a change constitutes acceptance.</p>
-
-      <p class="meta">Last updated: 21 April 2026</p>
-    </section>
-
-    <section id="eula">
-      <h2>End User License Agreement</h2>
-      <p>Aera is distributed under Apple's Standard End User License Agreement for apps on the App Store, available at <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">https://www.apple.com/legal/internet-services/itunes/dev/stdeula/</a>. By downloading and using Aera you agree to those terms in addition to the Aera <a href="#terms">Terms of Use</a> above.</p>
-    </section>
-
-    <p class="meta" style="text-align:center">&copy; 2026 Aera. All rights reserved.</p>
   </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">On-device health intelligence for iPhone</p>
+    <h1>Your body doesn't run on <em>averages</em>.</h1>
+    <p class="lede">So Aera doesn't score you against one. It reads your sleep, recovery, stress and training against a baseline learned from your own nights and your own sessions. Then it explains itself, every time.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#what">See what it reads</a>
+      <a class="btn btn-ghost" href="privacy.html">How your data is handled</a>
+    </div>
+  </div>
+</header>
+
+<div class="gallery">
+  <img src="assets/hero.jpg" alt="Aera's home screen showing a recovery read against the user's usual range" width="520" height="1130" loading="lazy">
+  <img src="assets/age.jpg" alt="Aera's biological age screen with the factors that shape the estimate" width="520" height="1130" loading="lazy">
+  <img src="assets/route.jpg" alt="A 3D flyover replay of a recorded run with its elevation profile" width="520" height="1130" loading="lazy">
+</div>
+
+<section id="what">
+  <div class="wrap">
+    <h2>Most health apps hand you a number.</h2>
+    <p class="section-lede">Aera hands you the reason. Wake up to a low recovery and it looks at what actually landed yesterday, a hard session, a short night, or both, and tells you what a day like that usually costs you, measured against your own comparable days. If yesterday was an ordinary walk, it says so instead of blaming it.</p>
+
+    <div class="pull">And when it doesn't know, it says that too. No invented causes.</div>
+
+    <div class="cards">
+      <div class="card">
+        <span class="tag">Sleep</span>
+        <h3>Five signals, not one number</h3>
+        <p>How long you slept, your stages, how unbroken the night was, your sleeping heart rate and your overnight heart rate variability. Watch-estimated stages are noisy, so they carry less weight, and Aera says so.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Recovery</span>
+        <h3>What moved with it</h3>
+        <p>An overnight autonomic read built from your own 28-day baseline, alongside the training and sleep that co-occurred with it. Stated as association, never as cause.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Training</span>
+        <h3>Readiness, then a session</h3>
+        <p>A clear go hard, go easy or rest call, and a session built from the week you actually had. Load states named the way athletes name them, with no softened euphemisms.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Workouts</span>
+        <h3>Depth that holds up</h3>
+        <p>A 3D flyover of any route. Splits by heart rate zone. Grade adjusted pace on hills. Whether you finished stronger or eased off. How your pace held against your heart rate.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Places</span>
+        <h3>The ground you keep running</h3>
+        <p>Aera recognises the routes and stretches you return to, entirely on device, and times every pass against your own history.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Longevity</span>
+        <h3>Biological age, with limits</h3>
+        <p>Seven signals, each showing what it adds or takes away, and a candid account of where the estimate ends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="explained">
+  <div class="wrap">
+    <h2>Every number has an article behind it</h2>
+    <p class="section-lede">Tap any read and Aera explains how it was calculated, which research it rests on, and what it cannot tell you. The honest limits are part of the product, not a disclaimer buried in a settings screen. Where the science is contested, Aera says that rather than picking the flattering side.</p>
+    <p class="section-lede">Baselines are learned from you. Most apps compare you to a lab average or a 25 year old athlete. Aera watches your own rhythm over weeks and moves the baseline as you do.</p>
+  </div>
+</section>
+
+<section id="privacy-stance">
+  <div class="wrap">
+    <h2>Built to keep your health data on your phone</h2>
+    <p class="section-lede">Apple Health is the only source Aera reads from, and every score, baseline and trend is computed on the device. There is no account, no server and no health data upload. Nothing about your body is sold or shared.</p>
+    <p class="section-lede">Aera does include two standard developer tools, Mixpanel for anonymous product analytics and Sentry for crash reports, so problems can be found and fixed. Neither receives health data and neither is tied to your identity. The <a href="privacy.html">privacy policy</a> sets out exactly what each one sees.</p>
+    <div class="cta-row">
+      <a class="btn btn-ghost" href="privacy.html">Read the privacy policy</a>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <h2>Who it's for</h2>
+    <p class="section-lede">People who want to understand their body, not compete with strangers. Runners, sleepers, parents, students, anyone who has been told their numbers are normal when their body clearly isn't.</p>
+    <p class="section-lede">Aera is free to use. A subscription unlocks the Sleep Bank, Biological Age, Today's Session, Flyover replay, the Monthly Review, Your Places, Personal Bests, extended history and the Export Center.</p>
+    <div class="pull">If you trust your own rhythm more than the average, Aera was built for you.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Aera</span>
+    <nav>
+      <a href="privacy.html">Privacy</a>
+      <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
+      <a href="terms.html#eula">EULA</a>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>
