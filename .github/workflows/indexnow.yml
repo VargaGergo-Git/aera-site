@@ -1,0 +1,45 @@
+name: IndexNow on push
+on:
+  push:
+    branches: [main]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submit sitemap URLs to IndexNow
+        env:
+          INDEXNOW_KEY: 09571b31bc62e1964a5643dfb26caff4
+        run: |
+          HOST="vargagergo-git.github.io"
+          KEY="$INDEXNOW_KEY"
+          # Collect public HTML and feed URLs from sitemap if present, else defaults
+          URLS=$(python3 - <<'PY'
+          import re, pathlib
+          text = pathlib.Path("sitemap.xml").read_text() if pathlib.Path("sitemap.xml").exists() else ""
+          locs = re.findall(r"<loc>([^<]+)</loc>", text)
+          if not locs:
+            base = "https://vargagergo-git.github.io/aera-site"
+            locs = [f"{base}/", f"{base}/notes/", f"{base}/notes/watch-sleep-stages-are-an-estimate.html"]
+          print("\n".join(locs))
+          PY
+          )
+          BODY=$(python3 - <<PY
+          import json, os
+          urls = """$URLS""".strip().splitlines()
+          print(json.dumps({
+            "host": "$HOST",
+            "key": os.environ["INDEXNOW_KEY"],
+            "keyLocation": f"https://$HOST/aera-site/$KEY.txt",
+            "urlList": urls,
+          }))
+          PY
+          )
+          echo "Submitting:"
+          echo "$BODY" | head -c 500
+          curl -sS -o /tmp/indexnow-out.txt -w "%{http_code}" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$BODY" \
+            "https://api.indexnow.org/indexnow" | tee /tmp/indexnow-code.txt
+          echo
+          cat /tmp/indexnow-out.txt || true

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aera field notes</title>
+    <link>https://vargagergo-git.github.io/aera-site/notes/</link>
+    <description>What consumer wearables can and cannot measure, with the research behind each claim.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Sep 2026 16:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Are Apple Watch sleep stages accurate?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</guid>
+      <pubDate>Tue, 09 Sep 2026 08:00:00 +0000</pubDate>
+      <description>Consumer watch stage charts look precise. Against lab sleep, they are estimates. Duration is the sturdier signal.</description>
+    </item>
+  </channel>
+</rss>
