@@ -710,3 +710,12 @@ footer a:hover { color: var(--text); }
   section { padding: 44px 0; }
   .topnav { gap: 14px; font-size: 14px; }
 }
+
+/* Field notes */
+.note-list { list-style: none; padding: 0; margin: 2rem 0; }
+.note-list li { padding: 0.9rem 0; border-bottom: 1px solid rgba(128,128,128,0.18); }
+.note-list li a { font-weight: 600; text-decoration: none; }
+.note-list li a:hover { text-decoration: underline; }
+.note-list .meta { display: block; font-size: 0.85em; opacity: 0.65; margin-top: 0.15rem; }
+.note-sources { font-size: 0.9em; opacity: 0.8; }
+.note-sources li { margin-bottom: 0.5rem; }
