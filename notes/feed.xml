@@ -1,1 +1,45 @@
-PLACEHOLDER
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aera field notes</title>
+    <link>https://vargagergo-git.github.io/aera-site/notes/</link>
+    <description>What consumer wearables can and cannot measure, with the research behind each claim.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 11 Sep 2026 06:25:00 +0000</lastBuildDate>
+    <item>
+      <title>What is HRV?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-hrv.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-hrv.html</guid>
+      <pubDate>Fri, 11 Sep 2026 06:25:00 +0000</pubDate>
+      <description>Heart rate variability is the tiny change in spacing between beats, not how fast your heart goes. Yours only means something against your own nights.</description>
+    </item>
+    <item>
+      <title>What does a readiness score mean?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-does-a-readiness-score-mean.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-does-a-readiness-score-mean.html</guid>
+      <pubDate>Fri, 11 Sep 2026 06:25:00 +0000</pubDate>
+      <description>A training call from recent load, sleep debt, and overnight signals, not a health grade and not the same as one night of recovery.</description>
+    </item>
+    <item>
+      <title>Why is my resting heart rate up?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/why-is-my-resting-heart-rate-up.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/why-is-my-resting-heart-rate-up.html</guid>
+      <pubDate>Fri, 11 Sep 2026 06:25:00 +0000</pubDate>
+      <description>One high morning is usually noise. A run of mornings above your own range is the signal worth noticing.</description>
+    </item>
+    <item>
+      <title>How much sleep do I actually need?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/how-much-sleep-you-actually-need.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/how-much-sleep-you-actually-need.html</guid>
+      <pubDate>Thu, 10 Sep 2026 06:00:00 +0000</pubDate>
+      <description>There is no universal eight-hour rule. Sleep need is personal, and regularity often matters as much as duration.</description>
+    </item>
+    <item>
+      <title>Are Apple Watch sleep stages accurate?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</guid>
+      <pubDate>Tue, 09 Sep 2026 08:00:00 +0000</pubDate>
+      <description>Consumer watch stage charts look precise. Against lab sleep, they are estimates. Duration is the sturdier signal.</description>
+    </item>
+  </channel>
+</rss>
