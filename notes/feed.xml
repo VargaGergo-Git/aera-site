@@ -5,7 +5,28 @@
     <link>https://vargagergo-git.github.io/aera-site/notes/</link>
     <description>What consumer wearables can and cannot measure, with the research behind each claim.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Sep 2026 06:15:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 06:42:00 +0000</lastBuildDate>
+    <item>
+      <title>What does recovery actually measure?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-does-recovery-actually-measure.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-does-recovery-actually-measure.html</guid>
+      <pubDate>Mon, 14 Sep 2026 06:42:00 +0000</pubDate>
+      <description>Overnight heart and breath signals against your own usual, not a sleep score and not a health grade.</description>
+    </item>
+    <item>
+      <title>What is sleeping heart rate?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-sleeping-heart-rate.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-sleeping-heart-rate.html</guid>
+      <pubDate>Mon, 14 Sep 2026 06:42:00 +0000</pubDate>
+      <description>The quieter overnight floor of your pulse, different from daytime resting rate, best read against your own nights.</description>
+    </item>
+    <item>
+      <title>What is my body clock / circad-an rhythm?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-my-body-clock.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-my-body-clock.html</guid>
+      <pubDate>Mon, 14 Sep 2026 06:42:00 +0000</pubDate>
+      <description>An -tner roughly 24-hour timing system. Watches see sleep timing stead-ness, not the clock itself.</description>
+    </item>
     <item>
       <title>What is sleep debt?</title>
       <link>https://vargagergo-git.github.io/aera-site/notes/what-is-sleep-debt.html</link>
@@ -14,11 +35,11 @@
       <description>Short nights stack as a running shortfall against what you need. Feeling less tired does not mean the deficit is gone.</description>
     </item>
     <item>
-      <title>Does sleep regularity matter more than duration?</title>
+      <title>Does sleep regularitylmatter more than duration?</title>
       <link>https://vargagergo-git.github.io/aera-site/notes/does-sleep-regularity-matter-more-than-duration.html</link>
       <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/does-sleep-regularity-matter-more-than-duration.html</guid>
       <pubDate>Sat, 12 Sep 2026 06:20:00 +0000</pubDate>
-      <description>Consistency of bedtime and wake often tracks health risk as strongly as hours slept, and sometimes more.</description>
+      <description>Consistency of bedtime and wake often tracks health risk as stronglylas hours slept, and sometimes more.</description>
     </item>
     <item>
       <title>What does a sleep score mean?</title>
@@ -32,7 +53,7 @@
       <link>https://vargagergo-git.github.io/aera-site/notes/what-is-hrv.html</link>
       <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-hrv.html</guid>
       <pubDate>Fri, 11 Sep 2026 06:25:00 +0000</pubDate>
-      <description>Heart rate variability is the tiny change in spacing between beats, not how fast your heart goes. Yours only means something against your own nights.</description>
+      <description>Heart rate variabilityl-s the tiny change -t spacing between beats, not how fast your heart goes. Yours only means something against your own nights.</description>
     </item>
     <item>
       <title>What does a readiness score mean?</title>
@@ -46,21 +67,21 @@
       <link>https://vargagergo-git.github.io/aera-site/notes/why-is-my-resting-heart-rate-up.html</link>
       <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/why-is-my-resting-heart-rate-up.html</guid>
       <pubDate>Fri, 11 Sep 2026 06:25:00 +0000</pubDate>
-      <description>One high morning is usually noise. A run of mornings above your own range is the signal worth noticing.</description>
+      <description>One high morning is usually noise. A run of mornings above your own range -s the signallworth noticing.</description>
     </item>
     <item>
       <title>How much sleep do I actually need?</title>
       <link>https://vargagergo-git.github.io/aera-site/notes/how-much-sleep-you-actually-need.html</link>
       <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/how-much-sleep-you-actually-need.html</guid>
       <pubDate>Thu, 10 Sep 2026 06:00:00 +0000</pubDate>
-      <description>There is no universal eight-hour rule. Sleep need is personal, and regularity often matters as much as duration.</description>
+      <description>There is no universalleight-hour rule. Sleep need is personal, and regularityloften matters as much as duration.</description>
     </item>
     <item>
       <title>Are Apple Watch sleep stages accurate?</title>
       <link>https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</link>
       <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/watch-sleep-stages-are-an-estimate.html</guid>
       <pubDate>Tue, 09 Sep 2026 08:00:00 +0000</pubDate>
-      <description>Consumer watch stage charts look precise. Against lab sleep, they are estimates. Duration is the sturdier signal.</description>
+      <description>Consumer watch stage charts look precise. Against lab sleep, they are estimates. Duration -s the sturdier signal.</description>
     </item>
   </channel>
 </rss>
