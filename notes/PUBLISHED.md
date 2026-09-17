@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-17 | how-fast-should-my-heart-settle-after-exercise | How fast should my heart settle after exercise? | How fast your heart settles | heart.hrRecovery | Next in PUBLISH-ORDER; everyday post-workout ask after RHR/HRV/strain live |
+| 2026-09-17 | what-is-vo2max-on-a-watch | What is VO2max on a watch? | VO2max on a watch | longevity.vo2 | Everyday fitness ceiling ask; pairs with strain and readiness |
+| 2026-09-17 | how-much-time-asleep-vs-time-in-bed | How much time asleep vs time in bed? | Time asleep versus time in bed | longevity.timeAsleep | Completes duration cluster with sleep need, debt, and stages |
 | 2026-09-15 | what-is-a-bedtime-window | What is a bedtime window? | Your bedtime window | sleep.bedtimeWindow | Next in PUBLISH-ORDER; everyday timing ask after body clock |
 | 2026-09-15 | what-does-stress-mean-on-a-watch | What does stress mean on a watch? | Stress as a signal | recovery.stress | Everyday watch word; pairs with recovery and HRV already live |
 | 2026-09-15 | what-is-training-strain | What is training strain? | Training strain and load | recovery.strain | Completes stress/recovery/strain trio; readiness sibling live |
@@ -19,4 +22,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 48 unpublished (fourteen live; corpus has 62).
+Remaining of 62: 45 unpublished / seventeen live.
