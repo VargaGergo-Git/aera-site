@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-18 | what-is-sleep-architecture | What is sleep architecture? | More than its hours | sleep.architecture | Next in PUBLISH-ORDER; everyday shape-of-the-night ask after duration cluster |
+| 2026-09-18 | what-does-a-hard-day-cost-me | What does a hard day cost me? | What a hard day usually costs you | recovery.cost | Next in PUBLISH-ORDER; everyday post-hard-day ask after recovery/strain live |
+| 2026-09-18 | how-do-i-balance-push-and-rest | How do I balance push and rest? | Balancing push and rest | recovery.balance | Completes cost/strain/recovery cluster; push-rest ask after cost |
 | 2026-09-17 | how-fast-should-my-heart-settle-after-exercise | How fast should my heart settle after exercise? | How fast your heart settles | heart.hrRecovery | Next in PUBLISH-ORDER; everyday post-workout ask after RHR/HRV/strain live |
 | 2026-09-17 | what-is-vo2max-on-a-watch | What is VO2max on a watch? | VO2max on a watch | longevity.vo2 | Everyday fitness ceiling ask; pairs with strain and readiness |
 | 2026-09-17 | how-much-time-asleep-vs-time-in-bed | How much time asleep vs time in bed? | Time asleep versus time in bed | longevity.timeAsleep | Completes duration cluster with sleep need, debt, and stages |
@@ -22,4 +25,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 45 unpublished / seventeen live.
+Remaining of 62: 42 unpublished / twenty live.
