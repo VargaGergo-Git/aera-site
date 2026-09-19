@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does all-day heart rate tell me?</title>
+<meta name="description" content="What does all-day heart rate tell me? The spread of samples across the day, hour by hour, not one averaged number that hides the peaks and quiet floors.">
+<meta property="og:title" content="What does all-day heart rate tell me?">
+<meta property="og:description" content="One daily average hides most of what your heart did. Hourly floors, ceilings, and gaps are the useful picture.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/notes/what-does-all-day-heart-rate-tell-me.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Your heart rate, all day","name":"What does all-day heart rate tell me?","datePublished":"2026-09-19","dateModified":"2026-09-19","author":{"@type":"Organization","name":"Aera"},"publisher":{"@type":"Organization","name":"Aera","url":"https://vargagergo-git.github.io/aera-site/"},"mainEntityOfPage":"https://vargagergo-git.github.io/aera-site/notes/what-does-all-day-heart-rate-tell-me.html","description":"What does all-day heart rate tell me? The spread of samples across the day, hour by hour, not one averaged number that hides the peaks and quiet floors.","citation":[
+{"@type":"CreativeWork","name":"Monitor your heart rate with Apple Watch","author":"Apple","datePublished":"n.d."},
+{"@type":"CreativeWork","name":"Get the most accurate measurements using your Apple Watch","author":"Apple","datePublished":"n.d."},
+{"@type":"CreativeWork","name":"Keep Apple Watch within acceptable operating temperatures","author":"Apple","datePublished":"n.d."},
+{"@type":"CreativeWork","name":"Investigating sources of inaccuracy in wearable optical heart rate sensors","author":"Bent B et al.","datePublished":"2020"},
+{"@type":"CreativeWork","name":"Validity and Reliability of the Apple Watch for Measuring Heart Rate During Exercise","author":"Khushhal A et al.","datePublished":"2017"},
+{"@type":"CreativeWork","name":"Number of days required to estimate physical activity constructs","author":"Yao J et al.","datePublished":"2021"}
+]}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Field note</p>
+  <h1>Your heart rate, all day</h1>
+  <p class="meta">2026-09-19</p>
+</div>
+<div class="wrap legal">
+<p>All-day heart rate tells you the spread of samples your watch wrote across the day: the quiet floors, the spikes, and the empty hours, not one averaged number that hides most of what your heart did.</p>
+<p>If you only remember one sentence: read the cloud of samples, not a single tip or a daily mean.</p>
+<h2>One number a day hides the day</h2>
+<p>A daily average is tidy. It is also a lossy summary. The useful picture is closer to hour-by-hour: the lowest samples in that hour, the highest, and where the middle of those samples sat. Nothing needs to be smoothed into a pretty line that invents values across gaps.</p>
+<p>A peak on the page is often one sample at one clock time. Optical wrist readings are noisy. A spike can be a hill, a startle, or the sensor losing the plot for a second. Trust the shape around it more than the tip alone.</p>
+<table>
+  <thead>
+    <tr><th>What you see</th><th>Honest read</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Hourly floor and ceiling</td><td>Range of samples that hour, not a verdict</td></tr>
+    <tr><td>A single high tip</td><td>One beat of the clock; check the cloud</td></tr>
+    <tr><td>Empty hour</td><td>No recording; not a heart rate of zero</td></tr>
+    <tr><td>Still hours</td><td>Usually the sturdier optical read</td></tr>
+    <tr><td>Busy wrist hours</td><td>More chance the sensor drifted</td></tr>
+  </tbody>
+</table>
+<h2>Usual hours are weekday hours</h2>
+<p>A useful "usual" for an hour is what that hour tends to look like for you on the same weekday, not a blend of every day of the week. Monday learns from Mondays. A thin library of history should stay blank rather than borrow Tuesday's shape. Yao and colleagues (2021) wrote about how many days are needed to estimate physical activity constructs; longer windows and matched contexts are how a personal usual gets less fragile. An eight-week, exact-weekday window is one house way to ask that question. It is a calibration choice, not a law of physiology.</p>
+<p>That matched-weekday idea is the same shape many watches already use when they learn a usual movement day. It is not a second science. It is the same habit applied to heart-rate floors and ceilings.</p>
+<h2>What the wrist gets wrong</h2>
+<p>The watch reads light bouncing off blood in the wrist. Apple's own documentation says optical heart-rate monitoring on Apple Watch is designed to work between 30 and 210 beats a minute, with green light during workouts and infrared in quieter background sampling. Even then, a reading is not an ECG.</p>
+<p>Apple also names the practical failure modes. Walking and cycling keep a rhythm the sensor can follow. Tennis, boxing, and anything that flicks the wrist do not. Cold skin pushes blood away from the surface, and the watch may simply not get a reading. A tattoo, a loose band, or a weak optical signal in a small fraction of people can do the same. Keep the watch within its operating temperatures; outside that band, samples go missing for physical reasons, not mysterious ones.</p>
+<p>Independent tests find the same shape. Khushhal and colleagues (2017) examined validity and reliability of Apple Watch heart rate during exercise. Bent and colleagues (2020) investigated sources of inaccuracy in wearable optical heart-rate sensors more broadly: wrist sensors are closer at rest and on a steady effort, and they drift when the arm gets busy. In that careful comparison across devices, movement was the thing that moved the error; that sample did not show a clear skin-tone gap. The honest read is still: trust the still hours more than the frantic ones.</p>
+<h2>A hole is not a zero</h2>
+<p>When the watch is off, in a bag, or too cold to see the pulse, that hour should keep its place and stay empty. Drawing a line across the gap invents a story. Writing a resting heart of zero invents a worse one. No recording is the fact.</p>
+<p>All-day heart rate is a look at the recordings. It is not the same as <a href="why-is-my-resting-heart-rate-up.html">Why is my resting heart rate up?</a>, which is about daytime resting trend against your own range. It is not the same as <a href="what-is-sleeping-heart-rate.html">What is sleeping heart rate?</a>, which is the quieter overnight floor. And it is not <a href="what-is-hrv.html">What is HRV?</a>, which is the tiny change in spacing between beats, usually read overnight against your own nights. Mixing those labels is how a noisy afternoon spike gets treated like a resting-rate problem.</p>
+<h2>What this cannot tell you</h2>
+<p>All-day samples do not diagnose arrhythmia, fitness, or stress by themselves. They do not replace the overnight and resting reads those other notes describe. They do not score how "good" your day was. The honest limit, said once: an all-day chart is a description of what the optical sensor wrote, with known motion and fit errors, not a medical record of what your heart did.</p>
+<p>Read the spread. Leave the empty hours empty. Let resting, sleeping, and HRV keep their own jobs.</p>
+<p>I write these because I build <a href="../index.html">Aera</a>, an iPhone app that reads Apple Health against your own baseline and puts the research and the error bars underneath every number it shows you, including this one. You do not need it to use anything above.</p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Apple. Monitor your heart rate with Apple Watch. support.apple.com/en-us/120277.</li>
+    <li>Apple. Get the most accurate measurements using your Apple Watch. support.apple.com/en-us/105002.</li>
+    <li>Apple. Keep Apple Watch within acceptable operating temperatures. support.apple.com/en-us/108766.</li>
+    <li>Bent B, Goldstein BA, Kibbe WA, Dunn JP. Investigating sources of inaccuracy in wearable optical heart rate sensors. npj Digital Medicine. 2020;3:18.</li>
+    <li>Khushhal A, Nichols S, Evans W, et al. Validity and Reliability of the Apple Watch for Measuring Heart Rate During Exercise. Sports Medicine International Open. 2017;1(6):E206-E211.</li>
+    <li>Yao J, et al. Number of days required to estimate physical activity constructs. 2021. The 56-day weekday window is shared with movement rhythm.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>
