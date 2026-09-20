@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-20 | what-is-zone-2-training | What is Zone 2 training? | Building your aerobic base | heart.zone2 | Next in PUBLISH-ORDER; everyday easy-effort ask after all-day HR |
+| 2026-09-20 | what-are-heart-rate-zones | What are heart rate zones? | Heart rate zones | fitness.hrZones | Next in PUBLISH-ORDER; pairs with Zone 2; shape-vs-average ask |
+| 2026-09-20 | what-is-overnight-breathing-rate | What is overnight breathing rate? | Your breathing rate at night | body.respiratoryRate | Completes overnight cluster with sleeping HR/RHR/HRV; early-drift ask |
 | 2026-09-19 | what-moved-my-recovery | What moved my recovery? | What moved with your recovery | recovery.why | Next in PUBLISH-ORDER; everyday co-occurrence ask after recovery/cost/balance live |
 | 2026-09-19 | why-does-the-week-matter-for-stress | Why does the week matter for stress? | Why the week matters | recovery.cumulativeStress | Next in PUBLISH-ORDER; week-context ask after stress/balance live |
 | 2026-09-19 | what-does-all-day-heart-rate-tell-me | What does all-day heart rate tell me? | Your heart rate, all day | heart.allDay | Completes heart cluster with RHR/HRV/sleeping HR; everyday all-day chart ask |
@@ -28,4 +31,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 39 unpublished / twenty-three live.
+Remaining of 62: 36 unpublished / twenty-six live.
