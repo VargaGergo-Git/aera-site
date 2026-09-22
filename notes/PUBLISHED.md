@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-22 | what-does-walking-pace-say-about-fitness | What does walking pace say about fitness? | Your walking pace | body.walkingPace | Next in PUBLISH-ORDER; everyday gait/fitness ask after movement live |
+| 2026-09-22 | what-is-cardio-load | What is cardio load? | Cardio load | fitness.cardioLoad | Next in PUBLISH-ORDER; load-vs-base ask after strain/zones live |
+| 2026-09-22 | what-is-workout-effort | What is workout effort? | Workout effort | fitness.workoutEffort | Completes effort/load pair; perceived exertion ask after cardio load |
 | 2026-09-21 | what-does-blood-oxygen-on-a-watch-mean | What does blood oxygen on a watch mean? | Blood oxygen on a watch | body.spo2 | Next in PUBLISH-ORDER; overnight SpO2 ask after breathing/sleeping HR live |
 | 2026-09-21 | what-does-wrist-skin-temperature-mean | What does wrist skin temperature mean? | Wrist skin temperature | body.skinTemp | Next in PUBLISH-ORDER; overnight relative-temp ask after breathing cluster |
 | 2026-09-21 | how-much-daily-movement-matters | How much daily movement matters? | Why daily movement adds up | longevity.movement | Completes everyday steps ask; pairs with Zone 2 / VO2 / all-day HR |
@@ -34,4 +37,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 33 unpublished / twenty-nine live.
+Remaining of 62: 30 unpublished / thirty-two live.
