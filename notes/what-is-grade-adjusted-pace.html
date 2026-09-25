@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is grade-adjusted pace?</title>
+<meta name="description" content="What is grade-adjusted pace? The flat-ground pace your hilly run was really worth. An estimate from slope energy cost, not a lab reading.">
+<meta property="og:title" content="What is grade-adjusted pace?">
+<meta property="og:description" content="Convert every climb and descent into the flat work it cost, then read one effort pace. Trust uphill more than downhill.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/notes/what-is-grade-adjusted-pace.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Grade-adjusted pace","name":"What is grade-adjusted pace?","datePublished":"2026-09-25","dateModified":"2026-09-25","author":{"@type":"Organization","name":"Aera"},"publisher":{"@type":"Organization","name":"Aera","url":"https://vargagergo-git.github.io/aera-site/"},"mainEntityOfPage":"https://vargagergo-git.github.io/aera-site/notes/what-is-grade-adjusted-pace.html","description":"What is grade-adjusted pace? The flat-ground pace your hilly run was really worth. An estimate from slope energy cost, not a lab reading.","citation":[
+{"@type":"CreativeWork","name":"Energy cost of walking and running at extreme uphill and downhill slopes","author":"Minetti AE et al.","datePublished":"2002"},
+{"@type":"CreativeWork","name":"Mechanical determinants of the minimum energy cost of gradient running in humans","author":"Minetti AE, Ardigò LP, Saibene F","datePublished":"1994"},
+{"@type":"CreativeWork","name":"Biomechanics and Physiology of Uphill and Downhill Running","author":"Vernillo G et al.","datePublished":"2017"},
+{"@type":"CreativeWork","name":"An Improved GAP Model","author":"Robb D","datePublished":"2017"}
+]}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Field note</p>
+  <h1>Grade-adjusted pace</h1>
+  <p class="meta">2026-09-25</p>
+</div>
+<div class="wrap legal">
+<p>Grade-adjusted pace is the flat-ground pace your hilly run was really worth, after converting each climb and descent into the work it cost.</p>
+<p>Your watch shows the pace on the clock. A minute spent climbing costs far more than a minute on the flat, and raw pace has no way to say so. This correction finally gives a slow climb the credit it earned.</p>
+<h2>What it shows</h2>
+<p>Walk the route metre by metre using the GPS track and the elevation at each step. For every little segment, ask how steep it was, and how much harder or easier running that grade is than running on the flat. Convert that segment into the flat distance it cost you the same effort to cover. Add those flat-equivalent distances up, divide by moving time, and you get one number: the pace you would have run on a table-flat road for the same effort.</p>
+<p>On a hilly run that number is usually faster than the clock. The climbs quietly stole time your legs never got credit for.</p>
+<table>
+  <thead>
+    <tr><th>Read</th><th>Plain meaning</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Effort pace (GAP)</td><td>Flat-ground equivalent of the whole run</td></tr>
+    <tr><td>Clock pace</td><td>Distance divided by moving time, hills ignored</td></tr>
+    <tr><td>Climb total</td><td>How much elevation you gained</td></tr>
+  </tbody>
+</table>
+<h2>Why a hill changes the math</h2>
+<p>Minetti and colleagues (2002) measured runners on a treadmill tilted from steep descent to steep climb. The finding is the backbone of this read: running uphill burns far more energy for each metre you travel, and a gentle downhill burns less. Minetti, Ardigò, and Saibene (1994) earlier mapped mechanical determinants of the energy cost of gradient running. Lean the treadmill up and the cost climbs steeply. So holding a slow pace up a hill can take the same effort as a much quicker pace on the flat.</p>
+<p>Downhill is stranger. A gentle descent really is cheaper, so your fast downhill pace is worth a more modest flat one. Past a certain steepness the cost climbs again, because your legs have to brake every stride. Vernillo and colleagues (2017) reviewed the biomechanics and physiology of uphill and downhill running. Field models of grade-adjusted pace, including the improved GAP model Robb (2017) described for Strava, follow that same up-and-down curve.</p>
+<p>This is why <a href="what-is-pacing.html">What is pacing?</a> uses a grade-adjusted half-and-half comparison. Without the hill correction, a climbing second half looks like a fade that never happened.</p>
+<h2>How to read yours</h2>
+<p>Compare effort pace across hilly and flat runs to see real form, instead of being fooled by a route that was simply kinder or crueller. A rolling loop is a fairer test than a mountain drop. GPS pace also wobbles on switchbacks and under trees. The grade correction cannot fix a noisy track.</p>
+<p>Equal-distance splits still matter for seeing where the run changed. That lives in <a href="what-are-splits.html">What are running splits?</a> Grade adjustment and splits answer different questions: one translates terrain into effort, the other shows how pace moved piece by piece.</p>
+<p>Everyday walking pace is a different fitness summary again. That lives in <a href="what-does-walking-pace-say-about-fitness.html">What does walking pace say about fitness?</a></p>
+<h2>The honest limits</h2>
+<p>This is an estimate, not a lab reading. Its biggest weakness is the elevation itself. GPS height wobbles, and a small false bump over a few steps can look like a wall. Smoothing the climb before reading the slope, and ignoring grades beyond what the science was measured on, reduces that noise. It does not erase it.</p>
+<p>Downhills are the least certain part. The lab curve says a descent is cheaper than it often feels, because it never fully counted the pounding your legs take braking down a hill. Trust the uphill correction more than the downhill one.</p>
+<p>It is built for running, from a small group of runners. It is a good population average, not a personal calibration. It stays quiet on rides and on flat runs where there is nothing to adjust.</p>
+<p>Grade-adjusted pace is the flat work your hills asked of you. It softens the terrain effect. It never erases heat, wind, or simple fatigue.</p>
+<p>I write these because I build <a href="../index.html">Aera</a>, an iPhone app that reads Apple Health against your own baseline and puts the research and the error bars underneath every number it shows you, including this one. You do not need it to use anything above.</p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Minetti AE, Moia C, Roi GS, Susta D, Ferretti G. Energy cost of walking and running at extreme uphill and downhill slopes. Journal of Applied Physiology. 2002;93(3):1039-1046.</li>
+    <li>Minetti AE, Ardigò LP, Saibene F. Mechanical determinants of the minimum energy cost of gradient running in humans. Journal of Experimental Biology. 1994;195:211-225.</li>
+    <li>Vernillo G, Giandolini M, Edwards WB, et al. Biomechanics and Physiology of Uphill and Downhill Running. Sports Medicine. 2017;47(4):615-629.</li>
+    <li>Robb D. An Improved GAP Model. Strava Engineering; 2017.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>

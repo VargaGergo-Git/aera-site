@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-25 | what-are-splits | What are running splits? | Your splits | fitness.splits | Next in PUBLISH-ORDER; equal-piece pace ask after pacing / intervals / work-rest live |
+| 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm | Next in PUBLISH-ORDER; gait/cadence ask after splits / walking pace live |
+| 2026-09-25 | what-is-grade-adjusted-pace | What is grade-adjusted pace? | Grade-adjusted pace | fitness.gradeAdjustedPace | Completes hill-pace cluster; flat-equivalent ask after pacing / splits live |
 | 2026-09-24 | what-is-pacing | What is pacing? | Your pacing | fitness.pacing | Next in PUBLISH-ORDER; how-you-spread-effort ask after durability / walking pace live |
 | 2026-09-24 | what-are-intervals | What are interval workouts? | Your intervals | fitness.intervals | Next in PUBLISH-ORDER; structured-session ask after effort mix / zones live |
 | 2026-09-24 | what-is-work-and-rest | What is work and rest rhythm? | Work and rest | fitness.workRest | Completes gym/no-GPS cluster; between-set settle ask after heart-settle live |
@@ -43,4 +46,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 24 unpublished / thirty-eight live.
+Remaining of 62: 21 unpublished / forty-one live.
