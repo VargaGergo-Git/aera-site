@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-26 | what-are-record-distances | What are personal record distances? | Your record distances | fitness.recordDistances | Next in PUBLISH-ORDER; five-distance PR ask after pacing / splits / GAP live |
+| 2026-09-26 | what-is-a-recent-best-vs-a-record | What is a recent best versus a personal record? | Recent best versus record | fitness.attemptPrediction | Same-batch sibling to record distances; form-board ask after records / splits / pacing |
+| 2026-09-26 | does-exercise-help-you-sleep-deeper | Does exercise help you sleep deeper tonight? | Deeper sleep after you train | fitness.sleepTonight | Completes train-sleep ask; pairs with architecture / time-asleep / stages live |
 | 2026-09-25 | what-are-splits | What are running splits? | Your splits | fitness.splits | Next in PUBLISH-ORDER; equal-piece pace ask after pacing / intervals / work-rest live |
 | 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm | Next in PUBLISH-ORDER; gait/cadence ask after splits / walking pace live |
 | 2026-09-25 | what-is-grade-adjusted-pace | What is grade-adjusted pace? | Grade-adjusted pace | fitness.gradeAdjustedPace | Completes hill-pace cluster; flat-equivalent ask after pacing / splits live |
@@ -46,4 +49,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 21 unpublished / forty-one live.
+Remaining of 62: 18 unpublished / forty-four live.
