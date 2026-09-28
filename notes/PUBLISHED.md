@@ -14,7 +14,7 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-26 | what-is-a-recent-best-vs-a-record | What is a recent best versus a personal record? | Recent best versus record | fitness.attemptPrediction | Same-batch sibling to record distances; form-board ask after records / splits / pacing |
 | 2026-09-26 | does-exercise-help-you-sleep-deeper | Does exercise help you sleep deeper tonight? | Deeper sleep after you train | fitness.sleepTonight | Completes train-sleep ask; pairs with architecture / time-asleep / stages live |
 | 2026-09-25 | what-are-splits | What are running splits? | Your splits | fitness.splits | Next in PUBLISH-ORDER; equal-piece pace ask after pacing / intervals / work-rest live |
-| 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm |
+| 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm | Next in PUBLISH-ORDER; gait/cadence ask after splits / walking pace live |
 | 2026-09-25 | what-is-grade-adjusted-pace | What is grade-adjusted pace? | Grade-adjusted pace | fitness.gradeAdjustedPace | Completes hill-pace cluster; flat-equivalent ask after pacing / splits live |
 | 2026-09-24 | what-is-pacing | What is pacing? | Your pacing | fitness.pacing | Next in PUBLISH-ORDER; how-you-spread-effort ask after durability / walking pace live |
 | 2026-09-24 | what-are-intervals | What are interval workouts? | Your intervals | fitness.intervals | Next in PUBLISH-ORDER; structured-session ask after effort mix / zones live |
