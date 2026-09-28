@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-28 | why-does-biological-age-move-slowly | Why does biological age move slowly? | Slow on purpose | longevity.slowMoving | Next in PUBLISH-ORDER; slow-drift ask after VO2 / RHR / recovery live |
+| 2026-09-28 | how-should-i-read-heart-rate-recovery | How should I read heart-rate recovery? | Reading the drop | heart.hrRecoveryReading | Next in PUBLISH-ORDER; matched-effort reading ask after settle / zones / heat live |
+| 2026-09-28 | what-is-biological-age | What is biological age? | Years on paper versus how they land | bioage.basics | Completes bioage pair with slowMoving; years-vs-how-they-land ask after regularity / VO2 / HRV live |
 | 2026-09-27 | how-will-training-affect-tomorrows-recovery | How will training affect tomorrow's recovery? | Tomorrow after you train | fitness.recoveryTomorrow | Next in PUBLISH-ORDER; next-morning tendency ask after hard-day cost / recovery / HRV live |
 | 2026-09-27 | what-does-a-training-streak-mean | What does a training streak mean? | Showing up | fitness.attendance | Next in PUBLISH-ORDER; attendance/streak ask after workout effort / daily movement live |
 | 2026-09-27 | why-does-heat-raise-my-heart-rate | Why does heat raise my heart rate? | Heat, humidity, and heart rate | fitness.conditions | Completes heat/effort cluster; weather-vs-fitness ask after zones / Zone 2 / workout effort live |
@@ -11,7 +14,7 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-26 | what-is-a-recent-best-vs-a-record | What is a recent best versus a personal record? | Recent best versus record | fitness.attemptPrediction | Same-batch sibling to record distances; form-board ask after records / splits / pacing |
 | 2026-09-26 | does-exercise-help-you-sleep-deeper | Does exercise help you sleep deeper tonight? | Deeper sleep after you train | fitness.sleepTonight | Completes train-sleep ask; pairs with architecture / time-asleep / stages live |
 | 2026-09-25 | what-are-splits | What are running splits? | Your splits | fitness.splits | Next in PUBLISH-ORDER; equal-piece pace ask after pacing / intervals / work-rest live |
-| 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm | Next in PUBLISH-ORDER; gait/cadence ask after splits / walking pace live |
+| 2026-09-25 | what-is-running-form | What is running form? | Running form | fitness.runningForm |
 | 2026-09-25 | what-is-grade-adjusted-pace | What is grade-adjusted pace? | Grade-adjusted pace | fitness.gradeAdjustedPace | Completes hill-pace cluster; flat-equivalent ask after pacing / splits live |
 | 2026-09-24 | what-is-pacing | What is pacing? | Your pacing | fitness.pacing | Next in PUBLISH-ORDER; how-you-spread-effort ask after durability / walking pace live |
 | 2026-09-24 | what-are-intervals | What are interval workouts? | Your intervals | fitness.intervals | Next in PUBLISH-ORDER; structured-session ask after effort mix / zones live |
@@ -52,4 +55,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-10 | how-much-sleep-you-actually-need | How much sleep do I actually need? | How much sleep you actually need | sleep.need | Highest everyday chatbot ask after sleep-stage accuracy; NSF range + regularity evidence already in corpus |
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
-Remaining of 62: 15 unpublished / forty-seven live.
+Remaining of 62: 12 unpublished / fifty live.
