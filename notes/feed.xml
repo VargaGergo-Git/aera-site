@@ -1,1 +1,31 @@
-@file:///tmp/feed_mini.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Aera field notes</title>
+    <link>https://vargagergo-git.github.io/aera-site/notes/</link>
+    <description>What consumer wearables can and cannot measure, with the research behind each claim.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Sep 2026 05:55:00 +0000</lastBuildDate>
+    <item>
+      <title>Why does biological age move slowly?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/why-does-biological-age-move-slowly.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/why-does-biological-age-move-slowly.html</guid>
+      <pubDate>Mon, 28 Sep 2026 05:55:00 +0000</pubDate>
+      <description>Watch aging reads follow weeks of habit, not one night or one workout.</description>
+    </item>
+    <item>
+      <title>How should I read heart-rate recovery?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/how-should-i-read-heart-rate-recovery.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/how-should-i-read-heart-rate-recovery.html</guid>
+      <pubDate>Mon, 28 Sep 2026 05:55:00 +0000</pubDate>
+      <description>Compare the first-minute drop only under matched efforts. Trend beats one number.</description>
+    </item>
+    <item>
+      <title>What is biological age?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-biological-age.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-biological-age.html</guid>
+      <pubDate>Mon, 28 Sep 2026 05:55:00 +0000</pubDate>
+      <description>A wearable estimate of how recent heart, fitness, and sleep signals compare with peers, not a second birthday.</description>
+    </item>
+  </channel>
+</rss>
