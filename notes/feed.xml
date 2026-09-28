@@ -76,5 +76,75 @@
       <pubDate>Fri, 25 Sep 2026 06:00:00 +0000</pubDate>
       <description>Equal pieces of a run that show whether pace held, drifted, or faded. A shape, not a grade.</description>
     </item>
+    <item>
+      <title>What is running form?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-running-form.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-running-form.html</guid>
+      <pubDate>Fri, 25 Sep 2026 06:00:00 +0000</pubDate>
+      <description>Watch signals for bounce, stride, contact, and power, plus a derived cadence average. Trends against yourself, not ideals.</description>
+    </item>
+    <item>
+      <title>What is grade-adjusted pace?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-grade-adjusted-pace.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-grade-adjusted-pace.html</guid>
+      <pubDate>Fri, 25 Sep 2026 06:00:00 +0000</pubDate>
+      <description>The flat-ground pace your hilly run was really worth. An estimate from slope energy cost, not a lab reading.</description>
+    </item>
+    <item>
+      <title>What is pacing?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-pacing.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-pacing.html</guid>
+      <pubDate>Thu, 24 Sep 2026 06:00:00 +0000</pubDate>
+      <description>How you spread effort across a run, with hills counted as the extra work they cost. A shape, not a grade.</description>
+    </item>
+    <item>
+      <title>What are interval workouts?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-are-intervals.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-are-intervals.html</guid>
+      <pubDate>Thu, 24 Sep 2026 06:00:00 +0000</pubDate>
+      <description>Structured efforts and recoveries kept as separate steps. Wrist heart rate cannot draw the boundaries.</description>
+    </item>
+    <item>
+      <title>What is work and rest rhythm?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-work-and-rest.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-work-and-rest.html</guid>
+      <pubDate>Thu, 24 Sep 2026 06:00:00 +0000</pubDate>
+      <description>The rise and fall of heart rate when a session has no GPS route, like lifting or a circuit. An estimate, not a grade.</description>
+    </item>
+    <item>
+      <title>What is movement rhythm?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-movement-rhythm.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-movement-rhythm.html</guid>
+      <pubDate>Wed, 23 Sep 2026 06:20:00 +0000</pubDate>
+      <description>When you move across the day and week, not only how many steps you took. Compare each weekday to earlier matching weekdays.</description>
+    </item>
+    <item>
+      <title>What is effort mix?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-effort-mix.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-effort-mix.html</guid>
+      <pubDate>Wed, 23 Sep 2026 06:20:00 +0000</pubDate>
+      <description>How your training time splits into easy, moderate, and hard by heart rate. Endurance grows fastest when most sessions stay easy.</description>
+    </item>
+    <item>
+      <title>What is durability?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-durability.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-durability.html</guid>
+      <pubDate>Wed, 23 Sep 2026 06:20:00 +0000</pubDate>
+      <description>How pace and heart rate hold up in the second half of a long effort. A field proxy, not a lab fitness verdict.</description>
+    </item>
+    <item>
+      <title>What does walking pace say about fitness?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-does-walking-pace-say-about-fitness.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-does-walking-pace-say-about-fitness.html</guid>
+      <pubDate>Tue, 22 Sep 2026 06:30:00 +0000</pubDate>
+      <description>Everyday comfortable gait speed is a whole-body summary. Trends against your own usual matter more than one day.</description>
+    </item>
+    <item>
+      <title>What is cardio load?</title>
+      <link>https://vargagergo-git.github.io/aera-site/notes/what-is-cardio-load.html</link>
+      <guid isPermaLink="true">https://vargagergo-git.github.io/aera-site/notes/what-is-cardio-load.html</guid>
+      <pubDate>Tue, 22 Sep 2026 06:30:00 +0000</pubDate>
+      <description>A heart-rate read of how much work your heart did today, held against the base built over recent weeks. Context, not a diagnosis.</description>
+    </item>
   </channel>
 </rss>
