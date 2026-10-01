@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>What are running segments?</title>
+<meta name="description" content="What are running segments? Repeated stretches your runs keep covering, found and timed with gates. No leaderboard. The only person on the course is you.">
+<meta property="og:title" content="What are running segments?">
+<meta property="og:description" content="Three matching passes in the same direction make a segment. Gates, not guesses. Heat and heart rate keep one stopwatch from lying.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/notes/what-are-running-segments.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The stretches you keep running","name":"What are running segments?","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"Aera"},"publisher":{"@type":"Organization","name":"Aera","url":"https://vargagergo-git.github.io/aera-site/"},"mainEntityOfPage":"https://vargagergo-git.github.io/aera-site/notes/what-are-running-segments.html","description":"What are running segments? Repeated stretches your runs keep covering, found and timed with gates. No leaderboard. The only person on the course is you.","citation":[
+{"@type":"CreativeWork","name":"Smartphone GPS accuracy study in an urban environment","author":"Merry K, Bettinger P","datePublished":"2019"},
+{"@type":"CreativeWork","name":"Hidden Markov map matching through noise and sparseness","author":"Newson P, Krumm J","datePublished":"2009"},
+{"@type":"CreativeWork","name":"Trajectory clustering: a partition-and-group framework","author":"Lee JG, Han J, Whang KY","datePublished":"2007"},
+{"@type":"CreativeWork","name":"Delineating the impacts of air temperature and humidity for endurance exercise","author":"Jenkins EJ et al.","datePublished":"2023"},
+{"@type":"CreativeWork","name":"Efficiency Factor and Decoupling","author":"Friel J","datePublished":"2023"},
+{"@type":"CreativeWork","name":"Evidence of parasympathetic hyperactivity in functionally overreached athletes","author":"Le Meur Y et al.","datePublished":"2013"}
+]}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Field note</p>
+  <h1>The stretches you keep running</h1>
+  <p class="meta">2026-10-01</p>
+</div>
+<div class="wrap legal">
+<p>Running segments are stretches your outdoor runs keep repeating, found automatically and timed with start and finish gates, so you can compare yourself on the same ground without a public leaderboard.</p>
+<p>Somewhere on your usual roads there is a hill you always feel, or a straight where you always push. When three or more separate runs follow the same path in the same direction, that stretch can become a segment with its whole history already attached. Walks usually stay out. Habits do the drawing. A whole loop you repeat is a different level of the same idea; see <a href="what-is-a-repeated-running-route.html">What is a repeated running route?</a></p>
+<h2>Where the ends should sit</h2>
+<p>Finding overlap and knowing where a climb should begin are different jobs. Raw overlap often starts halfway up a hill and runs past the top wherever other trails joined or left. For ground that climbs or drops, honest ends sit on the terrain itself: bottom to top for a climb, top to bottom for a descent. The time you see is then the hill, not the hill plus whatever flat came with it.</p>
+<p>Repetition alone is not meaning. The road out of your door sits on almost every run. Flat and rolling ground needs enough length that a pass lasts long enough to read effort, not only stopwatch noise from lights and false starts. A short steep climb can stay shorter, because a few hundred steep metres is a real effort. Lee, Han, and Whang (2007) framed trajectory clustering as finding repeated pieces inside longer paths. Map products document the same segment idea in support docs; Strava (2024) is the widely known example of matching and climb categorization.</p>
+<table>
+  <thead>
+    <tr><th>Piece</th><th>Honest job</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Three matching passes, same direction</td><td>Segment exists</td></tr>
+    <tr><td>Gates at both ends</td><td>Cross time, not nearest sample</td></tr>
+    <tr><td>Path corridor</td><td>Reject parallel streets and shortcuts</td></tr>
+    <tr><td>Heart rate, heat, freshness</td><td>Context for the stopwatch</td></tr>
+  </tbody>
+</table>
+<h2>Gates, not guesses</h2>
+<p>A watch records position every second and almost never lands exactly on a start line. Drawing a gate across the path and interpolating between the samples that straddle it is the fair clock. Your trail also has to stay on the segment path for nearly all of it, inside a corridor wide enough for normal GPS wobble and tight enough to reject a different road.</p>
+<p>Merry and Bettinger (2019) measured smartphone GPS error in urban environments. Newson and Krumm (2009) showed how noisy sparse traces can still be matched to a road network. The corridor and gates are sized from that class of error. Tree cover and tall buildings can still blur a pass by a few seconds. That is why very short stretches should never become segments, and why one surprising time deserves a shrug.</p>
+<h2>The stopwatch needs context</h2>
+<p>Heat raises heart rate at any pace. Jenkins and colleagues (2023) and Ely and colleagues (2007) documented weather effects on endurance work and marathon performance. Twelve seconds slower at a quieter heart rate in warmer air is often a fitter runner than the person who set the record on a cool morning. Show heat. Do not silently subtract it into a fantasy flat time.</p>
+<p>Underneath sits Friel's efficiency factor (2023): speed per heartbeat on repeated ground. The course, turns, and hills are identical. Only you change. Voice a rising trend only when there are enough passes and the change beats day-to-day noise. After very hard blocks the heart can run unusually quiet, which flatters the ratio for a while. Le Meur and colleagues (2013) described parasympathetic hyperactivity in functionally overreached athletes. When a strong pass lands on a low-recovery morning, say so instead of celebrating. How effort fades late in a long run is a sibling question; see <a href="what-is-durability.html">What is durability?</a></p>
+<h2>The honest limits</h2>
+<p>GPS is the floor. Segments never feed recovery, strain, or readiness. Heart-rate context needs passes of a few minutes or more; on shorter stretches the heart is still catching up. Gate width, corridor width, and trend thresholds are product calibrations built on published GPS and heart-rate error data, not published rules every lab agrees on.</p>
+<p>A segment is a private course on ground you already chose. Use it as a mirror. Leave the public crown for races.</p>
+<p>I write these because I build <a href="../index.html">Aera</a>, an iPhone app that reads Apple Health against your own baseline and puts the research and the error bars underneath every number it shows you, including this one. You do not need it to use anything above.</p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Hreljac A. Preferred and energetically optimal transition speeds in human locomotion. Medicine and Science in Sports and Exercise. 1993;25(10):1158-1162.</li>
+    <li>Thorstensson A, Roberthson H. Adaptations to changing speed in human locomotion: speed of transition between walking and running. Acta Physiologica Scandinavica. 1987;131(2):211-214.</li>
+    <li>Merry K, Bettinger P. Smartphone GPS accuracy study in an urban environment. PLoS ONE. 2019;14(7):e0219890.</li>
+    <li>Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. Proceedings of the 17th ACM SIGSPATIAL. 2009:336-343.</li>
+    <li>Lee JG, Han J, Whang KY. Trajectory clustering: a partition-and-group framework. Proceedings of ACM SIGMOD. 2007:593-604.</li>
+    <li>Strava. Segment matching, elevation, and climb categorization. Strava Support documentation; 2024.</li>
+    <li>Friel J. Efficiency Factor and Decoupling. TrainingPeaks; 2023.</li>
+    <li>Jenkins EJ, Campbell HA, Lee JKW, Mündel T, Cotter JD. Delineating the impacts of air temperature and humidity for endurance exercise. Experimental Physiology. 2023;108(2):207-220.</li>
+    <li>Ely MR, Cheuvront SN, Roberts WO, Montain SJ. Impact of weather on marathon-running performance. Medicine and Science in Sports and Exercise. 2007;39(3):487-493.</li>
+    <li>Coyle EF, González-Alonso J. Cardiovascular drift during prolonged exercise: new perspectives. Exercise and Sport Sciences Reviews. 2001;29(2):88-92.</li>
+    <li>Le Meur Y, Pichon A, Schaal K, et al. Evidence of parasympathetic hyperactivity in functionally overreached athletes. Medicine and Science in Sports and Exercise. 2013;45(11):2061-2071.</li>
+    <li>Lamberts RP, Lemmink KA, Durandt JJ, Lambert MI. Variation in heart rate during submaximal exercise: implications for monitoring training. Journal of Strength and Conditioning Research. 2004;18(3):641-645.</li>
+    <li>Maunder E, Seiler S, Mildenhall MJ, Kilding AE, Plews DJ. The Importance of 'Durability' in the Physiological Profiling of Endurance Athletes. Sports Medicine. 2021;51(8):1619-1628.</li>
+    <li>Alt H, Godau M. Computing the Fréchet distance between two polygonal curves. International Journal of Computational Geometry & Applications. 1995;5(1-2):75-91.</li>
+    <li>Douglas DH, Peucker TK. Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. Cartographica. 1973;10(2):112-122.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>
