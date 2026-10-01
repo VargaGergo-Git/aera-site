@@ -1,1 +1,84 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>What is a repeated running route?</title>
+<meta name="description" content="What is a repeated running route? The same whole run you return to often enough that an app can name the ground, count returns, and time it with fixed gates.">
+<meta property="og:title" content="What is a repeated running route?">
+<meta property="og:description" content="Three matching outdoor runs make a route. Fixed start and finish gates keep walking before and after from deciding your best.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/notes/what-is-a-repeated-running-route.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Named ground you keep coming back to","name":"What is a repeated running route?","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"Aera"},"publisher":{"@type":"Organization","name":"Aera","url":"https://vargagergo-git.github.io/aera-site/"},"mainEntityOfPage":"https://vargagergo-git.github.io/aera-site/notes/what-is-a-repeated-running-route.html","description":"What is a repeated running route? The same whole run you return to often enough that an app can name the ground, count returns, and time it with fixed gates.","citation":[
+{"@type":"CreativeWork","name":"Signature-based trajectory similarity join","author":"Ta N et al.","datePublished":"2017"},
+{"@type":"CreativeWork","name":"Computing the Fréchet distance between two polygonal curves","author":"Alt H, Godau M","datePublished":"1995"},
+{"@type":"CreativeWork","name":"Computing discrete Fréchet distance","author":"Eiter T, Mannila H","datePublished":"1994"},
+{"@type":"CreativeWork","name":"Smartphone GPS accuracy study in an urban environment","author":"Merry K, Bettinger P","datePublished":"2019"},
+{"@type":"CreativeWork","name":"Delineating the impacts of air temperature and humidity for endurance exercise","author":"Jenkins EJ et al.","datePublished":"2023"},
+{"@type":"CreativeWork","name":"Efficiency Factor and Decoupling","author":"Friel J","datePublished":"2023"}
+]}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Field note</p>
+  <h1>Named ground you keep coming back to</h1>
+  <p class="meta">2026-10-01</p>
+</div>
+<div class="wrap legal">
+<p>A repeated running route is the same whole outdoor run you return to often enough that software can recognize the ground, count how many times you came back, and time it with fixed start and finish gates.</p>
+<p>One run is a run. Two overlapping paths can still be coincidence. At three matching runs, the ground earns a name and a history. A short piece inside varied workouts is a different object; see <a href="what-are-running-segments.html">What are running segments?</a></p>
+<h2>How recognition actually works</h2>
+<p>Every outdoor run leaves a GPS trail. Apps fingerprint the cells that trail covered, then ask which other runs overlap those cells. Overlap alone is not enough. The paths still have to stay close if you walked them side by side. Alt and Godau (1995) and Eiter and Mannila (1994) formalized that shape test as Fréchet distance. Ta and colleagues (2017) showed how signature-based joins find similar trajectories at scale. Niemeyer's geohash (2008) and Jaccard's set overlap (1912) are the quieter pieces underneath cell fingerprints.</p>
+<table>
+  <thead>
+    <tr><th>Signal</th><th>What it decides</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Three or more matching whole runs</td><td>A route exists and can be named</td></tr>
+    <tr><td>Cell overlap plus tight shape match</td><td>Same ground, not a near-miss street</td></tr>
+    <tr><td>Same loop, opposite direction</td><td>One place, two timed histories</td></tr>
+    <tr><td>Fixed start and finish gates</td><td>Warm-up walking does not set your best</td></tr>
+  </tbody>
+</table>
+<p>The same loop the other way is still one piece of ground. Uphill first and downhill first are honestly different efforts, so best times stay apart. One wobbly day that drifts wide of the usual line can still belong if most of the family matches. Without that, a single noisy recording starts a near-identical second route forever.</p>
+<h2>What the stopwatch should ignore</h2>
+<p>Recognition looks at the whole recorded path. Timing should not. Fixed gates on the shared start and finish, with interpolation between the samples that straddle each gate, keep a café stop or a late stopwatch press from deciding your best. Only runs that cover nearly all of the route and a comparable distance enter the timed ladder.</p>
+<p>Planning how long a future pass might take is a different question. That lives in <a href="how-long-will-this-route-take-me.html">How long will this route take me?</a></p>
+<h2>Speed at the same heart rate</h2>
+<p>On ground you keep returning to, you can finally ask whether you are covering it faster at the same effort. Friel's efficiency factor (2023) is the field read: speed per heartbeat on matched work. Speak only when there are enough heart-rate runs, the change clears day-to-day noise, and early versus recent windows sat in comparable weather.</p>
+<p>Heat alone lifts heart rate. Jenkins and colleagues (2023) delineated how air temperature and humidity change endurance cost. Cool spring against hot July can look like fitness when it is only weather. When those windows do not match, silence is more honest than a congratulation. The read is a display trend. It should not rewrite recovery, strain, or today's effort call. Heat's everyday effect is also covered in <a href="why-does-heat-raise-my-heart-rate.html">Why does heat raise my heart rate?</a></p>
+<h2>The honest limits</h2>
+<p>Merry and Bettinger (2019) measured smartphone GPS error in urban canyons. Tree cover and tall buildings still blur meters. Grouping thresholds are calibrated judgment, not a published recipe for "your Tuesday loop." No validated standard tells every product how to recognize a runner's repeated routes. Whole runs are noisier than fixed stretches. You may start from a different corner, cut one field, or add a block, and that day may not produce a comparable time.</p>
+<p>Loops need a start and finish area that repeats across enough runs. Until a stable gate exists, the route can stay visible without inventing a best. Rename, hide, or fold two near-duplicates when the engine split one road. That is you overruling the fingerprint, not a fitness score changing.</p>
+<p>A repeated route is named ground plus a fair clock. It is not a leaderboard and not a second readiness score.</p>
+<p>I write these because I build <a href="../index.html">Aera</a>, an iPhone app that reads Apple Health against your own baseline and puts the research and the error bars underneath every number it shows you, including this one. You do not need it to use anything above.</p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Ta N, Li G, Xie Y, Li C, Hao S, Feng J. Signature-based trajectory similarity join. IEEE Transactions on Knowledge and Data Engineering. 2017;29(4):870-883.</li>
+    <li>Alt H, Godau M. Computing the Fréchet distance between two polygonal curves. International Journal of Computational Geometry and Applications. 1995;5(1-2):75-91.</li>
+    <li>Eiter T, Mannila H. Computing discrete Fréchet distance. Technical report CD-TR 94/64, TU Wien. 1994.</li>
+    <li>Driemel A, Har-Peled S, Wenk C. Approximating the Fréchet distance for realistic curves in near linear time. Discrete and Computational Geometry. 2012;48(1):94-127.</li>
+    <li>Niemeyer G. Geohash: a latitude/longitude geocode system. 2008.</li>
+    <li>Jaccard P. The distribution of the flora in the alpine zone. New Phytologist. 1912;11(2):37-50.</li>
+    <li>Douglas DH, Peucker TK. Algorithms for the reduction of the number of points required to represent a digitized line or its caricature. Cartographica. 1973;10(2):112-122.</li>
+    <li>Friel J. Efficiency Factor and Decoupling. TrainingPeaks; 2023.</li>
+    <li>Jenkins EJ, Campbell HA, Lee JKW, Mündel T, Cotter JD. Delineating the impacts of air temperature and humidity for endurance exercise. Experimental Physiology. 2023;108(2):207-220.</li>
+    <li>Coyle EF, González-Alonso J. Cardiovascular drift during prolonged exercise: new perspectives. Exercise and Sport Sciences Reviews. 2001;29(2):88-92.</li>
+    <li>Merry K, Bettinger P. Smartphone GPS accuracy study in an urban environment. PLOS ONE. 2019;14(7):e0219890.</li>
+    <li>Newson P, Krumm J. Hidden Markov map matching through noise and sparseness. ACM SIGSPATIAL GIS. 2009:336-343.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>
