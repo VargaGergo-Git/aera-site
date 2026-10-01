@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>How long will this climb take me?</title>
+<meta name="description" content="How long will this climb take me? Read remaining ground in minutes from your recent pace, after correcting each stretch for how much climb costs. About, not a promise.">
+<meta property="og:title" content="How long will this climb take me?">
+<meta property="og:description" content="Distance left answers nothing halfway up a hill. Grade cost from your last ten minutes turns the rest into minutes.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/notes/how-long-will-this-climb-take-me.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Minutes left, not metres left","name":"How long will this climb take me?","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"Aera"},"publisher":{"@type":"Organization","name":"Aera","url":"https://vargagergo-git.github.io/aera-site/"},"mainEntityOfPage":"https://vargagergo-git.github.io/aera-site/notes/how-long-will-this-climb-take-me.html","description":"How long will this climb take me? Read remaining ground in minutes from your recent pace, after correcting each stretch for how much climb costs. About, not a promise.","citation":[
+{"@type":"CreativeWork","name":"Energy cost of walking and running at extreme uphill and downhill slopes","author":"Minetti AE et al.","datePublished":"2002"},
+{"@type":"CreativeWork","name":"Biomechanics and Physiology of Uphill and Downhill Running","author":"Vernillo G et al.","datePublished":"2017"},
+{"@type":"CreativeWork","name":"An Improved GAP Model","author":"Robb D","datePublished":"2017"}
+]}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Field note</p>
+  <h1>Minutes left, not metres left</h1>
+  <p class="meta">2026-10-01</p>
+</div>
+<div class="wrap legal">
+<p>Read the rest of a climb in minutes by taking the pace you have just been holding, turning it into a flat effort pace, then walking the ground still ahead with each stretch costed for grade.</p>
+<p>Distance left is a true number that answers nothing halfway up a hill. Metres do not feel the same when the next three hundred climb and the three hundred after that roll. A time-to-the-top estimate exists to say what is left in a unit you can pace against.</p>
+<h2>What goes into the clock</h2>
+<p>Two ingredients sit under the number. The shape of the ground you have not reached yet, from a terrain model under your planned line. And how fast you are actually moving, from your own recent minutes on the watch.</p>
+<p>Take the pace of your last ten minutes of recorded track. Divide out the ground you ran it on, so a stretch that just climbed hard does not quote the flat kilometres ahead at climbing pace. What remains is an effort pace on level ground. Walk the route still ahead, ask how steep each piece is, and multiply that pace back up over each one.</p>
+<table>
+  <thead>
+    <tr><th>Input</th><th>Honest use</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Your last ~10 minutes of pace</td><td>Current effort, not a season average</td></tr>
+    <tr><td>Terrain under the remaining line</td><td>Grade cost forward</td></tr>
+    <tr><td>Phone barometer mid-climb</td><td>Not required for this projection</td></tr>
+    <tr><td>How you will feel later</td><td>Not in the model</td></tr>
+  </tbody>
+</table>
+<h2>Why a climb costs more</h2>
+<p>The correction comes from Minetti and colleagues (2002), who measured the energy cost of walking and running from steep descent to wall-like climb on a treadmill. Running uphill burns far more for each metre travelled. A gentle downhill burns less. Past a certain steepness a descent gets expensive again because your legs brake every stride. Vernillo and colleagues (2017) reviewed the biomechanics and physiology of uphill and downhill running. Field grade-adjusted pace models, including the improved GAP model Robb (2017) described, follow that same curve looking backward. Time to the top uses the same cost idea looking forward.</p>
+<p>So the estimate is yours. A strong climber and a fast descender get different answers on the same hill, because both are read from their own recent minutes. The backward sibling lives in <a href="what-is-grade-adjusted-pace.html">What is grade-adjusted pace?</a> Planning a whole route before you start is a different question again; see <a href="how-long-will-this-route-take-me.html">How long will this route take me?</a></p>
+<h2>How to read the banner</h2>
+<p>While you follow a known line, two clocks can sit together: how long to the end of the route, and how long to the top of the climb you are on. The hill banner should turn toward the climb only when the next few hundred metres are among the steepest on the whole line. A hill that is not the hill stays out of the way.</p>
+<p>How you spread effort across a session still matters once you are off the climb. That lives in <a href="what-is-pacing.html">What is pacing?</a></p>
+<h2>The honest limits</h2>
+<p>Heights for this projection usually come from a terrain model of the ground, not from your phone's barometer on the day. That model is good at the shape of a hillside and poor at anything narrow: a short steep ramp, a bridge, a tunnel. Smoothing before reading slope keeps a false bump from becoming a wall. It does not invent clearance under a bridge.</p>
+<p>The cost curve was measured on a small group of runners on a treadmill. It is a good population average, not a personal calibration. The downhill half is the least certain part. The lab never fully counted the pounding of braking down a hill.</p>
+<p>It says nothing about how you will feel later. A long climb changes the pace you are holding now. Treat the number as about, not as a promise. With no terrain for a route, a straight projection of current pace is all that remains, and climb lines should stay away rather than invent a hill.</p>
+<p>Minutes left are a projection of the effort you are holding. They are not an arrival time and not a fitness grade.</p>
+<p>I write these because I build <a href="../index.html">Aera</a>, an iPhone app that reads Apple Health against your own baseline and puts the research and the error bars underneath every number it shows you, including this one. You do not need it to use anything above.</p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Minetti AE, Moia C, Roi GS, Susta D, Ferretti G. Energy cost of walking and running at extreme uphill and downhill slopes. Journal of Applied Physiology. 2002;93(3):1039-1046.</li>
+    <li>Vernillo G, Giandolini M, Edwards WB, et al. Biomechanics and Physiology of Uphill and Downhill Running. Sports Medicine. 2017;47(4):615-629.</li>
+    <li>Robb D. An Improved GAP Model. Strava Engineering; 2017.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>
