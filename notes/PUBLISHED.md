@@ -4,6 +4,9 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 | Date | Slug | Question (title/meta) | Editorial h1 | Corpus id | Why this order |
 | --- | --- | --- | --- | --- | --- |
+| 2026-10-01 | what-is-a-repeated-running-route | What is a repeated running route? | Named ground you keep coming back to | fitness.routes | Next in PUBLISH-ORDER after skipping explore.basics, review.monthly, and fitness.routeMemories (product-thin / Apple Photos-only); repeated-route ask after routePlanning / pacing / GAP live |
+| 2026-10-01 | what-are-running-segments | What are running segments? | The stretches you keep running | fitness.places | Next in PUBLISH-ORDER; private-course segment ask after routes / durability / heat live |
+| 2026-10-01 | how-long-will-this-climb-take-me | How long will this climb take me? | Minutes left, not metres left | fitness.timeToTheTop | Completes route cluster; forward grade-cost ask after GAP / routePlanning / pacing live |
 | 2026-09-30 | when-should-i-start-a-training-plan | When should I start a training plan? | When your week already has a rhythm | fitness.planRecommendation | Next in PUBLISH-ORDER after skipping explore.basics and review.monthly (product-thin); plan-timing ask after longitudinalPlan / streak / effort-mix live |
 | 2026-09-30 | should-i-sometimes-push-harder-on-an-easy-day | Should I sometimes push harder on an easy day? | An optional stretch, not a daily push | fitness.stretch | Next in PUBLISH-ORDER; optional step-up ask after Zone 2 / intervals / effort-mix live |
 | 2026-09-30 | how-long-will-this-route-take-me | How long will this route take me? | Your history, not a map's travel time | fitness.routePlanning | Completes plan/stretch/route cluster; personal-history route-time ask after pacing / GAP / heat live |
@@ -41,7 +44,7 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-19 | why-does-the-week-matter-for-stress | Why does the week matter for stress? | Why the week matters | recovery.cumulativeStress | Next in PUBLISH-ORDER; week-context ask after stress/balance live |
 | 2026-09-19 | what-does-all-day-heart-rate-tell-me | What does all-day heart rate tell me? | Your heart rate, all day | heart.allDay | Completes heart cluster with RHR/HRV/sleeping HR; everyday all-day chart ask |
 | 2026-09-18 | what-is-sleep-architecture | What is sleep architecture? | More than its hours | sleep.architecture | Next in PUBLISH-ORDER; everyday shape-of-the-night ask after duration cluster |
-| 2026-09-18 | what-does-a-hard-day-cost-me | What does a hard day cost me? | What a hard day usually costs you | recovery.cost | Next in PUBLISH-ORDER; everyday post-hard-day ask after recovery/strain live |
+| 2026-09-18 | what-does-a-hard-day-cost-me | What does a hard day cost me? | What a hard day usually costs you | recovery.cost | Completes cost/strain/recovery cluster; everyday post-hard-day ask after recovery/strain live |
 | 2026-09-18 | how-do-i-balance-push-and-rest | How do I balance push and rest? | Balancing push and rest | recovery.balance | Completes cost/strain/recovery cluster; push-rest ask after cost |
 | 2026-09-17 | how-fast-should-my-heart-settle-after-exercise | How fast should my heart settle after exercise? | How fast your heart settles | heart.hrRecovery | Next in PUBLISH-ORDER; everyday post-workout ask after RHR/HRV/strain live |
 | 2026-09-17 | what-is-vo2max-on-a-watch | What is VO2max on a watch? | VO2max on a watch | longevity.vo2 | Everyday fitness ceiling ask; pairs with strain and readiness |
@@ -62,4 +65,4 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 | 2026-09-09 | watch-sleep-stages-are-an-estimate | Are Apple Watch sleep stages accurate? | Your watch's sleep stages are an estimate | sleep.stages | Highest chatbot ask for watch owners; validation literature already in corpus |
 
 
-Remaining of 62: 6 unpublished / fifty-six live.
+Remaining of 62: 3 unpublished (skipped product-thin: explore.basics, review.monthly, fitness.routeMemories) / fifty-nine live.
