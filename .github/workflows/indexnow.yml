@@ -11,7 +11,7 @@ jobs:
         env:
           INDEXNOW_KEY: 09571b31bc62e1964a5643dfb26caff4
         run: |
-          HOST="vargagergo-git.github.io"
+          HOST="aerahealth.app"
           KEY="$INDEXNOW_KEY"
           # Collect public HTML and feed URLs from sitemap if present, else defaults
           URLS=$(python3 - <<'PY'
@@ -19,7 +19,7 @@ jobs:
           text = pathlib.Path("sitemap.xml").read_text() if pathlib.Path("sitemap.xml").exists() else ""
           locs = re.findall(r"<loc>([^<]+)</loc>", text)
           if not locs:
-            base = "https://vargagergo-git.github.io/aera-site"
+            base = "https://aerahealth.app"
             locs = [f"{base}/", f"{base}/notes/", f"{base}/notes/watch-sleep-stages-are-an-estimate.html"]
           print("\n".join(locs))
           PY
@@ -30,7 +30,7 @@ jobs:
           print(json.dumps({
             "host": "$HOST",
             "key": os.environ["INDEXNOW_KEY"],
-            "keyLocation": f"https://$HOST/aera-site/$KEY.txt",
+            "keyLocation": f"https://$HOST/$KEY.txt",
             "urlList": urls,
           }))
           PY

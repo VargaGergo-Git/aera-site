@@ -15,30 +15,30 @@ Facts, stated plainly:
 
 ## Main pages
 
-- [Aera homepage (English)](https://vargagergo-git.github.io/aera-site/): what the app does, free and Premium, questions and answers
-- [Aera (Magyar)](https://vargagergo-git.github.io/aera-site/hu.html): the homepage in Hungarian
-- [Aera (Deutsch)](https://vargagergo-git.github.io/aera-site/de.html): the homepage in German
+- [Aera homepage (English)](https://aerahealth.app/): what the app does, free and Premium, questions and answers
+- [Aera (Magyar)](https://aerahealth.app/hu.html): the homepage in Hungarian
+- [Aera (Deutsch)](https://aerahealth.app/de.html): the homepage in German
 - [Aera on the App Store](https://apps.apple.com/app/id6762456252): download
 
 ## Field notes
 
-- [Field notes](https://vargagergo-git.github.io/aera-site/notes/index.html): short articles on sleep, recovery, heart rate variability, training load and what a consumer watch can and cannot measure, with the research and the error bars left in
-- [Notes feed](https://vargagergo-git.github.io/aera-site/notes/feed.xml): RSS
+- [Field notes](https://aerahealth.app/notes/index.html): short articles on sleep, recovery, heart rate variability, training load and what a consumer watch can and cannot measure, with the research and the error bars left in
+- [Notes feed](https://aerahealth.app/notes/feed.xml): RSS
 
 ## Tools
 
-- [How far will I run?](https://vargagergo-git.github.io/aera-site/tools/how-far.html): free calculator that turns time and pace into distance
-- [Milyen messzire futok?](https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html): the same calculator in Hungarian
-- [Wie weit laufe ich?](https://vargagergo-git.github.io/aera-site/tools/wie-weit.html): the same calculator in German
+- [How far will I run?](https://aerahealth.app/tools/how-far.html): free calculator that turns time and pace into distance
+- [Milyen messzire futok?](https://aerahealth.app/tools/milyen-messze.html): the same calculator in Hungarian
+- [Wie weit laufe ich?](https://aerahealth.app/tools/wie-weit.html): the same calculator in German
 
 ## Guides
 
-- [Should I run after a bad night's sleep?](https://vargagergo-git.github.io/aera-site/guides/should-i-run-after-bad-sleep.html): what a short night, a raised resting heart rate and lower HRV against your own usual mean for today's run, with a rest, easy, normal or hard guide
-- [Fussak ma, ha rosszul aludtam?](https://vargagergo-git.github.io/aera-site/guides/fussak-ha-rosszul-aludtam.html): the same guide in Hungarian
-- [Heute laufen nach schlechtem Schlaf?](https://vargagergo-git.github.io/aera-site/guides/laufen-nach-schlechtem-schlaf.html): the same guide in German
+- [Should I run after a bad night's sleep?](https://aerahealth.app/guides/should-i-run-after-bad-sleep.html): what a short night, a raised resting heart rate and lower HRV against your own usual mean for today's run, with a rest, easy, normal or hard guide
+- [Fussak ma, ha rosszul aludtam?](https://aerahealth.app/guides/fussak-ha-rosszul-aludtam.html): the same guide in Hungarian
+- [Heute laufen nach schlechtem Schlaf?](https://aerahealth.app/guides/laufen-nach-schlechtem-schlaf.html): the same guide in German
 
 ## Legal and support
 
-- [Privacy policy](https://vargagergo-git.github.io/aera-site/privacy.html)
-- [Terms of use](https://vargagergo-git.github.io/aera-site/terms.html)
-- [Support](https://vargagergo-git.github.io/aera-site/support.html)
+- [Privacy policy](https://aerahealth.app/privacy.html)
+- [Terms of use](https://aerahealth.app/terms.html)
+- [Support](https://aerahealth.app/support.html)
