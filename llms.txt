@@ -33,6 +33,18 @@ Facts, stated plainly:
 
 ## Guides
 
+- [All guides](https://aerahealth.app/guides/): every guide in English, Hungarian and German
+- [Apple Watch HRV normal range](https://aerahealth.app/guides/apple-watch-hrv-normal-range.html): why there is no single normal HRV, what Apple Watch measures (SDNN), why yours is low, and why your own range matters most
+- [Apple Watch HRV érték](https://aerahealth.app/guides/apple-watch-hrv-ertek.html): the same guide in Hungarian
+- [Apple Watch HRV Normalwert](https://aerahealth.app/guides/apple-watch-hrv-normalwert.html): the same guide in German
+- [What is a good sleep score on Apple Watch?](https://aerahealth.app/guides/what-is-a-good-sleep-score.html): Apple's 0-100 Sleep Score bands, what moves the score, and how Aera's own sleep score differs
+- [Apple Watch alváspontszám](https://aerahealth.app/guides/jo-alvas-pontszam.html): the same guide in Hungarian
+- [Guter Schlafscore auf der Apple Watch](https://aerahealth.app/guides/guter-schlafscore.html): the same guide in German
+- [Apple Watch sleep and training without a subscription](https://aerahealth.app/guides/apple-watch-sleep-and-training-without-a-subscription.html): what Apple Watch tracks on its own, what an app adds, costs, and when a dedicated strap suits better
+- [Whoop Alternative für Apple Watch ohne Abo](https://aerahealth.app/guides/whoop-alternative-apple-watch.html): the same guide in German
+- [Replay a run in 3D on iPhone](https://aerahealth.app/flyover.html): Flyover, free for workouts from the last seven days
+- [Futás 3D visszajátszás iPhone-on](https://aerahealth.app/guides/futas-3d-visszajatszas.html): the 3D replay guide in Hungarian
+- [Lauf in 3D abspielen](https://aerahealth.app/guides/lauf-in-3d-abspielen.html): the 3D replay guide in German
 - [Should I run after a bad night's sleep?](https://aerahealth.app/guides/should-i-run-after-bad-sleep.html): what a short night, a raised resting heart rate and lower HRV against your own usual mean for today's run, with a rest, easy, normal or hard guide
 - [Fussak ma, ha rosszul aludtam?](https://aerahealth.app/guides/fussak-ha-rosszul-aludtam.html): the same guide in Hungarian
 - [Heute laufen nach schlechtem Schlaf?](https://aerahealth.app/guides/laufen-nach-schlechtem-schlaf.html): the same guide in German
