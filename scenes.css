@@ -315,7 +315,7 @@ html.motion .scene-engine:not(.eng-off)[data-flip="1"] .eng-mask { display: bloc
   .scene-flyover .fo-device { grid-area: dev; justify-self: center; }
   .scene-flyover .fo-c1 { grid-area: c1; justify-self: stretch; text-align: left; margin-top: 0; }
   .scene-flyover .fo-c2 { grid-area: c2; justify-self: stretch; margin-top: 0; }
-  .scene-flyover .fo-call { padding: 12px 14px 13px; border-radius: 18px; white-space: normal; }
+  .scene-flyover .fo-call { padding: 12px 14px 13px; border-radius: 18px; white-space: normal; align-self: stretch; align-content: start; }
   .scene-flyover .fo-call b { font-size: 15px; }
   .scene-flyover .fo-call span { font-size: 15px; }
   .scene-flyover .fo-call i { display: none; }
