@@ -361,6 +361,24 @@ FLIES = [(8, 74, 7.5, 0.0), (14, 82, 9.0, 1.2), (22, 70, 8.2, 2.1), (31, 86, 10.
 THEMED = {"home", "sleep", "recovery", "session", "planner", "article-sleep"}
 
 
+
+# One drawing per "Small things" tile, in tile order (Watch, widgets, recap films,
+# share cards, data out, languages). Simple line drawings, not app screens.
+TILE_ART = [
+    # Watch with a turn arrow on its face
+    '<svg viewBox="0 0 64 64"><path d="M24 10h16l2 8H22z M24 54h16l2-8H22z"/><rect x="17" y="17" width="30" height="30" rx="9"/><path d="M48 27v6"/><path d="M28 38v-6a3 3 0 0 1 3-3h7"/><path d="M35 25.5l3.5 3.5-3.5 3.5"/></svg>',
+    # Home Screen widgets: one large, two small
+    '<svg viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="18" rx="6"/><rect x="10" y="35" width="19" height="18" rx="6"/><rect x="35" y="35" width="19" height="18" rx="6"/><path d="M16 24c4-6 8 2 12-3s7 1 10-2 6 1 9-1"/></svg>',
+    # A film frame with a play mark
+    '<svg viewBox="0 0 64 64"><rect x="9" y="15" width="46" height="34" rx="6"/><path d="M9 23h46M9 41h46M17 15v8M27 15v8M37 15v8M47 15v8M17 41v8M27 41v8M37 41v8M47 41v8"/><path d="M29 28.5v7l6-3.5z"/></svg>',
+    # Two cards, the front one with a route over hills
+    '<svg viewBox="0 0 64 64"><rect x="14" y="8" width="30" height="40" rx="6" transform="rotate(-9 29 28)"/><rect x="21" y="16" width="30" height="40" rx="6"/><path d="M25 45l6-7 5 4 6-8 5 6"/><circle cx="31" cy="26" r="3"/></svg>',
+    # A file with an arrow leaving it
+    '<svg viewBox="0 0 64 64"><path d="M38 9H20a5 5 0 0 0-5 5v36a5 5 0 0 0 5 5h18"/><path d="M38 9l9 9v8M38 9v9h9"/><path d="M30 37h22M45 30l7 7-7 7"/><path d="M22 22h8M22 28h6"/></svg>',
+    # Speech bubble with letters
+    '<svg viewBox="0 0 64 64"><path d="M12 18a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H30l-10 9v-9h-2a6 6 0 0 1-6-6z"/><path d="M22 34l5-13 5 13M24 30h6M46 25.5v9M38 30a4 4 0 1 0 8 0 4 4 0 1 0-8 0"/></svg>',
+]
+
 def picture(name, alt, sizes, eager=False):
     load = 'fetchpriority="high"' if eager is True else 'decoding="async"' if eager == "soon" else 'loading="lazy" decoding="async"'
     if name in THEMED:
@@ -543,7 +561,8 @@ def build(code):
     faq = "".join('<details class="qa reveal"><summary><h3>%s</h3><span class="plus" aria-hidden="true"></span></summary><p>%s</p></details>'
                   % (q, a) for q, a in c["faq"])
 
-    tiles = "".join('<div class="tile reveal" style="--c:%s;--d:%dms"><h3><i></i>%s</h3><p>%s</p></div>' % (col, (i % 3) * 80, t, p)
+    tiles = "".join('<div class="tile reveal" style="--c:%s;--d:%dms"><div class="tile-art" aria-hidden="true">%s</div><h3>%s</h3><p>%s</p></div>'
+                    % (col, (i % 3) * 80, TILE_ART[i] if i < len(TILE_ART) else "", t, p)
                     for i, (t, col, p) in enumerate(c["tiles"]))
     free = "".join("<li>%s</li>" % x for x in c["free"])
     prem = "".join("<li>%s</li>" % x for x in c["prem"])

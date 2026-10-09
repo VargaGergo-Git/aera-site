@@ -28,7 +28,7 @@
 .scene-engine .cap { padding-left: 16px; border-left: 3px solid var(--line); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.5; color: var(--ink-2); }
 .scene-engine .cap b { color: var(--ink); font-family: var(--rounded); }
 .scene-engine .c1 { border-color: var(--indigo); } .scene-engine .c2 { border-color: var(--pink); } .scene-engine .c3 { border-color: var(--green); }
-.scene-engine .eng-note { position: relative; margin: 32px auto 0; font-size: 13px; line-height: 1.45; color: var(--ink-3); text-align: center; max-width: 60ch; }
+.scene-engine .eng-note { position: relative; margin: 32px auto 0; font-size: 14px; line-height: 1.45; color: var(--ink-3); text-align: center; max-width: 60ch; }
 @media (min-width: 900px) {
   .scene-engine .eng-stage { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; max-width: var(--wide); margin-inline: auto; }
   .scene-engine .eng-head, .scene-engine .eng-caps { grid-column: 1 / -1; }
@@ -153,7 +153,7 @@ html.motion .scene-engine:not(.eng-off) .eng-note { position: absolute; left: 0;
   html.motion .scene-engine:not(.eng-off).is-landed .eng-sr { transition-delay: .15s; }
 }
 @media (max-width: 899px) {
-  html.motion .scene-engine:not(.eng-off)[data-step="4"] .eng-note { opacity: 1; transition: opacity .6s var(--ease) .3s; font-size: 12px; padding-inline: var(--gutter); }
+  html.motion .scene-engine:not(.eng-off)[data-step="4"] .eng-note { opacity: 1; transition: opacity .6s var(--ease) .3s; font-size: 13px; padding-inline: var(--gutter); }
 }
 .scene-engine .eng-mask { display: none; }
 html.motion .scene-engine:not(.eng-off)[data-flip="1"] .eng-mask { display: block; position: absolute; left: 3%; top: 29.4%; width: 68%; height: 5.4%; background: #000; opacity: var(--mk, 1); }
