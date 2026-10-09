@@ -1,15 +1,15 @@
 :root {
   color-scheme: dark light;
-  --bg: #0c0a0b;
-  --bg-warm: #14100e;
+  --bg: #000000;
+  --bg-warm: #0b0b0d;
   --surface: rgba(255, 255, 255, 0.035);
   --surface-solid: #17141a;
   --text: #f6f4f2;
   --muted: #a09aa0;
   --faint: #6f6a72;
   --accent: #e8b366;
-  --accent-cool: #8fc7e8;
-  --green: #86d29a;
+  --accent-cool: #4ecca3;
+  --green: #4ecca3;
   --border: rgba(255, 255, 255, 0.08);
   --radius: 18px;
   --wrap: 760px;
@@ -17,16 +17,16 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --bg: #faf8f6;
-    --bg-warm: #f4efe9;
+    --bg: #f6f4ef;
+    --bg-warm: #efebe2;
     --surface: rgba(0, 0, 0, 0.025);
     --surface-solid: #ffffff;
     --text: #16131a;
     --muted: #5d5860;
     --faint: #86808a;
     --accent: #a56a17;
-    --accent-cool: #2b6f96;
-    --green: #2f7a49;
+    --accent-cool: #1f8a66;
+    --green: #23966f;
     --border: rgba(0, 0, 0, 0.09);
   }
 }
@@ -783,3 +783,8 @@ footer a:hover { color: var(--text); }
 .tool .race-out:empty { display: none; }
 .tool .tool-note { margin: 12px 0 0; color: var(--faint); font-size: 14px; line-height: 1.5; }
 .lang-switch a[aria-current="page"] { color: var(--text); text-decoration: none; }
+
+/* Matches the homepage (home.css): rounded display type for page titles. */
+h1, h2 { font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif; letter-spacing: -0.015em; }
+
+@media (max-width: 360px) { .topnav { gap: 10px; font-size: 13px; } }

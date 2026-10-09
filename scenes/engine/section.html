@@ -1,0 +1,98 @@
+<section class="scene scene-engine" id="engine">
+  <div class="wide eng-head">
+    <p class="kicker reveal">{{kicker}}</p>
+    <h2 class="h2 split">{{h2}}</h2>
+  </div>
+  <div class="eng-pin">
+    <div class="eng-stage">
+      <div class="wide eng-grid">
+        <div class="eng-board" aria-hidden="true">
+          <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
+            <defs>
+              <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
+                <stop offset="0" stop-color="#7fe0b4"/>
+                <stop offset="0.55" stop-color="#2fae82"/>
+                <stop offset="1" stop-color="#1a7d5c"/>
+              </radialGradient>
+              <linearGradient id="engine-bar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0a03c"/>
+                <stop offset="1" stop-color="#c47f1f"/>
+              </linearGradient>
+            </defs>
+
+            <g class="eng-lane ln1">
+              <text class="eng-lab" x="20" y="28">{{l_sleep}}</text>
+                            <rect class="eng-band" x="20" y="58" width="270" height="18" rx="9"/>
+              <path class="eng-line glow" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <path class="eng-line" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <g class="eng-dot"><circle cx="304" cy="67" r="11" class="halo"/><circle cx="304" cy="67" r="6"/></g>
+              <text class="eng-val" x="290" y="28" text-anchor="end">{{v_sleep}}</text>
+            </g>
+
+            <g class="eng-lane ln2">
+              <text class="eng-lab" x="20" y="134">{{l_heart}}</text>
+              <rect class="eng-band" x="20" y="164" width="270" height="20" rx="10"/>
+              <path class="eng-line glow" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <path class="eng-line" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <g class="eng-dot"><circle cx="304" cy="154" r="11" class="halo"/><circle cx="304" cy="154" r="6"/></g>
+              <text class="eng-val" x="290" y="134" text-anchor="end">{{v_heart}}</text>
+            </g>
+
+            <g class="eng-lane ln3">
+              <text class="eng-lab" x="20" y="242">{{l_week}}</text>
+              <rect class="eng-band" x="20" y="276" width="270" height="18" rx="9"/>
+              <g class="eng-bars">
+                <rect x="28" y="286" width="24" height="26" rx="5" style="--i:0"/>
+                <rect x="66" y="274" width="24" height="38" rx="5" style="--i:1"/>
+                <rect x="104" y="294" width="24" height="18" rx="5" style="--i:2"/>
+                <rect x="142" y="266" width="24" height="46" rx="5" style="--i:3"/>
+                <rect x="180" y="282" width="24" height="30" rx="5" style="--i:4"/>
+                <rect x="218" y="290" width="24" height="22" rx="5" style="--i:5"/>
+                <rect x="256" y="278" width="24" height="34" rx="5" style="--i:6"/>
+              </g>
+              <g class="eng-dot"><circle cx="304" cy="285" r="11" class="halo"/><circle cx="304" cy="285" r="6"/></g>
+              <text class="eng-val" x="290" y="242" text-anchor="end">{{v_week}}</text>
+            </g>
+
+            <g class="eng-legend"><rect x="20" y="391" width="26" height="12" rx="6"/><text class="eng-us" x="54" y="401">{{usual}}</text></g>
+
+            <g class="eng-streams">
+              <path class="eng-st s1 glow" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2 glow" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3 glow" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-st s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-comet s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-comet s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-comet s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+            </g>
+
+            <g class="eng-orb">
+              <circle class="ripple rp2" cx="172" cy="372" r="40"/>
+              <circle class="ripple rp1" cx="172" cy="372" r="40"/>
+              <circle class="trk" cx="172" cy="372" r="40"/>
+              <circle class="ring" cx="172" cy="372" r="40" pathLength="1" transform="rotate(-90 172 372)"/>
+              <circle class="core" cx="172" cy="372" r="33" fill="url(#engine-orb)"/>
+              <path class="tick" pathLength="1" d="M158 373L168 383L187 362"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="eng-copy">
+          <ol class="eng-caps">
+            <li class="cap c1"><b>{{s1_h}}</b><span>{{s1_p}}</span></li>
+            <li class="cap c2"><b>{{s2_h}}</b><span>{{s2_p}}</span></li>
+            <li class="cap c3"><b>{{s3_h}}</b><span>{{s3_p}}</span></li>
+          </ol>
+          <div class="eng-result">
+            <p class="eng-word"><i aria-hidden="true"></i>{{word}}</p>
+            <p class="eng-why">{{why}}</p>
+            <div class="eng-cap"><span class="eng-coach">{{coach}}</span><span class="eng-cap-txt"><b>{{session}}</b><small>{{session_sub}}</small></span></div>
+          </div>
+          <p class="eng-note">{{note}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
