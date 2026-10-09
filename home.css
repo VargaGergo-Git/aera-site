@@ -40,6 +40,7 @@
   --sun: #fff1cf;
   --hero-ink: #1b1a20;
   --hero-ink-2: #3c3a44;
+  --dawn: #e8742e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +73,7 @@
     --sun: #ffd9a0;
     --hero-ink: #f7f4ee;
     --hero-ink-2: #cfc9d6;
+    --dawn: #ffc98a;
   }
 }
 
@@ -607,7 +609,7 @@ html:not(.motion) .chip-night { display: none; }
 /* Hero tuning after the first pinned render. */
 .motion .hs-sleep { opacity: 1; clip-path: inset(0 0 calc(var(--sw, 1) * 100%) 0); }
 .hs-edge { display: none; }
-.motion .hs-edge { display: block; position: absolute; left: 0; right: 0; height: 18%; top: calc((1 - var(--sw, 1)) * 100% - 9%);
+.motion .hs-edge { display: block; position: absolute; left: 0; right: 0; height: 18%; top: -9%; transform: translate3d(0, calc((1 - var(--sw, 1)) * 555.556%), 0); will-change: transform;
   background: radial-gradient(60% 50% at 50% 50%, color-mix(in srgb, var(--sun) 70%, transparent), transparent 70%);
   opacity: calc(min(var(--sw, 1), 1 - var(--sw, 1)) * 3); pointer-events: none; mix-blend-mode: screen; }
 .chip-night { top: 41%; right: auto; left: 56%; }
@@ -748,3 +750,10 @@ html:not(.motion) .chip-night { display: none; }
   .motion .hero.in .hero-copy { transform: translate3d(0, calc(var(--hr, 0) * -7svh), 0) scale(calc(1 - var(--hr, 0) * .06)); opacity: calc(1 - var(--hr, 0) * 3); }
   .motion .hero-ph { transform: translate3d(0, calc(min(var(--hr, 0) * 1.5, 1) * var(--rise, -50svh)), 0) perspective(1000px) rotateX(calc((1 - min(var(--hr, 0) * 1.5, 1)) * 16deg)) scale(calc(1 + min(var(--hr, 0) * 1.5, 1) * .2)); }
 }
+
+/* First light: once the headline has risen, a warm wave passes through it word by word. */
+@keyframes dawn-word {
+  0%, 100% { color: var(--hero-ink); text-shadow: none; }
+  45% { color: var(--dawn); text-shadow: 0 0 28px color-mix(in srgb, var(--dawn) 55%, transparent); }
+}
+.motion .hero.in h1 .w > span { animation: dawn-word 1.3s cubic-bezier(.45, 0, .3, 1) calc(1.15s + var(--i, 0) * 85ms) both; }
