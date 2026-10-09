@@ -363,6 +363,8 @@
 
 /* Sights: glass labels on a stem, standing on the map. */
 .scene-planner .pl-pin { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
+/* Lower pins stand in front, so a higher pin's stem never crosses a label. */
+.scene-planner .pl-p1 { z-index: 3; } .scene-planner .pl-p2 { z-index: 2; } .scene-planner .pl-p3 { z-index: 1; }
 .scene-planner .pl-pin > * { position: absolute; }
 .scene-planner .pl-pin-in {
   left: 0; bottom: 30px; transform: translateX(var(--pin-x, -22px)); display: flex; align-items: center; gap: 7px; white-space: nowrap;
