@@ -344,7 +344,7 @@ COPY = {
 # CF_BEACON: the site token from Cloudflare > Web Analytics > Add a site (cookieless,
 # no banner needed). APPSTORE_PT: the provider token from App Store Connect >
 # App Analytics > Campaigns, so Apple counts downloads per page and button (ct=).
-CF_BEACON = ""
+CF_BEACON = "4fc0403d67364f1ab92526387bdd0b81"
 # Hungarian App Store rating count behind the "5.0" line in the hero. Checked
 # 2026-10-09 with itunes.apple.com/lookup?id=6762456252&country=hu (5.0, 7).
 # Re-check before each rebuild; set to 0 to drop the line if the average falls.
