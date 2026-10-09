@@ -329,7 +329,7 @@ COPY = {
 LANG_NAMES = [("en", "index.html", "English"), ("hu", "hu.html", "Magyar"), ("de", "de.html", "Deutsch")]
 
 # Captures of the app on 9 Oct 2026 (main 0ebe9a8). Name -> has light and dark?
-THEMED = {"home", "sleep", "recovery", "session", "planner", "workout-flyover", "article-sleep"}
+THEMED = {"home", "sleep", "recovery", "session", "planner", "article-sleep"}
 
 
 def picture(name, alt, sizes, eager=False):
