@@ -12,6 +12,19 @@
     var ticking = false, step = 0, isWord = false, isLanded = false, wordCss = '', wordW = 0, wordH = 0, headBottom = 0;
     // Plays once, like a film, when the stage is half in view, then holds on the last frame.
     var DUR = 7000, t0 = 0, done = false;
+    // Frame guard: if this device cannot draw the film smoothly (median frame over
+    // 24 ms across its first frames), show the finished frame instead of a stutter.
+    var gd = [], gLast = 0, gOff = false;
+    function guard(now) {
+      if (gOff || gd.length > 14) return false;
+      if (gLast) gd.push(now - gLast);
+      gLast = now;
+      if (gd.length < 12) return false;
+      var m = gd.slice(2).sort(function (a, b) { return a - b; })[5];
+      if (m > 24) { gOff = true; return true; }
+      gd.length = 99; return false;
+    }
+
     // Where "Good to go" sits on the 400 x 870 capture: centre and width.
     var TX = 144 / 400, TY = 284 / 870, TW = 248 / 400;
     function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -115,7 +128,7 @@
       var css = op.toFixed(3) + '|translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
       if (css !== wordCss) { wordCss = css; var cut = css.indexOf('|'); word.style.opacity = css.slice(0, cut); word.style.transform = css.slice(cut + 1); }
     }
-    function frame() { update(); if (t0 && !done) requestAnimationFrame(frame); }
+    function frame(now) { if (guard(now)) done = true; update(); if (t0 && !done) requestAnimationFrame(frame); }
     function play() { if (t0 || done) return; t0 = performance.now(); requestAnimationFrame(frame); }
     function redraw() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     if ('IntersectionObserver' in window) {
