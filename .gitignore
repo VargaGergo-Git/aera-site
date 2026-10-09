@@ -1,2 +1,3 @@
 scripts/__pycache__/
 scenes/*/test*.html
+__pycache__/
