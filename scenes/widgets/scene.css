@@ -201,3 +201,9 @@ section.scene-widgets { padding: 0; }
   .scene-widgets .wg-dev { --dev-w: clamp(270px, 23vw, 330px); }
 
 }
+
+/* Arrival: the widgets land one by one (the phone stays still, so only small layers move). */
+.motion .wg-world:not(.in) :is(.wg-w, .wg-icons) { opacity: 0; scale: .9; }
+.motion .wg-world.in :is(.wg-w, .wg-icons) { transition: opacity .6s var(--ease) var(--wd), scale .9s var(--spring) var(--wd); }
+.scene-widgets .wg-w1 { --wd: .3s; } .scene-widgets .wg-w2 { --wd: .38s; } .scene-widgets .wg-w3 { --wd: .46s; }
+.scene-widgets .wg-w4 { --wd: .54s; } .scene-widgets .wg-icons { --wd: .62s; } .scene-widgets .wg-dock { --wd: .7s; }

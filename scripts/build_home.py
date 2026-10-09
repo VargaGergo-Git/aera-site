@@ -128,7 +128,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Legal", "foot_more": "More",
         "foot_links_app": [("store", "Download"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Press")],
         "foot_links_legal": [("privacy.html", "Privacy Policy"), ("terms.html", "Terms of Use"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?")],
+        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?"), ("guides/index.html", "Guides")],
+        "meta_desc": "Sleep and running tracker for iPhone and Apple Watch. Aera compares last night with your own usual and says how hard to go today. Free, no account.",
         "foot_base": ("&#169; 2026 Aera", "Not a medical device."),
     },
     "hu": {
@@ -227,7 +228,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Még",
         "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
         "foot_links_legal": [("privacy.html", "Adatvédelem"), ("terms.html", "Felhasználási feltételek"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek")],
+        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek"), ("guides/index.html#hu", "Útmutatók")],
+        "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. A saját szokásodhoz méri az éjszakát, és megmondja, milyen keményen menj ma. Ingyenes.",
         "foot_base": ("&#169; 2026 Aera", "Nem orvostechnikai eszköz."),
     },
     "de": {
@@ -326,7 +328,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Rechtliches", "foot_more": "Mehr",
         "foot_links_app": [("store", "Laden"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Presse")],
         "foot_links_legal": [("privacy.html", "Datenschutz"), ("terms.html", "Nutzungsbedingungen"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen")],
+        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen"), ("guides/index.html#de", "Ratgeber")],
+        "meta_desc": "Schlaf- und Lauftracker für iPhone und Apple Watch. Aera vergleicht die Nacht mit deinem Üblichen und sagt, wie hart du heute läufst. Kostenlos, ohne Konto.",
         "foot_base": ("&#169; 2026 Aera", "Kein Medizinprodukt."),
     },
 }
@@ -500,14 +503,16 @@ def asset(name):
 def build(code):
     c = COPY[code]
     L = landscape.hero_layers()
-    store_base = c["store"]
 
     def store_at(place):
-        if not APPSTORE_PT:
-            return store_base
-        return "%s?pt=%s&amp;ct=site-%s-%s&amp;mt=8" % (store_base, APPSTORE_PT, code, place)
+        # Every App Store button goes through /get/<place>/<lang>/ on this site, so
+        # each tap is a path Cloudflare's free analytics can count (they drop query
+        # strings). write_get_pages() puts a forwarding page at each path; a
+        # Cloudflare redirect rule can answer first.
+        return "/get/%s/%s/" % (place, code)
 
     store = store_at("hero")
+    store_nav, store_close = store_at("nav"), store_at("closing")
 
     def href(h):
         return store_at("footer") if h == "store" else h
@@ -572,15 +577,17 @@ def build(code):
          "alternateName": plain(c["title"].split(":")[1].strip()) if ":" in c["title"] else "Aera",
          "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker",
          "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
-         "url": canonical, "downloadUrl": store_base, "installUrl": store_base,
+         "url": canonical, "downloadUrl": c["store"], "installUrl": c["store"],
          "description": plain(c["desc"]),
          "screenshot": [BASE + "img/home-light-800.webp", BASE + "img/sleep-dark-800.webp", BASE + "img/planner-dark-800.webp"],
          "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
-         "author": {"@id": BASE + "#maker"},
+         "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
         {"@type": "Person", "@id": BASE + "#maker", "name": "Gerg\u0151 Varga", "url": BASE},
+        {"@type": "Organization", "@id": BASE + "#org", "name": "Aera", "url": BASE, "logo": BASE + "assets/icon.png",
+         "email": "hello@aerahealth.app", "founder": {"@id": BASE + "#maker"}, "sameAs": [COPY["en"]["store"]]},
         {"@type": "WebSite", "@id": BASE + "#site", "name": "Aera", "url": BASE, "inLanguage": code,
-         "publisher": {"@id": BASE + "#maker"}},
+         "publisher": {"@id": BASE + "#org"}},
         {"@type": "FAQPage", "inLanguage": code,
          "mainEntity": [{"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
                         for q, a in c["faq"]]},
@@ -631,11 +638,11 @@ def build(code):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-itunes-app" content="app-id=6762456252">
 <title>{c['title']}</title>
-<meta name="description" content="{c['desc']}">
+<meta name="description" content="{c['meta_desc']}">
 <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="{c['og_title']}">
-<meta property="og:description" content="{c['desc']}">
+<meta property="og:description" content="{c['meta_desc']}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aera">
 <meta property="og:locale" content="{OG_LOCALE[code]}">{og_alt}
@@ -645,7 +652,7 @@ def build(code):
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{c['og_title']}">
-<meta name="twitter:description" content="{c['desc']}">
+<meta name="twitter:description" content="{c['meta_desc']}">
 <meta name="twitter:image" content="{BASE}assets/og.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{canonical}">
@@ -663,7 +670,7 @@ def build(code):
 <header class="bar">
   <div class="wide">
     <a class="brand" href="{c['file']}"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a>
-    <nav>{nav}<a class="get" href="{store}">{c['get']}</a></nav>
+    <nav>{nav}<a class="get" href="{store_nav}">{c['get']}</a></nav>
   </div>
   {chapters_nav(code)}
 </header>
@@ -774,7 +781,7 @@ def build(code):
   <div class="wide reveal">
     <img class="closing-icon" src="assets/icon.png" alt="" width="96" height="96" loading="lazy" decoding="async">
     <h2 class="h2 split">{c['close_h2']}</h2>
-    <div class="cta"><a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a></div>
+    <div class="cta"><a class="btn btn-store" href="{store_close}">{APPLE}{c['cta']}</a></div>
   </div>
   <div class="dusk" aria-hidden="true"><div class="dusk-sun"></div>{landscape.dusk_stars()}{landscape.dusk_layers()}</div>
 </section>
@@ -800,12 +807,75 @@ def build(code):
 """
 
 
+LOCALES = ("hu", "de")
+
+
+def localize_media(out, code):
+    """On /hu and /de, use the in-app shots in that language where they exist:
+    img/NAME.webp -> img/<code>/NAME.webp, media/X/NAME -> media/X/<code>/NAME.
+    Same file names per language; anything not yet captured stays English."""
+    if code not in LOCALES:
+        return out
+
+    def swap(m):
+        d, name = m.group(1), m.group(2)
+        local = "%s/%s/%s" % (d, code, name)
+        return local if os.path.exists(os.path.join(ROOT, local)) else m.group(0)
+    return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
+
+
+GET_PLACES = ("nav", "hero", "closing", "footer")
+
+
+def get_page(store, lang, src):
+    """One forwarding page: on to that language's App Store page, with
+    the campaign tags once APPSTORE_PT is set. Out of search."""
+    url = store
+    if APPSTORE_PT:
+        url += "?pt=%s&ct=site-%s-%s&mt=8" % (APPSTORE_PT, lang, src)
+    beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+              "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""
+    return """<!doctype html>
+<html lang="%(lang)s"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Aera on the App Store</title>
+<meta http-equiv="refresh" content="2; url=%(url)s">
+<script>
+// Leave a moment after load so the Cloudflare beacon can report the tap first;
+// go anyway at 1.5 s if the beacon is blocked or slow.
+(function () {
+  var go = function () { location.replace(%(js)s); };
+  addEventListener('load', function () { setTimeout(go, 400); });
+  setTimeout(go, 1500);
+})();
+</script>
+%(beacon)s
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
+</head><body><p><a href="%(url)s">Open Aera on the App Store</a></p></body></html>
+""" % {"lang": lang, "url": url.replace("&", "&amp;"), "js": json.dumps(url), "beacon": beacon}
+
+
+def write_get_pages():
+    """get/<place>/<lang>/index.html for every store button, plus get/index.html
+    for a bare /get/ (English store)."""
+    for c in COPY.values():
+        for place in GET_PLACES:
+            d = os.path.join(ROOT, "get", place, c["lang"])
+            os.makedirs(d, exist_ok=True)
+            with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
+                f.write(get_page(c["store"], c["lang"], place))
+    with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
+        f.write(get_page(COPY["en"]["store"], "en", "site"))
+
+
 if __name__ == "__main__":
     bundle_scenes()
     for code in COPY:
-        out = build(code)
+        out = localize_media(build(code), code)
         if "—" in out:
             raise SystemExit("em dash in %s" % code)
         with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:
             f.write(out)
         print(COPY[code]["file"], len(out) // 1024, "KB")
+    write_get_pages()
