@@ -852,3 +852,40 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 /* The hero no longer plays the night into dawn, so the moon would only be a
    faint grey disc beside the words. The sun is up; the moon stays down. */
 .hero .moon { display: none; }
+
+/* ======================================================================
+   Arrival motion (after "improve the animations and the 2D + 3D work").
+   Each section has one moment that plays once as it arrives, on the time
+   clock, never the scroll position: the device sets down out of a slight
+   3D tilt, then its contents land in order. Only translate, rotate, scale
+   and opacity move, so it all runs on the compositor. Depth comes from the
+   valley layers drifting at their own speed where the browser can tie that
+   to scroll natively (no script). Reduced motion never gets .motion, and the
+   parallax sits behind no-preference. Scene details live in each scene.css.
+   ====================================================================== */
+:root { --spring: cubic-bezier(.34, 1.4, .64, 1); --settle: 1.3s; }
+.motion .reveal:has(> .tilt-in) { perspective: 1400px; }
+.motion .tilt-in { transform-origin: 50% 85%; }
+.motion .reveal:not(.in) > .tilt-in { rotate: x 18deg; scale: .93; }
+.motion .reveal.in > .tilt-in { rotate: x 0deg; scale: 1; transition: rotate var(--settle) var(--ease) .12s, scale var(--settle) var(--ease) .12s; }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    /* The hero valley: far hills lag, near meadow keeps up, the sun sinks slowest. */
+    .hero .l1 { animation: drift-l1 linear both; }
+    .hero .l2 { animation: drift-l2 linear both; }
+    .hero .l3 { animation: drift-l3 linear both; }
+    .hero .l4 { animation: drift-l4 linear both; }
+    .hero .sun { animation: drift-sun linear both; }
+    .hero .l1, .hero .l2, .hero .l3, .hero .l4, .hero .sun { animation-timeline: scroll(root); animation-range: 0 100svh; }
+    @keyframes drift-l1 { from { transform: translate3d(0, 11px, 0); } to { transform: translate3d(0, calc(11px + 26svh), 0); } }
+    @keyframes drift-l2 { from { transform: translate3d(0, 19px, 0); } to { transform: translate3d(0, calc(19px + 18svh), 0); } }
+    @keyframes drift-l3 { from { transform: translate3d(0, 29px, 0); } to { transform: translate3d(0, calc(29px + 11svh), 0); } }
+    @keyframes drift-l4 { from { transform: translate3d(0, 43px, 0); } to { transform: translate3d(0, calc(43px + 4svh), 0); } }
+    @keyframes drift-sun { from { translate: 0 0; } to { translate: 0 32svh; } }
+    /* The closing valley rises into place as the page ends. */
+    .dusk .l1, .dusk .l3, .dusk .l4 { animation: dusk-rise linear both; animation-timeline: view(); animation-range: entry 0% cover 50%; }
+    .dusk .l1 { --rise: 70px; } .dusk .l3 { --rise: 40px; } .dusk .l4 { --rise: 14px; }
+    @keyframes dusk-rise { from { transform: translate3d(0, var(--rise), 0); } to { transform: none; } }
+  }
+}

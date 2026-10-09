@@ -85,3 +85,11 @@
 .scene-engine .eng-comet.s1, .scene-engine .eng-comet.s2, .scene-engine .eng-comet.s3 { stroke: #fff; }
 
 
+
+/* Arrival: the three signals come in one after another, then the word lands. */
+.motion .eng-board:not(.in) :is(.eng-lane, .eng-streams) { opacity: 0; }
+.motion .eng-board.in :is(.eng-lane, .eng-streams) { transition: opacity .7s var(--ease) var(--ed); }
+.scene-engine .ln1 { --ed: .2s; } .scene-engine .ln2 { --ed: .38s; } .scene-engine .ln3 { --ed: .56s; } .scene-engine .eng-streams { --ed: .8s; }
+.scene-engine .eng-orb { transform-box: fill-box; transform-origin: 50% 50%; }
+.motion .eng-board:not(.in) .eng-orb { opacity: 0; scale: .4; }
+.motion .eng-board.in .eng-orb { transition: opacity .4s var(--ease) 1.1s, scale .8s var(--spring) 1.1s; }

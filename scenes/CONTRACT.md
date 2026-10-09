@@ -60,3 +60,19 @@ push; do not switch git branches.
 
 Final message under 200 words: files, what the scene does frame by frame,
 screenshot paths, check results, any claim you were unsure of.
+
+## Arrival motion and per-language media (2026-10-09)
+
+- One arrival moment per section, played once on the time clock when `.in`
+  lands: a device may set down out of a slight 3D tilt (`tilt-in` on a direct
+  child of a `.reveal`), then its contents land in order. Only `translate`,
+  `rotate`, `scale` and `opacity` move. Never animate an element that has a
+  `backdrop-filter`, and never tilt a device while its children also move.
+- Depth tied to scroll only through CSS scroll-driven animation
+  (`animation-timeline`), inside `prefers-reduced-motion: no-preference` and
+  `@supports`. No scroll listeners.
+- Gate: p95 frame 17 ms at 375x667@2 on 4x CPU (`perf.mjs`), no overlaps
+  (`olap.mjs`) at 320/375/390/430 light and dark.
+- Localised shots: put the Hungarian or German version of a file at
+  `img/hu/NAME`, `img/de/NAME`, `media/<scene>/hu/NAME` (same file name).
+  `build_home.py` swaps it in on that page; anything missing stays English.

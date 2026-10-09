@@ -500,14 +500,15 @@ def asset(name):
 def build(code):
     c = COPY[code]
     L = landscape.hero_layers()
-    store_base = c["store"]
 
     def store_at(place):
-        if not APPSTORE_PT:
-            return store_base
-        return "%s?pt=%s&amp;ct=site-%s-%s&amp;mt=8" % (store_base, APPSTORE_PT, code, place)
+        # Every App Store button goes through /get/ on this site, so each tap is
+        # a request Cloudflare counts. get/index.html (written below) sends the
+        # visitor on to the store; a Cloudflare redirect rule can answer first.
+        return "/get/?src=%s&amp;lang=%s" % (place, code)
 
     store = store_at("hero")
+    store_nav, store_close = store_at("nav"), store_at("closing")
 
     def href(h):
         return store_at("footer") if h == "store" else h
@@ -572,7 +573,7 @@ def build(code):
          "alternateName": plain(c["title"].split(":")[1].strip()) if ":" in c["title"] else "Aera",
          "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker",
          "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
-         "url": canonical, "downloadUrl": store_base, "installUrl": store_base,
+         "url": canonical, "downloadUrl": c["store"], "installUrl": c["store"],
          "description": plain(c["desc"]),
          "screenshot": [BASE + "img/home-light-800.webp", BASE + "img/sleep-dark-800.webp", BASE + "img/planner-dark-800.webp"],
          "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
@@ -663,7 +664,7 @@ def build(code):
 <header class="bar">
   <div class="wide">
     <a class="brand" href="{c['file']}"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a>
-    <nav>{nav}<a class="get" href="{store}">{c['get']}</a></nav>
+    <nav>{nav}<a class="get" href="{store_nav}">{c['get']}</a></nav>
   </div>
   {chapters_nav(code)}
 </header>
@@ -774,7 +775,7 @@ def build(code):
   <div class="wide reveal">
     <img class="closing-icon" src="assets/icon.png" alt="" width="96" height="96" loading="lazy" decoding="async">
     <h2 class="h2 split">{c['close_h2']}</h2>
-    <div class="cta"><a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a></div>
+    <div class="cta"><a class="btn btn-store" href="{store_close}">{APPLE}{c['cta']}</a></div>
   </div>
   <div class="dusk" aria-hidden="true"><div class="dusk-sun"></div>{landscape.dusk_stars()}{landscape.dusk_layers()}</div>
 </section>
@@ -800,12 +801,61 @@ def build(code):
 """
 
 
+LOCALES = ("hu", "de")
+
+
+def localize_media(out, code):
+    """On /hu and /de, use the in-app shots in that language where they exist:
+    img/NAME.webp -> img/<code>/NAME.webp, media/X/NAME -> media/X/<code>/NAME.
+    Same file names per language; anything not yet captured stays English."""
+    if code not in LOCALES:
+        return out
+
+    def swap(m):
+        d, name = m.group(1), m.group(2)
+        local = "%s/%s/%s" % (d, code, name)
+        return local if os.path.exists(os.path.join(ROOT, local)) else m.group(0)
+    return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
+
+
+def write_get_page():
+    """get/index.html: the fallback for /get/?src=..&lang=.. when no Cloudflare
+    rule answers. It forwards at once to that language's App Store page, with
+    the campaign tags once APPSTORE_PT is set, and stays out of search."""
+    stores = {c["lang"]: c["store"] for c in COPY.values()}
+    page = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Aera on the App Store</title>
+<meta http-equiv="refresh" content="1; url=%(en)s">
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), stores = %(stores)s, pt = %(pt)s;
+  var lang = q.get('lang'), src = (q.get('src') || 'site').replace(/[^a-z0-9-]/gi, '').slice(0, 24);
+  var url = stores[lang] || stores.en;
+  if (pt) url += '?pt=' + pt + '&ct=site-' + (stores[lang] ? lang : 'en') + '-' + src + '&mt=8';
+  location.replace(url);
+})();
+</script>
+%(beacon)s
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
+</head><body><p><a href="%(en)s">Open Aera on the App Store</a></p></body></html>
+""" % {"en": stores["en"], "stores": json.dumps(stores), "pt": json.dumps(APPSTORE_PT or ""),
+       "beacon": ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+                  "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""}
+    os.makedirs(os.path.join(ROOT, "get"), exist_ok=True)
+    with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
+        f.write(page)
+
+
 if __name__ == "__main__":
     bundle_scenes()
     for code in COPY:
-        out = build(code)
+        out = localize_media(build(code), code)
         if "—" in out:
             raise SystemExit("em dash in %s" % code)
         with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:
             f.write(out)
         print(COPY[code]["file"], len(out) // 1024, "KB")
+    write_get_page()
