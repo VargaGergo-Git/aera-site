@@ -1,182 +1,177 @@
-/* Route planner scene: one scroll-scrubbed timeline through the pinned stage.
-   Beat 1 (0 to .46): taps, the line follows the paths to each tap, distance counts.
-   Beat 2 (.46 to .64): what you will meet pops up along the line.
-   Beat 3 (.64 to 1): the map tilts away, the phone and the watch rise, the arrow turns.
-   Without .motion, or on any error, the markup's final frame stays. */
 (function () {
   try {
     var sec = document.getElementById('planner');
     if (!sec) return;
     var root = document.documentElement;
-    var run = sec.querySelector('.pl-run');
-    var paths = ['planner-route', 'planner-case', 'planner-glow'].map(function (id) { return document.getElementById(id); });
-    var route = paths[0];
-    var head = document.getElementById('planner-head');
-    var comet = document.getElementById('planner-comet');
-    var pins = [].slice.call(sec.querySelectorAll('.pl-pin'));
-    var finger = document.getElementById('planner-finger');
-    var rips = [].slice.call(sec.querySelectorAll('.pl-rip'));
-    var dots = [].slice.call(sec.querySelectorAll('.pl-wp'));
-    var guides = [].slice.call(sec.querySelectorAll('.pl-g'));
-    var says = [].slice.call(sec.querySelectorAll('.pl-say'));
-    var beats = [].slice.call(sec.querySelectorAll('.pl-rail li'));
+    var stage = sec.querySelector('.pl-stage');
+    var head = sec.querySelector('.pl-head');
+    var caps = sec.querySelector('.pl-caps');
+    var route = sec.querySelector('#planner-route');
+    var glow = sec.querySelector('.pl-glow');
+    var casing = sec.querySelector('.pl-case');
+    var dot = sec.querySelector('#planner-head');
+    var finger = sec.querySelector('#planner-finger');
+    var taps = [].slice.call(sec.querySelectorAll('.pl-tap'));
     var num = sec.querySelector('.pl-num');
-    if (!run || !route || !num) return;
-
-    var KM = parseFloat(num.getAttribute('data-km')) || 6.4;
-    var finalText = num.textContent;
-    var lang = (root.getAttribute('lang') || 'en').slice(0, 2);
-    var nf;
-    try { nf = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
-    catch (e) { nf = { format: function (v) { return v.toFixed(1); } }; }
-
-    var L = route.getTotalLength();
-    var wp = rips.map(function (c) { return { x: +c.getAttribute('cx'), y: +c.getAttribute('cy') }; });
-    // Where each tap sits along the line, by nearest sample.
-    function near(px, py) {
-      var best = 0, bd = Infinity;
-      for (var i = 0; i <= 500; i++) {
-        var q = route.getPointAtLength(L * i / 500);
-        var d = (q.x - px) * (q.x - px) + (q.y - py) * (q.y - py);
-        if (d < bd) { bd = d; best = i / 500; }
+    var wdist = sec.querySelector('.pl-wd-num');
+    var km = parseFloat(num && num.getAttribute('data-km')) || 6.4;
+    var comma = num && num.textContent.indexOf(',') > -1;
+    var len = route.getTotalLength();
+    // Where along the line (0..1) each tap lands: start, bridge, park edge, summit.
+    var TAP_AT = [0, 0, 0, 0];
+    var TAPS_XY = [[505, 588], [262, 398], [190, 256], [452, 104]];
+    (function () {
+      var n = 240, best = [1e9, 1e9, 1e9, 1e9];
+      for (var i = 0; i <= n; i++) {
+        var pt = route.getPointAtLength(len * i / n);
+        for (var k = 0; k < 4; k++) {
+          var d = Math.hypot(pt.x - TAPS_XY[k][0], pt.y - TAPS_XY[k][1]);
+          if (d < best[k]) { best[k] = d; TAP_AT[k] = i / n; }
+        }
       }
-      return best;
-    }
-    var fr = wp.map(function (p) { return near(p.x, p.y); });
-    fr[0] = 0; fr[fr.length - 1] = 1;
-    // Pins pop as the light travelling along the line reaches them.
-    var pf = pins.map(function (el) {
-      var x = parseFloat(el.style.left) * 6, y = parseFloat(el.style.top) * 6.4;
-      return near(x, y);
-    });
+    })();
+    var step = 0, measured = false, last = -1;
 
-    function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-    function out(v) { return 1 - Math.pow(1 - v, 3); }
-    function inOut(v) { return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2; }
-    function back(v) { if (v <= 0) return 0; if (v >= 1) return 1; var c = 1.7, c3 = c + 1; return 1 + c3 * Math.pow(v - 1, 3) + c * Math.pow(v - 1, 2); }
-    function set(k, v) { sec.style.setProperty(k, v.toFixed(4)); }
+    function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+    function seg(p, a, b) { return c01((p - a) / (b - a)); }
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function out(t) { return 1 - Math.pow(1 - t, 3); }
+    function back(t) { var c = 1.6; return t <= 0 ? 0 : t >= 1 ? 1 : 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
+    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
 
-    var VARS = ['--k', '--w', '--ph', '--turn', '--p0', '--p1', '--p2', '--b1', '--b2', '--b3'];
-    var dead = false, live = false, shown = 0, target = 0, lastText = '', lastBeat = -1, buzz = false;
-
-    function reset() {
-      VARS.forEach(function (k) { sec.style.removeProperty(k); });
-      paths.forEach(function (p) { if (p) { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; } });
-      [head, finger, comet].concat(rips, dots, guides).forEach(function (el) { if (el) el.removeAttribute('style'); });
-      num.textContent = finalText;
-      says.forEach(function (s, i) { s.classList.toggle('on', i === 0); });
-      sec.classList.remove('pl-buzz');
-      live = false; lastText = ''; lastBeat = -1;
-    }
-
-    function paint(t) {
-      // Beat 1: the first tap, then three segments, each: finger travels, tap, line follows the paths.
-      var d = 0, fx = wp[0].x, fy = wp[0].y;
-      var fo = clamp(t / 0.04) * (1 - clamp((t - 0.46) / 0.04));
-      var rip = [clamp((t - 0.035) / 0.06)];
-      var gd = [];
-      for (var j = 0; j < 3; j++) {
-        var s = clamp((t - (0.08 + j * 0.125)) / 0.125);
-        var m = inOut(clamp(s / 0.24));
-        if (s > 0) { fx = wp[j].x + (wp[j + 1].x - wp[j].x) * m; fy = wp[j].y + (wp[j + 1].y - wp[j].y) * m; }
-        rip.push(clamp((s - 0.2) / 0.28));
-        gd.push(clamp((s - 0.18) / 0.08) * (1 - clamp((s - 0.86) / 0.14)));
-        if (s > 0.3) d = fr[j] + (fr[j + 1] - fr[j]) * inOut(clamp((s - 0.3) / 0.7));
+    function measure() {
+      var vw = window.innerWidth, vh = window.innerHeight, phone = vw < 900, wide = vw >= 1100;
+      var top, h, ww;
+      if (wide) {
+        // Words on the left: the headline block and the caption sit centred as a pair.
+        var hh = head.offsetHeight, ch = caps.offsetHeight;
+        var ht = Math.max(84, (vh - hh - ch - 28) / 2);
+        set('--head-top', ht + 'px');
+        set('--caps-top', (ht + hh + 28) + 'px');
+        top = 78; h = vh - top - 34;
+        ww = sec.querySelector('.pl-world').offsetWidth || (vw * .6);
+      } else {
+        var hb = head.offsetTop + head.offsetHeight;
+        top = hb + (phone ? 14 : 22);
+        var bottom = vh - caps.offsetHeight - Math.max(22, vh * .032) - (phone ? 12 : 20);
+        h = Math.max(220, bottom - top);
+        ww = vw;
       }
-      var dash = (L * (1 - d)).toFixed(1);
-      paths.forEach(function (p) { if (p) { p.style.strokeDasharray = L.toFixed(1) + ' ' + (L + 2).toFixed(1); p.style.strokeDashoffset = dash; } });
-      if (head) {
-        var hp = route.getPointAtLength(L * d);
-        head.setAttribute('cx', hp.x.toFixed(1));
-        head.setAttribute('cy', hp.y.toFixed(1));
-        head.style.opacity = d > 0.002 && t < 0.47 ? 1 : 0;
+      set('--world-top', top + 'px');
+      set('--world-h', h + 'px');
+      // Map: as big as the room allows; tilted, it reads wider than it is.
+      var mw = Math.min(ww - (phone ? 24 : 60), wide ? 720 : 620, h * .9 * 600 / 640);
+      set('--map-px', Math.max(220, mw) + 'px');
+      // Watch: tall enough to read the turn from across the room.
+      var wpx = Math.min(phone ? vw * .58 : 300, h / (1.19 * 1.42));
+      set('--watch-px', Math.max(130, wpx) + 'px');
+      set('--away-y', (h * .06) + 'px');
+      measured = true;
+    }
+    function clear() {
+      ['--in', '--draw', '--tilt', '--pan', '--map-o', '--pin-o', '--p1', '--p2', '--p3', '--hud', '--away', '--wrist', '--ph', '--world-top', '--world-h', '--map-px', '--watch-px', '--away-y', '--head-top', '--caps-top'].forEach(function (k) { sec.style.removeProperty(k); });
+      sec.removeAttribute('data-step');
+      route.style.strokeDasharray = route.style.strokeDashoffset = '';
+      glow.style.strokeDasharray = glow.style.strokeDashoffset = '';
+      casing.style.strokeDasharray = casing.style.strokeDashoffset = '';
+      step = 0; measured = false; last = -1;
+    }
+    function fmt(v) { var s = v.toFixed(1); return comma ? s.replace('.', ',') : s; }
+
+    function update() {
+
+      if (!root.classList.contains('motion')) { if (step) clear(); return; }
+      if (!measured) measure();
+      var p = film;
+      if (Math.abs(p - last) < .0004 && step) return;
+      last = p;
+
+      // Beat 1: draw (0 to .36)
+      set('--in', out(seg(p, 0, .1)));
+      set('--hud', out(seg(p, .06, .12)));
+      var d = seg(p, .1, .34);
+      var drawn = ease(d);
+      // The finger hops tap to tap; the line follows to the next tap.
+      var hop = drawn * 3, k = Math.min(2, Math.floor(hop)), f = hop - k;
+      var at = TAP_AT[k] + (TAP_AT[k + 1] - TAP_AT[k]) * c01(f * 1.25);
+      if (d >= 1) at = 1;
+      var off = len * (1 - at);
+      route.style.strokeDasharray = len + ' ' + len; route.style.strokeDashoffset = off;
+      casing.style.strokeDasharray = len + ' ' + len; casing.style.strokeDashoffset = off;
+      glow.style.strokeDasharray = len + ' ' + len; glow.style.strokeDashoffset = off;
+      var pt = route.getPointAtLength(len * at);
+      dot.setAttribute('cx', pt.x.toFixed(1)); dot.setAttribute('cy', pt.y.toFixed(1));
+      dot.style.opacity = d > 0 && d < 1 ? 1 : 0;
+      // Finger sits on the tap it is about to make.
+      var fi = d <= 0 ? 0 : Math.min(3, f > .8 ? k + 1 : k);
+      if (d >= 1) fi = 3;
+      finger.setAttribute('transform', 'translate(' + TAPS_XY[fi][0] + ' ' + TAPS_XY[fi][1] + ')');
+      finger.style.opacity = (p > .08 && p < .36) ? .95 : 0;
+      for (var i = 0; i < 4; i++) {
+        var tapAt = i === 0 ? 0 : i / 3;
+        var on = d > 0 && drawn >= tapAt - .001;
+        var since = c01((drawn - tapAt) * 6);
+        var rip = taps[i].querySelector('.pl-rip'), wp = taps[i].querySelector('.pl-wp');
+        wp.style.opacity = on ? 1 : 0;
+        rip.style.opacity = on ? (1 - since) * .9 : 0;
+        rip.setAttribute('r', (6 + since * 22).toFixed(1));
       }
-      if (finger) {
-        finger.setAttribute('transform', 'translate(' + fx.toFixed(1) + ' ' + fy.toFixed(1) + ')');
-        finger.style.opacity = fo.toFixed(3);
+      // Like the app: the figure updates when a leg lands, it does not tick.
+      var legs = d <= 0 ? 0 : d >= 1 ? 3 : Math.min(3, Math.floor(drawn * 3 + .2));
+      var shown = km * (legs ? TAP_AT[legs] : 0);
+      if (num && num.getAttribute('data-v') !== String(legs)) { num.setAttribute('data-v', String(legs)); num.textContent = fmt(shown); num.parentNode.classList.remove('pl-bump'); void num.offsetWidth; if (legs) num.parentNode.classList.add('pl-bump'); }
+
+      // Beat 2: tilt into 3D, sights stand up (.36 to .66)
+      set('--tilt', ease(seg(p, .36, .48)) * (1 - ease(seg(p, .66, .76))));
+      set('--pan', ease(seg(p, .42, .66)) * (1 - ease(seg(p, .66, .76))));
+      set('--p1', back(seg(p, .44, .5)) * (1 - seg(p, .66, .72)));
+      set('--p2', back(seg(p, .5, .56)) * (1 - seg(p, .66, .72)));
+      set('--p3', back(seg(p, .56, .62)) * (1 - seg(p, .66, .72)));
+
+      // Beat 3: map settles back, the Watch rises (.68 to 1)
+      var aw = ease(seg(p, .66, .8));
+      set('--away', aw);
+      set('--map-o', 1 - aw * .9);
+      set('--pin-o', 1 - seg(p, .66, .7));
+      set('--ph', out(seg(p, .7, .84)));
+      set('--wrist', out(seg(p, .74, .88)));
+      var turn = seg(p, .86, .97);
+      sec.classList.toggle('pl-turned', turn >= 1);
+      if (wdist) {
+        var m = turn >= 1 ? 300 : Math.max(10, Math.round((1 - turn) * 12) * 10);
+        wdist.textContent = String(m);
       }
-      rips.forEach(function (c, i) {
-        var r = rip[i] || 0;
-        c.setAttribute('r', (6 + r * 24).toFixed(1));
-        c.style.opacity = r > 0 && r < 1 ? (1 - r).toFixed(3) : 0;
-        if (dots[i]) dots[i].style.opacity = clamp(r * 4).toFixed(3);
-      });
-      guides.forEach(function (g, i) { g.style.opacity = (gd[i] * 0.85).toFixed(3); });
-      var text = nf.format(Math.round(KM * d * 10) / 10);
-      if (text !== lastText) { num.textContent = text; lastText = text; }
 
-      // Beat 2: what you will meet.
-      var c = clamp((t - 0.465) / 0.15);
-      if (comet) {
-        var cp = route.getPointAtLength(L * c);
-        comet.setAttribute('cx', cp.x.toFixed(1));
-        comet.setAttribute('cy', cp.y.toFixed(1));
-        comet.style.opacity = (clamp(c * 12) * (1 - clamp((c - 0.97) / 0.03))).toFixed(3);
-      }
-      pf.forEach(function (f, i) {
-        var at = 0.465 + 0.15 * f - 0.01;
-        set('--p' + i, back(clamp((t - at) / 0.06)));
-      });
-
-      // Beat 3: to your wrist.
-      set('--k', inOut(clamp((t - 0.64) / 0.22)));
-      set('--ph', out(clamp((t - 0.68) / 0.16)));
-      set('--w', out(clamp((t - 0.72) / 0.16)));
-      set('--turn', inOut(clamp((t - 0.87) / 0.08)));
-      var bz = t > 0.93;
-      if (bz !== buzz) { buzz = bz; sec.classList.toggle('pl-buzz', bz); }
-
-      set('--b1', clamp(t / 0.46));
-      set('--b2', clamp((t - 0.46) / 0.18));
-      set('--b3', clamp((t - 0.64) / 0.31));
-      var beat = t < 0.46 ? 0 : t < 0.64 ? 1 : 2;
-      if (beat !== lastBeat) {
-        lastBeat = beat;
-        says.forEach(function (s, i) { s.classList.toggle('on', i === beat); });
-        beats.forEach(function (s, i) { s.classList.toggle('on', i === beat); });
-      }
+      var s = p < .37 ? 1 : p < .67 ? 2 : 3;
+      if (s !== step) { step = s; sec.setAttribute('data-step', String(s)); }
     }
-
-    function progress() {
-      var r = run.getBoundingClientRect();
-      var vh = window.innerHeight;
-      var span = r.height - vh;
-      if (span < 10) return 1;
-      return clamp(-r.top / span);
+    // A film: it plays once when the stage is half in view and holds its last frame.
+    var D = 9500, film = 0, t0 = 0, raf = 0;
+    var again = sec.querySelector('.pl-again');
+    function tick(now) {
+      raf = 0;
+      if (!root.classList.contains('motion')) { film = 0; t0 = 0; update(); return; }
+      film = c01((now - t0) / D);
+      update();
+      if (film < 1) raf = requestAnimationFrame(tick);
+      else sec.classList.add('pl-done');
     }
-
-    var ticking = false, easing = false;
-    function step() {
-      easing = false;
-      try {
-        if (!root.classList.contains('motion')) { if (live) reset(); return; }
-        var delta = target - shown;
-        shown = Math.abs(delta) < 0.0008 ? target : shown + delta * 0.16;
-        live = true;
-        paint(shown);
-        if (shown !== target) { easing = true; requestAnimationFrame(step); }
-      } catch (e) { dead = true; reset(); }
+    function play() {
+      if (raf) cancelAnimationFrame(raf);
+      sec.classList.remove('pl-done');
+      film = 0; last = -1; t0 = performance.now();
+      raf = requestAnimationFrame(tick);
     }
-    function frame() {
-      ticking = false;
-      if (dead) return;
-      try {
-        if (!root.classList.contains('motion')) { if (live) reset(); return; }
-        var r = run.getBoundingClientRect(), vh = window.innerHeight;
-        if (r.bottom < -vh * 0.3 || r.top > vh * 1.3) return;   // far away: rest
-        target = progress();
-        if (!live) shown = target;
-        if (!easing) { easing = true; requestAnimationFrame(step); }
-      } catch (e) { dead = true; reset(); }
-    }
-    function request() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(frame);
-    }
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request, { passive: true });
-    window.addEventListener('load', request);
-    request();
-  } catch (e) { /* the final frame in the markup stays */ }
+    if (again) again.addEventListener('click', play);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        if (!t0 && es[0].intersectionRatio >= .5 && root.classList.contains('motion')) play();
+      }, { threshold: [0, .5] }).observe(stage);
+    } else { film = 1; }
+    window.addEventListener('resize', function () { measured = false; last = -1; if (!raf) update(); }, { passive: true });
+    new MutationObserver(function () { measured = false; last = -1; if (!root.classList.contains('motion')) { t0 = 0; film = 0; } update(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
+    update();
+  } catch (e) {
+    try { var s = document.getElementById('planner'); if (s) { s.classList.add('pl-off'); s.removeAttribute('data-step'); } } catch (_) {}
+  }
 })();

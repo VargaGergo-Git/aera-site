@@ -113,10 +113,10 @@ p { margin: 0; }
 .brand { display: flex; align-items: center; gap: 10px; font: 700 19px/1 var(--rounded); text-decoration: none; color: var(--hero-ink); }
 .bar.scrolled .brand { color: var(--ink); }
 .brand img { width: 30px; height: 30px; border-radius: 8px; }
-.bar nav { margin-left: auto; display: flex; align-items: center; gap: 22px; }
-.bar nav a { color: var(--hero-ink-2); text-decoration: none; font-size: 15px; font-weight: 500; }
-.bar.scrolled nav a { color: var(--ink-2); }
-.bar nav a:hover { color: var(--hero-ink); }
+.bar nav:where(:not(.chapters)) { margin-left: auto; display: flex; align-items: center; gap: 22px; }
+.bar nav:where(:not(.chapters)) a { color: var(--hero-ink-2); text-decoration: none; font-size: 15px; font-weight: 500; }
+.bar.scrolled nav:where(:not(.chapters)) a { color: var(--ink-2); }
+.bar nav:where(:not(.chapters)) a:hover { color: var(--hero-ink); }
 .bar.scrolled nav a:hover { color: var(--ink); }
 .bar nav .get {
   color: #fff; background: #111; padding: 8px 14px; border-radius: 999px; font-weight: 600;
@@ -771,8 +771,10 @@ html:not(.motion) .chip-night { display: none; }
 }
 .bar.ch-on .chapters { opacity: 1; visibility: visible; pointer-events: auto; transform: translate3d(-50%, -50%, 0); transition: opacity .35s var(--ease), transform .45s var(--ease); }
 /* While the chapters show, the secondary links step aside so nothing collides. */
-.bar.ch-on nav .opt { display: none; }
-@media (max-width: 640px) {
+.bar nav .opt { transition: opacity .3s var(--ease), visibility 0s .3s; }
+.bar.ch-on nav .opt { opacity: 0; visibility: hidden; pointer-events: none; }
+/* Phones and small tablets (iPad mini portrait): the pill would reach the Get button. */
+@media (max-width: 819px) {
   .bar.ch-on .brand { font-size: 0; gap: 0; }
   .chapters { left: calc(var(--gutter) + 40px); transform: translate3d(0, -40%, 0); }
   .bar.ch-on .chapters { transform: translate3d(0, -50%, 0); }
@@ -791,13 +793,15 @@ html:not(.motion) .chip-night { display: none; }
 .ch-now { display: none; }
 /* Phones: four fixed dots and the current chapter's name after them. Only the name's
    text changes, so nothing moves when the chapter turns over. */
-@media (max-width: 640px) {
+@media (max-width: 819px) {
   .chapters { align-items: center; }
   .chapters a { width: 22px; padding: 0; justify-content: center; }
   .chapters a span { display: none; }
   .chapters a.on { background: none; box-shadow: none; }
   .ch-now { display: block; padding: 0 12px 0 6px; font-size: 13px; font-weight: 650; color: var(--ink); white-space: nowrap; }
 }
+/* The smallest phones keep only the dots, so the name never runs under Get Aera. */
+@media (max-width: 379px) { .ch-now { display: none; } .chapters a { width: 20px; } }
 @media (prefers-reduced-motion: reduce) { .chapters, .bar.ch-on .chapters { transition: none; } }
 
 /* ---------- reviews: one lead quote, the true rating, two quieter ---------- */

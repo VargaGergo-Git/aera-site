@@ -9,7 +9,7 @@
     var orb = sec.querySelector('.eng-orb .core');
     var img = sec.querySelector('.eng-device img');
     var flip = sec.getAttribute('data-flip') === '1';
-    var ticking = false, step = 0, isWord = false, wordW = 0, wordH = 0, headBottom = 0;
+    var ticking = false, step = 0, isWord = false, isLanded = false, wordCss = '', wordW = 0, wordH = 0, headBottom = 0;
     // Plays once, like a film, when the stage is half in view, then holds on the last frame.
     var DUR = 7000, t0 = 0, done = false;
     // Where "Good to go" sits on the 400 x 870 capture: centre and width.
@@ -17,7 +17,9 @@
     function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
     function seg(p, a, b) { return c01((p - a) / (b - a)); }
     function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
+    // Only changed values are written: an unchanged write still restyles the whole scene.
+    var vals = {};
+    function set(k, v) { var s = typeof v === 'number' ? v.toFixed(3) : v; if (vals[k] !== s) { vals[k] = s; sec.style.setProperty(k, s); } }
     // Geometry for the film, read once (and on resize) so no frame ever forces a layout.
     // G.dev*: the phone at rest; G.img*: the capture inside it; G.orb*: the orb relative
     // to the board's centre at full size. Frames map these through the current transforms.
@@ -56,7 +58,7 @@
       ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--glow', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y'].forEach(function (k) { sec.style.removeProperty(k); });
       sec.removeAttribute('data-step'); sec.classList.remove('is-word', 'is-landed');
       word.style.transform = ''; word.style.opacity = '';
-      step = 0; isWord = false;
+      step = 0; isWord = false; isLanded = false; wordCss = ''; vals = {};
     }
     function update() {
       ticking = false;
@@ -77,7 +79,8 @@
       if (s !== step) { step = s; sec.setAttribute('data-step', String(s)); }
       var w = p > .55;
       if (w !== isWord) { isWord = w; sec.classList.toggle('is-word', w); }
-      sec.classList.toggle('is-landed', p > .88);
+      var landed = p > .88;
+      if (landed !== isLanded) { isLanded = landed; sec.classList.toggle('is-landed', landed); }
 
       // Bloom: a burst of light where the three streams meet.
       var bl = seg(p, .55, .78);
@@ -109,14 +112,16 @@
         }
       }
       set('--mk', 1 - seg(p, .895, .93));
-      word.style.opacity = op.toFixed(3);
-      word.style.transform = 'translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
+      var css = op.toFixed(3) + '|translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
+      if (css !== wordCss) { wordCss = css; var cut = css.indexOf('|'); word.style.opacity = css.slice(0, cut); word.style.transform = css.slice(cut + 1); }
     }
     function frame() { update(); if (t0 && !done) requestAnimationFrame(frame); }
     function play() { if (t0 || done) return; t0 = performance.now(); requestAnimationFrame(frame); }
     function redraw() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { if (es[0].isIntersecting) play(); }, { threshold: .5 }).observe(stage);
+      // Scrolled away mid-film: jump to the last frame instead of animating off screen.
+      new IntersectionObserver(function (es) { if (!es[0].isIntersecting && t0 && !done) { done = true; redraw(); } }).observe(stage);
     } else { done = true; }
     window.addEventListener('resize', function () { wordW = 0; redraw(); }, { passive: true });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; redraw(); });
