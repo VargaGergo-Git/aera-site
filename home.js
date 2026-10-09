@@ -342,3 +342,15 @@
     });
   }
 })();
+
+/* Lazy images start loading a screen and a half before they arrive, so pinned
+   scenes never show an empty phone while the scroll carries them in. */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var imgs = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+  if (!imgs.length) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.loading = 'eager'; io.unobserve(e.target); } });
+  }, { rootMargin: '150% 0px' });
+  imgs.forEach(function (im) { io.observe(im); });
+})();
