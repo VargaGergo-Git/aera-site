@@ -15,7 +15,10 @@ sys.path.insert(0, os.path.dirname(__file__))
 import landscape  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE = "https://vargagergo-git.github.io/aera-site/"
+# Once a custom domain is live, the CNAME file names it and every absolute URL
+# (canonical, hreflang, og) follows. Until then, the GitHub Pages address.
+_cname = os.path.join(ROOT, "CNAME")
+BASE = ("https://%s/" % open(_cname).read().strip()) if os.path.exists(_cname) else "https://vargagergo-git.github.io/aera-site/"
 
 APPLE = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014'
          '-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948'
