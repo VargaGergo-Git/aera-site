@@ -43,4 +43,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://vargagergo-git.github.io/aera-site/sitemap.xml
+Sitemap: https://aerahealth.app/sitemap.xml
