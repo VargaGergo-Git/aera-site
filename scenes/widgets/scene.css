@@ -128,6 +128,7 @@
 .scene-widgets .wg-v svg { width: calc(13 * var(--pt)); height: calc(13 * var(--pt)); flex: none; }
 .scene-widgets .wg-rail { position: relative; display: block; margin-top: calc(7 * var(--pt)); height: calc(6 * var(--pt)); border-radius: 9px; background: var(--wg-rail); }
 .scene-widgets .wg-rail::before { content: ""; position: absolute; left: 28%; right: 28%; top: 0; bottom: 0; border-radius: 9px; background: var(--wg-band); }
+.scene-widgets .wg-car { position: absolute; inset: 0; display: block; }
 .scene-widgets .wg-dot { position: absolute; top: 50%; left: calc(var(--o) * 100%); width: calc(9 * var(--pt)); height: calc(9 * var(--pt)); margin: calc(-4.5 * var(--pt)) 0 0 calc(-4.5 * var(--pt)); border-radius: 50%; background: var(--c); box-shadow: 0 0 0 calc(2 * var(--pt)) var(--wg-card); }
 .scene-widgets .wg-last { display: flex; padding: 0; }
 .scene-widgets .wg-map { width: 46%; height: 100%; flex: none; }
@@ -153,7 +154,7 @@
 .scene-widgets .wg-dots { position: absolute; left: 0; right: 0; top: calc(728 * var(--pt)); display: flex; justify-content: center; gap: calc(8 * var(--pt)); }
 .scene-widgets .wg-dots i { width: calc(7 * var(--pt)); height: calc(7 * var(--pt)); border-radius: 50%; background: rgba(255, 255, 255, .45); }
 .scene-widgets .wg-dots .on { background: #fff; }
-.scene-widgets .wg-dock { left: calc(12 * var(--pt)); right: calc(12 * var(--pt)); bottom: calc(12 * var(--pt)); height: calc(90 * var(--pt)); padding: 0 calc(16 * var(--pt)); align-items: center; border-radius: calc(36 * var(--pt)); background: rgba(255, 255, 255, .22); -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5); box-sizing: border-box; }
+.scene-widgets .wg-dock { left: calc(12 * var(--pt)); right: calc(12 * var(--pt)); bottom: calc(12 * var(--pt)); height: calc(90 * var(--pt)); padding: 0 calc(16 * var(--pt)); align-items: center; border-radius: calc(36 * var(--pt)); background: rgba(255, 255, 255, .3); box-sizing: border-box; }
 .scene-widgets .wg-aera { display: grid; place-items: center; --a: #1b1a20; --b: #34323c; color: #f6c35a; }
 .scene-widgets .wg-aera svg { width: 62%; height: 62%; }
 
@@ -163,20 +164,21 @@
 .scene-widgets .wg-date { position: absolute; left: 0; right: 0; top: calc(78 * var(--pt)); font-size: calc(20 * var(--pt)); font-weight: 600; opacity: .9; }
 .scene-widgets .wg-clock { position: absolute; left: 0; right: 0; top: calc(98 * var(--pt)); font: 700 calc(104 * var(--pt))/1 var(--rounded); letter-spacing: -0.035em; }
 .scene-widgets .wg-acc { position: absolute; left: calc(36 * var(--pt)); right: calc(36 * var(--pt)); top: calc(232 * var(--pt)); display: flex; justify-content: center; gap: calc(14 * var(--pt)); }
-.scene-widgets .wg-rect { width: calc(184 * var(--pt)); height: calc(80 * var(--pt)); box-sizing: border-box; padding: calc(8 * var(--pt)) calc(12 * var(--pt)); border-radius: calc(18 * var(--pt)); background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); text-align: left; }
+.scene-widgets .wg-rect { width: calc(184 * var(--pt)); height: calc(80 * var(--pt)); box-sizing: border-box; padding: calc(8 * var(--pt)) calc(12 * var(--pt)); border-radius: calc(18 * var(--pt)); background: rgba(18, 26, 52, .22); text-align: left; }
 .scene-widgets .wg-an { font-size: calc(13 * var(--pt)); font-weight: 600; opacity: .8; white-space: nowrap; }
 .scene-widgets .wg-af { font: 800 calc(25 * var(--pt))/1.1 var(--rounded); white-space: nowrap; }
 .scene-widgets .wg-ab { font-size: calc(12.5 * var(--pt)); opacity: .8; white-space: nowrap; overflow: hidden; }
-.scene-widgets .wg-circ { width: calc(80 * var(--pt)); height: calc(80 * var(--pt)); border-radius: 50%; background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); display: grid; place-content: center; line-height: 1; }
+.scene-widgets .wg-circ { width: calc(80 * var(--pt)); height: calc(80 * var(--pt)); border-radius: 50%; background: rgba(18, 26, 52, .22); display: grid; place-content: center; line-height: 1; }
 .scene-widgets .wg-circ b { font: 800 calc(26 * var(--pt))/1 var(--rounded); }
 .scene-widgets .wg-circ small { margin-top: calc(2 * var(--pt)); font-size: calc(10 * var(--pt)); font-weight: 600; opacity: .85; }
-.scene-widgets .wg-lockbar i { position: absolute; bottom: calc(42 * var(--pt)); width: calc(50 * var(--pt)); height: calc(50 * var(--pt)); border-radius: 50%; background: rgba(255, 255, 255, .18); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.scene-widgets .wg-lockbar i { position: absolute; bottom: calc(42 * var(--pt)); width: calc(50 * var(--pt)); height: calc(50 * var(--pt)); border-radius: 50%; background: rgba(18, 26, 52, .22); }
 .scene-widgets .wg-lockbar i:first-child { left: calc(46 * var(--pt)); }
 .scene-widgets .wg-lockbar i:last-child { right: calc(46 * var(--pt)); }
 
 .scene-widgets .wg-liftbox { display: none; }
 html.motion .scene-widgets:not(.wg-off) .wg-liftbox { --dev-w: var(--dev-px, 260px); display: block; position: absolute; left: 50%; top: calc(50% + var(--dev-dy, 0px)); width: var(--dev-w); height: calc(var(--dev-w) * 852 / 393); margin: calc(var(--dev-w) * -1.0841) 0 0 calc(var(--dev-w) * -.5); container-type: inline-size; --pt: calc(100cqw / 393); pointer-events: none; z-index: 2; }
-html.motion .scene-widgets:not(.wg-off) .wg-lift { opacity: 0; transform-origin: 50% 50%; transform: translate3d(0, calc(var(--zoom, 0) * var(--lift-y, 0px)), 0) scale(calc(1 + var(--zoom, 0) * var(--zoom-s, .6))); box-shadow: 0 calc(var(--zoom, 0) * 40px) calc(var(--zoom, 0) * 90px) calc(var(--zoom, 0) * -20px) rgba(0, 0, 0, .55); will-change: transform; }
+html.motion .scene-widgets:not(.wg-off) .wg-lift { opacity: 0; transform-origin: 50% 50%; transform: translate3d(0, calc(var(--zoom, 0) * var(--lift-y, 0px)), 0) scale(calc(1 + var(--zoom, 0) * var(--zoom-s, .6))); will-change: transform; }
+html.motion .scene-widgets:not(.wg-off) .wg-lift::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; box-shadow: 0 40px 90px -20px rgba(0, 0, 0, .55); opacity: var(--zoom, 0); pointer-events: none; }
 html.motion .scene-widgets:not(.wg-off).wg-lifted .wg-lift { opacity: 1; }
 html.motion .scene-widgets:not(.wg-off).wg-lifted .wg-home .wg-w3 { opacity: 0; }
 
@@ -190,15 +192,14 @@ html.motion .scene-widgets:not(.wg-off) .wg-stage { position: relative; height: 
 html.motion .scene-widgets:not(.wg-off) .wg-stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(55% 50% at 50% 55%, var(--wg-halo), transparent 70%); }
 html.motion .scene-widgets:not(.wg-off) .wg-head { position: absolute; left: var(--gutter); right: var(--gutter); top: calc(68px + 2.5svh); margin-inline: auto; z-index: 3; }
 html.motion .scene-widgets:not(.wg-off) .wg-h2 { font-size: clamp(30px, 5.2vw, 68px); }
-html.motion .scene-widgets:not(.wg-off) .wg-t { display: block; opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(6px); transition: opacity .55s var(--ease), transform .7s var(--ease), filter .55s var(--ease); }
+html.motion .scene-widgets:not(.wg-off) .wg-t { display: block; opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity .55s var(--ease), transform .7s var(--ease); }
 html.motion .scene-widgets:not(.wg-off)[data-step="1"] .wg-t1,
 html.motion .scene-widgets:not(.wg-off)[data-step="2"] .wg-t2,
-html.motion .scene-widgets:not(.wg-off)[data-step="3"] .wg-t3 { opacity: 1; transform: none; filter: none; transition-delay: .12s; }
+html.motion .scene-widgets:not(.wg-off)[data-step="3"] .wg-t3 { opacity: 1; transform: none; transition-delay: .12s; }
 html.motion .scene-widgets:not(.wg-off) .wg-world { position: absolute; width: auto; left: 0; right: 0; top: var(--world-top, 30svh); height: var(--world-h, 50svh); display: block; z-index: 1; }
 html.motion .scene-widgets:not(.wg-off) .wg-dev {
   --dev-w: var(--dev-px, 260px);
   position: absolute; left: 50%; top: calc(50% + var(--dev-dy, 0px)); margin: calc(var(--dev-w) * -1.0841 - var(--dev-w) * .035) 0 0 calc(var(--dev-w) * -.535);
-  -webkit-mask-image: var(--dev-mask, none); mask-image: var(--dev-mask, none);
   transform-origin: 50% 39%;
   transform: translate3d(0, calc((1 - var(--in, 0)) * 40svh), 0) rotateX(calc((1 - var(--in, 0)) * 16deg)) scale(calc(1 - var(--zoom, 0) * .05));
   opacity: min(1, calc(var(--in, 0) * 2.5));
@@ -215,12 +216,19 @@ html.motion .scene-widgets:not(.wg-off) .wg-w2,
 html.motion .scene-widgets:not(.wg-off) .wg-w4 { filter: none; }
 html.motion .scene-widgets:not(.wg-off) .wg-home .wg-w:not(.wg-w3), html.motion .scene-widgets:not(.wg-off) .wg-icons, html.motion .scene-widgets:not(.wg-off) .wg-dock, html.motion .scene-widgets:not(.wg-off) .wg-dots { transition: none; }
 html.motion .scene-widgets:not(.wg-off) .wg-dim { position: absolute; inset: 0; background: #000; opacity: calc(var(--zoom, 0) * .5); pointer-events: none; z-index: 3; }
-html.motion .scene-widgets:not(.wg-off) .wg-dot { left: calc((.5 + (var(--o) - .5) * var(--dots, 1)) * 100%); }
+/* Dots slide out from the middle of the rail: a full-width carrier moves, so nothing re-lays out. */
+html.motion .scene-widgets:not(.wg-off) .wg-car { transform: translate3d(calc((.5 - var(--o)) * (1 - var(--dots, 1)) * 100%), 0, 0); }
+/* Everything that moves gets its own small layer while the film runs, and gives it back after. */
+html.motion .scene-widgets:not(.wg-off) :is(.wg-w, .wg-home, .wg-lock, .wg-dim, .wg-clock, .wg-date, .wg-rect, .wg-circ, .wg-car) { will-change: transform, opacity; }
+html.motion .scene-widgets:not(.wg-off).wg-done :is(.wg-w, .wg-home, .wg-dim, .wg-clock, .wg-date, .wg-rect, .wg-circ, .wg-car) { will-change: auto; }
 html.motion .scene-widgets:not(.wg-off) .wg-home { opacity: calc(1 - var(--hout, 0)); transform: scale(calc(1 - var(--hout, 0) * .08)); }
 html.motion .scene-widgets:not(.wg-off) .wg-lock { opacity: var(--lock, 0); }
 html.motion .scene-widgets:not(.wg-off) .wg-clock, html.motion .scene-widgets:not(.wg-off) .wg-date { transform: translate3d(0, calc((1 - var(--lock, 0)) * -40 * var(--pt)), 0); }
 html.motion .scene-widgets:not(.wg-off) .wg-rect { opacity: var(--a1, 0); transform: translate3d(0, calc((1 - var(--a1, 0)) * 14 * var(--pt)), 0) scale(calc(.9 + var(--a1, 0) * .1)); }
 html.motion .scene-widgets:not(.wg-off) .wg-circ { opacity: var(--a2, 0); transform: translate3d(0, calc((1 - var(--a2, 0)) * 14 * var(--pt)), 0) scale(calc(.9 + var(--a2, 0) * .1)); }
+/* On phones the device runs on under the words: it fades into the page, like a crop. */
+.scene-widgets .wg-fade { display: none; }
+html.motion .scene-widgets:not(.wg-off).wg-faded .wg-fade { display: block; position: absolute; left: 0; right: 0; top: calc(var(--fade-y, 100svh) - 120px); bottom: 0; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, transparent, var(--bg) 120px); }
 html.motion .scene-widgets:not(.wg-off) .wg-caps { position: absolute; left: var(--gutter); right: var(--gutter); bottom: max(22px, 3.2svh); margin-inline: auto; display: grid; gap: 0; z-index: 3; }
 html.motion .scene-widgets:not(.wg-off) .wg-cap { grid-area: 1 / 1; opacity: 0; transform: translate3d(0, 12px, 0); transition: opacity .5s var(--ease), transform .6s var(--ease); }
 html.motion .scene-widgets:not(.wg-off)[data-step="1"] .wg-c1,
