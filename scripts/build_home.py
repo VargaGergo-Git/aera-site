@@ -402,45 +402,46 @@ def coach_svg(uid, label=""):
             % (aria, uid, uid, eyes, COACH_BODY, uid, uid))
 
 
-# Real words from real people. Tyler agreed on 2026-10-02 to be quoted with his
-# first name (his email, verbatim, dash included). The other two are public App
-# Store reviews, quoted as written. Never edit or invent a quote.
-REVIEWS = [
-    {"who": "Tyler", "stars": 0, "title": "",
-     "text": "Your numbers match exactly how my body feels&#8212;especially the sleep data. Apple Health is usually too generous with its sleep scores, which rarely represent my actual energy levels. Yours is much more accurate to how I feel every morning.",
-     "meta": {"en": "Founding tester, United States", "hu": "Alapító tesztelő, USA", "de": "Gründungstester, USA"}},
-    {"who": "MicheleMascia", "stars": 5, "title": "Great App",
-     "text": "Really nice app, I especially like the design and how clearly the data is presented. It feels like a good mix between wellness and training, and I think it has a lot of potential.",
-     "meta": {"en": "App Store review, Germany", "hu": "App Store-értékelés, Németország", "de": "App-Store-Bewertung, Deutschland"}},
-    {"who": "Marci0702", "stars": 5, "title": "so far it&#8217;s my favorite",
-     "text": "fast, straightforward app, user friendly. An intuitive and feature rich application",
-     "meta": {"en": "App Store review, Hungary", "hu": "App Store-értékelés, Magyarország", "de": "App-Store-Bewertung, Ungarn"}},
-]
+# What early users tell us, as anonymous paraphrases (his ask 2026-10-09: no
+# names, no one-by-one quotes). Each line restates one real source and nothing
+# more; never invent a review, a reviewer or a rating count.
+#   1. Tyler, founding tester, email 2026-10-02 (numbers match how he feels,
+#      sleep most of all, Apple Health too generous).
+#   2. MicheleMascia, App Store review DE, 5 stars (design, clear data, wellness
+#      and training mix).
+#   3. Marci0702, App Store review HU, 5 stars (fast, straightforward, intuitive,
+#      feature rich).
+REVIEWS = {
+    "en": [("Matches how I feel", "The numbers line up with how my body actually feels in the morning, sleep most of all. Closer than the sleep scores I was used to.", "Founding tester"),
+           ("Clear at a glance", "A design people like, with the data laid out clearly. A good mix of wellness and training.", "App Store review"),
+           ("Fast and simple", "Quick, straightforward and easy to find your way around, with a lot inside.", "App Store review")],
+    "hu": [("Úgy mutat, ahogy érzem", "A számok azt mutatják, amit reggel a testem tényleg érez, főleg az alvásnál. Pontosabb, mint az alváspontok, amikhez hozzászoktam.", "Alapító tesztelő"),
+           ("Első ránézésre érthető", "Szép kialakítás, átlátható adatok. Jó egyensúly a jóllét és az edzés között.", "App Store-értékelés"),
+           ("Gyors és egyszerű", "Gyors, egyenes, könnyen kiismerhető, és sok minden van benne.", "App Store-értékelés")],
+    "de": [("Passt zu meinem Gefühl", "Die Zahlen passen dazu, wie sich mein Körper morgens wirklich anfühlt, beim Schlaf am meisten. Genauer als die Schlafwerte, die ich kannte.", "Gründungstester"),
+           ("Auf einen Blick klar", "Ein Design, das gefällt, und Daten, die klar aufbereitet sind. Eine gute Mischung aus Wohlbefinden und Training.", "App-Store-Bewertung"),
+           ("Schnell und einfach", "Schnell, geradlinig und leicht zu verstehen, mit viel drin.", "App-Store-Bewertung")],
+}
 REVIEW_COPY = {
-    "en": {"kicker": "From early users", "h2": "Mornings that feel right.", "note": ""},
-    "hu": {"kicker": "Korai felhasználók", "h2": "Reggelek, ahogy tényleg érzed őket.", "note": "A vélemények eredeti, angol nyelvükön."},
-    "de": {"kicker": "Erste Stimmen", "h2": "Morgen, die sich richtig anfühlen.", "note": "Die Stimmen im englischen Original."},
+    "en": {"kicker": "From early users", "h2": "Mornings that feel right.", "note": "What testers and App Store reviewers tell us, in our words."},
+    "hu": {"kicker": "Korai felhasználók", "h2": "Reggelek, ahogy tényleg érzed őket.", "note": "Amit a tesztelők és az App Store-értékelések mondanak, a mi szavainkkal."},
+    "de": {"kicker": "Erste Stimmen", "h2": "Morgen, die sich richtig anfühlen.", "note": "Was Tester und App-Store-Bewertungen sagen, in unseren Worten."},
 }
 
 
 def reviews_section(code):
     rc = REVIEW_COPY[code]
-    cards = []
-    for i, r in enumerate(REVIEWS):
-        stars = '<p class="rv-stars" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>' if r["stars"] else ""
-        title = '<p class="rv-title">%s</p>' % r["title"] if r["title"] else ""
-        cards.append('<figure class="rv reveal" style="--d:%.2fs">%s%s<blockquote lang="en">&#8220;%s&#8221;</blockquote>'
-                     '<figcaption><span class="rv-av">%s</span><span><b>%s</b><small>%s</small></span></figcaption></figure>'
-                     % (i * 0.1, stars, title, r["text"], r["who"][0], r["who"], r["meta"][code]))
-    note = '<p class="footnote center">%s</p>' % rc["note"] if rc["note"] else ""
+    cards = "".join('<figure class="rv reveal" style="--d:%.2fs"><p class="rv-title">%s</p><p class="rv-text">%s</p>'
+                    '<figcaption>%s</figcaption></figure>' % (i * 0.1, t, x, src)
+                    for i, (t, x, src) in enumerate(REVIEWS[code]))
     return f"""<section class="reviews">
   <div class="wide">
     <div class="center reveal">
       <p class="kicker">{rc['kicker']}</p>
       <h2 class="h2 split">{rc['h2']}</h2>
     </div>
-    <div class="rv-grid">{''.join(cards)}</div>
-    {note}
+    <div class="rv-grid">{cards}</div>
+    <p class="footnote center">{rc['note']}</p>
   </div>
 </section>"""
 
