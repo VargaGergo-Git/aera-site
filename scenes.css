@@ -252,7 +252,7 @@ html.motion .scene-engine:not(.eng-off)[data-flip="1"] .eng-mask { display: bloc
 .motion .scene-flyover .fo-world { will-change: transform; }
 
 .scene-flyover .fo-floor {
-  position: absolute; left: -250%; top: -250%; width: 600%; height: 600%;
+  position: absolute; left: -125%; top: -125%; width: 350%; height: 350%; /* reaches every visible edge; 600% cost 3x the pixels */
   background: var(--fo-ground);
   transform: translateZ(-2px);
 }
