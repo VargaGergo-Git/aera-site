@@ -2,43 +2,106 @@
   try {
     var sec = document.getElementById('engine');
     if (!sec) return;
-    var pin = sec.querySelector('.eng-pin');
-    var coach = sec.querySelector('.eng-coach .coach');
     var root = document.documentElement;
-    var ticking = false, near = false, shown = false, step = 0;
+    var pin = sec.querySelector('.eng-pin');
+    var stage = sec.querySelector('.eng-stage');
+    var head = sec.querySelector('.eng-head');
+    var word = sec.querySelector('.eng-word');
+    var orb = sec.querySelector('.eng-orb .core');
+    var img = sec.querySelector('.eng-device img');
+    var flip = sec.getAttribute('data-flip') === '1';
+    var ticking = false, near = false, step = 0, isWord = false, wordW = 0, wordH = 0, headBottom = 0;
+    // Where "Good to go" sits on the 400 x 870 capture: centre and width.
+    var TX = 144 / 400, TY = 284 / 870, TW = 248 / 400;
     function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-    function f(v) { return v.toFixed(3); }
+    function seg(p, a, b) { return c01((p - a) / (b - a)); }
+    function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
+    function measure() {
+      wordW = word.offsetWidth; wordH = word.offsetHeight;
+      head.style.transform = 'none';
+      headBottom = head.offsetTop + head.offsetHeight;
+      head.style.transform = '';
+      set('--dev-top', (headBottom + 18) + 'px');
+      var vh0 = window.innerHeight, vw0 = window.innerWidth;
+      var room = vh0 - headBottom - 18 - (vw0 < 900 ? 44 : 28);
+      set('--dev-w', Math.max(150, Math.min(vw0 * .66, 360, room / 2.2)) + 'px');
+      var caps = sec.querySelector('.eng-caps');
+      var capsTop = vh0 - (caps ? caps.offsetHeight : 90) - Math.max(22, vh0 * .03);
+      var avail = capsTop - headBottom - 28;
+      var bw = Math.max(240, Math.min(vw0 - 32, 600, (avail - 44) / 1.05 + 44));
+      set('--board-w', bw + 'px');
+      set('--board-y', ((headBottom + capsTop) / 2) + 'px');
+    }
+    function clear() {
+      ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--sweep', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y'].forEach(function (k) { sec.style.removeProperty(k); });
+      sec.removeAttribute('data-step'); sec.classList.remove('is-word', 'is-landed');
+      word.style.transform = ''; word.style.opacity = '';
+      step = 0; isWord = false;
+    }
     function update() {
       ticking = false;
-      if (!root.classList.contains('motion')) {
-        if (step) { step = 0; shown = false; sec.removeAttribute('style'); sec.removeAttribute('data-step'); sec.classList.remove('is-result'); }
-        return;
-      }
+      if (!root.classList.contains('motion')) { if (step) clear(); return; }
+      if (!wordW) measure();
       var r = pin.getBoundingClientRect(), vh = window.innerHeight;
       var span = r.height - vh;
       var p = span > 0 ? c01(-r.top / span) : 1;
-      var d = c01((p - 0.74) / 0.16);
-      sec.style.setProperty('--a', f(c01(p / 0.28)));
-      sec.style.setProperty('--b', f(c01((p - 0.24) / 0.24)));
-      sec.style.setProperty('--c', f(c01((p - 0.48) / 0.26)));
-      sec.style.setProperty('--d', f(d));
-      var s = p < 0.26 ? 1 : p < 0.5 ? 2 : 3;
+      set('--hy', 1 - ease(seg(p, 0, .16)));
+      set('--rise', ease(seg(p, .03, .2)));
+      set('--a', seg(p, .12, .32));
+      set('--b', seg(p, .27, .42));
+      set('--c', seg(p, .4, .54));
+      set('--d', seg(p, .5, .58));
+      set('--fade', ease(seg(p, .56, .68)));
+      var dev = ease(seg(p, .7, .86));
+      set('--dev', dev);
+      var s = p < .27 ? 1 : p < .46 ? 2 : p < .74 ? 3 : 4;
       if (s !== step) { step = s; sec.setAttribute('data-step', String(s)); }
-      var res = d > 0.25;
-      if (res !== shown) {
-        shown = res;
-        sec.classList.toggle('is-result', res);
-        if (res && coach && window.AeraCoach) setTimeout(function () { try { window.AeraCoach.play(coach, 'hello'); } catch (e) {} }, 320);
+      var w = p > .55;
+      if (w !== isWord) { isWord = w; sec.classList.toggle('is-word', w); }
+      sec.classList.toggle('is-landed', p > .88);
+
+      var st = stage.getBoundingClientRect();
+      // Bloom: a burst of light where the three streams meet.
+      var bl = seg(p, .55, .78);
+      if (bl > 0 && bl < 1 && orb) {
+        var o = orb.getBoundingClientRect();
+        set('--bx', (o.left + o.width / 2 - st.left) + 'px');
+        set('--by', (o.top + o.height / 2 - st.top) + 'px');
       }
+      set('--bs', bl <= 0 ? 0 : .05 + Math.sin(Math.min(bl, 1) * Math.PI * .5) * 2.4);
+      set('--bo', bl <= 0 || bl >= 1 ? 0 : Math.sin(bl * Math.PI) * .9);
+
+      // The word: appears big in the middle, then lands on the real screen.
+      var wa = ease(seg(p, .6, .7));
+      set('--sweep', seg(p, .62, .78));
+      var cx = st.width / 2, cy = st.height * .52;
+      var k = ease(seg(p, .74, .9));
+      var s0 = .82 + .18 * wa, x = cx, y = cy, sc = s0, op = wa;
+      if (k > 0 && img) {
+        var ir = img.getBoundingClientRect();
+        if (flip) {
+          var tx = ir.left - st.left + ir.width * TX, ty = ir.top - st.top + ir.height * TY;
+          var ts = (ir.width * TW) / wordW;
+          x = cx + (tx - cx) * k; y = cy + (ty - cy) * k; sc = s0 + (ts - s0) * k;
+          op = wa * (1 - seg(p, .9, .95));
+        } else {
+          y = cy - k * st.height * .08; sc = s0 * (1 - .3 * k); op = wa * (1 - k);
+        }
+      }
+      set('--mk', 1 - seg(p, .895, .93));
+      word.style.opacity = op.toFixed(3);
+      word.style.transform = 'translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
     }
     function onScroll() { if (near && !ticking) { ticking = true; requestAnimationFrame(update); } }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { near = es[0].isIntersecting; if (near) onScroll(); }, { rootMargin: '50% 0px' }).observe(sec);
     } else { near = true; }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('resize', function () { wordW = 0; onScroll(); }, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; onScroll(); });
     update();
   } catch (e) {
-    try { document.getElementById('engine').removeAttribute('style'); } catch (e2) {}
+    try { var s2 = document.getElementById('engine'); s2.removeAttribute('style'); s2.classList.add('eng-off'); } catch (e2) {}
   }
 })();

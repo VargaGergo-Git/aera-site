@@ -1,7 +1,6 @@
 {
  "en": {
   "kicker": "How the call is made",
-  "h2": "Three signals in. One plain word out.",
   "s1_h": "Last night, as it happened",
   "s1_p": "Your sleep, your heart overnight and the strain of your week, read from Apple Health on your iPhone.",
   "s2_h": "Against your own usual",
@@ -17,13 +16,14 @@
   "v_week": "Usual load",
   "word": "Good to go",
   "why": "Recovery above your usual after a normal night.",
-  "session": "Today's session",
-  "session_sub": "Run · 45 min",
-  "note": "Illustration. In the app every number opens an article that shows how it was worked out."
+  "note": "Illustration. In the app every number opens an article that shows how it was worked out.",
+  "t1": "Three signals in.",
+  "t2": "One plain word out.",
+  "flip": "1",
+  "phone_alt": "Aera's Today screen: Good to go. Recovery is above your usual after a normal night. Today's session: an easy strength session, 35 minutes."
  },
  "hu": {
   "kicker": "Így születik a döntés",
-  "h2": "Három jel be. Egy egyszerű szó ki.",
   "s1_h": "A tegnap éjjel, ahogy volt",
   "s1_p": "Az alvásod, a szíved éjszaka és a heted terhelése, az iPhone-odon, az Apple Healthből olvasva.",
   "s2_h": "A saját szokásodhoz mérve",
@@ -39,13 +39,14 @@
   "v_week": "Szokásos terhelés",
   "word": "Mehet",
   "why": "A regenerálódás a szokásosnál jobb egy átlagos éjszaka után.",
-  "session": "Mai edzés",
-  "session_sub": "Futás · 45 perc",
-  "note": "Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki."
+  "note": "Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki.",
+  "t1": "Három jel be.",
+  "t2": "Egy egyszerű szó ki.",
+  "flip": "0",
+  "phone_alt": "Az Aera Ma képernyője (angol nyelvű felvétel): Good to go, vagyis mehet. A mai edzés: könnyű erősítő edzés, 35 perc."
  },
  "de": {
   "kicker": "So entsteht die Einschätzung",
-  "h2": "Drei Signale rein. Ein klares Wort raus.",
   "s1_h": "Die letzte Nacht, wie sie war",
   "s1_p": "Dein Schlaf, dein Herz über Nacht und die Belastung deiner Woche, auf deinem iPhone aus Apple Health gelesen.",
   "s2_h": "Gemessen an deinem Üblichen",
@@ -61,8 +62,10 @@
   "v_week": "Übliche Belastung",
   "word": "Bereit",
   "why": "Erholung über deinem Üblichen nach einer normalen Nacht.",
-  "session": "Heutige Einheit",
-  "session_sub": "Lauf · 45 Min.",
-  "note": "Illustration. In der App öffnet jede Zahl einen Artikel, der zeigt, wie sie entstanden ist."
+  "note": "Illustration. In der App öffnet jede Zahl einen Artikel, der zeigt, wie sie entstanden ist.",
+  "t1": "Drei Signale rein.",
+  "t2": "Ein klares Wort raus.",
+  "flip": "0",
+  "phone_alt": "Der Heute-Bildschirm von Aera (englische Aufnahme): Good to go, also bereit. Heutige Einheit: lockeres Krafttraining, 35 Minuten."
  }
 }
