@@ -201,7 +201,7 @@ COPY = {
             ("Az adataid", "var(--pink)", "Nyers adatok JSON vagy GPX formátumban, ingyen. Jelentések és minden más formátum a Premiummal."),
             ("Magyarul", "var(--sage)", "Az egész app magyarul, és még kilenc nyelven."),
         ],
-        "priv_h2": "Az egészségadataid az iPhone-odon maradnak.",
+        "priv_h2": "Az egészség&shy;adataid az <span class=\"nw\">iPhone-odon</span> maradnak.",
         "priv_sub": "Az Aera a telefonon olvassa az Apple Health adatait, és minden pontszám ott készül. Nincs fiók, nincs belépés, és az appban sehol nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot. Az összeomlási jelentések a hibák javítását segítik.",
         "priv_link": "Az adatvédelmi szabályzat (angolul)",
         "plans_h2": "Ingyen használható. Premium, ha többet szeretnél.",
@@ -303,7 +303,7 @@ COPY = {
             ("Deine Daten", "var(--pink)", "Rohdaten als JSON oder GPX, kostenlos. Berichte und alle anderen Formate mit Premium."),
             ("Auf Deutsch", "var(--sage)", "Die ganze App auf Deutsch, und in neun weiteren Sprachen."),
         ],
-        "priv_h2": "Gesundheitswerte bleiben auf deinem iPhone.",
+        "priv_h2": "Gesundheits&shy;werte bleiben auf deinem iPhone.",
         "priv_sub": "Aera liest Apple Health auf dem Handy und berechnet jeden Wert dort. Kein Konto, kein Login, und in der App steckt nirgends ein Sprachmodell. Die Produktanalyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte. Absturzberichte helfen, Fehler zu beheben.",
         "priv_link": "Datenschutzerklärung (auf Englisch)",
         "plans_h2": "Kostenlos nutzbar. Premium, wenn du mehr willst.",
@@ -396,7 +396,6 @@ def phone(name, alt, sizes, eager=False, cls=""):
 
 
 # The app's own verdict word for a good morning (Localizable.xcstrings).
-GOOD_WORD = {"en": "Good to go", "hu": "Mehet", "de": "Bereit"}
 
 
 # The Coach: the acorn mascot, drawn from the app's own geometry
@@ -699,7 +698,6 @@ def build(code):
 </header>
 
 <main>
-<div class="hero-run">
 <section class="hero" aria-labelledby="h1">
   <div class="sky sky-a"></div><div class="sky sky-b"></div>
   {L['stars']}
@@ -722,17 +720,11 @@ def build(code):
     <div class="hero-phone">
       <div class="phone hero-ph"><div class="screen-wrap">
         <div class="hs hs-home">{picture('home', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
-        <div class="hs hs-sleep" aria-hidden="true">{picture('sleep', c['sleep_alt'], '(max-width: 899px) 64vw, 380px', eager="soon")}</div>
-        <div class="hs-edge" aria-hidden="true"></div>
       </div></div>
-      <p class="chip chip-night" aria-hidden="true"><i></i>{c['chip_night']}</p>
-      <p class="chip chip-day" aria-hidden="true"><b>{GOOD_WORD[code]}</b>{c['chip_day']}</p>
     </div>
   </div>
   {L['near']}
 </section>
-
-</div>
 
 {scene('engine', code)}
 
@@ -760,6 +752,15 @@ def build(code):
 
 {scene('flyover', code) or after_old}
 
+<section class="privacy">
+  <div class="wide center reveal">
+    <div class="lock">{LOCK}</div>
+    <h2 class="h2 split">{c['priv_h2']}</h2>
+    <p class="sub">{c['priv_sub']}</p>
+    <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>
+  </div>
+</section>
+
 <section class="also">
   <div class="wide">
     <div class="center reveal">
@@ -767,15 +768,6 @@ def build(code):
       <h2 class="h2 split">{c['also_h2']}</h2>
     </div>
     <div class="tiles">{tiles}</div>
-  </div>
-</section>
-
-<section class="privacy">
-  <div class="wide center reveal">
-    <div class="lock">{LOCK}</div>
-    <h2 class="h2 split">{c['priv_h2']}</h2>
-    <p class="sub">{c['priv_sub']}</p>
-    <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>
   </div>
 </section>
 
@@ -812,7 +804,7 @@ def build(code):
 
 <section class="closing">
   <div class="wide reveal">
-    <div class="closing-coach" role="button" tabindex="0" aria-label="Coach">{coach_svg('cc-' + code)}</div>
+    <img class="closing-icon" src="assets/icon.png" alt="" width="96" height="96" loading="lazy" decoding="async">
     <h2 class="h2 split">{c['close_h2']}</h2>
     <div class="cta"><a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a></div>
   </div>
@@ -823,7 +815,7 @@ def build(code):
 <footer>
   <div class="wide">
     <div class="foot">
-      <div class="foot-brand"><a class="brand" href="{c['file']}"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a><p>{c['foot_tag']}</p></div>
+      <div class="foot-brand"><a class="brand" href="{c['file']}"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a><p>{c['eyebrow']}</p></div>
       {foot_col(c['foot_app'], c['foot_links_app'])}
       {foot_col(c['foot_legal'], c['foot_links_legal'])}
       <div><h4>{c['foot_more']}</h4>{''.join('<a href="%s">%s</a>' % (h, t) for h, t in c['foot_links_more'])}{langs}</div>

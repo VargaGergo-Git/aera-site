@@ -1,31 +1,26 @@
-/* Aera homepage motion. Everything on the page is readable without this file:
-   it only adds the entrance, the sunrise on scroll, the runner, the word-by-word
-   headlines, the story phone, the drawn route, the sunset and the reveals.
-   One scroll loop drives all of it with transform and opacity. If anything
-   throws, motion is dropped and the page stays fully visible. */
+/* Aera homepage motion. Everything on the page is readable without this file.
+   Like Apple's and Bevel's pages, the page scrolls natively and nothing is tied
+   to the scroll position: this only adds the hero's entrance, the dawn on its
+   headline and a fade-up as each block arrives, all in CSS (transform and
+   opacity). If anything throws, motion is dropped and everything shows. */
 (function () {
   var root = document.documentElement;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var hero = document.querySelector('.hero');
   var bar = document.querySelector('.bar');
-  var run = document.querySelector('.hero-run');
-  var dusk = document.querySelector('.dusk');
   var track = document.getElementById('track');
   var runner = document.getElementById('runner');
   var pending = [], io = null;
 
-  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-
-  function abandon() {
-    root.classList.remove('motion');
+  function showAll() {
     pending.forEach(function (el) { el.classList.add('in'); });
     pending = [];
     if (io) io.disconnect();
-    if (hero) { hero.style.removeProperty('--p'); hero.style.removeProperty('--sw'); }
+    if (hero) hero.classList.add('in');
   }
+  function abandon() { showAll(); root.classList.remove('motion'); }
 
-  // Headlines: wrap each word so it can rise from behind its own line.
+  // The hero headline: each word is wrapped so the dawn can pass over it word by word.
   function splitWords(el) {
     var i = 0;
     [].slice.call(el.childNodes).forEach(function (node) {
@@ -47,158 +42,47 @@
     });
   }
 
-  // Geometry is read once and on resize, never inside a frame: frames only use
-  // scrollY, so scrolling never forces a style or layout pass.
-  var G = null;
-  function measure() {
-    var sy = window.scrollY, vh = window.innerHeight;
-    function box(el) { if (!el) return null; var r = el.getBoundingClientRect(); return { top: r.top + sy, h: r.height }; }
-    G = { vh: vh, run: box(run), hero: box(hero), dusk: box(dusk) };
-    // Phones: how far the phone climbs so it ends just under the bar.
-    var ph = hero && hero.querySelector('.hero-ph');
-    if (ph) {
-      var top = 0, el = ph;
-      while (el && el !== hero) { top += el.offsetTop; el = el.offsetParent; }
-      if (el === hero) hero.style.setProperty('--rise', Math.min(0, 140 - top).toFixed(0) + 'px');
+  // The runner stands on the path through the meadow, placed once.
+  try {
+    if (track && runner) {
+      var L = track.getTotalLength(), t = 0.12 + 0.62 * 0.82, q = track.getPointAtLength(L * t);
+      runner.setAttribute('transform', 'translate(' + q.x.toFixed(1) + ' ' + q.y.toFixed(1) + ') scale(' + (1.9 * (1 - t * 0.78)).toFixed(3) + ')');
     }
-  }
+  } catch (e) {}
 
-  // The runner's path, sampled once: a frame looks points up instead of asking the SVG.
-  var LUT = [];
-  (function () {
-    try {
-      var L = track ? track.getTotalLength() : 0;
-      for (var i = 0; L && i <= 240; i++) { var q = track.getPointAtLength(L * i / 240); LUT.push(q.x, q.y); }
-    } catch (e) { LUT = []; }
-  })();
-  var lastPose = -1;
-  function placeRunner(p) {
-    if (!runner || !LUT.length) return;
-    var t = 0.12 + p * 0.82, f = t * 240, i = Math.min(239, Math.floor(f)), k = f - i;
-    var x = LUT[2 * i] + (LUT[2 * i + 2] - LUT[2 * i]) * k, y = LUT[2 * i + 1] + (LUT[2 * i + 3] - LUT[2 * i + 1]) * k;
-    var scale = 1.9 * (1 - t * 0.78);
-    runner.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + scale.toFixed(3) + ')');
-    var pose = Math.floor(t * 60) % 2;
-    if (pose !== lastPose) { runner.classList.toggle('b', pose === 1); lastPose = pose; }
+  // The header turns solid once the page has moved. One class, set only when it changes.
+  var scrolled = null;
+  function onScroll() {
+    var s = window.scrollY > 24;
+    if (s !== scrolled) { scrolled = s; if (bar) bar.classList.toggle('scrolled', s); }
   }
-
-  // Sunrise: the entrance lifts the sky from first light a little way, then
-  // scrolling through the hero carries it the rest of the way to morning.
-  var dawn = 0, dawnTarget = 0.24, dawnStart = 0;
-  function runProgress(sy) {
-    if (G.run && G.run.h > G.vh * 1.2) return clamp((sy - G.run.top) / (G.run.h - G.vh));
-    return clamp(sy / (G.vh * 0.6));   // phones without a pin: the first half screen
-  }
-
-  // scrollY is read in the scroll event, before any frame callback has touched a
-  // style, so reading it never forces a layout that another script dirtied.
-  var SY = window.scrollY;
-  var frames = 0, last = {};
-  function put(el, k, v) { var s = v.toFixed(4); if (last[k] !== s) { last[k] = s; el.style.setProperty(k, s); } }
-  function frame() {
-    try {
-      frames++;
-      var sy = SY;
-      if (bar) { var sc = sy > 24; if (last.bar !== sc) { last.bar = sc; bar.classList.toggle('scrolled', sc); } }
-      if (!root.classList.contains('motion')) return;
-      if (!G) measure();
-      if (hero && G.hero && sy < G.hero.top + Math.max(G.hero.h, G.run ? G.run.h : 0)) {
-        var t = runProgress(sy), p = dawn + (1 - dawn) * t;
-        put(hero, '--p', p);
-        put(hero, '--sw', clamp((t - 0.22) / 0.32));
-        put(hero, '--hr', t);
-        var day = t > 0.5;
-        if (last.day !== day) { last.day = day; hero.classList.toggle('day', day); }
-        placeRunner(p);
-      }
-      // Closing: the sun sets as you reach the bottom of the page.
-      if (dusk && G.dusk) {
-        var top = G.dusk.top - sy;
-        put(dusk, '--dp', top > G.vh ? 0 : clamp((G.vh - top) / (G.dusk.h + G.vh * 0.35)));
-      }
-    } catch (e) { abandon(); }
-  }
-
-  var ticking = false;
-  function request() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () { ticking = false; frame(); });
-  }
-  function remeasure() { G = null; SY = window.scrollY; request(); }
-
-  function tweenDawn(now) {
-    if (!dawnStart) dawnStart = now;
-    var k = Math.min((now - dawnStart) / 2200, 1);
-    dawn = dawnTarget * (1 - Math.pow(1 - k, 3));
-    frame();
-    if (k < 1) requestAnimationFrame(tweenDawn);
-  }
-
-  // Pointer depth in the hero on desktop: eased toward the cursor.
-  var mx = 0, my = 0, tx = 0, ty = 0, easing = false;
-  function easePointer() {
-    mx += (tx - mx) * 0.08;
-    my += (ty - my) * 0.08;
-    hero.style.setProperty('--mx', mx.toFixed(3));
-    hero.style.setProperty('--my', my.toFixed(3));
-    if (Math.abs(tx - mx) > 0.002 || Math.abs(ty - my) > 0.002) requestAnimationFrame(easePointer);
-    else easing = false;
-  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   try {
-    if (!reduced) {
-      root.classList.add('motion');
-      [].slice.call(document.querySelectorAll('.split')).forEach(splitWords);
-      // Reveals fire once as each block comes 12% above the bottom edge.
-      pending = [].slice.call(document.querySelectorAll('.reveal, .fan'));
-      if ('IntersectionObserver' in window) {
-        io = new IntersectionObserver(function (es) {
-          es.forEach(function (e) {
-            if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-            e.target.classList.add('in'); io.unobserve(e.target);
-            pending = pending.filter(function (x) { return x !== e.target; });
-          });
-        }, { rootMargin: '0px 0px -12% 0px' });
-        pending.forEach(function (el) { io.observe(el); });
-      } else { abandon(); }
-      if (hero) { hero.style.setProperty('--p', '0'); hero.style.setProperty('--sw', '0'); }
-      placeRunner(0);
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          if (hero) { hero.classList.add('in'); setTimeout(function () { hero.classList.add('dawned'); }, 4500); }
-          // Phones start at first light instead of tweening there: no restyle per frame at load.
-          if (window.innerWidth < 900) { dawn = dawnTarget; request(); } else requestAnimationFrame(tweenDawn);
-        });
+    if (reduced || !('IntersectionObserver' in window)) return;
+    root.classList.add('motion');
+    if (hero) [].slice.call(hero.querySelectorAll('.split')).forEach(splitWords);
+    // Each block fades up once, as it comes a little above the bottom edge.
+    pending = [].slice.call(document.querySelectorAll('.reveal, .fan, .dusk'));
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+        e.target.classList.add('in'); io.unobserve(e.target);
+        pending = pending.filter(function (x) { return x !== e.target; });
       });
-      if (finePointer && hero) {
-        hero.addEventListener('pointermove', function (e) {
-          tx = (e.clientX / window.innerWidth) * 2 - 1;
-          ty = (e.clientY / window.innerHeight) * 2 - 1;
-          if (!easing) { easing = true; requestAnimationFrame(easePointer); }
-        }, { passive: true });
-      }
-    } else {
-      placeRunner(0.62);
-    }
+    }, { rootMargin: '0px 0px -6% 0px' });
+    pending.forEach(function (el) { io.observe(el); });
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (!hero) return;
+        hero.classList.add('in');
+        setTimeout(function () { hero.classList.add('dawned'); }, 4500);
+      });
+    });
+    // If frames never arrive (a background tab, a stalled browser), nothing stays hidden.
+    setTimeout(function () { if (hero && !hero.classList.contains('in')) showAll(); }, 4000);
   } catch (e) { abandon(); }
-
-  window.addEventListener('scroll', function () { SY = window.scrollY; request(); }, { passive: true });
-  window.addEventListener('resize', remeasure, { passive: true });
-  window.addEventListener('load', remeasure);
-  window.addEventListener('pageshow', function () { SY = window.scrollY; remeasure(); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
-  // Page height changes (images, fonts, an opened answer) move what is below.
-  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
-  request();
-
-  // If frames never arrive at all, nothing stays hidden.
-  setTimeout(function () {
-    if (frames > 2) return;
-    pending.forEach(function (el) { el.classList.add('in'); });
-    pending = [];
-    if (hero) hero.classList.add('in');
-  }, 9000);
 })();
 
 /* The Coach: one-shot hello (a hop that lands with glad eyes) and nod (a dip and
