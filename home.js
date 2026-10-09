@@ -206,7 +206,7 @@
     if (!reduced) {
       root.classList.add('motion');
       [].slice.call(document.querySelectorAll('.split')).forEach(splitWords);
-      pending = [].slice.call(document.querySelectorAll('.reveal, .rails, .fan, .after'));
+      pending = [].slice.call(document.querySelectorAll('.reveal, .fan, .after'));
       if (hero) { hero.style.setProperty('--p', '0'); hero.style.setProperty('--sw', '0'); }
       placeRunner(0);
       requestAnimationFrame(function () {
@@ -241,93 +241,6 @@
     if (hero) hero.classList.add('in');
   }, 9000);
 })();
-
-/* Try a morning: the controls drive a simplified version of the morning call.
-   Works with reduced motion too (only the word's slide is skipped by CSS). */
-(function () {
-  var sec = document.getElementById('try');
-  var dataEl = document.getElementById('demo-copy');
-  if (!sec || !dataEl) return;
-  try {
-    var t = JSON.parse(dataEl.textContent);
-    var range = document.getElementById('sleep-h');
-    var out = document.getElementById('sleep-out');
-    var phoneEl = sec.querySelector('.demo-phone');
-    var wordEl = sec.querySelector('.demo-word');
-    var advice = sec.querySelector('.demo-advice');
-    var capSmall = sec.querySelector('.cap-txt small');
-    var capCoach = sec.querySelector('.demo-cap .coach');
-    var rows = {};
-    [].slice.call(sec.querySelectorAll('.demo-why li')).forEach(function (li) { rows[li.getAttribute('data-k')] = li; });
-    var GOOD = 'var(--green)', MID = 'var(--gold)', LOW = 'var(--indigo)';
-    var state = 2, last = {};
-
-    function picked(name) {
-      var el = sec.querySelector('input[name="' + name + '"]:checked');
-      return el ? Number(el.value) : 1;
-    }
-    function fmt(h) {
-      var hh = Math.floor(h), mm = Math.round((h - hh) * 60);
-      return hh + ' ' + t.h + (mm ? ' ' + mm + ' ' + t.m : '');
-    }
-    function setRow(k, text, color) {
-      var li = rows[k];
-      if (!li) return;
-      var span = li.querySelector('span');
-      if (span.textContent !== text) {
-        span.textContent = text;
-        li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash');
-        setTimeout(function () { li.classList.remove('flash'); }, 450);
-      }
-      li.querySelector('i').style.setProperty('--c', color);
-    }
-    function setWord(i) {
-      var cur = wordEl.querySelector('span:not(.out)');
-      if (cur && cur.textContent === t.words[i]) return;
-      if (cur) {
-        cur.classList.remove('in'); cur.classList.add('out');
-        setTimeout(function () { if (cur.parentNode) cur.parentNode.removeChild(cur); }, 320);
-      }
-      var n = document.createElement('span');
-      n.textContent = t.words[i];
-      n.className = 'in';
-      n.style.position = cur ? 'absolute' : '';
-      wordEl.style.position = 'relative';
-      setTimeout(function () { n.style.position = ''; }, 330);
-      wordEl.appendChild(n);
-    }
-
-    function update() {
-      var h = Number(range.value);
-      var heart = picked('heart'), week = picked('week');
-      range.style.setProperty('--v', ((h - 4.5) / 5).toFixed(3));
-      out.textContent = fmt(h);
-      var deficit = 7.5 - h;
-      var s = deficit <= -0.5 ? 0 : deficit <= 0.25 ? 1 : deficit <= 1.25 ? 2 : 3;
-      var pts = [1, 0.5, -1, -2.5][s] + [1, 0, -2][heart] + [0.5, 0, -1][week];
-      var next = pts >= 1.5 ? 3 : pts >= 0 ? 2 : pts >= -2.5 ? 1 : 0;
-      if (heart === 2 && week === 2 && s >= 2) next = 0;
-      setRow('sleep', t.r_sleep[s], s <= 1 ? GOOD : s === 2 ? MID : LOW);
-      setRow('heart', t.r_heart[heart], heart === 2 ? LOW : GOOD);
-      setRow('week', t.r_week[week], week === 2 ? MID : GOOD);
-      if (next !== state || !last.done) {
-        state = next;
-        phoneEl.setAttribute('data-state', next);
-        sec.setAttribute('data-state', next);
-        setWord(next);
-        advice.textContent = t.advice[next];
-        if (capSmall && t.sessions) capSmall.textContent = t.sessions[next];
-        if (last.done && capCoach && window.AeraCoach) window.AeraCoach.play(capCoach, next >= 2 ? 'hello' : 'nod');
-        if (last.done) { phoneEl.classList.remove('bump'); void phoneEl.offsetWidth; phoneEl.classList.add('bump'); setTimeout(function () { phoneEl.classList.remove('bump'); }, 600); }
-      }
-      last.done = true;
-    }
-    range.addEventListener('input', update);
-    sec.addEventListener('change', update);
-    update();
-  } catch (e) { /* the default call stays on screen */ }
-})();
-
 
 /* The Coach: one-shot hello (a hop that lands with glad eyes) and nod (a dip and
    a squint), as in the app. On the web its eyes also follow the pointer and it
@@ -403,7 +316,7 @@
 
   // Phones lean toward the pointer, a little.
   if (fine) {
-    [].slice.call(document.querySelectorAll('.duo .phone, .demo-phone')).forEach(function (ph) {
+    [].slice.call(document.querySelectorAll('.duo .phone')).forEach(function (ph) {
       ph.addEventListener('pointermove', function (e) {
         var r = ph.getBoundingClientRect();
         var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;

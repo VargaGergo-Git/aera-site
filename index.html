@@ -27,6 +27,7 @@
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="scenes.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "Sleep & Running Tracker for iPhone and Apple Watch", "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/", "downloadUrl": "https://apps.apple.com/app/id6762456252", "installUrl": "https://apps.apple.com/app/id6762456252", "description": "Aera reads how you slept, what your heart did overnight and how the week went, against your own usual, then tells you how hard to go today. Every number shows how it was worked out. No account.", "screenshot": ["https://aerahealth.app/img/home-light-800.webp", "https://aerahealth.app/img/sleep-dark-800.webp", "https://aerahealth.app/img/planner-dark-800.webp"], "featureList": ["The night as it happened", "What your heart did while you slept", "One plain word for the day", "How long, and how hard", "Draw the route from your door", "Fly back over the run you just did."], "author": {"@id": "https://aerahealth.app/#maker"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "en", "publisher": {"@id": "https://aerahealth.app/#maker"}}, {"@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What does Aera do?", "acceptedAnswer": {"@type": "Answer", "text": "Aera is an iPhone and Apple Watch app that reads Apple Health and tells you each morning how hard to go: rest day, go easy, good to go or go for it. It reads your sleep, recovery, stress and strain against your own usual, plans routes on a map with turn-by-turn directions, and explains every number in a short article."}}, {"@type": "Question", "name": "Is Aera free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Recovery, stress, strain and your sleep score, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."}}, {"@type": "Question", "name": "Do I need an account, and where does my data go?", "acceptedAnswer": {"@type": "Answer", "text": "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. There is no language model in the app. Product analytics stay off until you turn them on and never include health values."}}, {"@type": "Question", "name": "Do I need an Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "An Apple Watch gives Aera the overnight heart and sleep signals most reads are built on. Without one, Aera works from what your iPhone records, like steps and workouts, and the reads that need a watch wait until there is data."}}, {"@type": "Question", "name": "How does Aera know what is normal for me?", "acceptedAnswer": {"@type": "Answer", "text": "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."}}, {"@type": "Question", "name": "Is Aera a medical device?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."}}, {"@type": "Question", "name": "Which languages does Aera speak?", "acceptedAnswer": {"@type": "Answer", "text": "English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part."}}]}]}</script>
 <script>
 // The old single-page site lived at /#privacy, /#support, /#terms and /#eula.
@@ -98,51 +99,103 @@
   </div>
 </section>
 
-<section class="usual">
-  <div class="wide usual-grid">
-    <div class="reveal">
-      <p class="kicker">Against your usual</p>
-      <h2 class="h2 split">Your body doesn&#8217;t run on averages.</h2>
-      <p class="sub">So Aera doesn't score you against one. Every read sits on your own usual range, learned from weeks of your nights and sessions, and it moves as you change. Today's dot lands where you are.</p>
-    </div>
-    <div>
-      <div class="rails"><div class="rail" style="--c:var(--pink);--i:0"><div class="rail-top"><div><p class="rail-name"><i></i>Heart rate variability</p><p class="rail-word">Typical</p></div><p class="rail-val">84<small>ms</small></p></div><div class="track"><span class="band" style="--l:28%;--w:34%"></span><span class="dot" style="--v:58%"></span></div><div class="rail-ends"><span>Lower</span><span>Your usual</span><span>Higher</span></div></div><div class="rail" style="--c:var(--pink);--i:1"><div class="rail-top"><div><p class="rail-name"><i></i>Resting heart rate</p><p class="rail-word">Typical</p></div><p class="rail-val">53<small>bpm</small></p></div><div class="track"><span class="band" style="--l:30%;--w:30%"></span><span class="dot" style="--v:44%"></span></div><div class="rail-ends"><span>Lower</span><span>Your usual</span><span>Higher</span></div></div><div class="rail" style="--c:var(--indigo);--i:2"><div class="rail-top"><div><p class="rail-name"><i></i>Asleep</p><p class="rail-word">Right on your need</p></div><p class="rail-val">7h 25m<small></small></p></div><div class="track"><span class="band" style="--l:36%;--w:26%"></span><span class="dot" style="--v:61%"></span></div><div class="rail-ends"><span>Lower</span><span>Your usual</span><span>Higher</span></div></div></div>
-      <p class="footnote">Example readings from the app's own screens.</p>
-    </div>
+<section class="scene scene-engine" id="engine">
+  <div class="wide eng-head">
+    <p class="kicker reveal">How the call is made</p>
+    <h2 class="h2 split">Three signals in. One plain word out.</h2>
   </div>
-</section>
+  <div class="eng-pin">
+    <div class="eng-stage">
+      <div class="wide eng-grid">
+        <div class="eng-board" aria-hidden="true">
+          <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
+            <defs>
+              <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
+                <stop offset="0" stop-color="#7fe0b4"/>
+                <stop offset="0.55" stop-color="#2fae82"/>
+                <stop offset="1" stop-color="#1a7d5c"/>
+              </radialGradient>
+              <linearGradient id="engine-bar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0a03c"/>
+                <stop offset="1" stop-color="#c47f1f"/>
+              </linearGradient>
+            </defs>
 
-<section class="try" id="try">
-  <div class="wide try-grid">
-    <div class="try-copy reveal">
-        <p class="kicker">Try a morning</p>
-        <h2 class="h2 split">Change last night. Watch the call change.</h2>
-      <p class="sub">A simplified demo of the morning read. In the app each signal is measured against your own usual range, learned over weeks, and the reasons sit beside the word.</p>
-    </div>
-    <form class="controls reveal" style="--d:.1s" onsubmit="return false">
-        <div class="ctl">
-          <div class="ctl-head"><label for="sleep-h">Last night's sleep</label><output id="sleep-out" for="sleep-h">7 h 30 m</output></div>
-          <input id="sleep-h" type="range" min="4.5" max="9.5" step="0.25" value="7.5" style="--v:.6">
-          <p class="ctl-note">Your need: 7 h 30 m</p>
+            <g class="eng-lane ln1">
+              <text class="eng-lab" x="20" y="28">Sleep</text>
+                            <rect class="eng-band" x="20" y="58" width="270" height="18" rx="9"/>
+              <path class="eng-line glow" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <path class="eng-line" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <g class="eng-dot"><circle cx="304" cy="67" r="11" class="halo"/><circle cx="304" cy="67" r="6"/></g>
+              <text class="eng-val" x="290" y="28" text-anchor="end">7 h 25 m</text>
+            </g>
+
+            <g class="eng-lane ln2">
+              <text class="eng-lab" x="20" y="134">Overnight heart</text>
+              <rect class="eng-band" x="20" y="164" width="270" height="20" rx="10"/>
+              <path class="eng-line glow" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <path class="eng-line" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <g class="eng-dot"><circle cx="304" cy="154" r="11" class="halo"/><circle cx="304" cy="154" r="6"/></g>
+              <text class="eng-val" x="290" y="134" text-anchor="end">HRV 84 ms</text>
+            </g>
+
+            <g class="eng-lane ln3">
+              <text class="eng-lab" x="20" y="242">Last 7 days</text>
+              <rect class="eng-band" x="20" y="276" width="270" height="18" rx="9"/>
+              <g class="eng-bars">
+                <rect x="28" y="286" width="24" height="26" rx="5" style="--i:0"/>
+                <rect x="66" y="274" width="24" height="38" rx="5" style="--i:1"/>
+                <rect x="104" y="294" width="24" height="18" rx="5" style="--i:2"/>
+                <rect x="142" y="266" width="24" height="46" rx="5" style="--i:3"/>
+                <rect x="180" y="282" width="24" height="30" rx="5" style="--i:4"/>
+                <rect x="218" y="290" width="24" height="22" rx="5" style="--i:5"/>
+                <rect x="256" y="278" width="24" height="34" rx="5" style="--i:6"/>
+              </g>
+              <g class="eng-dot"><circle cx="304" cy="285" r="11" class="halo"/><circle cx="304" cy="285" r="6"/></g>
+              <text class="eng-val" x="290" y="242" text-anchor="end">Usual load</text>
+            </g>
+
+            <g class="eng-legend"><rect x="20" y="391" width="26" height="12" rx="6"/><text class="eng-us" x="54" y="401">your usual</text></g>
+
+            <g class="eng-streams">
+              <path class="eng-st s1 glow" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2 glow" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3 glow" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-st s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-comet s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-comet s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-comet s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+            </g>
+
+            <g class="eng-orb">
+              <circle class="ripple rp2" cx="172" cy="372" r="40"/>
+              <circle class="ripple rp1" cx="172" cy="372" r="40"/>
+              <circle class="trk" cx="172" cy="372" r="40"/>
+              <circle class="ring" cx="172" cy="372" r="40" pathLength="1" transform="rotate(-90 172 372)"/>
+              <circle class="core" cx="172" cy="372" r="33" fill="url(#engine-orb)"/>
+              <path class="tick" pathLength="1" d="M158 373L168 383L187 362"/>
+            </g>
+          </svg>
         </div>
-        <fieldset class="ctl"><legend>Overnight heart</legend><div class="seg"><label><input type="radio" name="heart" value="0"><span>Calmer</span></label><label><input type="radio" name="heart" value="1" checked><span>Usual</span></label><label><input type="radio" name="heart" value="2"><span>Strained</span></label></div><p class="ctl-note">Resting heart rate and HRV, against your usual</p></fieldset>
-        <fieldset class="ctl"><legend>Your last seven days</legend><div class="seg"><label><input type="radio" name="week" value="0"><span>Light</span></label><label><input type="radio" name="week" value="1" checked><span>Usual</span></label><label><input type="radio" name="week" value="2"><span>Heavy</span></label></div></fieldset>
-    </form>
-    <div class="try-stage reveal" style="--d:.2s">
-      <div class="phone demo-phone" data-state="2"><div class="screen-wrap demo-screen">
-        <div class="demo-top"></div>
-        <div class="demo-body">
-          <p class="demo-date">&#8249; This morning</p>
-          <p class="demo-word" aria-live="polite"><span>Good to go</span></p>
-          <p class="demo-advice">Your usual run is on.</p>
-          <div class="demo-cap"><span class="cap-mark"><svg class="coach" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="dc-en-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient><mask id="dc-en-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g class="eyes" fill="#000"><rect class="eye" x="33.65" y="57.30" width="11.5" height="17" rx="5.75"/><rect class="eye" x="58.45" y="57.30" width="11.5" height="17" rx="5.75"/></g><path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/><path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs><g class="coach-body"><path d="M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z" fill="url(#dc-en-ink)" mask="url(#dc-en-face)"/></g></svg></span><span class="cap-txt"><b>Today's session</b><small>Run · 45 min</small></span><i aria-hidden="true">&#8250;</i></div>
-          <ul class="demo-why"><li data-k="sleep"><i></i><span>Sleep met your need</span></li><li data-k="heart"><i></i><span>Heart in its usual range</span></li><li data-k="week"><i></i><span>A usual week</span></li></ul>
+
+        <div class="eng-copy">
+          <ol class="eng-caps">
+            <li class="cap c1"><b>Last night, as it happened</b><span>Your sleep, your heart overnight and the strain of your week, read from Apple Health on your iPhone.</span></li>
+            <li class="cap c2"><b>Against your own usual</b><span>Each one lands on the range learned from your own weeks, not on an average of strangers.</span></li>
+            <li class="cap c3"><b>One word for the day</b><span>Rest day, go easy, good to go or go for it, with the reasons right beside it.</span></li>
+          </ol>
+          <div class="eng-result">
+            <p class="eng-word"><i aria-hidden="true"></i>Good to go</p>
+            <p class="eng-why">Recovery above your usual after a normal night.</p>
+            <div class="eng-cap"><span class="eng-coach"><svg class="coach" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="eng-en-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient><mask id="eng-en-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g class="eyes" fill="#000"><rect class="eye" x="33.65" y="57.30" width="11.5" height="17" rx="5.75"/><rect class="eye" x="58.45" y="57.30" width="11.5" height="17" rx="5.75"/></g><path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/><path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs><g class="coach-body"><path d="M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z" fill="url(#eng-en-ink)" mask="url(#eng-en-face)"/></g></svg></span><span class="eng-cap-txt"><b>Today's session</b><small>Run · 45 min</small></span></div>
+          </div>
+          <p class="eng-note">Illustration. In the app every number opens an article that shows how it was worked out.</p>
         </div>
-      </div></div>
-      <p class="demo-note">Demo only. Your real read comes from your own Apple Health data.</p>
+      </div>
     </div>
   </div>
-  <script type="application/json" id="demo-copy">{"words": ["Rest day", "Go easy", "Good to go", "Go for it"], "advice": ["Let today be recovery. A walk counts.", "Keep it conversational and short.", "Your usual run is on.", "A good day for the hard session."], "r_sleep": ["Slept past your need", "Sleep met your need", "A little short on sleep", "A short night"], "r_heart": ["Heart calmer than usual", "Heart in its usual range", "Heart above its usual"], "r_week": ["A light week", "A usual week", "A heavy week"], "h": "h", "m": "m", "sessions": ["Rest day", "Easy run · 30 min", "Run · 45 min", "Intervals · 50 min"]}</script>
 </section>
 
 <section class="reviews">
@@ -188,6 +241,7 @@
   </div>
 </section>
 
+
 <section>
   <div class="wide map-grid">
     <div class="reveal">
@@ -201,6 +255,9 @@
     </div>
   </div>
 </section>
+
+
+
 
 <section class="also">
   <div class="wide">
@@ -273,6 +330,7 @@
 </footer>
 
 <script src="home.js" defer></script>
+<script src="scenes.js" defer></script>
 
 </body>
 </html>

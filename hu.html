@@ -27,6 +27,7 @@
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="scenes.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "alvás- és futáskövető iPhone-ra és Apple Watch-ra", "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/hu.html", "downloadUrl": "https://apps.apple.com/hu/app/id6762456252", "installUrl": "https://apps.apple.com/hu/app/id6762456252", "description": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és hogyan telt a heted, a saját szokásodhoz mérve. Aztán megmondja, milyen keményen menj ma. Teljesen magyarul, fiók nélkül.", "screenshot": ["https://aerahealth.app/img/home-light-800.webp", "https://aerahealth.app/img/sleep-dark-800.webp", "https://aerahealth.app/img/planner-dark-800.webp"], "featureList": ["Az éjszakád, ahogy tényleg volt", "Mit csinált a szíved, amíg aludtál", "Egy egyszerű szó a napra", "Mennyi ideig és milyen keményen", "Rajzold meg az útvonalat a kapudtól", "Repüld be újra a futásodat."], "author": {"@id": "https://aerahealth.app/#maker"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "hu", "publisher": {"@id": "https://aerahealth.app/#maker"}}, {"@type": "FAQPage", "inLanguage": "hu", "mainEntity": [{"@type": "Question", "name": "Mit csinál az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Az Aera egy iPhone- és Apple Watch-app, ami az Apple Health adataiból minden reggel megmondja, milyen keményen menj: pihenőnap, csak lazán, mehet vagy hajrá. Az alvásodat, a regenerálódásodat, a stresszt és a terhelést a saját szokásodhoz méri, útvonalat tervez a térképen kanyarról kanyarra navigációval, és minden számot elmagyaráz egy rövid cikkben."}}, {"@type": "Question", "name": "Ingyenes az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Igen. A regenerálódás, a stressz, a terhelés és az alváspontszám, a napi döntés, az útvonaltervező, a kanyarról kanyarra navigáció, minden edzés kiértékelése, minden egyéni rekord és az elmúlt hét nap Flyovere ingyenes. A Premium hozzáadja a mai edzést, az alvástartalékot, a helyeidet, a régebbi Flyovereket, a tizenkét hónapnál régebbi előzményeket, a jelentéseket és minden exportformátumot."}}, {"@type": "Question", "name": "Kell fiók? Hová kerülnek az adataim?", "acceptedAnswer": {"@type": "Answer", "text": "Nincs fiók. Az Aera az iPhone-odon olvassa az Apple Health adatait, és minden pontszám ott készül, így az egészségadataid az iPhone-odon maradnak. Az appban nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot."}}, {"@type": "Question", "name": "Kell hozzá Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Az Apple Watch adja azokat az éjszakai szív- és alvásjeleket, amelyekre a legtöbb érték épül. Nélküle az Aera abból dolgozik, amit az iPhone rögzít, például lépésekből és edzésekből, az órát igénylő értékek pedig megvárják az adatot."}}, {"@type": "Question", "name": "Honnan tudja az Aera, mi a szokásos nálam?", "acceptedAnswer": {"@type": "Answer", "text": "Több hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos tartományod, és minden új napot ahhoz mér. Amíg kevés az adat, kiírja, hogy még tanul, és nem találgat."}}, {"@type": "Question", "name": "Orvostechnikai eszköz az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az óra méréseit, például az alvásszakaszokat, becslésnek kell tekinteni, és minden cikk megmondja, hol szűnik meg megbízhatónak lenni a szám."}}, {"@type": "Question", "name": "Milyen nyelveken érhető el?", "acceptedAnswer": {"@type": "Answer", "text": "Teljesen magyarul, angolul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul."}}]}]}</script>
 
 </head>
@@ -90,51 +91,103 @@
   </div>
 </section>
 
-<section class="usual">
-  <div class="wide usual-grid">
-    <div class="reveal">
-      <p class="kicker">A saját szokásodhoz mérve</p>
-      <h2 class="h2 split">A tested nem átlag.</h2>
-      <p class="sub">Ezért az Aera sem egy átlaghoz mér. Minden érték a saját szokásos tartományodon ül, amit hetek éjszakáiból és edzéseiből tanul meg, és veled együtt változik. A mai pötty oda esik, ahol most tartasz.</p>
-    </div>
-    <div>
-      <div class="rails"><div class="rail" style="--c:var(--pink);--i:0"><div class="rail-top"><div><p class="rail-name"><i></i>Pulzusvariabilitás</p><p class="rail-word">Tipikus</p></div><p class="rail-val">84<small>ms</small></p></div><div class="track"><span class="band" style="--l:28%;--w:34%"></span><span class="dot" style="--v:58%"></span></div><div class="rail-ends"><span>Alacsonyabb</span><span>Szokásos</span><span>Magasabb</span></div></div><div class="rail" style="--c:var(--pink);--i:1"><div class="rail-top"><div><p class="rail-name"><i></i>Nyugalmi pulzus</p><p class="rail-word">Tipikus</p></div><p class="rail-val">53<small>bpm</small></p></div><div class="track"><span class="band" style="--l:30%;--w:30%"></span><span class="dot" style="--v:44%"></span></div><div class="rail-ends"><span>Alacsonyabb</span><span>Szokásos</span><span>Magasabb</span></div></div><div class="rail" style="--c:var(--indigo);--i:2"><div class="rail-top"><div><p class="rail-name"><i></i>Alvás</p><p class="rail-word">Pont az igényed szerint</p></div><p class="rail-val">7 ó 25 p<small></small></p></div><div class="track"><span class="band" style="--l:36%;--w:26%"></span><span class="dot" style="--v:61%"></span></div><div class="rail-ends"><span>Alacsonyabb</span><span>Szokásos</span><span>Magasabb</span></div></div></div>
-      <p class="footnote">Példaértékek az app saját képernyőiről.</p>
-    </div>
+<section class="scene scene-engine" id="engine">
+  <div class="wide eng-head">
+    <p class="kicker reveal">Így születik a döntés</p>
+    <h2 class="h2 split">Három jel be. Egy egyszerű szó ki.</h2>
   </div>
-</section>
+  <div class="eng-pin">
+    <div class="eng-stage">
+      <div class="wide eng-grid">
+        <div class="eng-board" aria-hidden="true">
+          <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
+            <defs>
+              <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
+                <stop offset="0" stop-color="#7fe0b4"/>
+                <stop offset="0.55" stop-color="#2fae82"/>
+                <stop offset="1" stop-color="#1a7d5c"/>
+              </radialGradient>
+              <linearGradient id="engine-bar" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0a03c"/>
+                <stop offset="1" stop-color="#c47f1f"/>
+              </linearGradient>
+            </defs>
 
-<section class="try" id="try">
-  <div class="wide try-grid">
-    <div class="try-copy reveal">
-        <p class="kicker">Próbáld ki</p>
-        <h2 class="h2 split">Változtass az éjszakán. Nézd, hogyan változik a nap.</h2>
-      <p class="sub">Egyszerűsített bemutató a reggeli döntésről. Az appban minden jelet a saját, hetek alatt megtanult szokásos tartományodhoz mér, és az okokat a szó mellé írja.</p>
-    </div>
-    <form class="controls reveal" style="--d:.1s" onsubmit="return false">
-        <div class="ctl">
-          <div class="ctl-head"><label for="sleep-h">Az éjjeli alvás</label><output id="sleep-out" for="sleep-h">7 ó 30 p</output></div>
-          <input id="sleep-h" type="range" min="4.5" max="9.5" step="0.25" value="7.5" style="--v:.6">
-          <p class="ctl-note">Az igényed: 7 ó 30 p</p>
+            <g class="eng-lane ln1">
+              <text class="eng-lab" x="20" y="28">Alvás</text>
+                            <rect class="eng-band" x="20" y="58" width="270" height="18" rx="9"/>
+              <path class="eng-line glow" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <path class="eng-line" pathLength="1" d="M20 46H34V72H52V88H80V72H96V58H110V72H128V88H146V72H170V58H190V72H214V88H226V72H246V58H266V72H278V58H290V46"/>
+              <g class="eng-dot"><circle cx="304" cy="67" r="11" class="halo"/><circle cx="304" cy="67" r="6"/></g>
+              <text class="eng-val" x="290" y="28" text-anchor="end">7 ó 25 p</text>
+            </g>
+
+            <g class="eng-lane ln2">
+              <text class="eng-lab" x="20" y="134">Éjszakai szív</text>
+              <rect class="eng-band" x="20" y="164" width="270" height="20" rx="10"/>
+              <path class="eng-line glow" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <path class="eng-line" pathLength="1" d="M20 192C40 186 50 198 70 190S100 176 120 182S150 172 170 174S200 162 220 166S250 156 270 158S285 154 290 156"/>
+              <g class="eng-dot"><circle cx="304" cy="154" r="11" class="halo"/><circle cx="304" cy="154" r="6"/></g>
+              <text class="eng-val" x="290" y="134" text-anchor="end">HRV 84 ms</text>
+            </g>
+
+            <g class="eng-lane ln3">
+              <text class="eng-lab" x="20" y="242">Elmúlt 7 nap</text>
+              <rect class="eng-band" x="20" y="276" width="270" height="18" rx="9"/>
+              <g class="eng-bars">
+                <rect x="28" y="286" width="24" height="26" rx="5" style="--i:0"/>
+                <rect x="66" y="274" width="24" height="38" rx="5" style="--i:1"/>
+                <rect x="104" y="294" width="24" height="18" rx="5" style="--i:2"/>
+                <rect x="142" y="266" width="24" height="46" rx="5" style="--i:3"/>
+                <rect x="180" y="282" width="24" height="30" rx="5" style="--i:4"/>
+                <rect x="218" y="290" width="24" height="22" rx="5" style="--i:5"/>
+                <rect x="256" y="278" width="24" height="34" rx="5" style="--i:6"/>
+              </g>
+              <g class="eng-dot"><circle cx="304" cy="285" r="11" class="halo"/><circle cx="304" cy="285" r="6"/></g>
+              <text class="eng-val" x="290" y="242" text-anchor="end">Szokásos terhelés</text>
+            </g>
+
+            <g class="eng-legend"><rect x="20" y="391" width="26" height="12" rx="6"/><text class="eng-us" x="54" y="401">a szokásod</text></g>
+
+            <g class="eng-streams">
+              <path class="eng-st s1 glow" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2 glow" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3 glow" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-st s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-st s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-st s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+              <path class="eng-comet s1" pathLength="1" d="M316 67C392 67 392 300 214 364"/>
+              <path class="eng-comet s2" pathLength="1" d="M316 154C378 154 372 322 214 372"/>
+              <path class="eng-comet s3" pathLength="1" d="M316 285C356 285 340 366 214 380"/>
+            </g>
+
+            <g class="eng-orb">
+              <circle class="ripple rp2" cx="172" cy="372" r="40"/>
+              <circle class="ripple rp1" cx="172" cy="372" r="40"/>
+              <circle class="trk" cx="172" cy="372" r="40"/>
+              <circle class="ring" cx="172" cy="372" r="40" pathLength="1" transform="rotate(-90 172 372)"/>
+              <circle class="core" cx="172" cy="372" r="33" fill="url(#engine-orb)"/>
+              <path class="tick" pathLength="1" d="M158 373L168 383L187 362"/>
+            </g>
+          </svg>
         </div>
-        <fieldset class="ctl"><legend>Éjszakai szív</legend><div class="seg"><label><input type="radio" name="heart" value="0"><span>Nyugodtabb</span></label><label><input type="radio" name="heart" value="1" checked><span>Szokásos</span></label><label><input type="radio" name="heart" value="2"><span>Feszültebb</span></label></div><p class="ctl-note">Nyugalmi pulzus és HRV a szokásodhoz képest</p></fieldset>
-        <fieldset class="ctl"><legend>Az elmúlt hét nap</legend><div class="seg"><label><input type="radio" name="week" value="0"><span>Könnyű</span></label><label><input type="radio" name="week" value="1" checked><span>Szokásos</span></label><label><input type="radio" name="week" value="2"><span>Kemény</span></label></div></fieldset>
-    </form>
-    <div class="try-stage reveal" style="--d:.2s">
-      <div class="phone demo-phone" data-state="2"><div class="screen-wrap demo-screen">
-        <div class="demo-top"></div>
-        <div class="demo-body">
-          <p class="demo-date">&#8249; Ma reggel</p>
-          <p class="demo-word" aria-live="polite"><span>Mehet</span></p>
-          <p class="demo-advice">Mehet a szokásos futás.</p>
-          <div class="demo-cap"><span class="cap-mark"><svg class="coach" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="dc-hu-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient><mask id="dc-hu-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g class="eyes" fill="#000"><rect class="eye" x="33.65" y="57.30" width="11.5" height="17" rx="5.75"/><rect class="eye" x="58.45" y="57.30" width="11.5" height="17" rx="5.75"/></g><path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/><path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs><g class="coach-body"><path d="M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z" fill="url(#dc-hu-ink)" mask="url(#dc-hu-face)"/></g></svg></span><span class="cap-txt"><b>Mai edzés</b><small>Futás · 45 perc</small></span><i aria-hidden="true">&#8250;</i></div>
-          <ul class="demo-why"><li data-k="sleep"><i></i><span>Kialudtad magad</span></li><li data-k="heart"><i></i><span>A szíved a szokásos tartományban</span></li><li data-k="week"><i></i><span>Szokásos hét</span></li></ul>
+
+        <div class="eng-copy">
+          <ol class="eng-caps">
+            <li class="cap c1"><b>A tegnap éjjel, ahogy volt</b><span>Az alvásod, a szíved éjszaka és a heted terhelése, az iPhone-odon, az Apple Healthből olvasva.</span></li>
+            <li class="cap c2"><b>A saját szokásodhoz mérve</b><span>Mindegyik a saját heteidből megtanult tartományra esik, nem idegenek átlagára.</span></li>
+            <li class="cap c3"><b>Egy szó a napra</b><span>Pihenőnap, csak lazán, mehet vagy hajrá, és mellette ott az ok is.</span></li>
+          </ol>
+          <div class="eng-result">
+            <p class="eng-word"><i aria-hidden="true"></i>Mehet</p>
+            <p class="eng-why">A regenerálódás a szokásosnál jobb egy átlagos éjszaka után.</p>
+            <div class="eng-cap"><span class="eng-coach"><svg class="coach" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="eng-hu-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient><mask id="eng-hu-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g class="eyes" fill="#000"><rect class="eye" x="33.65" y="57.30" width="11.5" height="17" rx="5.75"/><rect class="eye" x="58.45" y="57.30" width="11.5" height="17" rx="5.75"/></g><path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/><path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs><g class="coach-body"><path d="M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z" fill="url(#eng-hu-ink)" mask="url(#eng-hu-face)"/></g></svg></span><span class="eng-cap-txt"><b>Mai edzés</b><small>Futás · 45 perc</small></span></div>
+          </div>
+          <p class="eng-note">Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki.</p>
         </div>
-      </div></div>
-      <p class="demo-note">Csak bemutató. Az igazi döntés a saját Apple Health adataidból jön.</p>
+      </div>
     </div>
   </div>
-  <script type="application/json" id="demo-copy">{"words": ["Pihenőnap", "Csak lazán", "Mehet", "Hajrá"], "advice": ["Ma a pihenés a feladat. Egy séta belefér.", "Beszélgetős tempó, inkább rövidebben.", "Mehet a szokásos futás.", "Jó nap a kemény edzésre."], "r_sleep": ["Többet aludtál, mint amennyi kell", "Kialudtad magad", "Kicsit rövid éjszaka", "Rövid éjszaka"], "r_heart": ["A szíved nyugodtabb a szokásosnál", "A szíved a szokásos tartományban", "A szíved feszültebb a szokásosnál"], "r_week": ["Könnyű hét", "Szokásos hét", "Kemény hét"], "h": "ó", "m": "p", "sessions": ["Pihenőnap", "Könnyű futás · 30 perc", "Futás · 45 perc", "Intervallumok · 50 perc"]}</script>
 </section>
 
 <section class="reviews">
@@ -180,6 +233,7 @@
   </div>
 </section>
 
+
 <section>
   <div class="wide map-grid">
     <div class="reveal">
@@ -193,6 +247,9 @@
     </div>
   </div>
 </section>
+
+
+
 
 <section class="also">
   <div class="wide">
@@ -265,6 +322,7 @@
 </footer>
 
 <script src="home.js" defer></script>
+<script src="scenes.js" defer></script>
 
 </body>
 </html>

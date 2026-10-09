@@ -10,6 +10,7 @@ Loops are not promised until the 3.2.1 fix is live.
 import html
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -68,16 +69,6 @@ COPY = {
              "Tap the map and the line keeps to real paths, with the distance counting as you draw. Follow it turn by turn on your iPhone or Apple Watch, spoken if you want it, even with no signal.",
              None, "The route planner over a satellite map"),
         ],
-        "usual_kicker": "Against your usual",
-        "usual_h2": "Your body doesn&#8217;t run on averages.",
-        "usual_sub": "So Aera doesn't score you against one. Every read sits on your own usual range, learned from weeks of your nights and sessions, and it moves as you change. Today's dot lands where you are.",
-        "rails": [
-            ("Heart rate variability", "var(--pink)", "84", "ms", "Typical", "28%", "34%", "58%"),
-            ("Resting heart rate", "var(--pink)", "53", "bpm", "Typical", "30%", "30%", "44%"),
-            ("Asleep", "var(--indigo)", "7h 25m", "", "Right on your need", "36%", "26%", "61%"),
-        ],
-        "rail_ends": ("Lower", "Your usual", "Higher"),
-        "rails_note": "Example readings from the app's own screens.",
         "guide_kicker": "The Field Guide",
         "guide_h2": "Every number shows its work.",
         "guide_sub": "Tap a number and it opens a short article: how it was worked out, the research behind it with sources you can open, and where it stops being reliable.",
@@ -180,16 +171,6 @@ COPY = {
              "Koppints a térképre, és a vonal a valódi ösvényeket követi, rajzolás közben látod a távot. Kövesd kanyarról kanyarra az iPhone-on vagy az Apple Watch-on, ha kéred, hangosan is, térerő nélkül is.",
              None, "Az útvonaltervező műholdas térképen"),
         ],
-        "usual_kicker": "A saját szokásodhoz mérve",
-        "usual_h2": "A tested nem átlag.",
-        "usual_sub": "Ezért az Aera sem egy átlaghoz mér. Minden érték a saját szokásos tartományodon ül, amit hetek éjszakáiból és edzéseiből tanul meg, és veled együtt változik. A mai pötty oda esik, ahol most tartasz.",
-        "rails": [
-            ("Pulzusvariabilitás", "var(--pink)", "84", "ms", "Tipikus", "28%", "34%", "58%"),
-            ("Nyugalmi pulzus", "var(--pink)", "53", "bpm", "Tipikus", "30%", "30%", "44%"),
-            ("Alvás", "var(--indigo)", "7 ó 25 p", "", "Pont az igényed szerint", "36%", "26%", "61%"),
-        ],
-        "rail_ends": ("Alacsonyabb", "Szokásos", "Magasabb"),
-        "rails_note": "Példaértékek az app saját képernyőiről.",
         "guide_kicker": "A Field Guide",
         "guide_h2": "Minden szám elmondja, honnan tudja.",
         "guide_sub": "Koppints egy számra, és megnyílik mögötte egy rövid cikk: hogyan jött ki, milyen kutatás áll mögötte, megnyitható forrásokkal, és hol szűnik meg megbízhatónak lenni.",
@@ -292,16 +273,6 @@ COPY = {
              "Tipp auf die Karte, und die Linie folgt echten Wegen, die Distanz zählt beim Zeichnen mit. Folge ihr mit Abbiegehinweisen auf dem iPhone oder der Apple Watch, auf Wunsch gesprochen, auch ohne Empfang.",
              None, "Der Routenplaner über einer Satellitenkarte"),
         ],
-        "usual_kicker": "Gemessen an dir",
-        "usual_h2": "Dein Körper läuft nicht nach Durchschnitt.",
-        "usual_sub": "Deshalb misst Aera dich auch nicht an einem. Jeder Wert liegt auf deinem eigenen üblichen Bereich, gelernt aus Wochen deiner Nächte und Einheiten, und er verschiebt sich, wenn du dich veränderst. Der Punkt von heute landet dort, wo du gerade stehst.",
-        "rails": [
-            ("Herzfrequenzvariabilität", "var(--pink)", "84", "ms", "Typisch", "28%", "34%", "58%"),
-            ("Ruhepuls", "var(--pink)", "53", "bpm", "Typisch", "30%", "30%", "44%"),
-            ("Schlaf", "var(--indigo)", "7 h 25 min", "", "Genau dein Bedarf", "36%", "26%", "61%"),
-        ],
-        "rail_ends": ("Niedriger", "Üblich", "Höher"),
-        "rails_note": "Beispielwerte aus den Bildschirmen der App.",
         "guide_kicker": "Der Field Guide",
         "guide_h2": "Jede Zahl zeigt, wie sie entsteht.",
         "guide_sub": "Tipp auf eine Zahl, und dahinter öffnet sich ein kurzer Artikel: wie sie berechnet wird, welche Forschung dahinter steht, mit Quellen zum Öffnen, und wo sie nicht mehr verlässlich ist.",
@@ -406,62 +377,8 @@ def phone(name, alt, sizes, eager=False, cls=""):
     return '<div class="phone %s"><div class="screen-wrap">%s</div></div>' % (cls, picture(name, alt, sizes, eager))
 
 
-# "Try a morning": a live, simplified demo of the morning call. The words are the
-# app's own (Localizable.xcstrings "Prose readiness word"); the scoring here is
-# a teaching toy and the section says so.
-DEMO = {
-    "en": {
-        "kicker": "Try a morning",
-        "h2": "Change last night. Watch the call change.",
-        "sub": "A simplified demo of the morning read. In the app each signal is measured against your own usual range, learned over weeks, and the reasons sit beside the word.",
-        "sleep": "Last night's sleep", "need": "Your need: 7 h 30 m",
-        "heart": "Overnight heart", "heart_note": "Resting heart rate and HRV, against your usual",
-        "heart_opts": ["Calmer", "Usual", "Strained"],
-        "week": "Your last seven days", "week_opts": ["Light", "Usual", "Heavy"],
-        "words": ["Rest day", "Go easy", "Good to go", "Go for it"],
-        "advice": ["Let today be recovery. A walk counts.", "Keep it conversational and short.", "Your usual run is on.", "A good day for the hard session."],
-        "r_sleep": ["Slept past your need", "Sleep met your need", "A little short on sleep", "A short night"],
-        "r_heart": ["Heart calmer than usual", "Heart in its usual range", "Heart above its usual"],
-        "r_week": ["A light week", "A usual week", "A heavy week"],
-        "session": "Today's session", "sessions": ["Rest day", "Easy run · 30 min", "Run · 45 min", "Intervals · 50 min"],
-        "today": "This morning", "h": "h", "m": "m",
-        "note": "Demo only. Your real read comes from your own Apple Health data.",
-    },
-    "hu": {
-        "kicker": "Próbáld ki",
-        "h2": "Változtass az éjszakán. Nézd, hogyan változik a nap.",
-        "sub": "Egyszerűsített bemutató a reggeli döntésről. Az appban minden jelet a saját, hetek alatt megtanult szokásos tartományodhoz mér, és az okokat a szó mellé írja.",
-        "sleep": "Az éjjeli alvás", "need": "Az igényed: 7 ó 30 p",
-        "heart": "Éjszakai szív", "heart_note": "Nyugalmi pulzus és HRV a szokásodhoz képest",
-        "heart_opts": ["Nyugodtabb", "Szokásos", "Feszültebb"],
-        "week": "Az elmúlt hét nap", "week_opts": ["Könnyű", "Szokásos", "Kemény"],
-        "words": ["Pihenőnap", "Csak lazán", "Mehet", "Hajrá"],
-        "advice": ["Ma a pihenés a feladat. Egy séta belefér.", "Beszélgetős tempó, inkább rövidebben.", "Mehet a szokásos futás.", "Jó nap a kemény edzésre."],
-        "r_sleep": ["Többet aludtál, mint amennyi kell", "Kialudtad magad", "Kicsit rövid éjszaka", "Rövid éjszaka"],
-        "r_heart": ["A szíved nyugodtabb a szokásosnál", "A szíved a szokásos tartományban", "A szíved feszültebb a szokásosnál"],
-        "r_week": ["Könnyű hét", "Szokásos hét", "Kemény hét"],
-        "session": "Mai edzés", "sessions": ["Pihenőnap", "Könnyű futás · 30 perc", "Futás · 45 perc", "Intervallumok · 50 perc"],
-        "today": "Ma reggel", "h": "ó", "m": "p",
-        "note": "Csak bemutató. Az igazi döntés a saját Apple Health adataidból jön.",
-    },
-    "de": {
-        "kicker": "Probier es aus",
-        "h2": "Ändere die Nacht. Sieh, wie sich der Tag ändert.",
-        "sub": "Eine vereinfachte Vorschau der Morgen-Einschätzung. In der App wird jedes Signal an deinem eigenen üblichen Bereich gemessen, über Wochen gelernt, und die Gründe stehen direkt neben dem Wort.",
-        "sleep": "Schlaf letzte Nacht", "need": "Dein Bedarf: 7 Std. 30 Min.",
-        "heart": "Herz über Nacht", "heart_note": "Ruhepuls und HRV, gemessen an deinem Üblichen",
-        "heart_opts": ["Ruhiger", "Üblich", "Angespannt"],
-        "week": "Deine letzten sieben Tage", "week_opts": ["Leicht", "Üblich", "Hart"],
-        "words": ["Ruhetag", "Ruhig angehen", "Bereit", "Leg los"],
-        "advice": ["Heute ist Erholung dran. Ein Spaziergang zählt.", "Locker im Plauderton, eher kurz.", "Dein üblicher Lauf passt.", "Ein guter Tag für die harte Einheit."],
-        "r_sleep": ["Mehr geschlafen als nötig", "Schlafbedarf gedeckt", "Etwas zu kurz geschlafen", "Kurze Nacht"],
-        "r_heart": ["Herz ruhiger als üblich", "Herz im üblichen Bereich", "Herz angespannter als üblich"],
-        "r_week": ["Leichte Woche", "Übliche Woche", "Harte Woche"],
-        "session": "Heutige Einheit", "sessions": ["Ruhetag", "Lockerer Lauf · 30 Min.", "Lauf · 45 Min.", "Intervalle · 50 Min."],
-        "today": "Heute Morgen", "h": "Std.", "m": "Min.",
-        "note": "Nur eine Vorschau. Deine echte Einschätzung kommt aus deinen eigenen Apple-Health-Daten.",
-    },
-}
+# The app's own verdict word for a good morning (Localizable.xcstrings).
+GOOD_WORD = {"en": "Good to go", "hu": "Mehet", "de": "Bereit"}
 
 
 # The Coach: the acorn mascot, drawn from the app's own geometry
@@ -528,43 +445,37 @@ def reviews_section(code):
 </section>"""
 
 
-def demo_section(code):
-    d = DEMO[code]
-    def seg(name, opts):
-        return "".join('<label><input type="radio" name="%s" value="%d"%s><span>%s</span></label>' % (name, i, " checked" if i == 1 else "", o) for i, o in enumerate(opts))
-    data = json.dumps({k: d[k] for k in ("words", "advice", "r_sleep", "r_heart", "r_week", "h", "m", "sessions")}, ensure_ascii=False).replace("</", "<\\/")
-    return f"""<section class="try" id="try">
-  <div class="wide try-grid">
-    <div class="try-copy reveal">
-        <p class="kicker">{d['kicker']}</p>
-        <h2 class="h2 split">{d['h2']}</h2>
-      <p class="sub">{d['sub']}</p>
-    </div>
-    <form class="controls reveal" style="--d:.1s" onsubmit="return false">
-        <div class="ctl">
-          <div class="ctl-head"><label for="sleep-h">{d['sleep']}</label><output id="sleep-out" for="sleep-h">7 {d['h']} 30 {d['m']}</output></div>
-          <input id="sleep-h" type="range" min="4.5" max="9.5" step="0.25" value="7.5" style="--v:.6">
-          <p class="ctl-note">{d['need']}</p>
-        </div>
-        <fieldset class="ctl"><legend>{d['heart']}</legend><div class="seg">{seg('heart', d['heart_opts'])}</div><p class="ctl-note">{d['heart_note']}</p></fieldset>
-        <fieldset class="ctl"><legend>{d['week']}</legend><div class="seg">{seg('week', d['week_opts'])}</div></fieldset>
-    </form>
-    <div class="try-stage reveal" style="--d:.2s">
-      <div class="phone demo-phone" data-state="2"><div class="screen-wrap demo-screen">
-        <div class="demo-top"></div>
-        <div class="demo-body">
-          <p class="demo-date">&#8249; {d['today']}</p>
-          <p class="demo-word" aria-live="polite"><span>{d['words'][2]}</span></p>
-          <p class="demo-advice">{d['advice'][2]}</p>
-          <div class="demo-cap"><span class="cap-mark">{coach_svg('dc-' + code)}</span><span class="cap-txt"><b>{d['session']}</b><small>{d['sessions'][2]}</small></span><i aria-hidden="true">&#8250;</i></div>
-          <ul class="demo-why"><li data-k="sleep"><i></i><span>{d['r_sleep'][1]}</span></li><li data-k="heart"><i></i><span>{d['r_heart'][1]}</span></li><li data-k="week"><i></i><span>{d['r_week'][1]}</span></li></ul>
-        </div>
-      </div></div>
-      <p class="demo-note">{d['note']}</p>
-    </div>
-  </div>
-  <script type="application/json" id="demo-copy">{data}</script>
-</section>"""
+# Cinematic scroll scenes live in scenes/<name>/ (see scenes/CONTRACT.md):
+# section.html with {{key}} placeholders, strings.json per language, scene.css
+# and scene.js. The page links one bundled scenes.css and scenes.js.
+SCENES = ["engine"]  # add a scene here once it is reviewed
+
+
+def scene_ready(name):
+    return name in SCENES and os.path.exists(os.path.join(ROOT, "scenes", name, "section.html"))
+
+
+def scene(name, code):
+    if not scene_ready(name):
+        return ""
+    d = os.path.join(ROOT, "scenes", name)
+    with open(os.path.join(d, "strings.json"), encoding="utf-8") as f:
+        strings = dict(json.load(f)[code])
+    strings.setdefault("coach", coach_svg("%s-%s" % (name[:3], code)))
+    with open(os.path.join(d, "section.html"), encoding="utf-8") as f:
+        return re.sub(r"\{\{(\w+)\}\}", lambda m: strings[m.group(1)], f.read().strip())
+
+
+def bundle_scenes():
+    for ext in ("css", "js"):
+        parts = []
+        for name in SCENES:
+            path = os.path.join(ROOT, "scenes", name, "scene." + ext)
+            if scene_ready(name) and os.path.exists(path):
+                with open(path, encoding="utf-8") as f:
+                    parts.append("/* scenes/%s */\n%s" % (name, f.read().strip()))
+        with open(os.path.join(ROOT, "scenes." + ext), "w", encoding="utf-8") as f:
+            f.write("/* Generated by scripts/build_home.py from each scenes/NAME/scene.%s. Edit those. */\n" % ext + "\n\n".join(parts) + "\n")
 
 
 def build(code):
@@ -609,14 +520,6 @@ def build(code):
 
     faq = "".join('<details class="qa reveal"><summary><h3>%s</h3><span class="plus" aria-hidden="true"></span></summary><p>%s</p></details>'
                   % (q, a) for q, a in c["faq"])
-
-    rails = "".join(
-        '<div class="rail" style="--c:%s;--i:%d"><div class="rail-top"><div><p class="rail-name"><i></i>%s</p>'
-        '<p class="rail-word">%s</p></div><p class="rail-val">%s<small>%s</small></p></div>'
-        '<div class="track"><span class="band" style="--l:%s;--w:%s"></span><span class="dot" style="--v:%s"></span></div>'
-        '<div class="rail-ends"><span>%s</span><span>%s</span><span>%s</span></div></div>'
-        % (col, i, name, word, val, unit, l, w, v, *c["rail_ends"])
-        for i, (name, col, val, unit, word, l, w, v) in enumerate(c["rails"]))
 
     tiles = "".join('<div class="tile reveal" style="--c:%s;--d:%dms"><h3><i></i>%s</h3><p>%s</p></div>' % (col, (i % 3) * 80, t, p)
                     for i, (t, col, p) in enumerate(c["tiles"]))
@@ -673,6 +576,36 @@ def build(code):
 
     og_alt = "".join('<meta property="og:locale:alternate" content="%s">' % OG_LOCALE[lc] for lc in OG_LOCALE if lc != code)
 
+    after_old = f"""<section class="after">
+  <svg class="topo" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{''.join(topo)}{route}</svg>
+  <div class="wide after-grid">
+    <div class="reveal">
+      <p class="kicker">{c['after_kicker']}</p>
+      <h2 class="h2 split">{c['after_h2']}</h2>
+      <p class="sub">{c['after_sub']}</p>
+      <ul class="list">{''.join('<li>%s</li>' % x for x in c['after_list'])}</ul>
+    </div>
+    <div class="duo reveal" style="--d:.15s">
+      {phone('workout-flyover-dark', c['after_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
+      {phone('workout-detail', c['after_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
+    </div>
+  </div>
+</section>
+"""
+    map_old = f"""<section>
+  <div class="wide map-grid">
+    <div class="reveal">
+      <p class="kicker">{c['map_kicker']}</p>
+      <h2 class="h2 split">{c['map_h2']}</h2>
+      <p class="sub">{c['map_sub']}</p>
+    </div>
+    <div class="duo reveal" style="--d:.15s">
+      {phone('planner', c['map_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
+      {phone('routenav', c['map_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
+    </div>
+  </div>
+</section>
+"""
     return f"""<!DOCTYPE html>
 <html lang="{c['lang']}">
 <head>
@@ -702,6 +635,7 @@ def build(code):
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="scenes.css">
 <script type="application/ld+json">{ld}</script>
 {legacy}
 </head>
@@ -743,7 +677,7 @@ def build(code):
         <div class="hs-edge" aria-hidden="true"></div>
       </div></div>
       <p class="chip chip-night" aria-hidden="true"><i></i>{c['chip_night']}</p>
-      <p class="chip chip-day" aria-hidden="true"><b>{DEMO[code]['words'][2]}</b>{c['chip_day']}</p>
+      <p class="chip chip-day" aria-hidden="true"><b>{GOOD_WORD[code]}</b>{c['chip_day']}</p>
     </div>
   </div>
   {L['near']}
@@ -765,21 +699,7 @@ def build(code):
   </div>
 </section>
 
-<section class="usual">
-  <div class="wide usual-grid">
-    <div class="reveal">
-      <p class="kicker">{c['usual_kicker']}</p>
-      <h2 class="h2 split">{c['usual_h2']}</h2>
-      <p class="sub">{c['usual_sub']}</p>
-    </div>
-    <div>
-      <div class="rails">{rails}</div>
-      <p class="footnote">{c['rails_note']}</p>
-    </div>
-  </div>
-</section>
-
-{demo_section(code)}
+{scene('engine', code)}
 
 {reviews_section(code)}
 
@@ -799,35 +719,11 @@ def build(code):
   </div>
 </section>
 
-<section class="after">
-  <svg class="topo" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">{''.join(topo)}{route}</svg>
-  <div class="wide after-grid">
-    <div class="reveal">
-      <p class="kicker">{c['after_kicker']}</p>
-      <h2 class="h2 split">{c['after_h2']}</h2>
-      <p class="sub">{c['after_sub']}</p>
-      <ul class="list">{''.join('<li>%s</li>' % x for x in c['after_list'])}</ul>
-    </div>
-    <div class="duo reveal" style="--d:.15s">
-      {phone('workout-flyover-dark', c['after_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
-      {phone('workout-detail', c['after_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
-    </div>
-  </div>
-</section>
+{scene('flyover', code) or after_old}
 
-<section>
-  <div class="wide map-grid">
-    <div class="reveal">
-      <p class="kicker">{c['map_kicker']}</p>
-      <h2 class="h2 split">{c['map_h2']}</h2>
-      <p class="sub">{c['map_sub']}</p>
-    </div>
-    <div class="duo reveal" style="--d:.15s">
-      {phone('planner', c['map_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
-      {phone('routenav', c['map_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
-    </div>
-  </div>
-</section>
+{scene('planner', code) or map_old}
+
+{scene('widgets', code)}
 
 <section class="also">
   <div class="wide">
@@ -900,6 +796,7 @@ def build(code):
 </footer>
 
 <script src="home.js" defer></script>
+<script src="scenes.js" defer></script>
 {beacon}
 </body>
 </html>
@@ -907,6 +804,7 @@ def build(code):
 
 
 if __name__ == "__main__":
+    bundle_scenes()
     for code in COPY:
         out = build(code)
         if "—" in out:
