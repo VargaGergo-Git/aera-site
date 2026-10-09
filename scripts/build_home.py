@@ -828,7 +828,7 @@ GET_PLACES = ("nav", "hero", "closing", "footer")
 
 
 def get_page(store, lang, src):
-    """One forwarding page: straight on to that language's App Store page, with
+    """One forwarding page: on to that language's App Store page, with
     the campaign tags once APPSTORE_PT is set. Out of search."""
     url = store
     if APPSTORE_PT:
@@ -840,8 +840,16 @@ def get_page(store, lang, src):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Aera on the App Store</title>
-<meta http-equiv="refresh" content="1; url=%(url)s">
-<script>location.replace(%(js)s);</script>
+<meta http-equiv="refresh" content="2; url=%(url)s">
+<script>
+// Leave a moment after load so the Cloudflare beacon can report the tap first;
+// go anyway at 1.5 s if the beacon is blocked or slow.
+(function () {
+  var go = function () { location.replace(%(js)s); };
+  addEventListener('load', function () { setTimeout(go, 400); });
+  setTimeout(go, 1500);
+})();
+</script>
 %(beacon)s
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
 </head><body><p><a href="%(url)s">Open Aera on the App Store</a></p></body></html>
