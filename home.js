@@ -38,6 +38,7 @@
         w.className = 'w';
         var inner = document.createElement('span');
         inner.textContent = part;
+        inner.setAttribute('data-w', part);
         inner.style.setProperty('--i', i++);
         w.appendChild(inner);
         frag.appendChild(w);
@@ -165,8 +166,9 @@
       placeRunner(0);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          if (hero) hero.classList.add('in');
-          requestAnimationFrame(tweenDawn);
+          if (hero) { hero.classList.add('in'); setTimeout(function () { hero.classList.add('dawned'); }, 4500); }
+          // Phones start at first light instead of tweening there: no restyle per frame at load.
+          if (window.innerWidth < 900) { dawn = dawnTarget; request(); } else requestAnimationFrame(tweenDawn);
         });
       });
       if (finePointer && hero) {

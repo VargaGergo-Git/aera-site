@@ -14,6 +14,19 @@
     var ticking = false, step = 0, isWord = false, isLanded = false, wordCss = '', wordW = 0, wordH = 0, headBottom = 0;
     // Plays once, like a film, when the stage is half in view, then holds on the last frame.
     var DUR = 7000, t0 = 0, done = false;
+    // Frame guard: if this device cannot draw the film smoothly (median frame over
+    // 24 ms across its first frames), show the finished frame instead of a stutter.
+    var gd = [], gLast = 0, gOff = false;
+    function guard(now) {
+      if (gOff || gd.length > 14) return false;
+      if (gLast) gd.push(now - gLast);
+      gLast = now;
+      if (gd.length < 12) return false;
+      var m = gd.slice(2).sort(function (a, b) { return a - b; })[5];
+      if (m > 24) { gOff = true; return true; }
+      gd.length = 99; return false;
+    }
+
     // Where "Good to go" sits on the 400 x 870 capture: centre and width.
     var TX = 144 / 400, TY = 284 / 870, TW = 248 / 400;
     function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -30,6 +43,26 @@
       wordW = word.offsetWidth; wordH = word.offsetHeight;
       head.style.transform = 'none';
       headBottom = head.offsetTop + head.offsetHeight;
+      // The opening zoom stops where the widest line still fits the screen.
+      var widest = 0, allLines = {};
+      var tw = document.createTreeWalker(head, NodeFilter.SHOW_TEXT), tn;
+      while ((tn = tw.nextNode())) {
+        if (!tn.textContent.trim()) continue;
+        var rg = document.createRange(); rg.selectNodeContents(tn);
+        var lines = {};
+        [].slice.call(rg.getClientRects()).forEach(function (r) {
+          if (!r.width) return;
+          var k = Math.round(r.top / 8), L = lines[k] || (lines[k] = [r.left, r.right]);
+          L[0] = Math.min(L[0], r.left); L[1] = Math.max(L[1], r.right);
+        });
+        Object.keys(lines).forEach(function (k) { (allLines[k] = allLines[k] || []).push(lines[k]); });
+      }
+      Object.keys(allLines).forEach(function (k) {
+        var l = Math.min.apply(null, allLines[k].map(function (x) { return x[0]; })), r = Math.max.apply(null, allLines[k].map(function (x) { return x[1]; }));
+        widest = Math.max(widest, r - l);
+      });
+      var vw1 = document.documentElement.clientWidth;
+      if (widest) set('--head-zoom', Math.max(0, Math.min(.32, (vw1 - 32) / widest - 1)));
       head.style.transform = '';
       set('--dev-top', (headBottom + 18) + 'px');
       var vh0 = stage.clientHeight || window.innerHeight, vw0 = window.innerWidth;
@@ -57,7 +90,7 @@
       ['--rise', '--fade', '--dev'].forEach(function (k, i) { if (keep[i]) sec.style.setProperty(k, keep[i]); else sec.style.removeProperty(k); });
     }
     function clear() {
-      ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--glow', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y'].forEach(function (k) { sec.style.removeProperty(k); });
+      ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--glow', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y', '--head-zoom'].forEach(function (k) { sec.style.removeProperty(k); });
       sec.removeAttribute('data-step'); sec.classList.remove('is-word', 'is-landed');
       word.style.transform = ''; word.style.opacity = '';
       step = 0; isWord = false; isLanded = false; wordCss = ''; vals = {};
@@ -117,7 +150,7 @@
       var css = op.toFixed(3) + '|translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
       if (css !== wordCss) { wordCss = css; var cut = css.indexOf('|'); word.style.opacity = css.slice(0, cut); word.style.transform = css.slice(cut + 1); }
     }
-    function frame() { update(); if (t0 && !done) requestAnimationFrame(frame); }
+    function frame(now) { if (guard(now)) done = true; update(); if (t0 && !done) requestAnimationFrame(frame); }
     function play() { if (t0 || done) return; t0 = performance.now(); requestAnimationFrame(frame); }
     function redraw() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     if ('IntersectionObserver' in window) {
@@ -125,7 +158,9 @@
       // Scrolled away mid-film: jump to the last frame instead of animating off screen.
       new IntersectionObserver(function (es) { if (!es[0].isIntersecting && t0 && !done) { done = true; redraw(); } }).observe(stage);
     } else { done = true; }
-    window.addEventListener('resize', function () { wordW = 0; redraw(); }, { passive: true });
+    // The phone's address bar firing resize as it hides does not change this scene.
+    var lastW = window.innerWidth;
+    window.addEventListener('resize', function () { if (window.innerWidth === lastW) return; lastW = window.innerWidth; wordW = 0; redraw(); }, { passive: true });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; redraw(); });
     update();
   } catch (e) {
@@ -134,278 +169,160 @@
 })();
 
 /* scenes/flyover */
-/* Flyover scene: scroll flies a camera over the contour model. The route draws
-   with the runner on its head, the camera follows it, eases to a stop at the
-   fastest split and at the top of the climb, then pulls back up and away while
-   the real capture rises in. Only transforms and opacity change per frame.
-   Without .motion the CSS defaults are the finished frame; this file then only
-   pins the runner and the two callouts to it. On any error it steps aside. */
+/* Flyover scene: the real Flyover film plays once when half the scene is in
+   view and holds on its last frame; "Watch again" replays it. The callouts
+   light up as the film reaches each stop (data-stops, fractions of the film).
+   A 24x40 canvas samples the film a few times a second so its light spills
+   into the stage. The film loads a screen ahead, never with the page.
+   Reduced motion or a blocked autoplay: the poster stays and a button plays
+   the film on request. On any error the poster frame stays.
+   Without a <video> in the section (poster mode) the poster frame shows, both
+   callouts light as the phone sets down, and nothing runs per frame.
+   Frame guard: if the first 12 frames of the film run at a median over 24 ms,
+   the film jumps to its last frame instead of stuttering. */
 (function () {
   var sec = document.getElementById('flyover');
   if (!sec) return;
   var root = document.documentElement;
-  var stage, pin, cam, world, puck, copy, chips, layers, nums, routeEl;
-  var PX = [], PY = [], HD = [], Z, E, PACE, HR, pS, pC, NS = 300;
-  var cfg = {}, alive = true, ticking = false, mode = '', copyIn = false, saved = [];
+  var video = sec.querySelector('.fo-video');
+  var poster = sec.querySelector('.fo-poster');
+  var amb = sec.querySelector('.fo-amb');
+  var btn = sec.querySelector('.fo-replay');
+  var calls = [].slice.call(sec.querySelectorAll('.fo-call'));
+  var stops = (sec.getAttribute('data-stops') || '').split(',').map(Number);
+  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, frameNo = 0, broken = false;
 
-  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-  function ss(a, b, x) { x = clamp((x - a) / (b - a)); return x * x * (3 - 2 * x); }
-  function lerp(a, b, k) { return a + (b - a) * k; }
-  function bump(a, m, b, x) { return x < m ? ss(a, m, x) : 1 - ss(m, b, x); }
-  function sample(arr, p) {
-    var f = clamp(p) * (arr.length - 1), i = Math.floor(f), k = f - i;
-    return i >= arr.length - 1 ? arr[arr.length - 1] : arr[i] + (arr[i + 1] - arr[i]) * k;
+  function moving() { return root.classList.contains('motion'); }
+
+  function paint(src) {
+    if (!ctx) return;
+    try { ctx.drawImage(src, 0, 0, amb.width, amb.height); } catch (e) { /* not ready, or tainted */ }
   }
-  function list(name) { return (sec.getAttribute('data-' + name) || '0').split(',').map(Number); }
-  function num(cs, name, fallback) { var v = parseFloat(cs.getPropertyValue(name)); return isNaN(v) ? fallback : v; }
-  function mmss(s) { s = Math.round(s); var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
-  function put(el, name, v) { el.style.setProperty(name, v); }
 
-  function setup() {
-    stage = sec.querySelector('.fo-stage');
-    pin = sec.querySelector('.fo-pin');
-    cam = sec.querySelector('.fo-cam');
-    world = sec.querySelector('.fo-world');
-    puck = sec.querySelector('.fo-puck');
-    copy = sec.querySelector('.fo-copy');
-    routeEl = document.getElementById('flyover-r');
-    chips = [].slice.call(sec.querySelectorAll('.fo-chip'));
-    layers = [].slice.call(sec.querySelectorAll('.fo-l[data-r]')).map(function (el) {
-      var r = el.getAttribute('data-r').split(' ').map(Number);
-      return { el: el, lo: r[0], hi: r[1], d: -1 };
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    [['data-src-mp4', 'video/mp4; codecs="avc1.640028"'], ['data-src-webm', 'video/webm; codecs="vp9"']].forEach(function (s) {
+      var url = video.getAttribute(s[0]);
+      if (!url || !video.canPlayType(s[1])) return;
+      var el = document.createElement('source');
+      el.src = url; el.type = s[1];
+      video.appendChild(el);
     });
-    nums = {};
-    [].slice.call(sec.querySelectorAll('.fo-hud b[data-k]')).forEach(function (b) {
-      nums[b.getAttribute('data-k')] = { el: b, v: b.textContent };
-    });
-    Z = list('z'); E = list('e'); PACE = list('pace'); HR = list('hr');
-    pS = Number(sec.getAttribute('data-ps')) || 0.25;
-    pC = Number(sec.getAttribute('data-pc')) || 0.7;
+    if (!video.querySelector('source')) { fail(); return; }
+    video.preload = 'auto';
+    video.load();
+  }
 
-    var len = routeEl.getTotalLength(), ang = [], i, j;
-    for (i = 0; i <= NS; i++) {
-      var q = routeEl.getPointAtLength(len * i / NS);
-      PX.push(q.x); PY.push(q.y);
-    }
-    for (i = 0; i < NS; i++) ang.push(Math.atan2(PY[i + 1] - PY[i], PX[i + 1] - PX[i]));
-    ang.push(ang[NS - 1]);
-    for (i = 1; i <= NS; i++) {            // unwrap
-      while (ang[i] - ang[i - 1] > Math.PI) ang[i] -= 2 * Math.PI;
-      while (ang[i] - ang[i - 1] < -Math.PI) ang[i] += 2 * Math.PI;
-    }
-    var sig = 26, w = [];                    // wide kernel: switchbacks average out
-    for (j = -3 * sig; j <= 3 * sig; j++) w.push(Math.exp(-j * j / (2 * sig * sig)));
-    for (i = 0; i <= NS; i++) {
-      var s = 0, ws = 0;
-      for (j = -3 * sig; j <= 3 * sig; j++) {
-        var k = Math.min(NS, Math.max(0, i + j)), wt = w[j + 3 * sig];
-        s += ang[k] * wt; ws += wt;
+  function lightCalls(f) {
+    calls.forEach(function (c, i) {
+      var on = f >= (stops[i] || 0) - 0.01;
+      if (on !== c.classList.contains('on')) c.classList.toggle('on', on);
+    });
+  }
+
+  function tick(now) {
+    if (!looping) return;
+    if (guard.length < 12) {
+      if (guardT) guard.push(now - guardT);
+      guardT = now;
+      if (guard.length === 12) {
+        var g = guard.slice().sort(function (a, b) { return a - b; });
+        if (g[6] > 24) { looping = false; video.pause(); video.currentTime = video.duration || 0; land(); return; }
       }
-      HD.push(-90 - (s / ws) * 180 / Math.PI);
     }
-    [world, puck, stage].concat(chips, layers.map(function (l) { return l.el; })).forEach(function (el) {
-      saved.push([el, el.getAttribute('style')]);
-    });
+    var d = video.duration;
+    if (d > 0) lightCalls(video.currentTime / d);
+    if (frameNo++ % 6 === 0) paint(video);
+    requestAnimationFrame(tick);
+  }
+  function startLoop() { if (!looping) { looping = true; requestAnimationFrame(tick); } }
+
+  function play() {
+    load();
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { if (!video.ended) ask(); });
   }
 
-  function readConfig() {
-    var cs = getComputedStyle(world), cs2 = getComputedStyle(sec), cc = getComputedStyle(cam);
-    cfg.W = world.offsetWidth;
-    cfg.u = cfg.W / 1000;
-    cfg.dz = cfg.W * num(cs2, '--dzk', 0.018);
-    cfg.oZm = num(cs2, '--o-zm', 0.86);
-    cfg.fZm = num(cs2, '--f-zm', 1.8);
-    cfg.fCy = num(cs2, '--f-cy', 0.15);
-    cfg.eTilt = num(cs, '--e-tilt', 52);
-    cfg.eHd = num(cs, '--e-hd', -18);
-    cfg.eZm = num(cs, '--e-zm', 0.86);
-    cfg.eFx = num(cs, '--e-fx', 520);
-    cfg.eFy = num(cs, '--e-fy', 540);
-    cfg.eCx = num(cs, '--e-cx', 0);
-    cfg.eCy = num(cs, '--e-cy', 0.1);
-    cfg.endChips = num(cs2, '--end-chips', 1);
-    cfg.eCyPx = cfg.eCy * cfg.W;
-    if (cfg.vw < 900 && copy.offsetHeight) {
-      // Phones: fit the finished model into the space the copy leaves free.
-      var below = copy.offsetTop + copy.offsetHeight, free = cfg.vh - below;
-      var k = Math.min(1.2, Math.max(0.7, free / 454));
-      cfg.eZm *= k;
-      cfg.eCyPx = below + free * 0.6 - cfg.vh / 2;
-      if (free < 400) cfg.endChips = 0;
-    }
-    cfg.eHdU = cfg.eHd + 360 * Math.round((HD[NS] - cfg.eHd) / 360);
-    cfg.d = parseFloat(cc.perspective) || 1500;
-    var po = cc.perspectiveOrigin.split(' ');
-    cfg.vw = cam.clientWidth;
-    cfg.vh = cam.clientHeight;
-    cfg.pox = parseFloat(po[0]); if (isNaN(cfg.pox)) cfg.pox = cfg.vw / 2;
-    cfg.poy = parseFloat(po[1]); if (isNaN(cfg.poy)) cfg.poy = cfg.vh / 2;
+  function ask() {
+    sec.classList.add('fo-ask');
+    btn.hidden = false;
   }
 
-  // Route progress: eases into a full stop at the split and at the summit.
-  var K = null;
-  function progress(t) {
-    if (!K) K = [[0.08, 0], [0.24, pS], [0.31, pS], [0.58, pC], [0.66, pC], [0.79, 1]];
-    if (t <= K[0][0]) return 0;
-    for (var i = 1; i < K.length; i++) {
-      if (t <= K[i][0]) return lerp(K[i - 1][1], K[i][1], ss(K[i - 1][0], K[i][0], t));
-    }
-    return 1;
+  function fail() {
+    broken = true;
+    looping = false;
+    sec.classList.remove('fo-live');
+    btn.hidden = true;
+    calls.forEach(function (c) { c.classList.add('on'); });
   }
 
-  // The camera for a moment t of the flight. pose(1) equals the CSS defaults.
-  function pose(t) {
-    var p = progress(t), pl = progress(t - 0.014);
-    var dive = ss(0.02, 0.2, t), away = ss(0.74, 0.95, t);
-    var atTop = bump(0.55, 0.62, 0.7, t), atSplit = bump(0.21, 0.275, 0.34, t);
-    var hx = sample(PX, pl), hy = sample(PY, pl), hz = sample(Z, pl);
-    var hd = lerp(HD[0] + 46 * (1 - ss(0, 0.2, t)), sample(HD, pl), dive);
-    return {
-      p: p,
-      fx: lerp(lerp(515, hx, dive), cfg.eFx, away),
-      fy: lerp(lerp(560, hy, dive), cfg.eFy, away),
-      fz: lerp(hz * dive, 0, away),
-      hd: lerp(hd, cfg.eHdU, away),
-      zm: lerp(lerp(cfg.oZm, cfg.fZm, dive), cfg.eZm, away) * (1 - 0.2 * atTop) * (1 + 0.06 * atSplit),
-      tilt: lerp(lerp(48, 62, dive) - 9 * atTop - 12 * ss(0.6, 0.7, t), cfg.eTilt, away),
-      cx: cfg.eCx * cfg.W * away,
-      cy: lerp((lerp(0.06, cfg.fCy, dive) - 0.1 * atTop) * cfg.vh, cfg.eCyPx, away)
-    };
-  }
-
-  // Where a point of the model lands on the stage, the same chain the CSS uses.
-  function project(c, xw, yw, lv) {
-    var x = (xw - 500) * cfg.u + (500 - c.fx) * cfg.u;
-    var y = (yw - 500) * cfg.u + (500 - c.fy) * cfg.u;
-    var z = lv * cfg.dz - c.fz * cfg.dz;
-    x *= c.zm; y *= c.zm; z *= c.zm;
-    var a = c.hd * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a);
-    var x1 = x * ca - y * sa, y1 = x * sa + y * ca;
-    var b = c.tilt * Math.PI / 180, cb = Math.cos(b), sb = Math.sin(b);
-    var y2 = y1 * cb - z * sb, z2 = y1 * sb + z * cb;
-    var X = cfg.vw / 2 + x1 + c.cx, Y = cfg.vh / 2 + y2 + c.cy;
-    var s = cfg.d / Math.max(cfg.d - z2, 1);
-    return [cfg.pox + (X - cfg.pox) * s, cfg.poy + (Y - cfg.poy) * s];
-  }
-
-  function pinTo(el, c, xw, yw, lv) {
-    var q = project(c, xw, yw, lv);
-    put(el, '--sx', q[0].toFixed(1) + 'px');
-    put(el, '--sy', q[1].toFixed(1) + 'px');
-  }
-
-  function pins(c, p) {
-    pinTo(puck, c, sample(PX, p), sample(PY, p), sample(Z, p));
-    pinTo(chips[0], c, sample(PX, pS), sample(PY, pS), sample(Z, pS));
-    pinTo(chips[1], c, sample(PX, pC), sample(PY, pC), sample(Z, pC));
-  }
-
-  function applyWorld(c) {
-    put(world, '--tilt', c.tilt.toFixed(2) + 'deg');
-    put(world, '--hd', c.hd.toFixed(2) + 'deg');
-    put(world, '--zm', c.zm.toFixed(4));
-    put(world, '--px', ((500 - c.fx) * cfg.u).toFixed(1) + 'px');
-    put(world, '--py', ((500 - c.fy) * cfg.u).toFixed(1) + 'px');
-    put(world, '--pz', (-c.fz * cfg.dz).toFixed(1) + 'px');
-    put(world, '--cx', c.cx.toFixed(1) + 'px');
-    put(world, '--cy', c.cy.toFixed(1) + 'px');
-  }
-
-  function render(t) {
-    var c = pose(t), p = c.p;
-    applyWorld(c);
-    pins(c, p);
-
-    layers.forEach(function (l) {
-      var d = 1 - Math.min(l.hi, Math.max(l.lo, p));
-      if (Math.abs(d - l.d) > 0.0002) { l.d = d; put(l.el, '--d', d.toFixed(4)); }
-    });
-
-    var end1 = ss(0.86, 0.93, t) * cfg.endChips, end2 = ss(0.88, 0.95, t);
-    put(chips[0], '--a', Math.max(ss(0.19, 0.235, t) * (1 - ss(0.35, 0.4, t)), end1).toFixed(3));
-    put(chips[1], '--a', Math.max(ss(0.53, 0.575, t) * (1 - ss(0.69, 0.74, t)), end2).toFixed(3));
-
-    put(puck, '--pa', (1 - ss(0.8, 0.88, t)).toFixed(3));
-    put(stage, '--hud', (ss(0.015, 0.07, t) * (1 - ss(0.72, 0.78, t))).toFixed(3));
-    put(stage, '--p', p.toFixed(4));
-    put(stage, '--ct', Math.max(1 - ss(0.05, 0.13, t), ss(0.76, 0.88, t)).toFixed(3));
-    put(stage, '--cp', ss(0.79, 0.91, t).toFixed(3));
-    put(stage, '--pr', ss(0.78, 0.97, t).toFixed(4));
-    var want = t < 0.09 || t > 0.75;
-    if (want !== copyIn) { copyIn = want; copy.classList.toggle('in', want); }
-
-    text('e', String(Math.round(sample(E, p))));
-    text('pace', mmss(sample(PACE, p)));
-    text('hr', String(Math.round(sample(HR, p))));
-  }
-
-  function text(k, v) {
-    var n = nums[k];
-    if (n && n.v !== v) { n.v = v; n.el.textContent = v; }
-  }
-
-  function reset() {
-    saved.forEach(function (it) {
-      if (it[1] === null) it[0].removeAttribute('style'); else it[0].setAttribute('style', it[1]);
-    });
-    layers.forEach(function (l) { l.d = -1; });
-    copy.classList.add('in');
-    copyIn = true;
-  }
-
-  function frame() {
-    ticking = false;
-    if (!alive) return;
-    try {
-      var moving = root.classList.contains('motion');
-      if (!moving) {
-        // The finished frame: only the runner and the callouts need placing.
-        if (mode !== 'still') {
-          reset(); mode = 'still'; readConfig();
-          var c = pose(1); applyWorld(c); pins(c, 1);
-          if (!cfg.endChips) put(chips[0], 'display', 'none');
-        }
-        return;
-      }
-      if (!G) measure();
-      var top = G.top - SY, vh = G.vh;
-      if (top + G.h < -200 || top > vh + 200) return;
-      if (mode !== 'fly') { mode = 'fly'; readConfig(); copyIn = false; copy.classList.remove('in'); }
-      var span = G.h - vh;
-      render(span > 0 ? clamp(-top / span) : 1);
-    } catch (e) {
-      alive = false;
-      try { reset(); sec.classList.remove('fo-js'); } catch (e2) { /* the static frame stays */ }
-    }
-  }
-  // The pin's place is read on load and resize only, and scrollY in the scroll event,
-  // so a frame never forces a style or layout pass. Far from the scene, scrolling does nothing.
-  var G = null, SY = window.scrollY, near = true;
-  function measure() {
-    var r = pin.getBoundingClientRect();
-    G = { top: r.top + window.scrollY, h: r.height, vh: window.innerHeight };
-  }
-  function remeasure() { mode = ''; G = null; SY = window.scrollY; request(); }
-  function request() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(frame);
-    setTimeout(function () { if (ticking) frame(); }, 250);
+  function land() {
+    lightCalls(1);
+    paint(video);
+    sec.classList.remove('fo-ask');
+    btn.hidden = false;
   }
 
   try {
-    setup();
-    sec.classList.add('fo-js');
-    window.addEventListener('scroll', function () { SY = window.scrollY; if (near) request(); }, { passive: true });
-    window.addEventListener('resize', remeasure, { passive: true });
-    window.addEventListener('load', remeasure);
-    if ('ResizeObserver' in window) new ResizeObserver(function () { G = null; SY = window.scrollY; request(); }).observe(document.body);
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
-      near = es[0].isIntersecting; if (near) { SY = window.scrollY; request(); }
-    }, { rootMargin: '100% 0px' }).observe(pin);
-    request();
+    ctx = amb.getContext('2d');
+    if (poster.complete && poster.naturalWidth) paint(poster);
+    else poster.addEventListener('load', function () { paint(poster); });
+
+    if (!video || !btn) {
+      var arrive = function () { sec.classList.add('in'); calls.forEach(function (c) { c.classList.add('on'); }); };
+      if (!('IntersectionObserver' in window)) { arrive(); return; }
+      var io = new IntersectionObserver(function (es) {
+        if (es[0].intersectionRatio >= 0.25) { arrive(); io.disconnect(); }
+      }, { threshold: [0, 0.25] });
+      io.observe(sec.querySelector('.fo-film'));
+      return;
+    }
+
+    video.addEventListener('playing', function () {
+      sec.classList.add('fo-live');
+      sec.classList.remove('fo-ask');
+      btn.hidden = true;
+      startLoop();
+    });
+    video.addEventListener('pause', function () { looping = false; });
+    video.addEventListener('ended', function () { looping = false; land(); });
+    video.addEventListener('error', fail, true);
+
+    btn.addEventListener('click', function () {
+      if (broken) return;
+      guard = []; guardT = 0;
+      if (video.ended || video.currentTime > 0.1) {
+        video.currentTime = 0;
+        if (moving()) calls.forEach(function (c) { c.classList.remove('on'); });
+      }
+      played = true;
+      play();
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      if (!moving()) ask();
+      return;
+    }
+
+    // A screen ahead: fetch the film so it is ready when the scene arrives.
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) load();
+    }, { rootMargin: '100% 0px 100% 0px' }).observe(sec);
+
+    var film = sec.querySelector('.fo-film');
+    new IntersectionObserver(function (es) {
+      var e = es[0];
+      inView = e.intersectionRatio > 0;
+      if (e.intersectionRatio >= 0.25) sec.classList.add('in');
+      if (!moving()) { if (!played && btn.hidden && !broken) ask(); return; }
+      if (broken) return;
+      if (e.intersectionRatio >= 0.55 && !played) { played = true; play(); }
+      else if (!inView && !video.paused) video.pause();
+      else if (e.intersectionRatio >= 0.55 && played && video.paused && !video.ended && video.currentTime > 0) play();
+    }, { threshold: [0, 0.25, 0.55] }).observe(film);
   } catch (e) {
-    alive = false;
+    try { fail(); } catch (e2) { /* the poster stays */ }
   }
 })();
 
@@ -432,10 +349,14 @@
     // Where along the line (0..1) each tap lands: start, bridge, park edge, summit.
     var TAP_AT = [0, 0, 0, 0];
     var TAPS_XY = [[505, 588], [262, 398], [190, 256], [452, 104]];
+    // The line is sampled once here; frames read this table, never the SVG, so no
+    // frame forces a style or layout pass.
+    var NP = 480, PX = [], PY = [];
     (function () {
-      var n = 240, best = [1e9, 1e9, 1e9, 1e9];
+      var n = NP, best = [1e9, 1e9, 1e9, 1e9];
       for (var i = 0; i <= n; i++) {
         var pt = route.getPointAtLength(len * i / n);
+        PX.push(pt.x); PY.push(pt.y);
         for (var k = 0; k < 4; k++) {
           var d = Math.hypot(pt.x - TAPS_XY[k][0], pt.y - TAPS_XY[k][1]);
           if (d < best[k]) { best[k] = d; TAP_AT[k] = i / n; }
@@ -449,7 +370,12 @@
     function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
     function out(t) { return 1 - Math.pow(1 - t, 3); }
     function back(t) { var c = 1.6; return t <= 0 ? 0 : t >= 1 ? 1 : 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
-    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
+    // Only changed values are written: an unchanged write still restyles the whole scene.
+    var vals = {};
+    function set(k, v) { var s = typeof v === 'number' ? v.toFixed(3) : v; if (vals[k] !== s) { vals[k] = s; sec.style.setProperty(k, s); } }
+    var memo = new Map();
+    function attr(el, k, v) { var key = el; var m = memo.get(key); if (!m) { m = {}; memo.set(key, m); } if (m[k] !== v) { m[k] = v; if (k.charAt(0) === '.') el.style[k.slice(1)] = v; else el.setAttribute(k, v); } }
+    function pointAt(t) { var f = c01(t) * NP, i = Math.min(NP - 1, Math.floor(f)), r = f - i; return { x: PX[i] + (PX[i + 1] - PX[i]) * r, y: PY[i] + (PY[i + 1] - PY[i]) * r }; }
 
     function measure() {
       var vw = window.innerWidth, vh = window.innerHeight, phone = vw < 900, wide = vw >= 1100;
@@ -486,7 +412,7 @@
       route.style.strokeDasharray = route.style.strokeDashoffset = '';
       glow.style.strokeDasharray = glow.style.strokeDashoffset = '';
       casing.style.strokeDasharray = casing.style.strokeDashoffset = '';
-      step = 0; measured = false; last = -1;
+      step = 0; measured = false; last = -1; vals = {}; memo = new Map();
     }
     function fmt(v) { var s = v.toFixed(1); return comma ? s.replace('.', ',') : s; }
 
@@ -507,31 +433,29 @@
       var hop = drawn * 3, k = Math.min(2, Math.floor(hop)), f = hop - k;
       var at = TAP_AT[k] + (TAP_AT[k + 1] - TAP_AT[k]) * c01(f * 1.25);
       if (d >= 1) at = 1;
-      var off = len * (1 - at);
-      route.style.strokeDasharray = len + ' ' + len; route.style.strokeDashoffset = off;
-      casing.style.strokeDasharray = len + ' ' + len; casing.style.strokeDashoffset = off;
-      glow.style.strokeDasharray = len + ' ' + len; glow.style.strokeDashoffset = off;
-      var pt = route.getPointAtLength(len * at);
-      dot.setAttribute('cx', pt.x.toFixed(1)); dot.setAttribute('cy', pt.y.toFixed(1));
-      dot.style.opacity = d > 0 && d < 1 ? 1 : 0;
+      var off = (len * (1 - at)).toFixed(1), dash = len + ' ' + len;
+      [route, casing, glow].forEach(function (el) { attr(el, '.strokeDasharray', dash); attr(el, '.strokeDashoffset', off); });
+      var pt = pointAt(at);
+      attr(dot, 'cx', pt.x.toFixed(1)); attr(dot, 'cy', pt.y.toFixed(1));
+      attr(dot, '.opacity', d > 0 && d < 1 ? '1' : '0');
       // Finger sits on the tap it is about to make.
       var fi = d <= 0 ? 0 : Math.min(3, f > .8 ? k + 1 : k);
       if (d >= 1) fi = 3;
-      finger.setAttribute('transform', 'translate(' + TAPS_XY[fi][0] + ' ' + TAPS_XY[fi][1] + ')');
-      finger.style.opacity = (p > .08 && p < .36) ? .95 : 0;
+      attr(finger, 'transform', 'translate(' + TAPS_XY[fi][0] + ' ' + TAPS_XY[fi][1] + ')');
+      attr(finger, '.opacity', (p > .08 && p < .36) ? '.95' : '0');
       for (var i = 0; i < 4; i++) {
         var tapAt = i === 0 ? 0 : i / 3;
         var on = d > 0 && drawn >= tapAt - .001;
         var since = c01((drawn - tapAt) * 6);
         var rip = taps[i].querySelector('.pl-rip'), wp = taps[i].querySelector('.pl-wp');
-        wp.style.opacity = on ? 1 : 0;
-        rip.style.opacity = on ? (1 - since) * .9 : 0;
-        rip.setAttribute('r', (6 + since * 22).toFixed(1));
+        attr(wp, '.opacity', on ? '1' : '0');
+        attr(rip, '.opacity', on ? ((1 - since) * .9).toFixed(2) : '0');
+        attr(rip, 'r', (6 + since * 22).toFixed(1));
       }
       // Like the app: the figure updates when a leg lands, it does not tick.
       var legs = d <= 0 ? 0 : d >= 1 ? 3 : Math.min(3, Math.floor(drawn * 3 + .2));
       var shown = km * (legs ? TAP_AT[legs] : 0);
-      if (num && num.getAttribute('data-v') !== String(legs)) { num.setAttribute('data-v', String(legs)); num.textContent = fmt(shown); num.parentNode.classList.remove('pl-bump'); void num.offsetWidth; if (legs) num.parentNode.classList.add('pl-bump'); }
+      if (num && num.getAttribute('data-v') !== String(legs)) { num.setAttribute('data-v', String(legs)); num.textContent = fmt(shown); var box = num.parentNode; box.classList.remove('pl-bump'); if (legs) requestAnimationFrame(function () { requestAnimationFrame(function () { box.classList.add('pl-bump'); }); }); }
 
       // Beat 2: tilt into 3D, sights stand up (.36 to .66)
       set('--tilt', ease(seg(p, .36, .48)) * (1 - ease(seg(p, .66, .76))));
@@ -548,10 +472,10 @@
       set('--ph', out(seg(p, .7, .84)));
       set('--wrist', out(seg(p, .74, .88)));
       var turn = seg(p, .86, .97);
-      sec.classList.toggle('pl-turned', turn >= 1);
+      if ((turn >= 1) !== sec.classList.contains('pl-turned')) sec.classList.toggle('pl-turned', turn >= 1);
       if (wdist) {
-        var m = turn >= 1 ? 300 : Math.max(10, Math.round((1 - turn) * 12) * 10);
-        wdist.textContent = String(m);
+        var m = String(turn >= 1 ? 300 : Math.max(10, Math.round((1 - turn) * 12) * 10));
+        if (wdist.textContent !== m) wdist.textContent = m;
       }
 
       var s = p < .37 ? 1 : p < .67 ? 2 : 3;
@@ -559,11 +483,24 @@
     }
     // A film: it plays once when the stage is half in view and holds its last frame.
     var D = 9500, film = 0, t0 = 0, raf = 0;
+    // Frame guard: if this device cannot draw the film smoothly (median frame over
+    // 24 ms across its first frames), show the finished frame instead of a stutter.
+    var gd = [], gLast = 0, gOff = false;
+    function guard(now) {
+      if (gOff || gd.length > 14) return false;
+      if (gLast) gd.push(now - gLast);
+      gLast = now;
+      if (gd.length < 12) return false;
+      var m = gd.slice(2).sort(function (a, b) { return a - b; })[5];
+      if (m > 24) { gOff = true; return true; }
+      gd.length = 99; return false;
+    }
+
     var again = sec.querySelector('.pl-again');
     function tick(now) {
       raf = 0;
       if (!root.classList.contains('motion')) { film = 0; t0 = 0; update(); return; }
-      film = c01((now - t0) / D);
+      film = guard(now) ? 1 : c01((now - t0) / D);
       update();
       if (film < 1) raf = requestAnimationFrame(tick);
       else sec.classList.add('pl-done');
@@ -571,14 +508,19 @@
     function play() {
       if (raf) cancelAnimationFrame(raf);
       sec.classList.remove('pl-done');
-      film = 0; last = -1; t0 = performance.now();
+      film = 0; last = -1; t0 = performance.now(); gd = []; gLast = 0;
       raf = requestAnimationFrame(tick);
     }
-    if (again) again.addEventListener('click', play);
+    // A tap on Play again plays the whole film, whatever the frame guard saw.
+    if (again) again.addEventListener('click', function () { play(); gd.length = 99; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         if (!t0 && es[0].intersectionRatio >= .5 && root.classList.contains('motion')) play();
       }, { threshold: [0, .5] }).observe(stage);
+      // Scrolled away mid-film: jump to the last frame instead of animating off screen.
+      new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; film = 1; update(); sec.classList.add('pl-done'); }
+      }).observe(stage);
     } else { film = 1; }
     window.addEventListener('resize', function () { measured = false; last = -1; if (!raf) update(); }, { passive: true });
     new MutationObserver(function () { measured = false; last = -1; if (!root.classList.contains('motion')) { t0 = 0; film = 0; } update(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
@@ -603,7 +545,9 @@
     function seg(p, a, b) { return c01((p - a) / (b - a)); }
     function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
     function out(t) { return 1 - Math.pow(1 - t, 3); }
-    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
+    // Only changed values are written: an unchanged write still restyles the whole scene.
+    var vals = {};
+    function set(k, v) { var s = typeof v === 'number' ? v.toFixed(3) : v; if (vals[k] !== s) { vals[k] = s; sec.style.setProperty(k, s); } }
     var KEYS = ['--in', '--w1', '--w2', '--w3', '--w4', '--zoom', '--dots', '--lock', '--a1', '--a2', '--world-top', '--world-h', '--dev-px', '--zoom-s', '--lift-y', '--dev-dy', '--dev-mask', '--hout', '--head-top', '--caps-top'];
 
     function measure() {
@@ -649,7 +593,7 @@
     function clear() {
       KEYS.forEach(function (k) { sec.style.removeProperty(k); });
       sec.removeAttribute('data-step'); sec.classList.remove('wg-lifted');
-      step = 0; measured = false; last = -1;
+      step = 0; measured = false; last = -1; vals = {};
     }
     function update() {
 
@@ -665,7 +609,7 @@
       set('--w4', out(seg(p, .25, .34)));
       var z = ease(seg(p, .38, .5)) * (1 - ease(seg(p, .58, .68)));
       set('--zoom', z);
-      sec.classList.toggle('wg-lifted', z > .001);
+      if ((z > .001) !== sec.classList.contains('wg-lifted')) sec.classList.toggle('wg-lifted', z > .001);
       // The dots start at the middle of the band and settle on the night's reading.
       set('--dots', p < .38 ? 1 : out(seg(p, .44, .56)));
       set('--hout', ease(seg(p, .63, .7)));
@@ -677,11 +621,24 @@
     }
     // A film: it plays once when the stage is half in view and holds its last frame.
     var D = 7200, film = 0, t0 = 0, raf = 0;
+    // Frame guard: if this device cannot draw the film smoothly (median frame over
+    // 24 ms across its first frames), show the finished frame instead of a stutter.
+    var gd = [], gLast = 0, gOff = false;
+    function guard(now) {
+      if (gOff || gd.length > 14) return false;
+      if (gLast) gd.push(now - gLast);
+      gLast = now;
+      if (gd.length < 12) return false;
+      var m = gd.slice(2).sort(function (a, b) { return a - b; })[5];
+      if (m > 24) { gOff = true; return true; }
+      gd.length = 99; return false;
+    }
+
     var again = sec.querySelector('.wg-again');
     function tick(now) {
       raf = 0;
       if (!root.classList.contains('motion')) { film = 0; t0 = 0; update(); return; }
-      film = c01((now - t0) / D);
+      film = guard(now) ? 1 : c01((now - t0) / D);
       update();
       if (film < 1) raf = requestAnimationFrame(tick);
       else sec.classList.add('wg-done');
@@ -689,14 +646,19 @@
     function play() {
       if (raf) cancelAnimationFrame(raf);
       sec.classList.remove('wg-done');
-      film = 0; last = -1; t0 = performance.now();
+      film = 0; last = -1; t0 = performance.now(); gd = []; gLast = 0;
       raf = requestAnimationFrame(tick);
     }
-    if (again) again.addEventListener('click', play);
+    // A tap on Play again plays the whole film, whatever the frame guard saw.
+    if (again) again.addEventListener('click', function () { play(); gd.length = 99; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         if (!t0 && es[0].intersectionRatio >= .5 && root.classList.contains('motion')) play();
       }, { threshold: [0, .5] }).observe(stage);
+      // Scrolled away mid-film: jump to the last frame instead of animating off screen.
+      new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; film = 1; update(); sec.classList.add('wg-done'); }
+      }).observe(stage);
     } else { film = 1; }
     window.addEventListener('resize', function () { measured = false; last = -1; if (!raf) update(); }, { passive: true });
     new MutationObserver(function () { measured = false; last = -1; if (!root.classList.contains('motion')) { t0 = 0; film = 0; } update(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
