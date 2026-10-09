@@ -422,6 +422,20 @@ REVIEWS = {
            ("Auf einen Blick klar", "Ein Design, das gefällt, und Daten, die klar aufbereitet sind. Eine gute Mischung aus Wohlbefinden und Training.", "App-Store-Bewertung"),
            ("Schnell und einfach", "Schnell, geradlinig und leicht zu verstehen, mit viel drin.", "App-Store-Bewertung")],
 }
+# The page tells one day. A small bar under the nav lights the chapter you are in.
+CHAPTERS = {
+    "en": ("Chapters", [("engine", "Last night"), ("guide", "This morning"), ("planner", "Out the door"), ("flyover", "After the run")]),
+    "hu": ("Fejezetek", [("engine", "Tegnap éjjel"), ("guide", "Ma reggel"), ("planner", "Ki az ajtón"), ("flyover", "Futás után")]),
+    "de": ("Kapitel", [("engine", "Letzte Nacht"), ("guide", "Heute früh"), ("planner", "Raus"), ("flyover", "Nach dem Lauf")]),
+}
+
+
+def chapters_nav(code):
+    label, items = CHAPTERS[code]
+    links = "".join('<a href="#%s" data-ch="%s"><i></i><span>%s</span></a>' % (i, i, t) for i, t in items)
+    return '<nav class="chapters" aria-label="%s">%s<span class="ch-now" aria-hidden="true"></span></nav>' % (label, links)
+
+
 REVIEW_COPY = {
     "en": {"kicker": "From early users", "h2": "Mornings that feel right.", "note": "What testers and App Store reviewers tell us, in our words."},
     "hu": {"kicker": "Korai felhasználók", "h2": "Reggelek, ahogy tényleg érzed őket.", "note": "Amit a tesztelők és az App Store-értékelések mondanak, a mi szavainkkal."},
@@ -431,16 +445,23 @@ REVIEW_COPY = {
 
 def reviews_section(code):
     rc = REVIEW_COPY[code]
-    cards = "".join('<figure class="rv reveal" style="--d:%.2fs"><p class="rv-title">%s</p><p class="rv-text">%s</p>'
-                    '<figcaption>%s</figcaption></figure>' % (i * 0.1, t, x, src)
-                    for i, (t, x, src) in enumerate(REVIEWS[code]))
+    (t0, x0, s0), rest = REVIEWS[code][0], REVIEWS[code][1:]
+    more = "".join('<figure class="rv reveal" style="--d:%.2fs"><p class="rv-title">%s</p><p class="rv-text">%s</p>'
+                   '<figcaption>%s</figcaption></figure>' % (0.1 + i * 0.1, t, x, src)
+                   for i, (t, x, src) in enumerate(rest))
+    rating = ""
+    if HU_RATINGS:
+        rating = ('<p class="rv-rating"><span class="rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>'
+                  '<span>%s</span></p>' % (COPY[code]["proof"] % HU_RATINGS))
     return f"""<section class="reviews">
   <div class="wide">
-    <div class="center reveal">
-      <p class="kicker">{rc['kicker']}</p>
-      <h2 class="h2 split">{rc['h2']}</h2>
-    </div>
-    <div class="rv-grid">{cards}</div>
+    <p class="kicker center reveal">{rc['kicker']}</p>
+    <figure class="rv-lead reveal">
+      <blockquote><p>&#8220;{x0}&#8221;</p></blockquote>
+      <figcaption>{s0}</figcaption>
+    </figure>
+    {rating}
+    <div class="rv-grid">{more}</div>
     <p class="footnote center">{rc['note']}</p>
   </div>
 </section>"""
@@ -641,13 +662,14 @@ def build(code):
 {legacy}
 </head>
 <body>
-<a class="skip" href="#story">{c['skip']}</a>
+<a class="skip" href="#engine">{c['skip']}</a>
 
 <header class="bar">
   <div class="wide">
     <a class="brand" href="{c['file']}"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a>
     <nav>{nav}<a class="get" href="{store}">{c['get']}</a></nav>
   </div>
+  {chapters_nav(code)}
 </header>
 
 <main>
@@ -666,7 +688,7 @@ def build(code):
       <p class="lede rise" style="--d:.32s">{c['lede']}</p>
       <div class="cta rise" style="--d:.44s">
         <a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a>
-        <a class="btn btn-quiet" href="#story">{c['cta2']}</a>
+        <a class="btn btn-quiet" href="#engine">{c['cta2']}</a>
       </div>
       <ul class="facts rise" style="--d:.54s">{facts}</ul>
       {proof}
@@ -686,25 +708,9 @@ def build(code):
 
 </div>
 
-<section id="story">
-  <div class="wide">
-    <div class="story-head center reveal">
-      <p class="kicker">{c['story_kicker']}</p>
-      <h2 class="h2 split">{c['story_h2']}</h2>
-      <p class="sub">{c['story_sub']}</p>
-    </div>
-    <div class="story">
-      <div class="steps">{''.join(steps_html)}</div>
-      <div class="stage" aria-hidden="true"><div class="phone"><div class="screen-wrap">{''.join(stage)}</div></div><div class="dots">{dots}</div></div>
-    </div>
-  </div>
-</section>
-
 {scene('engine', code)}
 
-{reviews_section(code)}
-
-<section>
+<section id="guide" class="guide-sec">
   <div class="wide guide-grid">
     <div class="reveal">
       <p class="kicker">{c['guide_kicker']}</p>
@@ -720,11 +726,13 @@ def build(code):
   </div>
 </section>
 
-{scene('flyover', code) or after_old}
+
+
+{scene('widgets', code)}
 
 {scene('planner', code) or map_old}
 
-{scene('widgets', code)}
+{scene('flyover', code) or after_old}
 
 <section class="also">
   <div class="wide">
@@ -744,6 +752,8 @@ def build(code):
     <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>
   </div>
 </section>
+
+{reviews_section(code)}
 
 <section>
   <div class="wide">

@@ -231,16 +231,25 @@
         }
         return;
       }
-      var r = pin.getBoundingClientRect(), vh = window.innerHeight;
-      if (r.bottom < -200 || r.top > vh + 200) return;
+      if (!G) measure();
+      var top = G.top - SY, vh = G.vh;
+      if (top + G.h < -200 || top > vh + 200) return;
       if (mode !== 'fly') { mode = 'fly'; readConfig(); copyIn = false; copy.classList.remove('in'); }
-      var span = r.height - vh;
-      render(span > 0 ? clamp(-r.top / span) : 1);
+      var span = G.h - vh;
+      render(span > 0 ? clamp(-top / span) : 1);
     } catch (e) {
       alive = false;
       try { reset(); sec.classList.remove('fo-js'); } catch (e2) { /* the static frame stays */ }
     }
   }
+  // The pin's place is read on load and resize only, and scrollY in the scroll event,
+  // so a frame never forces a style or layout pass. Far from the scene, scrolling does nothing.
+  var G = null, SY = window.scrollY, near = true;
+  function measure() {
+    var r = pin.getBoundingClientRect();
+    G = { top: r.top + window.scrollY, h: r.height, vh: window.innerHeight };
+  }
+  function remeasure() { mode = ''; G = null; SY = window.scrollY; request(); }
   function request() {
     if (ticking) return;
     ticking = true;
@@ -251,9 +260,13 @@
   try {
     setup();
     sec.classList.add('fo-js');
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', function () { mode = ''; request(); }, { passive: true });
-    window.addEventListener('load', function () { mode = ''; request(); });
+    window.addEventListener('scroll', function () { SY = window.scrollY; if (near) request(); }, { passive: true });
+    window.addEventListener('resize', remeasure, { passive: true });
+    window.addEventListener('load', remeasure);
+    if ('ResizeObserver' in window) new ResizeObserver(function () { G = null; SY = window.scrollY; request(); }).observe(document.body);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
+      near = es[0].isIntersecting; if (near) { SY = window.scrollY; request(); }
+    }, { rootMargin: '100% 0px' }).observe(pin);
     request();
   } catch (e) {
     alive = false;
