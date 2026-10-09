@@ -157,6 +157,13 @@ def svg(cls, h, body, extra=""):
             'aria-hidden="true" focusable="false"%s>%s</svg>' % (cls, W, h, extra, body))
 
 
+def dusk_stars():
+    rnd = random.Random(83)
+    dots = "".join('<circle cx="%.0f" cy="%.0f" r="%.1f" style="--s:%.2f"/>' % (rnd.random() * W, rnd.random() ** 1.4 * 260,
+                   0.7 + rnd.random() ** 3 * 1.4, rnd.random()) for _ in range(46))
+    return '<svg class="dusk-stars" viewBox="0 0 %d 400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">%s</svg>' % (W, dots)
+
+
 def dusk_layers():
     return svg("l1", *layer_far()) + svg("l3", *layer_wood()) + svg("l4", *layer_near(runner=False))
 

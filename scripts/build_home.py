@@ -32,13 +32,13 @@ LOCK = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" widt
 COPY = {
     "en": {
         "file": "index.html", "lang": "en", "store": "https://apps.apple.com/app/id6762456252",
-        "title": "Aera: turn last night into today's run. Sleep and running for iPhone and Apple Watch",
+        "title": "Aera: Sleep &amp; Running Tracker for iPhone and Apple Watch",
         "desc": "Aera reads how you slept, what your heart did overnight and how the week went, against your own usual, then tells you how hard to go today. Every number shows how it was worked out. No account.",
         "og_title": "Aera: turn last night into today's run",
         "nav": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?"), ("support.html", "Support")],
         "get": "Get Aera",
         "skip": "Skip to content",
-        "eyebrow": "Aera for iPhone and Apple Watch",
+        "eyebrow": "Sleep and running tracker for iPhone and Apple Watch",
         "h1": "Turn last night into today&#8217;s run.",
         "lede": "Aera reads how you slept, what your heart did overnight and how your week has gone, against your own usual. Then it tells you how hard to go today, and every number shows how it was worked out.",
         "cta": "Download on the App Store",
@@ -117,6 +117,17 @@ COPY = {
         "prem": ["Today's session: how long and how hard", "Your sleep reserve", "Your places",
                  "Flyover for older runs", "Every route you draw, kept (the first is free)",
                  "History past twelve months", "Reports and every export format"],
+        "faq_kicker": "Questions",
+        "faq_h2": "What people ask before they download.",
+        "faq": [
+            ("What does Aera do?", "Aera is an iPhone and Apple Watch app that reads Apple Health and tells you each morning how hard to go: rest day, go easy, good to go or go for it. It reads your sleep, recovery, stress and strain against your own usual, plans routes on a map with turn-by-turn directions, and explains every number in a short article."),
+            ("Is Aera free?", "Yes. Recovery, stress, strain and your sleep score, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."),
+            ("Do I need an account, and where does my data go?", "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. There is no language model in the app. Product analytics stay off until you turn them on and never include health values."),
+            ("Do I need an Apple Watch?", "An Apple Watch gives Aera the overnight heart and sleep signals most reads are built on. Without one, Aera works from what your iPhone records, like steps and workouts, and the reads that need a watch wait until there is data."),
+            ("How does Aera know what is normal for me?", "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."),
+            ("Is Aera a medical device?", "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."),
+            ("Which languages does Aera speak?", "English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part."),
+        ],
         "maker_kicker": "Who makes it",
         "maker_h2": "Made by one person.",
         "maker_sub": "Aera is built by Gerg&#337; Varga, on his own, with no company behind it. The app says so in its settings. A message from the app or from this site reaches him directly.",
@@ -131,13 +142,13 @@ COPY = {
     },
     "hu": {
         "file": "hu.html", "lang": "hu", "store": "https://apps.apple.com/hu/app/id6762456252",
-        "title": "Aera magyarul: az éjszakádból lesz a mai futásod. Alvás és futás iPhone-on és Apple Watch-on",
+        "title": "Aera: alvás- és futáskövető iPhone-ra és Apple Watch-ra",
         "desc": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és hogyan telt a heted, a saját szokásodhoz mérve. Aztán megmondja, milyen keményen menj ma. Teljesen magyarul, fiók nélkül.",
         "og_title": "Aera magyarul: az éjszakádból lesz a mai futásod",
         "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Támogatás")],
         "get": "Letöltés",
         "skip": "Ugrás a tartalomra",
-        "eyebrow": "Aera iPhone-ra és Apple Watch-ra",
+        "eyebrow": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra",
         "h1": "Az éjszakádból lesz a mai futásod.",
         "lede": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és hogyan telt a heted, mindezt a saját szokásodhoz mérve. Aztán megmondja, milyen keményen menj ma, és minden szám elárulja, hogyan jött ki.",
         "cta": "Letöltés az App Store-ból",
@@ -216,6 +227,17 @@ COPY = {
         "prem": ["A mai edzés: mennyi ideig és milyen keményen", "Az alvástartalékod", "A helyeid",
                  "Flyover a régebbi futásokhoz", "Minden útvonal megmarad, amit rajzolsz (az első ingyenes)",
                  "Tizenkét hónapnál régebbi előzmények", "Jelentések és minden exportformátum"],
+        "faq_kicker": "Kérdések",
+        "faq_h2": "Amit letöltés előtt kérdezni szoktak.",
+        "faq": [
+            ("Mit csinál az Aera?", "Az Aera egy iPhone- és Apple Watch-app, ami az Apple Health adataiból minden reggel megmondja, milyen keményen menj: pihenőnap, csak lazán, mehet vagy hajrá. Az alvásodat, a regenerálódásodat, a stresszt és a terhelést a saját szokásodhoz méri, útvonalat tervez a térképen kanyarról kanyarra navigációval, és minden számot elmagyaráz egy rövid cikkben."),
+            ("Ingyenes az Aera?", "Igen. A regenerálódás, a stressz, a terhelés és az alváspontszám, a napi döntés, az útvonaltervező, a kanyarról kanyarra navigáció, minden edzés kiértékelése, minden egyéni rekord és az elmúlt hét nap Flyovere ingyenes. A Premium hozzáadja a mai edzést, az alvástartalékot, a helyeidet, a régebbi Flyovereket, a tizenkét hónapnál régebbi előzményeket, a jelentéseket és minden exportformátumot."),
+            ("Kell fiók? Hová kerülnek az adataim?", "Nincs fiók. Az Aera az iPhone-odon olvassa az Apple Health adatait, és minden pontszám ott készül, így az egészségadataid az iPhone-odon maradnak. Az appban nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot."),
+            ("Kell hozzá Apple Watch?", "Az Apple Watch adja azokat az éjszakai szív- és alvásjeleket, amelyekre a legtöbb érték épül. Nélküle az Aera abból dolgozik, amit az iPhone rögzít, például lépésekből és edzésekből, az órát igénylő értékek pedig megvárják az adatot."),
+            ("Honnan tudja az Aera, mi a szokásos nálam?", "Több hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos tartományod, és minden új napot ahhoz mér. Amíg kevés az adat, kiírja, hogy még tanul, és nem találgat."),
+            ("Orvostechnikai eszköz az Aera?", "Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az óra méréseit, például az alvásszakaszokat, becslésnek kell tekinteni, és minden cikk megmondja, hol szűnik meg megbízhatónak lenni a szám."),
+            ("Milyen nyelveken érhető el?", "Teljesen magyarul, angolul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul."),
+        ],
         "maker_kicker": "Ki csinálja",
         "maker_h2": "Egyetlen ember készíti.",
         "maker_sub": "Az Aerát Varga Gergő készíti, egyedül, cég nélkül. Az app a beállításokban is ezt írja. Ha az appból vagy erről az oldalról írsz, az üzenet egyenesen hozzá jut.",
@@ -230,13 +252,13 @@ COPY = {
     },
     "de": {
         "file": "de.html", "lang": "de", "store": "https://apps.apple.com/de/app/id6762456252",
-        "title": "Aera auf Deutsch: aus letzter Nacht wird dein Lauf von heute. Schlaf und Laufen für iPhone und Apple Watch",
+        "title": "Aera: Schlaf- &amp; Lauftracker für iPhone und Apple Watch",
         "desc": "Aera liest, wie du geschlafen hast, was dein Herz in der Nacht gemacht hat und wie deine Woche lief, gemessen an deinem eigenen Üblichen. Dann sagt es dir, wie hart du heute laufen kannst. Kein Konto.",
         "og_title": "Aera: aus letzter Nacht wird dein Lauf von heute",
         "nav": [("tools/wie-weit.html", "Rechner"), ("notes/index.html", "Notizen"), ("support.html", "Support")],
         "get": "Laden",
         "skip": "Zum Inhalt",
-        "eyebrow": "Aera für iPhone und Apple Watch",
+        "eyebrow": "Schlaf- und Lauftracker für iPhone und Apple Watch",
         "h1": "Aus letzter Nacht wird dein Lauf von heute.",
         "lede": "Aera liest, wie du geschlafen hast, was dein Herz in der Nacht gemacht hat und wie deine Woche lief, gemessen an deinem eigenen Üblichen. Dann sagt es dir, wie hart du heute laufen kannst, und jede Zahl zeigt, wie sie entstanden ist.",
         "cta": "Im App Store laden",
@@ -315,6 +337,17 @@ COPY = {
         "prem": ["Die heutige Einheit: wie lange und wie hart", "Deine Schlafreserve", "Deine Orte",
                  "Flyover für ältere Läufe", "Jede Route, die du zeichnest, bleibt gespeichert (die erste ist kostenlos)",
                  "Verlauf über zwölf Monate hinaus", "Berichte und jedes Exportformat"],
+        "faq_kicker": "Fragen",
+        "faq_h2": "Was Leute vor dem Laden fragen.",
+        "faq": [
+            ("Was macht Aera?", "Aera ist eine App für iPhone und Apple Watch, die Apple Health liest und dir jeden Morgen sagt, wie hart du heute rangehen kannst: Ruhetag, ruhig angehen, bereit oder leg los. Sie misst Schlaf, Erholung, Stress und Belastung an deinem eigenen Üblichen, plant Routen auf der Karte mit Abbiegehinweisen und erklärt jede Zahl in einem kurzen Artikel."),
+            ("Ist Aera kostenlos?", "Ja. Erholung, Stress, Belastung und dein Schlafwert, die Empfehlung für den Tag, der Routenplaner, die Abbiegehinweise, die Auswertung jedes Trainings, alle Bestleistungen und Flyover für die letzten sieben Tage sind kostenlos. Premium bringt die heutige Einheit, deine Schlafreserve, deine Orte, ältere Flyovers, Verlauf über zwölf Monate hinaus, Berichte und jedes Exportformat."),
+            ("Brauche ich ein Konto, und wo landen meine Daten?", "Es gibt kein Konto. Aera liest Apple Health auf deinem iPhone und berechnet jeden Wert dort, deine Gesundheitswerte bleiben also auf deinem iPhone. In der App steckt kein Sprachmodell. Die Produktanalyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte."),
+            ("Brauche ich eine Apple Watch?", "Die Apple Watch liefert die nächtlichen Herz- und Schlafsignale, auf denen die meisten Werte beruhen. Ohne sie arbeitet Aera mit dem, was dein iPhone aufzeichnet, etwa Schritte und Trainings, und die Werte, die eine Uhr brauchen, warten auf Daten."),
+            ("Woher weiß Aera, was für mich normal ist?", "Aera lernt über mehrere Wochen aus deinen eigenen Nächten und Einheiten, was dein üblicher Bereich ist, und vergleicht jeden neuen Tag damit. Solange deine Daten dünn sind, sagt Aera, dass es noch lernt, statt zu raten."),
+            ("Ist Aera ein Medizinprodukt?", "Nein. Aera ist für Wohlbefinden und Training im Alltag gemacht. Messungen der Uhr wie die Schlafphasen sind Schätzungen, und jeder Artikel sagt, wo seine Zahl nicht mehr verlässlich ist."),
+            ("Welche Sprachen spricht Aera?", "Deutsch, Englisch, Ungarisch, Spanisch und Französisch vollständig, Italienisch, Japanisch, Portugiesisch und traditionelles Chinesisch teilweise."),
+        ],
         "maker_kicker": "Wer sie macht",
         "maker_h2": "Von einem einzigen Menschen gemacht.",
         "maker_sub": "Aera wird von Gerg&#337; Varga gebaut, allein, ohne Firma dahinter. Die App sagt das auch in ihren Einstellungen. Eine Nachricht aus der App oder von dieser Seite erreicht ihn direkt.",
@@ -329,9 +362,20 @@ COPY = {
     },
 }
 
+# Analytics. Both stay off until the real values exist; never invent them.
+# CF_BEACON: the site token from Cloudflare > Web Analytics > Add a site (cookieless,
+# no banner needed). APPSTORE_PT: the provider token from App Store Connect >
+# App Analytics > Campaigns, so Apple counts downloads per page and button (ct=).
+CF_BEACON = ""
+APPSTORE_PT = ""
+OG_LOCALE = {"en": "en_US", "hu": "hu_HU", "de": "de_DE"}
+
 LANG_NAMES = [("en", "index.html", "English"), ("hu", "hu.html", "Magyar"), ("de", "de.html", "Deutsch")]
 
 # Captures of the app on 9 Oct 2026 (main 0ebe9a8). Name -> has light and dark?
+FLIES = [(8, 74, 7.5, 0.0), (14, 82, 9.0, 1.2), (22, 70, 8.2, 2.1), (31, 86, 10.0, 0.6), (38, 77, 7.8, 3.0),
+         (61, 84, 9.4, 1.7), (69, 72, 8.6, 0.3), (77, 88, 10.4, 2.5), (85, 76, 8.0, 1.0), (92, 83, 9.8, 3.4)]
+
 THEMED = {"home", "sleep", "recovery", "session", "planner", "article-sleep"}
 
 
@@ -354,10 +398,17 @@ def phone(name, alt, sizes, eager=False, cls=""):
 def build(code):
     c = COPY[code]
     L = landscape.hero_layers()
-    store = c["store"]
+    store_base = c["store"]
+
+    def store_at(place):
+        if not APPSTORE_PT:
+            return store_base
+        return "%s?pt=%s&amp;ct=site-%s-%s&amp;mt=8" % (store_base, APPSTORE_PT, code, place)
+
+    store = store_at("hero")
 
     def href(h):
-        return store if h == "store" else h
+        return store_at("footer") if h == "store" else h
 
     alternates = "".join('<link rel="alternate" hreflang="%s" href="%s%s">' % (lc, BASE, "" if f == "index.html" else f)
                          for lc, f, _ in LANG_NAMES)
@@ -381,6 +432,11 @@ def build(code):
                phone(shot, alt, "(max-width: 899px) 260px, 1px")))
         stage.append('<div class="scr%s">%s</div>' % (" on" if i == 0 else "", picture(shot, alt, "(min-width: 900px) 310px, 1px")))
 
+    dots = "".join('<i style="--c:%s"%s></i>' % (st[2], ' class="on"' if i == 0 else "") for i, st in enumerate(c["steps"]))
+
+    faq = "".join('<details class="qa reveal"><summary><h3>%s</h3><span class="plus" aria-hidden="true"></span></summary><p>%s</p></details>'
+                  % (q, a) for q, a in c["faq"])
+
     rails = "".join(
         '<div class="rail" style="--c:%s;--i:%d"><div class="rail-top"><div><p class="rail-name"><i></i>%s</p>'
         '<p class="rail-word">%s</p></div><p class="rail-val">%s<small>%s</small></p></div>'
@@ -395,7 +451,7 @@ def build(code):
     prem = "".join("<li>%s</li>" % x for x in c["prem"])
 
     topo = landscape.contours()
-    route = ('<path class="route" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/>')
+    route = ('<path id="route" class="route" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><circle id="rhead" class="rhead" cx="760" cy="960" r="7"/>')
 
     def foot_col(title, links):
         return "<div><h4>%s</h4>%s</div>" % (title, "".join('<a href="%s">%s</a>' % (href(h), t) for h, t in links))
@@ -415,10 +471,34 @@ def build(code):
 })();
 </script>"""
 
-    ld = ('{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aera","applicationCategory":"HealthApplication",'
-          '"operatingSystem":"iOS, watchOS","inLanguage":"%s","url":"%s","downloadUrl":"%s","description":"%s",'
-          '"author":{"@type":"Person","name":"Gerg\\u0151 Varga"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}'
-          % (code, canonical, store, c["desc"].replace('"', '\\"')))
+    import json as _json
+    plain = lambda t: html.unescape(t)
+    graph = [
+        {"@type": "MobileApplication", "@id": BASE + "#app", "name": "Aera",
+         "alternateName": plain(c["title"].split(":")[1].strip()) if ":" in c["title"] else "Aera",
+         "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker",
+         "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
+         "url": canonical, "downloadUrl": store_base, "installUrl": store_base,
+         "description": plain(c["desc"]),
+         "screenshot": [BASE + "img/home-light-800.webp", BASE + "img/sleep-dark-800.webp", BASE + "img/planner-dark-800.webp"],
+         "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
+         "author": {"@id": BASE + "#maker"},
+         "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
+        {"@type": "Person", "@id": BASE + "#maker", "name": "Gerg\u0151 Varga", "url": BASE},
+        {"@type": "WebSite", "@id": BASE + "#site", "name": "Aera", "url": BASE, "inLanguage": code,
+         "publisher": {"@id": BASE + "#maker"}},
+        {"@type": "FAQPage", "inLanguage": code,
+         "mainEntity": [{"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
+                        for q, a in c["faq"]]},
+    ]
+    ld = _json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False).replace("</", "<\\/")
+
+    beacon = ""
+    if CF_BEACON:
+        beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+                  "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON)
+
+    og_alt = "".join('<meta property="og:locale:alternate" content="%s">' % OG_LOCALE[lc] for lc in OG_LOCALE if lc != code)
 
     return f"""<!DOCTYPE html>
 <html lang="{c['lang']}">
@@ -433,11 +513,17 @@ def build(code):
 <meta property="og:title" content="{c['og_title']}">
 <meta property="og:description" content="{c['desc']}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Aera">
+<meta property="og:locale" content="{OG_LOCALE[code]}">{og_alt}
 <meta property="og:url" content="{canonical}">
 <meta property="og:image" content="{BASE}assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{c['og_title']}">
+<meta name="twitter:description" content="{c['desc']}">
+<meta name="twitter:image" content="{BASE}assets/og.jpg">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{canonical}">
 {alternates}
 <link rel="icon" href="assets/icon.png">
@@ -461,11 +547,13 @@ def build(code):
   <div class="sky sky-a"></div><div class="sky sky-b"></div>
   {L['stars']}
   <div class="moon"></div><div class="sun"></div>
+  <div class="clouds" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="flies" aria-hidden="true">{''.join('<i style="--x:%d%%;--y:%d%%;--t:%.1fs;--o:%.1fs"></i>' % (x, y, t, o) for x, y, t, o in FLIES)}</div>
   {L['far']}{L['mid']}{L['wood']}
   <div class="wide hero-inner">
     <div class="hero-copy">
       <p class="eyebrow rise" style="--d:.1s">{c['eyebrow']}</p>
-      <h1 id="h1" class="rise" style="--d:.2s">{c['h1']}</h1>
+      <h1 id="h1" class="rise split" style="--d:.2s">{c['h1']}</h1>
       <p class="lede rise" style="--d:.32s">{c['lede']}</p>
       <div class="cta rise" style="--d:.44s">
         <a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a>
@@ -482,12 +570,12 @@ def build(code):
   <div class="wide">
     <div class="story-head center reveal">
       <p class="kicker">{c['story_kicker']}</p>
-      <h2 class="h2">{c['story_h2']}</h2>
+      <h2 class="h2 split">{c['story_h2']}</h2>
       <p class="sub">{c['story_sub']}</p>
     </div>
     <div class="story">
       <div class="steps">{''.join(steps_html)}</div>
-      <div class="stage" aria-hidden="true"><div class="phone"><div class="screen-wrap">{''.join(stage)}</div></div></div>
+      <div class="stage" aria-hidden="true"><div class="phone"><div class="screen-wrap">{''.join(stage)}</div></div><div class="dots">{dots}</div></div>
     </div>
   </div>
 </section>
@@ -496,7 +584,7 @@ def build(code):
   <div class="wide usual-grid">
     <div class="reveal">
       <p class="kicker">{c['usual_kicker']}</p>
-      <h2 class="h2">{c['usual_h2']}</h2>
+      <h2 class="h2 split">{c['usual_h2']}</h2>
       <p class="sub">{c['usual_sub']}</p>
     </div>
     <div>
@@ -510,7 +598,7 @@ def build(code):
   <div class="wide guide-grid">
     <div class="reveal">
       <p class="kicker">{c['guide_kicker']}</p>
-      <h2 class="h2">{c['guide_h2']}</h2>
+      <h2 class="h2 split">{c['guide_h2']}</h2>
       <p class="sub">{c['guide_sub']}</p>
       <div class="quote"><p>&#8220;{c['quote']}&#8221;</p><span>{c['quote_src']}</span></div>
       <a class="link" href="notes/index.html">{c['guide_link']} &#8594;</a>
@@ -527,13 +615,13 @@ def build(code):
   <div class="wide after-grid">
     <div class="reveal">
       <p class="kicker">{c['after_kicker']}</p>
-      <h2 class="h2">{c['after_h2']}</h2>
+      <h2 class="h2 split">{c['after_h2']}</h2>
       <p class="sub">{c['after_sub']}</p>
       <ul class="list">{''.join('<li>%s</li>' % x for x in c['after_list'])}</ul>
     </div>
     <div class="duo reveal" style="--d:.15s">
-      {phone('workout-flyover-dark', c['after_alts'][0], '(max-width: 899px) 46vw, 280px')}
-      {phone('workout-detail', c['after_alts'][1], '(max-width: 899px) 46vw, 280px')}
+      {phone('workout-flyover-dark', c['after_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
+      {phone('workout-detail', c['after_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
     </div>
   </div>
 </section>
@@ -542,12 +630,12 @@ def build(code):
   <div class="wide map-grid">
     <div class="reveal">
       <p class="kicker">{c['map_kicker']}</p>
-      <h2 class="h2">{c['map_h2']}</h2>
+      <h2 class="h2 split">{c['map_h2']}</h2>
       <p class="sub">{c['map_sub']}</p>
     </div>
     <div class="duo reveal" style="--d:.15s">
-      {phone('planner', c['map_alts'][0], '(max-width: 899px) 46vw, 280px')}
-      {phone('routenav', c['map_alts'][1], '(max-width: 899px) 46vw, 280px')}
+      {phone('planner', c['map_alts'][0], '(max-width: 899px) 46vw, 280px', cls='par" data-par="-0.06')}
+      {phone('routenav', c['map_alts'][1], '(max-width: 899px) 46vw, 280px', cls='par" data-par="0.08')}
     </div>
   </div>
 </section>
@@ -556,7 +644,7 @@ def build(code):
   <div class="wide">
     <div class="center reveal">
       <p class="kicker">{c['also_kicker']}</p>
-      <h2 class="h2">{c['also_h2']}</h2>
+      <h2 class="h2 split">{c['also_h2']}</h2>
     </div>
     <div class="tiles">{tiles}</div>
   </div>
@@ -565,7 +653,7 @@ def build(code):
 <section class="privacy">
   <div class="wide center reveal">
     <div class="lock">{LOCK}</div>
-    <h2 class="h2">{c['priv_h2']}</h2>
+    <h2 class="h2 split">{c['priv_h2']}</h2>
     <p class="sub">{c['priv_sub']}</p>
     <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>
   </div>
@@ -573,7 +661,7 @@ def build(code):
 
 <section>
   <div class="wide">
-    <h2 class="h2 center reveal">{c['plans_h2']}</h2>
+    <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
       <div class="plan free reveal"><h3>{c['free_h']}</h3><p class="note">{c['free_note']}</p><ul>{free}</ul></div>
       <div class="plan premium reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><p class="note">{c['prem_note']}</p><ul>{prem}</ul></div>
@@ -581,10 +669,20 @@ def build(code):
   </div>
 </section>
 
+<section class="faq-sec">
+  <div class="wide faq-grid">
+    <div class="reveal">
+      <p class="kicker">{c['faq_kicker']}</p>
+      <h2 class="h2 split">{c['faq_h2']}</h2>
+    </div>
+    <div class="faq">{faq}</div>
+  </div>
+</section>
+
 <section class="maker-sec">
   <div class="wide maker center reveal">
     <p class="kicker">{c['maker_kicker']}</p>
-    <h2 class="h2">{c['maker_h2']}</h2>
+    <h2 class="h2 split">{c['maker_h2']}</h2>
     <p class="sub">{c['maker_sub']}</p>
     <a class="link" href="support.html">{c['maker_link']} &#8594;</a>
   </div>
@@ -592,10 +690,10 @@ def build(code):
 
 <section class="closing">
   <div class="wide reveal">
-    <h2 class="h2">{c['close_h2']}</h2>
+    <h2 class="h2 split">{c['close_h2']}</h2>
     <div class="cta"><a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a></div>
   </div>
-  <div class="dusk" aria-hidden="true">{landscape.dusk_layers()}</div>
+  <div class="dusk" aria-hidden="true"><div class="dusk-sun"></div>{landscape.dusk_stars()}{landscape.dusk_layers()}</div>
 </section>
 </main>
 
@@ -612,6 +710,7 @@ def build(code):
 </footer>
 
 <script src="home.js" defer></script>
+{beacon}
 </body>
 </html>
 """

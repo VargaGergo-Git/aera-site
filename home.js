@@ -1,21 +1,33 @@
 /* Aera homepage motion. Everything on the page is readable without this file:
-   it only adds the entrance, the sunrise on scroll, the runner, the story
-   phone and the reveals. If anything throws, motion is dropped and the page
-   stays fully visible. */
+   it only adds the entrance, the sunrise on scroll, the runner, the word-by-word
+   headlines, the story phone, the drawn route, the sunset and the reveals.
+   One scroll loop drives all of it with transform and opacity. If anything
+   throws, motion is dropped and the page stays fully visible. */
 (function () {
   var root = document.documentElement;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var wide = window.matchMedia('(min-width: 900px)');
   var hero = document.querySelector('.hero');
   var bar = document.querySelector('.bar');
-  var pending = [];
   var steps = [].slice.call(document.querySelectorAll('.step'));
   var screens = [].slice.call(document.querySelectorAll('.stage .scr'));
-  var wide = window.matchMedia('(min-width: 900px)');
-
+  var dots = [].slice.call(document.querySelectorAll('.stage .dots i'));
+  var stage = document.querySelector('.stage');
+  var pars = [].slice.call(document.querySelectorAll('[data-par]'));
+  var after = document.querySelector('.after');
+  var route = document.getElementById('route');
+  var rhead = document.getElementById('rhead');
+  var dusk = document.querySelector('.dusk');
   var track = document.getElementById('track');
   var runner = document.getElementById('runner');
-  var trackLen = 0;
-  try { if (track) trackLen = track.getTotalLength(); } catch (e) { trackLen = 0; }
+  var pending = [];
+
+  function len(path) { try { return path ? path.getTotalLength() : 0; } catch (e) { return 0; } }
+  var trackLen = len(track);
+  var routeLen = len(route);
+
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
   function abandon() {
     root.classList.remove('motion');
@@ -24,16 +36,33 @@
     if (hero) hero.style.removeProperty('--p');
   }
 
+  // Headlines: wrap each word so it can rise from behind its own line.
+  function splitWords(el) {
+    var i = 0;
+    [].slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType !== 3 || !node.textContent.trim()) return;
+      var frag = document.createDocumentFragment();
+      node.textContent.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        var w = document.createElement('span');
+        w.className = 'w';
+        var inner = document.createElement('span');
+        inner.textContent = part;
+        inner.style.setProperty('--i', i++);
+        w.appendChild(inner);
+        frag.appendChild(w);
+      });
+      el.replaceChild(frag, node);
+    });
+  }
+
   // Sunrise: the entrance lifts the sky from first light a little way, then
   // scrolling through the hero carries it the rest of the way to morning.
-  var dawn = 0;
-  var dawnTarget = 0.24;
-  var dawnStart = 0;
-
+  var dawn = 0, dawnTarget = 0.24, dawnStart = 0;
   function heroProgress() {
     var h = hero.offsetHeight || 1;
-    var s = Math.min(Math.max(window.scrollY / (h * 0.85), 0), 1);
-    return dawn + (1 - dawn) * s;
+    return dawn + (1 - dawn) * clamp(window.scrollY / (h * 0.85));
   }
 
   var lastPose = -1;
@@ -47,9 +76,9 @@
     if (pose !== lastPose) { runner.classList.toggle('b', pose === 1); lastPose = pose; }
   }
 
-  function revealVisible() {
+  function revealVisible(vh) {
     if (!pending.length) return;
-    var limit = window.innerHeight * 0.88;
+    var limit = vh * 0.88;
     pending = pending.filter(function (el) {
       if (el.getBoundingClientRect().top > limit) return true;
       el.classList.add('in');
@@ -57,19 +86,59 @@
     });
   }
 
-  var active = -1;
-  function story() {
+  var active = -1, swapTimer = 0;
+  function story(vh) {
     if (!steps.length) return;
-    var mid = window.innerHeight / 2, best = 0, bestD = Infinity;
+    var mid = vh / 2, best = 0, bestD = Infinity;
     steps.forEach(function (s, i) {
       var r = s.getBoundingClientRect();
       var d = Math.abs(r.top + r.height / 2 - mid);
       if (d < bestD) { bestD = d; best = i; }
     });
     if (best === active) return;
+    var first = active === -1;
     active = best;
     steps.forEach(function (s, i) { s.classList.toggle('on', i === best); });
     screens.forEach(function (s, i) { s.classList.toggle('on', i === best); });
+    dots.forEach(function (s, i) { s.classList.toggle('on', i === best); });
+    if (!first && stage) {
+      stage.classList.add('swap');
+      clearTimeout(swapTimer);
+      swapTimer = setTimeout(function () { stage.classList.remove('swap'); }, 450);
+    }
+  }
+
+  // Paired phones drift at their own speed relative to the middle of the screen.
+  function parallax(vh) {
+    pars.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var y = (r.top + r.height / 2 - vh / 2) * Number(el.getAttribute('data-par'));
+      el.style.setProperty('--py', y.toFixed(1) + 'px');
+    });
+  }
+
+  // Flyover band: the route draws with scroll, a marker rides its head.
+  function flyover(vh) {
+    if (!after) return;
+    var r = after.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > vh) return;
+    var p = clamp((vh - r.top) / (r.height + vh * 0.2));
+    after.style.setProperty('--rp', p.toFixed(4));
+    if (rhead && routeLen) {
+      var pt = route.getPointAtLength(routeLen * p);
+      rhead.setAttribute('cx', pt.x.toFixed(1));
+      rhead.setAttribute('cy', pt.y.toFixed(1));
+    }
+  }
+
+  // Closing: the sun sets as you reach the bottom of the page.
+  function sunset(vh) {
+    if (!dusk) return;
+    var r = dusk.getBoundingClientRect();
+    if (r.top > vh) { dusk.style.setProperty('--dp', '0'); return; }
+    var p = clamp((vh - r.top) / (r.height + vh * 0.35));
+    dusk.style.setProperty('--dp', p.toFixed(4));
   }
 
   var frames = 0;
@@ -77,15 +146,18 @@
     try {
       frames++;
       bar.classList.toggle('scrolled', window.scrollY > 24);
-      if (root.classList.contains('motion')) {
-        if (hero && hero.getBoundingClientRect().bottom > 0) {
-          var p = heroProgress();
-          hero.style.setProperty('--p', p.toFixed(4));
-          placeRunner(p);
-        }
-        revealVisible();
-        if (wide.matches) story();
+      if (!root.classList.contains('motion')) return;
+      var vh = window.innerHeight;
+      if (hero && hero.getBoundingClientRect().bottom > 0) {
+        var p = heroProgress();
+        hero.style.setProperty('--p', p.toFixed(4));
+        placeRunner(p);
       }
+      revealVisible(vh);
+      if (wide.matches) story(vh);
+      parallax(vh);
+      flyover(vh);
+      sunset(vh);
     } catch (e) { abandon(); }
   }
 
@@ -106,9 +178,21 @@
     if (k < 1) requestAnimationFrame(tweenDawn);
   }
 
+  // Pointer depth in the hero on desktop: eased toward the cursor.
+  var mx = 0, my = 0, tx = 0, ty = 0, easing = false;
+  function easePointer() {
+    mx += (tx - mx) * 0.08;
+    my += (ty - my) * 0.08;
+    hero.style.setProperty('--mx', mx.toFixed(3));
+    hero.style.setProperty('--my', my.toFixed(3));
+    if (Math.abs(tx - mx) > 0.002 || Math.abs(ty - my) > 0.002) requestAnimationFrame(easePointer);
+    else easing = false;
+  }
+
   try {
     if (!reduced) {
       root.classList.add('motion');
+      [].slice.call(document.querySelectorAll('.split')).forEach(splitWords);
       pending = [].slice.call(document.querySelectorAll('.reveal, .rails, .fan, .after'));
       if (hero) hero.style.setProperty('--p', '0');
       placeRunner(0);
@@ -118,6 +202,13 @@
           requestAnimationFrame(tweenDawn);
         });
       });
+      if (finePointer && hero) {
+        hero.addEventListener('pointermove', function (e) {
+          tx = (e.clientX / window.innerWidth) * 2 - 1;
+          ty = (e.clientY / window.innerHeight) * 2 - 1;
+          if (!easing) { easing = true; requestAnimationFrame(easePointer); }
+        }, { passive: true });
+      }
     } else {
       placeRunner(0.62);
     }

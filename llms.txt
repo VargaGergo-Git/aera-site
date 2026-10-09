@@ -1,0 +1,38 @@
+# Aera
+
+> Aera is a sleep and running tracker for iPhone and Apple Watch. It reads Apple Health, compares last night and the past week with your own usual range, and tells you each morning how hard to go today: rest day, go easy, good to go or go for it. Every number in the app opens a short article that shows how it was worked out and where it stops being reliable. There is no account, and health numbers are worked out and kept on the iPhone.
+
+Facts, stated plainly:
+
+- Platform: iPhone and Apple Watch (reads Apple Health). Made by one person, Gergő Varga.
+- Price: free to download and free to use. Premium is optional (monthly, yearly with a 7-day trial, or a one-time purchase).
+- Free: recovery, stress, strain and a sleep score; a hard, easy or rest call every morning; a route planner on real paths with turn-by-turn directions on iPhone or Apple Watch; every workout read and every personal best; Flyover replays of runs from the last seven days; twelve months of history; raw data export as JSON or GPX.
+- Premium: today's session (how long and how hard), sleep reserve, places, Flyover for older runs, every drawn route kept, history past twelve months, reports and every export format.
+- Privacy: no account, no sign-in, no language model in the app. Product analytics stay off until the user turns them on and never include health values.
+- Without an Apple Watch, Aera works from what the iPhone records (steps, workouts); reads that need overnight watch data wait until there is data.
+- Not a medical device. Watch measurements such as sleep stages are estimates.
+- Languages: English, Hungarian, German, Spanish and French in full; Italian, Japanese, Portuguese and Traditional Chinese in part.
+
+## Main pages
+
+- [Aera homepage (English)](https://vargagergo-git.github.io/aera-site/): what the app does, free and Premium, questions and answers
+- [Aera (Magyar)](https://vargagergo-git.github.io/aera-site/hu.html): the homepage in Hungarian
+- [Aera (Deutsch)](https://vargagergo-git.github.io/aera-site/de.html): the homepage in German
+- [Aera on the App Store](https://apps.apple.com/app/id6762456252): download
+
+## Field notes
+
+- [Field notes](https://vargagergo-git.github.io/aera-site/notes/index.html): short articles on sleep, recovery, heart rate variability, training load and what a consumer watch can and cannot measure, with the research and the error bars left in
+- [Notes feed](https://vargagergo-git.github.io/aera-site/notes/feed.xml): RSS
+
+## Tools
+
+- [How far will I run?](https://vargagergo-git.github.io/aera-site/tools/how-far.html): free calculator that turns time and pace into distance
+- [Milyen messzire futok?](https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html): the same calculator in Hungarian
+- [Wie weit laufe ich?](https://vargagergo-git.github.io/aera-site/tools/wie-weit.html): the same calculator in German
+
+## Legal and support
+
+- [Privacy policy](https://vargagergo-git.github.io/aera-site/privacy.html)
+- [Terms of use](https://vargagergo-git.github.io/aera-site/terms.html)
+- [Support](https://vargagergo-git.github.io/aera-site/support.html)
