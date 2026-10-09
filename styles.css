@@ -718,7 +718,7 @@ footer a:hover { color: var(--text); }
 .note-list li a:hover { text-decoration: underline; }
 .note-list .meta { display: block; font-size: 0.85em; opacity: 0.65; margin-top: 0.15rem; }
 .note-sources { font-size: 0.9em; opacity: 0.8; }
-.note-sources li { margin-bottom: 0.5rem; }
+.note-sources li { margin-bottom: 0.5rem; overflow-wrap: anywhere; }
 
 /* Tools (tools/*.html): a plain form card, no libraries. Inputs stay at 18px so
    iOS Safari does not zoom on focus. */

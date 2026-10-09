@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>Apple Watch HRV normal range: what's good, why it's low</title>
+<meta name="description" content="There is no single normal Apple Watch HRV. It reads SDNN, varies hugely by age and person, and matters most against your own range. Why yours is low.">
+<meta property="og:title" content="Apple Watch HRV: what is normal, and why is mine low?">
+<meta property="og:description" content="Apple Watch reports HRV as SDNN in milliseconds. Why there is no single good number, what pulls yours down, and how to read it against your own range.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aerahealth.app/assets/icon.png">
+<link rel="canonical" href="https://aerahealth.app/guides/apple-watch-hrv-normal-range.html">
+<link rel="alternate" hreflang="en" href="https://aerahealth.app/guides/apple-watch-hrv-normal-range.html">
+<link rel="alternate" hreflang="hu" href="https://aerahealth.app/guides/apple-watch-hrv-ertek.html">
+<link rel="alternate" hreflang="de" href="https://aerahealth.app/guides/apple-watch-hrv-normalwert.html">
+<link rel="alternate" hreflang="x-default" href="https://aerahealth.app/guides/apple-watch-hrv-normal-range.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Apple Watch HRV: what is normal, and why is mine low?", "name": "Apple Watch HRV normal range: what's good, why it's low", "inLanguage": "en", "datePublished": "2026-10-09", "dateModified": "2026-10-09", "image": "https://aerahealth.app/assets/icon.png", "author": {"@type": "Person", "name": "Gergő Varga"}, "publisher": {"@type": "Organization", "name": "Aera", "url": "https://aerahealth.app/"}, "mainEntityOfPage": "https://aerahealth.app/guides/apple-watch-hrv-normal-range.html", "description": "What Apple Watch HRV (SDNN) measures, why there is no single normal value, what lowers it, how to read it as a rolling average against your own range, and when to see a doctor.", "citation": [
+{"@type": "CreativeWork", "name": "HKQuantityTypeIdentifier.heartRateVariabilitySDNN (HealthKit documentation)", "author": "Apple Inc.", "datePublished": "2026"},
+{"@type": "CreativeWork", "name": "A quantitative systematic review of normal values for short-term heart rate variability in healthy adults", "author": "Nunan D et al.", "datePublished": "2010"},
+{"@type": "CreativeWork", "name": "An overview of heart rate variability metrics and norms", "author": "Shaffer F, Ginsberg JP", "datePublished": "2017"},
+{"@type": "CreativeWork", "name": "Heart rate variability with photoplethysmography in 8 million individuals: a cross-sectional study", "author": "Natarajan A et al.", "datePublished": "2020"},
+{"@type": "CreativeWork", "name": "What is behind changes in resting heart rate and heart rate variability? A large-scale analysis of longitudinal measurements acquired in free-living", "author": "Altini M, Plews D", "datePublished": "2021"},
+{"@type": "CreativeWork", "name": "Systematic review on HRV reference values", "author": "Brozat M et al.", "datePublished": "2025"},
+{"@type": "CreativeWork", "name": "Acute effect of alcohol intake on cardiovascular autonomic regulation during the first hours of sleep in a large real-world sample of Finnish employees", "author": "Pietilä J et al.", "datePublished": "2018"},
+{"@type": "CreativeWork", "name": "Stress and heart rate variability: a meta-analysis and review of the literature", "author": "Kim HG et al.", "datePublished": "2018"},
+{"@type": "CreativeWork", "name": "Effect of nighttime bedroom temperature on heart rate variability in older adults: an observational study", "author": "O'Connor FK et al.", "datePublished": "2025"},
+{"@type": "CreativeWork", "name": "Training adaptation and heart rate variability in elite endurance athletes: opening the door to effective monitoring", "author": "Plews DJ et al.", "datePublished": "2013"},
+{"@type": "CreativeWork", "name": "The validity of Apple Watch Series 9 and Ultra 2 for serial measurements of heart rate variability and resting heart rate", "author": "O'Grady B et al.", "datePublished": "2024"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "en", "mainEntity": [
+{"@type": "Question", "name": "What is a normal HRV on Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "There is no single normal value. Apple Watch reports HRV as SDNN in milliseconds, and even the averages of healthy groups run from about 30 to over 90 ms, with individuals spreading wider, depending on age, fitness, genes and when the reading was taken. Younger people tend to read higher. A good HRV is one that sits inside your own usual range."}},
+{"@type": "Question", "name": "Why is my HRV low on Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Often because of something recent: a hard workout, alcohol, a short or broken night, stress, a warm bedroom or an illness starting. It can also simply be your normal level, since some healthy people always read low. Compare it with your own average over the last week or two rather than with anyone else."}},
+{"@type": "Question", "name": "Why does Apple Watch HRV differ from other wearables?", "acceptedAnswer": {"@type": "Answer", "text": "Apple Watch uses SDNN, while many rings and straps report RMSSD, a different calculation that gives different numbers from the same heartbeats. Devices also measure at different times of night and for different lengths of time. Numbers from two devices are not interchangeable; trends within one device are what count."}},
+{"@type": "Question", "name": "When should I worry about low HRV?", "acceptedAnswer": {"@type": "Answer", "text": "A single low reading is not a reason to worry. Talk to a doctor if your HRV stays well below your usual for a week or more without an obvious reason, or if a low reading comes with symptoms such as chest pain, fainting, a racing or irregular heartbeat, or unusual breathlessness."}}
+]}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Guide</p>
+  <h1>Apple Watch HRV: what is normal, and why is mine low?</h1>
+  <p class="meta lang-switch"><a href="apple-watch-hrv-normal-range.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="apple-watch-hrv-ertek.html" hreflang="hu" lang="hu">Magyar</a> · <a href="apple-watch-hrv-normalwert.html" hreflang="de" lang="de">Deutsch</a></p>
+</div>
+<div class="wrap legal">
+<p><strong>There is no single normal Apple Watch HRV.</strong> Even the averages of healthy groups run from about 30 to over 90 milliseconds, and individuals spread wider still, depending on age, fitness, genes and when the watch took the reading. A "good" HRV is one that sits inside your own usual range, and a "low" one only means something when it is low for you, for more than a morning or two.</p>
+<p>Below: what the number on your watch actually is, why it differs from other devices, what pulls it down, and when a low reading is worth a call to a doctor.</p>
+
+<h2>What Apple Watch actually measures</h2>
+<p>Heart rate variability (HRV) is the small change in spacing between heartbeats. Even at 60 beats a minute, the gaps are not all one second; some are a little shorter, some a little longer. When your body is rested, that spacing tends to vary more. Under strain it tightens up. More in <a href="../notes/what-is-hrv.html">what HRV actually is</a>.</p>
+<p>Apple's HealthKit documentation says Apple Watch records HRV automatically and that it uses <strong>SDNN</strong>: the standard deviation of the intervals between normal heartbeats, in milliseconds. The watch does not measure all the time. It takes short readings at irregular moments when you are still, including through the night, and the Health app lists each one. A night usually holds only a handful of them, so each is a small sample of your night.</p>
+
+<h2>SDNN and RMSSD: why devices disagree</h2>
+<p>Many rings, straps and sports watches report a different HRV figure, <strong>RMSSD</strong>, the average size of the change from one beat to the next. Both come from the same heartbeats, but they are different calculations. RMSSD mostly reflects the calming (vagal) side of the nervous system; SDNN picks up that too, plus slower swings in heart rate (Shaffer and Ginsberg, 2017). Devices also differ in when they measure: one short reading, a fixed window early in the night, or an average over the whole sleep.</p>
+<p>So an Apple Watch reading of 38 ms and another device's 55 ms on the same night are not a contradiction. They are two different rulers. Neither is wrong; they just cannot be compared number for number. Compare each device with itself.</p>
+
+<h2>What is a normal range?</h2>
+<p>Nunan and colleagues (2010) pooled 44 studies of healthy adults (21,438 people) measured over a few minutes at rest. Average SDNN across those studies was about 50 ms, with study averages ranging from 32 to 93 ms. RMSSD averaged about 42 ms, from 19 to 75 ms (as tabulated by Shaffer and Ginsberg, 2017). Those are averages of groups; individuals spread much wider.</p>
+<p>Age matters most. In data from over 8 million Fitbit users, Natarajan and colleagues (2020) found HRV falls steadily with age. Altini and Plews (2021), with 28,175 people measuring each morning, found the same, while sex made little difference to HRV. A 2025 systematic review (Brozat and colleagues) concluded that there are still no generally accepted HRV normal values, only large studies that can be used for rough orientation.</p>
+<p>That is why a chart of "good HRV by age" is less useful than it looks. Two healthy 40-year-olds can sit 40 ms apart and both be fine. Your own range is the reference that matters, which is the point of <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a>.</p>
+
+<h2>Why your HRV is low</h2>
+<p>If your HRV has dropped below your usual, the cause is usually recent and ordinary:</p>
+<ul>
+  <li><strong>Hard training.</strong> A heavy session or a big week can lower HRV for a day or more. Altini and Plews (2021) saw changes after training of different intensities.</li>
+  <li><strong>Alcohol.</strong> In over 4,000 Finnish employees, Pietilä and colleagues (2018) found that HRV during the first hours of sleep fell with each step up in how much people drank, and resting heart rate rose. Even small amounts showed an effect.</li>
+  <li><strong>Illness.</strong> Altini and Plews (2021) found HRV about 10% lower during sickness, often alongside a raised resting heart rate. See <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a></li>
+  <li><strong>Stress.</strong> A review of 37 studies (Kim and colleagues, 2018) found HRV changes under psychological stress, most often a drop in calming activity.</li>
+  <li><strong>Heat.</strong> In older adults monitored through a summer, warmer bedrooms went with lower overnight HRV (O'Connor and colleagues, 2025). More in <a href="../notes/why-does-heat-raise-my-heart-rate.html">why heat raises your heart rate</a>.</li>
+  <li><strong>Other everyday things.</strong> A short or broken night or a late heavy meal can move it, and Altini and Plews (2021) saw a small shift between phases of the menstrual cycle.</li>
+</ul>
+<p>And sometimes nothing is wrong. If your HRV has always been low compared with charts online, that may simply be your level.</p>
+
+<h2>Read the trend, not the morning</h2>
+<p>Single readings are noisy, and the watch's reading is especially rough in absolute terms: against a chest strap, Apple Watch HRV was off by about 29% on average and read slightly lower (O'Grady and colleagues, 2024). It follows your own ups and downs better than it matches a lab value.</p>
+<p>Plews and colleagues (2013), working with elite endurance athletes, recommended reading HRV as a rolling average over about a week against the person's own baseline rather than reacting to any one day. One low morning after a party says little. A week-long average sliding well below your usual says more, especially if your resting heart rate is creeping up at the same time. If you train, <a href="should-i-run-after-bad-sleep.html">should I run after a bad night's sleep?</a> covers what to do with that.</p>
+
+<h2>When to see a doctor</h2>
+<ul>
+  <li>HRV well below your usual for a week or more with no obvious reason such as training, travel, drinking or a cold.</li>
+  <li>A low reading together with chest pain, fainting, a racing or irregular heartbeat, or unusual breathlessness. Those symptoms matter on their own, whatever the number says.</li>
+  <li>Any worry about your heart. HRV from a watch is a wellness signal, not a diagnosis. This page is general information, not medical advice.</li>
+</ul>
+
+<h2>How Aera does this</h2>
+<div class="note">
+<p><strong>Aera, for iPhone and Apple Watch</strong></p>
+<p>Aera shows your overnight HRV against your own usual and explains where the number stops being reliable. It reads the HRV readings your Apple Watch saves to Apple Health, including the ones taken while you sleep, and holds them against your own usual from the last two weeks. The HRV tile on Home then says Typical, Below your usual or Notably low (or the same above), and the Sleep screen notes when last night's HRV ran under your usual. Until it has at least seven days of your readings, it says Building baseline instead of guessing.</p>
+<p>Aera never puts HRV on a population "good for your age" scale, because no agreed reference exists. Tap the number and the Field Guide explains how it was read, why the watch differs from a chest strap, and why one night is mostly noise. The HRV sheet can also show the raw readings the watch took, hour by hour, gaps included. There is no account, and health numbers are worked out on your iPhone. Your HRV against your usual is free.</p>
+<p>Aera is not a medical device.</p>
+</div>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+
+<h2>Quick answers</h2>
+<h3>What is a normal HRV on Apple Watch?</h3>
+<p>There is no single normal value. Apple Watch reports HRV as SDNN in milliseconds, and even the averages of healthy groups run from about 30 to over 90 ms, with individuals spreading wider, depending on age, fitness, genes and when the reading was taken. Younger people tend to read higher. A good HRV is one that sits inside your own usual range.</p>
+<h3>Why is my HRV low on Apple Watch?</h3>
+<p>Often because of something recent: a hard workout, alcohol, a short or broken night, stress, a warm bedroom or an illness starting. It can also simply be your normal level, since some healthy people always read low. Compare it with your own average over the last week or two rather than with anyone else.</p>
+<h3>Why does Apple Watch HRV differ from other wearables?</h3>
+<p>Apple Watch uses SDNN, while many rings and straps report RMSSD, a different calculation that gives different numbers from the same heartbeats. Devices also measure at different times of night and for different lengths of time. Numbers from two devices are not interchangeable; trends within one device are what count.</p>
+<h3>When should I worry about low HRV?</h3>
+<p>A single low reading is not a reason to worry. Talk to a doctor if your HRV stays well below your usual for a week or more without an obvious reason, or if a low reading comes with symptoms such as chest pain, fainting, a racing or irregular heartbeat, or unusual breathlessness.</p>
+
+<p>Related field notes: <a href="../notes/what-is-hrv.html">what HRV is</a> · <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a> · <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a> · <a href="../notes/what-can-a-consumer-watch-not-measure.html">what a consumer watch cannot measure</a></p>
+<p>Related guide: <a href="should-i-run-after-bad-sleep.html">Should I run after a bad night's sleep?</a></p>
+
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Apple Inc. heartRateVariabilitySDNN. HealthKit developer documentation. developer.apple.com, accessed October 2026.</li>
+    <li>Nunan D, Sandercock GRH, Brodie DA. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Pacing and Clinical Electrophysiology. 2010;33(11):1407-1417.</li>
+    <li>Shaffer F, Ginsberg JP. An overview of heart rate variability metrics and norms. Frontiers in Public Health. 2017;5:258.</li>
+    <li>Natarajan A, Pantelopoulos A, Emir-Farinas H, Natarajan P. Heart rate variability with photoplethysmography in 8 million individuals: a cross-sectional study. The Lancet Digital Health. 2020;2(12):e650-e657.</li>
+    <li>Altini M, Plews D. What is behind changes in resting heart rate and heart rate variability? A large-scale analysis of longitudinal measurements acquired in free-living. Sensors. 2021;21(23):7932.</li>
+    <li>Brozat M, Böckelmann I, Sammito S. Systematic review on HRV reference values. Journal of Cardiovascular Development and Disease. 2025;12(6):214.</li>
+    <li>Pietilä J, Helander E, Korhonen I, Myllymäki T, Kujala UM, Lindholm H. Acute effect of alcohol intake on cardiovascular autonomic regulation during the first hours of sleep in a large real-world sample of Finnish employees: observational study. JMIR Mental Health. 2018;5(1):e23.</li>
+    <li>Kim HG, Cheon EJ, Bai DS, Lee YH, Koo BH. Stress and heart rate variability: a meta-analysis and review of the literature. Psychiatry Investigation. 2018;15(3):235-245.</li>
+    <li>O'Connor FK, Bach AJE, Forbes C, et al. Effect of nighttime bedroom temperature on heart rate variability in older adults: an observational study. BMC Medicine. 2025;23:703.</li>
+    <li>Plews DJ, Laursen PB, Stanley J, Kilding AE, Buchheit M. Training adaptation and heart rate variability in elite endurance athletes: opening the door to effective monitoring. Sports Medicine. 2013;43(9):773-781.</li>
+    <li>O'Grady B, Lambe R, Baldwin M, Acheson T, Doherty C. The validity of Apple Watch Series 9 and Ultra 2 for serial measurements of heart rate variability and resting heart rate. Sensors. 2024;24(19):6220.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+</body>
+</html>
