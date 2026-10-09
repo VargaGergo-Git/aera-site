@@ -1,0 +1,38 @@
+{
+  "en": {
+    "kicker": "After the run",
+    "h2": "Fly back over the run you just did.",
+    "sub": "Flyover turns your run into a short film, flying your route in 3D over the real ground. It pauses at your fastest split and the top of the climb, with pace, heart rate and elevation along the way.",
+    "chip_split": "Fastest split",
+    "chip_climb": "Top of the climb",
+    "free_note": "Free for runs from the last seven days.",
+    "hud_elev": "Elevation",
+    "hud_pace": "Pace",
+    "hud_hr": "Heart rate",
+    "alt": "Aera's Flyover replaying a run in 3D over the real ground, with elevation, pace and heart rate"
+  },
+  "hu": {
+    "kicker": "A futás után",
+    "h2": "Repüld végig újra az utat, amit az előbb lefutottál.",
+    "sub": "A Flyover rövid filmet készít a futásodból: 3D-ben repül végig az útvonaladon, a valódi táj fölött. Megáll a leggyorsabb szakaszodnál és az emelkedő tetején, közben mutatja a tempót, a pulzust és a magasságot.",
+    "chip_split": "Leggyorsabb szakasz",
+    "chip_climb": "Az emelkedő teteje",
+    "free_note": "Az elmúlt hét nap futásaihoz ingyenes.",
+    "hud_elev": "Magasság",
+    "hud_pace": "Tempó",
+    "hud_hr": "Pulzus",
+    "alt": "Az Aera Flyover funkciója 3D-ben, a valódi táj fölött játssza vissza a futást, magassággal, tempóval és pulzussal"
+  },
+  "de": {
+    "kicker": "Nach dem Lauf",
+    "h2": "Flieg noch einmal über die Strecke, die du gerade gelaufen bist.",
+    "sub": "Flyover macht aus deinem Lauf einen kurzen Film und fliegt deine Strecke in 3D über das echte Gelände ab. Er hält an deinem schnellsten Abschnitt und oben am Anstieg und zeigt dabei Pace, Herzfrequenz und Höhe.",
+    "chip_split": "Schnellster Abschnitt",
+    "chip_climb": "Oben am Anstieg",
+    "free_note": "Kostenlos für Läufe der letzten sieben Tage.",
+    "hud_elev": "Höhe",
+    "hud_pace": "Pace",
+    "hud_hr": "Herzfrequenz",
+    "alt": "Flyover in Aera spielt einen Lauf in 3D über dem echten Gelände ab, mit Höhe, Pace und Herzfrequenz"
+  }
+}

@@ -449,7 +449,7 @@ def reviews_section(code):
 # Cinematic scroll scenes live in scenes/<name>/ (see scenes/CONTRACT.md):
 # section.html with {{key}} placeholders, strings.json per language, scene.css
 # and scene.js. The page links one bundled scenes.css and scenes.js.
-SCENES = ["engine", "planner", "widgets"]  # add a scene here once it is reviewed
+SCENES = ["engine", "flyover", "planner", "widgets"]  # add a scene here once it is reviewed
 
 
 def scene_ready(name):
