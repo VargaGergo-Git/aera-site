@@ -31,6 +31,12 @@ Facts, stated plainly:
 - [Milyen messzire futok?](https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html): the same calculator in Hungarian
 - [Wie weit laufe ich?](https://vargagergo-git.github.io/aera-site/tools/wie-weit.html): the same calculator in German
 
+## Guides
+
+- [Should I run after a bad night's sleep?](https://vargagergo-git.github.io/aera-site/guides/should-i-run-after-bad-sleep.html): what a short night, a raised resting heart rate and lower HRV against your own usual mean for today's run, with a rest, easy, normal or hard guide
+- [Fussak ma, ha rosszul aludtam?](https://vargagergo-git.github.io/aera-site/guides/fussak-ha-rosszul-aludtam.html): the same guide in Hungarian
+- [Heute laufen nach schlechtem Schlaf?](https://vargagergo-git.github.io/aera-site/guides/laufen-nach-schlechtem-schlaf.html): the same guide in German
+
 ## Legal and support
 
 - [Privacy policy](https://vargagergo-git.github.io/aera-site/privacy.html)
