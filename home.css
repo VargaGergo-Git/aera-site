@@ -890,3 +890,23 @@ main > section:has(.plans) { contain-intrinsic-size: auto 620px; }
    moved or faded (without this, each scroll frame repainted the sky). */
 .motion .sun, .motion .clouds i, .motion .stars, .motion .sky-b, .motion .hero-ph,
 .motion .hero-copy, .motion .flies, .motion .hero-phone { will-change: transform, opacity; }
+
+/* ---------- hero: the words always sit above the hill ----------
+   The hillside in front of the phone is a full-width image; on short laptop
+   screens its box reached up over the buttons and swallowed their clicks.
+   Decoration never takes a click, and the copy stacks above the hill while the
+   phone still stands behind it. */
+.hero .layer, .hero .sky, .hero .stars, .hero .sun, .hero .moon, .hero .clouds { pointer-events: none; }
+.hero-inner { z-index: auto; }
+.hero-copy { position: relative; z-index: 5; }
+.hero-phone { position: relative; z-index: 2; }
+@media (min-width: 900px) and (max-height: 860px) {
+  .hero { padding-top: 104px; }
+  .hero h1 { font-size: clamp(46px, min(5.4vw, 8.4svh), 80px); }
+  .hero .lede { margin-top: 14px; }
+  .cta { margin-top: 22px; }
+  .facts { margin-top: 16px; }
+}
+/* The night chip grows toward the phone, so a long German line never runs off
+   the right edge of a laptop screen. */
+@media (min-width: 900px) { .chip-night { left: auto; right: 34%; } }
