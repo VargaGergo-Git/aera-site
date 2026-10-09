@@ -3,14 +3,15 @@
     var sec = document.getElementById('engine');
     if (!sec) return;
     var root = document.documentElement;
-    var pin = sec.querySelector('.eng-pin');
-    var stage = sec.querySelector('.eng-stage');
+        var stage = sec.querySelector('.eng-stage');
     var head = sec.querySelector('.eng-head');
     var word = sec.querySelector('.eng-word');
     var orb = sec.querySelector('.eng-orb .core');
     var img = sec.querySelector('.eng-device img');
     var flip = sec.getAttribute('data-flip') === '1';
-    var ticking = false, near = false, step = 0, isWord = false, wordW = 0, wordH = 0, headBottom = 0;
+    var ticking = false, step = 0, isWord = false, wordW = 0, wordH = 0, headBottom = 0;
+    // Plays once, like a film, when the stage is half in view, then holds on the last frame.
+    var DUR = 7000, t0 = 0, done = false;
     // Where "Good to go" sits on the 400 x 870 capture: centre and width.
     var TX = 144 / 400, TY = 284 / 870, TW = 248 / 400;
     function c01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -43,9 +44,8 @@
       ticking = false;
       if (!root.classList.contains('motion')) { if (step) clear(); return; }
       if (!wordW) measure();
-      var r = pin.getBoundingClientRect(), vh = window.innerHeight;
-      var span = r.height - vh;
-      var p = span > 0 ? c01(-r.top / span) : 1;
+      var p = done ? 1 : t0 ? c01((performance.now() - t0) / DUR) : 0;
+      if (p >= 1) done = true;
       set('--hy', 1 - ease(seg(p, 0, .16)));
       set('--rise', ease(seg(p, .03, .2)));
       set('--a', seg(p, .12, .32));
@@ -93,13 +93,14 @@
       word.style.opacity = op.toFixed(3);
       word.style.transform = 'translate3d(' + (x - wordW * sc / 2).toFixed(1) + 'px,' + (y - wordH * sc / 2).toFixed(1) + 'px,0) scale(' + sc.toFixed(4) + ')';
     }
-    function onScroll() { if (near && !ticking) { ticking = true; requestAnimationFrame(update); } }
+    function frame() { update(); if (t0 && !done) requestAnimationFrame(frame); }
+    function play() { if (t0 || done) return; t0 = performance.now(); requestAnimationFrame(frame); }
+    function redraw() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { near = es[0].isIntersecting; if (near) onScroll(); }, { rootMargin: '50% 0px' }).observe(sec);
-    } else { near = true; }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () { wordW = 0; onScroll(); }, { passive: true });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; onScroll(); });
+      new IntersectionObserver(function (es) { if (es[0].isIntersecting) play(); }, { threshold: .5 }).observe(stage);
+    } else { done = true; }
+    window.addEventListener('resize', function () { wordW = 0; redraw(); }, { passive: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; redraw(); });
     update();
   } catch (e) {
     try { var s2 = document.getElementById('engine'); s2.removeAttribute('style'); s2.classList.add('eng-off'); } catch (e2) {}

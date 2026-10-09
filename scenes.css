@@ -76,10 +76,10 @@
 .scene-engine .eng-orb .ripple { fill: none; stroke: var(--green); stroke-width: 2; opacity: 0; }
 
 
-/* ---------- pinned, scroll-driven ---------- */
+/* ---------- a film that plays once when half in view (scene.js) ---------- */
 html.motion .scene-engine:not(.eng-off) { --a: 0; --b: 0; --c: 0; --d: 0; --hy: 1; --rise: 0; --fade: 0; --dev: 0; padding: 0; }
-html.motion .scene-engine:not(.eng-off) .eng-pin { height: 300svh; }
-html.motion .scene-engine:not(.eng-off) .eng-stage { position: sticky; top: 0; height: 100svh; display: block; padding: 0; max-width: none; overflow: hidden; }
+html.motion .scene-engine:not(.eng-off) .eng-pin { height: auto; }
+html.motion .scene-engine:not(.eng-off) .eng-stage { position: relative; height: 100svh; min-height: 560px; display: block; padding: 0; max-width: none; overflow: hidden; }
 html.motion .scene-engine:not(.eng-off) .eng-head {
   position: absolute; left: var(--gutter); right: var(--gutter); top: calc(76px + 2svh);
   transform: translate3d(0, calc(var(--hy) * 28svh), 0) scale(calc(1 + var(--hy) * .32)); transform-origin: 50% 0;
@@ -118,15 +118,17 @@ html.motion .scene-engine:not(.eng-off) .eng-device {
 }
 html.motion .scene-engine:not(.eng-off) .eng-device .phone { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .16), 0 0 0 1px rgba(255, 255, 255, .05), 0 60px 120px -40px rgba(78, 204, 163, calc(.45 * var(--dev))); }
 html.motion .scene-engine:not(.eng-off) .eng-caps { position: absolute; left: var(--gutter); right: var(--gutter); bottom: max(22px, 3svh); margin: 0 auto; display: grid; max-width: 640px; }
-html.motion .scene-engine:not(.eng-off) .cap { grid-area: 1 / 1; border: 0; padding: 0; text-align: center; opacity: 0; transform: translateY(12px); transition: opacity .5s var(--ease), transform .6s var(--ease); }
+html.motion .scene-engine:not(.eng-off) .cap { grid-area: 1 / 1; border: 0; padding: 0; text-align: center; opacity: 0; transform: translateY(12px); transition: opacity .2s ease-out, transform .3s ease-out; }
 html.motion .scene-engine:not(.eng-off) .cap b { display: block; font-size: 1.08em; }
 html.motion .scene-engine:not(.eng-off)[data-step="1"] .c1, html.motion .scene-engine:not(.eng-off)[data-step="2"] .c2 { opacity: 1; transform: none; }
 html.motion .scene-engine:not(.eng-off)[data-step="3"] .c3 { opacity: 1; transform: none; }
 html.motion .scene-engine:not(.eng-off)[data-step="4"] .cap { opacity: 0; }
+/* The old caption leaves fast, the new one waits for it: no moment with both on screen. */
+html.motion .scene-engine:not(.eng-off)[data-step="1"] .c1, html.motion .scene-engine:not(.eng-off)[data-step="2"] .c2, html.motion .scene-engine:not(.eng-off)[data-step="3"] .c3 { transition: opacity .5s var(--ease) .22s, transform .6s var(--ease) .22s; }
 html.motion .scene-engine:not(.eng-off) .eng-note { position: absolute; left: 0; right: 0; bottom: 18px; margin: 0 auto; opacity: 0; }
 @media (max-width: 899px) {
-  html.motion .scene-engine:not(.eng-off) .eng-pin { height: 250svh; }
-  html.motion .scene-engine:not(.eng-off) .cap span { font-size: 15px; }
+  html.motion .scene-engine:not(.eng-off) .eng-pin { height: auto; }
+  html.motion .scene-engine:not(.eng-off) .cap span { font-size: 16px; }
 }
 @media (min-width: 900px) {
   html.motion .scene-engine:not(.eng-off) .eng-head { top: calc(84px + 3svh); }
