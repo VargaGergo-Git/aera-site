@@ -163,7 +163,6 @@
 .scene-planner .pl-words .pl-head { margin-bottom: 8px; }
 .scene-planner .pl-cap-h { margin: 0 0 4px; font: 700 clamp(17px, 1.6vw, 21px)/1.3 var(--rounded); color: var(--ink); }
 .scene-planner .pl-cap-p { margin: 0; font-size: clamp(17px, 1.35vw, 19px); line-height: 1.5; color: var(--ink-2); text-wrap: pretty; }
-.scene-planner .pl-free { margin: 6px 0 0; justify-self: center; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--green) 12%, transparent); color: var(--green); font: 700 13px/1.2 var(--rounded); }
 
 /* ---------- Motion: pinned stage ---------- */
 
@@ -209,7 +208,6 @@
 
 /* Wide screens: words on the left, the stage takes the rest. */
 
-
 section.scene-planner { padding: 0; }
 
 /* Wide screens: words beside the picture, the map on the right, then the wrist
@@ -220,7 +218,7 @@ section.scene-planner { padding: 0; }
   .scene-planner .pl-b { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
   .scene-planner .pl-words { text-align: left; justify-items: start; max-width: 480px; }
   .scene-planner .pl-words .pl-head { text-align: left; }
-  .scene-planner .pl-free { justify-self: start; }
+  
   .scene-planner .pl-world { justify-items: end; }
   .scene-planner .pl-plane { --map-w: min(100%, 540px); }
   .scene-planner .pl-wrist { --w: clamp(200px, 17vw, 240px); justify-content: flex-start; padding-block: 6%; }
