@@ -144,8 +144,8 @@
 .scene-widgets .wg-ring { display: block; transform: rotate(-90deg); overflow: visible; }
 .scene-widgets .wg-track { fill: none; stroke: var(--wg-track); stroke-width: 4.6; }
 .scene-widgets .wg-arc { fill: none; stroke: url(#widgets-ring); stroke-width: 4.6; stroke-linecap: round; stroke-dasharray: 100 100; }
-.scene-widgets .wg-arc1 { stroke-dashoffset: calc(100 - 84 * var(--f1)); }
-.scene-widgets .wg-arc3 { stroke-dashoffset: calc(100 - 84 * var(--f3)); }
+.scene-widgets .wg-arc1 { stroke-dashoffset: calc(100 - 97 * var(--f1)); }
+.scene-widgets .wg-arc3 { stroke-dashoffset: calc(100 - 100 * var(--f3)); }
 
 .scene-widgets .wg-w1 .wg-ring { position: absolute; left: 50%; bottom: 3.6cqw; width: 25cqw; height: 25cqw; margin-left: -12.5cqw; }
 .scene-widgets .wg-w1 .wg-big { position: absolute; left: 0; right: 0; bottom: 11.2cqw; text-align: center; font-size: 8.4cqw; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
@@ -307,3 +307,8 @@
   .motion .scene-widgets.wg-live { padding-bottom: 40px; }
   .motion .scene-widgets.wg-live .wg-watch { max-width: min(440px, calc(100vw - 40px)); padding: 0 4px; font-size: 14px; }
 }
+.scene-widgets .wg-w1 .wg-big.wg-sm { font-size: 6.6cqw; }
+.scene-widgets .wg-w2 .wg-hyp rect { fill: #8fcb72; }
+.scene-widgets .wg-w2 .wg-hyp .d { fill: #23966f; }
+.scene-widgets .wg-w2 .wg-hyp .r { fill: #c6e7b4; }
+.scene-widgets .wg-w2 .wg-cap { margin: 0.6cqw 0 0; }
