@@ -128,7 +128,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Legal", "foot_more": "More",
         "foot_links_app": [("store", "Download"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Press")],
         "foot_links_legal": [("privacy.html", "Privacy Policy"), ("terms.html", "Terms of Use"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?")],
+        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?"), ("guides/index.html", "Guides")],
+        "meta_desc": "Sleep and running tracker for iPhone and Apple Watch. Aera compares last night with your own usual and says how hard to go today. Free, no account.",
         "foot_base": ("&#169; 2026 Aera", "Not a medical device."),
     },
     "hu": {
@@ -227,7 +228,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Még",
         "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
         "foot_links_legal": [("privacy.html", "Adatvédelem"), ("terms.html", "Felhasználási feltételek"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek")],
+        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek"), ("guides/index.html#hu", "Útmutatók")],
+        "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. A saját szokásodhoz méri az éjszakát, és megmondja, milyen keményen menj ma. Ingyenes.",
         "foot_base": ("&#169; 2026 Aera", "Nem orvostechnikai eszköz."),
     },
     "de": {
@@ -326,7 +328,8 @@ COPY = {
         "foot_app": "App", "foot_legal": "Rechtliches", "foot_more": "Mehr",
         "foot_links_app": [("store", "Laden"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Presse")],
         "foot_links_legal": [("privacy.html", "Datenschutz"), ("terms.html", "Nutzungsbedingungen"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen")],
+        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen"), ("guides/index.html#de", "Ratgeber")],
+        "meta_desc": "Schlaf- und Lauftracker für iPhone und Apple Watch. Aera vergleicht die Nacht mit deinem Üblichen und sagt, wie hart du heute läufst. Kostenlos, ohne Konto.",
         "foot_base": ("&#169; 2026 Aera", "Kein Medizinprodukt."),
     },
 }
@@ -502,10 +505,11 @@ def build(code):
     L = landscape.hero_layers()
 
     def store_at(place):
-        # Every App Store button goes through /get/ on this site, so each tap is
-        # a request Cloudflare counts. get/index.html (written below) sends the
-        # visitor on to the store; a Cloudflare redirect rule can answer first.
-        return "/get/?src=%s&amp;lang=%s" % (place, code)
+        # Every App Store button goes through /get/<place>/<lang>/ on this site, so
+        # each tap is a path Cloudflare's free analytics can count (they drop query
+        # strings). write_get_pages() puts a forwarding page at each path; a
+        # Cloudflare redirect rule can answer first.
+        return "/get/%s/%s/" % (place, code)
 
     store = store_at("hero")
     store_nav, store_close = store_at("nav"), store_at("closing")
@@ -577,11 +581,13 @@ def build(code):
          "description": plain(c["desc"]),
          "screenshot": [BASE + "img/home-light-800.webp", BASE + "img/sleep-dark-800.webp", BASE + "img/planner-dark-800.webp"],
          "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
-         "author": {"@id": BASE + "#maker"},
+         "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
         {"@type": "Person", "@id": BASE + "#maker", "name": "Gerg\u0151 Varga", "url": BASE},
+        {"@type": "Organization", "@id": BASE + "#org", "name": "Aera", "url": BASE, "logo": BASE + "assets/icon.png",
+         "email": "hello@aerahealth.app", "founder": {"@id": BASE + "#maker"}, "sameAs": [COPY["en"]["store"]]},
         {"@type": "WebSite", "@id": BASE + "#site", "name": "Aera", "url": BASE, "inLanguage": code,
-         "publisher": {"@id": BASE + "#maker"}},
+         "publisher": {"@id": BASE + "#org"}},
         {"@type": "FAQPage", "inLanguage": code,
          "mainEntity": [{"@type": "Question", "name": plain(q), "acceptedAnswer": {"@type": "Answer", "text": plain(a)}}
                         for q, a in c["faq"]]},
@@ -632,11 +638,11 @@ def build(code):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-itunes-app" content="app-id=6762456252">
 <title>{c['title']}</title>
-<meta name="description" content="{c['desc']}">
+<meta name="description" content="{c['meta_desc']}">
 <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="{c['og_title']}">
-<meta property="og:description" content="{c['desc']}">
+<meta property="og:description" content="{c['meta_desc']}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aera">
 <meta property="og:locale" content="{OG_LOCALE[code]}">{og_alt}
@@ -646,7 +652,7 @@ def build(code):
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{c['og_title']}">
-<meta name="twitter:description" content="{c['desc']}">
+<meta name="twitter:description" content="{c['meta_desc']}">
 <meta name="twitter:image" content="{BASE}assets/og.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{canonical}">
@@ -818,35 +824,41 @@ def localize_media(out, code):
     return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
 
 
-def write_get_page():
-    """get/index.html: the fallback for /get/?src=..&lang=.. when no Cloudflare
-    rule answers. It forwards at once to that language's App Store page, with
-    the campaign tags once APPSTORE_PT is set, and stays out of search."""
-    stores = {c["lang"]: c["store"] for c in COPY.values()}
-    page = """<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+GET_PLACES = ("nav", "hero", "closing", "footer")
+
+
+def get_page(store, lang, src):
+    """One forwarding page: straight on to that language's App Store page, with
+    the campaign tags once APPSTORE_PT is set. Out of search."""
+    url = store
+    if APPSTORE_PT:
+        url += "?pt=%s&ct=site-%s-%s&mt=8" % (APPSTORE_PT, lang, src)
+    beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+              "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""
+    return """<!doctype html>
+<html lang="%(lang)s"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Aera on the App Store</title>
-<meta http-equiv="refresh" content="1; url=%(en)s">
-<script>
-(function () {
-  var q = new URLSearchParams(location.search), stores = %(stores)s, pt = %(pt)s;
-  var lang = q.get('lang'), src = (q.get('src') || 'site').replace(/[^a-z0-9-]/gi, '').slice(0, 24);
-  var url = stores[lang] || stores.en;
-  if (pt) url += '?pt=' + pt + '&ct=site-' + (stores[lang] ? lang : 'en') + '-' + src + '&mt=8';
-  location.replace(url);
-})();
-</script>
+<meta http-equiv="refresh" content="1; url=%(url)s">
+<script>location.replace(%(js)s);</script>
 %(beacon)s
 <style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
-</head><body><p><a href="%(en)s">Open Aera on the App Store</a></p></body></html>
-""" % {"en": stores["en"], "stores": json.dumps(stores), "pt": json.dumps(APPSTORE_PT or ""),
-       "beacon": ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
-                  "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""}
-    os.makedirs(os.path.join(ROOT, "get"), exist_ok=True)
+</head><body><p><a href="%(url)s">Open Aera on the App Store</a></p></body></html>
+""" % {"lang": lang, "url": url.replace("&", "&amp;"), "js": json.dumps(url), "beacon": beacon}
+
+
+def write_get_pages():
+    """get/<place>/<lang>/index.html for every store button, plus get/index.html
+    for a bare /get/ (English store)."""
+    for c in COPY.values():
+        for place in GET_PLACES:
+            d = os.path.join(ROOT, "get", place, c["lang"])
+            os.makedirs(d, exist_ok=True)
+            with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
+                f.write(get_page(c["store"], c["lang"], place))
     with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
-        f.write(page)
+        f.write(get_page(COPY["en"]["store"], "en", "site"))
 
 
 if __name__ == "__main__":
@@ -858,4 +870,4 @@ if __name__ == "__main__":
         with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:
             f.write(out)
         print(COPY[code]["file"], len(out) // 1024, "KB")
-    write_get_page()
+    write_get_pages()
