@@ -786,3 +786,5 @@ footer a:hover { color: var(--text); }
 
 /* Matches the homepage (home.css): rounded display type for page titles. */
 h1, h2 { font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif; letter-spacing: -0.015em; }
+
+@media (max-width: 360px) { .topnav { gap: 10px; font-size: 13px; } }

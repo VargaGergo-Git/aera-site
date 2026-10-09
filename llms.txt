@@ -36,6 +36,9 @@ Facts, stated plainly:
 - [Should I run after a bad night's sleep?](https://aerahealth.app/guides/should-i-run-after-bad-sleep.html): what a short night, a raised resting heart rate and lower HRV against your own usual mean for today's run, with a rest, easy, normal or hard guide
 - [Fussak ma, ha rosszul aludtam?](https://aerahealth.app/guides/fussak-ha-rosszul-aludtam.html): the same guide in Hungarian
 - [Heute laufen nach schlechtem Schlaf?](https://aerahealth.app/guides/laufen-nach-schlechtem-schlaf.html): the same guide in German
+- [How to plan a running route](https://aerahealth.app/guides/plan-a-running-route.html): distance from your door, out-and-back, loop or point-to-point, how hills change your time, surface, light and water, how to estimate how long it takes, and how to follow a route turn by turn on iPhone and Apple Watch (free in Aera, even with no signal)
+- [Hogyan tervezz futóútvonalat?](https://aerahealth.app/guides/futoutvonal-tervezes.html): the same guide in Hungarian
+- [Laufroute planen: so geht's](https://aerahealth.app/guides/laufroute-planen.html): the same guide in German
 
 ## Legal and support
 
