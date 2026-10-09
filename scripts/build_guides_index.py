@@ -36,7 +36,7 @@ def main():
             f'<br><span class="meta" lang="{code}">{html.escape(g["desc"])}</span></li>'
             for g in group
         )
-        sections.append(f'  <h2 lang="{code}">{label}</h2>\n  <ul class="note-list">\n{lis}\n  </ul>')
+        sections.append(f'  <h2 id="{code}" lang="{code}">{label}</h2>\n  <ul class="note-list">\n{lis}\n  </ul>')
         items_ld += [g["canon"] for g in group]
     ld = ",".join(
         f'{{"@type":"ListItem","position":{i + 1},"url":"{u}"}}' for i, u in enumerate(items_ld)
