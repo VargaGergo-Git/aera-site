@@ -2,11 +2,11 @@
   <div class="eng-pin">
     <div class="eng-stage">
       <div class="eng-bg" aria-hidden="true"></div>
-      <div class="eng-head">
+      <div class="eng-head reveal">
         <p class="kicker">{{kicker}}</p>
         <h2 class="eng-h2"><span class="eng-t1">{{t1}}</span> <span class="eng-t2">{{t2}}</span></h2>
       </div>
-      <div class="eng-board" aria-hidden="true">
+      <div class="eng-board reveal" style="--d:.08s" aria-hidden="true">
           <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
             <defs>
               <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
@@ -78,13 +78,10 @@
             </g>
           </svg>
       </div>
-      <div class="eng-bloom" aria-hidden="true"></div>
-      <p class="eng-word" aria-hidden="true" data-w="{{word}}">{{word}}</p>
-      <div class="eng-device">
-        <div class="phone"><div class="screen-wrap"><img src="img/home-dark-400.webp" srcset="img/home-dark-400.webp 400w, img/home-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="{{phone_alt}}"><i class="eng-mask" aria-hidden="true"></i></div></div>
+      <div class="eng-device reveal" style="--d:.16s">
+        <div class="phone"><div class="screen-wrap"><img src="img/home-dark-400.webp" srcset="img/home-dark-400.webp 400w, img/home-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="{{phone_alt}}"></div></div>
       </div>
-      <div class="eng-side" aria-hidden="true"><p class="eng-sl"><b>{{s3_h}}</b>{{s3_p}}</p><p class="eng-sr">{{note}}</p></div>
-      <ol class="eng-caps">
+      <ol class="eng-caps reveal">
         <li class="cap c1"><b>{{s1_h}}</b> <span>{{s1_p}}</span></li>
         <li class="cap c2"><b>{{s2_h}}</b> <span>{{s2_p}}</span></li>
         <li class="cap c3"><b>{{s3_h}}</b> <span>{{s3_p}}</span></li>

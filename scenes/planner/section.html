@@ -1,11 +1,16 @@
 <section class="scene scene-planner" id="planner" aria-labelledby="planner-h">
 <div class="pl-run">
 <div class="pl-stage">
+<div class="pl-a">
+<div class="pl-words reveal">
 <div class="pl-head">
 <p class="kicker">{{kicker}}</p>
 <h2 class="pl-h2" id="planner-h"><span class="pl-t pl-t1">{{h_draw}}</span><span class="pl-t pl-t2">{{h_way}}</span><span class="pl-t pl-t3">{{h_wrist}}</span></h2>
 </div>
-<div class="pl-world" aria-hidden="false">
+<div class="pl-cap pl-c1"><p class="pl-cap-h">{{cap1_h}}</p><p class="pl-cap-p">{{cap1}}</p></div>
+<div class="pl-cap pl-c2"><p class="pl-cap-h">{{cap2_h}}</p><p class="pl-cap-p">{{cap2}}</p></div>
+</div>
+<div class="pl-world reveal" style="--d:.08s">
 <div class="pl-plane">
 <div class="pl-map-wrap"><svg class="pl-map" viewBox="0 0 600 640" role="img" aria-label="{{map_alt}}">
 <rect class="land" width="600" height="640"/>
@@ -30,7 +35,9 @@
 <div class="pl-hud"><span class="pl-hud-ic"><svg viewBox="0 0 24 24"><path d="M5 19c3-1 4-4 6-8s4-6 8-6"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/></svg></span><span class="pl-hud-tx"><b><span class="pl-num" data-km="6.4">{{dist_final}}</span> km</b><small>{{follows}}</small></span></div>
 </div>
 </div>
-<div class="pl-wrist">
+</div>
+<div class="pl-b">
+<div class="pl-wrist reveal" style="--d:.08s">
 <div class="phone pl-phone"><div class="screen-wrap"><img src="img/routenav-400.webp" srcset="img/routenav-400.webp 400w, img/routenav-800.webp 800w" sizes="(min-width: 900px) 230px, 150px" width="1206" height="2622" loading="lazy" decoding="async" alt="{{phone_alt}}"></div></div>
 <div class="pl-watch" role="img" aria-label="{{watch_alt}}">
 <i class="pl-band pl-bt"></i><i class="pl-band pl-bb"></i>
@@ -44,12 +51,10 @@
 </div></div>
 </div>
 </div>
-<button class="pl-again" type="button" aria-label="{{again}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg>{{again}}</button>
-<div class="pl-caps">
-<div class="pl-cap pl-c1"><p class="pl-cap-h">{{cap1_h}}</p><p class="pl-cap-p">{{cap1}}</p></div>
-<div class="pl-cap pl-c2"><p class="pl-cap-h">{{cap2_h}}</p><p class="pl-cap-p">{{cap2}}</p></div>
+<div class="pl-words pl-words-b reveal" style="--d:.08s">
 <div class="pl-cap pl-c3"><p class="pl-cap-h">{{cap3_h}}</p><p class="pl-cap-p">{{cap3}}</p></div>
 <p class="pl-free">{{free_note}}</p>
+</div>
 </div>
 </div>
 </div>
