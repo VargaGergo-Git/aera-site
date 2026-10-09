@@ -730,3 +730,21 @@ html:not(.motion) .chip-night { display: none; }
 .duo .phone { transition: transform .5s var(--ease); }
 .duo .phone.par { transform: translate3d(0, var(--py, 0px), 0) perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
 .footnote { margin-top: 18px; font-size: 14px; color: var(--ink-3); }
+
+/* Cinematic hero: on phones the run pins too, the copy steps back and the
+   phone climbs out of the valley, upright, over it; a glint crosses the glass
+   as night turns to morning. */
+.motion .hero-ph { transform-origin: 50% 0; transform: perspective(1000px) rotateX(calc((1 - min(var(--hr, 1) * 2, 1)) * 9deg)); }
+.motion .hero-ph .screen-wrap::after {
+  content: ""; position: absolute; inset: -10% -70%; z-index: 2; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, .26) 50%, transparent 58%);
+  transform: translate3d(calc((clamp(0, (var(--hr, 0) - .25) / .5, 1) * 2 - 1) * 60%), 0, 0);
+  opacity: calc(min(clamp(0, (var(--hr, 0) - .25) / .5, 1), 1 - clamp(0, (var(--hr, 0) - .25) / .5, 1)) * 3);
+}
+@media (max-width: 899px) {
+  .motion .hero-run { height: 210svh; }
+  .motion .hero .chip { display: none; }
+  .motion .hero-run > .hero { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+  .motion .hero.in .hero-copy { transform: translate3d(0, calc(var(--hr, 0) * -7svh), 0) scale(calc(1 - var(--hr, 0) * .06)); opacity: calc(1 - var(--hr, 0) * 3); }
+  .motion .hero-ph { transform: translate3d(0, calc(min(var(--hr, 0) * 1.5, 1) * var(--rise, -50svh)), 0) perspective(1000px) rotateX(calc((1 - min(var(--hr, 0) * 1.5, 1)) * 16deg)) scale(calc(1 + min(var(--hr, 0) * 1.5, 1) * .2)); }
+}
