@@ -556,7 +556,7 @@ def build(code):
     prem = "".join("<li>%s</li>" % x for x in c["prem"])
 
     topo = landscape.contours()
-    route = ('<path id="route" class="route" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><circle id="rhead" class="rhead" cx="760" cy="960" r="7"/>')
+    route = ('<path class="route-glow" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><path id="route" class="route" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><circle id="rhead" class="rhead" cx="760" cy="960" r="7"/>')
 
     def foot_col(title, links):
         return "<div><h4>%s</h4>%s</div>" % (title, "".join('<a href="%s">%s</a>' % (href(h), t) for h, t in links))

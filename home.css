@@ -739,3 +739,58 @@ html:not(.motion) .chip-night { display: none; }
 .closing .h2 { font-size: clamp(40px, 7vw, 76px); }
 .closing .btn-store { min-height: 60px; padding: 0 30px; font-size: 19px; }
 .dusk-sun { width: clamp(80px, 9vw, 130px); }
+
+/* Flyover band: the contour map tilts like a camera flying in as the route draws. */
+.motion .after .topo { transform-origin: 50% 80%; will-change: transform;
+  transform: perspective(1100px) rotateX(calc(52deg - var(--rp, 0) * 30deg)) scale(calc(1.5 - var(--rp, 0) * 0.25)) translate3d(0, calc(var(--rp, 0) * -40px), 0); }
+.motion .after .rhead { filter: drop-shadow(0 0 10px #ff8a3d); }
+.topo .route-glow { fill: none; stroke: #ff8a3d; stroke-width: 14; stroke-linecap: round; opacity: 0.16; filter: blur(6px); }
+.motion .after .topo .route-glow { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--rp, 0)); }
+@media (prefers-color-scheme: light) { .after .topo path:not(.route):not(.route-glow) { stroke: rgba(255, 255, 255, 0.09); } }
+
+/* ---------- hero art: haze, bales, firs, deer, warm light ----------
+   Companion to scripts/landscape.py. The valley SVG reads these variables;
+   without them the haze ramps fall back to transparent. */
+:root {
+  --haze: #fbf4ea;            /* atmosphere between the ridges, day */
+}
+@media (prefers-color-scheme: dark) {
+  :root { --haze: #8d6b97; }  /* dusky rose before dawn */
+}
+
+/* Treeline a shade deeper than its hill, like the app's wood band. */
+.wd { fill: color-mix(in srgb, var(--r3) 74%, var(--fir)); }
+
+/* Round bales: rolled body in shade, end face catching the sun. */
+.bale-b { fill: color-mix(in srgb, var(--bale) 80%, #5c3b0e); }
+.bale-f { fill: color-mix(in srgb, var(--bale) 64%, #fff3d2); }
+@media (prefers-color-scheme: dark) {
+  .bale-b { fill: color-mix(in srgb, var(--bale) 88%, var(--sun)); }
+  .bale-f { fill: color-mix(in srgb, var(--bale) 74%, var(--sun)); }
+  .bale-r { stroke: var(--sun); stroke-opacity: 0.14; }
+  .bale-sh { fill: #000; fill-opacity: 0.5; }
+  .deer { fill: #1a1522; fill-opacity: 1; }
+}
+
+/* Warm light, day only: a glow band along the horizon and faint rays from the sun. */
+@media (prefers-color-scheme: light) {
+  .hero .sky-a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+    background:
+      radial-gradient(70% 60% at 82% 100%, rgba(255, 222, 170, 0.55), rgba(255, 222, 170, 0) 70%),
+      linear-gradient(to top, rgba(255, 236, 205, 0.5), rgba(255, 236, 205, 0) 80%);
+    pointer-events: none;
+  }
+  .hero .sun::before {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 1100%; aspect-ratio: 1; translate: -50% -50%;
+    border-radius: 50%; pointer-events: none;
+    background: repeating-conic-gradient(from 8deg, rgba(255, 244, 214, 0) 0deg 7deg, rgba(255, 244, 214, 0.22) 8.5deg 10deg, rgba(255, 244, 214, 0) 11.5deg 19deg);
+    -webkit-mask-image: radial-gradient(closest-side, #000 8%, rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+    mask-image: radial-gradient(closest-side, #000 8%, rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+  }
+  .hero .sun { box-shadow: 0 0 120px 50px rgba(255, 236, 196, 0.45); }
+}
+
+/* The runner's far-side arm and leg sit a tone back, so the stride reads in depth. */
+.runner .far { stroke: color-mix(in srgb, var(--runner) 58%, var(--r4)); }
+@media (min-width: 900px) { .chip-day { top: 51%; } }
