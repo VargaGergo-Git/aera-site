@@ -1,12 +1,12 @@
-<section class="scene scene-engine" id="engine">
-  <div class="wide eng-head">
-    <p class="kicker reveal">{{kicker}}</p>
-    <h2 class="h2 split">{{h2}}</h2>
-  </div>
+<section class="scene scene-engine" id="engine" data-flip="{{flip}}">
   <div class="eng-pin">
     <div class="eng-stage">
-      <div class="wide eng-grid">
-        <div class="eng-board" aria-hidden="true">
+      <div class="eng-bg" aria-hidden="true"></div>
+      <div class="eng-head">
+        <p class="kicker">{{kicker}}</p>
+        <h2 class="eng-h2"><span class="eng-t1">{{t1}}</span> <span class="eng-t2">{{t2}}</span></h2>
+      </div>
+      <div class="eng-board" aria-hidden="true">
           <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
             <defs>
               <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
@@ -72,27 +72,24 @@
               <circle class="ripple rp2" cx="172" cy="372" r="40"/>
               <circle class="ripple rp1" cx="172" cy="372" r="40"/>
               <circle class="trk" cx="172" cy="372" r="40"/>
-              <circle class="ring" cx="172" cy="372" r="40" pathLength="1" transform="rotate(-90 172 372)"/>
+              <circle class="ring" cx="172" cy="372" r="40" pathLength="1"/>
               <circle class="core" cx="172" cy="372" r="33" fill="url(#engine-orb)"/>
               <path class="tick" pathLength="1" d="M158 373L168 383L187 362"/>
             </g>
           </svg>
-        </div>
-
-        <div class="eng-copy">
-          <ol class="eng-caps">
-            <li class="cap c1"><b>{{s1_h}}</b><span>{{s1_p}}</span></li>
-            <li class="cap c2"><b>{{s2_h}}</b><span>{{s2_p}}</span></li>
-            <li class="cap c3"><b>{{s3_h}}</b><span>{{s3_p}}</span></li>
-          </ol>
-          <div class="eng-result">
-            <p class="eng-word"><i aria-hidden="true"></i>{{word}}</p>
-            <p class="eng-why">{{why}}</p>
-            <div class="eng-cap"><span class="eng-coach">{{coach}}</span><span class="eng-cap-txt"><b>{{session}}</b><small>{{session_sub}}</small></span></div>
-          </div>
-          <p class="eng-note">{{note}}</p>
-        </div>
       </div>
+      <div class="eng-bloom" aria-hidden="true"></div>
+      <p class="eng-word" aria-hidden="true">{{word}}</p>
+      <div class="eng-device">
+        <div class="phone"><div class="screen-wrap"><img src="img/home-dark-400.webp" srcset="img/home-dark-400.webp 400w, img/home-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="{{phone_alt}}"><i class="eng-mask" aria-hidden="true"></i></div></div>
+      </div>
+      <div class="eng-side" aria-hidden="true"><p class="eng-sl"><b>{{s3_h}}</b>{{s3_p}}</p><p class="eng-sr">{{note}}</p></div>
+      <ol class="eng-caps">
+        <li class="cap c1"><b>{{s1_h}}</b> <span>{{s1_p}}</span></li>
+        <li class="cap c2"><b>{{s2_h}}</b> <span>{{s2_p}}</span></li>
+        <li class="cap c3"><b>{{s3_h}}</b> <span>{{s3_p}}</span></li>
+      </ol>
     </div>
   </div>
+  <p class="wide eng-note">{{note}}</p>
 </section>

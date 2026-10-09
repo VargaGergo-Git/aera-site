@@ -91,15 +91,15 @@
   </div>
 </section>
 
-<section class="scene scene-engine" id="engine">
-  <div class="wide eng-head">
-    <p class="kicker reveal">Így születik a döntés</p>
-    <h2 class="h2 split">Három jel be. Egy egyszerű szó ki.</h2>
-  </div>
+<section class="scene scene-engine" id="engine" data-flip="0">
   <div class="eng-pin">
     <div class="eng-stage">
-      <div class="wide eng-grid">
-        <div class="eng-board" aria-hidden="true">
+      <div class="eng-bg" aria-hidden="true"></div>
+      <div class="eng-head">
+        <p class="kicker">Így születik a döntés</p>
+        <h2 class="eng-h2"><span class="eng-t1">Három jel be.</span> <span class="eng-t2">Egy egyszerű szó ki.</span></h2>
+      </div>
+      <div class="eng-board" aria-hidden="true">
           <svg class="eng-svg" viewBox="0 0 400 420" focusable="false">
             <defs>
               <radialGradient id="engine-orb" cx="50%" cy="42%" r="60%">
@@ -165,29 +165,26 @@
               <circle class="ripple rp2" cx="172" cy="372" r="40"/>
               <circle class="ripple rp1" cx="172" cy="372" r="40"/>
               <circle class="trk" cx="172" cy="372" r="40"/>
-              <circle class="ring" cx="172" cy="372" r="40" pathLength="1" transform="rotate(-90 172 372)"/>
+              <circle class="ring" cx="172" cy="372" r="40" pathLength="1"/>
               <circle class="core" cx="172" cy="372" r="33" fill="url(#engine-orb)"/>
               <path class="tick" pathLength="1" d="M158 373L168 383L187 362"/>
             </g>
           </svg>
-        </div>
-
-        <div class="eng-copy">
-          <ol class="eng-caps">
-            <li class="cap c1"><b>A tegnap éjjel, ahogy volt</b><span>Az alvásod, a szíved éjszaka és a heted terhelése, az iPhone-odon, az Apple Healthből olvasva.</span></li>
-            <li class="cap c2"><b>A saját szokásodhoz mérve</b><span>Mindegyik a saját heteidből megtanult tartományra esik, nem idegenek átlagára.</span></li>
-            <li class="cap c3"><b>Egy szó a napra</b><span>Pihenőnap, csak lazán, mehet vagy hajrá, és mellette ott az ok is.</span></li>
-          </ol>
-          <div class="eng-result">
-            <p class="eng-word"><i aria-hidden="true"></i>Mehet</p>
-            <p class="eng-why">A regenerálódás a szokásosnál jobb egy átlagos éjszaka után.</p>
-            <div class="eng-cap"><span class="eng-coach"><svg class="coach" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="eng-hu-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient><mask id="eng-hu-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/><g class="eyes" fill="#000"><rect class="eye" x="33.65" y="57.30" width="11.5" height="17" rx="5.75"/><rect class="eye" x="58.45" y="57.30" width="11.5" height="17" rx="5.75"/></g><path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/><path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs><g class="coach-body"><path d="M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z" fill="url(#eng-hu-ink)" mask="url(#eng-hu-face)"/></g></svg></span><span class="eng-cap-txt"><b>Mai edzés</b><small>Futás · 45 perc</small></span></div>
-          </div>
-          <p class="eng-note">Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki.</p>
-        </div>
       </div>
+      <div class="eng-bloom" aria-hidden="true"></div>
+      <p class="eng-word" aria-hidden="true">Mehet</p>
+      <div class="eng-device">
+        <div class="phone"><div class="screen-wrap"><img src="img/home-dark-400.webp" srcset="img/home-dark-400.webp 400w, img/home-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="Az Aera Ma képernyője (angol nyelvű felvétel): Good to go, vagyis mehet. A mai edzés: könnyű erősítő edzés, 35 perc."><i class="eng-mask" aria-hidden="true"></i></div></div>
+      </div>
+      <div class="eng-side" aria-hidden="true"><p class="eng-sl"><b>Egy szó a napra</b>Pihenőnap, csak lazán, mehet vagy hajrá, és mellette ott az ok is.</p><p class="eng-sr">Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki.</p></div>
+      <ol class="eng-caps">
+        <li class="cap c1"><b>A tegnap éjjel, ahogy volt</b> <span>Az alvásod, a szíved éjszaka és a heted terhelése, az iPhone-odon, az Apple Healthből olvasva.</span></li>
+        <li class="cap c2"><b>A saját szokásodhoz mérve</b> <span>Mindegyik a saját heteidből megtanult tartományra esik, nem idegenek átlagára.</span></li>
+        <li class="cap c3"><b>Egy szó a napra</b> <span>Pihenőnap, csak lazán, mehet vagy hajrá, és mellette ott az ok is.</span></li>
+      </ol>
     </div>
   </div>
+  <p class="wide eng-note">Illusztráció. Az appban minden szám mögött egy cikk mutatja meg, hogyan jött ki.</p>
 </section>
 
 <section class="reviews">
