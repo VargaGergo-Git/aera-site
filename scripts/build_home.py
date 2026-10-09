@@ -423,6 +423,7 @@ DEMO = {
         "r_sleep": ["Slept past your need", "Sleep met your need", "A little short on sleep", "A short night"],
         "r_heart": ["Heart calmer than usual", "Heart in its usual range", "Heart above its usual"],
         "r_week": ["A light week", "A usual week", "A heavy week"],
+        "session": "Today's session", "sessions": ["Rest day", "Easy run · 30 min", "Run · 45 min", "Intervals · 50 min"],
         "today": "This morning", "h": "h", "m": "m",
         "note": "Demo only. Your real read comes from your own Apple Health data.",
     },
@@ -439,6 +440,7 @@ DEMO = {
         "r_sleep": ["Többet aludtál, mint amennyi kell", "Kialudtad magad", "Kicsit rövid éjszaka", "Rövid éjszaka"],
         "r_heart": ["A szíved nyugodtabb a szokásosnál", "A szíved a szokásos tartományban", "A szíved feszültebb a szokásosnál"],
         "r_week": ["Könnyű hét", "Szokásos hét", "Kemény hét"],
+        "session": "Mai edzés", "sessions": ["Pihenőnap", "Könnyű futás · 30 perc", "Futás · 45 perc", "Intervallumok · 50 perc"],
         "today": "Ma reggel", "h": "ó", "m": "p",
         "note": "Csak bemutató. Az igazi döntés a saját Apple Health adataidból jön.",
     },
@@ -455,17 +457,82 @@ DEMO = {
         "r_sleep": ["Mehr geschlafen als nötig", "Schlafbedarf gedeckt", "Etwas zu kurz geschlafen", "Kurze Nacht"],
         "r_heart": ["Herz ruhiger als üblich", "Herz im üblichen Bereich", "Herz angespannter als üblich"],
         "r_week": ["Leichte Woche", "Übliche Woche", "Harte Woche"],
+        "session": "Heutige Einheit", "sessions": ["Ruhetag", "Lockerer Lauf · 30 Min.", "Lauf · 45 Min.", "Intervalle · 50 Min."],
         "today": "Heute Morgen", "h": "Std.", "m": "Min.",
         "note": "Nur eine Vorschau. Deine echte Einschätzung kommt aus deinen eigenen Apple-Health-Daten.",
     },
 }
 
 
+# The Coach: the acorn mascot, drawn from the app's own geometry
+# (Aera/Components/AeraCoachMark.swift, a 100 x 100 box). Dark ink with the face
+# cut out, so the sport-green capsule shows through, exactly as in the app.
+COACH_BODY = ("M 24 50.6 C 36 49.2 64 49.2 76 50.6 C 82 51.3 84.8 54.4 85.6 59.4 C 87.4 71.6 81 84.6 68.8 92 C 62.8 95.6 56.4 96.6 52.6 98.6 C 50.9 99.5 49.1 99.5 47.4 98.6 C 43.6 96.6 37.2 95.6 31.2 92 C 19 84.6 12.6 71.6 14.4 59.4 C 15.2 54.4 18 51.3 24 50.6 Z "
+              "M 87 40 C 87 44.3 84.6 46.6 80.4 46.6 L 19.6 46.6 C 15.4 46.6 13 44.3 13 40 C 13 25.51 27.17 16.6 46.34 15.6 L 53.66 15.6 C 72.83 16.6 87 25.51 87 40 Z "
+              "M 57.4 7.4 C 55.38 9.82 54.47 12.38 54.26 15.6 L 45.68 15.6 C 46.19 10.18 49.1 6.05 54 3.6 C 56.6 2.3 59.2 5.2 57.4 7.4 Z")
+
+
+def coach_svg(uid, label=""):
+    eyes = "".join('<rect class="eye" x="%.2f" y="%.2f" width="11.5" height="17" rx="5.75"/>' % (cx - 5.75, 65.8 - 8.5) for cx in (39.4, 64.2))
+    aria = ('role="img" aria-label="%s"' % label) if label else 'aria-hidden="true"'
+    return ('<svg class="coach" viewBox="0 0 100 100" %s><defs>'
+            '<linearGradient id="%s-ink" x1="0" y1="3" x2="0" y2="99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#24401F"/><stop offset="1" stop-color="#10200F"/></linearGradient>'
+            '<mask id="%s-face" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100"><rect width="100" height="100" fill="#fff"/>'
+            '<g class="eyes" fill="#000">%s</g>'
+            '<path class="glad" d="M 33.4 69.4 Q 38.6 61.6 43.8 69.4 M 56.2 69.4 Q 61.4 61.6 66.6 69.4" fill="none" stroke="#000" stroke-width="4.4" stroke-linecap="round"/>'
+            '<path d="M 46.4 82.2 Q 51.8 88.4 57.2 82.2" fill="none" stroke="#000" stroke-width="5.4" stroke-linecap="round"/></mask></defs>'
+            '<g class="coach-body"><path d="%s" fill="url(#%s-ink)" mask="url(#%s-face)"/></g></svg>'
+            % (aria, uid, uid, eyes, COACH_BODY, uid, uid))
+
+
+# Real words from real people. Tyler agreed on 2026-10-02 to be quoted with his
+# first name (his email, verbatim, dash included). The other two are public App
+# Store reviews, quoted as written. Never edit or invent a quote.
+REVIEWS = [
+    {"who": "Tyler", "stars": 0, "title": "",
+     "text": "Your numbers match exactly how my body feels&#8212;especially the sleep data. Apple Health is usually too generous with its sleep scores, which rarely represent my actual energy levels. Yours is much more accurate to how I feel every morning.",
+     "meta": {"en": "Founding tester, United States", "hu": "Alapító tesztelő, USA", "de": "Gründungstester, USA"}},
+    {"who": "MicheleMascia", "stars": 5, "title": "Great App",
+     "text": "Really nice app, I especially like the design and how clearly the data is presented. It feels like a good mix between wellness and training, and I think it has a lot of potential.",
+     "meta": {"en": "App Store review, Germany", "hu": "App Store-értékelés, Németország", "de": "App-Store-Bewertung, Deutschland"}},
+    {"who": "Marci0702", "stars": 5, "title": "so far it&#8217;s my favorite",
+     "text": "fast, straightforward app, user friendly. An intuitive and feature rich application",
+     "meta": {"en": "App Store review, Hungary", "hu": "App Store-értékelés, Magyarország", "de": "App-Store-Bewertung, Ungarn"}},
+]
+REVIEW_COPY = {
+    "en": {"kicker": "From early users", "h2": "Mornings that feel right.", "note": ""},
+    "hu": {"kicker": "Korai felhasználók", "h2": "Reggelek, ahogy tényleg érzed őket.", "note": "A vélemények eredeti, angol nyelvükön."},
+    "de": {"kicker": "Erste Stimmen", "h2": "Morgen, die sich richtig anfühlen.", "note": "Die Stimmen im englischen Original."},
+}
+
+
+def reviews_section(code):
+    rc = REVIEW_COPY[code]
+    cards = []
+    for i, r in enumerate(REVIEWS):
+        stars = '<p class="rv-stars" aria-label="5/5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>' if r["stars"] else ""
+        title = '<p class="rv-title">%s</p>' % r["title"] if r["title"] else ""
+        cards.append('<figure class="rv reveal" style="--d:%.2fs">%s%s<blockquote lang="en">&#8220;%s&#8221;</blockquote>'
+                     '<figcaption><span class="rv-av">%s</span><span><b>%s</b><small>%s</small></span></figcaption></figure>'
+                     % (i * 0.1, stars, title, r["text"], r["who"][0], r["who"], r["meta"][code]))
+    note = '<p class="footnote center">%s</p>' % rc["note"] if rc["note"] else ""
+    return f"""<section class="reviews">
+  <div class="wide">
+    <div class="center reveal">
+      <p class="kicker">{rc['kicker']}</p>
+      <h2 class="h2 split">{rc['h2']}</h2>
+    </div>
+    <div class="rv-grid">{''.join(cards)}</div>
+    {note}
+  </div>
+</section>"""
+
+
 def demo_section(code):
     d = DEMO[code]
     def seg(name, opts):
         return "".join('<label><input type="radio" name="%s" value="%d"%s><span>%s</span></label>' % (name, i, " checked" if i == 1 else "", o) for i, o in enumerate(opts))
-    data = json.dumps({k: d[k] for k in ("words", "advice", "r_sleep", "r_heart", "r_week", "h", "m")}, ensure_ascii=False).replace("</", "<\\/")
+    data = json.dumps({k: d[k] for k in ("words", "advice", "r_sleep", "r_heart", "r_week", "h", "m", "sessions")}, ensure_ascii=False).replace("</", "<\\/")
     return f"""<section class="try" id="try">
   <div class="wide try-grid">
     <div class="try-copy reveal">
@@ -489,6 +556,7 @@ def demo_section(code):
           <p class="demo-date">&#8249; {d['today']}</p>
           <p class="demo-word" aria-live="polite"><span>{d['words'][2]}</span></p>
           <p class="demo-advice">{d['advice'][2]}</p>
+          <div class="demo-cap"><span class="cap-mark">{coach_svg('dc-' + code)}</span><span class="cap-txt"><b>{d['session']}</b><small>{d['sessions'][2]}</small></span><i aria-hidden="true">&#8250;</i></div>
           <ul class="demo-why"><li data-k="sleep"><i></i><span>{d['r_sleep'][1]}</span></li><li data-k="heart"><i></i><span>{d['r_heart'][1]}</span></li><li data-k="week"><i></i><span>{d['r_week'][1]}</span></li></ul>
         </div>
       </div></div>
@@ -713,6 +781,8 @@ def build(code):
 
 {demo_section(code)}
 
+{reviews_section(code)}
+
 <section>
   <div class="wide guide-grid">
     <div class="reveal">
@@ -809,6 +879,7 @@ def build(code):
 
 <section class="closing">
   <div class="wide reveal">
+    <div class="closing-coach" role="button" tabindex="0" aria-label="Coach">{coach_svg('cc-' + code)}</div>
     <h2 class="h2 split">{c['close_h2']}</h2>
     <div class="cta"><a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a></div>
   </div>

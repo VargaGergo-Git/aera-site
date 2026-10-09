@@ -255,6 +255,8 @@
     var phoneEl = sec.querySelector('.demo-phone');
     var wordEl = sec.querySelector('.demo-word');
     var advice = sec.querySelector('.demo-advice');
+    var capSmall = sec.querySelector('.cap-txt small');
+    var capCoach = sec.querySelector('.demo-cap .coach');
     var rows = {};
     [].slice.call(sec.querySelectorAll('.demo-why li')).forEach(function (li) { rows[li.getAttribute('data-k')] = li; });
     var GOOD = 'var(--green)', MID = 'var(--gold)', LOW = 'var(--indigo)';
@@ -314,6 +316,8 @@
         sec.setAttribute('data-state', next);
         setWord(next);
         advice.textContent = t.advice[next];
+        if (capSmall && t.sessions) capSmall.textContent = t.sessions[next];
+        if (last.done && capCoach && window.AeraCoach) window.AeraCoach.play(capCoach, next >= 2 ? 'hello' : 'nod');
         if (last.done) { phoneEl.classList.remove('bump'); void phoneEl.offsetWidth; phoneEl.classList.add('bump'); setTimeout(function () { phoneEl.classList.remove('bump'); }, 600); }
       }
       last.done = true;
@@ -322,4 +326,91 @@
     sec.addEventListener('change', update);
     update();
   } catch (e) { /* the default call stays on screen */ }
+})();
+
+
+/* The Coach: one-shot hello (a hop that lands with glad eyes) and nod (a dip and
+   a squint), as in the app. On the web its eyes also follow the pointer and it
+   blinks now and then. Reduced motion keeps it still. */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coaches = [].slice.call(document.querySelectorAll('.coach'));
+  if (!coaches.length) return;
+  function play(el, kind) {
+    if (reduced || !el) return;
+    el.classList.remove('hello', 'nod', 'is-glad', 'is-squint');
+    void el.getBoundingClientRect();
+    el.classList.add(kind);
+    if (kind === 'hello') {
+      setTimeout(function () { el.classList.add('is-glad'); }, 300);
+      setTimeout(function () { el.classList.remove('is-glad'); }, 1500);
+    } else {
+      el.classList.add('is-squint');
+      setTimeout(function () { el.classList.remove('is-squint'); }, 480);
+    }
+    setTimeout(function () { el.classList.remove(kind); }, 950);
+  }
+  window.AeraCoach = { play: play };
+  if (reduced) return;
+
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine) {
+    var px = 0, py = 0, queued = false;
+    window.addEventListener('pointermove', function (e) {
+      px = e.clientX; py = e.clientY;
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () {
+        queued = false;
+        coaches.forEach(function (c) {
+          var r = c.getBoundingClientRect();
+          if (r.bottom < 0 || r.top > innerHeight) return;
+          var dx = px - (r.left + r.width / 2), dy = py - (r.top + r.height * 0.66);
+          var d = Math.sqrt(dx * dx + dy * dy) || 1, k = Math.min(1, d / 260);
+          var g = c.querySelector('.eyes');
+          if (g) g.setAttribute('transform', 'translate(' + (dx / d * 3.2 * k).toFixed(2) + ' ' + (dy / d * 2.6 * k).toFixed(2) + ')');
+        });
+      });
+    }, { passive: true });
+  }
+  (function blink() {
+    setTimeout(function () {
+      coaches.forEach(function (c) {
+        var r = c.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > innerHeight || c.classList.contains('is-glad')) return;
+        c.classList.add('blink');
+        setTimeout(function () { c.classList.remove('blink'); }, 140);
+      });
+      blink();
+    }, 2600 + Math.random() * 3200);
+  })();
+
+  // The closing coach says hello when you reach it, and again when tapped.
+  var cc = document.querySelector('.closing-coach');
+  if (cc) {
+    var coach = cc.querySelector('.coach'), said = false;
+    var poke = function () { play(coach, 'hello'); };
+    cc.addEventListener('click', poke);
+    cc.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); poke(); } });
+    var check = function () {
+      if (said) return;
+      var r = cc.getBoundingClientRect();
+      if (r.top < innerHeight * 0.8 && r.bottom > 0) { said = true; setTimeout(poke, 250); window.removeEventListener('scroll', check); }
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  }
+
+  // Phones lean toward the pointer, a little.
+  if (fine) {
+    [].slice.call(document.querySelectorAll('.duo .phone, .demo-phone')).forEach(function (ph) {
+      ph.addEventListener('pointermove', function (e) {
+        var r = ph.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        ph.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+        ph.style.setProperty('--rx', (-y * 8).toFixed(2) + 'deg');
+      });
+      ph.addEventListener('pointerleave', function () { ph.style.setProperty('--ry', '0deg'); ph.style.setProperty('--rx', '0deg'); });
+    });
+  }
 })();
