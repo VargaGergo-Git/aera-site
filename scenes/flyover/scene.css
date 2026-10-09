@@ -13,9 +13,11 @@
   --fo-route: #ff8a3d;
   --fo-pace: #5fe0c4;
   --fo-climb: #9fd0b6;
-  --fo-glass: rgba(22, 24, 32, 0.72);
+  --fo-glass: rgba(22, 24, 32, 0.9);
   --fo-glass-line: rgba(255, 255, 255, 0.12);
   --fo-w: min(380px, 38svh, 74vw);
+  --fo-aw: max(140vw, 1300px);
+  --fo-ah: 120%;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -24,24 +26,24 @@
   padding: clamp(96px, 12vw, 160px) 0 clamp(88px, 10vw, 140px);
 }
 @media (prefers-color-scheme: dark) {
-  .scene-flyover { --fo-bg: #000; --fo-glass: rgba(18, 19, 26, 0.76); }
+  .scene-flyover { --fo-bg: #000; --fo-glass: rgba(18, 19, 26, 0.9); }
 }
 
 /* The film's own light, spilled around the phone. 24x40 pixels stretched to
    the stage: the browser's smoothing is the blur, so nothing filters per frame. */
 .scene-flyover .fo-amb {
-  position: absolute; z-index: -1; left: 50%; top: 52%;
-  width: max(140vw, 1300px); height: 120%;
+  position: absolute; z-index: -1; left: 50%; top: 50%;
+  width: var(--fo-aw); height: var(--fo-ah);
   transform: translate(-50%, -50%);
   opacity: 0.5;
-  -webkit-mask-image: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.35) 62%, transparent 100%);
-  mask-image: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.35) 62%, transparent 100%);
 }
 .motion .scene-flyover .fo-amb { opacity: 0; transition: opacity 2.4s var(--ease); }
 .motion .scene-flyover.in .fo-amb { opacity: 0.55; }
 .scene-flyover::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, var(--fo-bg) 0%, transparent 18%, transparent 80%, var(--fo-bg) 100%);
+  background:
+    radial-gradient(closest-side at 50% 50%, transparent 35%, color-mix(in srgb, var(--fo-bg) 70%, transparent) 70%, var(--fo-bg) 100%) 50% 50% / var(--fo-aw) var(--fo-ah) no-repeat,
+    linear-gradient(180deg, var(--fo-bg) 0%, transparent 18%, transparent 80%, var(--fo-bg) 100%);
 }
 
 /* ---------- headline ---------- */
@@ -102,7 +104,6 @@
   position: relative; display: grid; gap: 4px;
   padding: 14px 18px 15px; border-radius: 20px;
   background: var(--fo-glass); box-shadow: inset 0 0 0 1px var(--fo-glass-line), 0 30px 60px -30px rgba(0, 0, 0, 0.9);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   white-space: nowrap;
 }
 .scene-flyover .fo-call b { font: 700 17px/1.2 var(--rounded); color: var(--fo-ink); letter-spacing: -0.01em; }
@@ -161,5 +162,5 @@
   .scene-flyover .fo-facts { grid-template-columns: minmax(0, 1fr); gap: 22px; max-width: 520px; }
   .scene-flyover .fo-facts li { grid-template-columns: 28px minmax(0, 1fr); column-gap: 14px; align-items: start; }
   .scene-flyover .fo-facts p { font-size: 17px; }
-  .scene-flyover .fo-amb { top: 50%; width: 240vw; height: 110%; }
+  .scene-flyover { --fo-aw: 240vw; --fo-ah: 110%; }
 }
