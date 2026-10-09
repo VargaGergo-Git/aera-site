@@ -543,12 +543,14 @@ html.motion .scene-engine:not(.eng-off)[data-flip="1"] .eng-mask { display: bloc
 .scene-planner .pl-pin { position: absolute; width: 0; height: 0; transform-style: preserve-3d; }
 .scene-planner .pl-pin > * { position: absolute; }
 .scene-planner .pl-pin-in {
-  left: 0; bottom: 30px; transform: translateX(-22px); display: flex; align-items: center; gap: 7px; white-space: nowrap;
+  left: 0; bottom: 30px; transform: translateX(var(--pin-x, -22px)); display: flex; align-items: center; gap: 7px; white-space: nowrap;
   padding: 5px 12px 5px 5px; border-radius: 999px; background: var(--pl-glass); color: var(--pl-glass-ink);
   -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: inset 0 0 0 1px var(--pl-glass-line), 0 10px 28px -10px rgba(0, 0, 0, .45);
   font: 700 clamp(13px, 1.25vw, 16px)/1 var(--rounded); letter-spacing: -0.01em;
 }
+/* The summit sits near the right edge: its label opens to the left, icon over the stem. */
+.scene-planner .pl-p3 .pl-pin-in { left: auto; right: 0; --pin-x: 22px; flex-direction: row-reverse; padding: 5px 5px 5px 12px; }
 .scene-planner .pl-ic { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: #fff; }
 .scene-planner .pl-ic svg { width: 15px; height: 15px; fill: currentColor; stroke: currentColor; }
 .scene-planner .pl-ic-spring { background: linear-gradient(160deg, #5ac8fa, #2f8fd8); }
@@ -617,7 +619,7 @@ html.motion .scene-planner:not(.pl-off) .pl-plane {
 html.motion .scene-planner:not(.pl-off) .pl-glow { opacity: calc(.12 + var(--tilt, 0) * .25); }
 html.motion .scene-planner:not(.pl-off) .pl-pin { opacity: var(--pin-o, 1); transform: rotateZ(calc(var(--tilt, 0) * var(--rz, -8deg) * -1)) rotateX(calc(var(--tilt, 0) * -52deg)); }
 html.motion .scene-planner:not(.pl-off) .pl-pin > * { transform-origin: 50% 100%; }
-html.motion .scene-planner:not(.pl-off) .pl-pin-in { transform: translateX(-22px) translateY(calc((1 - var(--pk)) * 26px)) scale(calc(.4 + var(--pk) * .6)); opacity: var(--pk); }
+html.motion .scene-planner:not(.pl-off) .pl-pin-in { transform: translateX(var(--pin-x, -22px)) translateY(calc((1 - var(--pk)) * 26px)) scale(calc(.4 + var(--pk) * .6)); opacity: var(--pk); }
 html.motion .scene-planner:not(.pl-off) .pl-stem { transform: scaleY(var(--pk)); opacity: calc(var(--pk) * .55); }
 html.motion .scene-planner:not(.pl-off) .pl-foot { transform: scale(var(--pk)); opacity: var(--pk); }
 html.motion .scene-planner:not(.pl-off) .pl-p1 { --pk: var(--p1, 0); }
@@ -642,6 +644,7 @@ html.motion .scene-planner:not(.pl-off)[data-step="3"] .pl-free { opacity: 1; }
 @media (max-width: 899px) {
   .scene-planner { --tilt-s: -.04; --rz: -5deg; --pan-d: 10%; }
   .scene-planner .pl-pin-in { padding: 4px 10px 4px 4px; gap: 6px; }
+  .scene-planner .pl-p3 .pl-pin-in { padding: 4px 4px 4px 10px; }
   .scene-planner .pl-ic { width: 26px; height: 26px; }
   .scene-planner .pl-ic svg { width: 13px; height: 13px; }
   .scene-planner .pl-hud { padding: 6px 14px 6px 6px; gap: 8px; }
