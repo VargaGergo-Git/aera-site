@@ -20,7 +20,7 @@
   --pl-route-hi: #4fd8a8;
   --pl-finger: rgba(28, 26, 34, 0.14);
   --pl-finger-in: rgba(28, 26, 34, 0.22);
-  --pl-glass: rgba(255, 255, 255, 0.78);
+  --pl-glass: rgba(255, 255, 255, 0.94);
   --pl-glass-ink: #17161b;
   --pl-glass-ink-2: #66626c;
   --pl-glass-line: rgba(255, 255, 255, 0.9);
@@ -52,7 +52,7 @@
     --pl-route-hi: #8bf5cf;
     --pl-finger: rgba(255, 255, 255, 0.14);
     --pl-finger-in: rgba(255, 255, 255, 0.26);
-    --pl-glass: rgba(28, 28, 32, 0.78);
+    --pl-glass: rgba(28, 28, 32, 0.92);
     --pl-glass-ink: #f5f3ee;
     --pl-glass-ink-2: #a19da7;
     --pl-glass-line: rgba(255, 255, 255, 0.1);
@@ -78,6 +78,11 @@
 .scene-planner .pl-plane { --map-w: min(100%, 560px); position: relative; width: var(--map-w); aspect-ratio: 600 / 640; transform-style: preserve-3d; }
 .scene-planner .pl-map-wrap { position: absolute; inset: 0; opacity: var(--map-o, 1); border-radius: 30px; overflow: hidden; background: var(--pl-land); box-shadow: 0 0 0 1px var(--line), 0 50px 120px -40px var(--pl-floor); }
 .scene-planner .pl-map { display: block; width: 100%; height: 100%; }
+/* The line lives in its own layer, so drawing it never repaints the map under it. */
+.scene-planner .pl-ink { position: absolute; inset: 0; }
+html.motion .scene-planner:not(.pl-off) .pl-ink { will-change: transform; }
+html.motion .scene-planner:not(.pl-off) :is(.pl-pin-in, .pl-hud, .pl-map-wrap) { will-change: transform, opacity; }
+html.motion .scene-planner:not(.pl-off).pl-done :is(.pl-ink, .pl-pin-in, .pl-hud, .pl-map-wrap) { will-change: auto; }
 .scene-planner .pl-shade { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 50% 40%, transparent 55%, color-mix(in srgb, var(--pl-land) 70%, #000 30%) 140%); opacity: .35; }
 
 .scene-planner .land { fill: var(--pl-land); }
@@ -110,7 +115,6 @@
 .scene-planner .pl-pin-in {
   left: 0; bottom: 30px; transform: translateX(var(--pin-x, -22px)); display: flex; align-items: center; gap: 7px; white-space: nowrap;
   padding: 5px 12px 5px 5px; border-radius: 999px; background: var(--pl-glass); color: var(--pl-glass-ink);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4);
   box-shadow: inset 0 0 0 1px var(--pl-glass-line), 0 10px 28px -10px rgba(0, 0, 0, .45);
   font: 700 clamp(13px, 1.25vw, 16px)/1 var(--rounded); letter-spacing: -0.01em;
 }
@@ -130,7 +134,6 @@
 .scene-planner .pl-hud {
   position: absolute; left: 50%; bottom: 4.5%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px;
   padding: 8px 18px 8px 8px; border-radius: 999px; background: var(--pl-glass); color: var(--pl-glass-ink); white-space: nowrap;
-  -webkit-backdrop-filter: blur(16px) saturate(1.4); backdrop-filter: blur(16px) saturate(1.4);
   box-shadow: inset 0 0 0 1px var(--pl-glass-line), 0 14px 34px -14px rgba(0, 0, 0, .5);
 }
 .scene-planner .pl-hud-ic { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--pl-route); color: #fff; }
@@ -161,13 +164,14 @@
 
 /* ---------- Motion: pinned stage ---------- */
 html.motion .scene-planner:not(.pl-off) .pl-stage { position: relative; height: 100svh; min-height: 640px; max-height: 1100px; display: block; padding: 0; overflow: hidden; }
-html.motion .scene-planner:not(.pl-off) .pl-stage::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 50% 55%, var(--pl-halo), transparent 70%); opacity: calc(.4 + var(--tilt, 0) * .6); }
+.scene-planner .pl-halo { display: none; }
+html.motion .scene-planner:not(.pl-off) .pl-halo { display: block; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 50% 55%, var(--pl-halo), transparent 70%); opacity: calc(.4 + var(--tilt, 0) * .6); }
 html.motion .scene-planner:not(.pl-off) .pl-head { position: absolute; left: var(--gutter); right: var(--gutter); top: calc(68px + 2.5svh); margin-inline: auto; z-index: 3; }
 html.motion .scene-planner:not(.pl-off) .pl-h2 { font-size: clamp(30px, 5.2vw, 68px); }
-html.motion .scene-planner:not(.pl-off) .pl-t { display: block; opacity: 0; transform: translate3d(0, 18px, 0); filter: blur(6px); transition: opacity .55s var(--ease), transform .7s var(--ease), filter .55s var(--ease); }
+html.motion .scene-planner:not(.pl-off) .pl-t { display: block; opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity .55s var(--ease), transform .7s var(--ease); }
 html.motion .scene-planner:not(.pl-off)[data-step="1"] .pl-t1,
 html.motion .scene-planner:not(.pl-off)[data-step="2"] .pl-t2,
-html.motion .scene-planner:not(.pl-off)[data-step="3"] .pl-t3 { opacity: 1; transform: none; filter: none; transition-delay: .12s; }
+html.motion .scene-planner:not(.pl-off)[data-step="3"] .pl-t3 { opacity: 1; transform: none; transition-delay: .12s; }
 
 html.motion .scene-planner:not(.pl-off) .pl-world { position: absolute; width: auto; left: 0; right: 0; top: var(--world-top, 30svh); height: var(--world-h, 50svh); display: block; z-index: 1; }
 html.motion .scene-planner:not(.pl-off) .pl-plane {
@@ -244,8 +248,6 @@ html.motion .scene-planner:not(.pl-off).pl-turned .pl-buzz2 { animation-delay: .
 }
 
 .scene-planner .pl-hud-tx b { display: inline-block; transform-origin: 0 60%; }
-html.motion .scene-planner:not(.pl-off) .pl-bump { animation: pl-bump .45s var(--bounce); }
-@keyframes pl-bump { 0% { transform: scale(1); } 40% { transform: scale(1.14); } 100% { transform: scale(1); } }
 
 /* Wide screens: words on the left, the stage takes the rest. */
 @media (min-width: 1100px) {
