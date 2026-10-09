@@ -42,6 +42,15 @@ Facts, stated plainly:
 - [Guter Schlafscore auf der Apple Watch](https://aerahealth.app/guides/guter-schlafscore.html): the same guide in German
 - [Apple Watch sleep and training, no subscription needed](https://aerahealth.app/guides/apple-watch-sleep-and-training-without-a-subscription.html): what Apple Watch tracks on its own, what an app adds and costs (Aera is free to use, with optional Premium by month, year or a one-time Lifetime purchase), and when a dedicated strap suits better
 - [Whoop Alternative für Apple Watch: kein Abo nötig](https://aerahealth.app/guides/whoop-alternative-apple-watch.html): the same guide in German
+- [Zone 2 heart rate for running](https://aerahealth.app/guides/zone-2-heart-rate-running.html): four ways to find your own zone 2 range, running it with Apple Watch, why it feels slow, cardiac drift and the 80/20 research
+- [Zóna 2 pulzus](https://aerahealth.app/guides/zona-2-pulzus-futas.html): the same guide in Hungarian
+- [Zone 2 Puls berechnen](https://aerahealth.app/guides/zone-2-puls-laufen.html): the same guide in German
+- [Apple Watch resting heart rate](https://aerahealth.app/guides/apple-watch-resting-heart-rate.html): what is normal, why runners read lower, what raises it and when to see a doctor
+- [Nyugalmi pulzus normál érték](https://aerahealth.app/guides/nyugalmi-pulzus-apple-watch.html): the same guide in Hungarian
+- [Ruhepuls und Apple Watch](https://aerahealth.app/guides/ruhepuls-apple-watch.html): the same guide in German
+- [Apple Watch VO2 max](https://aerahealth.app/guides/apple-watch-vo2-max.html): how Cardio Fitness is estimated, how close it gets to a lab test, what is good for your age and how to raise it
+- [VO2 max Apple Watch (magyar)](https://aerahealth.app/guides/vo2-max-apple-watch-pontossag.html): the same guide in Hungarian
+- [VO2max Apple Watch Genauigkeit](https://aerahealth.app/guides/vo2max-apple-watch-genauigkeit.html): the same guide in German
 - [Replay a run in 3D on iPhone](https://aerahealth.app/flyover.html): Flyover, free for workouts from the last seven days
 - [Futás 3D visszajátszás iPhone-on](https://aerahealth.app/guides/futas-3d-visszajatszas.html): the 3D replay guide in Hungarian
 - [Lauf in 3D abspielen](https://aerahealth.app/guides/lauf-in-3d-abspielen.html): the 3D replay guide in German
