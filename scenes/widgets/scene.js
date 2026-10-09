@@ -12,7 +12,9 @@
     function seg(p, a, b) { return c01((p - a) / (b - a)); }
     function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
     function out(t) { return 1 - Math.pow(1 - t, 3); }
-    function set(k, v) { sec.style.setProperty(k, typeof v === 'number' ? v.toFixed(4) : v); }
+    // Only changed values are written: an unchanged write still restyles the whole scene.
+    var vals = {};
+    function set(k, v) { var s = typeof v === 'number' ? v.toFixed(3) : v; if (vals[k] !== s) { vals[k] = s; sec.style.setProperty(k, s); } }
     var KEYS = ['--in', '--w1', '--w2', '--w3', '--w4', '--zoom', '--dots', '--lock', '--a1', '--a2', '--world-top', '--world-h', '--dev-px', '--zoom-s', '--lift-y', '--dev-dy', '--dev-mask', '--hout', '--head-top', '--caps-top'];
 
     function measure() {
@@ -58,7 +60,7 @@
     function clear() {
       KEYS.forEach(function (k) { sec.style.removeProperty(k); });
       sec.removeAttribute('data-step'); sec.classList.remove('wg-lifted');
-      step = 0; measured = false; last = -1;
+      step = 0; measured = false; last = -1; vals = {};
     }
     function update() {
 
@@ -74,7 +76,7 @@
       set('--w4', out(seg(p, .25, .34)));
       var z = ease(seg(p, .38, .5)) * (1 - ease(seg(p, .58, .68)));
       set('--zoom', z);
-      sec.classList.toggle('wg-lifted', z > .001);
+      if ((z > .001) !== sec.classList.contains('wg-lifted')) sec.classList.toggle('wg-lifted', z > .001);
       // The dots start at the middle of the band and settle on the night's reading.
       set('--dots', p < .38 ? 1 : out(seg(p, .44, .56)));
       set('--hout', ease(seg(p, .63, .7)));
@@ -86,11 +88,24 @@
     }
     // A film: it plays once when the stage is half in view and holds its last frame.
     var D = 7200, film = 0, t0 = 0, raf = 0;
+    // Frame guard: if this device cannot draw the film smoothly (median frame over
+    // 24 ms across its first frames), show the finished frame instead of a stutter.
+    var gd = [], gLast = 0, gOff = false;
+    function guard(now) {
+      if (gOff || gd.length > 14) return false;
+      if (gLast) gd.push(now - gLast);
+      gLast = now;
+      if (gd.length < 12) return false;
+      var m = gd.slice(2).sort(function (a, b) { return a - b; })[5];
+      if (m > 24) { gOff = true; return true; }
+      gd.length = 99; return false;
+    }
+
     var again = sec.querySelector('.wg-again');
     function tick(now) {
       raf = 0;
       if (!root.classList.contains('motion')) { film = 0; t0 = 0; update(); return; }
-      film = c01((now - t0) / D);
+      film = guard(now) ? 1 : c01((now - t0) / D);
       update();
       if (film < 1) raf = requestAnimationFrame(tick);
       else sec.classList.add('wg-done');
@@ -98,14 +113,19 @@
     function play() {
       if (raf) cancelAnimationFrame(raf);
       sec.classList.remove('wg-done');
-      film = 0; last = -1; t0 = performance.now();
+      film = 0; last = -1; t0 = performance.now(); gd = []; gLast = 0;
       raf = requestAnimationFrame(tick);
     }
-    if (again) again.addEventListener('click', play);
+    // A tap on Play again plays the whole film, whatever the frame guard saw.
+    if (again) again.addEventListener('click', function () { play(); gd.length = 99; });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         if (!t0 && es[0].intersectionRatio >= .5 && root.classList.contains('motion')) play();
       }, { threshold: [0, .5] }).observe(stage);
+      // Scrolled away mid-film: jump to the last frame instead of animating off screen.
+      new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting && raf) { cancelAnimationFrame(raf); raf = 0; film = 1; update(); sec.classList.add('wg-done'); }
+      }).observe(stage);
     } else { film = 1; }
     window.addEventListener('resize', function () { measured = false; last = -1; if (!raf) update(); }, { passive: true });
     new MutationObserver(function () { measured = false; last = -1; if (!root.classList.contains('motion')) { t0 = 0; film = 0; } update(); }).observe(root, { attributes: true, attributeFilter: ['class'] });
