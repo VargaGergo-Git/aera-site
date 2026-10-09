@@ -7,25 +7,13 @@
   var root = document.documentElement;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  var wide = window.matchMedia('(min-width: 900px)');
   var hero = document.querySelector('.hero');
   var bar = document.querySelector('.bar');
-  var steps = [].slice.call(document.querySelectorAll('.step'));
-  var screens = [].slice.call(document.querySelectorAll('.stage .scr'));
-  var dots = [].slice.call(document.querySelectorAll('.stage .dots i'));
-  var stage = document.querySelector('.stage');
-  var pars = [].slice.call(document.querySelectorAll('[data-par]'));
-  var after = document.querySelector('.after');
-  var route = document.getElementById('route');
-  var rhead = document.getElementById('rhead');
+  var run = document.querySelector('.hero-run');
   var dusk = document.querySelector('.dusk');
   var track = document.getElementById('track');
   var runner = document.getElementById('runner');
-  var pending = [];
-
-  function len(path) { try { return path ? path.getTotalLength() : 0; } catch (e) { return 0; } }
-  var trackLen = len(track);
-  var routeLen = len(route);
+  var pending = [], io = null;
 
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
 
@@ -33,6 +21,7 @@
     root.classList.remove('motion');
     pending.forEach(function (el) { el.classList.add('in'); });
     pending = [];
+    if (io) io.disconnect();
     if (hero) { hero.style.removeProperty('--p'); hero.style.removeProperty('--sw'); }
   }
 
@@ -57,135 +46,75 @@
     });
   }
 
-  // Sunrise: the entrance lifts the sky from first light a little way, then
-  // scrolling through the hero carries it the rest of the way to morning.
-  var dawn = 0, dawnTarget = 0.24, dawnStart = 0;
-  var run = document.querySelector('.hero-run');
-  // How far through the night-to-morning the visitor has scrolled: through the
-  // pinned run on wide screens, through the first part of the hero on phones.
-  function runProgress(vh) {
-    if (run && run.offsetHeight > vh * 1.2) {
-      var r = run.getBoundingClientRect();
-      return clamp(-r.top / (r.height - vh));
-    }
-    // Phones: the first half screen of scrolling turns the night into morning.
-    return clamp(window.scrollY / (vh * 0.6));
-  }
-  function heroProgress(t) {
-    return dawn + (1 - dawn) * t;
-  }
-
-  // Phones: how far the phone climbs so it ends just under the bar.
-  var riseSet = false;
-  function measureRise() {
-    riseSet = true;
+  // Geometry is read once and on resize, never inside a frame: frames only use
+  // scrollY, so scrolling never forces a style or layout pass.
+  var G = null;
+  function measure() {
+    var sy = window.scrollY, vh = window.innerHeight;
+    function box(el) { if (!el) return null; var r = el.getBoundingClientRect(); return { top: r.top + sy, h: r.height }; }
+    G = { vh: vh, run: box(run), hero: box(hero), dusk: box(dusk) };
+    // Phones: how far the phone climbs so it ends just under the bar.
     var ph = hero && hero.querySelector('.hero-ph');
-    if (!ph) return;
-    var top = 0, el = ph;
-    while (el && el !== hero) { top += el.offsetTop; el = el.offsetParent; }
-    if (el !== hero) top = ph.getBoundingClientRect().top - hero.getBoundingClientRect().top;
-    hero.style.setProperty('--rise', Math.min(0, 140 - top).toFixed(0) + 'px');
+    if (ph) {
+      var top = 0, el = ph;
+      while (el && el !== hero) { top += el.offsetTop; el = el.offsetParent; }
+      if (el === hero) hero.style.setProperty('--rise', Math.min(0, 140 - top).toFixed(0) + 'px');
+    }
   }
-  window.addEventListener('resize', function () { riseSet = false; }, { passive: true });
 
+  // The runner's path, sampled once: a frame looks points up instead of asking the SVG.
+  var LUT = [];
+  (function () {
+    try {
+      var L = track ? track.getTotalLength() : 0;
+      for (var i = 0; L && i <= 240; i++) { var q = track.getPointAtLength(L * i / 240); LUT.push(q.x, q.y); }
+    } catch (e) { LUT = []; }
+  })();
   var lastPose = -1;
   function placeRunner(p) {
-    if (!runner || !trackLen) return;
-    var t = 0.12 + p * 0.82;
-    var pt = track.getPointAtLength(trackLen * t);
+    if (!runner || !LUT.length) return;
+    var t = 0.12 + p * 0.82, f = t * 240, i = Math.min(239, Math.floor(f)), k = f - i;
+    var x = LUT[2 * i] + (LUT[2 * i + 2] - LUT[2 * i]) * k, y = LUT[2 * i + 1] + (LUT[2 * i + 3] - LUT[2 * i + 1]) * k;
     var scale = 1.9 * (1 - t * 0.78);
-    runner.setAttribute('transform', 'translate(' + pt.x.toFixed(1) + ' ' + pt.y.toFixed(1) + ') scale(' + scale.toFixed(3) + ')');
+    runner.setAttribute('transform', 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') scale(' + scale.toFixed(3) + ')');
     var pose = Math.floor(t * 60) % 2;
     if (pose !== lastPose) { runner.classList.toggle('b', pose === 1); lastPose = pose; }
   }
 
-  function revealVisible(vh) {
-    if (!pending.length) return;
-    var limit = vh * 0.88;
-    pending = pending.filter(function (el) {
-      if (el.getBoundingClientRect().top > limit) return true;
-      el.classList.add('in');
-      return false;
-    });
+  // Sunrise: the entrance lifts the sky from first light a little way, then
+  // scrolling through the hero carries it the rest of the way to morning.
+  var dawn = 0, dawnTarget = 0.24, dawnStart = 0;
+  function runProgress(sy) {
+    if (G.run && G.run.h > G.vh * 1.2) return clamp((sy - G.run.top) / (G.run.h - G.vh));
+    return clamp(sy / (G.vh * 0.6));   // phones without a pin: the first half screen
   }
 
-  var active = -1, swapTimer = 0;
-  function story(vh) {
-    if (!steps.length) return;
-    var mid = vh / 2, best = 0, bestD = Infinity;
-    steps.forEach(function (s, i) {
-      var r = s.getBoundingClientRect();
-      var d = Math.abs(r.top + r.height / 2 - mid);
-      if (d < bestD) { bestD = d; best = i; }
-    });
-    if (best === active) return;
-    var first = active === -1;
-    active = best;
-    steps.forEach(function (s, i) { s.classList.toggle('on', i === best); });
-    screens.forEach(function (s, i) { s.classList.toggle('on', i === best); });
-    dots.forEach(function (s, i) { s.classList.toggle('on', i === best); });
-    if (!first && stage) {
-      stage.classList.add('swap');
-      clearTimeout(swapTimer);
-      swapTimer = setTimeout(function () { stage.classList.remove('swap'); }, 450);
-    }
-  }
-
-  // Paired phones drift at their own speed relative to the middle of the screen.
-  function parallax(vh) {
-    pars.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.bottom < -100 || r.top > vh + 100) return;
-      var y = (r.top + r.height / 2 - vh / 2) * Number(el.getAttribute('data-par'));
-      el.style.setProperty('--py', y.toFixed(1) + 'px');
-    });
-  }
-
-  // Flyover band: the route draws with scroll, a marker rides its head.
-  function flyover(vh) {
-    if (!after) return;
-    var r = after.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > vh) return;
-    var p = clamp((vh - r.top) / (r.height + vh * 0.2));
-    after.style.setProperty('--rp', p.toFixed(4));
-    if (rhead && routeLen) {
-      var pt = route.getPointAtLength(routeLen * p);
-      rhead.setAttribute('cx', pt.x.toFixed(1));
-      rhead.setAttribute('cy', pt.y.toFixed(1));
-    }
-  }
-
-  // Closing: the sun sets as you reach the bottom of the page.
-  function sunset(vh) {
-    if (!dusk) return;
-    var r = dusk.getBoundingClientRect();
-    if (r.top > vh) { dusk.style.setProperty('--dp', '0'); return; }
-    var p = clamp((vh - r.top) / (r.height + vh * 0.35));
-    dusk.style.setProperty('--dp', p.toFixed(4));
-  }
-
-  var frames = 0;
+  // scrollY is read in the scroll event, before any frame callback has touched a
+  // style, so reading it never forces a layout that another script dirtied.
+  var SY = window.scrollY;
+  var frames = 0, last = {};
+  function put(el, k, v) { var s = v.toFixed(4); if (last[k] !== s) { last[k] = s; el.style.setProperty(k, s); } }
   function frame() {
     try {
       frames++;
-      bar.classList.toggle('scrolled', window.scrollY > 24);
+      var sy = SY;
+      if (bar) { var sc = sy > 24; if (last.bar !== sc) { last.bar = sc; bar.classList.toggle('scrolled', sc); } }
       if (!root.classList.contains('motion')) return;
-      var vh = window.innerHeight;
-      if (hero && hero.getBoundingClientRect().bottom > 0) {
-        var t = runProgress(vh);
-        var p = heroProgress(t);
-        hero.style.setProperty('--p', p.toFixed(4));
-        hero.style.setProperty('--sw', clamp((t - 0.22) / 0.32).toFixed(4));
-        hero.style.setProperty('--hr', t.toFixed(4));
-        if (!riseSet) measureRise();
-        hero.classList.toggle('day', t > 0.5);
+      if (!G) measure();
+      if (hero && G.hero && sy < G.hero.top + Math.max(G.hero.h, G.run ? G.run.h : 0)) {
+        var t = runProgress(sy), p = dawn + (1 - dawn) * t;
+        put(hero, '--p', p);
+        put(hero, '--sw', clamp((t - 0.22) / 0.32));
+        put(hero, '--hr', t);
+        var day = t > 0.5;
+        if (last.day !== day) { last.day = day; hero.classList.toggle('day', day); }
         placeRunner(p);
       }
-      revealVisible(vh);
-      if (wide.matches) story(vh);
-      parallax(vh);
-      flyover(vh);
-      sunset(vh);
+      // Closing: the sun sets as you reach the bottom of the page.
+      if (dusk && G.dusk) {
+        var top = G.dusk.top - sy;
+        put(dusk, '--dp', top > G.vh ? 0 : clamp((G.vh - top) / (G.dusk.h + G.vh * 0.35)));
+      }
     } catch (e) { abandon(); }
   }
 
@@ -193,10 +122,9 @@
   function request() {
     if (ticking) return;
     ticking = true;
-    var run = function () { if (ticking) { ticking = false; frame(); } };
-    requestAnimationFrame(run);
-    setTimeout(run, 200);   // frames may never come in a background tab
+    requestAnimationFrame(function () { ticking = false; frame(); });
   }
+  function remeasure() { G = null; SY = window.scrollY; request(); }
 
   function tweenDawn(now) {
     if (!dawnStart) dawnStart = now;
@@ -221,7 +149,18 @@
     if (!reduced) {
       root.classList.add('motion');
       [].slice.call(document.querySelectorAll('.split')).forEach(splitWords);
-      pending = [].slice.call(document.querySelectorAll('.reveal, .fan, .after'));
+      // Reveals fire once as each block comes 12% above the bottom edge.
+      pending = [].slice.call(document.querySelectorAll('.reveal, .fan'));
+      if ('IntersectionObserver' in window) {
+        io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+            e.target.classList.add('in'); io.unobserve(e.target);
+            pending = pending.filter(function (x) { return x !== e.target; });
+          });
+        }, { rootMargin: '0px 0px -12% 0px' });
+        pending.forEach(function (el) { io.observe(el); });
+      } else { abandon(); }
       if (hero) { hero.style.setProperty('--p', '0'); hero.style.setProperty('--sw', '0'); }
       placeRunner(0);
       requestAnimationFrame(function () {
@@ -242,10 +181,13 @@
     }
   } catch (e) { abandon(); }
 
-  window.addEventListener('scroll', request, { passive: true });
-  window.addEventListener('resize', request, { passive: true });
-  window.addEventListener('load', request);
-  window.addEventListener('pageshow', request);
+  window.addEventListener('scroll', function () { SY = window.scrollY; request(); }, { passive: true });
+  window.addEventListener('resize', remeasure, { passive: true });
+  window.addEventListener('load', remeasure);
+  window.addEventListener('pageshow', function () { SY = window.scrollY; remeasure(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+  // Page height changes (images, fonts, an opened answer) move what is below.
+  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
   request();
 
   // If frames never arrive at all, nothing stays hidden.
@@ -301,11 +243,15 @@
       });
     }, { passive: true });
   }
+  var onScreen = new Set();
+  if ('IntersectionObserver' in window) {
+    var vis = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) onScreen.add(e.target); else onScreen.delete(e.target); }); });
+    coaches.forEach(function (c) { vis.observe(c); });
+  }
   (function blink() {
     setTimeout(function () {
       coaches.forEach(function (c) {
-        var r = c.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > innerHeight || c.classList.contains('is-glad')) return;
+        if (!onScreen.has(c) || c.classList.contains('is-glad')) return;
         c.classList.add('blink');
         setTimeout(function () { c.classList.remove('blink'); }, 140);
       });
@@ -320,13 +266,13 @@
     var poke = function () { play(coach, 'hello'); };
     cc.addEventListener('click', poke);
     cc.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); poke(); } });
-    var check = function () {
-      if (said) return;
-      var r = cc.getBoundingClientRect();
-      if (r.top < innerHeight * 0.8 && r.bottom > 0) { said = true; setTimeout(poke, 250); window.removeEventListener('scroll', check); }
-    };
-    window.addEventListener('scroll', check, { passive: true });
-    check();
+    if ('IntersectionObserver' in window) {
+      var seen = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting || said) return;
+        said = true; seen.disconnect(); setTimeout(poke, 250);
+      }, { rootMargin: '0px 0px -20% 0px' });
+      seen.observe(cc);
+    }
   }
 
   // Phones lean toward the pointer, a little.
@@ -353,4 +299,44 @@
     es.forEach(function (e) { if (e.isIntersecting) { e.target.loading = 'eager'; io.unobserve(e.target); } });
   }, { rootMargin: '150% 0px' });
   imgs.forEach(function (im) { io.observe(im); });
+})();
+
+/* Chapter bar: lights the part of the day the reader is in (last night, this
+   morning, out the door, after the run) and shows only inside that stretch. */
+(function () {
+  var bar = document.querySelector('.bar'), nav = document.querySelector('.chapters');
+  if (!bar || !nav) return;
+  var links = [].slice.call(nav.querySelectorAll('a'));
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute('data-ch')); });
+  if (secs.some(function (s) { return !s; })) { nav.parentNode.removeChild(nav); return; }
+  var end = document.querySelector('.also'), now = nav.querySelector('.ch-now'), VH = window.innerHeight;
+  var cur = -2, shown = null, ticking = false, tops = null, endTop = Infinity, SY = window.scrollY;
+  // Section tops are read on load and resize only; scrolling compares them with scrollY.
+  function measure() {
+    var sy = SY = window.scrollY; VH = window.innerHeight;
+    tops = secs.map(function (s) { return s.getBoundingClientRect().top + sy; });
+    endTop = end ? end.getBoundingClientRect().top + sy : Infinity;
+  }
+  function update() {
+    ticking = false;
+    if (!tops) measure();
+    var line = SY + VH * 0.45, idx = -1, i;
+    for (i = 0; i < tops.length; i++) if (tops[i] <= line) idx = i;
+    var show = idx >= 0 && endTop > line;
+    if (show !== shown) { shown = show; bar.classList.toggle('ch-on', show); }
+    if (idx === cur) return;
+    cur = idx;
+    links.forEach(function (a, j) {
+      a.classList.toggle('on', j === idx); a.classList.toggle('done', j < idx);
+      if (j === idx) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+    });
+    if (now && idx >= 0) now.textContent = links[idx].textContent;
+  }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  function remeasure() { tops = null; request(); }
+  window.addEventListener('scroll', function () { SY = window.scrollY; request(); }, { passive: true });
+  window.addEventListener('resize', remeasure, { passive: true });
+  window.addEventListener('load', remeasure);
+  if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
+  request();
 })();

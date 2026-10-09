@@ -101,14 +101,16 @@ html.motion .scene-engine:not(.eng-off) .eng-board {
 html.motion .scene-engine:not(.eng-off) .eng-bloom {
   display: block; position: absolute; left: 0; top: 0; width: 60vmax; height: 60vmax; margin: -30vmax 0 0 -30vmax; border-radius: 50%; pointer-events: none;
   background: radial-gradient(closest-side, rgba(170, 255, 214, .95), rgba(78, 204, 163, .55) 30%, rgba(35, 150, 111, .18) 60%, transparent);
-  transform: translate3d(var(--bx, 50vw), var(--by, 60svh), 0) scale(var(--bs, 0)); opacity: var(--bo, 0); mix-blend-mode: screen;
+  transform: translate3d(var(--bx, 50vw), var(--by, 60svh), 0) scale(var(--bs, 0)); opacity: var(--bo, 0);
 }
 html.motion .scene-engine:not(.eng-off) .eng-word {
   display: block; position: absolute; left: 0; top: 0; margin: 0; white-space: nowrap; pointer-events: none; transform-origin: 0 0; z-index: 3;
   font: 800 clamp(64px, 15vw, 190px)/1 var(--rounded); letter-spacing: -0.035em; opacity: 0;
-  background: linear-gradient(100deg, #f5f3ee 0%, #f5f3ee 38%, #c8ffe6 48%, #ffffff 52%, #f5f3ee 62%, #f5f3ee 100%);
-  background-size: 300% 100%; background-position: calc(100% - var(--sweep, 0) * 100%) 0;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: #f5f3ee;
+}
+/* A mint glow breathes behind the word: a blurred copy whose opacity alone changes. */
+html.motion .scene-engine:not(.eng-off) .eng-word::after {
+  content: attr(data-w); position: absolute; inset: 0; z-index: -1; color: #8dffcf; filter: blur(.18em); opacity: calc(var(--glow, 0) * .85);
 }
 html.motion .scene-engine:not(.eng-off) .eng-device {
   position: absolute; left: 50%; top: 0; margin: 0;
@@ -116,7 +118,12 @@ html.motion .scene-engine:not(.eng-off) .eng-device {
   transform: translate3d(-50%, calc(var(--dev-top, 200px) + (1 - var(--dev)) * 70svh), 0) scale(calc(.9 + var(--dev) * .1));
   opacity: clamp(0, calc(var(--dev) * 3), 1);
 }
-html.motion .scene-engine:not(.eng-off) .eng-device .phone { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .16), 0 0 0 1px rgba(255, 255, 255, .05), 0 60px 120px -40px rgba(78, 204, 163, calc(.45 * var(--dev))); }
+html.motion .scene-engine:not(.eng-off) .eng-device .phone { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .16), 0 0 0 1px rgba(255, 255, 255, .05); }
+/* The phone's green glow is drawn once and only fades in. */
+html.motion .scene-engine:not(.eng-off) .eng-device::before {
+  content: ""; position: absolute; left: 6%; right: 6%; bottom: -4%; height: 60%; border-radius: 40%; z-index: -1; pointer-events: none;
+  box-shadow: 0 60px 120px -30px rgba(78, 204, 163, .45); opacity: var(--dev);
+}
 html.motion .scene-engine:not(.eng-off) .eng-caps { position: absolute; left: var(--gutter); right: var(--gutter); bottom: max(22px, 3svh); margin: 0 auto; display: grid; max-width: 640px; }
 html.motion .scene-engine:not(.eng-off) .cap { grid-area: 1 / 1; border: 0; padding: 0; text-align: center; opacity: 0; transform: translateY(12px); transition: opacity .2s ease-out, transform .3s ease-out; }
 html.motion .scene-engine:not(.eng-off) .cap b { display: block; font-size: 1.08em; }
