@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>Milyen messzire futok? Idő és tempó alapján, ingyenes kalkulátor</title>
+<meta name="description" content="Add meg, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, milyen messzire jutsz, és hol fordulj vissza. Ingyenes, regisztráció nélkül.">
+<meta property="og:title" content="Milyen messzire futok?">
+<meta property="og:description" content="Percből és tempóból táv, és az is, hol fordulj vissza egy oda-vissza futáson. Ingyenes, regisztráció nélkül.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://vargagergo-git.github.io/aera-site/assets/icon.png">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html">
+<link rel="alternate" hreflang="en" href="https://vargagergo-git.github.io/aera-site/tools/how-far.html">
+<link rel="alternate" hreflang="hu" href="https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html">
+<link rel="alternate" hreflang="de" href="https://vargagergo-git.github.io/aera-site/tools/wie-weit.html">
+<link rel="alternate" hreflang="x-default" href="https://vargagergo-git.github.io/aera-site/tools/how-far.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Milyen messzire futok?", "url": "https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html", "inLanguage": "hu", "applicationCategory": "SportsApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Add meg, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, milyen messzire jutsz, és hol fordulj vissza. Ingyenes, regisztráció nélkül.", "author": {"@type": "Person", "name": "Gergő Varga"}}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../hu.html">Aera</a>
+  <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Ingyenes eszköz</p>
+  <h1>Milyen messzire futok?</h1>
+  <p class="meta lang-switch"><a href="how-far.html" hreflang="en" lang="en">English</a> · <a href="milyen-messze.html" hreflang="hu" lang="hu" aria-current="page">Magyar</a> · <a href="wie-weit.html" hreflang="de" lang="de">Deutsch</a></p>
+</div>
+<div class="wrap legal">
+<p>Megadod a perceket és a tempót, megkapod a távot.</p>
+<div class="tool">
+  <div class="field">
+    <label for="mins">Ennyi időd van (perc)</label>
+    <input id="mins" type="number" inputmode="decimal" min="1" max="600" step="any" value="30">
+  </div>
+  <fieldset class="field">
+    <legend>A tempód (<span id="pace-unit">perc/km</span>)</legend>
+    <div class="row">
+      <input id="pace-m" type="number" inputmode="numeric" min="1" max="30" step="1" value="6" aria-label="A tempód, perc"><span class="unit-label">perc</span>
+      <input id="pace-s" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" aria-label="A tempód, mp"><span class="unit-label">mp</span>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Tempó mértékegysége">
+      <input type="radio" name="unit" id="unit-km" value="km" checked><label for="unit-km">perc/km</label>
+      <input type="radio" name="unit" id="unit-mi" value="mi"><label for="unit-mi">perc/mérföld</label>
+    </div>
+  </fieldset>
+  <div class="result" aria-live="polite">
+    <p class="result-head">Nagyjából ennyit futsz</p>
+    <p class="big" id="out-dist">5,00 km</p>
+    <p id="out-alt"></p>
+    <p id="out-turn"></p>
+  </div>
+  <details>
+    <summary>Nem tudod a laza tempódat? Becsüld meg egy versenyből</summary>
+    <form id="race-form">
+      <div class="field">
+        <label for="race-dist">Friss verseny</label>
+        <select id="race-dist"><option value="5000">5 km</option><option value="10000">10 km</option><option value="21097.5">Félmaraton</option><option value="42195">Maraton</option></select>
+      </div>
+      <fieldset class="field">
+        <legend>Célidő</legend>
+        <div class="row">
+          <input id="race-h" type="number" inputmode="numeric" min="0" max="9" step="1" value="0" aria-label="Célidő, óra"><span class="unit-label">óra</span>
+          <input id="race-m" type="number" inputmode="numeric" min="0" max="59" step="1" value="25" aria-label="Célidő, perc"><span class="unit-label">perc</span>
+          <input id="race-s" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" aria-label="Célidő, mp"><span class="unit-label">mp</span>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary" type="submit">Laza tempó becslése</button>
+      <p class="race-out" id="race-out" aria-live="polite"></p>
+      <p class="tool-note">Hogyan becsüljük: a versenyidődből Daniels és Gilbert (1979) futóképletei egy fittségi számot (VDOT) adnak. A laza tempó az a sebesség, amely ennek 59–74 százalékát kéri tőled, Daniels könyve (Daniels' Running Formula) szerint ez a laza tartomány. Ez egyetlen versenyből készült becslés. Domb, meleg és egy fáradt nap is elviszi, úgyhogy ha a laza nehéznek tűnik, lassíts.</p>
+    </form>
+  </details>
+</div>
+<h2>Miért mérik sokan időben a futást?</h2>
+<p>Sok edzésterv percekben adja meg a futást, nem kilométerben: „40 perc laza”. Az Egészségügyi Világszervezet (WHO) mozgásajánlása is percekben számol: felnőtteknek hetente 150–300 perc közepes vagy 75–150 perc intenzív mozgás (Bull és munkatársai, 2020).</p>
+<p>Az idő egyben tartja az erőfeszítést. Dombon, melegben, szélben vagy fáradtan ugyanannyi percből rövidebb táv lesz. Ha időre futsz, a táv enged, nem az erőfeszítés. Foster és munkatársai (2001) is így írják le egy edzés terhelését: a percek száma szorozva azzal, mennyire érezted nehéznek.</p>
+<p>Az állóképességi sportolók edzéseinek nagyjából négyötöde alacsony intenzitású, derül ki Seiler 2010-es összefoglalójából. Ezeknél a laza futásoknál nem a pontos táv a lényeg, hanem hogy tényleg lazák maradjanak.</p>
+<p>Az útvonalhoz viszont táv kell. Ezért van ez a kalkulátor: a perceidből kilométert vagy mérföldet csinál, és megmondja, hol fordulj vissza.</p>
+<div class="note">
+<p><strong>Az Aera, iPhone-ra és Apple Watch-ra</strong></p>
+<p>Ez az oldal kiszámolja a távot. Az Aera egy lépéssel korábban kezd. Minden reggel ingyen ad egy egyszerű szót a napra: Pihenőnap, Csak lazán, Mehet vagy Hajrá. Az alvásodból, a regenerálódásodból, a legutóbbi edzéseidből és a stresszből jön, miután az Aera megismert pár hétnyi éjszakát és edzést.</p>
+<p>Premiummal ebből lesz a mai edzés, például 35 perc laza (pihenőnapon nincs edzés), és onnan, ahol állsz, olyan hosszú köröket ajánl, amennyit ennyi idő alatt a saját tempódban lefutsz. A körökhöz feltérképezett utak kellenek a közeledben, ezért az Aera nem mindenhol talál ilyet.</p>
+<p>Ingyen is: rajzolj útvonalat a térképre, valódi utakon marad, és követés közben minden kanyart bemond, térerő nélkül is. Nincs fiók, és az egész alkalmazás magyarul van.</p>
+</div>
+<p><a class="btn btn-primary" href="https://apps.apple.com/hu/app/id6762456252">Töltsd le az App Store-ból</a></p>
+  <h2>Források</h2>
+  <ol class="note-sources">
+    <li>Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine. 2020;54(24):1451-1462.</li>
+    <li>Foster C, Florhaug JA, Franklin J, et al. A new approach to monitoring exercise training. Journal of Strength and Conditioning Research. 2001;15(1):109-115.</li>
+    <li>Seiler S. What is best practice for training intensity and duration distribution in endurance athletes? International Journal of Sports Physiology and Performance. 2010;5(3):276-291.</li>
+    <li>Daniels J, Gilbert J. Oxygen Power: Performance Tables for Distance Runners. 1979.</li>
+    <li>Daniels J. Daniels' Running Formula. Human Kinetics.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Az Aerát Varga Gergő készíti. <a href="../hu.html">Az alkalmazásról</a> · <a href="../support.html">Kapcsolat</a></p>
+</div></footer>
+<script type="application/json" id="howfar-strings">{"locale": "hu-HU", "unit": {"km": "km", "mi": "mérföld"}, "paceUnit": {"km": "perc/km", "mi": "perc/mérföld"}, "alt": "Ez {d} {u}.", "turn": "Oda-vissza: {t} után fordulj meg, ekkor nagyjából {d} {u} távolságra leszel az indulástól.", "minOnly": "{m} perc", "minSec": "{m} perc {s} mp", "needInput": "Írd be fent a perceket és a tempót.", "raceOut": "Becsült laza tempó: nagyjából {quick} és {slow} között ({pu}). A közepét ({mid}) beírtuk fent a tempóhoz.", "raceBad": "Írd be a célidőt. Ez a becslés csak szokásos versenyidőkre működik."}</script>
+<script>
+(function (root) {
+  'use strict';
+  var KM_PER_MILE = 1.609344;
+
+  // Distance in the pace's own unit: minutes divided by minutes per unit.
+  function distance(minutes, paceMinPerUnit) {
+    if (!(minutes > 0) || !(paceMinPerUnit > 0)) return null;
+    return minutes / paceMinPerUnit;
+  }
+
+  // Daniels and Gilbert (1979): oxygen cost of running at v metres per minute,
+  // and the share of that maximum a runner can hold for t minutes.
+  function oxygenCost(v) { return -4.60 + 0.182258 * v + 0.000104 * v * v; }
+  function sustainableShare(t) {
+    return 0.8 + 0.1894393 * Math.exp(-0.012778 * t) + 0.2989558 * Math.exp(-0.1932605 * t);
+  }
+  function vdot(meters, minutes) {
+    if (!(meters > 0) || !(minutes > 0)) return null;
+    return oxygenCost(meters / minutes) / sustainableShare(minutes);
+  }
+  // Speed (metres per minute) whose oxygen cost equals vo2: the positive root.
+  function speedFor(vo2) {
+    var a = 0.000104, b = 0.182258, c = -4.60 - vo2;
+    return (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+  }
+  // Easy range: 59 to 74 percent of VDOT (Daniels' Running Formula).
+  // Returns minutes per km for the quick and the slow end.
+  function easyPaceRange(meters, minutes) {
+    var v = vdot(meters, minutes);
+    if (v === null || !(v > 15) || !(v < 90)) return null;
+    return { vdot: v, quick: 1000 / speedFor(0.74 * v), slow: 1000 / speedFor(0.59 * v) };
+  }
+
+  root.AeraHowFar = { distance: distance, vdot: vdot, easyPaceRange: easyPaceRange, KM_PER_MILE: KM_PER_MILE };
+  if (typeof document === 'undefined') return;
+
+  var T = JSON.parse(document.getElementById('howfar-strings').textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var nf = new Intl.NumberFormat(T.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function num(id) {
+    var raw = String($(id).value).replace(',', '.').trim();
+    return raw === '' ? 0 : Number(raw);
+  }
+  function unit() { return $('unit-mi').checked ? 'mi' : 'km'; }
+  function pace() { return num('pace-m') + num('pace-s') / 60; }
+  function fmtPace(min) {
+    var s = Math.round(min * 60), m = Math.floor(s / 60), r = s % 60;
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+  function fmtTime(min) {
+    var s = Math.round(min * 60), m = Math.floor(s / 60), r = s % 60;
+    return r ? T.minSec.replace('{m}', m).replace('{s}', r) : T.minOnly.replace('{m}', m);
+  }
+  function fill(tpl, map) {
+    return tpl.replace(/\{(\w+)\}/g, function (_, k) { return map[k]; });
+  }
+
+  function render() {
+    var u = unit(), mins = num('mins'), p = pace();
+    var d = distance(mins, p);
+    if (d === null || !isFinite(d) || num('pace-s') >= 60) {
+      $('out-dist').textContent = '–';
+      $('out-alt').textContent = T.needInput;
+      $('out-turn').textContent = '';
+      return;
+    }
+    var other = u === 'km' ? d / KM_PER_MILE : d * KM_PER_MILE;
+    $('out-dist').textContent = nf.format(d) + ' ' + T.unit[u];
+    $('out-alt').textContent = fill(T.alt, { d: nf.format(other), u: T.unit[u === 'km' ? 'mi' : 'km'] });
+    $('out-turn').textContent = fill(T.turn, { t: fmtTime(mins / 2), d: nf.format(d / 2), u: T.unit[u] });
+  }
+
+  // Switching units keeps the same speed: 6:00 per km becomes 9:39 per mile.
+  var lastUnit = unit();
+  function onUnit() {
+    var u = unit();
+    if (u !== lastUnit) {
+      var p = pace();
+      if (p > 0) {
+        var np = u === 'mi' ? p * KM_PER_MILE : p / KM_PER_MILE;
+        var s = Math.round(np * 60);
+        $('pace-m').value = Math.floor(s / 60);
+        $('pace-s').value = s % 60;
+      }
+      $('pace-unit').textContent = T.paceUnit[u];
+      lastUnit = u;
+    }
+    render();
+  }
+
+  function estimate(e) {
+    if (e) e.preventDefault();
+    var minutes = num('race-h') * 60 + num('race-m') + num('race-s') / 60;
+    var r = easyPaceRange(Number($('race-dist').value), minutes);
+    if (!r) { $('race-out').textContent = T.raceBad; return; }
+    var u = unit(), k = u === 'mi' ? KM_PER_MILE : 1;
+    var quick = r.quick * k, slow = r.slow * k, mid = (quick + slow) / 2;
+    var s = Math.round(mid * 60);
+    $('pace-m').value = Math.floor(s / 60);
+    $('pace-s').value = s % 60;
+    $('race-out').textContent = fill(T.raceOut, {
+      quick: fmtPace(quick), slow: fmtPace(slow), mid: fmtPace(mid), pu: T.paceUnit[u]
+    });
+    render();
+  }
+
+  ['mins', 'pace-m', 'pace-s'].forEach(function (id) { $(id).addEventListener('input', render); });
+  $('unit-km').addEventListener('change', onUnit);
+  $('unit-mi').addEventListener('change', onUnit);
+  $('race-form').addEventListener('submit', estimate);
+  $('pace-unit').textContent = T.paceUnit[unit()];
+  render();
+})(this);
+</script>
+</body>
+</html>
