@@ -869,21 +869,21 @@ html:not(.motion) .chip-night { display: none; }
 /* ---------- off-screen sections are skipped until they come near ----------
    No pinned or measured scene below the Flyover, so the browser can skip their
    style, layout and paint while they are far away. Sizes are each section's
-   usual height, remembered exactly once it has been shown. */
+   usual content height (padding comes on top), remembered exactly once shown. */
 .also, .privacy, .reviews, main > section:has(.plans), .faq-sec, .maker-sec { content-visibility: auto; }
-.also { contain-intrinsic-size: auto 1080px; }
-.privacy { contain-intrinsic-size: auto 950px; }
-.reviews { contain-intrinsic-size: auto 800px; }
-main > section:has(.plans) { contain-intrinsic-size: auto 920px; }
-.faq-sec { contain-intrinsic-size: auto 700px; }
-.maker-sec { contain-intrinsic-size: auto 600px; }
+.also { contain-intrinsic-size: auto 770px; }
+.privacy { contain-intrinsic-size: auto 560px; }
+.reviews { contain-intrinsic-size: auto 490px; }
+main > section:has(.plans) { contain-intrinsic-size: auto 620px; }
+.faq-sec { contain-intrinsic-size: auto 420px; }
+.maker-sec { contain-intrinsic-size: auto 290px; }
 @media (max-width: 619px) {
-  .also { contain-intrinsic-size: auto 1270px; }
-  .privacy { contain-intrinsic-size: auto 770px; }
-  .reviews { contain-intrinsic-size: auto 950px; }
-  main > section:has(.plans) { contain-intrinsic-size: auto 1380px; }
-  .faq-sec { contain-intrinsic-size: auto 810px; }
-  .maker-sec { contain-intrinsic-size: auto 455px; }
+  .also { contain-intrinsic-size: auto 1100px; }
+  .privacy { contain-intrinsic-size: auto 540px; }
+  .reviews { contain-intrinsic-size: auto 780px; }
+  main > section:has(.plans) { contain-intrinsic-size: auto 1180px; }
+  .faq-sec { contain-intrinsic-size: auto 650px; }
+  .maker-sec { contain-intrinsic-size: auto 300px; }
 }
 
 /* Hero: everything the scroll moves gets its own layer, drawn once and then only
