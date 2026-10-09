@@ -80,7 +80,7 @@ html.motion .scene-engine:not(.eng-off) .eng-pin { height: auto; }
 html.motion .scene-engine:not(.eng-off) .eng-stage { position: relative; height: 100svh; min-height: 560px; display: block; padding: 0; max-width: none; overflow: hidden; }
 html.motion .scene-engine:not(.eng-off) .eng-head {
   position: absolute; left: var(--gutter); right: var(--gutter); top: calc(76px + 2svh);
-  transform: translate3d(0, calc(var(--hy) * 28svh), 0) scale(calc(1 + var(--hy) * .32)); transform-origin: 50% 0;
+  transform: translate3d(0, calc(var(--hy) * 28svh), 0) scale(calc(1 + var(--hy) * var(--head-zoom, .32))); transform-origin: 50% 0;
 }
 html.motion .scene-engine:not(.eng-off) .eng-h2 { display: grid; }
 html.motion .scene-engine:not(.eng-off) .eng-t1, html.motion .scene-engine:not(.eng-off) .eng-t2 { grid-area: 1 / 1; transition: opacity .5s var(--ease), transform .7s var(--ease); }

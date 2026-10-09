@@ -43,6 +43,26 @@
       wordW = word.offsetWidth; wordH = word.offsetHeight;
       head.style.transform = 'none';
       headBottom = head.offsetTop + head.offsetHeight;
+      // The opening zoom stops where the widest line still fits the screen.
+      var widest = 0, allLines = {};
+      var tw = document.createTreeWalker(head, NodeFilter.SHOW_TEXT), tn;
+      while ((tn = tw.nextNode())) {
+        if (!tn.textContent.trim()) continue;
+        var rg = document.createRange(); rg.selectNodeContents(tn);
+        var lines = {};
+        [].slice.call(rg.getClientRects()).forEach(function (r) {
+          if (!r.width) return;
+          var k = Math.round(r.top / 8), L = lines[k] || (lines[k] = [r.left, r.right]);
+          L[0] = Math.min(L[0], r.left); L[1] = Math.max(L[1], r.right);
+        });
+        Object.keys(lines).forEach(function (k) { (allLines[k] = allLines[k] || []).push(lines[k]); });
+      }
+      Object.keys(allLines).forEach(function (k) {
+        var l = Math.min.apply(null, allLines[k].map(function (x) { return x[0]; })), r = Math.max.apply(null, allLines[k].map(function (x) { return x[1]; }));
+        widest = Math.max(widest, r - l);
+      });
+      var vw1 = document.documentElement.clientWidth;
+      if (widest) set('--head-zoom', Math.max(0, Math.min(.32, (vw1 - 32) / widest - 1)));
       head.style.transform = '';
       set('--dev-top', (headBottom + 18) + 'px');
       var vh0 = stage.clientHeight || window.innerHeight, vw0 = window.innerWidth;
@@ -70,7 +90,7 @@
       ['--rise', '--fade', '--dev'].forEach(function (k, i) { if (keep[i]) sec.style.setProperty(k, keep[i]); else sec.style.removeProperty(k); });
     }
     function clear() {
-      ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--glow', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y'].forEach(function (k) { sec.style.removeProperty(k); });
+      ['--a', '--b', '--c', '--d', '--hy', '--rise', '--fade', '--dev', '--bx', '--by', '--bs', '--bo', '--glow', '--mk', '--dev-top', '--dev-w', '--board-w', '--board-y', '--head-zoom'].forEach(function (k) { sec.style.removeProperty(k); });
       sec.removeAttribute('data-step'); sec.classList.remove('is-word', 'is-landed');
       word.style.transform = ''; word.style.opacity = '';
       step = 0; isWord = false; isLanded = false; wordCss = ''; vals = {};
@@ -138,7 +158,9 @@
       // Scrolled away mid-film: jump to the last frame instead of animating off screen.
       new IntersectionObserver(function (es) { if (!es[0].isIntersecting && t0 && !done) { done = true; redraw(); } }).observe(stage);
     } else { done = true; }
-    window.addEventListener('resize', function () { wordW = 0; redraw(); }, { passive: true });
+    // The phone's address bar firing resize as it hides does not change this scene.
+    var lastW = window.innerWidth;
+    window.addEventListener('resize', function () { if (window.innerWidth === lastW) return; lastW = window.innerWidth; wordW = 0; redraw(); }, { passive: true });
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { wordW = 0; redraw(); });
     update();
   } catch (e) {
