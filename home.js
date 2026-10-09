@@ -33,7 +33,7 @@
     root.classList.remove('motion');
     pending.forEach(function (el) { el.classList.add('in'); });
     pending = [];
-    if (hero) hero.style.removeProperty('--p');
+    if (hero) { hero.style.removeProperty('--p'); hero.style.removeProperty('--sw'); }
   }
 
   // Headlines: wrap each word so it can rise from behind its own line.
@@ -60,9 +60,19 @@
   // Sunrise: the entrance lifts the sky from first light a little way, then
   // scrolling through the hero carries it the rest of the way to morning.
   var dawn = 0, dawnTarget = 0.24, dawnStart = 0;
-  function heroProgress() {
-    var h = hero.offsetHeight || 1;
-    return dawn + (1 - dawn) * clamp(window.scrollY / (h * 0.85));
+  var run = document.querySelector('.hero-run');
+  // How far through the night-to-morning the visitor has scrolled: through the
+  // pinned run on wide screens, through the first part of the hero on phones.
+  function runProgress(vh) {
+    if (wide.matches && run && run.offsetHeight > vh * 1.2) {
+      var r = run.getBoundingClientRect();
+      return clamp(-r.top / (r.height - vh));
+    }
+    // Phones: the first half screen of scrolling turns the night into morning.
+    return clamp(window.scrollY / (vh * 0.6));
+  }
+  function heroProgress(t) {
+    return dawn + (1 - dawn) * t;
   }
 
   var lastPose = -1;
@@ -149,8 +159,11 @@
       if (!root.classList.contains('motion')) return;
       var vh = window.innerHeight;
       if (hero && hero.getBoundingClientRect().bottom > 0) {
-        var p = heroProgress();
+        var t = runProgress(vh);
+        var p = heroProgress(t);
         hero.style.setProperty('--p', p.toFixed(4));
+        hero.style.setProperty('--sw', clamp((t - 0.22) / 0.32).toFixed(4));
+        hero.classList.toggle('day', t > 0.5);
         placeRunner(p);
       }
       revealVisible(vh);
@@ -194,7 +207,7 @@
       root.classList.add('motion');
       [].slice.call(document.querySelectorAll('.split')).forEach(splitWords);
       pending = [].slice.call(document.querySelectorAll('.reveal, .rails, .fan, .after'));
-      if (hero) hero.style.setProperty('--p', '0');
+      if (hero) { hero.style.setProperty('--p', '0'); hero.style.setProperty('--sw', '0'); }
       placeRunner(0);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
@@ -227,4 +240,86 @@
     pending = [];
     if (hero) hero.classList.add('in');
   }, 9000);
+})();
+
+/* Try a morning: the controls drive a simplified version of the morning call.
+   Works with reduced motion too (only the word's slide is skipped by CSS). */
+(function () {
+  var sec = document.getElementById('try');
+  var dataEl = document.getElementById('demo-copy');
+  if (!sec || !dataEl) return;
+  try {
+    var t = JSON.parse(dataEl.textContent);
+    var range = document.getElementById('sleep-h');
+    var out = document.getElementById('sleep-out');
+    var phoneEl = sec.querySelector('.demo-phone');
+    var wordEl = sec.querySelector('.demo-word');
+    var advice = sec.querySelector('.demo-advice');
+    var rows = {};
+    [].slice.call(sec.querySelectorAll('.demo-why li')).forEach(function (li) { rows[li.getAttribute('data-k')] = li; });
+    var GOOD = 'var(--green)', MID = 'var(--gold)', LOW = 'var(--indigo)';
+    var state = 2, last = {};
+
+    function picked(name) {
+      var el = sec.querySelector('input[name="' + name + '"]:checked');
+      return el ? Number(el.value) : 1;
+    }
+    function fmt(h) {
+      var hh = Math.floor(h), mm = Math.round((h - hh) * 60);
+      return hh + ' ' + t.h + (mm ? ' ' + mm + ' ' + t.m : '');
+    }
+    function setRow(k, text, color) {
+      var li = rows[k];
+      if (!li) return;
+      var span = li.querySelector('span');
+      if (span.textContent !== text) {
+        span.textContent = text;
+        li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash');
+        setTimeout(function () { li.classList.remove('flash'); }, 450);
+      }
+      li.querySelector('i').style.setProperty('--c', color);
+    }
+    function setWord(i) {
+      var cur = wordEl.querySelector('span:not(.out)');
+      if (cur && cur.textContent === t.words[i]) return;
+      if (cur) {
+        cur.classList.remove('in'); cur.classList.add('out');
+        setTimeout(function () { if (cur.parentNode) cur.parentNode.removeChild(cur); }, 320);
+      }
+      var n = document.createElement('span');
+      n.textContent = t.words[i];
+      n.className = 'in';
+      n.style.position = cur ? 'absolute' : '';
+      wordEl.style.position = 'relative';
+      setTimeout(function () { n.style.position = ''; }, 330);
+      wordEl.appendChild(n);
+    }
+
+    function update() {
+      var h = Number(range.value);
+      var heart = picked('heart'), week = picked('week');
+      range.style.setProperty('--v', ((h - 4.5) / 5).toFixed(3));
+      out.textContent = fmt(h);
+      var deficit = 7.5 - h;
+      var s = deficit <= -0.5 ? 0 : deficit <= 0.25 ? 1 : deficit <= 1.25 ? 2 : 3;
+      var pts = [1, 0.5, -1, -2.5][s] + [1, 0, -2][heart] + [0.5, 0, -1][week];
+      var next = pts >= 1.5 ? 3 : pts >= 0 ? 2 : pts >= -2.5 ? 1 : 0;
+      if (heart === 2 && week === 2 && s >= 2) next = 0;
+      setRow('sleep', t.r_sleep[s], s <= 1 ? GOOD : s === 2 ? MID : LOW);
+      setRow('heart', t.r_heart[heart], heart === 2 ? LOW : GOOD);
+      setRow('week', t.r_week[week], week === 2 ? MID : GOOD);
+      if (next !== state || !last.done) {
+        state = next;
+        phoneEl.setAttribute('data-state', next);
+        sec.setAttribute('data-state', next);
+        setWord(next);
+        advice.textContent = t.advice[next];
+        if (last.done) { phoneEl.classList.remove('bump'); void phoneEl.offsetWidth; phoneEl.classList.add('bump'); setTimeout(function () { phoneEl.classList.remove('bump'); }, 600); }
+      }
+      last.done = true;
+    }
+    range.addEventListener('input', update);
+    sec.addEventListener('change', update);
+    update();
+  } catch (e) { /* the default call stays on screen */ }
 })();

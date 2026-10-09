@@ -8,6 +8,7 @@ here must match the live app (store copy in the app repo's Marketing/store/).
 Loops are not promised until the 3.2.1 fix is live.
 """
 import html
+import json
 import os
 import sys
 
@@ -40,10 +41,12 @@ COPY = {
         "skip": "Skip to content",
         "eyebrow": "Sleep and running tracker for iPhone and Apple Watch",
         "h1": "Turn last night into today&#8217;s run.",
-        "lede": "Aera reads how you slept, what your heart did overnight and how your week has gone, against your own usual. Then it tells you how hard to go today, and every number shows how it was worked out.",
+        "lede": "Aera reads your night against your own usual and tells you how hard to go today. Every number shows how it was worked out.",
         "cta": "Download on the App Store",
         "cta2": "See a morning",
         "facts": ["Free to download", "No account", "Health numbers stay on your iPhone"],
+        "proof": "5.0 from %d ratings on the Hungarian App Store",
+        "chip_night": "7 h 25 m asleep, right on your need", "chip_day": "Recovery above your usual", "sleep_alt": "Aera's Sleep screen: 7 h 25 m asleep, right on your need",
         "hero_alt": "Aera's Home screen: Good to go, recovery above your usual after a normal night, and today's session",
         "story_kicker": "A morning with Aera",
         "story_h2": "From last night to out the door.",
@@ -150,10 +153,12 @@ COPY = {
         "skip": "Ugrás a tartalomra",
         "eyebrow": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra",
         "h1": "Az éjszakádból lesz a mai futásod.",
-        "lede": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és hogyan telt a heted, mindezt a saját szokásodhoz mérve. Aztán megmondja, milyen keményen menj ma, és minden szám elárulja, hogyan jött ki.",
+        "lede": "Az Aera a saját szokásodhoz méri az éjszakádat, és megmondja, milyen keményen menj ma. Minden szám elárulja, hogyan jött ki.",
         "cta": "Letöltés az App Store-ból",
         "cta2": "Egy reggel az Aerával",
         "facts": ["Ingyenes", "Nincs fiók", "Teljesen magyarul"],
+        "proof": "5,0 a magyar App Store-ban, %d értékelésből",
+        "chip_night": "7 ó 25 p alvás, pont az igényed szerint", "chip_day": "A regenerálódás a szokásosnál jobb", "sleep_alt": "Az Aera alvás képernyője: 7 ó 25 p alvás, pont az igényed szerint",
         "hero_alt": "Az Aera kezdőképernyője: Mehet, a regenerálódás a szokásosnál jobb, és a mai edzés",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "A tegnap éjszakától az ajtón túlig.",
@@ -260,10 +265,12 @@ COPY = {
         "skip": "Zum Inhalt",
         "eyebrow": "Schlaf- und Lauftracker für iPhone und Apple Watch",
         "h1": "Aus letzter Nacht wird dein Lauf von heute.",
-        "lede": "Aera liest, wie du geschlafen hast, was dein Herz in der Nacht gemacht hat und wie deine Woche lief, gemessen an deinem eigenen Üblichen. Dann sagt es dir, wie hart du heute laufen kannst, und jede Zahl zeigt, wie sie entstanden ist.",
+        "lede": "Aera misst deine Nacht an deinem eigenen Üblichen und sagt dir, wie hart du heute laufen kannst. Jede Zahl zeigt, wie sie entstanden ist.",
         "cta": "Im App Store laden",
         "cta2": "Ein Morgen mit Aera",
         "facts": ["Kostenlos", "Kein Konto", "Gesundheitswerte bleiben auf deinem iPhone"],
+        "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
+        "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
         "hero_alt": "Der Home-Bildschirm von Aera: Bereit, Erholung über deinem Üblichen, und die heutige Einheit",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
@@ -367,6 +374,10 @@ COPY = {
 # no banner needed). APPSTORE_PT: the provider token from App Store Connect >
 # App Analytics > Campaigns, so Apple counts downloads per page and button (ct=).
 CF_BEACON = ""
+# Hungarian App Store rating count behind the "5.0" line in the hero. Checked
+# 2026-10-09 with itunes.apple.com/lookup?id=6762456252&country=hu (5.0, 7).
+# Re-check before each rebuild; set to 0 to drop the line if the average falls.
+HU_RATINGS = 7
 APPSTORE_PT = ""
 OG_LOCALE = {"en": "en_US", "hu": "hu_HU", "de": "de_DE"}
 
@@ -380,7 +391,7 @@ THEMED = {"home", "sleep", "recovery", "session", "planner", "article-sleep"}
 
 
 def picture(name, alt, sizes, eager=False):
-    load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
+    load = 'fetchpriority="high"' if eager is True else 'decoding="async"' if eager == "soon" else 'loading="lazy" decoding="async"'
     if name in THEMED:
         d, l = "img/%s-dark" % name, "img/%s-light" % name
         return ('<picture><source media="(prefers-color-scheme: dark)" srcset="%s-400.webp 400w, %s-800.webp 800w" sizes="%s">'
@@ -393,6 +404,99 @@ def picture(name, alt, sizes, eager=False):
 
 def phone(name, alt, sizes, eager=False, cls=""):
     return '<div class="phone %s"><div class="screen-wrap">%s</div></div>' % (cls, picture(name, alt, sizes, eager))
+
+
+# "Try a morning": a live, simplified demo of the morning call. The words are the
+# app's own (Localizable.xcstrings "Prose readiness word"); the scoring here is
+# a teaching toy and the section says so.
+DEMO = {
+    "en": {
+        "kicker": "Try a morning",
+        "h2": "Change last night. Watch the call change.",
+        "sub": "A simplified demo of the morning read. In the app each signal is measured against your own usual range, learned over weeks, and the reasons sit beside the word.",
+        "sleep": "Last night's sleep", "need": "Your need: 7 h 30 m",
+        "heart": "Overnight heart", "heart_note": "Resting heart rate and HRV, against your usual",
+        "heart_opts": ["Calmer", "Usual", "Strained"],
+        "week": "Your last seven days", "week_opts": ["Light", "Usual", "Heavy"],
+        "words": ["Rest day", "Go easy", "Good to go", "Go for it"],
+        "advice": ["Let today be recovery. A walk counts.", "Keep it conversational and short.", "Your usual run is on.", "A good day for the hard session."],
+        "r_sleep": ["Slept past your need", "Sleep met your need", "A little short on sleep", "A short night"],
+        "r_heart": ["Heart calmer than usual", "Heart in its usual range", "Heart above its usual"],
+        "r_week": ["A light week", "A usual week", "A heavy week"],
+        "today": "This morning", "h": "h", "m": "m",
+        "note": "Demo only. Your real read comes from your own Apple Health data.",
+    },
+    "hu": {
+        "kicker": "Próbáld ki",
+        "h2": "Változtass az éjszakán. Nézd, hogyan változik a nap.",
+        "sub": "Egyszerűsített bemutató a reggeli döntésről. Az appban minden jelet a saját, hetek alatt megtanult szokásos tartományodhoz mér, és az okokat a szó mellé írja.",
+        "sleep": "Az éjjeli alvás", "need": "Az igényed: 7 ó 30 p",
+        "heart": "Éjszakai szív", "heart_note": "Nyugalmi pulzus és HRV a szokásodhoz képest",
+        "heart_opts": ["Nyugodtabb", "Szokásos", "Feszültebb"],
+        "week": "Az elmúlt hét nap", "week_opts": ["Könnyű", "Szokásos", "Kemény"],
+        "words": ["Pihenőnap", "Csak lazán", "Mehet", "Hajrá"],
+        "advice": ["Ma a pihenés a feladat. Egy séta belefér.", "Beszélgetős tempó, inkább rövidebben.", "Mehet a szokásos futás.", "Jó nap a kemény edzésre."],
+        "r_sleep": ["Többet aludtál, mint amennyi kell", "Kialudtad magad", "Kicsit rövid éjszaka", "Rövid éjszaka"],
+        "r_heart": ["A szíved nyugodtabb a szokásosnál", "A szíved a szokásos tartományban", "A szíved feszültebb a szokásosnál"],
+        "r_week": ["Könnyű hét", "Szokásos hét", "Kemény hét"],
+        "today": "Ma reggel", "h": "ó", "m": "p",
+        "note": "Csak bemutató. Az igazi döntés a saját Apple Health adataidból jön.",
+    },
+    "de": {
+        "kicker": "Probier es aus",
+        "h2": "Ändere die Nacht. Sieh, wie sich der Tag ändert.",
+        "sub": "Eine vereinfachte Vorschau der Morgen-Einschätzung. In der App wird jedes Signal an deinem eigenen üblichen Bereich gemessen, über Wochen gelernt, und die Gründe stehen direkt neben dem Wort.",
+        "sleep": "Schlaf letzte Nacht", "need": "Dein Bedarf: 7 Std. 30 Min.",
+        "heart": "Herz über Nacht", "heart_note": "Ruhepuls und HRV, gemessen an deinem Üblichen",
+        "heart_opts": ["Ruhiger", "Üblich", "Angespannt"],
+        "week": "Deine letzten sieben Tage", "week_opts": ["Leicht", "Üblich", "Hart"],
+        "words": ["Ruhetag", "Ruhig angehen", "Bereit", "Leg los"],
+        "advice": ["Heute ist Erholung dran. Ein Spaziergang zählt.", "Locker im Plauderton, eher kurz.", "Dein üblicher Lauf passt.", "Ein guter Tag für die harte Einheit."],
+        "r_sleep": ["Mehr geschlafen als nötig", "Schlafbedarf gedeckt", "Etwas zu kurz geschlafen", "Kurze Nacht"],
+        "r_heart": ["Herz ruhiger als üblich", "Herz im üblichen Bereich", "Herz angespannter als üblich"],
+        "r_week": ["Leichte Woche", "Übliche Woche", "Harte Woche"],
+        "today": "Heute Morgen", "h": "Std.", "m": "Min.",
+        "note": "Nur eine Vorschau. Deine echte Einschätzung kommt aus deinen eigenen Apple-Health-Daten.",
+    },
+}
+
+
+def demo_section(code):
+    d = DEMO[code]
+    def seg(name, opts):
+        return "".join('<label><input type="radio" name="%s" value="%d"%s><span>%s</span></label>' % (name, i, " checked" if i == 1 else "", o) for i, o in enumerate(opts))
+    data = json.dumps({k: d[k] for k in ("words", "advice", "r_sleep", "r_heart", "r_week", "h", "m")}, ensure_ascii=False).replace("</", "<\\/")
+    return f"""<section class="try" id="try">
+  <div class="wide try-grid">
+    <div class="try-copy reveal">
+        <p class="kicker">{d['kicker']}</p>
+        <h2 class="h2 split">{d['h2']}</h2>
+      <p class="sub">{d['sub']}</p>
+    </div>
+    <form class="controls reveal" style="--d:.1s" onsubmit="return false">
+        <div class="ctl">
+          <div class="ctl-head"><label for="sleep-h">{d['sleep']}</label><output id="sleep-out" for="sleep-h">7 {d['h']} 30 {d['m']}</output></div>
+          <input id="sleep-h" type="range" min="4.5" max="9.5" step="0.25" value="7.5" style="--v:.6">
+          <p class="ctl-note">{d['need']}</p>
+        </div>
+        <fieldset class="ctl"><legend>{d['heart']}</legend><div class="seg">{seg('heart', d['heart_opts'])}</div><p class="ctl-note">{d['heart_note']}</p></fieldset>
+        <fieldset class="ctl"><legend>{d['week']}</legend><div class="seg">{seg('week', d['week_opts'])}</div></fieldset>
+    </form>
+    <div class="try-stage reveal" style="--d:.2s">
+      <div class="phone demo-phone" data-state="2"><div class="screen-wrap demo-screen">
+        <div class="demo-top"></div>
+        <div class="demo-body">
+          <p class="demo-date">&#8249; {d['today']}</p>
+          <p class="demo-word" aria-live="polite"><span>{d['words'][2]}</span></p>
+          <p class="demo-advice">{d['advice'][2]}</p>
+          <ul class="demo-why"><li data-k="sleep"><i></i><span>{d['r_sleep'][1]}</span></li><li data-k="heart"><i></i><span>{d['r_heart'][1]}</span></li><li data-k="week"><i></i><span>{d['r_week'][1]}</span></li></ul>
+        </div>
+      </div></div>
+      <p class="demo-note">{d['note']}</p>
+    </div>
+  </div>
+  <script type="application/json" id="demo-copy">{data}</script>
+</section>"""
 
 
 def build(code):
@@ -416,6 +520,7 @@ def build(code):
     canonical = BASE + ("" if c["file"] == "index.html" else c["file"])
     nav = "".join('<a class="opt" href="%s">%s</a>' % (h, t) for h, t in c["nav"])
     facts = "".join("<li>%s</li>" % f for f in c["facts"])
+    proof = ('<p class="proof rise" style="--d:.62s"><span class="rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> %s</p>' % (c["proof"] % HU_RATINGS)) if HU_RATINGS else ""
 
     steps_html, stage = [], []
     for i, (shot, kicker, col, h3, body, extra, alt) in enumerate(c["steps"]):
@@ -543,6 +648,7 @@ def build(code):
 </header>
 
 <main>
+<div class="hero-run">
 <section class="hero" aria-labelledby="h1">
   <div class="sky sky-a"></div><div class="sky sky-b"></div>
   {L['stars']}
@@ -560,11 +666,22 @@ def build(code):
         <a class="btn btn-quiet" href="#story">{c['cta2']}</a>
       </div>
       <ul class="facts rise" style="--d:.54s">{facts}</ul>
+      {proof}
     </div>
-    <div class="hero-phone">{phone('home', c['hero_alt'], '(max-width: 899px) 64vw, 330px', eager=True)}</div>
+    <div class="hero-phone">
+      <div class="phone hero-ph"><div class="screen-wrap">
+        <div class="hs hs-home">{picture('home', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
+        <div class="hs hs-sleep" aria-hidden="true">{picture('sleep', c['sleep_alt'], '(max-width: 899px) 64vw, 380px', eager="soon")}</div>
+        <div class="hs-edge" aria-hidden="true"></div>
+      </div></div>
+      <p class="chip chip-night" aria-hidden="true"><i></i>{c['chip_night']}</p>
+      <p class="chip chip-day" aria-hidden="true"><b>{DEMO[code]['words'][2]}</b>{c['chip_day']}</p>
+    </div>
   </div>
   {L['near']}
 </section>
+
+</div>
 
 <section id="story">
   <div class="wide">
@@ -593,6 +710,8 @@ def build(code):
     </div>
   </div>
 </section>
+
+{demo_section(code)}
 
 <section>
   <div class="wide guide-grid">
