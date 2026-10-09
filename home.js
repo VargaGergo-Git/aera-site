@@ -64,7 +64,7 @@
   // How far through the night-to-morning the visitor has scrolled: through the
   // pinned run on wide screens, through the first part of the hero on phones.
   function runProgress(vh) {
-    if (wide.matches && run && run.offsetHeight > vh * 1.2) {
+    if (run && run.offsetHeight > vh * 1.2) {
       var r = run.getBoundingClientRect();
       return clamp(-r.top / (r.height - vh));
     }
@@ -74,6 +74,19 @@
   function heroProgress(t) {
     return dawn + (1 - dawn) * t;
   }
+
+  // Phones: how far the phone climbs so it ends just under the bar.
+  var riseSet = false;
+  function measureRise() {
+    riseSet = true;
+    var ph = hero && hero.querySelector('.hero-ph');
+    if (!ph) return;
+    var top = 0, el = ph;
+    while (el && el !== hero) { top += el.offsetTop; el = el.offsetParent; }
+    if (el !== hero) top = ph.getBoundingClientRect().top - hero.getBoundingClientRect().top;
+    hero.style.setProperty('--rise', Math.min(0, 140 - top).toFixed(0) + 'px');
+  }
+  window.addEventListener('resize', function () { riseSet = false; }, { passive: true });
 
   var lastPose = -1;
   function placeRunner(p) {
@@ -163,6 +176,8 @@
         var p = heroProgress(t);
         hero.style.setProperty('--p', p.toFixed(4));
         hero.style.setProperty('--sw', clamp((t - 0.22) / 0.32).toFixed(4));
+        hero.style.setProperty('--hr', t.toFixed(4));
+        if (!riseSet) measureRise();
         hero.classList.toggle('day', t > 0.5);
         placeRunner(p);
       }
