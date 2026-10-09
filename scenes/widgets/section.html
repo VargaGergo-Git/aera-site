@@ -1,109 +1,53 @@
-<section class="scene scene-widgets" id="widgets">
-  <svg class="wg-defs" width="0" height="0" aria-hidden="true" focusable="false">
-    <defs>
-      <symbol id="widgets-hills" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path class="wg-h1" d="M0 34 C12 24 22 30 32 22 S52 8 64 18 S86 24 100 14 V100 H0Z"/>
-        <path class="wg-h2" d="M0 52 C14 42 26 50 40 42 S64 36 76 44 S92 40 100 36 V100 H0Z"/>
-        <path class="wg-h3" d="M0 70 C18 60 30 68 46 62 S74 58 100 52 V100 H0Z"/>
-        <path class="wg-h4" d="M0 86 C20 80 40 86 60 81 S86 80 100 76 V100 H0Z"/>
-      </symbol>
-      <linearGradient id="widgets-ring" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#7fe0bd"/><stop offset="1" stop-color="#1f9a71"/>
-      </linearGradient>
-    </defs>
-  </svg>
-  <div class="wide wg-body">
-    <div class="wg-copy reveal">
-      <p class="kicker">{{kicker}}</p>
-      <h2 class="h2 split">{{h2}}</h2>
-      <p class="sub">{{sub}}</p>
-    </div>
-    <div class="wg-pin">
-      <div class="wg-stage">
-        <div class="wg-scene" role="img" aria-label="{{alt}}">
-          <div class="wg-glow" aria-hidden="true"></div>
-          <div class="wg-tilt" aria-hidden="true">
-            <div class="wg-phone wg-home">
-              <div class="wg-glass">
-                <div class="wg-screen">
-                  <svg class="wg-hills"><use href="#widgets-hills"/></svg>
-                  <div class="wg-status"><b>9:41</b><i class="wg-island"></i><span class="wg-sys"><i></i><i></i><i></i></span></div>
-                  <div class="wg-icons"><i></i><i></i><i></i><i></i></div>
-                  <div class="wg-pages"><i></i><i></i></div>
-                  <div class="wg-dock"><i></i><i></i><i></i><img src="assets/icon.png" alt="" width="40" height="40" loading="lazy"></div>
-                  <div class="wg-sheen"></div>
-                </div>
-                <div class="wg-w wg-w1">
-                  <p class="wg-lab wg-v">{{w_night}}</p>
-                  <svg class="wg-ring" viewBox="0 0 40 40"><circle class="wg-track" cx="20" cy="20" r="16"/><circle class="wg-arc wg-arc1" cx="20" cy="20" r="16" pathLength="100"/></svg>
-                  <b class="wg-big wg-sm">7:25</b>
-                </div>
-                <div class="wg-w wg-w2">
-                  <p class="wg-lab wg-g">{{w_session}}</p>
-                  <p class="wg-val">45<small> {{unit_min}}</small></p>
-                  <svg class="wg-hyp" viewBox="0 0 60 22" preserveAspectRatio="none"><rect x="0" y="4" width="6" height="4"/><rect x="6" y="10" width="9" height="4"/><rect class="d" x="15" y="16" width="8" height="4"/><rect x="23" y="10" width="6" height="4"/><rect class="r" x="29" y="0" width="5" height="4"/><rect x="34" y="10" width="8" height="4"/><rect class="d" x="42" y="16" width="5" height="4"/><rect x="47" y="10" width="7" height="4"/><rect class="r" x="54" y="0" width="6" height="4"/></svg>
-                  <p class="wg-cap">{{w_run}}</p>
-                </div>
-                <div class="wg-w wg-w3">
-                  <div class="wg-tl">
-                    <p class="wg-lab">{{w_morning}}</p>
-                    <div class="wg-mini">
-                      <svg class="wg-ring" viewBox="0 0 40 40"><circle class="wg-track" cx="20" cy="20" r="16"/><circle class="wg-arc wg-arc3" cx="20" cy="20" r="16" pathLength="100"/></svg>
-                      <b>4/4</b>
-                    </div>
-                    <p class="wg-cap wg-g">{{all_usual}}</p>
-                  </div>
-                  <ul class="wg-rows">
-                    <li style="--c:var(--pink);--v:.58"><span>{{hrv}}</span><b>84 ms</b><i></i></li>
-                    <li style="--c:var(--pink);--v:.44"><span>{{heart}}</span><b>53</b><i></i></li>
-                    <li style="--c:var(--sage);--v:.5"><span>{{breathing}}</span><b>14</b><i></i></li>
-                  </ul>
-                </div>
-                <div class="wg-w wg-w4">
-                  <svg class="wg-map" viewBox="0 0 60 60">
-                    <rect class="wg-land" width="60" height="60"/>
-                    <path class="wg-water" d="M44 0 C40 14 50 22 46 34 S52 52 48 60 H60 V0Z"/>
-                    <path class="wg-topo" d="M-2 14 C10 8 20 18 34 10 M-2 26 C12 20 22 30 38 22 M4 60 C10 48 24 50 30 40"/>
-                    <path class="wg-road" d="M0 44 L60 30 M18 0 L26 60"/>
-                    <path class="wg-route" pathLength="100" d="M12 50 C10 40 16 34 22 30 S30 18 36 16 S44 22 40 30 S30 40 26 46 S16 54 12 50"/>
-                    <circle class="wg-start" cx="12" cy="50" r="2.6"/>
-                  </svg>
-                  <div class="wg-wk">
-                    <p class="wg-lab wg-o">{{w_last}}</p>
-                    <p class="wg-val">{{km}}<small> km</small></p>
-                    <p class="wg-cap">{{run}} · 38:12</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="wg-phone wg-lock">
-              <div class="wg-glass">
-                <div class="wg-screen">
-                  <i class="wg-sun"></i>
-                  <svg class="wg-hills"><use href="#widgets-hills"/></svg>
-                  <div class="wg-status wg-ls"><span></span><i class="wg-island"></i><span class="wg-sys"><i></i><i></i><i></i></span></div>
-                  <p class="wg-date">{{lock_date}}</p>
-                  <p class="wg-clock">9:41</p>
-                  <div class="wg-circs">
-                    <div class="wg-c wg-c1"><svg viewBox="0 0 40 40"><circle class="wg-track" cx="20" cy="20" r="16"/><circle class="wg-arc" cx="20" cy="20" r="16" pathLength="100" style="--a:57"/></svg><b>4</b><svg class="wg-gl" viewBox="0 0 12 12"><path d="M2.5 3.5h7v6h-7zM2.5 5.5h7M4.5 2.5v2M7.5 2.5v2"/></svg></div>
-                    <div class="wg-c wg-c2"><svg viewBox="0 0 40 40"><circle class="wg-track" cx="20" cy="20" r="16"/><circle class="wg-arc" cx="20" cy="20" r="16" pathLength="100" style="--a:88"/></svg><b>7:25</b><svg class="wg-gl" viewBox="0 0 12 12"><path d="M8.6 8.4A4.4 4.4 0 0 1 4.3 1.6a4.4 4.4 0 1 0 5.9 5.9 4 4 0 0 1-1.6.9Z"/></svg></div>
-                  </div>
-                  <div class="wg-btns"><i></i><i></i></div>
-                  <div class="wg-bar"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wg-aside">
-        <ol class="wg-beats">
-          <li class="on">{{beat_home}}</li>
-          <li>{{beat_lock}}</li>
-          <li>{{beat_watch}}</li>
-        </ol>
-        <p class="wg-watch"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="12" height="14" rx="4"/><path d="M9 5 9.6 2h4.8L15 5M9 19l.6 3h4.8l.6-3M18.6 10.5h.9"/></svg><span>{{watch_line}}</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="scene scene-widgets" id="widgets" aria-labelledby="widgets-h">
+<div class="wg-run">
+<div class="wg-stage">
+<div class="wg-head">
+<p class="kicker">{{kicker}}</p>
+<h2 class="wg-h2" id="widgets-h"><span class="wg-t wg-t1">{{h_home}}</span><span class="wg-t wg-t2">{{h_usual}}</span><span class="wg-t wg-t3">{{h_lock}}</span></h2>
+</div>
+<div class="wg-world">
+<div class="wg-dev" role="img" aria-label="{{alt}}">
+<div class="wg-screen">
+<div class="wg-wall" aria-hidden="true"><svg viewBox="0 0 393 852" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="widgets-sky" x1="0" y1="0" x2="0" y2="1"><stop class="s1" offset="0"/><stop class="s2" offset=".55"/><stop class="s3" offset="1"/></linearGradient><radialGradient id="widgets-sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(290 560) scale(120)"><stop class="u1" offset="0"/><stop class="u2" offset="1"/></radialGradient></defs><rect width="393" height="852" fill="url(#widgets-sky)"/><rect width="393" height="852" fill="url(#widgets-sun)"/><path class="h1" d="M0 600C60 570 120 585 180 560S300 520 393 545V852H0Z"/><path class="h2" d="M0 660C70 630 150 655 220 630S330 600 393 615V852H0Z"/><path class="h3" d="M0 730C90 700 170 720 250 700S350 690 393 700V852H0Z"/></svg></div>
+<div class="wg-status" aria-hidden="true"><b>9:41</b><i class="wg-isl"></i><span class="wg-sig"><i></i><i></i><i></i><i></i></span></div>
+<div class="wg-home" aria-hidden="true"><i class="wg-dim"></i>
+<div class="wg-w wg-w1 wg-s" style="left:5.6%;top:7.75%"><p class="wg-name">{{w_night}}</p><p class="wg-hero wg-lav"><b>7</b>{{u_h}} <b>25</b>{{u_m}}</p><p class="wg-body">{{night_body}}</p><div class="wg-lanes"><i style="--x:0;--w:5;--l:0"></i><i style="--x:8;--w:12;--l:2"></i><i style="--x:22;--w:9;--l:3"></i><i style="--x:33;--w:14;--l:2"></i><i style="--x:49;--w:7;--l:1"></i><i style="--x:58;--w:4;--l:0"></i><i style="--x:64;--w:10;--l:2"></i><i style="--x:76;--w:6;--l:3"></i><i style="--x:84;--w:9;--l:1"></i><i style="--x:95;--w:5;--l:0"></i></div></div>
+<div class="wg-w wg-w2 wg-s" style="left:52.2%;top:7.75%"><p class="wg-name">{{w_session}}</p><p class="wg-sent"><span>{{session_name}},</span><span class="wg-soft">{{session_min}}.</span></p><div class="wg-shape"><i style="--h:30"></i><i style="--h:30"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:30"></i></div></div>
+<div class="wg-w wg-w3 wg-m" style="left:5.6%;top:29.5%"><p class="wg-sent wg-big"><span>{{all_usual}}</span><span class="wg-soft">{{every_one}}</span></p><div class="wg-vitals">
+<div class="wg-v" style="--c:var(--wg-hrv);--o:.44"><p><svg viewBox="0 0 24 24"><path d="M2 13h4l2-5 4 10 3-7 2 2h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>84</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-heart);--o:.58"><p><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z" fill="currentColor"/></svg><b>53</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-breath);--o:.5"><p><svg viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 1 0-3-3M3 14h15a3 3 0 1 1-3 3M3 19h7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><b>{{breath_v}}</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-oxygen);--o:.62"><p><svg viewBox="0 0 24 24"><path d="M11 4v8c0 3-1 7-5 7-2.5 0-3-2-3-5 0-4 3-7 5-7M13 4v8c0 3 1 7 5 7 2.5 0 3-2 3-5 0-4-3-7-5-7" fill="currentColor"/></svg><b>97</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+</div></div>
+<div class="wg-w wg-w4 wg-m wg-last" style="left:5.6%;top:51.25%"><div class="wg-map"><svg viewBox="0 0 160 164" preserveAspectRatio="xMidYMid slice"><rect class="m0" width="160" height="164"/><path class="m1" d="M-10 120C30 100 60 130 100 110S150 70 175 80V180H-10Z"/><path class="m2" d="M20 -5L40 60L10 170M-5 40L90 55L170 30M70 -5L95 90L80 170M-5 100L170 125"/><path class="m3" d="M48 120C40 96 52 70 70 52C86 36 110 30 118 46C126 62 106 74 104 92C102 112 120 124 104 136C88 148 58 142 48 120Z"/><circle class="m4" cx="48" cy="120" r="5"/></svg></div><div class="wg-last-tx"><p class="wg-name">{{w_last}}</p><p class="wg-sub">{{run}} · {{yesterday}}</p><div class="wg-stats"><p><b class="wg-c-time">41:27</b><small>{{l_duration}}</small></p><p><b class="wg-c-heart">133<em> bpm</em></b><small>{{l_average}}</small></p><p><b class="wg-c-energy">412<em> kcal</em></b><small>{{l_energy}}</small></p></div></div></div>
+<div class="wg-icons"><i style="--a:#7ad1a8;--b:#2f9f74"></i><i style="--a:#9ea7ff;--b:#5e5ce6"></i><i style="--a:#ffb98a;--b:#e46f22"></i><i style="--a:#ffd98a;--b:#c7962a"></i></div>
+<div class="wg-dots"><i class="on"></i><i></i></div>
+<div class="wg-dock"><i style="--a:#8fd0ff;--b:#2f8fd8"></i><i style="--a:#ff9fb6;--b:#e2335f"></i><i style="--a:#b9f0c8;--b:#3fae6a"></i><i class="wg-aera"><svg viewBox="0 0 40 40"><path d="M20 7L8 33h6l6-14 6 14h6z" fill="currentColor"/></svg></i></div>
+</div>
+<div class="wg-lock" aria-hidden="true">
+<p class="wg-date">{{lock_date}}</p>
+<p class="wg-clock">9:41</p>
+<div class="wg-acc">
+<div class="wg-rect"><p class="wg-an">{{w_night}}</p><p class="wg-af">7{{u_h}} 25{{u_m}}</p><p class="wg-ab">{{night_body}}</p></div>
+<div class="wg-circ"><b>4</b><small>{{sessions}}</small></div>
+</div>
+<div class="wg-lockbar"><i></i><i></i></div>
+</div>
+</div>
+</div>
+<div class="wg-liftbox" aria-hidden="true"><div class="wg-w wg-m wg-lift" style="left:5.6%;top:29.5%"><p class="wg-sent wg-big"><span>{{all_usual}}</span><span class="wg-soft">{{every_one}}</span></p><div class="wg-vitals">
+<div class="wg-v" style="--c:var(--wg-hrv);--o:.44"><p><svg viewBox="0 0 24 24"><path d="M2 13h4l2-5 4 10 3-7 2 2h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>84</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-heart);--o:.58"><p><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.8-8 11-8 11z" fill="currentColor"/></svg><b>53</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-breath);--o:.5"><p><svg viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 1 0-3-3M3 14h15a3 3 0 1 1-3 3M3 19h7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><b>{{breath_v}}</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+<div class="wg-v" style="--c:var(--wg-oxygen);--o:.62"><p><svg viewBox="0 0 24 24"><path d="M11 4v8c0 3-1 7-5 7-2.5 0-3-2-3-5 0-4 3-7 5-7M13 4v8c0 3 1 7 5 7 2.5 0 3-2 3-5 0-4-3-7-5-7" fill="currentColor"/></svg><b>97</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
+</div></div></div>
+</div>
+<button class="wg-again" type="button" aria-label="{{again}}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg>{{again}}</button>
+<div class="wg-caps">
+<div class="wg-cap wg-c1"><p class="wg-cap-h">{{cap1_h}}</p><p class="wg-cap-p">{{cap1}}</p></div>
+<div class="wg-cap wg-c2"><p class="wg-cap-h">{{cap2_h}}</p><p class="wg-cap-p">{{cap2}}</p></div>
+<div class="wg-cap wg-c3"><p class="wg-cap-h">{{cap3_h}}</p><p class="wg-cap-p">{{cap3}}</p></div>
+</div>
+</div>
+</div>
 </section>
