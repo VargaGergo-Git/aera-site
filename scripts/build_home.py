@@ -90,29 +90,26 @@ COPY = {
         "map_sub": "Draw a route that keeps to real paths, or open a GPX file. On the way, every turn comes before you reach it, on your phone, your wrist or read aloud, with a word when you leave the route and when you are back on it.",
         "map_alts": ("The route planner: tap the map to start, following paths and trails", "Turn by turn: 55 metres, then right"),
         "also_kicker": "Also in the app",
-        "also_h2": "Small things, done properly.",
+        "also_h2": "Also in Aera.",
         "tiles": [
             ("Apple Watch", "var(--green)", "Record a run on your watch alone, with auto-pause, and feel each turn of a route."),
             ("Widgets", "var(--indigo)", "In every size, on the Home Screen and the Lock Screen."),
-            ("Recap films", "var(--gold)", "Your week, month and year as short films, free."),
+            ("Recap films", "var(--gold)", "Your week, month and year as short films."),
             ("Share cards", "var(--orange)", "Satellite, terrain and splits looks. Rewrite any word, pick any colour."),
-            ("Your data, out", "var(--pink)", "Raw data as JSON or GPX, free. Reports and every other format with Premium."),
+            ("Your data, out", "var(--pink)", "Raw data as JSON or GPX, whenever you want it."),
             ("Your language", "var(--sage)", "English, Magyar, Deutsch, Espa&#241;ol, Fran&#231;ais and more."),
         ],
         "priv_h2": "Health numbers stay on your iPhone.",
         "priv_sub": "Aera reads Apple Health on the phone and works out every score there. No account, no sign in, and no language model anywhere in the app. Product analytics stay off until you turn them on and never include health values. Crash reports help fix bugs.",
         "priv_link": "Read the privacy policy",
-        "plans_h2": "Free to use. Premium when you want more.",
-        "free_h": "Free", "free_note": "Every day, for everyone.",
-        "free": ["Recovery, stress, strain and your sleep score", "Hard, easy or rest, every morning",
-                 "The route planner and turn by turn", "Every workout read, every personal best",
-                 "Flyover for the last seven days", "Twelve months of history, raw data as JSON or GPX"],
-        "prem_h": "Premium", "prem_note": "Monthly, yearly, or once and yours for good. Yearly starts with a 7-day free trial.",
-        "prem": ["Today's session: how long and how hard", "Your sleep reserve", "Your places",
-                 "Flyover for older runs", "Every route you draw, kept (the first is free)",
-                 "History past twelve months", "Reports and every export format"],
+        "plans_h2": "What it costs.",
+        "free_h": "Free",
+        "free": "Sleep, stress and strain against your own usual, and one word for the day every morning. Every workout and personal best, the route planner with turn by turn, Flyover for runs from the last seven days, recap films, and a year of history you can export as JSON or GPX.",
+        "prem_h": "Premium",
+        "prem": "Today's session, with how long and how hard. Your sleep reserve and your places. Every route you draw after the first, kept. Flyover for older runs, history past a year, reports and every export format.",
+        "prem_note": "Premium is monthly, yearly or a one-time purchase. Yearly starts with a 7-day free trial.",
         "faq_kicker": "Questions",
-        "faq_h2": "What people ask before they download.",
+        "faq_h2": "Questions.",
         "faq": [
             ("What does Aera do?", "Aera is an iPhone and Apple Watch app that reads Apple Health and tells you each morning how hard to go: rest day, go easy, good to go or go for it. It reads your sleep, recovery, stress and strain against your own usual, plans routes on a map with turn-by-turn directions, and explains every number in a short article."),
             ("Is Aera free?", "Yes. Recovery, stress, strain and your sleep score, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."),
@@ -192,29 +189,26 @@ COPY = {
         "map_sub": "Rajzolj útvonalat, ami a valódi ösvényeket követi, vagy nyiss meg egy GPX-fájlt. Útközben minden kanyar előbb szól, mint odaérsz, a telefonon, a csuklódon vagy hangosan, és szól, ha letérsz az útvonalról, és ha visszatérsz rá.",
         "map_alts": ("Az útvonaltervező: koppints a térképre az induláshoz", "Kanyarról kanyarra: 55 méter, aztán jobbra"),
         "also_kicker": "Még az appban",
-        "also_h2": "Apró dolgok, rendesen megcsinálva.",
+        "also_h2": "Ami még benne van.",
         "tiles": [
             ("Apple Watch", "var(--green)", "Futás rögzítése csak az órával, automatikus szünettel, és minden kanyart érzel a csuklódon."),
             ("Widgetek", "var(--indigo)", "Minden méretben, a kezdőképernyőn és a zárolási képernyőn."),
-            ("Összegző filmek", "var(--gold)", "A heted, a hónapod és az éved rövid filmként, ingyen."),
+            ("Összegző filmek", "var(--gold)", "A heted, a hónapod és az éved rövid filmként."),
             ("Megosztható kártyák", "var(--orange)", "Műholdas, domborzati és részidős kinézet. Bármelyik szót átírhatod, bármilyen színt választhatsz."),
-            ("Az adataid", "var(--pink)", "Nyers adatok JSON vagy GPX formátumban, ingyen. Jelentések és minden más formátum a Premiummal."),
+            ("Az adataid", "var(--pink)", "Nyers adatok JSON vagy GPX formátumban, bármikor."),
             ("Magyarul", "var(--sage)", "Az egész app magyarul, és még kilenc nyelven."),
         ],
         "priv_h2": "Az egészség&shy;adataid az <span class=\"nw\">iPhone-odon</span> maradnak.",
         "priv_sub": "Az Aera a telefonon olvassa az Apple Health adatait, és minden pontszám ott készül. Nincs fiók, nincs belépés, és az appban sehol nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot. Az összeomlási jelentések a hibák javítását segítik.",
         "priv_link": "Az adatvédelmi szabályzat (angolul)",
-        "plans_h2": "Ingyen használható. Premium, ha többet szeretnél.",
-        "free_h": "Ingyenes", "free_note": "Minden nap, mindenkinek.",
-        "free": ["Regenerálódás, stressz, terhelés és az alváspontszámod", "Kemény, könnyű vagy pihenő, minden reggel",
-                 "Útvonaltervező és kanyarról kanyarra navigáció", "Minden edzés kiértékelése, minden egyéni rekord",
-                 "Flyover az elmúlt hét napra", "Tizenkét hónapnyi előzmény, nyers adatok JSON vagy GPX formátumban"],
-        "prem_h": "Premium", "prem_note": "Havonta, évente, vagy egyszeri vásárlással örökre a tiéd. Az éves előfizetés 7 nap ingyenes próbával indul.",
-        "prem": ["A mai edzés: mennyi ideig és milyen keményen", "Az alvástartalékod", "A helyeid",
-                 "Flyover a régebbi futásokhoz", "Minden útvonal megmarad, amit rajzolsz (az első ingyenes)",
-                 "Tizenkét hónapnál régebbi előzmények", "Jelentések és minden exportformátum"],
+        "plans_h2": "Mennyibe kerül.",
+        "free_h": "Ingyenes",
+        "free": "Alvás, stressz és terhelés a saját szokásosodhoz mérve, és minden reggel egy szó a napra. Minden edzés és egyéni rekord, az útvonaltervező kanyarról kanyarra navigációval, Flyover az elmúlt hét nap futásaihoz, összegző filmek, és egy évnyi előzmény, amit JSON vagy GPX formátumban kimenthetsz.",
+        "prem_h": "Premium",
+        "prem": "A mai edzés: mennyi ideig és milyen keményen. Az alvástartalékod és a helyeid. Az első után minden megrajzolt útvonal megmarad. Flyover a régebbi futásokhoz, egy évnél régebbi előzmények, jelentések és minden exportformátum.",
+        "prem_note": "A Premium havi, éves vagy egyszeri vásárlás. Az éves előfizetés 7 nap ingyenes próbával indul.",
         "faq_kicker": "Kérdések",
-        "faq_h2": "Amit letöltés előtt kérdezni szoktak.",
+        "faq_h2": "Kérdések.",
         "faq": [
             ("Mit csinál az Aera?", "Az Aera egy iPhone- és Apple Watch-app, ami az Apple Health adataiból minden reggel megmondja, milyen keményen menj: pihenőnap, csak lazán, mehet vagy hajrá. Az alvásodat, a regenerálódásodat, a stresszt és a terhelést a saját szokásodhoz méri, útvonalat tervez a térképen kanyarról kanyarra navigációval, és minden számot elmagyaráz egy rövid cikkben."),
             ("Ingyenes az Aera?", "Igen. A regenerálódás, a stressz, a terhelés és az alváspontszám, a napi döntés, az útvonaltervező, a kanyarról kanyarra navigáció, minden edzés kiértékelése, minden egyéni rekord és az elmúlt hét nap Flyovere ingyenes. A Premium hozzáadja a mai edzést, az alvástartalékot, a helyeidet, a régebbi Flyovereket, a tizenkét hónapnál régebbi előzményeket, a jelentéseket és minden exportformátumot."),
@@ -294,29 +288,26 @@ COPY = {
         "map_sub": "Zeichne eine Route, die echten Wegen folgt, oder öffne eine GPX-Datei. Unterwegs kommt jede Abbiegung, bevor du da bist, auf dem Handy, am Handgelenk oder gesprochen, mit einem Hinweis, wenn du die Route verlässt und wenn du wieder auf ihr bist.",
         "map_alts": ("Der Routenplaner: tipp auf die Karte, um zu starten", "Abbiegehinweis: 55 Meter, dann rechts"),
         "also_kicker": "Außerdem in der App",
-        "also_h2": "Kleine Dinge, richtig gemacht.",
+        "also_h2": "Außerdem in Aera.",
         "tiles": [
             ("Apple Watch", "var(--green)", "Lauf nur mit der Uhr aufzeichnen, mit Auto-Pause, und jede Abbiegung am Handgelenk spüren."),
             ("Widgets", "var(--indigo)", "In jeder Größe, auf dem Home-Bildschirm und dem Sperrbildschirm."),
-            ("Rückblicke", "var(--gold)", "Deine Woche, dein Monat und dein Jahr als kurzer Film, kostenlos."),
+            ("Rückblicke", "var(--gold)", "Deine Woche, dein Monat und dein Jahr als kurzer Film."),
             ("Karten zum Teilen", "var(--orange)", "Satellit, Gelände und Splits. Jedes Wort änderbar, jede Farbe wählbar."),
-            ("Deine Daten", "var(--pink)", "Rohdaten als JSON oder GPX, kostenlos. Berichte und alle anderen Formate mit Premium."),
+            ("Deine Daten", "var(--pink)", "Rohdaten als JSON oder GPX, wann immer du willst."),
             ("Auf Deutsch", "var(--sage)", "Die ganze App auf Deutsch, und in neun weiteren Sprachen."),
         ],
         "priv_h2": "Gesundheits&shy;werte bleiben auf deinem iPhone.",
         "priv_sub": "Aera liest Apple Health auf dem Handy und berechnet jeden Wert dort. Kein Konto, kein Login, und in der App steckt nirgends ein Sprachmodell. Die Produktanalyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte. Absturzberichte helfen, Fehler zu beheben.",
         "priv_link": "Datenschutzerklärung (auf Englisch)",
-        "plans_h2": "Kostenlos nutzbar. Premium, wenn du mehr willst.",
-        "free_h": "Kostenlos", "free_note": "Jeden Tag, für alle.",
-        "free": ["Erholung, Stress, Belastung und dein Schlafwert", "Hart, locker oder Ruhe, jeden Morgen",
-                 "Der Routenplaner und die Abbiegehinweise", "Die Auswertung jedes Trainings, alle Bestleistungen",
-                 "Flyover für die letzten sieben Tage", "Zwölf Monate Verlauf, Rohdaten als JSON oder GPX"],
-        "prem_h": "Premium", "prem_note": "Monatlich, jährlich oder einmal kaufen und für immer behalten. Jährlich startet mit 7 Tagen gratis.",
-        "prem": ["Die heutige Einheit: wie lange und wie hart", "Deine Schlafreserve", "Deine Orte",
-                 "Flyover für ältere Läufe", "Jede Route, die du zeichnest, bleibt gespeichert (die erste ist kostenlos)",
-                 "Verlauf über zwölf Monate hinaus", "Berichte und jedes Exportformat"],
+        "plans_h2": "Was es kostet.",
+        "free_h": "Kostenlos",
+        "free": "Schlaf, Stress und Belastung gemessen an deinem Üblichen, und jeden Morgen ein Wort für den Tag. Jedes Training und jede Bestleistung, der Routenplaner mit Abbiegehinweisen, Flyover für Läufe der letzten sieben Tage, Rückblicke als Film und ein Jahr Verlauf, exportierbar als JSON oder GPX.",
+        "prem_h": "Premium",
+        "prem": "Die heutige Einheit: wie lange und wie hart. Deine Schlafreserve und deine Orte. Jede weitere Route, die du zeichnest, bleibt gespeichert. Flyover für ältere Läufe, Verlauf über ein Jahr hinaus, Berichte und jedes Exportformat.",
+        "prem_note": "Premium gibt es monatlich, jährlich oder als einmaligen Kauf. Jährlich beginnt mit 7 Tagen gratis.",
         "faq_kicker": "Fragen",
-        "faq_h2": "Was Leute vor dem Laden fragen.",
+        "faq_h2": "Fragen.",
         "faq": [
             ("Was macht Aera?", "Aera ist eine App für iPhone und Apple Watch, die Apple Health liest und dir jeden Morgen sagt, wie hart du heute rangehen kannst: Ruhetag, ruhig angehen, bereit oder leg los. Sie misst Schlaf, Erholung, Stress und Belastung an deinem eigenen Üblichen, plant Routen auf der Karte mit Abbiegehinweisen und erklärt jede Zahl in einem kurzen Artikel."),
             ("Ist Aera kostenlos?", "Ja. Erholung, Stress, Belastung und dein Schlafwert, die Empfehlung für den Tag, der Routenplaner, die Abbiegehinweise, die Auswertung jedes Trainings, alle Bestleistungen und Flyover für die letzten sieben Tage sind kostenlos. Premium bringt die heutige Einheit, deine Schlafreserve, deine Orte, ältere Flyovers, Verlauf über zwölf Monate hinaus, Berichte und jedes Exportformat."),
@@ -361,23 +352,6 @@ FLIES = [(8, 74, 7.5, 0.0), (14, 82, 9.0, 1.2), (22, 70, 8.2, 2.1), (31, 86, 10.
 THEMED = {"home", "sleep", "recovery", "session", "planner", "article-sleep"}
 
 
-
-# One drawing per "Small things" tile, in tile order (Watch, widgets, recap films,
-# share cards, data out, languages). Simple line drawings, not app screens.
-TILE_ART = [
-    # Watch with a turn arrow on its face
-    '<svg viewBox="0 0 64 64"><path d="M24 10h16l2 8H22z M24 54h16l2-8H22z"/><rect x="17" y="17" width="30" height="30" rx="9"/><path d="M48 27v6"/><path d="M28 38v-6a3 3 0 0 1 3-3h7"/><path d="M35 25.5l3.5 3.5-3.5 3.5"/></svg>',
-    # Home Screen widgets: one large, two small
-    '<svg viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="18" rx="6"/><rect x="10" y="35" width="19" height="18" rx="6"/><rect x="35" y="35" width="19" height="18" rx="6"/><path d="M16 24c4-6 8 2 12-3s7 1 10-2 6 1 9-1"/></svg>',
-    # A film frame with a play mark
-    '<svg viewBox="0 0 64 64"><rect x="9" y="15" width="46" height="34" rx="6"/><path d="M9 23h46M9 41h46M17 15v8M27 15v8M37 15v8M47 15v8M17 41v8M27 41v8M37 41v8M47 41v8"/><path d="M29 28.5v7l6-3.5z"/></svg>',
-    # Two cards, the front one with a route over hills
-    '<svg viewBox="0 0 64 64"><rect x="14" y="8" width="30" height="40" rx="6" transform="rotate(-9 29 28)"/><rect x="21" y="16" width="30" height="40" rx="6"/><path d="M25 45l6-7 5 4 6-8 5 6"/><circle cx="31" cy="26" r="3"/></svg>',
-    # A file with an arrow leaving it
-    '<svg viewBox="0 0 64 64"><path d="M38 9H20a5 5 0 0 0-5 5v36a5 5 0 0 0 5 5h18"/><path d="M38 9l9 9v8M38 9v9h9"/><path d="M30 37h22M45 30l7 7-7 7"/><path d="M22 22h8M22 28h6"/></svg>',
-    # Speech bubble with letters
-    '<svg viewBox="0 0 64 64"><path d="M12 18a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v18a6 6 0 0 1-6 6H30l-10 9v-9h-2a6 6 0 0 1-6-6z"/><path d="M22 34l5-13 5 13M24 30h6M46 25.5v9M38 30a4 4 0 1 0 8 0 4 4 0 1 0-8 0"/></svg>',
-]
 
 def picture(name, alt, sizes, eager=False):
     load = 'fetchpriority="high"' if eager is True else 'decoding="async"' if eager == "soon" else 'loading="lazy" decoding="async"'
@@ -472,7 +446,6 @@ def reviews_section(code):
                   '<span>%s</span></p>' % (COPY[code]["proof"] % HU_RATINGS))
     return f"""<section class="reviews">
   <div class="wide">
-    <p class="kicker center reveal">{rc['kicker']}</p>
     <figure class="rv-lead reveal">
       <blockquote><p>&#8220;{x0}&#8221;</p></blockquote>
       <figcaption>{s0}</figcaption>
@@ -567,11 +540,9 @@ def build(code):
     faq = "".join('<details class="qa reveal"><summary><h3>%s</h3><span class="plus" aria-hidden="true"></span></summary><p>%s</p></details>'
                   % (q, a) for q, a in c["faq"])
 
-    tiles = "".join('<div class="tile reveal" style="--c:%s;--d:%dms"><div class="tile-art" aria-hidden="true">%s</div><h3>%s</h3><p>%s</p></div>'
-                    % (col, (i % 3) * 80, TILE_ART[i] if i < len(TILE_ART) else "", t, p)
+    tiles = "".join('<div class="tile reveal" style="--d:%dms"><h3>%s</h3><p>%s</p></div>'
+                    % ((i % 3) * 80, t, p)
                     for i, (t, col, p) in enumerate(c["tiles"]))
-    free = "".join("<li>%s</li>" % x for x in c["free"])
-    prem = "".join("<li>%s</li>" % x for x in c["prem"])
 
     topo = landscape.contours()
     route = ('<path class="route-glow" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><path id="route" class="route" pathLength="1" d="M760 960 C 780 820, 690 730, 820 640 S 970 560, 1000 430 S 1120 250, 1260 300 S 1420 430, 1500 300 S 1580 160, 1650 140"/><circle id="rhead" class="rhead" cx="760" cy="960" r="7"/>')
@@ -731,7 +702,6 @@ def build(code):
 <section id="guide" class="guide-sec">
   <div class="wide guide-grid">
     <div class="reveal">
-      <p class="kicker">{c['guide_kicker']}</p>
       <h2 class="h2 split">{c['guide_h2']}</h2>
       <p class="sub">{c['guide_sub']}</p>
       <div class="quote"><p>&#8220;{c['quote']}&#8221;</p><span>{c['quote_src']}</span></div>
@@ -764,7 +734,6 @@ def build(code):
 <section class="also">
   <div class="wide">
     <div class="center reveal">
-      <p class="kicker">{c['also_kicker']}</p>
       <h2 class="h2 split">{c['also_h2']}</h2>
     </div>
     <div class="tiles">{tiles}</div>
@@ -777,16 +746,16 @@ def build(code):
   <div class="wide">
     <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
-      <div class="plan free reveal"><h3>{c['free_h']}</h3><p class="note">{c['free_note']}</p><ul>{free}</ul></div>
-      <div class="plan premium reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><p class="note">{c['prem_note']}</p><ul>{prem}</ul></div>
+      <div class="plan reveal"><h3>{c['free_h']}</h3><p>{c['free']}</p></div>
+      <div class="plan reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><p>{c['prem']}</p></div>
     </div>
+    <p class="plans-note center reveal">{c['prem_note']}</p>
   </div>
 </section>
 
 <section class="faq-sec">
   <div class="wide faq-grid">
     <div class="reveal">
-      <p class="kicker">{c['faq_kicker']}</p>
       <h2 class="h2 split">{c['faq_h2']}</h2>
     </div>
     <div class="faq">{faq}</div>
@@ -795,7 +764,6 @@ def build(code):
 
 <section class="maker-sec">
   <div class="wide maker center reveal">
-    <p class="kicker">{c['maker_kicker']}</p>
     <h2 class="h2 split">{c['maker_h2']}</h2>
     <p class="sub">{c['maker_sub']}</p>
     <a class="link" href="support.html">{c['maker_link']} &#8594;</a>

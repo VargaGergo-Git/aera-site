@@ -127,20 +127,6 @@
 
 /* ---------- facts under the film ---------- */
 
-.scene-flyover .fo-facts {
-  list-style: none; margin: clamp(56px, 7vw, 96px) auto 0; padding: 0; max-width: 980px;
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px);
-}
-.scene-flyover .fo-facts li { display: grid; gap: 12px; align-content: start; transition-delay: var(--d, 0s); }
-.scene-flyover .fo-facts svg { width: 28px; height: 28px; color: var(--fo-route); }
-.scene-flyover .fo-facts p { margin: 0; font-size: 17px; line-height: 1.45; color: var(--fo-ink-2); text-wrap: pretty; }
-.scene-flyover .fo-free {
-  display: table; margin: clamp(36px, 5vw, 56px) auto 0;
-  padding: 10px 16px; border-radius: 999px;
-  background: rgba(255, 138, 61, 0.12); box-shadow: inset 0 0 0 1px rgba(255, 138, 61, 0.3);
-  font-size: 15px; font-weight: 600; color: #ffd2b0; text-align: center;
-}
-
 /* ---------- phones ---------- */
 
 @media (max-width: 899px) {
@@ -159,8 +145,8 @@
   .motion .scene-flyover .fo-c1,
   .motion .scene-flyover .fo-c2 { --fo-nx: 0px; }
   .scene-flyover .fo-replay { margin-top: 18px; }
-  .scene-flyover .fo-facts { grid-template-columns: minmax(0, 1fr); gap: 22px; max-width: 520px; }
-  .scene-flyover .fo-facts li { grid-template-columns: 28px minmax(0, 1fr); column-gap: 14px; align-items: start; }
-  .scene-flyover .fo-facts p { font-size: 17px; }
+  
+  
+  
   .scene-flyover { --fo-aw: 240vw; --fo-ah: 110%; }
 }
