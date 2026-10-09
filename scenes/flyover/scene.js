@@ -4,7 +4,11 @@
    A 24x40 canvas samples the film a few times a second so its light spills
    into the stage. The film loads a screen ahead, never with the page.
    Reduced motion or a blocked autoplay: the poster stays and a button plays
-   the film on request. On any error the poster frame stays. */
+   the film on request. On any error the poster frame stays.
+   Without a <video> in the section (poster mode) the poster frame shows, both
+   callouts light as the phone sets down, and nothing runs per frame.
+   Frame guard: if the first 12 frames of the film run at a median over 24 ms,
+   the film jumps to its last frame instead of stuttering. */
 (function () {
   var sec = document.getElementById('flyover');
   if (!sec) return;
@@ -15,7 +19,7 @@
   var btn = sec.querySelector('.fo-replay');
   var calls = [].slice.call(sec.querySelectorAll('.fo-call'));
   var stops = (sec.getAttribute('data-stops') || '').split(',').map(Number);
-  var ctx = null, loaded = false, played = false, inView = false, looping = false, frameNo = 0, broken = false;
+  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, frameNo = 0, broken = false;
 
   function moving() { return root.classList.contains('motion'); }
 
@@ -46,8 +50,16 @@
     });
   }
 
-  function tick() {
+  function tick(now) {
     if (!looping) return;
+    if (guard.length < 12) {
+      if (guardT) guard.push(now - guardT);
+      guardT = now;
+      if (guard.length === 12) {
+        var g = guard.slice().sort(function (a, b) { return a - b; });
+        if (g[6] > 24) { looping = false; video.pause(); video.currentTime = video.duration || 0; land(); return; }
+      }
+    }
     var d = video.duration;
     if (d > 0) lightCalls(video.currentTime / d);
     if (frameNo++ % 6 === 0) paint(video);
@@ -74,10 +86,27 @@
     calls.forEach(function (c) { c.classList.add('on'); });
   }
 
+  function land() {
+    lightCalls(1);
+    paint(video);
+    sec.classList.remove('fo-ask');
+    btn.hidden = false;
+  }
+
   try {
     ctx = amb.getContext('2d');
     if (poster.complete && poster.naturalWidth) paint(poster);
     else poster.addEventListener('load', function () { paint(poster); });
+
+    if (!video || !btn) {
+      var arrive = function () { sec.classList.add('in'); calls.forEach(function (c) { c.classList.add('on'); }); };
+      if (!('IntersectionObserver' in window)) { arrive(); return; }
+      var io = new IntersectionObserver(function (es) {
+        if (es[0].intersectionRatio >= 0.25) { arrive(); io.disconnect(); }
+      }, { threshold: [0, 0.25] });
+      io.observe(sec.querySelector('.fo-film'));
+      return;
+    }
 
     video.addEventListener('playing', function () {
       sec.classList.add('fo-live');
@@ -86,17 +115,12 @@
       startLoop();
     });
     video.addEventListener('pause', function () { looping = false; });
-    video.addEventListener('ended', function () {
-      looping = false;
-      lightCalls(1);
-      paint(video);
-      sec.classList.remove('fo-ask');
-      btn.hidden = false;
-    });
+    video.addEventListener('ended', function () { looping = false; land(); });
     video.addEventListener('error', fail, true);
 
     btn.addEventListener('click', function () {
       if (broken) return;
+      guard = []; guardT = 0;
       if (video.ended || video.currentTime > 0.1) {
         video.currentTime = 0;
         if (moving()) calls.forEach(function (c) { c.classList.remove('on'); });
