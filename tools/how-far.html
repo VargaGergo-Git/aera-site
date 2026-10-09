@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>How far will I run? Time and pace to distance, free calculator</title>
+<meta name="description" content="Enter the minutes you have and your pace per km or per mile. See how far you will run, and where to turn around on an out-and-back. Free, no sign-up.">
+<meta property="og:title" content="How far will I run?">
+<meta property="og:description" content="Minutes and pace in, distance out, plus the turnaround point for an out-and-back. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://vargagergo-git.github.io/aera-site/assets/icon.png">
+<link rel="canonical" href="https://vargagergo-git.github.io/aera-site/tools/how-far.html">
+<link rel="alternate" hreflang="en" href="https://vargagergo-git.github.io/aera-site/tools/how-far.html">
+<link rel="alternate" hreflang="hu" href="https://vargagergo-git.github.io/aera-site/tools/milyen-messze.html">
+<link rel="alternate" hreflang="de" href="https://vargagergo-git.github.io/aera-site/tools/wie-weit.html">
+<link rel="alternate" hreflang="x-default" href="https://vargagergo-git.github.io/aera-site/tools/how-far.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "How far will I run?", "url": "https://vargagergo-git.github.io/aera-site/tools/how-far.html", "inLanguage": "en", "applicationCategory": "SportsApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Enter the minutes you have and your pace per km or per mile. See how far you will run, and where to turn around on an out-and-back. Free, no sign-up.", "author": {"@type": "Person", "name": "Gergő Varga"}}
+</script>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="eyebrow">Free tool</p>
+  <h1>How far will I run?</h1>
+  <p class="meta lang-switch"><a href="how-far.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="milyen-messze.html" hreflang="hu" lang="hu">Magyar</a> · <a href="wie-weit.html" hreflang="de" lang="de">Deutsch</a></p>
+</div>
+<div class="wrap legal">
+<p>Minutes and pace in, distance out.</p>
+<div class="tool">
+  <div class="field">
+    <label for="mins">Time you have (minutes)</label>
+    <input id="mins" type="number" inputmode="decimal" min="1" max="600" step="any" value="30">
+  </div>
+  <fieldset class="field">
+    <legend>Your pace (<span id="pace-unit">min/km</span>)</legend>
+    <div class="row">
+      <input id="pace-m" type="number" inputmode="numeric" min="1" max="30" step="1" value="6" aria-label="Your pace, min"><span class="unit-label">min</span>
+      <input id="pace-s" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" aria-label="Your pace, sec"><span class="unit-label">sec</span>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Pace unit">
+      <input type="radio" name="unit" id="unit-km" value="km" checked><label for="unit-km">per km</label>
+      <input type="radio" name="unit" id="unit-mi" value="mi"><label for="unit-mi">per mile</label>
+    </div>
+  </fieldset>
+  <div class="result" aria-live="polite">
+    <p class="result-head">You will run about</p>
+    <p class="big" id="out-dist">5.00 km</p>
+    <p id="out-alt"></p>
+    <p id="out-turn"></p>
+  </div>
+  <details>
+    <summary>Don't know your easy pace? Estimate it from a race</summary>
+    <form id="race-form">
+      <div class="field">
+        <label for="race-dist">Recent race</label>
+        <select id="race-dist"><option value="5000">5K</option><option value="10000">10K</option><option value="21097.5">Half marathon</option><option value="42195">Marathon</option></select>
+      </div>
+      <fieldset class="field">
+        <legend>Finish time</legend>
+        <div class="row">
+          <input id="race-h" type="number" inputmode="numeric" min="0" max="9" step="1" value="0" aria-label="Finish time, h"><span class="unit-label">h</span>
+          <input id="race-m" type="number" inputmode="numeric" min="0" max="59" step="1" value="25" aria-label="Finish time, min"><span class="unit-label">min</span>
+          <input id="race-s" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" aria-label="Finish time, sec"><span class="unit-label">sec</span>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary" type="submit">Estimate easy pace</button>
+      <p class="race-out" id="race-out" aria-live="polite"></p>
+      <p class="tool-note">How the estimate works: from your race time, the running equations of Daniels and Gilbert (1979) give a fitness number (VDOT). Easy pace is the speed that asks for 59 to 74 percent of it, the easy range in Daniels' Running Formula. It is an estimate from one race. Hills, heat and a tired day move it, so if easy feels hard, slow down.</p>
+    </form>
+  </details>
+</div>
+<h2>Why runs are often sized by time</h2>
+<p>Many training plans write a run in minutes, not kilometres: “easy, 40 minutes”. The World Health Organization's activity guidelines count in minutes too, 150 to 300 minutes of moderate or 75 to 150 minutes of vigorous activity a week for adults (Bull and colleagues, 2020).</p>
+<p>Time holds the effort steady. Hills, heat, wind or a tired day turn the same minutes into a shorter distance. Run by time and the distance gives way, not the effort. Foster and colleagues (2001) describe the load of a session the same way: the minutes, multiplied by how hard it felt.</p>
+<p>Endurance athletes do roughly four in five of their sessions at low intensity, according to Seiler's 2010 review of how they train. On those easy runs the exact distance matters less than keeping them easy.</p>
+<p>A route still needs a distance. That is what this tool is for: it turns your minutes into kilometres or miles and tells you where to turn around.</p>
+<div class="note">
+<p><strong>Aera, for iPhone and Apple Watch</strong></p>
+<p>This page does the sum. Aera starts one step earlier. Each morning it gives you a free, plain word for the day: Rest day, Go easy, Good to go or Go for it. It comes from your sleep, recovery, recent training and stress, once Aera has a few weeks of your nights and workouts.</p>
+<p>With Premium, Aera turns that into today's session, say easy for 35 minutes (a rest day gets none), and offers loops from where you stand at the distance those minutes take you at your own pace. Loops need mapped paths around you, so Aera will not find one everywhere.</p>
+<p>Free as well: draw a route on the map that keeps to real paths, and follow it with every turn spoken, even with no signal. No account.</p>
+</div>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+  <h2>Sources</h2>
+  <ol class="note-sources">
+    <li>Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine. 2020;54(24):1451-1462.</li>
+    <li>Foster C, Florhaug JA, Franklin J, et al. A new approach to monitoring exercise training. Journal of Strength and Conditioning Research. 2001;15(1):109-115.</li>
+    <li>Seiler S. What is best practice for training intensity and duration distribution in endurance athletes? International Journal of Sports Physiology and Performance. 2010;5(3):276-291.</li>
+    <li>Daniels J, Gilbert J. Oxygen Power: Performance Tables for Distance Runners. 1979.</li>
+    <li>Daniels J. Daniels' Running Formula. Human Kinetics.</li>
+  </ol>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
+</div></footer>
+<script type="application/json" id="howfar-strings">{"locale": "en-GB", "unit": {"km": "km", "mi": "mi"}, "paceUnit": {"km": "min/km", "mi": "min/mile"}, "alt": "That is {d} {u}.", "turn": "Out and back: turn around after {t}, about {d} {u} from where you started.", "minOnly": "{m} min", "minSec": "{m} min {s} s", "needInput": "Enter the minutes and a pace above.", "raceOut": "Easy pace estimate: about {quick} to {slow} {pu}. The middle, {mid}, is now in the pace box above.", "raceBad": "Enter a finish time for the race. This estimate only covers ordinary race times."}</script>
+<script>
+(function (root) {
+  'use strict';
+  var KM_PER_MILE = 1.609344;
+
+  // Distance in the pace's own unit: minutes divided by minutes per unit.
+  function distance(minutes, paceMinPerUnit) {
+    if (!(minutes > 0) || !(paceMinPerUnit > 0)) return null;
+    return minutes / paceMinPerUnit;
+  }
+
+  // Daniels and Gilbert (1979): oxygen cost of running at v metres per minute,
+  // and the share of that maximum a runner can hold for t minutes.
+  function oxygenCost(v) { return -4.60 + 0.182258 * v + 0.000104 * v * v; }
+  function sustainableShare(t) {
+    return 0.8 + 0.1894393 * Math.exp(-0.012778 * t) + 0.2989558 * Math.exp(-0.1932605 * t);
+  }
+  function vdot(meters, minutes) {
+    if (!(meters > 0) || !(minutes > 0)) return null;
+    return oxygenCost(meters / minutes) / sustainableShare(minutes);
+  }
+  // Speed (metres per minute) whose oxygen cost equals vo2: the positive root.
+  function speedFor(vo2) {
+    var a = 0.000104, b = 0.182258, c = -4.60 - vo2;
+    return (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+  }
+  // Easy range: 59 to 74 percent of VDOT (Daniels' Running Formula).
+  // Returns minutes per km for the quick and the slow end.
+  function easyPaceRange(meters, minutes) {
+    var v = vdot(meters, minutes);
+    if (v === null || !(v > 15) || !(v < 90)) return null;
+    return { vdot: v, quick: 1000 / speedFor(0.74 * v), slow: 1000 / speedFor(0.59 * v) };
+  }
+
+  root.AeraHowFar = { distance: distance, vdot: vdot, easyPaceRange: easyPaceRange, KM_PER_MILE: KM_PER_MILE };
+  if (typeof document === 'undefined') return;
+
+  var T = JSON.parse(document.getElementById('howfar-strings').textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var nf = new Intl.NumberFormat(T.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  function num(id) {
+    var raw = String($(id).value).replace(',', '.').trim();
+    return raw === '' ? 0 : Number(raw);
+  }
+  function unit() { return $('unit-mi').checked ? 'mi' : 'km'; }
+  function pace() { return num('pace-m') + num('pace-s') / 60; }
+  function fmtPace(min) {
+    var s = Math.round(min * 60), m = Math.floor(s / 60), r = s % 60;
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+  function fmtTime(min) {
+    var s = Math.round(min * 60), m = Math.floor(s / 60), r = s % 60;
+    return r ? T.minSec.replace('{m}', m).replace('{s}', r) : T.minOnly.replace('{m}', m);
+  }
+  function fill(tpl, map) {
+    return tpl.replace(/\{(\w+)\}/g, function (_, k) { return map[k]; });
+  }
+
+  function render() {
+    var u = unit(), mins = num('mins'), p = pace();
+    var d = distance(mins, p);
+    if (d === null || !isFinite(d) || num('pace-s') >= 60) {
+      $('out-dist').textContent = '–';
+      $('out-alt').textContent = T.needInput;
+      $('out-turn').textContent = '';
+      return;
+    }
+    var other = u === 'km' ? d / KM_PER_MILE : d * KM_PER_MILE;
+    $('out-dist').textContent = nf.format(d) + ' ' + T.unit[u];
+    $('out-alt').textContent = fill(T.alt, { d: nf.format(other), u: T.unit[u === 'km' ? 'mi' : 'km'] });
+    $('out-turn').textContent = fill(T.turn, { t: fmtTime(mins / 2), d: nf.format(d / 2), u: T.unit[u] });
+  }
+
+  // Switching units keeps the same speed: 6:00 per km becomes 9:39 per mile.
+  var lastUnit = unit();
+  function onUnit() {
+    var u = unit();
+    if (u !== lastUnit) {
+      var p = pace();
+      if (p > 0) {
+        var np = u === 'mi' ? p * KM_PER_MILE : p / KM_PER_MILE;
+        var s = Math.round(np * 60);
+        $('pace-m').value = Math.floor(s / 60);
+        $('pace-s').value = s % 60;
+      }
+      $('pace-unit').textContent = T.paceUnit[u];
+      lastUnit = u;
+    }
+    render();
+  }
+
+  function estimate(e) {
+    if (e) e.preventDefault();
+    var minutes = num('race-h') * 60 + num('race-m') + num('race-s') / 60;
+    var r = easyPaceRange(Number($('race-dist').value), minutes);
+    if (!r) { $('race-out').textContent = T.raceBad; return; }
+    var u = unit(), k = u === 'mi' ? KM_PER_MILE : 1;
+    var quick = r.quick * k, slow = r.slow * k, mid = (quick + slow) / 2;
+    var s = Math.round(mid * 60);
+    $('pace-m').value = Math.floor(s / 60);
+    $('pace-s').value = s % 60;
+    $('race-out').textContent = fill(T.raceOut, {
+      quick: fmtPace(quick), slow: fmtPace(slow), mid: fmtPace(mid), pu: T.paceUnit[u]
+    });
+    render();
+  }
+
+  ['mins', 'pace-m', 'pace-s'].forEach(function (id) { $(id).addEventListener('input', render); });
+  $('unit-km').addEventListener('change', onUnit);
+  $('unit-mi').addEventListener('change', onUnit);
+  $('race-form').addEventListener('submit', estimate);
+  $('pace-unit').textContent = T.paceUnit[unit()];
+  render();
+})(this);
+</script>
+</body>
+</html>
