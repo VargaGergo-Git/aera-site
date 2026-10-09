@@ -21,20 +21,16 @@ Files you write, all in scenes/<name>/:
   .reveal (fades in when scrolled to; needs nothing from you).
   Light and dark: tokens switch by @media (prefers-color-scheme: dark); any
   literal colour you add needs a dark counterpart in that media query.
-- scene.js : one IIFE, self-contained, no globals, no libraries. Read
-  scroll with a passive listener + requestAnimationFrame throttle and write
-  CSS custom properties (e.g. --t from 0 to 1) on your section; CSS does the
-  rest with transform/opacity (no layout properties animated per frame, no
-  per-frame filters/blur on large areas). Only animate while the section is
-  near the viewport. Wrap everything in try/catch; on error leave the static
-  state.
+- scene.js : optional, and only for things CSS cannot do (a video that plays
+  when in view, say). Never read the scroll position, never pin, never write
+  styles per frame. One IIFE, no globals, try/catch, static state on error.
 
-Behaviour rules:
-- Pin: a tall wrapper (e.g. 220svh on >=900px, 160-180svh on phones) with an
-  inner position:sticky; top:0; height:100svh stage. Only pin when
-  document.documentElement has class "motion" (home.js adds it when JS runs
-  and reduced motion is off). Without .motion (no JS / reduced motion) show a
-  complete, readable, static final frame with normal height.
+Behaviour rules (stability rebuild, 2026-10-09, after the Apple and Bevel study):
+- No pins and no scroll-driven motion. The page scrolls natively. A scene is a
+  finished still composition (real screens in device frames, drawn maps) that
+  fades up once with .reveal. A film is a short pre-rendered video with a
+  poster image, played once when in view, never scrubbed by scroll.
+- Words sit beside or below a device, never drawn over it.
 - Phones first: must look great and fit at 320, 390 px wide (no element wider
   than the viewport, no horizontal scroll) and at 1440x900 desktop.
 - Light and dark both gorgeous.
