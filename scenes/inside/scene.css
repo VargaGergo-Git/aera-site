@@ -1,0 +1,116 @@
+/* Inside scene: today's session card arrives face on, tips back and opens into
+   five glass layers, the rules it is made of. Only transform and opacity move;
+   the 3D is CSS, so phones composite it. Always dark, like the engine scene. */
+.scene-inside {
+  --ink: #f5f3ee; --ink-2: #b4b0b9; --ink-3: #77737e;
+  --sl: #8f8dff; --hr: #ff5c86; --ld: #ff9a4d; --ok: #4ecca3; --au: #e8b366;
+  --pw: min(80vw, 340px); --gap: calc(var(--pw) * .3); --rx: 58deg; --rz: -26deg;
+  position: relative; overflow: clip; background: #000; color: var(--ink); color-scheme: dark;
+  padding: clamp(80px, 12vw, 150px) 0 clamp(56px, 8vw, 96px);
+}
+.scene-inside .ix-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(55% 40% at 50% 8%, rgba(143, 141, 255, .2), transparent 70%),
+              radial-gradient(45% 35% at 40% 62%, rgba(78, 204, 163, .1), transparent 70%),
+              radial-gradient(35% 30% at 72% 70%, rgba(255, 154, 77, .07), transparent 70%);
+}
+.scene-inside .ix-wrap { position: relative; }
+.scene-inside .ix-head { text-align: center; max-width: 900px; margin: 0 auto; }
+.scene-inside .ix-h2 { margin: 0; font: 800 clamp(40px, 6.4vw, 80px)/1.03 var(--rounded); letter-spacing: -.03em; text-wrap: balance; }
+.scene-inside .ix-t2 {
+  background: linear-gradient(90deg, var(--sl), var(--hr) 45%, var(--ld) 70%, var(--ok));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.scene-inside .ix-sub { margin: 20px auto 0; max-width: 36em; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+
+.scene-inside .ix-body { display: grid; gap: 8px; margin-top: clamp(8px, 3vw, 32px); }
+.scene-inside .ix-stage { position: relative; height: calc(var(--pw) * 1.8); perspective: 1700px; perspective-origin: 50% 20%; }
+.scene-inside .ix-float, .scene-inside .ix-stack { transform-style: preserve-3d; }
+.scene-inside .ix-float { position: absolute; inset: 0; }
+.scene-inside .ix-stack {
+  position: absolute; left: 50%; top: 50%; width: var(--pw); aspect-ratio: 520 / 320;
+  translate: -50% -50%; transform: rotateX(var(--rx)) rotateZ(var(--rz));
+}
+.scene-inside .ix-layer { position: absolute; inset: 0; transform: translateZ(calc(var(--n) * var(--gap))); }
+.scene-inside .l1 { --n: -2; } .scene-inside .l2 { --n: -1; } .scene-inside .l3 { --n: 0; } .scene-inside .l4 { --n: 1; } .scene-inside .l5 { --n: 2; }
+.scene-inside .ix-layer svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.scene-inside .ix-floor {
+  position: absolute; left: 50%; top: 74%; width: calc(var(--pw) * 1.25); height: calc(var(--pw) * .32); translate: -50% 0;
+  background: radial-gradient(closest-side, rgba(143, 141, 255, .22), rgba(78, 204, 163, .06) 60%, transparent);
+  filter: blur(6px); pointer-events: none;
+}
+
+/* Glass */
+.scene-inside .ix-glass { fill: rgba(255, 255, 255, .045); stroke: rgba(255, 255, 255, .16); stroke-width: 1.4; }
+.scene-inside .l5 .ix-glass { fill: #15151a; stroke: rgba(255, 255, 255, .22); }
+
+/* Layer 1: last night and this week */
+.scene-inside .ix-axis { stroke: rgba(255, 255, 255, .22); stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.scene-inside .ix-c .b.on, .scene-inside .ix-c .d.on { opacity: 1; }
+.scene-inside .ix-c .off { opacity: .3; }
+.scene-inside .sleep .b { fill: var(--sl); }
+.scene-inside .heart .d { fill: var(--hr); }
+.scene-inside .load .b { fill: var(--ld); }
+.scene-inside .heart .mean { stroke: #fff; stroke-width: 2.5; stroke-linecap: round; }
+/* Layer 2: your usual */
+.scene-inside .ix-band rect { fill: var(--ok); fill-opacity: .2; stroke: var(--ok); stroke-opacity: .55; stroke-width: 1.2; }
+.scene-inside .ix-band .need { stroke: rgba(255, 255, 255, .6); stroke-width: 1.6; stroke-dasharray: 4 5; fill: none; }
+.scene-inside .tick circle { fill: var(--ok); }
+.scene-inside .tick path { fill: none; stroke: #04140e; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+/* Layer 3: four checks */
+.scene-inside .ix-gate .ring { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .14); stroke-width: 2; }
+.scene-inside .ix-gate .arc { fill: none; stroke: var(--ok); stroke-width: 3; stroke-linecap: round; transform: rotate(-90deg); }
+.scene-inside .ix-gate .ic path { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.scene-inside .ix-rail { stroke: rgba(255, 255, 255, .2); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; }
+/* Layer 4: your own length */
+.scene-inside .l4 .ix-tk { stroke: rgba(255, 255, 255, .3); stroke-width: 1.5; }
+.scene-inside .l4 .d { fill: var(--au); fill-opacity: .55; }
+.scene-inside .l4 .cap { stroke: rgba(255, 255, 255, .4); stroke-width: 1.6; stroke-dasharray: 3 5; }
+.scene-inside .l4 .mark path { stroke: #fff; stroke-width: 3; stroke-linecap: round; }
+.scene-inside .l4 .mark circle { fill: #fff; }
+/* Layer 5: the card */
+.scene-inside .ix-card text { font-family: var(--rounded); fill: var(--ink); }
+.scene-inside .ix-card .k { font-size: 17px; font-weight: 700; letter-spacing: .12em; fill: var(--ok); }
+.scene-inside .ix-card .t { font-size: 38px; font-weight: 800; letter-spacing: -.02em; }
+.scene-inside .ix-card .m { font-size: 64px; font-weight: 800; letter-spacing: -.03em; }
+.scene-inside .ix-card .u { font-size: 24px; font-weight: 600; fill: var(--ink-2); }
+.scene-inside .ix-card .chips text { font-size: 17px; font-weight: 600; fill: var(--ink-2); }
+.scene-inside .c1 { fill: var(--sl); } .scene-inside .c2 { fill: var(--hr); } .scene-inside .c3 { fill: var(--ld); }
+
+/* Labels */
+.scene-inside .ix-labs { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; counter-reset: none; }
+.scene-inside .ix-lab { position: relative; padding-left: 22px; font-size: 16px; line-height: 1.45; color: var(--ink-2); }
+.scene-inside .ix-lab::before { content: ""; position: absolute; left: 0; top: .42em; width: 9px; height: 9px; border-radius: 50%; background: var(--c); box-shadow: 0 0 10px var(--c); }
+.scene-inside .ix-lab b { display: block; margin-bottom: 2px; font: 700 18px/1.3 var(--rounded); color: var(--ink); }
+.scene-inside .k5 { --c: var(--ok); } .scene-inside .k4 { --c: var(--au); } .scene-inside .k3 { --c: #fff; } .scene-inside .k2 { --c: #7fe0b4; } .scene-inside .k1 { --c: var(--sl); }
+.scene-inside .ix-note { margin: 36px auto 0; max-width: 60ch; text-align: center; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+
+@media (min-width: 980px) {
+  .scene-inside { --pw: 500px; --gap: 124px; --rx: 57deg; --rz: -30deg; }
+  .scene-inside .ix-body { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; gap: 40px; }
+  .scene-inside .ix-stage { height: 900px; }
+  .scene-inside .ix-labs { gap: 26px; max-width: 420px; }
+}
+
+/* Motion: armed by scene.js (never under reduced motion), paused until .play.
+   Without it every element simply sits in its final place. */
+.scene-inside.armed .ix-stack { animation: ix-tilt 1.5s var(--ease) .9s both; }
+.scene-inside.armed .l5 { animation: ix-arrive .9s var(--ease) 0s both; }
+.scene-inside.armed .ix-layer:not(.l5) { animation: ix-open 1.3s var(--ease) calc(1.9s + (1 - var(--n)) * .14s) both; }
+.scene-inside.armed .ix-floor { animation: ix-fade 1.4s ease 2s both; }
+.scene-inside.armed .ix-gate .arc { stroke-dasharray: 1 1; animation: ix-draw .7s var(--ease) calc(3.2s + var(--i) * .16s) both; }
+.scene-inside.armed .ix-gate .tick { transform-box: fill-box; transform-origin: 50% 50%; animation: ix-pop .5s var(--bounce) calc(3.6s + var(--i) * .16s) both; }
+.scene-inside.armed .l4 .d { transform-box: fill-box; transform-origin: 50% 50%; animation: ix-pop .45s var(--bounce) calc(3.1s + var(--i) * .05s) both; }
+.scene-inside.armed .l4 .mark { animation: ix-slide 1s var(--ease) 3.9s both; }
+.scene-inside.armed .ix-lab { animation: ix-rise .8s var(--ease) calc(2.4s + var(--i) * .16s) both; }
+.scene-inside.armed .ix-float { animation: ix-sway 14s ease-in-out 5.5s infinite alternate; }
+.scene-inside.armed:not(.play) *, .scene-inside.armed:not(.play), .scene-inside.armed.off .ix-float { animation-play-state: paused !important; }
+@keyframes ix-arrive { from { opacity: 0; transform: translateZ(calc(var(--n) * var(--gap))) translateY(60px); } }
+@keyframes ix-tilt { from { transform: rotateX(0deg) rotateZ(0deg); } }
+@keyframes ix-open { from { opacity: 0; transform: translateZ(calc(var(--gap) * 2 - 2px)); } 40% { opacity: 1; } }
+@keyframes ix-pop { from { transform: scale(0); opacity: 0; } }
+@keyframes ix-fade { from { opacity: 0; } }
+@keyframes ix-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ix-slide { from { transform: translateX(-120px); opacity: 0; } 30% { opacity: 1; } }
+@keyframes ix-rise { from { opacity: 0; transform: translateY(16px); } }
+@keyframes ix-sway { from { transform: rotateZ(-2deg) translateY(-4px); } to { transform: rotateZ(2deg) translateY(4px); } }
