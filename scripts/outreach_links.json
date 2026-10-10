@@ -1,9 +1,19 @@
 {
   "_about": "Trackable paths for links in letters, posts and listings. Cloudflare Web Analytics drops query strings, so every channel gets its own path. /hi/<channel>/<lang>/ forwards to the homepage in that language; /get/<channel>/<lang>/ forwards to the App Store. Add a channel here (lowercase, a-z 0-9 and -), run python3 scripts/build_outreach_links.py, commit. One channel per letter type, and one per club or outlet that posts about Aera.",
   "channels": [
-    "mail-club", "mail-race", "mail-press", "mail-roundup", "mail-creator",
-    "mail-directory", "mail-followup", "mail-reply",
-    "post-futapecs", "post-matraberc",
-    "list-onlyeu", "list-indieappcatalog"
+    "mail-club",
+    "mail-race",
+    "mail-press",
+    "mail-roundup",
+    "mail-creator",
+    "mail-directory",
+    "mail-followup",
+    "mail-reply",
+    "post-futapecs",
+    "post-matraberc",
+    "list-onlyeu",
+    "list-indieappcatalog",
+    "post-bbm",
+    "post-gergo"
   ]
 }
