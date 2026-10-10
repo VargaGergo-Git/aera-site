@@ -788,3 +788,33 @@ footer a:hover { color: var(--text); }
 h1, h2 { font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif; letter-spacing: -0.015em; }
 
 @media (max-width: 360px) { .topnav { gap: 10px; font-size: 13px; } }
+
+/* ---------- field notes: article rhythm (2026-10-10) ----------
+   Scoped with :has(.note-sources), so only the notes change; privacy, terms
+   and support keep their layout. Tables get a real grid on every page. */
+.page-head:has(+ .legal .note-sources) h1 { font-size: clamp(34px, 6.4vw, 54px); font-weight: 740; text-wrap: balance; max-width: 18ch; }
+.page-head:has(+ .legal .note-sources) .eyebrow { color: var(--accent-cool); }
+.page-head:has(+ .legal .note-sources) .meta { margin-top: 10px; font-variant-numeric: tabular-nums; }
+.legal:has(.note-sources) { font-size: 18px; line-height: 1.68; padding-bottom: 40px; }
+.legal:has(.note-sources) p { text-wrap: pretty; }
+.legal:has(.note-sources) > p:first-child { font-size: 1.2em; line-height: 1.5; color: var(--text); margin-top: 8px; }
+.legal:has(.note-sources) h2 { margin: 2em 0 0.5em; line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance; }
+.legal:has(.note-sources) .note-sources { margin-top: 0.5em; padding-left: 1.2em; font-size: 14.5px; line-height: 1.5; color: var(--muted); opacity: 1; }
+
+.legal table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 28px 0; font-size: 0.92em; line-height: 1.45;
+  background: var(--surface-solid); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.legal th, .legal td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+.legal th { font-weight: 650; color: var(--text); background: var(--surface); }
+.legal tr:last-child td { border-bottom: 0; }
+.legal td:first-child { color: var(--text); font-weight: 560; }
+.legal td:first-child:nth-last-child(2) { width: 42%; }
+.legal td:not(:first-child) { color: var(--muted); }
+@media (max-width: 480px) { .legal table { font-size: 0.86em; display: block; overflow-x: auto; } .legal th, .legal td { padding: 10px 9px; hyphens: auto; -webkit-hyphens: auto; } }
+
+/* Notes index: two columns of quiet rows on a laptop. */
+@media (min-width: 760px) {
+  .note-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+}
+.note-list li { border-bottom-color: var(--border); }
+.note-list li a { display: block; font-size: 17px; line-height: 1.35; text-wrap: pretty; }
+.note-list .meta { font-variant-numeric: tabular-nums; color: var(--faint); opacity: 1; }
