@@ -23,7 +23,7 @@ export function start(host, S) {
   var canvas = document.createElement('canvas');
   canvas.className = 'ix-canvas';
   host.appendChild(canvas);
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'high-performance' });
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'default' });
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NoToneMapping; // flat, painted colours, like the homepage valley
 
@@ -475,16 +475,27 @@ export function start(host, S) {
 
   function resize() {
     var w = host.clientWidth, h = host.clientHeight; if (!w || !h) return;
-    var dpr = Math.min(window.devicePixelRatio || 1, w < 700 ? 2 : 1.75);
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     renderer.setPixelRatio(dpr); renderer.setSize(w, h, false);
     camera.aspect = w / h; portrait = w / h < 1; camera.fov = portrait ? 48 : 34; camera.updateProjectionMatrix();
   }
   resize();
   var ro = 'ResizeObserver' in window ? new ResizeObserver(resize) : null; if (ro) ro.observe(host);
 
-  var T = 0, last = 0, running = false, raf = 0, onTime = null;
+  // Frame guard: if this device cannot keep up (slow frames after warm-up) or
+  // drops the GL context, hand back to the poster instead of janking the page.
+  var T = 0, last = 0, running = false, raf = 0, onTime = null, onSlow = null, gaps = [], gave = false;
+  function giveUp() { if (gave) return; gave = true; running = false; if (raf) cancelAnimationFrame(raf); raf = 0; if (onSlow) onSlow(); }
+  canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); giveUp(); });
   function frame(now) {
     raf = 0; if (!running) return;
+    if (last) {
+      gaps.push(now - last);
+      if (gaps.length === 40) {
+        var g = gaps.slice(8).sort(function (a, b) { return a - b; });
+        if (g[g.length >> 1] > 45) { giveUp(); return; }
+      }
+    }
     var dt = last ? Math.min(.05, (now - last) / 1000) : 0; last = now;
     T += dt; render(T); if (onTime) onTime(T);
     raf = requestAnimationFrame(frame);
@@ -492,10 +503,11 @@ export function start(host, S) {
   render(0);
   return {
     end: END,
-    play: function () { if (running) return; running = true; last = 0; raf = requestAnimationFrame(frame); },
+    play: function () { if (running || gave) return; running = true; last = 0; if (gaps.length < 40) gaps = []; raf = requestAnimationFrame(frame); },
     pause: function () { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; },
     seek: function (t) { T = t; render(T); if (onTime) onTime(T); },
     onTime: function (fn) { onTime = fn; },
+    onSlow: function (fn) { onSlow = fn; },
     dispose: function () { this.pause(); if (ro) ro.disconnect(); disposables.forEach(function (d) { d.dispose && d.dispose(); }); renderer.dispose(); canvas.remove(); }
   };
 }

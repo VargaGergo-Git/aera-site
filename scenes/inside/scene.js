@@ -17,12 +17,13 @@
     var film = null, loading = false, seen = false, visible = false;
     function tick(T) {
       caps.forEach(function (c) { var on = T >= c.a && T < c.b; if (on !== c.on) { c.on = on; c.el.classList.toggle('on', on); } });
-      if (T >= film.end) { film.pause(); replay.hidden = false; }
+      if (film && T >= film.end) { film.pause(); replay.hidden = false; }
     }
     function load() {
       if (loading) return; loading = true;
       import(new URL('scenes/inside/film.js', document.baseURI).href).then(function (m) {
         film = m.start(box.querySelector('.ix-frame'), S); film.onTime(tick);
+        film.onSlow(function () { try { film.dispose(); } catch (e) {} film = null; still(); });
         var h = /ix-t=([\d.]+)/.exec(location.hash);
         box.classList.add('live');
         if (h) { film.seek(+h[1]); return; }
@@ -33,8 +34,12 @@
     new IntersectionObserver(function (es) {
       visible = es[0].isIntersecting;
       if (!film) return;
-      if (visible && replay.hidden) { seen = true; film.play(); } else film.pause();
+      if (visible && replay.hidden && !document.hidden) { seen = true; film.play(); } else film.pause();
     }, { threshold: 0.5 }).observe(box);
-    replay.addEventListener('click', function () { replay.hidden = true; film.seek(0); film.play(); });
+    document.addEventListener('visibilitychange', function () {
+      if (!film) return;
+      if (document.hidden) film.pause(); else if (visible && replay.hidden) film.play();
+    });
+    replay.addEventListener('click', function () { if (!film) return; replay.hidden = true; film.seek(0); film.play(); });
   } catch (e) { still(); }
 })();
