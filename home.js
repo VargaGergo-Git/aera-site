@@ -11,6 +11,8 @@
   var track = document.getElementById('track');
   var runner = document.getElementById('runner');
   var pending = [], io = null;
+  var DEV = '.eng-device, .eng-board, .pl-world, .pl-wrist, .wg-world, .fo-film';
+  var HEAD = '.eng-head, .wg-head, .fo-head, .guide-head, .pl-words, .rv-lead, .center, .maker';
 
   function showAll() {
     pending.forEach(function (el) { el.classList.add('in'); });
@@ -65,13 +67,33 @@
     if (hero) [].slice.call(hero.querySelectorAll('.split')).forEach(splitWords);
     // Each block fades up once, as it comes a little above the bottom edge.
     pending = [].slice.call(document.querySelectorAll('.reveal, .fan, .dusk'));
+    // Like Apple's pages: a heading block rises line by line, a device rises from
+    // further down and settles to full size, and blocks that arrive together
+    // follow one another instead of moving as one slab.
+    pending.forEach(function (el) {
+      if (!el.classList.contains('reveal')) return;
+      if (el.matches(DEV)) { el.classList.add('dev'); return; }
+      var kids = [].slice.call(el.children);
+      if (kids.length > 1 && kids.length < 7 && (el.matches(HEAD) || el.querySelector(':scope > h2'))) {
+        el.classList.add('stag');
+        kids.forEach(function (k, i) { k.style.setProperty('--ci', i); });
+      }
+    });
     io = new IntersectionObserver(function (es) {
+      var batch = [];
       es.forEach(function (e) {
         if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-        e.target.classList.add('in'); io.unobserve(e.target);
+        batch.push(e);
+        io.unobserve(e.target);
         pending = pending.filter(function (x) { return x !== e.target; });
       });
-    }, { rootMargin: '0px 0px -6% 0px' });
+      batch.sort(function (a, b) { return (a.boundingClientRect.top - b.boundingClientRect.top) || (a.boundingClientRect.left - b.boundingClientRect.left); });
+      batch.forEach(function (e, i) {
+        var el = e.target;
+        if (i && e.isIntersecting && !el.style.getPropertyValue('--d')) el.style.setProperty('--d', Math.min(i, 5) * 0.09 + 's');
+        el.classList.add('in');
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
     pending.forEach(function (el) { io.observe(el); });
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
