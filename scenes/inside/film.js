@@ -23,7 +23,7 @@ export function start(host, S) {
   var canvas = document.createElement('canvas');
   canvas.className = 'ix-canvas';
   host.appendChild(canvas);
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'default' });
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: (window.devicePixelRatio || 1) < 2, powerPreference: 'default' });
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NoToneMapping; // flat, painted colours, like the homepage valley
 
@@ -438,11 +438,12 @@ export function start(host, S) {
   // ---- Camera: one continuous tracking shot -----------------------------------
   // Arrival times: the camera reaches each station at its time, holds while the
   // station plays, then glides on over MOVE seconds.
+  // [arrival, camera, look-at, optional phone framing: [distance scale, x shift]]
   var shots = [
     [0.0, [-46, 3.4, 20], [-27, 2.6, 0]],
-    [2.4, [-25.2, 4.6, 13.2], [-25.6, 2.1, 0]],
-    [5.6, [-5.4, 3.6, 12.8], [-5.6, 2.2, 0]],
-    [9.2, [12.2, 4.2, 13.4], [12.2, 1.7, 0]],
+    [2.4, [-25.2, 4.6, 13.2], [-25.6, 2.1, 0], [1.2, 0]],
+    [5.6, [-5.4, 3.6, 12.8], [-5.6, 2.2, 0], [1.25, 1.8]],
+    [9.2, [12.2, 4.2, 13.4], [12.2, 1.7, 0], [1.5, 1.4]],
     [13.0, [21.8, 2.9, 4.6], [37, 1.6, 0]],
     [17.0, [50, 3.4, 10.6], [50.2, 2.3, 0]],
     [21.0, [60.4, 3.0, 11.2], [62.4, 1.35, 0]],
@@ -460,8 +461,10 @@ export function start(host, S) {
     var dr = Math.max(0, T - 24.6);
     P.x += Math.sin(T * .31) * .16 - Math.sin(dr * .2) * .9; P.y += Math.sin(T * .23) * .1; P.z += Math.sin(dr * .2) * .5;
     if (portrait) {
-      var fin = clamp((T - 19) / 3, 0, 1), v = P.clone().sub(L);
-      P.copy(L).add(v.multiplyScalar(1.1 - .05 * fin)); L.y += .7 - .7 * fin; L.x += 1.7 * fin; P.x += 1.3 * fin;
+      var fin = clamp((T - 19) / 3, 0, 1), v = P.clone().sub(L), ea = a[3] || [1, 0], eb = b[3] || [1, 0];
+      var sc = ea[0] + (eb[0] - ea[0]) * p, sx = ea[1] + (eb[1] - ea[1]) * p;
+      L.x += sx; P.x += sx;
+      P.copy(L).add(v.multiplyScalar((1.1 - .05 * fin) * sc)); L.y += .7 - .7 * fin; L.x += 1.7 * fin; P.x += 1.3 * fin;
     }
     camera.position.copy(P); camera.lookAt(L);
   }
@@ -493,7 +496,7 @@ export function start(host, S) {
       gaps.push(now - last);
       if (gaps.length === 40) {
         var g = gaps.slice(8).sort(function (a, b) { return a - b; });
-        if (g[g.length >> 1] > 45) { giveUp(); return; }
+        if (g[g.length >> 1] > 40) { giveUp(); return; }
       }
     }
     var dt = last ? Math.min(.05, (now - last) / 1000) : 0; last = now;
