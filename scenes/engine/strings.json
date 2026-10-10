@@ -20,7 +20,7 @@
   "t1": "Three signals in.",
   "t2": "One plain word out.",
   "flip": "1",
-  "phone_alt": "Aera's Today screen: Good to go. Recovery is above your usual after a normal night. Today's session: an easy strength session, 35 minutes."
+  "phone_alt": "Aera's Fitness Today screen: Good to go, on a scale from Rest to Go. Still carrying recent training; your usual session fits."
  },
  "hu": {
   "kicker": "Így születik a döntés",
@@ -43,7 +43,7 @@
   "t1": "Három jel be.",
   "t2": "Egy egyszerű szó ki.",
   "flip": "0",
-  "phone_alt": "Az Aera Ma képernyője (angol nyelvű felvétel): Good to go, vagyis mehet. A mai edzés: könnyű erősítő edzés, 35 perc."
+  "phone_alt": "Az Aera Ma képernyője (angol nyelvű felvétel): Good to go, vagyis mehet, a Pihenőtől a Mehetig tartó skálán. A szokásos edzésed belefér."
  },
  "de": {
   "kicker": "So entsteht die Einschätzung",
@@ -66,6 +66,6 @@
   "t1": "Drei Signale rein.",
   "t2": "Ein klares Wort raus.",
   "flip": "0",
-  "phone_alt": "Der Heute-Bildschirm von Aera (englische Aufnahme): Good to go, also bereit. Heutige Einheit: lockeres Krafttraining, 35 Minuten."
+  "phone_alt": "Der Heute-Bildschirm von Aera (englische Aufnahme): Good to go, also bereit, auf einer Skala von Ruhe bis Go. Deine übliche Einheit passt."
  }
 }
