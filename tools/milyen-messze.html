@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="apple-itunes-app" content="app-id=6762456252">
-<title>Milyen messzire futok? Idő és tempó alapján, ingyenes kalkulátor</title>
-<meta name="description" content="Add meg, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, milyen messzire jutsz, és hol fordulj vissza. Ingyenes, regisztráció nélkül.">
+<title>Milyen messzire futok? Ingyenes távkalkulátor idő és tempó alapján</title>
+<meta name="description" content="Írd be, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, meddig jutsz el, és hol fordulj vissza. Ingyenes, regisztráció nélkül.">
 <meta property="og:title" content="Milyen messzire futok?">
-<meta property="og:description" content="Percből és tempóból táv, és az is, hol fordulj vissza egy oda-vissza futáson. Ingyenes, regisztráció nélkül.">
+<meta property="og:description" content="Percekből és tempóból kiszámolja a távot, és azt is, hol fordulj vissza egy oda-vissza futáson. Ingyenes, regisztráció nélkül.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://aerahealth.app/assets/icon.png">
 <link rel="canonical" href="https://aerahealth.app/tools/milyen-messze.html">
@@ -18,14 +18,14 @@
 <link rel="icon" href="../assets/icon.png">
 <link rel="stylesheet" href="../styles.css">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "WebApplication", "name": "Milyen messzire futok?", "url": "https://aerahealth.app/tools/milyen-messze.html", "inLanguage": "hu", "applicationCategory": "SportsApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Add meg, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, milyen messzire jutsz, és hol fordulj vissza. Ingyenes, regisztráció nélkül.", "author": {"@type": "Person", "name": "Gergő Varga"}}
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Milyen messzire futok?", "url": "https://aerahealth.app/tools/milyen-messze.html", "inLanguage": "hu", "applicationCategory": "SportsApplication", "operatingSystem": "Any", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Írd be, hány perced van, és milyen tempóban futsz (perc/km vagy perc/mérföld). Megmutatja, meddig jutsz el, és hol fordulj vissza. Ingyenes, regisztráció nélkül.", "author": {"@type": "Person", "name": "Gergő Varga"}}
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
 </head>
 <body>
 <div class="topbar"><div class="wrap">
   <a class="mark" href="../hu.html">Aera</a>
-  <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a></nav>
+  <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Segítség</a></nav>
 </div></div>
 <div class="wrap page-head">
   <p class="eyebrow">Ingyenes eszköz</p>
@@ -33,7 +33,7 @@
   <p class="meta lang-switch"><a href="how-far.html" hreflang="en" lang="en">English</a> · <a href="milyen-messze.html" hreflang="hu" lang="hu" aria-current="page">Magyar</a> · <a href="wie-weit.html" hreflang="de" lang="de">Deutsch</a></p>
 </div>
 <div class="wrap legal">
-<p>Megadod a perceket és a tempót, megkapod a távot.</p>
+<p>Beírod a perceket és a tempót, és máris látod a távot.</p>
 <div class="tool">
   <div class="field">
     <label for="mins">Ennyi időd van (perc)</label>
@@ -57,10 +57,10 @@
     <p id="out-turn"></p>
   </div>
   <details>
-    <summary>Nem tudod a laza tempódat? Becsüld meg egy versenyből</summary>
+    <summary>Nem tudod, mi a laza tempód? Becsüld meg egy versenyidőből</summary>
     <form id="race-form">
       <div class="field">
-        <label for="race-dist">Friss verseny</label>
+        <label for="race-dist">Legutóbbi versenyed</label>
         <select id="race-dist"><option value="5000">5 km</option><option value="10000">10 km</option><option value="21097.5">Félmaraton</option><option value="42195">Maraton</option></select>
       </div>
       <fieldset class="field">
@@ -73,20 +73,20 @@
       </fieldset>
       <button class="btn btn-primary" type="submit">Laza tempó becslése</button>
       <p class="race-out" id="race-out" aria-live="polite"></p>
-      <p class="tool-note">Hogyan becsüljük: a versenyidődből Daniels és Gilbert (1979) futóképletei egy fittségi számot (VDOT) adnak. A laza tempó az a sebesség, amely ennek 59–74 százalékát kéri tőled, Daniels könyve (Daniels' Running Formula) szerint ez a laza tartomány. Ez egyetlen versenyből készült becslés. Domb, meleg és egy fáradt nap is elviszi, úgyhogy ha a laza nehéznek tűnik, lassíts.</p>
+      <p class="tool-note">Így becsüljük: Daniels és Gilbert (1979) képletei a versenyidődből kiszámolnak egy erőnléti számot (VDOT). A laza tempó az a sebesség, amely ennek 59–74 százalékát veszi igénybe; Daniels könyve (Daniels' Running Formula) ezt tekinti laza tartománynak. Ez egyetlen versenyre épülő becslés. Egy domb, a meleg vagy egy fáradt nap könnyen elviszi, ezért ha a laza tempó nehéznek tűnik, lassíts.</p>
     </form>
   </details>
 </div>
-<h2>Miért mérik sokan időben a futást?</h2>
-<p>Sok edzésterv percekben adja meg a futást, nem kilométerben: „40 perc laza”. Az Egészségügyi Világszervezet (WHO) mozgásajánlása is percekben számol: felnőtteknek hetente 150–300 perc közepes vagy 75–150 perc intenzív mozgás (Bull és munkatársai, 2020).</p>
-<p>Az idő egyben tartja az erőfeszítést. Dombon, melegben, szélben vagy fáradtan ugyanannyi percből rövidebb táv lesz. Ha időre futsz, a táv enged, nem az erőfeszítés. Foster és munkatársai (2001) is így írják le egy edzés terhelését: a percek száma szorozva azzal, mennyire érezted nehéznek.</p>
-<p>Az állóképességi sportolók edzéseinek nagyjából négyötöde alacsony intenzitású, derül ki Seiler 2010-es összefoglalójából. Ezeknél a laza futásoknál nem a pontos táv a lényeg, hanem hogy tényleg lazák maradjanak.</p>
-<p>Az útvonalhoz viszont táv kell. Ezért van ez a kalkulátor: a perceidből kilométert vagy mérföldet csinál, és megmondja, hol fordulj vissza.</p>
+<h2>Miért futnak sokan időre, nem távra?</h2>
+<p>Sok edzésterv percben adja meg a futást, nem kilométerben: „40 perc laza”. Az Egészségügyi Világszervezet (WHO) mozgásajánlása is percekben számol: felnőtteknek hetente 150–300 perc közepes vagy 75–150 perc intenzív mozgás (Bull és munkatársai, 2020).</p>
+<p>Az idő az erőfeszítést tartja állandóan. Dombon, melegben, szélben vagy fáradtan ugyanannyi perc alatt kevesebbet futsz. Ha időre futsz, a táv igazodik, nem az erőfeszítés. Foster és munkatársai (2001) is így mérik egy edzés terhelését: a percek számát megszorozzák azzal, mennyire érezted nehéznek.</p>
+<p>Seiler 2010-es összefoglalója szerint az állóképességi sportolók edzéseinek nagyjából négyötöde alacsony intenzitású. Ezeknél a laza futásoknál nem a pontos táv számít, hanem az, hogy tényleg lazák maradjanak.</p>
+<p>Útvonalat tervezni viszont távra lehet. Ebben segít ez a kalkulátor: a perceidet kilométerre vagy mérföldre váltja, és megmondja, hol fordulj vissza.</p>
 <div class="note">
 <p><strong>Az Aera, iPhone-ra és Apple Watch-ra</strong></p>
-<p>Ez az oldal kiszámolja a távot. Az Aera egy lépéssel korábban kezd. Minden reggel ingyen ad egy egyszerű szót a napra: Pihenőnap, Csak lazán, Mehet vagy Hajrá. Az alvásodból, a regenerálódásodból, a legutóbbi edzéseidből és a stresszből jön, miután az Aera megismert pár hétnyi éjszakát és edzést.</p>
-<p>Premiummal ebből lesz a mai edzés, például 35 perc laza (pihenőnapon nincs edzés).</p>
-<p>Ingyen is: rajzolj útvonalat a térképre, valódi utakon marad, és követés közben minden kanyart bemond, térerő nélkül is. Nincs fiók, és az egész alkalmazás magyarul van.</p>
+<p>Ez az oldal a távot számolja ki. Az Aera egy lépéssel előbb kezdi: minden reggel ingyen megmondja egy szóval, milyen nap vár rád: Pihenőnap, Csak lazán, Mehet vagy Hajrá. Ehhez az alvásodat, a regenerálódásodat, a legutóbbi edzéseidet és a stresszt nézi, miután megismert pár hétnyi éjszakát és edzést.</p>
+<p>Premiummal ebből a mai edzés is kijön, például 35 perc laza futás. Pihenőnapon nincs edzés.</p>
+<p>Ingyen is: rajzolj útvonalat a térképre, a vonal a valódi utakon marad, futás közben pedig minden kanyart bemond, térerő nélkül is. Fiók nem kell, és az egész app magyarul van.</p>
 </div>
 <p><a class="btn btn-primary" href="https://apps.apple.com/hu/app/id6762456252">Töltsd le az App Store-ból</a></p>
   <h2>Források</h2>
@@ -99,9 +99,9 @@
   </ol>
 </div>
 <footer class="footer-base"><div class="wrap">
-  <p class="meta">Az Aerát Varga Gergő készíti. <a href="../hu.html">Az alkalmazásról</a> · <a href="../support.html">Kapcsolat</a></p>
+  <p class="meta">Az Aerát Varga Gergő fejleszti. <a href="../hu.html">Az alkalmazásról</a> · <a href="../support.html">Kapcsolat</a></p>
 </div></footer>
-<script type="application/json" id="howfar-strings">{"locale": "hu-HU", "unit": {"km": "km", "mi": "mérföld"}, "paceUnit": {"km": "perc/km", "mi": "perc/mérföld"}, "alt": "Ez {d} {u}.", "turn": "Oda-vissza: {t} után fordulj meg, ekkor nagyjából {d} {u} távolságra leszel az indulástól.", "minOnly": "{m} perc", "minSec": "{m} perc {s} mp", "needInput": "Írd be fent a perceket és a tempót.", "raceOut": "Becsült laza tempó: nagyjából {quick} és {slow} között ({pu}). A közepét ({mid}) beírtuk fent a tempóhoz.", "raceBad": "Írd be a célidőt. Ez a becslés csak szokásos versenyidőkre működik."}</script>
+<script type="application/json" id="howfar-strings">{"locale": "hu-HU", "unit": {"km": "km", "mi": "mérföld"}, "paceUnit": {"km": "perc/km", "mi": "perc/mérföld"}, "alt": "Ez {d} {u}.", "turn": "Oda-vissza futásnál {t} után fordulj vissza. Ekkor nagyjából {d} {u} távolságra leszel az indulástól.", "minOnly": "{m} perc", "minSec": "{m} perc {s} mp", "needInput": "Írd be fent a perceket és a tempót.", "raceOut": "Becsült laza tempó: nagyjából {quick} és {slow} között ({pu}). A közepét ({mid}) beírtuk fent tempónak.", "raceBad": "Írd be a célidőt. Ez a becslés csak a szokásos versenyidőkkel működik."}</script>
 <script>
 (function (root) {
   'use strict';
