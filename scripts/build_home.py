@@ -48,7 +48,7 @@ COPY = {
         "facts": ["Free to download", "No account", "Health numbers stay on your iPhone"],
         "proof": "5.0 from %d ratings on the Hungarian App Store",
         "chip_night": "7 h 25 m asleep, right on your need", "chip_day": "Recovery above your usual", "sleep_alt": "Aera's Sleep screen: 7 h 25 m asleep, right on your need",
-        "hero_alt": "Aera's Home screen: Good to go, recovery above your usual after a normal night, and today's session",
+        "hero_alt": "Aera's Sleep screen for last night: excellent, right on your need, 94 of 100 and 7 h 25 min asleep",
         "story_kicker": "A morning with Aera",
         "story_h2": "From last night to out the door.",
         "story_sub": "Every morning starts from the night you actually had. Here is what Aera reads, and what it does with it.",
@@ -77,7 +77,7 @@ COPY = {
         "guide_link": "Read the notes on this site",
         "guide_alts": ("The Field Guide article on your sleep score", "The Field Guide article on what recovery measures"),
         "after_kicker": "After the run",
-        "after_h2": "Fly back over the run you just did.",
+        "after_h2": "Replay the run you just did, in 3D.",
         "after_sub": "Flyover turns a run into a short film over the real ground. It pauses at your fastest split and the top of the climb. Free for runs from the last seven days.",
         "after_list": [
             "One picture of the whole session: pace with every split, heart rate in your own zones, every hill.",
@@ -148,7 +148,7 @@ COPY = {
         "facts": ["Ingyenes", "Nincs fiók", "Teljesen magyarul"],
         "proof": "5,0 a magyar App Store-ban, %d értékelésből",
         "chip_night": "7 ó 25 p alvás, pont az igényed szerint", "chip_day": "A regenerálódás a szokásosnál jobb", "sleep_alt": "Az Aera alvás képernyője: 7 ó 25 p alvás, pont az igényed szerint",
-        "hero_alt": "Az Aera kezdőképernyője: Mehet, a regenerálódás a szokásosnál jobb, és a mai edzés",
+        "hero_alt": "Az Aera alvás képernyője a tegnapi éjszakáról: kiváló, pont annyi, amennyi kell, 94/100 és 7 óra 25 perc alvás",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "A tegnap éjszakától az ajtón túlig.",
         "story_sub": "Minden reggel abból indul, ahogy valóban aludtál. Ezt nézi meg az Aera, és ezt kezdi vele.",
@@ -177,7 +177,7 @@ COPY = {
         "guide_link": "Jegyzetek az oldalon (angolul)",
         "guide_alts": ("A Field Guide cikke az alváspontszámról", "A Field Guide cikke arról, mit mér a regenerálódás"),
         "after_kicker": "Futás után",
-        "after_h2": "Repüld be újra a futásodat.",
+        "after_h2": "Nézd vissza 3D-ben a futásodat.",
         "after_sub": "A Flyover rövid filmet készít a futásodból a valódi terep fölött. Megáll a leggyorsabb részidőnél és az emelkedő tetején. Az elmúlt hét nap futásaihoz ingyenes.",
         "after_list": [
             "Az egész edzés egy képen: tempó minden részidővel, pulzus a saját zónáidban, minden emelkedő.",
@@ -248,7 +248,7 @@ COPY = {
         "facts": ["Kostenlos", "Kein Konto", "Gesundheitswerte bleiben auf deinem iPhone"],
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
         "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
-        "hero_alt": "Der Home-Bildschirm von Aera: Bereit, Erholung über deinem Üblichen, und die heutige Einheit",
+        "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
         "story_sub": "Jeder Morgen beginnt mit der Nacht, die du wirklich hattest. Das liest Aera, und das macht es daraus.",
@@ -277,7 +277,7 @@ COPY = {
         "guide_link": "Notizen auf dieser Seite (auf Englisch)",
         "guide_alts": ("Der Field-Guide-Artikel über deinen Schlafwert", "Der Field-Guide-Artikel darüber, was Erholung misst"),
         "after_kicker": "Nach dem Lauf",
-        "after_h2": "Flieg noch einmal über deinen Lauf.",
+        "after_h2": "Spiel deinen Lauf in 3D noch einmal ab.",
         "after_sub": "Flyover macht aus deinem Lauf einen kurzen Film über dem echten Gelände. Er hält am schnellsten Split und oben am Anstieg. Für Läufe der letzten sieben Tage kostenlos.",
         "after_list": [
             "Die ganze Einheit in einem Bild: Tempo mit jedem Split, Puls in deinen eigenen Zonen, jeder Anstieg.",
@@ -579,7 +579,7 @@ def build(code):
          "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
          "url": canonical, "downloadUrl": c["store"], "installUrl": c["store"],
          "description": plain(c["desc"]),
-         "screenshot": [BASE + "img/home-light-800.webp", BASE + "img/sleep-dark-800.webp", BASE + "img/planner-dark-800.webp"],
+         "screenshot": [BASE + "img/sleep-light-800.webp", BASE + "img/session-dark-800.webp", BASE + "img/planner-dark-800.webp"],
          "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
          "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
@@ -697,7 +697,7 @@ def build(code):
     </div>
     <div class="hero-phone">
       <div class="phone hero-ph"><div class="screen-wrap">
-        <div class="hs hs-home">{picture('home', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
+        <div class="hs hs-home">{picture('sleep', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
       </div></div>
     </div>
   </div>
