@@ -8,9 +8,10 @@
    the film on request. On any error the poster frame stays.
    Without a <video> in the section (poster mode) the poster frame shows, both
    callouts light as the phone sets down, and nothing runs per frame.
-   Frame guard: if the first 12 frames of the film run at a median over 45 ms
-   (under ~22 per second), the film jumps to its last frame instead of
-   stuttering. Low Power Mode's 30 per second (33 ms) still plays the film.
+   Frame guard: if page frames run at a median over 45 ms once the film has
+   settled (frames 11-22), the per-frame loop stops and the callouts follow the
+   film's timeupdate instead. The film itself always plays (it decodes off the
+   main thread).
    Once it has ended it stays ended: Safari rewinds an off-screen video to its
    last keyframe, which must not restart it on scroll-back. */
 (function () {
@@ -23,7 +24,7 @@
   var btn = sec.querySelector('.fo-replay');
   var calls = [].slice.call(sec.querySelectorAll('.fo-call'));
   var stops = (sec.getAttribute('data-stops') || '').split(',').map(Number);
-  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, broken = false, done = false;
+  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, broken = false, done = false, slow = false;
 
   function moving() { return root.classList.contains('motion'); }
 
@@ -56,19 +57,20 @@
 
   function tick(now) {
     if (!looping) return;
-    if (guard.length < 12) {
+    if (guard.length < 22) {
       if (guardT) guard.push(now - guardT);
       guardT = now;
-      if (guard.length === 12) {
-        var g = guard.slice().sort(function (a, b) { return a - b; });
-        if (g[6] > 45) { looping = false; video.pause(); video.currentTime = Math.max(0, (video.duration || 0) - 0.05); land(); return; }
+      if (guard.length === 22) {
+        // The first ten gaps are decoder start-up and the scene's own entrance; skip them.
+        var g = guard.slice(10).sort(function (a, b) { return a - b; });
+        if (g[6] > 45) { looping = false; slow = true; return; }
       }
     }
     var d = video.duration;
     if (d > 0) lightCalls(video.currentTime / d);
     requestAnimationFrame(tick);
   }
-  function startLoop() { if (!looping) { looping = true; requestAnimationFrame(tick); } }
+  function startLoop() { if (!looping && !slow) { looping = true; requestAnimationFrame(tick); } }
 
   function play() {
     load();
@@ -117,6 +119,8 @@
       startLoop();
     });
     video.addEventListener('pause', function () { looping = false; });
+    // A slow page stops the per-frame loop; the film plays on and the callouts follow its clock.
+    video.addEventListener('timeupdate', function () { if (slow && video.duration > 0) lightCalls(video.currentTime / video.duration); });
     video.addEventListener('ended', function () { looping = false; done = true; land(); });
     video.addEventListener('error', fail, true);
 
