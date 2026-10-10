@@ -627,7 +627,7 @@ def build(code):
          "url": canonical, "downloadUrl": c["store"], "installUrl": c["store"],
          "description": plain(c["desc"]),
          "screenshot": [BASE + "img/sleep-light-800.webp", BASE + "img/session-dark-800.webp", BASE + "img/planner-dark-800.webp"],
-         "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
+         "featureList": [plain(st[3]) for st in c["steps"] if st[0] not in ("recovery", "home")] + [plain(c["after_h2"])],
          "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
         {"@type": "Person", "@id": BASE + "#maker", "name": "Gerg\u0151 Varga", "url": BASE},
