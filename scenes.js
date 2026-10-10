@@ -3,8 +3,9 @@
 /* Flyover scene: the real Flyover film plays once when half the scene is in
    view and holds on its last frame; "Watch again" replays it. The callouts
    light up as the film reaches each stop (data-stops, fractions of the film).
-   A 24x40 canvas samples the film a few times a second so its light spills
-   into the stage. The film loads a screen ahead, never with the page.
+   A 24x40 canvas takes the poster's colours once so its light spills into
+   the stage; the film itself is never read back (drawImage of a video frame
+   costs a long frame on phones). The film loads a screen ahead, never with the page.
    Reduced motion or a blocked autoplay: the poster stays and a button plays
    the film on request. On any error the poster frame stays.
    Without a <video> in the section (poster mode) the poster frame shows, both
@@ -21,7 +22,7 @@
   var btn = sec.querySelector('.fo-replay');
   var calls = [].slice.call(sec.querySelectorAll('.fo-call'));
   var stops = (sec.getAttribute('data-stops') || '').split(',').map(Number);
-  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, frameNo = 0, broken = false;
+  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, broken = false;
 
   function moving() { return root.classList.contains('motion'); }
 
@@ -59,12 +60,11 @@
       guardT = now;
       if (guard.length === 12) {
         var g = guard.slice().sort(function (a, b) { return a - b; });
-        if (g[6] > 24) { looping = false; video.pause(); video.currentTime = video.duration || 0; land(); return; }
+        if (g[6] > 24) { looping = false; video.pause(); video.currentTime = Math.max(0, (video.duration || 0) - 0.05); land(); return; }
       }
     }
     var d = video.duration;
     if (d > 0) lightCalls(video.currentTime / d);
-    if (frameNo++ % 6 === 0) paint(video);
     requestAnimationFrame(tick);
   }
   function startLoop() { if (!looping) { looping = true; requestAnimationFrame(tick); } }
@@ -90,7 +90,6 @@
 
   function land() {
     lightCalls(1);
-    paint(video);
     sec.classList.remove('fo-ask');
     btn.hidden = false;
   }
