@@ -22,7 +22,7 @@
     function load() {
       if (loading) return; loading = true;
       import(new URL('scenes/inside/film.js', document.baseURI).href).then(function (m) {
-        film = m.start(box, S); film.onTime(tick);
+        film = m.start(box.querySelector('.ix-frame'), S); film.onTime(tick);
         var h = /ix-t=([\d.]+)/.exec(location.hash);
         box.classList.add('live');
         if (h) { film.seek(+h[1]); return; }

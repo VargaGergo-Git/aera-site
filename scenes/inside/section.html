@@ -4,22 +4,23 @@
     <p class="ix-sub">{{sub}}</p>
   </div>
   <div class="ix-film">
-    <picture class="ix-poster">
-      <source media="(max-aspect-ratio: 1/1)" srcset="img/inside-poster-tall-900.webp">
-      <img src="img/inside-poster-wide-1600.webp" width="1600" height="900" loading="lazy" decoding="async" alt="{{alt}}">
-    </picture>
-    <div class="ix-scrim" aria-hidden="true"></div>
+    <div class="ix-frame">
+      <picture class="ix-poster">
+        <source media="(max-aspect-ratio: 1/1)" srcset="img/inside-poster-tall-900.webp">
+        <img src="img/inside-poster-wide-1600.webp" width="1600" height="900" loading="lazy" decoding="async" alt="{{alt}}">
+      </picture>
+      <button class="ix-replay" type="button" hidden>{{replay}}</button>
+    </div>
     <ol class="ix-caps">
-      <li class="ix-cap" data-t="0.8 4.6" style="--c:#8f8dff"><b>{{c1_h}}</b> <span>{{c1_p}}</span></li>
-      <li class="ix-cap" data-t="5.2 8.7" style="--c:#ff5c86"><b>{{c2_h}}</b> <span>{{c2_p}}</span></li>
-      <li class="ix-cap" data-t="9.0 12.4" style="--c:#ff9a4d"><b>{{c3_h}}</b> <span>{{c3_p}}</span></li>
-      <li class="ix-cap" data-t="12.8 16.4" style="--c:#ffffff"><b>{{c4_h}}</b> <span>{{c4_p}}</span></li>
-      <li class="ix-cap" data-t="16.8 20.0" style="--c:#e8b366"><b>{{c5_h}}</b> <span>{{c5_p}}</span></li>
-      <li class="ix-cap" data-t="20.6 23.2" style="--c:#4ecca3"><b>{{c6_h}}</b> <span>{{c6_p}}</span></li>
-      <li class="ix-cap" data-t="23.6 99" style="--c:#4ecca3"><b>{{c7_h}}</b> <span>{{c7_p}}</span></li>
+      <li class="ix-cap" data-t="0.8 4.6" style="--c:var(--indigo)"><b>{{c1_h}}</b> <span>{{c1_p}}</span></li>
+      <li class="ix-cap" data-t="5.2 8.7" style="--c:var(--pink)"><b>{{c2_h}}</b> <span>{{c2_p}}</span></li>
+      <li class="ix-cap" data-t="9.0 12.4" style="--c:var(--orange)"><b>{{c3_h}}</b> <span>{{c3_p}}</span></li>
+      <li class="ix-cap" data-t="12.8 16.4" style="--c:var(--sage)"><b>{{c4_h}}</b> <span>{{c4_p}}</span></li>
+      <li class="ix-cap" data-t="16.8 20.0" style="--c:var(--gold)"><b>{{c5_h}}</b> <span>{{c5_p}}</span></li>
+      <li class="ix-cap" data-t="20.6 23.2" style="--c:var(--green)"><b>{{c6_h}}</b> <span>{{c6_p}}</span></li>
+      <li class="ix-cap" data-t="23.6 99" style="--c:var(--green)"><b>{{c7_h}}</b> <span>{{c7_p}}</span></li>
     </ol>
-    <button class="ix-replay" type="button" hidden>{{replay}}</button>
-    <script type="application/json" class="ix-strings">{"lb_need":"{{lb_need}}","lb_range":"{{lb_range}}","lb_weeks":"{{lb_weeks}}","lb_x12":"{{lb_x12}}","lb_clear":"{{lb_clear}}","c_today":"{{c_today}}","c_name":"{{c_name}}","c_min":"{{c_min}}","c_r1":"{{c_r1}}","c_r2":"{{c_r2}}","c_r3":"{{c_r3}}","ly1":"{{ly1}}","ly2":"{{ly2}}","ly3":"{{ly3}}","ly4":"{{ly4}}","ly5":"{{ly5}}"}</script>
+    <script type="application/json" class="ix-strings">{"lb_need":"{{lb_need}}","lb_range":"{{lb_range}}","lb_weeks":"{{lb_weeks}}","lb_x12":"{{lb_x12}}","lb_clear":"{{lb_clear}}","c_today":"{{c_today}}","c_name":"{{c_name}}","c_min":"{{c_min}}","c_read":"{{c_read}}","ly1":"{{ly1}}","ly2":"{{ly2}}","ly3":"{{ly3}}","ly4":"{{ly4}}","ly5":"{{ly5}}"}</script>
   </div>
   <p class="wide ix-note">{{note}}</p>
 </section>
