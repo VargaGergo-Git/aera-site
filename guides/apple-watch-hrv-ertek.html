@@ -41,11 +41,37 @@
 ]}
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
+<!--lsw--><style>
+.lsw{position:relative;display:inline-flex;align-items:center}
+.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.lsw>summary::-webkit-details-marker{display:none}
+@media (hover:hover){.lsw>summary:hover{background:color-mix(in srgb,currentColor 12%,transparent)}}
+.lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.lsw svg{width:16px;height:16px;flex:none}
+.lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
+@media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
+.lsw-menu a[aria-current]{font-weight:600}
+.lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
+@media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+.bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
+.bar.scrolled .lsw{color:var(--ink-2)}
+.bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
+.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
+.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.lsw-foot a[aria-current]{opacity:1;font-weight:600}
+@media (hover:hover){.lsw-foot a:hover{opacity:1}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0 9px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}}
+@media (max-width:359px){.topnav:has(.lsw){gap:9px}.topnav:has(.lsw)>a[href*="privacy"]:not([aria-current]){display:none}}
+</style><!--/lsw-->
 </head>
 <body>
 <div class="topbar"><div class="wrap">
   <a class="mark" href="../index.html">Aera</a>
-  <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a></nav>
+  <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Nyelv: Magyar"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>HU</span></summary><div class="lsw-menu"><a href="/guides/apple-watch-hrv-normal-range.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/apple-watch-hrv-ertek.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">Magyar</a><a href="/guides/apple-watch-hrv-normalwert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
   <p class="eyebrow">Útmutató</p>
@@ -135,7 +161,19 @@
 </div>
 <footer class="footer-base"><div class="wrap">
   <p class="meta">Az Aerát Varga Gergő készíti. <a href="../hu.html">Az alkalmazásról</a> · <a href="../support.html">Kapcsolat</a></p>
-</div></footer>
+</div><!--lsw--><div class="wrap lsw-foot"><a href="/guides/apple-watch-hrv-normal-range.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/apple-watch-hrv-ertek.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">Magyar</a><a href="/guides/apple-watch-hrv-normalwert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div><!--/lsw-->
+</footer>
 <script src="../article.js" defer></script>
+<!--lsw--><script>(function(){var d=document,K='aera-lang';
+function shut(o){o.removeAttribute('open')}
+d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
+if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
+[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
+var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->
 </body>
 </html>

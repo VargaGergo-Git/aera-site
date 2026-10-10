@@ -17,21 +17,21 @@
     "alt": "Aera's Flyover replaying a run in 3D over satellite ground, with distance, pace and heart rate"
   },
   "hu": {
-    "kicker": "A futás után",
-    "h2": "Nézd vissza 3D-ben a futásodat.",
-    "sub": "A Flyover rövid filmet készít a futásodból, 3D-ben, a valódi táj fölött. Végig látod a távot, a tempót és a pulzust.",
+    "kicker": "Futás után",
+    "h2": "Nézd vissza a futásodat 3D-ben.",
+    "sub": "A Flyover rövid filmet készít a futásodból, 3D-ben, a valódi terep fölött. Végig látod a távot, a tempót és a pulzust.",
     "stop_times": "0.64,0.95",
     "stop1_title": "Minden kilométer",
     "stop1_value": "Tempó és pulzus",
     "stop2_title": "A teljes futás",
     "stop2_value": "6,0 km · 37:51",
-    "replay": "Újranézés",
+    "replay": "Még egyszer",
     "play": "Flyover lejátszása",
-    "fact1": "Az útvonalad 3D-ben, a valódi műholdképes táj fölött.",
+    "fact1": "Az útvonalad 3D-ben, a valódi műholdképes terep fölött.",
     "fact2": "Végig látod a távot, a tempót és a pulzust, a végén pedig a leggyorsabb kilométeredet.",
     "fact3": "A filmet videóként is megoszthatod.",
     "free_note": "Az elmúlt hét nap futásaihoz ingyenes.",
-    "alt": "Az Aera Flyover 3D-ben, műholdképes táj fölött játssza vissza a futást, távval, tempóval és pulzussal"
+    "alt": "Az Aera Flyover 3D-ben játssza vissza a futást műholdképes terep fölött, távval, tempóval és pulzussal"
   },
   "de": {
     "kicker": "Nach dem Lauf",

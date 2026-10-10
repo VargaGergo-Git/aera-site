@@ -544,7 +544,7 @@ h1, h2, h3 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
 .proof { margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: var(--hero-ink-2); display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 16px; }
 .proof > span { white-space: nowrap; }
 .proof .rating-stars { color: #f2b544; letter-spacing: 1px; font-size: 16px; }
-@media (min-width: 900px) { .proof { font-size: 16px; justify-content: flex-start; } }
+@media (min-width: 900px) { .proof { font-size: 16px; justify-content: flex-start; max-width: 600px; } }
 
 /* Round 3 fixes from the design critique. */
 @media (min-width: 900px) {
