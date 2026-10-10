@@ -961,7 +961,7 @@ section.closing { padding-bottom: 0; }
 /* Phones: a larger device pair, more of it in the first screen; the Watch at the right. */
 @media (max-width: 899px) {
   .hero-phone { width: min(60vw, 250px); margin-bottom: calc(min(60vw, 250px) * -0.62); translate: -9% 0; }
-  .hero-watch { width: 62.4%; right: -38.2%; top: 20.7%; }
+  .hero-watch { width: 62.4%; right: -38.2%; top: 39%; }
 }
 /* Laptops: the Watch steps forward on the copy's side of the phone. */
 @media (min-width: 900px) {
