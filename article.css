@@ -64,7 +64,10 @@ li::marker { color: var(--ink-3); }
 /* Key numbers */
 .keys { list-style: none; padding: 0; margin: 36px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .keys li { margin: 0; background: var(--card); border-radius: 20px; padding: 18px 16px 16px; box-shadow: var(--shadow); color: var(--ink-2); font-size: 14px; line-height: 1.4; }
-.keys b { display: block; margin-bottom: 6px; font: 700 clamp(24px, 4.4vw, 32px)/1 var(--rounded); color: var(--ink); letter-spacing: -0.02em; white-space: nowrap; }
+/* The number sizes to its card (container units), and may break between the
+   value and its unit, so "1.5 ml/kg/min" never runs out of a narrow card. */
+.keys li { container-type: inline-size; }
+.keys b { display: block; margin-bottom: 6px; font: 700 clamp(20px, 19cqi, 32px)/1.08 var(--rounded); color: var(--ink); letter-spacing: -0.02em; text-wrap: balance; }
 .keys small { display: block; margin-top: 6px; color: var(--ink-3); font-size: 12px; }
 @media (max-width: 560px) { .keys { grid-template-columns: 1fr; gap: 10px; } .keys li { padding: 16px 18px; } }
 
@@ -134,3 +137,6 @@ li::marker { color: var(--ink-3); }
 @media (prefers-reduced-motion: reduce) {
   .rv, .rv.in, .fig .dot, .fig .band, .fig .avg, .fig .bar, .fig .s-green, .fig .ann, .fig .ann-t { transition: none !important; opacity: 1 !important; transform: none !important; stroke-dashoffset: 0 !important; }
 }
+/* Phones: the figure card keeps a sliver of page on each side instead of
+   touching the screen edges with its rounded corners. */
+@media (max-width: 560px) { .fig { margin-inline: -6px; border-radius: 20px; } }
