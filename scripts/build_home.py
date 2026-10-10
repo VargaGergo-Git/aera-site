@@ -767,8 +767,8 @@ def build(code):
   <div class="wide">
     <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
-      <div class="plan plan-free reveal"><h3>{c['free_h']}</h3><ul>{plan_items(c['free'], FREE_ICONS)}</ul></div>
-      <div class="plan plan-prem reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{plan_items(c['prem'], PREM_ICONS)}</ul></div>
+      <div class="plan plan-free reveal"><h3>{c['free_h']}</h3><ul>{plan_items(c['free'])}</ul></div>
+      <div class="plan plan-prem reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{plan_items(c['prem'])}</ul></div>
     </div>
     <p class="plans-note center reveal">{c['prem_note']}</p>
   </div>
@@ -838,28 +838,8 @@ def localize_media(out, code):
     return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
 
 
-# One small line icon per plan row, in list order (the lists are in the same
-# order in every language): free = sleep and strain, the word for the day,
-# the route planner, Flyover; Premium = today's session, sleep reserve and
-# places, saved routes, the archive and exports.
-def _ico(d):
-    return ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="%s" fill="none" '
-            'stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>' % d)
-
-
-FREE_ICONS = [_ico("M3 12h3l2.5-6 4 12 3-8 1.5 2H21"),
-              _ico("M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M6.3 17.7l1.4-1.4M16.3 7.7l1.4-1.4M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7"),
-              _ico("M6 20V11a4 4 0 0 1 4-4h8M14 3l4 4-4 4"),
-              _ico("M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5zM10 9l5 3-5 3z")]
-PREM_ICONS = [_ico("M12 21a8 8 0 1 0 0-16a8 8 0 1 0 0 16M12 9v4l2.5 1.5M10 2h4"),
-              _ico("M12 21s-6-5.3-6-10.5a6 6 0 0 1 12 0C18 15.7 12 21 12 21zM12 8.5a2 2 0 1 0 0 4a2 2 0 1 0 0-4"),
-              _ico("M7 9a3 3 0 1 0 0 6c2.5 0 3.5-2 5-3s2.5-3 5-3a3 3 0 1 1 0 6c-2.5 0-3.5-2-5-3s-2.5-3-5-3"),
-              _ico("M4 8h16M5 8v10.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V8M3.5 4h17v4h-17zM10 12h4")]
-
-
-def plan_items(items, icons):
-    return "".join('<li style="--i:%d"><span class="pi">%s</span><span>%s</span></li>' % (i, icons[i % len(icons)], x)
-                   for i, x in enumerate(items))
+def plan_items(items):
+    return "".join('<li style="--i:%d">%s</li>' % (i, x) for i, x in enumerate(items))
 
 
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
