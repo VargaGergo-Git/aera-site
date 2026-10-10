@@ -107,6 +107,23 @@
   } catch (e) { abandon(); }
 })();
 
+/* Planner and widgets: decode their pictures a screen ahead, so a fast flick
+   into them never waits on an image decode (Safari audit: one 120 ms frame). */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      [].forEach.call(e.target.querySelectorAll('img'), function (im) {
+        im.loading = 'eager';
+        if (im.decode) im.decode().catch(function () {});
+      });
+    });
+  }, { rootMargin: '150% 0px 150% 0px' });
+  ['planner', 'widgets', 'flyover'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+
 /* The Coach: one-shot hello (a hop that lands with glad eyes) and nod (a dip and
    a squint), as in the app. On the web its eyes also follow the pointer and it
    blinks now and then. Reduced motion keeps it still. */

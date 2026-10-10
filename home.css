@@ -1046,3 +1046,15 @@ section.closing { padding-bottom: 0; }
 @media (max-width: 899px) {
   .scene-widgets .wg-stage { padding-bottom: 44px; }
   .scene-planner .pl-stage { padding-top: 52px; } }
+
+/* ---------- tap targets: 44 px tall where a thumb lands (Safari audit, 10 Oct) ---------- */
+.chapters a { position: relative; }
+.chapters a::before { content: ""; position: absolute; inset: -6px -1px; }
+@media (max-width: 819px) { .chapters a { width: 26px; } }
+@media (max-width: 379px) { .chapters a { width: 24px; } }
+.brand { min-height: 44px; }
+.bar nav .get { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
+.link { min-height: 44px; }
+.foot a { padding: 10px 0; }
+/* Phones: the scrolled header is fully solid, so no page text shows through it. */
+@media (max-width: 899px), (hover: none) { .bar.scrolled { background: var(--bg); } }

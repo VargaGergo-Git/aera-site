@@ -8,8 +8,11 @@
    the film on request. On any error the poster frame stays.
    Without a <video> in the section (poster mode) the poster frame shows, both
    callouts light as the phone sets down, and nothing runs per frame.
-   Frame guard: if the first 12 frames of the film run at a median over 24 ms,
-   the film jumps to its last frame instead of stuttering. */
+   Frame guard: if the first 12 frames of the film run at a median over 45 ms
+   (under ~22 per second), the film jumps to its last frame instead of
+   stuttering. Low Power Mode's 30 per second (33 ms) still plays the film.
+   Once it has ended it stays ended: Safari rewinds an off-screen video to its
+   last keyframe, which must not restart it on scroll-back. */
 (function () {
   var sec = document.getElementById('flyover');
   if (!sec) return;
@@ -20,7 +23,7 @@
   var btn = sec.querySelector('.fo-replay');
   var calls = [].slice.call(sec.querySelectorAll('.fo-call'));
   var stops = (sec.getAttribute('data-stops') || '').split(',').map(Number);
-  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, broken = false;
+  var ctx = null, guard = [], guardT = 0, loaded = false, played = false, inView = false, looping = false, broken = false, done = false;
 
   function moving() { return root.classList.contains('motion'); }
 
@@ -58,7 +61,7 @@
       guardT = now;
       if (guard.length === 12) {
         var g = guard.slice().sort(function (a, b) { return a - b; });
-        if (g[6] > 24) { looping = false; video.pause(); video.currentTime = Math.max(0, (video.duration || 0) - 0.05); land(); return; }
+        if (g[6] > 45) { looping = false; video.pause(); video.currentTime = Math.max(0, (video.duration || 0) - 0.05); land(); return; }
       }
     }
     var d = video.duration;
@@ -114,12 +117,12 @@
       startLoop();
     });
     video.addEventListener('pause', function () { looping = false; });
-    video.addEventListener('ended', function () { looping = false; land(); });
+    video.addEventListener('ended', function () { looping = false; done = true; land(); });
     video.addEventListener('error', fail, true);
 
     btn.addEventListener('click', function () {
       if (broken) return;
-      guard = []; guardT = 0;
+      guard = []; guardT = 0; done = false;
       if (video.ended || video.currentTime > 0.1) {
         video.currentTime = 0;
         if (moving()) calls.forEach(function (c) { c.classList.remove('on'); });
@@ -147,7 +150,7 @@
       if (broken) return;
       if (e.intersectionRatio >= 0.55 && !played) { played = true; play(); }
       else if (!inView && !video.paused) video.pause();
-      else if (e.intersectionRatio >= 0.55 && played && video.paused && !video.ended && video.currentTime > 0) play();
+      else if (e.intersectionRatio >= 0.55 && played && !done && video.paused && !video.ended && video.currentTime > 0) play();
     }, { threshold: [0, 0.25, 0.55] }).observe(film);
   } catch (e) {
     try { fail(); } catch (e2) { /* the poster stays */ }
