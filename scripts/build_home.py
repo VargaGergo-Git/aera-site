@@ -28,8 +28,6 @@ APPLE = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.9
          ' 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83'
          '-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>')
 
-LOCK = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="3"/>'
-        '<path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>')
 
 COPY = {
     "en": {
@@ -746,7 +744,6 @@ def build(code):
 
 <section class="privacy">
   <div class="wide center reveal">
-    <div class="lock">{LOCK}</div>
     <h2 class="h2 split">{c['priv_h2']}</h2>
     <p class="sub">{c['priv_sub']}</p>
     <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>

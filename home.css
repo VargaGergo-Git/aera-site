@@ -324,9 +324,6 @@ section { position: relative; padding: clamp(80px, 12vw, 150px) 0; }
 .privacy .h2 { max-width: 15ch; margin: 0 auto; font-size: clamp(40px, 7vw, 84px); line-height: 1.02; letter-spacing: -.025em; }
 .privacy .sub { max-width: 34em; margin-top: 28px; }
 .privacy .link { color: var(--green); }
-.lock { width: 84px; height: 84px; margin: 0 auto 34px; border-radius: 26px; display: grid; place-items: center;
-  background: linear-gradient(180deg, #17191b, #0c0d0e); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 0 60px rgba(78, 204, 163, .22); }
-.lock svg { width: 36px; height: 36px; fill: none; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- free and premium ---------- */
 
@@ -887,7 +884,6 @@ section.reviews { padding-top: clamp(36px, 5vw, 60px); }
 section.guide-sec, section.also { padding-top: clamp(64px, 8vw, 112px); }
 section.closing { padding-bottom: 0; }
 .privacy { padding-block: clamp(72px, 9vw, 128px); }
-.lock { margin-bottom: 20px; }
 
 /* Pricing: two short lists, not two paragraphs. */
 .plan ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
@@ -1058,3 +1054,11 @@ section.closing { padding-bottom: 0; }
 .foot a { padding: 10px 0; }
 /* Phones: the scrolled header is fully solid, so no page text shows through it. */
 @media (max-width: 899px), (hover: none) { .bar.scrolled { background: var(--bg); } }
+
+/* ---------- laptop and desktop: larger reading type, a wider column ---------- */
+@media (min-width: 1200px) {
+  .sub { font-size: clamp(20px, 1.45vw, 23px); line-height: 1.5; max-width: 680px; }
+  .privacy .sub { max-width: 36em; }
+  .scene-engine .cap { font-size: clamp(18px, 1.3vw, 20px); }
+  .scene-planner .pl-cap-p, .scene-widgets .wg-cap-p { font-size: clamp(19px, 1.35vw, 21px); }
+  .get-note { font-size: 16px; } }
