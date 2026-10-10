@@ -143,7 +143,7 @@ COPY = {
         "title": "Aera: alvás- és futáskövető iPhone-ra és Apple Watch-ra",
         "desc": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és milyen volt a heted, és mindezt ahhoz méri, ami nálad megszokott. Aztán megmondja, mennyire hajthatsz ma. Magyarul, fiók nélkül.",
         "og_title": "Aera: a mai futásod az éjszakádnál kezdődik",
-        "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Segítség")],
+        "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Támogatás")],
         "get": "Letöltés",
         "skip": "Ugrás a tartalomra",
         "eyebrow": "Alvás- és futáskövető <span class=\"nw\">iPhone-ra</span> és <span class=\"nw\">Apple Watch-ra</span>",
@@ -153,8 +153,8 @@ COPY = {
         "hero_free": "Ingyenes &#183; Fiók nélkül &#183; Magyarul",
         "hero_proof": "5,0 csillag a magyar App Store-ban",
         "proof": "5,0 csillag a magyar App Store-ban, %d értékelés alapján",
-        "chip_night": "7 ó 25 p alvás, pont amennyi kell", "chip_day": "Regenerálódás: jobb a szokásosnál", "sleep_alt": "Az Aera Alvás képernyője: 7 ó 25 p alvás, pont amennyi kell",
-        "hero_alt": "Az Aera Alvás képernyője a tegnapi éjszakáról: Kiváló, pont annyi alvás, amennyi kell, 94/100, 7 óra 25 perc",
+        "chip_night": "7 ó 20 p alvás, pont amennyi kell", "chip_day": "Regenerálódás: jobb a szokásosnál", "sleep_alt": "Az Aera Alvás képernyője: 7 ó 20 p alvás, pont amennyi kell",
+        "hero_alt": "Az Aera Alvás képernyője a tegnapi éjszakáról: Kiváló, pont annyi alvás, amennyi kell, 89/100, 7 óra 20 perc",
         "watch_alt": "Az Aera futás közben az Apple Watch-on: 148-as pulzus a saját 3-as zónádban, eddig 23 perc 53 másodperc ebben a zónában",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "Az éjszakától a kapuig.",
@@ -166,7 +166,7 @@ COPY = {
         "quote": "Az Apple Watch az alvásszakaszokat csak becsüli. Ezért az Aera kisebb súllyal számol velük, és ezt meg is mondja.",
         "quote_src": "Az alváspontszámról szóló cikkből",
         "guide_link": "Angol nyelvű jegyzetek az oldalon",
-        "how": [("Koppints egy számra", "Minden pontszámhoz tartozik egy rövid cikk.", "Az Alvás képernyő: 94/100, ujj a pontszámon"), ("Nézd meg, hogyan jött ki", "Mi számít bele, melyik rész mennyit nyom a latban, és milyen kutatásra épül.", "A Field Guide cikke az alváspontszámról, ujj a 12 forráson"), ("Lapozd át az egész Field Guide-ot", "Minden, amit az Aera figyel, közérthetően, mindenhol a forrásokkal.", "A Field Guide: minden, amit az Aera figyel, közérthetően")],
+        "how": [("Koppints egy számra", "Minden pontszámhoz tartozik egy rövid cikk.", "Az Alvás képernyő: 89/100, ujj a pontszámon"), ("Nézd meg, hogyan jött ki", "Mi számít bele, melyik rész mennyit nyom a latban, és milyen kutatásra épül.", "A Field Guide cikke az alváspontszámról, ujj a 12 forráson"), ("Lapozd át az egész Field Guide-ot", "Minden, amit az Aera figyel, közérthetően, mindenhol a forrásokkal.", "A Field Guide: minden, amit az Aera figyel, közérthetően")],
         "after_kicker": "Futás után",
         "after_h2": "Nézd vissza a futásodat 3D-ben.",
         "after_sub": "A Flyover rövid filmet készít a futásodból, a valódi terep fölött. Megáll a leggyorsabb részidődnél és az emelkedő tetején. Az elmúlt hét nap futásaihoz ingyenes.",
@@ -198,7 +198,7 @@ COPY = {
         "close_h2": "Holnap reggel nézd meg, mit mond rólad az éjszaka.",
         "foot_tag": "Az éjszakád és a mai futásod, a saját mércéd szerint.",
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Továbbiak",
-        "foot_links_app": [("store", "Letöltés"), ("support.html", "Segítség"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
+        "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
         "foot_links_legal": [("privacy.html", "Adatvédelem"), ("terms.html", "Felhasználási feltételek"), ("terms.html#eula", "EULA")],
         "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek (angolul)"), ("guides/index.html#hu", "Útmutatók")],
         "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. Megnézi, hogyan aludtál a saját megszokott éjszakáidhoz képest, és megmondja, mennyire hajthatsz ma. Ingyenes.",
@@ -219,8 +219,8 @@ COPY = {
         "hero_free": "Kostenlos &#183; Kein Konto",
         "hero_proof": "5,0 im ungarischen App Store",
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
-        "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
-        "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
+        "chip_night": "7 Std. 23 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 23 Min. Schlaf, genau dein Bedarf",
+        "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 92 von 100 und 7 Std. 23 Min. Schlaf",
         "watch_alt": "Aera auf der Apple Watch beim Laufen: Puls 148 in deiner eigenen Zone 3, 23 Minuten 53 Sekunden in der Zone",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
@@ -250,7 +250,7 @@ COPY = {
         "guide_link": "Notizen auf dieser Seite (auf Englisch)",
         "how": [
             ("Tipp auf eine Zahl", "Hinter jedem Wert steht ein eigener kurzer Artikel.",
-             "Der Schlaf-Bildschirm: 94 von 100, mit einem Tipp auf den Wert"),
+             "Der Schlaf-Bildschirm: 92 von 100, mit einem Tipp auf den Wert"),
             ("Sieh, wie sie entsteht", "Was hineinfließt, wie viel jeder Teil zählt, und die Forschung dahinter.",
              "Der Field-Guide-Artikel über deinen Schlafwert, mit einem Tipp auf seine 12 Quellen"),
             ("Lies den ganzen Field Guide", "Alles, was Aera liest, in klaren Worten, jeweils mit Quellen.",
@@ -441,7 +441,7 @@ def reviews_section(code):
 # Cinematic scroll scenes live in scenes/<name>/ (see scenes/CONTRACT.md):
 # section.html with {{key}} placeholders, strings.json per language, scene.css
 # and scene.js. The page links one bundled scenes.css and scenes.js.
-SCENES = ["engine", "flyover", "planner", "widgets"]  # add a scene here once it is reviewed
+SCENES = ["engine", "inside", "flyover", "planner", "widgets"]  # add a scene here once it is reviewed
 
 
 def scene_ready(name):
@@ -720,6 +720,8 @@ def build(code):
 
 {with_get(scene('engine', code), 'engine', scene_note('engine'))}
 
+{scene('inside', code)}
+
 <section id="guide" class="guide-sec">
   <div class="wide">
     <div class="guide-head reveal">
@@ -765,8 +767,8 @@ def build(code):
   <div class="wide">
     <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
-      <div class="plan reveal"><h3>{c['free_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['free'])}</ul></div>
-      <div class="plan reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['prem'])}</ul></div>
+      <div class="plan plan-free reveal"><h3>{c['free_h']}</h3><ul>{plan_items(c['free'], FREE_ICONS)}</ul></div>
+      <div class="plan plan-prem reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{plan_items(c['prem'], PREM_ICONS)}</ul></div>
     </div>
     <p class="plans-note center reveal">{c['prem_note']}</p>
   </div>
@@ -834,6 +836,30 @@ def localize_media(out, code):
         local = "%s/%s/%s" % (d, code, name)
         return local if os.path.exists(os.path.join(ROOT, local)) else m.group(0)
     return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
+
+
+# One small line icon per plan row, in list order (the lists are in the same
+# order in every language): free = sleep and strain, the word for the day,
+# the route planner, Flyover; Premium = today's session, sleep reserve and
+# places, saved routes, the archive and exports.
+def _ico(d):
+    return ('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="%s" fill="none" '
+            'stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>' % d)
+
+
+FREE_ICONS = [_ico("M3 12h3l2.5-6 4 12 3-8 1.5 2H21"),
+              _ico("M12 4v2M12 18v2M4 12h2M18 12h2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M6.3 17.7l1.4-1.4M16.3 7.7l1.4-1.4M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7"),
+              _ico("M6 20V11a4 4 0 0 1 4-4h8M14 3l4 4-4 4"),
+              _ico("M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5zM10 9l5 3-5 3z")]
+PREM_ICONS = [_ico("M12 21a8 8 0 1 0 0-16a8 8 0 1 0 0 16M12 9v4l2.5 1.5M10 2h4"),
+              _ico("M12 21s-6-5.3-6-10.5a6 6 0 0 1 12 0C18 15.7 12 21 12 21zM12 8.5a2 2 0 1 0 0 4a2 2 0 1 0 0-4"),
+              _ico("M7 9a3 3 0 1 0 0 6c2.5 0 3.5-2 5-3s2.5-3 5-3a3 3 0 1 1 0 6c-2.5 0-3.5-2-5-3s-2.5-3-5-3"),
+              _ico("M4 8h16M5 8v10.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V8M3.5 4h17v4h-17zM10 12h4")]
+
+
+def plan_items(items, icons):
+    return "".join('<li style="--i:%d"><span class="pi">%s</span><span>%s</span></li>' % (i, icons[i % len(icons)], x)
+                   for i, x in enumerate(items))
 
 
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
