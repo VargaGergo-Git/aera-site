@@ -720,7 +720,7 @@ def build(code):
   {L['near']}
 </section>
 
-{with_get(scene('engine', code), 'engine', c['hero_free'])}
+{with_get(scene('engine', code), 'engine', scene_note('engine'))}
 
 <section id="guide" class="guide-sec">
   <div class="wide">

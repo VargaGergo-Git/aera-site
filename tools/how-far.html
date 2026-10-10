@@ -23,7 +23,8 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
 <!--lsw--><style>
 .lsw{position:relative;display:inline-flex;align-items:center}
-.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.topnav:has(.lsw){align-items:center}
+.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;justify-content:center;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
 .lsw>summary::-webkit-details-marker{display:none}
 @media (hover:hover){.lsw>summary:hover{background:color-mix(in srgb,currentColor 12%,transparent)}}
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
@@ -44,8 +45,8 @@
 .lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
-@media (max-width:479px){.topnav .lsw>summary{padding:0 9px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}}
-@media (max-width:359px){.topnav:has(.lsw){gap:9px}.topnav:has(.lsw)>a[href*="privacy"]:not([aria-current]){display:none}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
+@media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
 </head>
 <body>
@@ -126,7 +127,7 @@
 </div>
 <footer class="footer-base"><div class="wrap">
   <p class="meta">Aera is made by Gergő Varga. <a href="../index.html">About the app</a> · <a href="../support.html">Contact</a></p>
-</div><!--lsw--><div class="wrap lsw-foot"><a href="/tools/how-far.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/tools/milyen-messze.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/tools/wie-weit.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div><!--/lsw-->
+</div><!--lsw--><div class="wrap lsw-foot"><a href="/tools/how-far.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/tools/milyen-messze.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/tools/wie-weit.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a><a href="/privacy.html">Privacy</a></div><!--/lsw-->
 </footer>
 <script type="application/json" id="howfar-strings">{"locale": "en-GB", "unit": {"km": "km", "mi": "mi"}, "paceUnit": {"km": "min/km", "mi": "min/mile"}, "alt": "That is {d} {u}.", "turn": "Out and back: turn around after {t}, about {d} {u} from where you started.", "minOnly": "{m} min", "minSec": "{m} min {s} s", "needInput": "Enter the minutes and a pace above.", "raceOut": "Easy pace estimate: about {quick} to {slow} {pu}. The middle, {mid}, is now in the pace box above.", "raceBad": "Enter a finish time for the race. This estimate only covers ordinary race times."}</script>
 <script>

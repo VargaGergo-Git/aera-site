@@ -3,7 +3,8 @@
 Header: a small globe button with the page's language code; it opens a menu of
 the three languages. Each entry links to the page's own translation when one
 exists (its <link rel="alternate" hreflang> tags), otherwise to that
-language's home page. Footer: the same three links as a quiet line. The home
+language's home page. Footer: the same three links as a quiet line, plus Privacy (the header
+hides its Privacy link on phones to make room for the switch). The home
 pages (index, hu, de) already list the languages in their footer, so they get
 the header button only.
 
@@ -25,6 +26,7 @@ SKIP_DIRS = {".git", "scenes", "shots", "assets", "img", "scripts", "get", "hi",
 HOME = {"index.html", "hu.html", "de.html"}
 LANGS = (("en", "English", "/"), ("hu", "Magyar", "/hu.html"), ("de", "Deutsch", "/de.html"))
 LABEL = {"en": "Language", "hu": "Nyelv", "de": "Sprache"}
+PRIVACY = {"en": "Privacy", "hu": "Adatvédelem", "de": "Datenschutz"}
 MARK = re.compile(r"<!--lsw-->.*?<!--/lsw-->\n?", re.S)
 ALT = re.compile(r'<link rel="alternate" hreflang="(en|hu|de)" href="https://aerahealth\.app([^"]*)">')
 
@@ -34,7 +36,8 @@ GLOBE = ('<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill=
 
 CSS = """<!--lsw--><style>
 .lsw{position:relative;display:inline-flex;align-items:center}
-.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.topnav:has(.lsw){align-items:center}
+.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;justify-content:center;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
 .lsw>summary::-webkit-details-marker{display:none}
 @media (hover:hover){.lsw>summary:hover{background:color-mix(in srgb,currentColor 12%,transparent)}}
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
@@ -55,8 +58,8 @@ CSS = """<!--lsw--><style>
 .lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
-@media (max-width:479px){.topnav .lsw>summary{padding:0 9px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}}
-@media (max-width:359px){.topnav:has(.lsw){gap:9px}.topnav:has(.lsw)>a[href*="privacy"]:not([aria-current]){display:none}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
+@media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
 """
 
@@ -115,7 +118,8 @@ def process(path, home):
         new = new[:j] + btn + new[j:]
         k = new.rfind("</footer>")
         if k > 0:
-            new = new[:k] + '<!--lsw--><div class="wrap lsw-foot">%s</div><!--/lsw-->\n' % links(cur, tg) + new[k:]
+            new = new[:k] + '<!--lsw--><div class="wrap lsw-foot">%s<a href="/privacy.html">%s</a></div><!--/lsw-->\n' % (
+                links(cur, tg), PRIVACY[cur]) + new[k:]
     new = new.replace("</head>", CSS + "</head>", 1)
     b = new.rfind("</body>")
     new = new[:b] + JS + new[b:]

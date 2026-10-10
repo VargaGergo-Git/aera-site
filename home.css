@@ -1043,3 +1043,6 @@ section.closing { padding-bottom: 0; }
   .motion .reveal { translate: 0 28px; }
   .motion .reveal.stag > * { translate: 0 20px; }
   .motion .reveal.dev { translate: 0 48px; scale: .96; } }
+@media (max-width: 899px) {
+  .scene-widgets .wg-stage { padding-bottom: 44px; }
+  .scene-planner .pl-stage { padding-top: 52px; } }

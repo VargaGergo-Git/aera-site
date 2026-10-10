@@ -20,7 +20,8 @@
   "t1": "Three signals in.",
   "t2": "Today’s session out.",
   "flip": "1",
-  "phone_alt": "Aera's session screen: an easy strength session, 40 minutes at a steady effort, below your usual 50, with the reasons for it right underneath."
+  "phone_alt": "Aera's session screen: an easy strength session, 40 minutes at a steady effort, below your usual 50, with the reasons for it right underneath.",
+  "free_note": "Free to start · No account"
  },
  "hu": {
   "kicker": "Így születik a döntés",
@@ -43,7 +44,8 @@
   "t1": "Bemegy három jel.",
   "t2": "Kijön a mai edzés.",
   "flip": "0",
-  "phone_alt": "Az Aera edzés képernyője: könnyű erőedzés, 40 perc stabil terheléssel, a szokásos 50 alatt, alatta az indoklással."
+  "phone_alt": "Az Aera edzés képernyője: könnyű erőedzés, 40 perc stabil terheléssel, a szokásos 50 alatt, alatta az indoklással.",
+  "free_note": "Ingyen elkezdheted · Fiók nélkül"
  },
  "de": {
   "kicker": "So entsteht die Einschätzung",
@@ -66,6 +68,7 @@
   "t1": "Drei Signale rein.",
   "t2": "Die Einheit für heute raus.",
   "flip": "0",
-  "phone_alt": "Der Einheiten-Bildschirm von Aera: lockere Krafteinheit, 40 Minuten mit stabiler Belastung, unter deinen üblichen 50, darunter die Begründung."
+  "phone_alt": "Der Einheiten-Bildschirm von Aera: lockere Krafteinheit, 40 Minuten mit stabiler Belastung, unter deinen üblichen 50, darunter die Begründung.",
+  "free_note": "Kostenlos starten · Kein Konto"
  }
 }
