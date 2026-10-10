@@ -49,6 +49,7 @@ COPY = {
         "proof": "5.0 from %d ratings on the Hungarian App Store",
         "chip_night": "7 h 25 m asleep, right on your need", "chip_day": "Recovery above your usual", "sleep_alt": "Aera's Sleep screen: 7 h 25 m asleep, right on your need",
         "hero_alt": "Aera's Sleep screen for last night: excellent, right on your need, 94 of 100 and 7 h 25 min asleep",
+        "watch_alt": "Aera on Apple Watch during a run: 148 bpm in zone 3 of your own zones, 23 minutes 53 seconds in zone",
         "story_kicker": "A morning with Aera",
         "story_h2": "From last night to out the door.",
         "story_sub": "Every morning starts from the night you actually had. Here is what Aera reads, and what it does with it.",
@@ -64,7 +65,7 @@ COPY = {
              ["Rest day", "Go easy", "Good to go", "Go for it"], "The Home screen: Good to go"),
             ("session", "Today's run", "var(--gold)", "How long, and how hard",
              "Aera writes today's session from the week you actually had: an easy 35 minutes, say, and nothing at all on a rest day.",
-             "Premium", "Today's session: good to go, freshness is the one holding back"),
+             "Premium", "Today&#8217;s session: good to go, freshness is the one holding back"),
             ("planner", "Out the door", "var(--orange)", "Draw the route from your door",
              "Tap the map and the line keeps to real paths, with the distance counting as you draw. Follow it turn by turn on your iPhone or Apple Watch, spoken if you want it, even with no signal.",
              None, "The route planner over a satellite map"),
@@ -78,10 +79,10 @@ COPY = {
         "how": [
             ("Tap a number", "Every score opens its own short article.",
              "The Sleep screen: 94 of 100, with a tap on the score"),
-            ("See how it was worked out", "What goes into it, and how much each part counts.",
-             "The Field Guide article on your sleep score: two things carry most of it, neither of them is your heart"),
-            ("Open the sources", "The research behind it, and where the number stops being reliable.",
-             "The article's sources: 5 minutes, 12 sources"),
+            ("See how it was worked out", "What goes into it, how much each part counts, and the research behind it.",
+             "The Field Guide article on your sleep score, with a tap on its 12 sources"),
+            ("Read the whole Field Guide", "Everything Aera reads, in plain words, each with its sources.",
+             "The Field Guide: everything Aera reads, in plain words"),
         ],
         "after_kicker": "After the run",
         "after_h2": "Replay the run you just did, in 3D.",
@@ -99,27 +100,27 @@ COPY = {
         "also_kicker": "Also in the app",
         "also_h2": "Also in Aera.",
         "tiles": [
-            ("Apple Watch", "var(--green)", "Record a run on your watch alone, with auto-pause, and feel each turn of a route."),
-            ("Widgets", "var(--indigo)", "In every size, on the Home Screen and the Lock Screen."),
+            ("Apple Watch", "var(--green)", "Record a run on the watch alone, with auto-pause."),
+            ("Personal bests", "var(--indigo)", "Every distance, every best, free."),
             ("Recap films", "var(--gold)", "Your week, month and year as short films."),
-            ("Share cards", "var(--orange)", "Satellite, terrain and splits looks. Rewrite any word, pick any colour."),
-            ("Your data, out", "var(--pink)", "Raw data as JSON or GPX, whenever you want it."),
+            ("Share cards", "var(--orange)", "Satellite, terrain or splits. Rewrite any word."),
+            ("Your data, out", "var(--pink)", "JSON or GPX, whenever you want it."),
             ("Your language", "var(--sage)", "English, Magyar, Deutsch, Espa&#241;ol, Fran&#231;ais and more."),
         ],
         "priv_h2": "Health numbers stay on your iPhone.",
-        "priv_sub": "Aera reads Apple Health on the phone and works out every score there. No account, no sign in, and no language model anywhere in the app. Product analytics stay off until you turn them on and never include health values. Crash reports help fix bugs.",
+        "priv_sub": "Aera reads Apple Health on the phone and works out every score there. No account, and no language model anywhere in the app. Analytics stay off until you turn them on and never include health values; crash reports help fix bugs.",
         "priv_link": "Read the privacy policy",
-        "plans_h2": "What it costs.",
+        "plans_h2": "What&#8217;s free, what&#8217;s Premium.",
         "free_h": "Free",
         "free": ["Sleep, stress and strain, against your usual", "One word for the day, every morning", "Route planner with turn by turn", "Flyover for the last seven days"],
         "prem_h": "Premium",
-        "prem": ["Today's session: how long, how hard", "Your sleep reserve and your places", "Unlimited saved routes", "Older Flyovers, history past a year, every export"],
+        "prem": ["Today&#8217;s session: how long, how hard", "Your sleep reserve and your places", "Unlimited saved routes", "Older Flyovers, history past a year, every export"],
         "prem_note": "Premium is monthly, yearly or a one-time purchase. Yearly starts with a 7-day free trial.",
         "faq_kicker": "Questions",
         "faq_h2": "Questions.",
         "faq": [
             ("What does Aera do?", "Aera is an iPhone and Apple Watch app that reads Apple Health and tells you each morning how hard to go: rest day, go easy, good to go or go for it. It reads your sleep, your overnight heart, stress and strain against your own usual, plans routes on a map with turn-by-turn directions, and explains every number in a short article."),
-            ("Is Aera free?", "Yes. Recovery, stress, strain and your sleep score, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."),
+            ("Is Aera free?", "Yes. Your sleep score, stress, strain and recovery, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."),
             ("Do I need an account, and where does my data go?", "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. There is no language model in the app. Product analytics stay off until you turn them on and never include health values."),
             ("Do I need an Apple Watch?", "An Apple Watch gives Aera the overnight heart and sleep signals most reads are built on. Without one, Aera works from what your iPhone records, like steps and workouts, and the reads that need a watch wait until there is data."),
             ("How does Aera know what is normal for me?", "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."),
@@ -156,6 +157,7 @@ COPY = {
         "proof": "5,0 a magyar App Store-ban, %d értékelésből",
         "chip_night": "7 ó 25 p alvás, pont az igényed szerint", "chip_day": "A regenerálódás a szokásosnál jobb", "sleep_alt": "Az Aera alvás képernyője: 7 ó 25 p alvás, pont az igényed szerint",
         "hero_alt": "Az Aera alvás képernyője a tegnapi éjszakáról: kiváló, pont annyi, amennyi kell, 94/100 és 7 óra 25 perc alvás",
+        "watch_alt": "Az Aera az Apple Watch-on futás közben: 148-as pulzus a saját 3-as zónádban, 23 perc 53 másodperc a zónában",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "A tegnap éjszakától az ajtón túlig.",
         "story_sub": "Minden reggel abból indul, ahogy valóban aludtál. Ezt nézi meg az Aera, és ezt kezdi vele.",
@@ -185,10 +187,10 @@ COPY = {
         "how": [
             ("Koppints egy számra", "Minden pontszám mögött ott a saját rövid cikke.",
              "Az alvás képernyő: 94/100, egy koppintással a pontszámon"),
-            ("Nézd meg, hogyan jött ki", "Mi kerül bele, és melyik rész mennyit számít.",
-             "A Field Guide cikke az alváspontszámról"),
-            ("Nyisd meg a forrásokat", "A kutatás mögötte, és hol szűnik meg megbízhatónak lenni a szám.",
-             "A cikk forrásai: 5 perc, 12 forrás"),
+            ("Nézd meg, hogyan jött ki", "Mi kerül bele, melyik rész mennyit számít, és milyen kutatás áll mögötte.",
+             "A Field Guide cikke az alváspontszámról, egy koppintással a 12 forráson"),
+            ("Olvasd el az egész Field Guide-ot", "Minden, amit az Aera figyel, érthetően, mindegyik a forrásaival.",
+             "A Field Guide: minden, amit az Aera figyel, érthetően"),
         ],
         "after_kicker": "Futás után",
         "after_h2": "Nézd vissza 3D-ben a futásodat.",
@@ -206,17 +208,17 @@ COPY = {
         "also_kicker": "Még az appban",
         "also_h2": "Ami még benne van.",
         "tiles": [
-            ("Apple Watch", "var(--green)", "Futás rögzítése csak az órával, automatikus szünettel, és minden kanyart érzel a csuklódon."),
-            ("Widgetek", "var(--indigo)", "Minden méretben, a kezdőképernyőn és a zárolási képernyőn."),
+            ("Apple Watch", "var(--green)", "Futás rögzítése csak az órával, automatikus szünettel."),
+            ("Egyéni rekordok", "var(--indigo)", "Minden táv, minden rekord, ingyen."),
             ("Összegző filmek", "var(--gold)", "A heted, a hónapod és az éved rövid filmként."),
-            ("Megosztható kártyák", "var(--orange)", "Műholdas, domborzati és részidős kinézet. Bármelyik szót átírhatod, bármilyen színt választhatsz."),
-            ("Az adataid", "var(--pink)", "Nyers adatok JSON vagy GPX formátumban, bármikor."),
+            ("Megosztható kártyák", "var(--orange)", "Műhold, domborzat vagy részidők. Bármelyik szót átírhatod."),
+            ("Az adataid", "var(--pink)", "JSON vagy GPX formátumban, bármikor."),
             ("Magyarul", "var(--sage)", "Az egész app magyarul, és még kilenc nyelven."),
         ],
         "priv_h2": "Az egészség&shy;adataid az <span class=\"nw\">iPhone-odon</span> maradnak.",
-        "priv_sub": "Az Aera a telefonon olvassa az Apple Health adatait, és minden pontszám ott készül. Nincs fiók, nincs belépés, és az appban sehol nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot. Az összeomlási jelentések a hibák javítását segítik.",
+        "priv_sub": "Az Aera a telefonon olvassa az Apple Health adatait, és minden pontszám ott készül. Nincs fiók, és az appban sehol nincs nyelvi modell. Az analitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot; az összeomlási jelentések a hibák javítását segítik.",
         "priv_link": "Az adatvédelmi szabályzat (angolul)",
-        "plans_h2": "Mennyibe kerül.",
+        "plans_h2": "Mi ingyenes, mi Premium.",
         "free_h": "Ingyenes",
         "free": ["Alvás, stressz és terhelés a saját szokásodhoz mérve", "Minden reggel egy szó a napra", "Útvonaltervező kanyarról kanyarra", "Flyover az elmúlt hét nap futásaihoz"],
         "prem_h": "Premium",
@@ -226,7 +228,7 @@ COPY = {
         "faq_h2": "Kérdések.",
         "faq": [
             ("Mit csinál az Aera?", "Az Aera egy iPhone- és Apple Watch-app, ami az Apple Health adataiból minden reggel megmondja, milyen keményen menj: pihenőnap, csak lazán, mehet vagy hajrá. Az alvásodat, az éjszakai szívritmusodat, a stresszt és a terhelést a saját szokásodhoz méri, útvonalat tervez a térképen kanyarról kanyarra navigációval, és minden számot elmagyaráz egy rövid cikkben."),
-            ("Ingyenes az Aera?", "Igen. A regenerálódás, a stressz, a terhelés és az alváspontszám, a napi döntés, az útvonaltervező, a kanyarról kanyarra navigáció, minden edzés kiértékelése, minden egyéni rekord és az elmúlt hét nap Flyovere ingyenes. A Premium hozzáadja a mai edzést, az alvástartalékot, a helyeidet, a régebbi Flyovereket, a tizenkét hónapnál régebbi előzményeket, a jelentéseket és minden exportformátumot."),
+            ("Ingyenes az Aera?", "Igen. Az alváspontszám, a stressz, a terhelés és a regenerálódás, a napi döntés, az útvonaltervező, a kanyarról kanyarra navigáció, minden edzés kiértékelése, minden egyéni rekord és az elmúlt hét nap Flyovere ingyenes. A Premium hozzáadja a mai edzést, az alvástartalékot, a helyeidet, a régebbi Flyovereket, a tizenkét hónapnál régebbi előzményeket, a jelentéseket és minden exportformátumot."),
             ("Kell fiók? Hová kerülnek az adataim?", "Nincs fiók. Az Aera az iPhone-odon olvassa az Apple Health adatait, és minden pontszám ott készül, így az egészségadataid az iPhone-odon maradnak. Az appban nincs nyelvi modell. A termékanalitika ki van kapcsolva, amíg be nem kapcsolod, és sosem tartalmaz egészségadatot."),
             ("Kell hozzá Apple Watch?", "Az Apple Watch adja azokat az éjszakai szív- és alvásjeleket, amelyekre a legtöbb érték épül. Nélküle az Aera abból dolgozik, amit az iPhone rögzít, például lépésekből és edzésekből, az órát igénylő értékek pedig megvárják az adatot."),
             ("Honnan tudja az Aera, mi a szokásos nálam?", "Több hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos tartományod, és minden új napot ahhoz mér. Amíg kevés az adat, kiírja, hogy még tanul, és nem találgat."),
@@ -263,6 +265,7 @@ COPY = {
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
         "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
         "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
+        "watch_alt": "Aera auf der Apple Watch beim Laufen: Puls 148 in deiner eigenen Zone 3, 23 Minuten 53 Sekunden in der Zone",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
         "story_sub": "Jeder Morgen beginnt mit der Nacht, die du wirklich hattest. Das liest Aera, und das macht es daraus.",
@@ -292,10 +295,10 @@ COPY = {
         "how": [
             ("Tipp auf eine Zahl", "Hinter jedem Wert steht ein eigener kurzer Artikel.",
              "Der Schlaf-Bildschirm: 94 von 100, mit einem Tipp auf den Wert"),
-            ("Sieh, wie sie entsteht", "Was hineinfließt und wie viel jeder Teil zählt.",
-             "Der Field-Guide-Artikel über deinen Schlafwert"),
-            ("Öffne die Quellen", "Die Forschung dahinter und wo die Zahl nicht mehr verlässlich ist.",
-             "Die Quellen des Artikels: 5 Minuten, 12 Quellen"),
+            ("Sieh, wie sie entsteht", "Was hineinfließt, wie viel jeder Teil zählt, und die Forschung dahinter.",
+             "Der Field-Guide-Artikel über deinen Schlafwert, mit einem Tipp auf seine 12 Quellen"),
+            ("Lies den ganzen Field Guide", "Alles, was Aera liest, in klaren Worten, jeweils mit Quellen.",
+             "Der Field Guide: alles, was Aera liest, in klaren Worten"),
         ],
         "after_kicker": "Nach dem Lauf",
         "after_h2": "Spiel deinen Lauf in 3D noch einmal ab.",
@@ -313,17 +316,17 @@ COPY = {
         "also_kicker": "Außerdem in der App",
         "also_h2": "Außerdem in Aera.",
         "tiles": [
-            ("Apple Watch", "var(--green)", "Lauf nur mit der Uhr aufzeichnen, mit Auto-Pause, und jede Abbiegung am Handgelenk spüren."),
-            ("Widgets", "var(--indigo)", "In jeder Größe, auf dem Home-Bildschirm und dem Sperrbildschirm."),
+            ("Apple Watch", "var(--green)", "Läufe nur mit der Uhr aufzeichnen, mit Auto-Pause."),
+            ("Bestleistungen", "var(--indigo)", "Jede Distanz, jede Bestzeit, kostenlos."),
             ("Rückblicke", "var(--gold)", "Deine Woche, dein Monat und dein Jahr als kurzer Film."),
-            ("Karten zum Teilen", "var(--orange)", "Satellit, Gelände und Splits. Jedes Wort änderbar, jede Farbe wählbar."),
-            ("Deine Daten", "var(--pink)", "Rohdaten als JSON oder GPX, wann immer du willst."),
+            ("Karten zum Teilen", "var(--orange)", "Satellit, Gelände oder Splits. Jedes Wort änderbar."),
+            ("Deine Daten", "var(--pink)", "Als JSON oder GPX, wann immer du willst."),
             ("Auf Deutsch", "var(--sage)", "Die ganze App auf Deutsch, und in neun weiteren Sprachen."),
         ],
         "priv_h2": "Gesundheits&shy;werte bleiben auf deinem iPhone.",
-        "priv_sub": "Aera liest Apple Health auf dem Handy und berechnet jeden Wert dort. Kein Konto, kein Login, und in der App steckt nirgends ein Sprachmodell. Die Produktanalyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte. Absturzberichte helfen, Fehler zu beheben.",
+        "priv_sub": "Aera liest Apple Health auf dem Handy und berechnet jeden Wert dort. Kein Konto, und in der App steckt nirgends ein Sprachmodell. Die Analyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte; Absturzberichte helfen, Fehler zu beheben.",
         "priv_link": "Datenschutzerklärung (auf Englisch)",
-        "plans_h2": "Was es kostet.",
+        "plans_h2": "Was gratis ist, was Premium ist.",
         "free_h": "Kostenlos",
         "free": ["Schlaf, Stress und Belastung, gemessen an deinem Üblichen", "Jeden Morgen ein Wort für den Tag", "Routenplaner mit Abbiegehinweisen", "Flyover für die letzten sieben Tage"],
         "prem_h": "Premium",
@@ -333,7 +336,7 @@ COPY = {
         "faq_h2": "Fragen.",
         "faq": [
             ("Was macht Aera?", "Aera ist eine App für iPhone und Apple Watch, die Apple Health liest und dir jeden Morgen sagt, wie hart du heute rangehen kannst: Ruhetag, ruhig angehen, bereit oder leg los. Sie misst Schlaf, dein Herz in der Nacht, Stress und Belastung an deinem eigenen Üblichen, plant Routen auf der Karte mit Abbiegehinweisen und erklärt jede Zahl in einem kurzen Artikel."),
-            ("Ist Aera kostenlos?", "Ja. Erholung, Stress, Belastung und dein Schlafwert, die Empfehlung für den Tag, der Routenplaner, die Abbiegehinweise, die Auswertung jedes Trainings, alle Bestleistungen und Flyover für die letzten sieben Tage sind kostenlos. Premium bringt die heutige Einheit, deine Schlafreserve, deine Orte, ältere Flyovers, Verlauf über zwölf Monate hinaus, Berichte und jedes Exportformat."),
+            ("Ist Aera kostenlos?", "Ja. Dein Schlafwert, Stress, Belastung und Erholung, die Empfehlung für den Tag, der Routenplaner, die Abbiegehinweise, die Auswertung jedes Trainings, alle Bestleistungen und Flyover für die letzten sieben Tage sind kostenlos. Premium bringt die heutige Einheit, deine Schlafreserve, deine Orte, ältere Flyovers, Verlauf über zwölf Monate hinaus, Berichte und jedes Exportformat."),
             ("Brauche ich ein Konto, und wo landen meine Daten?", "Es gibt kein Konto. Aera liest Apple Health auf deinem iPhone und berechnet jeden Wert dort, deine Gesundheitswerte bleiben also auf deinem iPhone. In der App steckt kein Sprachmodell. Die Produktanalyse bleibt aus, bis du sie einschaltest, und enthält nie Gesundheitswerte."),
             ("Brauche ich eine Apple Watch?", "Die Apple Watch liefert die nächtlichen Herz- und Schlafsignale, auf denen die meisten Werte beruhen. Ohne sie arbeitet Aera mit dem, was dein iPhone aufzeichnet, etwa Schritte und Trainings, und die Werte, die eine Uhr brauchen, warten auf Daten."),
             ("Woher weiß Aera, was für mich normal ist?", "Aera lernt über mehrere Wochen aus deinen eigenen Nächten und Einheiten, was dein üblicher Bereich ist, und vergleicht jeden neuen Tag damit. Solange deine Daten dünn sind, sagt Aera, dass es noch lernt, statt zu raten."),
@@ -550,21 +553,24 @@ def build(code):
     proof = '<p class="proof rise" style="--d:.54s"><span>%s</span>%s</p>' % (c["hero_free"], rating)
 
     # Behind the scenes: tap a number, read its article, open its sources. Three
-    # windows onto shots already on the page (same files, so no new bytes, and the
-    # /hu and /de shots swap in by name). Each window is 20:9 and shows the shot
-    # from a top edge at share t of its height; with object-fit: cover that is
-    # object-position y = t * 2.1741 / (2.1741 - 0.45), where 2.1741 is the shot's
-    # height over width. --tx/--ty place the tap mark inside the window.
-    how_win = [("sleep", "35.89%", "14%", "72%", "tap"),                  # t = 495/1739: the verdict and the 94
-               ("article-sleep", "32.27%", "", "", ""),                    # t = 445/1739: the article's title
-               ("article-sleep", "55.11%", "28.5%", "25.8%", "tap pill")]  # t = 760/1739: "12 sources"
+    # cards, each with a real phone rising out of its foot (after Bevel's feature
+    # cards). The first two shots are already on the page, so no new bytes, and
+    # the /hu and /de shots swap in by name; the Field Guide index is the press
+    # kit capture. --tx/--ty place the tap mark on the screen as a share of its
+    # width and height (the 94 sits at 14% / 43.4% of the Sleep shot; the
+    # "12 sources" pill at 28.5% / 49% of the article).
+    how_win = [("sleep", "14%", "43.4%", "tap", "var(--indigo)"),
+               ("article-sleep", "28.5%", "49%", "tap pill", "var(--green)"),
+               ("fieldguide", "", "", "", "var(--gold)")]
     how = "".join(
-        '<li class="how-step reveal" style="--d:%dms"><div class="how-win" style="--op:%s%s">%s%s</div>'
-        '<div class="how-txt"><h3><span class="how-n">%d</span>%s</h3><p>%s</p></div></li>'
-        % (i * 90, y, (";--tx:%s;--ty:%s" % (tx, ty)) if tx else "",
-           picture(name, alt, "(max-width: 759px) 92vw, 360px"),
-           '<i class="%s" aria-hidden="true"></i>' % mark if mark else "", i + 1, h, body)
-        for i, ((name, y, tx, ty, mark), (h, body, alt)) in enumerate(zip(how_win, c["how"])))
+        '<li class="how-step reveal" style="--d:%dms;--c:%s">'
+        '<div class="how-txt"><span class="how-n">%d</span><h3>%s</h3><p>%s</p></div>'
+        '<div class="how-dev"><div class="phone"><div class="screen-wrap"%s>%s%s</div></div></div></li>'
+        % (i * 90, col, i + 1, h, body,
+           (' style="--tx:%s;--ty:%s"' % (tx, ty)) if tx else "",
+           picture(name, alt, "(max-width: 759px) 60vw, 240px"),
+           '<i class="%s" aria-hidden="true"></i>' % mark if mark else "")
+        for i, ((name, tx, ty, mark, col), (h, body, alt)) in enumerate(zip(how_win, c["how"])))
 
     steps_html, stage = [], []
     for i, (shot, kicker, col, h3, body, extra, alt) in enumerate(c["steps"]):
@@ -621,7 +627,7 @@ def build(code):
          "url": canonical, "downloadUrl": c["store"], "installUrl": c["store"],
          "description": plain(c["desc"]),
          "screenshot": [BASE + "img/sleep-light-800.webp", BASE + "img/session-dark-800.webp", BASE + "img/planner-dark-800.webp"],
-         "featureList": [plain(st[3]) for st in c["steps"]] + [plain(c["after_h2"])],
+         "featureList": [plain(st[3]) for st in c["steps"] if st[0] not in ("recovery", "home")] + [plain(c["after_h2"])],
          "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
         {"@type": "Person", "@id": BASE + "#maker", "name": "Gerg\u0151 Varga", "url": BASE},
@@ -738,6 +744,7 @@ def build(code):
       <div class="phone hero-ph"><div class="screen-wrap">
         <div class="hs hs-home">{picture('sleep', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
       </div></div>
+      <div class="hero-watch"><img src="img/hero/watch-run-s-336.webp" srcset="img/hero/watch-run-s-336.webp 336w, img/hero/watch-run-s-672.webp 672w" sizes="(min-width: 900px) 210px, 38vw" width="672" height="1037" decoding="async" alt="{html.escape(c['watch_alt'])}"></div>
     </div>
   </div>
   {L['near']}

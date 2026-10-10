@@ -823,12 +823,12 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
 
 /* Also in Aera and the price: plain words under a hairline, like a spec
    sheet. No cards, no icons, no bullets; the price is said once, here. */
-.tiles { display: grid; grid-template-columns: 1fr; column-gap: 48px; margin-top: 40px; max-width: 1040px; margin-inline: auto; }
-@media (min-width: 620px) { .tiles { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 980px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
-.tile { border-top: 1px solid var(--line); padding: 20px 0 28px; }
-.tile h3 { font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
-.tile p { margin-top: 6px; color: var(--ink-2); font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; margin-top: 32px; max-width: 1040px; margin-inline: auto; }
+@media (min-width: 980px) { .tiles { grid-template-columns: repeat(3, 1fr); column-gap: 48px; margin-top: 40px; } }
+.tile { border-top: 1px solid var(--line); padding: 16px 0 22px; min-width: 0; }
+.tile h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
+.tile p { margin-top: 5px; color: var(--ink-2); font-size: 15px; line-height: 1.45; text-wrap: pretty; }
+@media (min-width: 620px) { .tile { padding: 20px 0 28px; } .tile h3 { font-size: 19px; } .tile p { margin-top: 6px; font-size: 17px; line-height: 1.5; } }
 .plans { display: grid; gap: 8px 56px; margin: 40px auto 0; max-width: 960px; }
 @media (min-width: 860px) { .plans { grid-template-columns: 1fr 1fr; } }
 .plan { border-top: 1px solid var(--line); padding: 22px 0 18px; }
@@ -929,3 +929,93 @@ section.closing { padding-bottom: 0; }
   .closing .deer { fill: #221c2f; fill-opacity: 1; }
   footer { --ink: #f5f3ee; --ink-2: #c3bacb; --ink-3: #988fa3; --line: rgba(255, 255, 255, .1); background: #352b43; color: var(--ink-2); border-top: 0; }
 }
+
+/* iPhone 17 Pro: the frame every live phone wears (scripts/devices.py frames),
+   measured from Apple's product bezel: 3.7% screen inset, an 18.4% corner, the
+   Dynamic Island, a Silver band on light pages and Deep Blue on dark ones.
+   One cached SVG per scheme laid over the real screen, no live SVG. */
+.phone { padding: 3.7%; border-radius: 18.4% / 8.82%; background: #050609;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 22px 44px -18px rgba(0, 0, 0, .4), 0 60px 110px -46px rgba(0, 0, 0, .48); }
+.phone .screen-wrap { border-radius: 15.4% / 7.08%; }
+.phone::after {
+  inset: 0 -0.8%; width: auto; height: auto; transform: none; border-radius: 0;
+  background: url("img/devices/iphone-light.svg") center / 100% 100% no-repeat; pointer-events: none;
+}
+@media (prefers-color-scheme: dark) {
+  .phone::after { background-image: url("img/devices/iphone-dark.svg"); }
+  .phone { box-shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 30px 60px -20px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .04); }
+}
+
+/* ======================================================================
+   Round 5: the first ten seconds (after Bevel and apple.com/watch).
+   Last night on the phone, the run on the wrist: the real Watch run screen
+   (heart rate in your own zones) in Apple's Series 11 bezel leans on the phone (band fade and shadow
+   are baked into the picture, so scrolling only moves it). Everything is on
+   screen within half a second and settles a short way into place.
+   ====================================================================== */
+.hero-watch { position: absolute; z-index: 3; width: 46%; pointer-events: none;
+  will-change: transform;
+  transform: translate3d(calc(var(--mx, 0) * 7px), calc(var(--p, 0) * -34px + var(--my, 0) * 5px), 0); }
+.hero-watch img { display: block; width: 100%; height: auto; }
+
+/* Phones: a larger device pair, more of it in the first screen; the Watch at the right. */
+@media (max-width: 899px) {
+  .hero-phone { width: min(60vw, 250px); margin-bottom: calc(min(60vw, 250px) * -0.62); translate: -9% 0; }
+  .hero-watch { width: 62.4%; right: -38.2%; top: 20.7%; }
+}
+/* Laptops: the Watch steps forward on the copy's side of the phone. */
+@media (min-width: 900px) {
+  .hero-phone { translate: 6% 0; }
+  .hero-watch { width: 62.4%; left: -39.2%; top: 38.7%; }
+  .hero .lede { max-width: 540px; }
+}
+
+/* Arrival: short distances, quick fades, no colour wave through the headline. */
+.motion .hero .l1, .motion .hero .l2, .motion .hero .l3, .motion .hero .l4 { translate: 0 24px; }
+.motion .hero.in .l1, .motion .hero.in .l2, .motion .hero.in .l3, .motion .hero.in .l4 {
+  transition: translate .9s var(--ease), opacity .6s var(--ease); }
+.motion .hero.in .l2 { transition-delay: .04s; }
+.motion .hero.in .l3 { transition-delay: .08s; }
+.motion .hero.in .l4 { transition-delay: .12s; }
+.motion .hero .rise { translate: 0 12px; }
+.motion .hero.in .rise { transition: opacity .45s var(--ease) calc(var(--d, 0s) * .4), translate .6s var(--ease) calc(var(--d, 0s) * .4); }
+.motion .hero.in .split .w > span { transition: transform .62s var(--ease) calc(var(--d, 0s) * .4 + var(--i) * 28ms); }
+.motion .hero .hero-phone .phone { translate: 0 28px; }
+.motion .hero.in .hero-phone .phone { transition: opacity .5s var(--ease) .08s, translate .8s var(--ease) .08s; }
+.motion .hero .hero-watch img { opacity: 0; translate: 14px 22px; }
+.motion .hero.in .hero-watch img { opacity: 1; translate: 0 0; transition: opacity .5s var(--ease) .18s, translate .9s var(--ease) .18s; }
+.motion .hero.in h1 .w > span::after { animation: none; }
+
+/* Narrow phones (320 to 359 px): nothing may push the page sideways. The rating
+   line was a few pixels wider than the column and the planner's buzz rings ran
+   past the edge, so the whole page could be dragged sideways on an iPhone SE. */
+.hero-inner > * { min-width: 0; }
+.scene-planner { overflow-x: clip; }
+@media (max-width: 359px) {
+  .proof { font-size: 13.5px; gap: 2px 12px; }
+  .proof .rating-stars { font-size: 14px; letter-spacing: 0; }
+}
+
+/* ======================================================================
+   Round 6: "Every number shows its work" as three feature cards, after
+   Bevel's: a tinted card per step, the words on top, a real phone rising out
+   of its foot, the tap drawn on the screen itself. Replaces the 20:9 windows.
+   ====================================================================== */
+.how { gap: 16px; }
+@media (min-width: 760px) { .how { gap: clamp(14px, 1.6vw, 22px); } }
+.how-step { position: relative; display: flex; flex-direction: column; gap: 0; overflow: hidden; isolation: isolate;
+  border-radius: clamp(24px, 2.4vw, 32px); padding: clamp(24px, 2.4vw, 32px) clamp(22px, 2.2vw, 30px) 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 13%, var(--card)) 0%, color-mix(in srgb, var(--c) 5%, var(--card)) 100%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 14%, var(--line)); }
+.how-txt { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; }
+.how-txt h3 { display: block; font-size: clamp(20px, 1.7vw, 23px); font-weight: 750; letter-spacing: -.015em; text-wrap: balance; }
+.how-n { width: 26px; height: 26px; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); }
+.how-txt p { grid-column: 1 / -1; margin-top: 8px; padding-left: 0; font-size: 16px; color: var(--ink-2); max-width: 32ch; }
+.how-dev { position: relative; margin-top: auto; padding-top: clamp(22px, 2.4vw, 30px); box-sizing: content-box; height: clamp(250px, 23vw, 330px); }
+.how-dev .phone { position: absolute; left: 50%; top: clamp(22px, 2.4vw, 30px); width: min(64%, 236px); translate: -50% 0; }
+.how-dev .screen-wrap { position: relative; }
+.how-dev .tap { left: var(--tx); top: var(--ty); width: 17%; height: auto; aspect-ratio: 1; margin: 0; translate: -50% -50%; }
+.how-dev .tap.pill { width: 30%; aspect-ratio: 3.6; height: auto; margin: 0; }
+.motion .how-step .phone { translate: -50% 44px; opacity: 0; }
+.motion .how-step.in .phone { translate: -50% 0; opacity: 1; transition: translate .9s var(--ease) calc(var(--d, 0s) + .1s), opacity .5s var(--ease) calc(var(--d, 0s) + .1s); }
+@media (max-width: 759px) { .how-dev { height: min(78vw, 310px); } .how-dev .phone { width: min(62%, 230px); } }
