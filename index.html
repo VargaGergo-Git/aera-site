@@ -26,8 +26,8 @@
 <link rel="alternate" hreflang="en" href="https://aerahealth.app/"><link rel="alternate" hreflang="hu" href="https://aerahealth.app/hu.html"><link rel="alternate" hreflang="de" href="https://aerahealth.app/de.html"><link rel="alternate" hreflang="x-default" href="https://aerahealth.app/">
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="stylesheet" href="home.css?v=d3b29f565c">
-<link rel="stylesheet" href="scenes.css?v=40cac2c831">
+<link rel="stylesheet" href="home.css?v=fc9dbd91c0">
+<link rel="stylesheet" href="scenes.css?v=4e05d8142d">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "Sleep & Running Tracker for iPhone and Apple Watch", "applicationCategory": "HealthApplication", "applicationSubCategory": "Sleep and running tracker", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/", "downloadUrl": "https://apps.apple.com/app/id6762456252", "installUrl": "https://apps.apple.com/app/id6762456252", "description": "Aera reads how you slept, what your heart did overnight and how the week went, against your own usual, then tells you how hard to go today. Every number shows how it was worked out. No account.", "screenshot": ["https://aerahealth.app/img/sleep-light-800.webp", "https://aerahealth.app/img/session-dark-800.webp", "https://aerahealth.app/img/planner-dark-800.webp"], "featureList": ["The night as it happened", "How long, and how hard", "Draw the route from your door", "Replay the run you just did, in 3D."], "author": {"@id": "https://aerahealth.app/#maker"}, "publisher": {"@id": "https://aerahealth.app/#org"}, "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "Organization", "@id": "https://aerahealth.app/#org", "name": "Aera", "url": "https://aerahealth.app/", "logo": "https://aerahealth.app/assets/icon.png", "email": "hello@aerahealth.app", "founder": {"@id": "https://aerahealth.app/#maker"}, "sameAs": ["https://apps.apple.com/app/id6762456252"]}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "en", "publisher": {"@id": "https://aerahealth.app/#org"}}, {"@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What does Aera do?", "acceptedAnswer": {"@type": "Answer", "text": "Aera is an iPhone and Apple Watch app that reads Apple Health and tells you each morning how hard to go: rest day, go easy, good to go or go for it. It reads your sleep, your overnight heart, stress and strain against your own usual, plans routes on a map with turn-by-turn directions, and explains every number in a short article."}}, {"@type": "Question", "name": "Is Aera free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your sleep score, stress, strain and recovery, the call for the day, the route planner, turn by turn, every workout read, every personal best and Flyover for the last seven days are free. Premium adds today's session, your sleep reserve, your places, older Flyovers, history past twelve months, reports and every export format."}}, {"@type": "Question", "name": "Do I need an account, and where does my data go?", "acceptedAnswer": {"@type": "Answer", "text": "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. There is no language model in the app. Product analytics stay off until you turn them on and never include health values."}}, {"@type": "Question", "name": "Do I need an Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "An Apple Watch gives Aera the overnight heart and sleep signals most reads are built on. Without one, Aera works from what your iPhone records, like steps and workouts, and the reads that need a watch wait until there is data."}}, {"@type": "Question", "name": "How does Aera know what is normal for me?", "acceptedAnswer": {"@type": "Answer", "text": "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."}}, {"@type": "Question", "name": "Is Aera a medical device?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."}}, {"@type": "Question", "name": "Which languages does Aera speak?", "acceptedAnswer": {"@type": "Answer", "text": "English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part."}}]}]}</script>
 <script>
 // The old single-page site lived at /#privacy, /#support, /#terms and /#eula.
@@ -38,6 +38,33 @@
   if (target) location.replace(target);
 })();
 </script>
+<!--lsw--><style>
+.lsw{position:relative;display:inline-flex;align-items:center}
+.topnav:has(.lsw){align-items:center}
+.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;justify-content:center;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.lsw>summary::-webkit-details-marker{display:none}
+@media (hover:hover){.lsw>summary:hover{background:color-mix(in srgb,currentColor 12%,transparent)}}
+.lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.lsw svg{width:16px;height:16px;flex:none}
+.lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
+@media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
+.lsw-menu a[aria-current]{font-weight:600}
+.lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
+@media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+.bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
+.bar.scrolled .lsw{color:var(--ink-2)}
+.bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
+.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
+.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.lsw-foot a[aria-current]{opacity:1;font-weight:600}
+@media (hover:hover){.lsw-foot a:hover{opacity:1}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
+@media (max-width:359px){.topnav:has(.lsw){gap:9px}}
+</style><!--/lsw-->
 </head>
 <body>
 <a class="skip" href="#engine">Skip to content</a>
@@ -45,7 +72,7 @@
 <header class="bar">
   <div class="wide">
     <a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="30" height="30">Aera</a>
-    <nav><a class="opt" href="notes/index.html">Notes</a><a class="opt" href="tools/how-far.html">How far will I run?</a><a class="opt" href="support.html">Support</a><a class="get" href="/get/nav/en/">Get Aera</a></nav>
+    <nav><a class="opt" href="notes/index.html">Notes</a><a class="opt" href="tools/how-far.html">How far will I run?</a><a class="opt" href="support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/hu.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/de.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--><a class="get" href="/get/nav/en/">Get Aera</a></nav>
   </div>
   <nav class="chapters" aria-label="Chapters"><a href="#engine" data-ch="engine"><i></i><span>Last night</span></a><a href="#guide" data-ch="guide"><i></i><span>This morning</span></a><a href="#planner" data-ch="planner"><i></i><span>Out the door</span></a><a href="#flyover" data-ch="flyover"><i></i><span>After the run</span></a><span class="ch-now" aria-hidden="true"></span></nav>
 </header>
@@ -158,7 +185,7 @@
           </svg>
       </div>
       <div class="eng-device reveal" style="--d:.16s">
-        <div class="phone tilt-in"><div class="screen-wrap"><img src="img/today-dark-400.webp" srcset="img/today-dark-400.webp 400w, img/today-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="Aera's Fitness Today screen: Good to go, on a scale from Rest to Go. Still carrying recent training; your usual session fits."></div></div>
+        <div class="phone tilt-in"><div class="screen-wrap"><img src="img/session-card-dark-400.webp" srcset="img/session-card-dark-400.webp 400w, img/session-card-dark-800.webp 800w" sizes="(min-width: 900px) 340px, 62vw" width="1206" height="2622" loading="lazy" decoding="async" alt="Aera's session screen: an easy strength session, 40 minutes at a steady effort, below your usual 50, with the reasons for it right underneath."></div></div>
       </div>
       <ol class="eng-caps reveal">
         <li class="cap c1"><b>Last night</b> <span>Sleep, your heart overnight and your week, read from Apple Health on your iPhone.</span></li>
@@ -168,6 +195,7 @@
     </div>
   </div>
   <p class="wide eng-note">Illustration. In the app every number opens an article that shows how it was worked out.</p>
+<div class="get-row reveal"><a class="btn btn-store" href="/get/engine/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download on the App Store</a><p class="get-note">Free to start · No account</p></div>
 </section>
 
 <section id="guide" class="guide-sec">
@@ -199,7 +227,7 @@
 <div class="wg-wall" aria-hidden="true"><svg viewBox="0 0 393 852" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="widgets-sky" x1="0" y1="0" x2="0" y2="1"><stop class="s1" offset="0"/><stop class="s2" offset=".55"/><stop class="s3" offset="1"/></linearGradient><radialGradient id="widgets-sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(290 560) scale(120)"><stop class="u1" offset="0"/><stop class="u2" offset="1"/></radialGradient></defs><rect width="393" height="852" fill="url(#widgets-sky)"/><rect width="393" height="852" fill="url(#widgets-sun)"/><path class="h1" d="M0 600C60 570 120 585 180 560S300 520 393 545V852H0Z"/><path class="h2" d="M0 660C70 630 150 655 220 630S330 600 393 615V852H0Z"/><path class="h3" d="M0 730C90 700 170 720 250 700S350 690 393 700V852H0Z"/></svg></div>
 <div class="wg-status" aria-hidden="true"><b>9:41</b><i class="wg-isl"></i><span class="wg-sig"><i></i><i></i><i></i><i></i></span></div>
 <div class="wg-home" aria-hidden="true"><i class="wg-dim"></i>
-<div class="wg-w wg-w1 wg-s" style="left:5.6%;top:7.75%"><p class="wg-name">Last night</p><p class="wg-hero wg-lav"><b>7</b>h <b>25</b>m</p><p class="wg-body">32m behind your need</p><div class="wg-lanes"><i style="--x:0;--w:5;--l:0"></i><i style="--x:8;--w:12;--l:2"></i><i style="--x:22;--w:9;--l:3"></i><i style="--x:33;--w:14;--l:2"></i><i style="--x:49;--w:7;--l:1"></i><i style="--x:58;--w:4;--l:0"></i><i style="--x:64;--w:10;--l:2"></i><i style="--x:76;--w:6;--l:3"></i><i style="--x:84;--w:9;--l:1"></i><i style="--x:95;--w:5;--l:0"></i></div></div>
+<div class="wg-w wg-w1 wg-s" style="left:5.6%;top:7.75%"><p class="wg-name">Last night</p><p class="wg-hero wg-lav"><b>7</b>h <b>25</b>m</p><p class="wg-body">Right on your need</p><div class="wg-lanes"><i style="--x:0;--w:5;--l:0"></i><i style="--x:8;--w:12;--l:2"></i><i style="--x:22;--w:9;--l:3"></i><i style="--x:33;--w:14;--l:2"></i><i style="--x:49;--w:7;--l:1"></i><i style="--x:58;--w:4;--l:0"></i><i style="--x:64;--w:10;--l:2"></i><i style="--x:76;--w:6;--l:3"></i><i style="--x:84;--w:9;--l:1"></i><i style="--x:95;--w:5;--l:0"></i></div></div>
 <div class="wg-w wg-w2 wg-s" style="left:52.2%;top:7.75%"><p class="wg-name">Today's session</p><p class="wg-sent"><span>Easy run,</span><span class="wg-soft">35 min.</span></p><div class="wg-shape"><i style="--h:30"></i><i style="--h:30"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:55"></i><i style="--h:30"></i></div></div>
 <div class="wg-w wg-w3 wg-m" style="left:5.6%;top:29.5%"><p class="wg-sent wg-big"><span>All usual,</span><span class="wg-soft">every one.</span></p><div class="wg-vitals">
 <div class="wg-v" style="--c:var(--wg-hrv);--o:.44"><p><svg viewBox="0 0 24 24"><path d="M2 13h4l2-5 4 10 3-7 2 2h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>84</b></p><i class="wg-rail"><i class="wg-dot"></i></i></div>
@@ -222,7 +250,7 @@
 <p class="wg-date">Friday, 9 October</p>
 <p class="wg-clock">9:41</p>
 <div class="wg-acc">
-<div class="wg-rect"><p class="wg-an">Last night</p><p class="wg-af">7h 25m</p><p class="wg-ab">32m behind your need</p></div>
+<div class="wg-rect"><p class="wg-an">Last night</p><p class="wg-af">7h 25m</p><p class="wg-ab">Right on your need</p></div>
 <div class="wg-circ"><b>4</b><small>sessions</small></div>
 </div>
 <div class="wg-lockbar"><i></i><i></i></div>
@@ -297,9 +325,10 @@
 </div>
 </div>
 </div>
+<div class="get-row reveal"><a class="btn btn-store" href="/get/planner/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download on the App Store</a><p class="get-note">The planner and turn by turn are free.</p></div>
 </section>
 
-<section class="scene scene-flyover" id="flyover" aria-labelledby="flyover-h" data-stops="0.38,0.95">
+<section class="scene scene-flyover" id="flyover" aria-labelledby="flyover-h" data-stops="0.64,0.95">
   <canvas class="fo-amb" width="24" height="40" aria-hidden="true"></canvas>
   <div class="wide fo-head reveal">
     <h2 class="h2 split" id="flyover-h">Replay the run you just did, in 3D.</h2>
@@ -309,13 +338,14 @@
     <div class="fo-call fo-c1" aria-hidden="true"><b>Every kilometre</b><span>Its pace and heart rate</span><i></i></div>
     <div class="fo-device tilt-in">
       <div class="phone"><div class="screen-wrap">
-        <img class="fo-poster" src="media/flyover/poster-400.webp" srcset="media/flyover/poster-400.webp 400w, media/flyover/poster-800.webp 800w" sizes="(max-width: 899px) 78vw, 380px" width="886" height="1920" loading="lazy" decoding="async" alt="Aera's Flyover replaying a run in 3D over satellite ground, with distance, pace and heart rate">
-        <video class="fo-video" muted playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" data-src-mp4="media/flyover/film.mp4" data-src-webm="media/flyover/film.webm"></video>
+        <img class="fo-poster" src="media/flyover/poster-v2-400.webp" srcset="media/flyover/poster-v2-400.webp 400w, media/flyover/poster-v2-800.webp 800w" sizes="(max-width: 899px) 78vw, 380px" width="886" height="1920" loading="lazy" decoding="async" alt="Aera's Flyover replaying a run in 3D over satellite ground, with distance, pace and heart rate">
+        <video class="fo-video" muted playsinline preload="none" disablepictureinpicture aria-hidden="true" tabindex="-1" data-src-mp4="media/flyover/film-calm-v2.mp4" data-src-webm="media/flyover/film-calm-v2.webm"></video>
       </div></div>
       <button class="fo-replay" type="button" hidden><svg class="fo-ip" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg><svg class="fo-ir" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4.6 4.2v5.4H10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="fo-again">Watch again</span><span class="fo-play">Play the Flyover</span></button>
     </div>
     <div class="fo-call fo-c2" aria-hidden="true"><b>The whole run</b><span>6.0 km · 37:51</span><i></i></div>
   </div>
+<div class="get-row reveal"><a class="btn btn-store" href="/get/flyover/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>Download on the App Store</a><p class="get-note">Free for runs from the last seven days.</p></div>
 </section>
 
 <section class="privacy">
@@ -398,8 +428,19 @@
   </div>
 </footer>
 
-<script src="home.js?v=8732453ff8" defer></script>
-<script src="scenes.js?v=d4fa1a9390" defer></script>
+<script src="home.js?v=25a51ff892" defer></script>
+<script src="scenes.js?v=17fd96a33c" defer></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
+<!--lsw--><script>(function(){var d=document,K='aera-lang';
+function shut(o){o.removeAttribute('open')}
+d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
+if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
+[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
+var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->
 </body>
 </html>
