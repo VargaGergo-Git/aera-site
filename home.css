@@ -995,3 +995,27 @@ section.closing { padding-bottom: 0; }
   .proof { font-size: 13.5px; gap: 2px 12px; }
   .proof .rating-stars { font-size: 14px; letter-spacing: 0; }
 }
+
+/* ======================================================================
+   Round 6: "Every number shows its work" as three feature cards, after
+   Bevel's: a tinted card per step, the words on top, a real phone rising out
+   of its foot, the tap drawn on the screen itself. Replaces the 20:9 windows.
+   ====================================================================== */
+.how { gap: 16px; }
+@media (min-width: 760px) { .how { gap: clamp(14px, 1.6vw, 22px); } }
+.how-step { position: relative; display: flex; flex-direction: column; gap: 0; overflow: hidden; isolation: isolate;
+  border-radius: clamp(24px, 2.4vw, 32px); padding: clamp(24px, 2.4vw, 32px) clamp(22px, 2.2vw, 30px) 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 13%, var(--card)) 0%, color-mix(in srgb, var(--c) 5%, var(--card)) 100%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 14%, var(--line)); }
+.how-txt { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; }
+.how-txt h3 { display: block; font-size: clamp(20px, 1.7vw, 23px); font-weight: 750; letter-spacing: -.015em; text-wrap: balance; }
+.how-n { width: 26px; height: 26px; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); }
+.how-txt p { grid-column: 1 / -1; margin-top: 8px; padding-left: 0; font-size: 16px; color: var(--ink-2); max-width: 32ch; }
+.how-dev { position: relative; margin-top: auto; padding-top: clamp(22px, 2.4vw, 30px); box-sizing: content-box; height: clamp(250px, 23vw, 330px); }
+.how-dev .phone { position: absolute; left: 50%; top: clamp(22px, 2.4vw, 30px); width: min(64%, 236px); translate: -50% 0; }
+.how-dev .screen-wrap { position: relative; }
+.how-dev .tap { left: var(--tx); top: var(--ty); width: 17%; height: auto; aspect-ratio: 1; margin: 0; translate: -50% -50%; }
+.how-dev .tap.pill { width: 30%; aspect-ratio: 3.6; height: auto; margin: 0; }
+.motion .how-step .phone { translate: -50% 44px; opacity: 0; }
+.motion .how-step.in .phone { translate: -50% 0; opacity: 1; transition: translate .9s var(--ease) calc(var(--d, 0s) + .1s), opacity .5s var(--ease) calc(var(--d, 0s) + .1s); }
+@media (max-width: 759px) { .how-dev { height: min(78vw, 310px); } .how-dev .phone { width: min(62%, 230px); } }

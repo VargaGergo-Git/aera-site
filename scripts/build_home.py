@@ -79,10 +79,10 @@ COPY = {
         "how": [
             ("Tap a number", "Every score opens its own short article.",
              "The Sleep screen: 94 of 100, with a tap on the score"),
-            ("See how it was worked out", "What goes into it, and how much each part counts.",
-             "The Field Guide article on your sleep score: two things carry most of it, neither of them is your heart"),
-            ("Open the sources", "The research behind it, and where the number stops being reliable.",
-             "The article's sources: 5 minutes, 12 sources"),
+            ("See how it was worked out", "What goes into it, how much each part counts, and the research behind it.",
+             "The Field Guide article on your sleep score, with a tap on its 12 sources"),
+            ("Read the whole Field Guide", "Everything Aera reads, in plain words, each with its sources.",
+             "The Field Guide: everything Aera reads, in plain words"),
         ],
         "after_kicker": "After the run",
         "after_h2": "Replay the run you just did, in 3D.",
@@ -187,10 +187,10 @@ COPY = {
         "how": [
             ("Koppints egy számra", "Minden pontszám mögött ott a saját rövid cikke.",
              "Az alvás képernyő: 94/100, egy koppintással a pontszámon"),
-            ("Nézd meg, hogyan jött ki", "Mi kerül bele, és melyik rész mennyit számít.",
-             "A Field Guide cikke az alváspontszámról"),
-            ("Nyisd meg a forrásokat", "A kutatás mögötte, és hol szűnik meg megbízhatónak lenni a szám.",
-             "A cikk forrásai: 5 perc, 12 forrás"),
+            ("Nézd meg, hogyan jött ki", "Mi kerül bele, melyik rész mennyit számít, és milyen kutatás áll mögötte.",
+             "A Field Guide cikke az alváspontszámról, egy koppintással a 12 forráson"),
+            ("Olvasd el az egész Field Guide-ot", "Minden, amit az Aera figyel, érthetően, mindegyik a forrásaival.",
+             "A Field Guide: minden, amit az Aera figyel, érthetően"),
         ],
         "after_kicker": "Futás után",
         "after_h2": "Nézd vissza 3D-ben a futásodat.",
@@ -295,10 +295,10 @@ COPY = {
         "how": [
             ("Tipp auf eine Zahl", "Hinter jedem Wert steht ein eigener kurzer Artikel.",
              "Der Schlaf-Bildschirm: 94 von 100, mit einem Tipp auf den Wert"),
-            ("Sieh, wie sie entsteht", "Was hineinfließt und wie viel jeder Teil zählt.",
-             "Der Field-Guide-Artikel über deinen Schlafwert"),
-            ("Öffne die Quellen", "Die Forschung dahinter und wo die Zahl nicht mehr verlässlich ist.",
-             "Die Quellen des Artikels: 5 Minuten, 12 Quellen"),
+            ("Sieh, wie sie entsteht", "Was hineinfließt, wie viel jeder Teil zählt, und die Forschung dahinter.",
+             "Der Field-Guide-Artikel über deinen Schlafwert, mit einem Tipp auf seine 12 Quellen"),
+            ("Lies den ganzen Field Guide", "Alles, was Aera liest, in klaren Worten, jeweils mit Quellen.",
+             "Der Field Guide: alles, was Aera liest, in klaren Worten"),
         ],
         "after_kicker": "Nach dem Lauf",
         "after_h2": "Spiel deinen Lauf in 3D noch einmal ab.",
@@ -553,21 +553,24 @@ def build(code):
     proof = '<p class="proof rise" style="--d:.54s"><span>%s</span>%s</p>' % (c["hero_free"], rating)
 
     # Behind the scenes: tap a number, read its article, open its sources. Three
-    # windows onto shots already on the page (same files, so no new bytes, and the
-    # /hu and /de shots swap in by name). Each window is 20:9 and shows the shot
-    # from a top edge at share t of its height; with object-fit: cover that is
-    # object-position y = t * 2.1741 / (2.1741 - 0.45), where 2.1741 is the shot's
-    # height over width. --tx/--ty place the tap mark inside the window.
-    how_win = [("sleep", "35.89%", "14%", "72%", "tap"),                  # t = 495/1739: the verdict and the 94
-               ("article-sleep", "32.27%", "", "", ""),                    # t = 445/1739: the article's title
-               ("article-sleep", "55.11%", "28.5%", "25.8%", "tap pill")]  # t = 760/1739: "12 sources"
+    # cards, each with a real phone rising out of its foot (after Bevel's feature
+    # cards). The first two shots are already on the page, so no new bytes, and
+    # the /hu and /de shots swap in by name; the Field Guide index is the press
+    # kit capture. --tx/--ty place the tap mark on the screen as a share of its
+    # width and height (the 94 sits at 14% / 43.4% of the Sleep shot; the
+    # "12 sources" pill at 28.5% / 49% of the article).
+    how_win = [("sleep", "14%", "43.4%", "tap", "var(--indigo)"),
+               ("article-sleep", "28.5%", "49%", "tap pill", "var(--green)"),
+               ("fieldguide", "", "", "", "var(--gold)")]
     how = "".join(
-        '<li class="how-step reveal" style="--d:%dms"><div class="how-win" style="--op:%s%s">%s%s</div>'
-        '<div class="how-txt"><h3><span class="how-n">%d</span>%s</h3><p>%s</p></div></li>'
-        % (i * 90, y, (";--tx:%s;--ty:%s" % (tx, ty)) if tx else "",
-           picture(name, alt, "(max-width: 759px) 92vw, 360px"),
-           '<i class="%s" aria-hidden="true"></i>' % mark if mark else "", i + 1, h, body)
-        for i, ((name, y, tx, ty, mark), (h, body, alt)) in enumerate(zip(how_win, c["how"])))
+        '<li class="how-step reveal" style="--d:%dms;--c:%s">'
+        '<div class="how-txt"><span class="how-n">%d</span><h3>%s</h3><p>%s</p></div>'
+        '<div class="how-dev"><div class="phone"><div class="screen-wrap"%s>%s%s</div></div></div></li>'
+        % (i * 90, col, i + 1, h, body,
+           (' style="--tx:%s;--ty:%s"' % (tx, ty)) if tx else "",
+           picture(name, alt, "(max-width: 759px) 60vw, 240px"),
+           '<i class="%s" aria-hidden="true"></i>' % mark if mark else "")
+        for i, ((name, tx, ty, mark, col), (h, body, alt)) in enumerate(zip(how_win, c["how"])))
 
     steps_html, stage = [], []
     for i, (shot, kicker, col, h3, body, extra, alt) in enumerate(c["steps"]):
