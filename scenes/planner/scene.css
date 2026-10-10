@@ -143,9 +143,11 @@
 .scene-planner .pl-hud-tx small { font: 600 13px/1.1 var(--rounded); color: var(--pl-glass-ink-2); }
 
 /* Wrist: the real iPhone turn screen and a drawn Watch. */
-.scene-planner .pl-wrist { position: relative; display: flex; align-items: center; justify-content: center; gap: clamp(16px, 4vw, 48px); --w: clamp(170px, 42vw, 260px); }
-.scene-planner .pl-phone { width: calc(var(--w) * .78); flex: none; }
-.scene-planner .pl-watch { position: relative; width: var(--w); aspect-ratio: 0.84; flex: none; }
+/* The phone leads at true-ish scale and the Watch leans on its lower right,
+   about half the phone's height with its bands, as on the wrist beside it. */
+.scene-planner .pl-wrist { position: relative; display: flex; align-items: flex-end; justify-content: center; --pw: min(54vw, 236px); padding-bottom: calc(var(--pw) * .08); }
+.scene-planner .pl-phone { position: relative; z-index: 0; width: var(--pw); flex: none; }
+.scene-planner .pl-watch { position: relative; z-index: 1; width: calc(var(--pw) * .66); margin: 0 0 calc(var(--pw) * .12) calc(var(--pw) * -.24); aspect-ratio: 0.84; flex: none; }
 .scene-planner .pl-band { position: absolute; left: 17%; right: 17%; height: 30%; background: linear-gradient(90deg, var(--pl-band-2), var(--pl-band) 50%, var(--pl-band-2)); }
 .scene-planner .pl-bt { top: -22%; border-radius: 26% 26% 8% 8% / 40% 40% 10% 10%; }
 .scene-planner .pl-bb { bottom: -22%; border-radius: 8% 8% 26% 26% / 10% 10% 40% 40%; }
@@ -197,10 +199,6 @@
 .scene-planner.pl-turned .pl-wst .b { opacity: 1; }
 
 @keyframes pl-buzz { 0% { opacity: .8; transform: scale(.96); } 100% { opacity: 0; transform: scale(1.14); } }
-@media (max-width: 899px) {
-  .scene-planner .pl-phone { margin-right: calc(var(--w) * -.34); position: relative; z-index: 0; }
-  .scene-planner .pl-watch { z-index: 1; }
-}
 
 .scene-planner .pl-hud-tx b { display: inline-block; transform-origin: 0 60%; }
 
@@ -221,7 +219,7 @@ section.scene-planner { padding: 0; }
   
   .scene-planner .pl-world { justify-items: end; }
   .scene-planner .pl-plane { --map-w: min(100%, 540px); }
-  .scene-planner .pl-wrist { --w: clamp(200px, 17vw, 240px); justify-content: flex-start; padding-block: 6%; }
+  .scene-planner .pl-wrist { --pw: clamp(236px, 19vw, 284px); padding-block: 4% calc(var(--pw) * .08); }
 
 }
 

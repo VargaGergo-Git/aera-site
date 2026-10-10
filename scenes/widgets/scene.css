@@ -160,8 +160,8 @@
 /* Lock Screen */
 .scene-widgets .wg-lock { display: none; }
 .scene-widgets .wg-lock p { margin: 0; }
-.scene-widgets .wg-date { position: absolute; left: 0; right: 0; top: calc(78 * var(--pt)); font-size: calc(20 * var(--pt)); font-weight: 600; opacity: .9; }
-.scene-widgets .wg-clock { position: absolute; left: 0; right: 0; top: calc(98 * var(--pt)); font: 700 calc(104 * var(--pt))/1 var(--rounded); letter-spacing: -0.035em; }
+.scene-widgets .wg-date { position: absolute; left: 0; right: 0; top: calc(78 * var(--pt)); font-size: calc(20 * var(--pt)); line-height: 1.2; font-weight: 600; opacity: .9; }
+.scene-widgets .wg-clock { position: absolute; left: 0; right: 0; top: calc(104 * var(--pt)); font: 700 calc(104 * var(--pt))/1 var(--rounded); letter-spacing: -0.035em; }
 .scene-widgets .wg-acc { position: absolute; left: calc(36 * var(--pt)); right: calc(36 * var(--pt)); top: calc(232 * var(--pt)); display: flex; justify-content: center; gap: calc(14 * var(--pt)); }
 .scene-widgets .wg-rect { width: calc(184 * var(--pt)); height: calc(80 * var(--pt)); box-sizing: border-box; padding: calc(8 * var(--pt)) calc(12 * var(--pt)); border-radius: calc(18 * var(--pt)); background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); text-align: left; }
 .scene-widgets .wg-an { font-size: calc(13 * var(--pt)); font-weight: 600; opacity: .8; white-space: nowrap; }
@@ -192,14 +192,22 @@
 
 section.scene-widgets { padding: 0; }
 
-/* Wide screens: the words on the left, the phone beside them, one screen tall. */
-@media (min-width: 900px) {
-  .scene-widgets .wg-stage { max-width: var(--wide); margin-inline: auto; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto auto; align-content: center; column-gap: clamp(48px, 6vw, 96px); row-gap: 28px; justify-items: start; }
-  .scene-widgets .wg-head { grid-column: 1; grid-row: 1; align-self: end; text-align: left; max-width: 520px; }
-  .scene-widgets .wg-caps { grid-column: 1; grid-row: 2; align-self: start; text-align: left; max-width: 480px; }
-  .scene-widgets .wg-world { grid-column: 2; grid-row: 1 / 3; justify-items: center; }
-  .scene-widgets .wg-dev { --dev-w: clamp(270px, 23vw, 330px); }
+/* Two phones: the Home Screen leads and the Lock Screen stands beside it.
+   On a phone the Lock Screen steps in front at the lower left, clear of the
+   widgets, so its clock and widgets read whole. */
+.scene-widgets .wg-pair { display: flex; align-items: flex-start; justify-content: center; }
+.scene-widgets .wg-dev-home { --dev-w: min(58vw, 270px); z-index: 0; translate: 9% 0; }
+.scene-widgets .wg-dev-lock { --dev-w: min(34vw, 158px); z-index: 1; order: -1; margin: calc(var(--dev-w) * 2.7) calc(var(--dev-w) * -.62) 0 0; translate: 9% 0; }
+.scene-widgets .wg-dev-lock .wg-screen { --lock: .4; }
+.scene-widgets .wg-dev-lock .wg-lock { display: block; position: absolute; inset: 0; z-index: 2; color: #fff; text-align: center; }
 
+/* Wide screens: the line above, both phones side by side, each with its caption under it. */
+@media (min-width: 900px) {
+  .scene-widgets .wg-stage { max-width: var(--wide); margin-inline: auto; --dw: clamp(240px, 18vw, 280px); --pg: clamp(64px, 7vw, 112px); }
+  .scene-widgets .wg-head { max-width: 860px; }
+  .scene-widgets .wg-pair { gap: var(--pg); }
+  .scene-widgets .wg-dev-home, .scene-widgets .wg-dev-lock { --dev-w: var(--dw); margin: 0; translate: none; order: 0; }
+  .scene-widgets .wg-caps { grid-template-columns: repeat(2, calc(var(--dw) * 1.07 + 48px)); column-gap: calc(var(--pg) - 48px); max-width: none; }
 }
 
 /* Arrival: the widgets land one by one (the phone stays still, so only small layers move). */
@@ -207,3 +215,7 @@ section.scene-widgets { padding: 0; }
 .motion .wg-world.in :is(.wg-w, .wg-icons) { transition: opacity .6s var(--ease) var(--wd), scale .9s var(--spring) var(--wd); }
 .scene-widgets .wg-w1 { --wd: .3s; } .scene-widgets .wg-w2 { --wd: .38s; } .scene-widgets .wg-w3 { --wd: .46s; }
 .scene-widgets .wg-w4 { --wd: .54s; } .scene-widgets .wg-icons { --wd: .62s; } .scene-widgets .wg-dock { --wd: .7s; }
+.motion .wg-world:not(.in) .wg-dev-lock { opacity: 0; transform: translateY(28px); }
+.motion .wg-world.in .wg-dev-lock { transition: opacity .6s var(--ease) .2s, transform .9s var(--ease) .2s; }
+/* Over a still wallpaper the Lock Screen glass needs no live blur. */
+.scene-widgets .wg-dev-lock :is(.wg-rect, .wg-circ, .wg-lockbar i) { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .2); }

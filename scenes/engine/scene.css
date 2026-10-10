@@ -23,9 +23,10 @@
 }
 .scene-engine .eng-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .scene-engine .eng-device { width: min(70vw, 300px); }
-.scene-engine .eng-caps { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; max-width: 620px; }
-.scene-engine .cap { padding-left: 16px; border-left: 3px solid var(--line); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.5; color: var(--ink-2); }
-.scene-engine .cap b { color: var(--ink); font-family: var(--rounded); }
+/* Three short notes, each under its own colour rule; a row on wide screens. */
+.scene-engine .eng-caps { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; width: min(100%, 560px); }
+.scene-engine .cap { display: grid; align-content: start; gap: 4px; padding-top: 14px; border-top: 2px solid var(--line); font-size: clamp(16px, 1.3vw, 18px); line-height: 1.45; color: var(--ink-2); }
+.scene-engine .cap b { color: var(--ink); font: 700 clamp(17px, 1.5vw, 20px)/1.25 var(--rounded); }
 .scene-engine .c1 { border-color: var(--indigo); } .scene-engine .c2 { border-color: var(--pink); } .scene-engine .c3 { border-color: var(--green); }
 .scene-engine .eng-note { position: relative; margin: 32px auto 0; font-size: 14px; line-height: 1.45; color: var(--ink-3); text-align: center; max-width: 60ch; }
 @media (min-width: 900px) {
@@ -33,6 +34,7 @@
   .scene-engine .eng-head, .scene-engine .eng-caps { grid-column: 1 / -1; }
   .scene-engine .eng-board { justify-self: end; }
   .scene-engine .eng-device { justify-self: start; }
+  .scene-engine .eng-caps { width: min(100%, 1040px); justify-self: center; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(28px, 3.4vw, 56px); margin-top: 8px; }
 }
 
 /* Lanes */
