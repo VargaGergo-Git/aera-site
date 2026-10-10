@@ -49,6 +49,7 @@ COPY = {
         "proof": "5.0 from %d ratings on the Hungarian App Store",
         "chip_night": "7 h 25 m asleep, right on your need", "chip_day": "Recovery above your usual", "sleep_alt": "Aera's Sleep screen: 7 h 25 m asleep, right on your need",
         "hero_alt": "Aera's Sleep screen for last night: excellent, right on your need, 94 of 100 and 7 h 25 min asleep",
+        "watch_alt": "Aera on Apple Watch this morning: well rested, a good day to push, a 45 minute tempo run in zone 3 ready to start",
         "story_kicker": "A morning with Aera",
         "story_h2": "From last night to out the door.",
         "story_sub": "Every morning starts from the night you actually had. Here is what Aera reads, and what it does with it.",
@@ -156,6 +157,7 @@ COPY = {
         "proof": "5,0 a magyar App Store-ban, %d értékelésből",
         "chip_night": "7 ó 25 p alvás, pont az igényed szerint", "chip_day": "A regenerálódás a szokásosnál jobb", "sleep_alt": "Az Aera alvás képernyője: 7 ó 25 p alvás, pont az igényed szerint",
         "hero_alt": "Az Aera alvás képernyője a tegnapi éjszakáról: kiváló, pont annyi, amennyi kell, 94/100 és 7 óra 25 perc alvás",
+        "watch_alt": "Az Aera az Apple Watch-on ma reggel: kipihent vagy, jó nap a keményebb edzésre, egy 45 perces tempófutás a 3-as zónában, indításra készen",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "A tegnap éjszakától az ajtón túlig.",
         "story_sub": "Minden reggel abból indul, ahogy valóban aludtál. Ezt nézi meg az Aera, és ezt kezdi vele.",
@@ -263,6 +265,7 @@ COPY = {
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
         "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
         "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
+        "watch_alt": "Aera auf der Apple Watch heute Morgen: gut erholt, ein guter Tag zum Gasgeben, ein 45-minütiger Tempolauf in Zone 3, bereit zum Start",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
         "story_sub": "Jeder Morgen beginnt mit der Nacht, die du wirklich hattest. Das liest Aera, und das macht es daraus.",
@@ -738,6 +741,7 @@ def build(code):
       <div class="phone hero-ph"><div class="screen-wrap">
         <div class="hs hs-home">{picture('sleep', c['hero_alt'], '(max-width: 899px) 64vw, 380px', eager=True)}</div>
       </div></div>
+      <div class="hero-watch"><img src="img/hero/watch-today-s-336.webp" srcset="img/hero/watch-today-s-336.webp 336w, img/hero/watch-today-s-672.webp 672w" sizes="(min-width: 900px) 210px, 38vw" width="672" height="1037" decoding="async" alt="{html.escape(c['watch_alt'])}"></div>
     </div>
   </div>
   {L['near']}
