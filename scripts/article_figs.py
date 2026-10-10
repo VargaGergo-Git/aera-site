@@ -10,8 +10,8 @@ T = {
     "hrv_band": {
         "en": dict(title="One low night is noise. A low week is a signal.", y="HRV (ms)", band="your usual range", avg="7-night average",
                    one="one low night", week="a week below your usual", nights="nights", cap="<b>Illustration with example nights.</b> Dots are single nights; the shaded band is this person's own usual range from earlier weeks; the green line is a 7-night rolling average, the way Plews and colleagues (2013) suggest reading HRV."),
-        "hu": dict(title="Egy rossz éjszaka zaj. Egy rossz hét jelzés.", y="HRV (ms)", band="a saját szokásos tartományod", avg="7 éjszakás átlag",
-                   one="egy alacsony éjszaka", week="egy hét a szokásos alatt", nights="éjszaka", cap="<b>Szemléltetés példa-éjszakákkal.</b> A pontok egy-egy éjszakát jelölnek; a sáv az illető korábbi hetekből számolt saját szokásos tartománya; a zöld vonal 7 éjszakás mozgóátlag, ahogy Plews és munkatársai (2013) javasolják olvasni a HRV-t."),
+        "hu": dict(title="Egy rossz éjszaka még csak zaj. Egy rossz hét már jelzés.", y="HRV (ms)", band="a szokásos tartományod", avg="7 éjszakás átlag",
+                   one="egy alacsony éjszaka", week="egy hét a szokásos alatt", nights="éjszaka", cap="<b>Szemléltetés kitalált éjszakákkal.</b> Minden pont egy éjszaka. A sáv az illető szokásos tartománya a korábbi hetekből. A zöld vonal a 7 éjszakás mozgóátlag: Plews és munkatársai (2013) így javasolják olvasni a HRV-t."),
         "de": dict(title="Eine schlechte Nacht ist Rauschen. Eine schlechte Woche ein Signal.", y="HRV (ms)", band="dein üblicher Bereich", avg="7-Nächte-Mittel",
                    one="eine niedrige Nacht", week="eine Woche unter deinem Üblichen", nights="Nächte", cap="<b>Illustration mit Beispielnächten.</b> Punkte sind einzelne Nächte; das Band ist der übliche Bereich dieser Person aus früheren Wochen; die grüne Linie ist ein gleitendes 7-Nächte-Mittel, so wie Plews und Kollegen (2013) HRV zu lesen empfehlen."),
     }

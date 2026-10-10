@@ -3,9 +3,9 @@ import math
 from article_kit import keys, shot, pull
 
 REPLAY_KEYS = {
-    "hu": [("≈45 mp", "alatt repül végig egy hosszabb futás, a megállók külön kapnak egy pillanatot", "Aera"),
-           ("7 nap", "edzéseinek visszajátszása ingyenes, a régebbieké a Premium része", "Aera"),
-           ("15 / 20 / 30 mp", "hosszú álló, 9:16-os videó lesz belőle a Fotókban", "Aera")],
+    "hu": [("≈45 mp", "alatt repül végig egy hosszabb futás, és minden megálló kap egy külön pillanatot", "Aera"),
+           ("7 nap", "az ennyire friss edzéseket ingyen visszajátszhatod, a régebbieket a Premiummal", "Aera"),
+           ("15 / 20 / 30 mp", "hosszú, álló 9:16-os videót ment belőle az Aera a Fotókba", "Aera")],
     "de": [("≈45 s", "dauert der Flug über einen längeren Lauf, jeder Halt bekommt einen eigenen Moment", "Aera"),
            ("7 Tage", "zurück ist das Abspielen kostenlos, ältere Trainings gehören zu Premium", "Aera"),
            ("15 / 20 / 30 s", "lang wird das Video im Hochformat 9:16 in deinen Fotos", "Aera")],
@@ -17,17 +17,17 @@ REPLAY_PULL = {
 REPLAY_SHOT = {
     "hu": ("Az Aera 3D-s visszajátszásának vezérlősávja a műholdkép fölött: táv, tempó, pulzus, idővonal és sebességkapcsoló",
            "Visszajátszás az Aerában",
-           "Alul fut a táv, a tempó és a pulzus. Az idővonalon előre- és visszaugorhatsz, a pötty egy megállót jelöl, az 1× gomb dupla sebességre vált."),
+           "Alul fut a táv, a tempó és a pulzus. Az idővonalon előre- és visszaugorhatsz, a pötty egy megállót jelöl, az 1× gombbal pedig dupla sebességre válthatsz."),
     "de": ("Die Leiste des 3D-Flugs in Aera über dem Satellitenbild: Distanz, Tempo, Puls, Zeitleiste und Tempo-Umschalter",
            "Der Flug in Aera",
            "Unten laufen Distanz, Tempo und Puls mit. Auf der Zeitleiste springst du vor oder zurück, ein Punkt markiert einen Halt, und 1× schaltet auf doppelte Geschwindigkeit."),
 }
 
 FIG_T = {
-    "hu": {"title": "Így lesz a futásból rövid repülés", "key": "A kamera magassága",
+    "hu": {"title": "Így lesz a futásodból rövid repülés", "key": "A kamera magassága",
            "whole": "Teljes útvonal", "dive": "Lemerül a futó mögé", "lift": "Kanyar előtt emelkedik",
            "s1": "Leggyorsabb km", "s2": "Emelkedő teteje", "t0": "0 mp", "t1": "≈ 45 mp + megállók",
-           "cap": "<b>Szemléltetés, nem valódi repülés.</b> A kamera a teljes útvonal fölött indul, lemerül a futó mögé, a kanyarok előtt kicsit felemelkedik, és megáll néhány érdekes ponton, a végén pedig visszaemelkedik a teljes képre. Egy hosszabb futás nagyjából 45 másodperc alatt repül végig, a megállók külön kapnak egy-egy pillanatot."},
+           "cap": "<b>Szemléltetés, nem valódi repülés.</b> A kamera a teljes útvonal fölött indul, aztán lemerül a futó mögé. Kanyarok előtt kicsit felemelkedik, néhány érdekes pontnál megáll, a végén pedig visszaemelkedik, hogy újra az egészet lásd. Egy hosszabb futás nagyjából 45 másodperc alatt repül végig, és minden megálló kap egy külön pillanatot."},
     "de": {"title": "Wie aus einem Lauf ein kurzer Flug wird", "key": "Höhe der Kamera",
            "whole": "Ganze Strecke", "dive": "Taucht hinter dir ein", "lift": "Steigt vor Kurven",
            "s1": "Schnellster km", "s2": "Gipfel des Anstiegs", "t0": "0 s", "t1": "≈ 45 s + Halte",
