@@ -42,10 +42,10 @@ COPY = {
         "skip": "Skip to content",
         "eyebrow": "Sleep and running tracker for iPhone and Apple Watch",
         "h1": "Turn last night into today&#8217;s run.",
-        "lede": "Aera reads your night against your own usual and tells you how hard to go today. Every number shows how it was worked out.",
+        "lede": "Aera reads your night against your own usual and tells you how hard to go today.",
         "cta": "Download on the App Store",
-        "cta2": "See a morning",
-        "facts": ["Free to download", "No account", "Health numbers stay on your iPhone"],
+        "hero_free": "Free &#183; No account",
+        "hero_proof": "5.0 on the Hungarian App Store",
         "proof": "5.0 from %d ratings on the Hungarian App Store",
         "chip_night": "7 h 25 m asleep, right on your need", "chip_day": "Recovery above your usual", "sleep_alt": "Aera's Sleep screen: 7 h 25 m asleep, right on your need",
         "hero_alt": "Aera's Sleep screen for last night: excellent, right on your need, 94 of 100 and 7 h 25 min asleep",
@@ -71,11 +71,18 @@ COPY = {
         ],
         "guide_kicker": "The Field Guide",
         "guide_h2": "Every number shows its work.",
-        "guide_sub": "Tap a number and it opens a short article: how it was worked out, the research behind it with sources you can open, and where it stops being reliable.",
+        "guide_sub": "No black boxes. Here is the way from a score to the research behind it.",
         "quote": "Apple Watch sleep stages are an estimate. Aera gives them less weight, and tells you so.",
         "quote_src": "From the article on your sleep score",
         "guide_link": "Read the notes on this site",
-        "guide_alts": ("The Field Guide article on your sleep score", "The Field Guide article on what recovery measures"),
+        "how": [
+            ("Tap a number", "Every score opens its own short article.",
+             "The Sleep screen: 94 of 100, with a tap on the score"),
+            ("See how it was worked out", "What goes into it, and how much each part counts.",
+             "The Field Guide article on your sleep score: two things carry most of it, neither of them is your heart"),
+            ("Open the sources", "The research behind it, and where the number stops being reliable.",
+             "The article's sources: 5 minutes, 12 sources"),
+        ],
         "after_kicker": "After the run",
         "after_h2": "Replay the run you just did, in 3D.",
         "after_sub": "Flyover turns a run into a short film over the real ground. It pauses at your fastest split and the top of the climb. Free for runs from the last seven days.",
@@ -104,9 +111,9 @@ COPY = {
         "priv_link": "Read the privacy policy",
         "plans_h2": "What it costs.",
         "free_h": "Free",
-        "free": "Sleep, stress and strain against your own usual, and one word for the day every morning. Every workout and personal best, the route planner with turn by turn, Flyover for runs from the last seven days, recap films, and a year of history you can export as JSON or GPX.",
+        "free": ["Sleep, stress and strain, against your usual", "One word for the day, every morning", "Route planner with turn by turn", "Flyover for the last seven days"],
         "prem_h": "Premium",
-        "prem": "Today's session, with how long and how hard. Your sleep reserve and your places. Every route you draw after the first, kept. Flyover for older runs, history past a year, reports and every export format.",
+        "prem": ["Today's session: how long, how hard", "Your sleep reserve and your places", "Unlimited saved routes", "Older Flyovers, history past a year, every export"],
         "prem_note": "Premium is monthly, yearly or a one-time purchase. Yearly starts with a 7-day free trial.",
         "faq_kicker": "Questions",
         "faq_h2": "Questions.",
@@ -140,12 +147,12 @@ COPY = {
         "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Támogatás")],
         "get": "Letöltés",
         "skip": "Ugrás a tartalomra",
-        "eyebrow": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra",
+        "eyebrow": "Alvás- és futáskövető <span class=\"nw\">iPhone-ra</span> és <span class=\"nw\">Apple Watch-ra</span>",
         "h1": "Az éjszakádból lesz a mai futásod.",
-        "lede": "Az Aera a saját szokásodhoz méri az éjszakádat, és megmondja, milyen keményen menj ma. Minden szám elárulja, hogyan jött ki.",
+        "lede": "Az Aera a saját szokásodhoz méri az éjszakádat, és megmondja, milyen keményen menj ma.",
         "cta": "Letöltés az App Store-ból",
-        "cta2": "Egy reggel az Aerával",
-        "facts": ["Ingyenes", "Nincs fiók", "Teljesen magyarul"],
+        "hero_free": "Ingyenes &#183; Fiók nélkül &#183; Magyarul",
+        "hero_proof": "5,0 a magyar App Store-ban",
         "proof": "5,0 a magyar App Store-ban, %d értékelésből",
         "chip_night": "7 ó 25 p alvás, pont az igényed szerint", "chip_day": "A regenerálódás a szokásosnál jobb", "sleep_alt": "Az Aera alvás képernyője: 7 ó 25 p alvás, pont az igényed szerint",
         "hero_alt": "Az Aera alvás képernyője a tegnapi éjszakáról: kiváló, pont annyi, amennyi kell, 94/100 és 7 óra 25 perc alvás",
@@ -171,11 +178,18 @@ COPY = {
         ],
         "guide_kicker": "A Field Guide",
         "guide_h2": "Minden szám elmondja, honnan tudja.",
-        "guide_sub": "Koppints egy számra, és megnyílik mögötte egy rövid cikk: hogyan jött ki, milyen kutatás áll mögötte, megnyitható forrásokkal, és hol szűnik meg megbízhatónak lenni.",
+        "guide_sub": "Nincs fekete doboz. Így jutsz el egy pontszámtól a mögötte álló kutatásig.",
         "quote": "Az Apple Watch csak becsli az alvásszakaszokat. Az Aera ezért kisebb súlyt ad nekik, és ezt meg is mondja.",
         "quote_src": "Az alváspontszámról szóló cikkből",
         "guide_link": "Jegyzetek az oldalon (angolul)",
-        "guide_alts": ("A Field Guide cikke az alváspontszámról", "A Field Guide cikke arról, mit mér a regenerálódás"),
+        "how": [
+            ("Koppints egy számra", "Minden pontszám mögött ott a saját rövid cikke.",
+             "Az alvás képernyő: 94/100, egy koppintással a pontszámon"),
+            ("Nézd meg, hogyan jött ki", "Mi kerül bele, és melyik rész mennyit számít.",
+             "A Field Guide cikke az alváspontszámról"),
+            ("Nyisd meg a forrásokat", "A kutatás mögötte, és hol szűnik meg megbízhatónak lenni a szám.",
+             "A cikk forrásai: 5 perc, 12 forrás"),
+        ],
         "after_kicker": "Futás után",
         "after_h2": "Nézd vissza 3D-ben a futásodat.",
         "after_sub": "A Flyover rövid filmet készít a futásodból a valódi terep fölött. Megáll a leggyorsabb részidőnél és az emelkedő tetején. Az elmúlt hét nap futásaihoz ingyenes.",
@@ -204,9 +218,9 @@ COPY = {
         "priv_link": "Az adatvédelmi szabályzat (angolul)",
         "plans_h2": "Mennyibe kerül.",
         "free_h": "Ingyenes",
-        "free": "Alvás, stressz és terhelés a saját szokásosodhoz mérve, és minden reggel egy szó a napra. Minden edzés és egyéni rekord, az útvonaltervező kanyarról kanyarra navigációval, Flyover az elmúlt hét nap futásaihoz, összegző filmek, és egy évnyi előzmény, amit JSON vagy GPX formátumban kimenthetsz.",
+        "free": ["Alvás, stressz és terhelés a saját szokásodhoz mérve", "Minden reggel egy szó a napra", "Útvonaltervező kanyarról kanyarra", "Flyover az elmúlt hét nap futásaihoz"],
         "prem_h": "Premium",
-        "prem": "A mai edzés: mennyi ideig és milyen keményen. Az alvástartalékod és a helyeid. Az első után minden megrajzolt útvonal megmarad. Flyover a régebbi futásokhoz, egy évnél régebbi előzmények, jelentések és minden exportformátum.",
+        "prem": ["A mai edzés: mennyi ideig, milyen keményen", "Az alvástartalékod és a helyeid", "Korlátlan mentett útvonal", "Régebbi Flyoverek, egy évnél régebbi előzmények, minden export"],
         "prem_note": "A Premium havi, éves vagy egyszeri vásárlás. Az éves előfizetés 7 nap ingyenes próbával indul.",
         "faq_kicker": "Kérdések",
         "faq_h2": "Kérdések.",
@@ -242,10 +256,10 @@ COPY = {
         "skip": "Zum Inhalt",
         "eyebrow": "Schlaf- und Lauftracker für iPhone und Apple Watch",
         "h1": "Aus letzter Nacht wird dein Lauf von heute.",
-        "lede": "Aera misst deine Nacht an deinem eigenen Üblichen und sagt dir, wie hart du heute laufen kannst. Jede Zahl zeigt, wie sie entstanden ist.",
+        "lede": "Aera misst deine Nacht an deinem eigenen Üblichen und sagt dir, wie hart du heute laufen kannst.",
         "cta": "Im App Store laden",
-        "cta2": "Ein Morgen mit Aera",
-        "facts": ["Kostenlos", "Kein Konto", "Gesundheitswerte bleiben auf deinem iPhone"],
+        "hero_free": "Kostenlos &#183; Kein Konto",
+        "hero_proof": "5,0 im ungarischen App Store",
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
         "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
         "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
@@ -271,11 +285,18 @@ COPY = {
         ],
         "guide_kicker": "Der Field Guide",
         "guide_h2": "Jede Zahl zeigt, wie sie entsteht.",
-        "guide_sub": "Tipp auf eine Zahl, und dahinter öffnet sich ein kurzer Artikel: wie sie berechnet wird, welche Forschung dahinter steht, mit Quellen zum Öffnen, und wo sie nicht mehr verlässlich ist.",
+        "guide_sub": "Keine Blackbox. So kommst du von einem Wert zur Forschung dahinter.",
         "quote": "Die Apple Watch schätzt die Schlafphasen nur. Aera gibt ihnen deshalb weniger Gewicht und sagt dir das auch.",
         "quote_src": "Aus dem Artikel über deinen Schlafwert",
         "guide_link": "Notizen auf dieser Seite (auf Englisch)",
-        "guide_alts": ("Der Field-Guide-Artikel über deinen Schlafwert", "Der Field-Guide-Artikel darüber, was Erholung misst"),
+        "how": [
+            ("Tipp auf eine Zahl", "Hinter jedem Wert steht ein eigener kurzer Artikel.",
+             "Der Schlaf-Bildschirm: 94 von 100, mit einem Tipp auf den Wert"),
+            ("Sieh, wie sie entsteht", "Was hineinfließt und wie viel jeder Teil zählt.",
+             "Der Field-Guide-Artikel über deinen Schlafwert"),
+            ("Öffne die Quellen", "Die Forschung dahinter und wo die Zahl nicht mehr verlässlich ist.",
+             "Die Quellen des Artikels: 5 Minuten, 12 Quellen"),
+        ],
         "after_kicker": "Nach dem Lauf",
         "after_h2": "Spiel deinen Lauf in 3D noch einmal ab.",
         "after_sub": "Flyover macht aus deinem Lauf einen kurzen Film über dem echten Gelände. Er hält am schnellsten Split und oben am Anstieg. Für Läufe der letzten sieben Tage kostenlos.",
@@ -304,9 +325,9 @@ COPY = {
         "priv_link": "Datenschutzerklärung (auf Englisch)",
         "plans_h2": "Was es kostet.",
         "free_h": "Kostenlos",
-        "free": "Schlaf, Stress und Belastung gemessen an deinem Üblichen, und jeden Morgen ein Wort für den Tag. Jedes Training und jede Bestleistung, der Routenplaner mit Abbiegehinweisen, Flyover für Läufe der letzten sieben Tage, Rückblicke als Film und ein Jahr Verlauf, exportierbar als JSON oder GPX.",
+        "free": ["Schlaf, Stress und Belastung, gemessen an deinem Üblichen", "Jeden Morgen ein Wort für den Tag", "Routenplaner mit Abbiegehinweisen", "Flyover für die letzten sieben Tage"],
         "prem_h": "Premium",
-        "prem": "Die heutige Einheit: wie lange und wie hart. Deine Schlafreserve und deine Orte. Jede weitere Route, die du zeichnest, bleibt gespeichert. Flyover für ältere Läufe, Verlauf über ein Jahr hinaus, Berichte und jedes Exportformat.",
+        "prem": ["Die heutige Einheit: wie lange, wie hart", "Deine Schlafreserve und deine Orte", "Unbegrenzt gespeicherte Routen", "Ältere Flyover, Verlauf über ein Jahr, jeder Export"],
         "prem_note": "Premium gibt es monatlich, jährlich oder als einmaligen Kauf. Jährlich beginnt mit 7 Tagen gratis.",
         "faq_kicker": "Fragen",
         "faq_h2": "Fragen.",
@@ -522,8 +543,28 @@ def build(code):
     alternates += '<link rel="alternate" hreflang="x-default" href="%s">' % BASE
     canonical = BASE + ("" if c["file"] == "index.html" else c["file"])
     nav = "".join('<a class="opt" href="%s">%s</a>' % (h, t) for h, t in c["nav"])
-    facts = "".join("<li>%s</li>" % f for f in c["facts"])
-    proof = ('<p class="proof rise" style="--d:.62s"><span class="rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> %s</p>' % (c["proof"] % HU_RATINGS)) if HU_RATINGS else ""
+    # One proof line under the button: price, account, and the real rating
+    # (the reviews section carries the rating count).
+    rating = ('<span><span class="rating-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> %s</span>'
+              % c["hero_proof"]) if HU_RATINGS else ""
+    proof = '<p class="proof rise" style="--d:.54s"><span>%s</span>%s</p>' % (c["hero_free"], rating)
+
+    # Behind the scenes: tap a number, read its article, open its sources. Three
+    # windows onto shots already on the page (same files, so no new bytes, and the
+    # /hu and /de shots swap in by name). Each window is 20:9 and shows the shot
+    # from a top edge at share t of its height; with object-fit: cover that is
+    # object-position y = t * 2.1741 / (2.1741 - 0.45), where 2.1741 is the shot's
+    # height over width. --tx/--ty place the tap mark inside the window.
+    how_win = [("sleep", "35.89%", "14%", "72%", "tap"),                  # t = 495/1739: the verdict and the 94
+               ("article-sleep", "32.27%", "", "", ""),                    # t = 445/1739: the article's title
+               ("article-sleep", "55.11%", "28.5%", "25.8%", "tap pill")]  # t = 760/1739: "12 sources"
+    how = "".join(
+        '<li class="how-step reveal" style="--d:%dms"><div class="how-win" style="--op:%s%s">%s%s</div>'
+        '<div class="how-txt"><h3><span class="how-n">%d</span>%s</h3><p>%s</p></div></li>'
+        % (i * 90, y, (";--tx:%s;--ty:%s" % (tx, ty)) if tx else "",
+           picture(name, alt, "(max-width: 759px) 92vw, 360px"),
+           '<i class="%s" aria-hidden="true"></i>' % mark if mark else "", i + 1, h, body)
+        for i, ((name, y, tx, ty, mark), (h, body, alt)) in enumerate(zip(how_win, c["how"])))
 
     steps_html, stage = [], []
     for i, (shot, kicker, col, h3, body, extra, alt) in enumerate(c["steps"]):
@@ -690,9 +731,7 @@ def build(code):
       <p class="lede rise" style="--d:.32s">{c['lede']}</p>
       <div class="cta rise" style="--d:.44s">
         <a class="btn btn-store" href="{store}">{APPLE}{c['cta']}</a>
-        <a class="btn btn-quiet" href="#engine">{c['cta2']}</a>
       </div>
-      <ul class="facts rise" style="--d:.54s">{facts}</ul>
       {proof}
     </div>
     <div class="hero-phone">
@@ -707,16 +746,15 @@ def build(code):
 {scene('engine', code)}
 
 <section id="guide" class="guide-sec">
-  <div class="wide guide-grid">
-    <div class="reveal">
+  <div class="wide">
+    <div class="guide-head reveal">
       <h2 class="h2 split">{c['guide_h2']}</h2>
       <p class="sub">{c['guide_sub']}</p>
+    </div>
+    <ol class="how">{how}</ol>
+    <div class="guide-foot reveal">
       <div class="quote"><p>&#8220;{c['quote']}&#8221;</p><span>{c['quote_src']}</span></div>
       <a class="link" href="notes/index.html">{c['guide_link']} &#8594;</a>
-    </div>
-    <div class="fan">
-      {phone('article-sleep', c['guide_alts'][0], '(max-width: 899px) 46vw, 270px')}
-      {phone('article-recovery-dark', c['guide_alts'][1], '(max-width: 899px) 46vw, 270px')}
     </div>
   </div>
 </section>
@@ -753,8 +791,8 @@ def build(code):
   <div class="wide">
     <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
-      <div class="plan reveal"><h3>{c['free_h']}</h3><p>{c['free']}</p></div>
-      <div class="plan reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><p>{c['prem']}</p></div>
+      <div class="plan reveal"><h3>{c['free_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['free'])}</ul></div>
+      <div class="plan reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['prem'])}</ul></div>
     </div>
     <p class="plans-note center reveal">{c['prem_note']}</p>
   </div>

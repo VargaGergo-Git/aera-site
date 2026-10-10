@@ -204,10 +204,6 @@ p { margin: 0; }
 .hero h1 { font-size: clamp(42px, 7.4vw, 84px); font-weight: 800; text-wrap: balance; }
 .hero .lede { margin-top: 20px; font-size: clamp(18px, 2vw, 21px); line-height: 1.5; color: var(--hero-ink-2); text-wrap: pretty; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; justify-content: center; }
-.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 22px 0 0; padding: 0; list-style: none; justify-content: center;
-  font-size: 15px; color: var(--hero-ink-2); }
-.facts li { display: flex; align-items: center; gap: 8px; }
-.facts li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
 
 .hero-phone {
   width: clamp(250px, 64vw, 300px);
@@ -220,7 +216,7 @@ p { margin: 0; }
   .hero { padding-top: 120px; }
   .hero-inner { grid-template-columns: 1.1fr 0.9fr; justify-items: start; text-align: left; align-items: center; min-height: calc(max(100svh, 700px) - 120px); }
   .hero-copy { padding-bottom: 18vw; }
-  .cta, .facts { justify-content: flex-start; }
+  .cta { justify-content: flex-start; }
   .hero-phone { justify-self: center; width: clamp(280px, 24vw, 330px); margin-bottom: 0; align-self: end; }
 }
 
@@ -281,15 +277,6 @@ section { position: relative; padding: clamp(80px, 12vw, 150px) 0; }
 
 /* ---------- field guide ---------- */
 
-.guide-grid { display: grid; gap: 56px; align-items: center; }
-@media (min-width: 900px) { .guide-grid { grid-template-columns: 0.95fr 1.05fr; gap: 6vw; } }
-.fan { position: relative; height: clamp(440px, 60vw, 600px); }
-.fan .phone { position: absolute; width: clamp(200px, 46%, 270px); top: 0; }
-.fan .phone:first-child { left: 4%; transform: rotate(-6deg) translateY(30px); }
-.fan .phone:last-child { right: 4%; transform: rotate(5deg); }
-.motion .fan .phone { transition: transform 1.1s var(--ease), opacity 0.8s var(--ease); will-change: transform, opacity; }
-.motion .fan:not(.in) .phone:first-child { transform: rotate(0deg) translate(30%, 70px); opacity: 0; }
-.motion .fan:not(.in) .phone:last-child { transform: rotate(0deg) translate(-30%, 40px); opacity: 0; }
 .quote { margin-top: 30px; padding: 22px 24px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); max-width: 520px; }
 .quote p { font-size: 18px; }
 .quote span { display: block; margin-top: 8px; font-size: 15px; color: var(--ink-3); }
@@ -403,7 +390,6 @@ footer { border-top: 1px solid var(--line); padding: 48px 0 40px; font-size: 15p
   .hero h1 { font-size: clamp(38px, 10.6vw, 56px); }
   .hero .lede { font-size: 17px; margin-top: 16px; }
   .cta { margin-top: 22px; }
-  .facts { margin-top: 16px; font-size: 15px; }
   .hero-phone { width: min(62vw, 260px); margin-bottom: calc(min(62vw, 260px) * -0.95); }
   .l1 { height: max(43.75vw, 380px); }
   .l2 { height: max(35vw, 300px); }
@@ -555,10 +541,10 @@ h1, h2, h3 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
 }
 
 /* Store rating under the facts. */
-.proof { margin: 14px 0 0; font-size: 15px; color: var(--hero-ink-2); display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.proof { margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: var(--hero-ink-2); display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 16px; }
+.proof > span { white-space: nowrap; }
 .proof .rating-stars { color: #f2b544; letter-spacing: 1px; font-size: 16px; }
-@media (min-width: 900px) { .proof { font-size: 16px; } }
-@media (min-width: 900px) { .proof { justify-content: flex-start; } }
+@media (min-width: 900px) { .proof { font-size: 16px; justify-content: flex-start; } }
 
 /* Round 3 fixes from the design critique. */
 @media (min-width: 900px) {
@@ -799,7 +785,6 @@ h1, h2, h3 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
   .hero h1 { font-size: clamp(46px, min(5.4vw, 8.4svh), 80px); }
   .hero .lede { margin-top: 14px; }
   .cta { margin-top: 22px; }
-  .facts { margin-top: 16px; }
 }
 
 /* ======================================================================
@@ -889,4 +874,58 @@ section { padding: clamp(64px, 8vw, 112px) 0; }
     .dusk .l1 { --rise: 70px; } .dusk .l3 { --rise: 40px; } .dusk .l4 { --rise: 14px; }
     @keyframes dusk-rise { from { transform: translate3d(0, var(--rise), 0); } to { transform: none; } }
   }
+}
+
+/* ======================================================================
+   Round 2 (Site polish, 2026-10-10)
+   ====================================================================== */
+
+/* One rhythm between the plain cream sections: 72 px on a phone, 120 px on a
+   laptop. Sections that open after a dark panel keep a little more air. */
+section:where(:not(.hero, .scene, .privacy)) { padding-block: clamp(36px, 5vw, 60px); }
+section.reviews { padding-top: clamp(36px, 5vw, 60px); }
+section.guide-sec, section.also { padding-top: clamp(64px, 8vw, 112px); }
+section.closing { padding-bottom: 0; }
+.privacy { padding-block: clamp(72px, 9vw, 128px); }
+.lock { margin-bottom: 20px; }
+
+/* Pricing: two short lists, not two paragraphs. */
+.plan ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.plan li { position: relative; padding-left: 22px; font-size: 18px; line-height: 1.4; color: var(--ink-2); text-wrap: pretty; }
+.plan li::before { content: ""; position: absolute; left: 2px; top: .58em; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.plan + .plan li::before { background: var(--gold); }
+
+/* Behind the scenes: tap a number, read its article, open its sources. */
+.guide-head { max-width: 760px; margin: 0 auto; text-align: center; }
+.guide-head .sub { margin-inline: auto; }
+.how { list-style: none; margin: clamp(36px, 4.4vw, 60px) 0 0; padding: 0; display: grid; gap: 34px; }
+@media (min-width: 760px) { .how { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); } }
+.how-step { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.how-win { position: relative; aspect-ratio: 20 / 9; overflow: hidden; border-radius: clamp(16px, 1.6vw, 22px);
+  background: var(--card); box-shadow: var(--shadow); isolation: isolate; }
+.how-win img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% var(--op); }
+.how-win::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--line); pointer-events: none; }
+.tap { position: absolute; left: var(--tx); top: var(--ty); width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; z-index: 1;
+  background: color-mix(in srgb, var(--green) 20%, transparent); box-shadow: inset 0 0 0 2px var(--green), 0 6px 18px -6px rgba(0, 0, 0, .35); }
+.tap.pill { width: 27%; height: 32px; margin: -16px 0 0 -13.5%; border-radius: 99px; }
+.tap::after { content: ""; position: absolute; inset: -2px; border-radius: 50%; border: 2px solid var(--green); opacity: 0; }
+.how-txt h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 750; letter-spacing: -.01em; }
+.how-n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; font-size: 14px; font-weight: 800;
+  color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); font-variant-numeric: tabular-nums; }
+.how-txt p { margin-top: 6px; padding-left: 36px; color: var(--ink-2); font-size: 16px; line-height: 1.5; text-wrap: pretty; }
+.guide-foot { display: grid; justify-items: center; gap: 18px; margin-top: clamp(40px, 5vw, 64px); text-align: center; }
+.guide-foot .quote { margin-top: 0; }
+.motion .how-step:not(.in) .tap { scale: .5; opacity: 0; }
+.motion .how-step.in .tap { transition: scale .6s var(--bounce) calc(var(--d, 0s) + .45s), opacity .3s var(--ease) calc(var(--d, 0s) + .45s); }
+.motion .how-step.in .tap::after { animation: tap-ring 1.1s var(--ease) calc(var(--d, 0s) + .9s) 1 both; }
+@keyframes tap-ring { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(1.9); } }
+
+/* The page opens at sunrise and ends at sunset: in light mode the closing
+   valley takes the dusk palette, and the footer is the evening below it. */
+@media (prefers-color-scheme: light) {
+  .closing { --r1: #9483ad; --r1b: #ab9bbd; --r3: #4b3d5e; --r4: #352b43; --tk: #6b5569; --fir: #221c2f;
+    --bale: #5d4659; --haze: #efb89c; --sun: #ffd08f; }
+  .closing .dusk { background: linear-gradient(180deg, var(--bg) 0%, #f7dfc4 26%, #f0b593 52%, #cd8c94 76%, #8f6d97 100%); }
+  .closing .deer { fill: #221c2f; fill-opacity: 1; }
+  footer { --ink: #f5f3ee; --ink-2: #c3bacb; --ink-3: #988fa3; --line: rgba(255, 255, 255, .1); background: #352b43; color: var(--ink-2); border-top: 0; }
 }
