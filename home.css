@@ -726,8 +726,9 @@ h1, h2, h3 { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
 }
 .bar.ch-on .chapters { opacity: 1; visibility: visible; pointer-events: auto; transform: translate3d(-50%, -50%, 0); transition: opacity .35s var(--ease), transform .45s var(--ease); }
 /* While the chapters show, the secondary links step aside so nothing collides. */
-.bar nav .opt { transition: opacity .3s var(--ease), visibility 0s .3s; }
-.bar.ch-on nav .opt { opacity: 0; visibility: hidden; pointer-events: none; }
+/* A crossfade: the links leave quickly, and come back only once the pill has faded. */
+.bar nav .opt { transition: opacity .35s var(--ease) .2s, visibility 0s 0s; }
+.bar.ch-on nav .opt { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .2s var(--ease), visibility 0s .2s; }
 /* Phones and small tablets (iPad mini portrait): the pill would reach the Get button. */
 @media (max-width: 819px) {
   .bar.ch-on .brand { font-size: 0; gap: 0; }
