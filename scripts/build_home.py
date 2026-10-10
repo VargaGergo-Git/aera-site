@@ -538,6 +538,20 @@ def build(code):
     store = store_at("hero")
     store_nav, store_close = store_at("nav"), store_at("closing")
 
+    def with_get(html, place, note):
+        # A quiet store button at the foot of a scene, with one true line under it,
+        # so the next step is always a thumb away. Each counts as its own /get/ path.
+        if not html:
+            return html
+        row = ('<div class="get-row reveal"><a class="btn btn-store" href="%s">%s%s</a>'
+               '<p class="get-note">%s</p></div>' % (store_at(place), APPLE, c["cta"], note))
+        i = html.rstrip().rfind("</section>")
+        return html[:i] + row + "\n" + html[i:]
+
+    def scene_note(name):
+        with open(os.path.join(ROOT, "scenes", name, "strings.json"), encoding="utf-8") as f:
+            return json.load(f)[code]["free_note"]
+
     def href(h):
         return store_at("footer") if h == "store" else h
 
@@ -750,7 +764,7 @@ def build(code):
   {L['near']}
 </section>
 
-{scene('engine', code)}
+{with_get(scene('engine', code), 'engine', c['hero_free'])}
 
 <section id="guide" class="guide-sec">
   <div class="wide">
@@ -770,9 +784,9 @@ def build(code):
 
 {scene('widgets', code)}
 
-{scene('planner', code) or map_old}
+{with_get(scene('planner', code), 'planner', scene_note('planner')) or map_old}
 
-{scene('flyover', code) or after_old}
+{with_get(scene('flyover', code), 'flyover', scene_note('flyover')) or after_old}
 
 <section class="privacy">
   <div class="wide center reveal">
@@ -869,7 +883,7 @@ def localize_media(out, code):
     return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
 
 
-GET_PLACES = ("nav", "hero", "closing", "footer")
+GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
 
 
 def get_page(store, lang, src):

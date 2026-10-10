@@ -1019,3 +1019,10 @@ section.closing { padding-bottom: 0; }
 .motion .how-step .phone { translate: -50% 44px; opacity: 0; }
 .motion .how-step.in .phone { translate: -50% 0; opacity: 1; transition: translate .9s var(--ease) calc(var(--d, 0s) + .1s), opacity .5s var(--ease) calc(var(--d, 0s) + .1s); }
 @media (max-width: 759px) { .how-dev { height: min(78vw, 310px); } .how-dev .phone { width: min(62%, 230px); } }
+
+/* ---------- store button at the foot of a scene ---------- */
+.get-row { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: clamp(4px, 1vw, 12px) var(--gutter) clamp(8px, 2vw, 24px); text-align: center; }
+.get-row .btn-store { min-height: 50px; padding: 0 22px; }
+.get-note { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ink-3); max-width: 34ch; text-wrap: balance; }
+.scene-engine .get-row .btn-store, .scene-flyover .get-row .btn-store { background: #f5f3ee; color: #000; }
+.scene-flyover .get-row { padding-top: clamp(28px, 4vw, 44px); }
