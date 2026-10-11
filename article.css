@@ -206,3 +206,5 @@ a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: man
 .g-answer ~ .keys b { grid-row: 1; }
 .g-toc { margin-top: 0; }
 .g-toc li:first-child a { border-top: 0; }
+.g-cap { margin: 10px 0 0; font-size: 14px; line-height: 1.4; color: var(--ink-3); }
+@media (min-width: 700px) { .g-hero { max-width: 440px; } }
