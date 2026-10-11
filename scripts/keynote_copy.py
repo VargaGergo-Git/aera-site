@@ -85,7 +85,7 @@ K = {
      'cta': 'Letöltés az App Store-ból',
      'note': 'Ingyenes &#183; Fiók nélkül &#183; Bármilyen órával vagy gyűrűvel, amelyik az Apple Health-be ír',
         'work_link': ('guides/jo-alvas-pontszam.html', 'Nézz meg egyet: az alváspontszám'),
-     'hero_alt': 'Az Aera iPhone-on és Apple Watch-on: a tegnap éjszakai alvás 55 perccel az igényed fölött, az '
+     'hero_alt': 'Az Aera iPhone-on és Apple Watch-on: a tegnap éjszakai alvás 58 perccel az igényed fölött, az '
                  'órán pedig az eddigi nap',
      'why_h2': 'Egy szám magyarázat nélkül csak egy szám.',
      'why_p': 'Az órák mindent megszámolnak: alvóórákat, szívveréseket, kilométereket. Aztán megállnak egy '
@@ -108,8 +108,8 @@ K = {
      'sleep_p': 'Az órád megmondja, mennyit aludtál. Az Aera azt mondja meg, mit jelent ez neked: <b>ahhoz '
                 'mérve, amennyi alvásra szükséged van</b>, a saját éjszakáidból tanulva. Az alvásfázisokat pedig '
                 'annak mutatja, amik: becslésnek.',
-     'sleep_alt': 'Az Aera Alvás képernyője iPhone-on: Kiváló, 55 perccel az igényed fölött, 100-ból 89 pont, 8 '
-                  'óra 19 perc alvás',
+     'sleep_alt': 'Az Aera Alvás képernyője iPhone-on: Kiváló, 58 perccel az igényed fölött, 100-ból 88 pont, 8 '
+                  'óra 22 perc alvás',
      'run_h2': 'A futásaid, visszaolvasva.',
      'run_p': 'Minden futás a megszokottad mellett áll: <b>gyorsabb vagy lassabb volt-e, mint nálad szokásos, és '
               'jobban vagy kevésbé terhelte-e a szíved.</b> Aztán nézd vissza 3D-ben, a terep fölött, amin '
@@ -195,7 +195,7 @@ K = {
         "sub": "Aera sagt dir, was die Zahlen deiner Uhr f&#252;r dich bedeuten, und zeigt, woher es das wei&#223;.",
         "cta": "Laden im App Store",
         "note": "Kostenlos &#183; Kein Konto &#183; Mit jeder Uhr und jedem Ring, die in Apple Health schreiben",
-        "hero_alt": "Aera auf iPhone und Apple Watch: die letzte Nacht, 55 Minuten &#252;ber deinem Bedarf, und der bisherige Tag auf der Uhr",
+        "hero_alt": "Aera auf iPhone und Apple Watch: die letzte Nacht, 58 Minuten &#252;ber deinem Bedarf, und der bisherige Tag auf der Uhr",
         "why_h2": "Eine Zahl ohne Grund ist nur eine Zahl.",
         "why_p": "Uhren z&#228;hlen alles: Stunden Schlaf, Herzschl&#228;ge, Kilometer. Dann h&#246;ren sie bei einem Wert auf und lassen dich raten. <b>Aera macht da weiter, wo der Wert aufh&#246;rt.</b> Jede Zahl wird mit deinem eigenen Normal verglichen, in klaren Worten erkl&#228;rt und l&#228;sst sich &#246;ffnen, um zu zeigen, wie sie berechnet wurde.",
         "bento_h2": "Alles, was deine Uhr misst, gemessen an deinem Normal.",
@@ -209,7 +209,7 @@ K = {
         "b_work": ("Jede Zahl zeigt ihren Rechenweg.", "Tippe auf eine Zahl und sieh, wie sie berechnet wurde, welche Forschung dahintersteht und wo sie an ihre Grenzen kommt."),
         "sleep_h2": "Schlaf, erkl&#228;rt.",
         "sleep_p": "Deine Uhr sagt, wie lange du geschlafen hast. Aera sagt, was das f&#252;r dich bedeutet: <b>gemessen an dem Schlaf, den du brauchst</b>, gelernt aus deinen eigenen N&#228;chten. Schlafphasen zeigt Aera als das, was sie sind: eine Sch&#228;tzung.",
-        "sleep_alt": "Aeras Schlafbildschirm auf dem iPhone: Ausgezeichnet, 55 Minuten &#252;ber deinem Bedarf, 89 von 100, 8 Stunden 19 Minuten Schlaf",
+        "sleep_alt": "Aeras Schlafbildschirm auf dem iPhone: Ausgezeichnet, 58 Minuten &#252;ber deinem Bedarf, 88 von 100, 8 Stunden 22 Minuten Schlaf",
         "run_h2": "L&#228;ufe, nachgelesen.",
         "run_p": "Jeder Lauf steht neben deinem Normal: <b>schneller oder langsamer als sonst, h&#228;rter oder leichter f&#252;rs Herz.</b> Dann fliegst du ihn noch einmal in 3D, &#252;ber das Gel&#228;nde, auf dem du gelaufen bist.",
         "run_alts": ("Ein Lauf in 3D &#252;ber Satellitengel&#228;nde, mit Distanz, Pace und Herzfrequenz", "Ein Morgenlauf im R&#252;ckblick: Distanz, Zeit, Pace und Energie, jeweils neben deinem Normal", "Aera auf der Apple Watch w&#228;hrend eines Laufs: Zeit, Distanz, Pace und Herzfrequenz in Zone 3"),
