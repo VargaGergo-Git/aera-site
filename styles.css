@@ -818,3 +818,18 @@ h1, h2 { font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sa
 .note-list li { border-bottom-color: var(--border); }
 .note-list li a { display: block; font-size: 17px; line-height: 1.35; text-wrap: pretty; }
 .note-list .meta { font-variant-numeric: tabular-nums; color: var(--faint); opacity: 1; }
+
+/* ---------- feel: press feedback on pointer-down, a critically damped settle ---------- */
+:root { --spring: cubic-bezier(0.22, 1, 0.36, 1); }
+@supports (transition-timing-function: linear(0, 1)) {
+  :root { --spring: linear(0, 0.049, 0.156, 0.283, 0.408, 0.522, 0.62, 0.702, 0.769, 0.822, 0.864, 0.897, 0.922, 0.941, 0.956, 0.967, 0.976, 0.982, 0.987, 0.99, 1); }
+}
+a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.btn { transition: transform .35s var(--spring), opacity .2s ease; }
+.btn:hover { transform: none; }
+@media (hover: hover) { .btn:hover { transform: translateY(-1px); } }
+.btn:active { transform: scale(.96); transition-duration: 0s; }
+@media (prefers-reduced-motion: reduce) { .btn:active { transform: none; opacity: .7; } }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .topbar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

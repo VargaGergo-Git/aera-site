@@ -88,7 +88,11 @@
   color: var(--fo-ink); font: 600 15px/1 var(--rounded);
   transition: background 0.2s var(--ease), opacity 0.5s var(--ease);
 }
-.scene-flyover .fo-replay:hover { background: rgba(255, 255, 255, 0.16); }
+@media (hover: hover) { .scene-flyover .fo-replay:hover { background: rgba(255, 255, 255, 0.16); } }
+/* Pressed: it answers on pointer-down and settles back on a critically damped spring. */
+.scene-flyover .fo-replay:not([hidden]) { transition: background 0.2s var(--ease), opacity 0.5s var(--ease), transform .45s var(--spring, var(--ease)); }
+.scene-flyover .fo-replay:active { background: rgba(255, 255, 255, 0.2); transform: scale(.95); transition-duration: 0s; }
+@media (prefers-reduced-motion: reduce) { .scene-flyover .fo-replay:active { transform: none; } }
 .scene-flyover .fo-replay:focus-visible { outline: 2px solid var(--fo-route); outline-offset: 3px; }
 .scene-flyover .fo-replay[hidden] { display: inline-flex; visibility: hidden; opacity: 0; }
 /* The capture already shows the status area: a slimmer island keeps the app's top row clear. */
