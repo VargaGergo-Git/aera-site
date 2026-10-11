@@ -154,3 +154,55 @@ a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: man
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .topbar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
+
+/* Guide rework (Oct 2026): one idea per page, answer first, art on top.
+   Static only: no pins, no scroll JS. <details> carries the deeper reading. */
+.g-pill { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 14px 10px; padding: 5px 11px; border-radius: 999px; background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green); font: 600 12px/1 var(--text); letter-spacing: 0.06em; text-transform: uppercase; vertical-align: top; }
+.page-head .eyebrow { display: inline-block; }
+.g-hero { margin: 26px calc(-1 * min(var(--gutter), 24px)) 0; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--bg-2); }
+.g-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+@media (min-width: 700px) { .g-hero { aspect-ratio: 16 / 10; } .g-hero img { object-position: 50% 38%; } }
+.legal > p.g-answer { position: relative; margin: 8px 0 0; padding: 22px 22px 20px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); font-size: clamp(19px, 2.4vw, 22px); line-height: 1.45; }
+.g-answer .g-label { display: block; margin-bottom: 8px; font: 600 12px/1 var(--text); letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); }
+.g-toc { margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.g-toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--bg-2); color: var(--ink-2); font-size: 15px; text-decoration: none; }
+.g-toc a:hover { color: var(--ink); }
+.g-more { margin: 18px 0 0; border-radius: 18px; background: var(--bg-2); }
+.g-more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 0 18px; font: 600 16px/1.3 var(--text); color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.g-more > summary::-webkit-details-marker { display: none; }
+.g-more > summary::after { content: ""; flex: none; width: 9px; height: 9px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-2px); transition: transform 0.3s var(--ease); }
+.g-more[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
+.g-more > :not(summary) { margin-left: 18px; margin-right: 18px; }
+.g-more > :last-child { margin-bottom: 18px; }
+.g-do { margin: 22px 0 0; padding: 18px 20px; border-radius: 20px; border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); background: color-mix(in srgb, var(--green) 7%, transparent); }
+.g-do > strong { display: block; margin-bottom: 6px; color: var(--green); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+.g-do p, .g-do ul { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .g-more > summary::after { transition: none; } }
+@media (max-width: 560px) {
+  .g-answer ~ .keys { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 18px; }
+  .g-answer ~ .keys li { padding: 12px 11px; font-size: 12.5px; line-height: 1.3; }
+  .g-answer ~ .keys small { display: none; }
+}
+.g-pill { vertical-align: top; position: relative; top: -4px; }
+@media (max-width: 560px) { .g-answer ~ .keys li { overflow-wrap: anywhere; hyphens: auto; font-size: 12px; } }
+
+/* Guide rework, round 2 (after critic): no glow, no cut text, no extra labels */
+.g-type { margin: 0 0 14px; font: 600 15px/1.2 var(--text); color: var(--green); }
+.g-hero { margin: 22px 0 0; border-radius: 0; box-shadow: none; aspect-ratio: auto; background: none; overflow: visible; }
+.g-hero img { width: 100%; height: auto; object-fit: initial; }
+.legal > p.g-answer { margin: 4px 0 0; padding: 0; background: none; box-shadow: none; border-radius: 0; font-size: clamp(21px, 2.6vw, 24px); line-height: 1.42; }
+.g-answer ~ .keys { display: block; margin: 22px 0 0; }
+.g-answer ~ .keys li { display: flex; align-items: baseline; gap: 16px; margin: 0; padding: 12px 0; background: none; box-shadow: none; border-radius: 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.35; container-type: normal; overflow-wrap: normal; hyphens: manual; }
+.g-answer ~ .keys li:last-child { border-bottom: 1px solid var(--line); }
+.g-answer ~ .keys b { flex: none; min-width: 7.2ch; margin: 0; font: 700 28px/1.1 var(--rounded); white-space: nowrap; }
+.g-answer ~ .keys small { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-3); }
+.g-toc { margin: 24px 0 0; display: block; }
+.g-toc li { margin: 0; display: block; }
+.g-toc a { display: flex; align-items: center; min-height: 44px; padding: 0; border-radius: 0; background: none; color: var(--green); font-size: 17px; text-decoration: none; border-top: 1px solid var(--line); }
+.g-toc li:last-child a { border-bottom: 1px solid var(--line); }
+.g-answer ~ .keys li { display: grid; grid-template-columns: minmax(7.4ch, 36%) 1fr; column-gap: 16px; align-items: start; }
+.g-answer ~ .keys b { grid-row: 1 / span 2; }
+.g-answer ~ .keys small { grid-column: 2; }
+.g-answer ~ .keys b { grid-row: 1; }
+.g-toc { margin-top: 0; }
+.g-toc li:first-child a { border-top: 0; }
