@@ -19,7 +19,7 @@ from keynote_copy import K  # noqa: E402
 
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
-    "hero-pair": (900, 1800), "phone-sleep-light": (600, 1200), "scr-run-light": (400, 800), "scr-route-light": (400, 800), "w-run": (422,),
+    "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
     "w-turn": (422,),
 }
 
@@ -68,8 +68,8 @@ def build(code, H):
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS",
          "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
          "url": canonical, "downloadUrl": H["store"], "installUrl": H["store"], "description": plain(k["desc"]),
-         "screenshot": [BASE + "img/k/phone-sleep-light-1200.webp", BASE + "img/k/scr-run-light-800.webp",
-                        BASE + "img/k/scr-route-light-800.webp"],
+         "screenshot": [BASE + "img/k/hero-pair-1800.webp", BASE + "img/k/scr-run-light-800.webp",
+                        BASE + "img/k/scr-route-800.webp"],
          "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
         {"@type": "Person", "@id": BASE + "#maker", "name": "Gergő Varga", "url": BASE},
@@ -168,20 +168,17 @@ def build(code, H):
   <div class="hero-shot rise" style="--d:.24s">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div>
 </section>
 
+<section class="sleep">
+  <div class="wide intro reveal">
+    <h2>{k['sleep_h2']}</h2>
+    <p>{k['sleep_p']}</p>
+  </div>
+</section>
+
 <section class="why">
   <div class="narrow reveal">
     <h2>{k['why_h2']}</h2>
     <p>{k['why_p']}</p>
-  </div>
-</section>
-
-<section class="sleep dark">
-  <div class="wide split">
-    <div class="copy reveal">
-      <h2>{k['sleep_h2']}</h2>
-      <p>{k['sleep_p']}</p>
-    </div>
-    <div class="art reveal" style="--d:.1s">{img('phone-sleep-light', k['sleep_alt'], '(max-width: 759px) 100vw, 520px')}</div>
   </div>
 </section>
 
@@ -208,7 +205,7 @@ def build(code, H):
       <p>{k['route_p']}</p>
     </div>
     <div class="pair reveal" style="--d:.1s">
-      <figure class="phone">{img('scr-route-light', route_alts[0], ph)}</figure>
+      <figure class="phone">{img('scr-route', route_alts[0], ph)}</figure>
       <figure class="watch">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
     </div>
   </div>
