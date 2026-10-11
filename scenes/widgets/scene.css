@@ -219,3 +219,22 @@ section.scene-widgets { padding: 0; }
 .motion .wg-world.in .wg-dev-lock { transition: opacity .6s var(--ease) .2s, transform .9s var(--ease) .2s; }
 /* Over a still wallpaper the Lock Screen glass needs no live blur. */
 .scene-widgets .wg-dev-lock :is(.wg-rect, .wg-circ, .wg-lockbar i) { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(255, 255, 255, .2); }
+
+/* Once the widgets land, their charts fill in: the night's stages run left to
+   right, the session's shape rises bar by bar, the four vitals settle on their
+   rails and yesterday's route draws itself. */
+.scene-widgets .wg-lanes i { transform-origin: 0 50%; }
+.scene-widgets .wg-shape i { transform-origin: 50% 100%; }
+.scene-widgets .wg-shape i:nth-child(2) { --n: 1; } .scene-widgets .wg-shape i:nth-child(3) { --n: 2; } .scene-widgets .wg-shape i:nth-child(4) { --n: 3; }
+.scene-widgets .wg-shape i:nth-child(5) { --n: 4; } .scene-widgets .wg-shape i:nth-child(6) { --n: 5; } .scene-widgets .wg-shape i:nth-child(7) { --n: 6; } .scene-widgets .wg-shape i:nth-child(8) { --n: 7; }
+.scene-widgets .wg-v:nth-child(2) { --n: 1; } .scene-widgets .wg-v:nth-child(3) { --n: 2; } .scene-widgets .wg-v:nth-child(4) { --n: 3; }
+.motion .wg-world:not(.in) .wg-lanes i { scale: 0 1; }
+.motion .wg-world.in .wg-lanes i { transition: scale .8s var(--ease) calc(var(--wd) + .3s + var(--x) * 7ms); }
+.motion .wg-world:not(.in) .wg-shape i { scale: 1 0; }
+.motion .wg-world.in .wg-shape i { transition: scale .7s var(--spring) calc(var(--wd) + .3s + var(--n, 0) * 55ms); }
+.motion .wg-world:not(.in) .wg-dot { scale: 0; }
+.motion .wg-world.in .wg-dot { transition: scale .6s var(--spring) calc(var(--wd) + .45s + var(--n, 0) * 90ms); }
+.motion .wg-world:not(.in) .wg-map .m3 { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
+.motion .wg-world.in .wg-map .m3 { stroke-dasharray: 1 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.6s var(--ease) calc(var(--wd) + .35s); }
+.motion .wg-world:not(.in) .wg-map .m4 { opacity: 0; }
+.motion .wg-world.in .wg-map .m4 { transition: opacity .3s ease calc(var(--wd) + .3s); }

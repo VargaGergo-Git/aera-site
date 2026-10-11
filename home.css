@@ -118,7 +118,7 @@ p { margin: 0; }
 .bar.scrolled .brand { color: var(--ink); }
 .brand img { width: 30px; height: 30px; border-radius: 8px; }
 .bar nav:where(:not(.chapters)) { margin-left: auto; display: flex; align-items: center; gap: 22px; }
-.bar nav:where(:not(.chapters)) a { color: var(--hero-ink-2); text-decoration: none; font-size: 15px; font-weight: 500; }
+.bar nav:where(:not(.chapters)) a { display: inline-flex; align-items: center; min-height: 44px; color: var(--hero-ink-2); text-decoration: none; font-size: 15px; font-weight: 500; }
 .bar.scrolled nav:where(:not(.chapters)) a { color: var(--ink-2); }
 .bar nav:where(:not(.chapters)) a:hover { color: var(--hero-ink); }
 .bar.scrolled nav a:hover { color: var(--ink); }
@@ -324,9 +324,6 @@ section { position: relative; padding: clamp(80px, 12vw, 150px) 0; }
 .privacy .h2 { max-width: 15ch; margin: 0 auto; font-size: clamp(40px, 7vw, 84px); line-height: 1.02; letter-spacing: -.025em; }
 .privacy .sub { max-width: 34em; margin-top: 28px; }
 .privacy .link { color: var(--green); }
-.lock { width: 84px; height: 84px; margin: 0 auto 34px; border-radius: 26px; display: grid; place-items: center;
-  background: linear-gradient(180deg, #17191b, #0c0d0e); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08), 0 0 60px rgba(78, 204, 163, .22); }
-.lock svg { width: 36px; height: 36px; fill: none; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ---------- free and premium ---------- */
 
@@ -887,7 +884,6 @@ section.reviews { padding-top: clamp(36px, 5vw, 60px); }
 section.guide-sec, section.also { padding-top: clamp(64px, 8vw, 112px); }
 section.closing { padding-bottom: 0; }
 .privacy { padding-block: clamp(72px, 9vw, 128px); }
-.lock { margin-bottom: 20px; }
 
 /* Pricing: two short lists, not two paragraphs. */
 .plan ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
@@ -1058,3 +1054,53 @@ section.closing { padding-bottom: 0; }
 .foot a { padding: 10px 0; }
 /* Phones: the scrolled header is fully solid, so no page text shows through it. */
 @media (max-width: 899px), (hover: none) { .bar.scrolled { background: var(--bg); } }
+
+/* ---------- laptop and desktop: larger reading type, a wider column ---------- */
+@media (min-width: 1200px) {
+  .sub { font-size: clamp(20px, 1.45vw, 23px); line-height: 1.5; max-width: 680px; }
+  .privacy .sub { max-width: 36em; }
+  .scene-engine .cap { font-size: clamp(18px, 1.3vw, 20px); }
+  .scene-planner .pl-cap-p, .scene-widgets .wg-cap-p { font-size: clamp(19px, 1.35vw, 21px); }
+  .get-note { font-size: 16px; } }
+
+/* ---------- depth: devices drift and settle against the scroll ----------
+   Tied to each device's own pass through the viewport (view timeline) and
+   run on the compositor: a device comes up from a little lower with a slight
+   lean, is flat and still while centred, and tips away as it leaves. The dark
+   backdrops behind the engine scenes travel the other way, slower, so the
+   words, the device and the backdrop sit at three depths. Browsers without
+   view timelines keep the one-time rise and settle above. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .motion .reveal.dev { --lean: -6deg; animation: aera-depth linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    .motion .eng-board.dev, .motion .pl-world.dev { --lean: 4deg; }
+    .motion .fo-film.dev, .motion .wg-world.dev { --lean: 0deg; }
+    @keyframes aera-depth {
+      0% { transform: perspective(1600px) translate3d(0, 8svh, 0) rotateX(8deg) rotateY(var(--lean)); }
+      42%, 58% { transform: perspective(1600px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg); }
+      100% { transform: perspective(1600px) translate3d(0, -6svh, 0) rotateX(-5deg) rotateY(calc(var(--lean) * -.5)); }
+    }
+    .eng-bg { animation: aera-back linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    @keyframes aera-back { from { transform: translate3d(0, -7svh, 0) scale(1.1); } to { transform: translate3d(0, 7svh, 0) scale(1.1); } }
+  }
+}
+
+/* ---------- Free and Premium: two panels, not two lists ----------
+   Free is a plain card; Premium is the one dark, warm panel on a light page,
+   with a gold title and one slow sheen when it arrives. Plain rows split by
+   hairlines rise one after another. */
+.plans { gap: 16px; max-width: 1040px; margin-top: 44px; }
+@media (min-width: 860px) { .plans { gap: 20px; } }
+.plan { position: relative; overflow: hidden; isolation: isolate; border-top: 0; padding: clamp(28px, 3.4vw, 44px); border-radius: 30px; background: var(--card); box-shadow: var(--shadow); }
+.plan h3 { font: 800 clamp(30px, 3vw, 40px)/1.05 var(--rounded); letter-spacing: -.025em; }
+.plan ul { margin-top: 22px; gap: 0; }
+.plan li { padding: 15px 0; border-top: 1px solid var(--line); font-size: 17px; line-height: 1.4; color: var(--ink); }
+.plan li::before { display: none; }
+.plan-prem { color: #f5f3ee; background: radial-gradient(120% 90% at 100% 0%, rgba(232, 179, 102, .3), transparent 55%), radial-gradient(90% 80% at 0% 100%, rgba(94, 92, 230, .2), transparent 60%), #111014; box-shadow: 0 30px 70px -30px rgba(20, 14, 4, .55), inset 0 0 0 1px rgba(255, 255, 255, .07); }
+.plan-prem h3 { background: linear-gradient(90deg, #f6dcae, #e8b366 50%, #cf9445); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.plan-prem li { color: #ece9e2; border-top-color: rgba(255, 255, 255, .1); }
+.plan-prem::after { content: ""; position: absolute; z-index: -1; top: -30%; bottom: -30%; left: 0; width: 34%; background: linear-gradient(100deg, transparent, rgba(255, 232, 196, .13), transparent); transform: translateX(-120%) rotate(14deg); pointer-events: none; }
+.motion .plan-prem.in::after { animation: plan-sheen 2.2s var(--ease) 1s both; }
+@keyframes plan-sheen { to { transform: translateX(420%) rotate(14deg); } }
+.motion .plan:not(.in) li { opacity: 0; translate: 0 14px; }
+.motion .plan.in li { transition: opacity .7s var(--rise) calc(var(--d, 0s) + .25s + var(--i) * 80ms), translate .9s var(--rise) calc(var(--d, 0s) + .25s + var(--i) * 80ms); }
