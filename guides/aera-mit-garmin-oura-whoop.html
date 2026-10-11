@@ -82,23 +82,26 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   <nav class="topnav"><a href="../notes/index.html">Notizen</a><a href="../privacy.html">Datenschutz</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Sprache: Deutsch"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>DE</span></summary><div class="lsw-menu"><a href="/guides/aera-with-garmin-oura-whoop.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/aera-garmin-oura-whoop-vel.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/aera-mit-garmin-oura-whoop.html" lang="de" hreflang="de" data-lsw="de" aria-current="page">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Ratgeber</p>
-  <h1>Aera mit Garmin, Oura, WHOOP oder einem anderen Tracker</h1>
+  <p class="g-type">Problem · Geräte</p>
+  <h1>Kann Aera meine Garmin-, Oura- oder WHOOP-Daten nutzen?</h1>
   <p class="meta lang-switch"><a href="aera-with-garmin-oura-whoop.html" hreflang="en" lang="en">English</a> · <a href="aera-garmin-oura-whoop-vel.html" hreflang="hu" lang="hu">Magyar</a> · <a href="aera-mit-garmin-oura-whoop.html" hreflang="de" lang="de" aria-current="page">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Aeras Kacheln für HRV und Ruhepuls, beide im eigenen Bereich als Typisch markiert" width="1384" height="582" decoding="async"></picture></figure>
 </div>
 <div class="wrap legal">
-<p><strong>Aera liest nicht deinen Tracker, sondern Apple Health.</strong> Alles, was deine Uhr, dein Ring oder dein Armband in Apple Health auf deinem iPhone ablegt, kann Aera an deinem eigenen Normal erklären. Was in der App des Herstellers bleibt, sieht Aera nicht.</p>
+<p class="g-answer"><strong>Aera liest nicht deinen Tracker, sondern Apple Health.</strong> Alles, was deine Uhr, dein Ring oder dein Armband in Apple Health auf deinem iPhone ablegt, kann Aera an deinem eigenen Normal erklären. Was in der App des Herstellers bleibt, sieht Aera nicht.</p>
 <p>Die nützliche Frage lautet also nicht „Funktioniert Aera mit meiner Marke?“, sondern „Legt meine Marke die Daten, die mich interessieren, in Apple Health ab?“ Hier steht, was Aera mit den ankommenden Daten macht und was du prüfen solltest.</p>
 <p><strong>Eine ehrliche Einschränkung:</strong> Wir haben nachgelesen, wie Aera Daten anderer Tracker behandelt, es aber noch nicht mit einem Garmin, Oura oder WHOOP auf einem echten Gerät getestet. Die Markennamen unten sind Beispiele dafür, wie es funktionieren sollte, keine getestete Kompatibilitätsliste.</p>
 
-<h2>Was Aera mit Daten anderer Tracker macht</h2>
+
+<ul class="g-toc" aria-label="Auf dieser Seite"><li><a href="#s1">Was Aera mit Daten anderer Tracker macht</a></li><li><a href="#s2">Was eventuell nicht ankommt</a></li><li><a href="#s3">So verbindest du</a></li><li><a href="#s4">Brauche ich eine Apple Watch?</a></li></ul>
+<h2 id="s1">Was Aera mit Daten anderer Tracker macht</h2>
 <ul>
 <li><strong>Workouts.</strong> Läufe und Einheiten aus Strava, Garmin, Nike und ähnlichen Apps, die in Apple Health landen, werden gelesen. Wurde derselbe Lauf doppelt aufgezeichnet, etwa von einer Apple Watch und einer zweiten App, zählt Aera ihn nur einmal, damit deine Trainingsbelastung nicht doppelt gerechnet wird.</li>
 <li><strong>Schlaf.</strong> Protokollieren mehrere Quellen dieselbe Nacht, wählt Aera die vollständigste mit Schlafphasen und mischt sie nicht. Auch Herzfrequenz und HRV der Nacht kommen pro Nacht aus einer Quelle.</li>
 <li><strong>Strava-Verlauf.</strong> In den Einstellungen liest „Aus Strava importieren“ deine Strava-Exportdatei (GPX-, TCX- und FIT-Aktivitäten), ohne Konto.</li>
 </ul>
 
-<h2>Was eventuell nicht ankommt</h2>
+<h2 id="s2">Was eventuell nicht ankommt</h2>
 <p>Was ein Tracker in Apple Health schreibt, entscheidet der Hersteller, und es ändert sich. Nach den Angaben der Hersteller und unabhängigen Vergleichen, Stand Oktober 2026:</p>
 <ul>
 <li>Oura und WHOOP schreiben Schlaf in Apple Health, aber keine HRV. WHOOP begründet das damit, dass Apple Health die HRV als SDNN speichert, WHOOP aber RMSSD nutzt, eine andere Berechnung.</li>
@@ -106,24 +109,24 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 </ul>
 <p>Aera kann nur erklären, was bei ihr ankommt. Erreicht eine Zahl Apple Health nicht, gibt es nichts zu erklären, und der Bildschirm bleibt leer, statt zu raten. Schau auf die aktuelle Apple-Health-Seite deines Herstellers, denn diese Listen kann er jederzeit ändern.</p>
 
-<h2>So verbindest du</h2>
+<h2 id="s3">So verbindest du</h2>
 <ol>
 <li>Suche in der App deines Trackers die Apple-Health-Einstellung (meist unter Einstellungen, in einem Bereich namens Apple Health oder Verbundene Apps) und erlaube Schlaf, Herzfrequenz und Workouts.</li>
 <li>Was genau geschrieben wird, siehst du so: Öffne die Health-App, tippe auf dein Profilbild, dann auf Apps und öffne die App deines Trackers. Dort stehen alle Datentypen, die sie schreibt.</li>
 <li>Öffne Aera und erlaube den Zugriff auf Health. Schlaf- und Trainingszahlen erscheinen, sobald Daten da sind, und Aera sagt dir, wenn sie dein Normal noch lernt.</li>
 </ol>
 
-<h2>Brauche ich eine Apple Watch?</h2>
+<h2 id="s4">Brauche ich eine Apple Watch?</h2>
 <p>Nein. Workouts können von einem anderen Gerät oder einer anderen App kommen. <strong>Für den Schlaf brauchst du aber ein Wearable</strong>: Ein iPhone allein protokolliert meist nur die Zeit im Bett, und eine Nacht ohne Schlafdaten aus irgendeiner Quelle zählt nicht. Eine Uhr, ein Ring oder eine Schlaf-App, die Schlaf in Apple Health schreibt, schließt diese Lücke. Die Apple-Watch-App ist ein optionaler Begleiter für Live-Läufe und Routenführung.</p>
 
-<h2>So macht Aera das</h2>
+<h2 id="s5">So macht Aera das</h2>
 <div class="note">
 <p><strong>Aera, für iPhone</strong></p>
 <p>Aera erklärt die Gesundheitsdaten, die deine Uhr, dein Ring oder dein Handy sammeln, an deinem eigenen Normal. Sie zeigt, wie jede Zahl entstanden ist, und alles bleibt auf deinem iPhone: kein Konto, die Gesundheitszahlen werden auf dem Handy berechnet. Tippe auf eine Zahl, und der Field Guide erklärt sie. Aera ist kein Medizinprodukt.</p>
 </div>
 <p><a class="btn btn-primary" href="https://apps.apple.com/de/app/id6762456252">Aera im App Store laden</a></p>
 
-<h2>Kurz beantwortet</h2>
+<h2 id="s6">Kurz beantwortet</h2>
 <h3>Funktioniert Aera mit Garmin?</h3>
 <p>Aera liest Apple Health, und Garmin Connect kann dort Schlaf, Herzfrequenz und Workouts ablegen. Workouts von Garmin, die in Apple Health ankommen, liest Aera. Mit einem echten Garmin-Konto wurde es noch nicht getestet, und Garmin schreibt die GPS-Strecke eines Workouts nicht in Apple Health.</p>
 <h3>Funktioniert Aera mit Oura oder WHOOP?</h3>

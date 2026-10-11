@@ -82,43 +82,45 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Nyelv: Magyar"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>HU</span></summary><div class="lsw-menu"><a href="/guides/garmin-data-on-iphone-explained.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/garmin-adatok-iphone-on.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">Magyar</a><a href="/guides/garmin-daten-auf-dem-iphone-erklaert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Útmutató</p>
+  <p class="g-type">Probléma · Eszközök</p>
   <h1>Garmin-adatok az iPhone-on, érthetően</h1>
   <p class="meta lang-switch"><a href="garmin-data-on-iphone-explained.html" hreflang="en" lang="en">English</a> · <a href="garmin-adatok-iphone-on.html" hreflang="hu" lang="hu" aria-current="page">Magyar</a> · <a href="garmin-daten-auf-dem-iphone-erklaert.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Az Aera HRV és nyugalmi pulzus csempéi, mindkettő a saját tartományhoz képest Tipikus" width="1384" height="582" decoding="async"></picture></figure>
 </div>
 <div class="wrap legal">
-<p><strong>A Garmin, az Oura vagy a WHOOP száma és ugyanaz a szám az Apple Health-ben eltérhet, és egyik sem hibás.</strong> Minden eszköz más időpontban, más képlettel mér, és a végeredményt a maga módján nevezi el. Az számít, hogy a mai érték hogyan viszonyul a saját megszokottadhoz ugyanazon az eszközön.</p>
-<p>Itt megnézzük, mi jut át valójában ezekről az eszközökről az iPhone-odra, miért térnek el a számok, és hogyan olvasd őket úgy, hogy ne az almát hasonlítsd a körtéhez. A csatlakoztatás lépései itt vannak: <a href="aera-garmin-oura-whoop-vel.html">Az Aera Garminnal, Ourával, WHOOP-pal és más eszközökkel</a>.</p>
+<p class="g-answer"><strong>A Garmin, az Oura vagy a WHOOP száma és ugyanaz a szám az Apple Health-ben eltérhet, és egyik sem hibás.</strong> Minden eszköz más időpontban, más képlettel mér, és a végeredményt a maga módján nevezi el. Az számít, hogy a mai érték hogyan viszonyul a saját megszokottadhoz ugyanazon az eszközön.</p>
 
-<h2>Mi jut át az Apple Health-be?</h2>
+
+<ul class="g-toc" aria-label="Ezen az oldalon"><li><a href="#s1">Mi jut át az Apple Health-be?</a></li><li><a href="#s2">Miért más a HRV a különböző eszközökön?</a></li><li><a href="#s3">Miért más az alvás?</a></li><li><a href="#s4">Hogyan olvasd?</a></li></ul>
+<h2 id="s1">Mi jut át az Apple Health-be?</h2>
 <p>Azt, hogy mit ír az Apple Health-be, az eszközöd appja dönti el, és minden gyártó csak egy részét írja. A gyártók saját leírásai és független összehasonlítások alapján, 2026 októberi állapot szerint: az alvás, a pulzus és az edzések a gyakoriak. Az Oura és a WHOOP nem ír HRV-t. A Garmin nem írja az edzés GPS-útvonalát. A nyugalmi pulzust, a légzésszámot és a vér oxigénszintjét egyes gyártók írják, mások nem. Hogy egy app mit ír, azt az Egészség appban látod: profilkép, Appok, majd az app neve.</p>
 <p>Ez a lista a gyártóké, és változhat. Valódi Garmin-, Oura- vagy WHOOP-fiókon még nem ellenőriztük.</p>
 
-<h2>Miért más a HRV a különböző eszközökön?</h2>
+<h2 id="s2">Miért más a HRV a különböző eszközökön?</h2>
 <p>A HRV a szívverések közti idő apró ingadozása, és többféleképpen lehet belőle számot csinálni. Az Apple Watch és az Apple Health <strong>SDNN</strong>-t használ. Sok gyűrű és pánt <strong>RMSSD</strong>-t mutat. A kettő ugyanazokból a szívverésekből más értéket ad, ráadásul az eszközök az éjszaka más szakaszában és más hosszan mérnek. Ha az egyik eszköz 45-öt, a másik 60-at mutat, az semmit sem mond arról, ki van jobb formában. Egy eszközt csak önmagához mérj. Bővebben: <a href="apple-watch-hrv-ertek.html">Apple Watch HRV érték: mi a normális?</a></p>
 
-<h2>Miért más az alvás?</h2>
+<h2 id="s3">Miért más az alvás?</h2>
 <ul>
 <li><strong>A szakaszok becslések.</strong> A csuklón vagy ujjon viselt eszközök a mozgásból és a pulzusból következtetnek a könnyű, mély és REM alvásra. A különböző algoritmusok néha éjszakánként több tíz percben eltérnek.</li>
 <li><strong>A pontszámok a gyártó sajátjai.</strong> Az egyik gyártó „alváspontszáma” vagy „alvásteljesítménye” nem ugyanaz a recept, mint a másiké. Az Apple saját alváspontszáma megint külön skála. Lásd: <a href="jo-alvas-pontszam.html">mi számít jó alváspontszámnak</a>.</li>
 <li><strong>Az Aera éjszakánként egy forrást használ.</strong> Ha egy óra és egy gyűrű is rögzíti ugyanazt az éjszakát, az Aera a legteljesebbet választja, amelyikben vannak szakaszok, és nem keveri őket, így az éjszaka sosem két eszköz keveréke.</li>
 </ul>
 
-<h2>Hogyan olvasd?</h2>
+<h2 id="s4">Hogyan olvasd?</h2>
 <ol>
 <li>Válassz egy eszközt fő alvás- és HRV-forrásnak, és maradj nála pár hétig.</li>
 <li>A trendet nézd a saját megszokott szintedhez képest, ne egyetlen éjszakát, és ne valaki más eszközének számát.</li>
 <li>Ha eszközt váltasz, a megszokott szinted eltolódhat. Adj az újnak pár hetet, mielőtt következtetsz.</li>
 </ol>
 
-<h2>Így működik az Aerában</h2>
+<h2 id="s5">Így működik az Aerában</h2>
 <div class="note">
 <p><strong>Aera, iPhone-ra</strong></p>
 <p>Az Aera azt olvassa, amit az eszközöd az Apple Health-be ír, és a saját megszokott szintedhez méri, nem népességi átlaghoz. Koppints egy számra, és a Field Guide megmutatja, hogyan jött ki, és meddig bízhatsz benne. Minden az iPhone-odon marad, fiók nélkül. Az Aera nem orvostechnikai eszköz.</p>
 </div>
 <p><a class="btn btn-primary" href="https://apps.apple.com/hu/app/id6762456252">Töltsd le az App Store-ból</a></p>
 
-<h2>Gyors válaszok</h2>
+<h2 id="s6">Gyors válaszok</h2>
 <h3>Megjelennek a Garmin-adatok az Apple Health-ben?</h3>
 <p>Egy részük igen. A Garmin saját listája szerint a Garmin Connect alvást, pulzust és edzéseket tud írni az Apple Health-be, az edzés GPS-útvonalát viszont nem. Hogy mit látsz, az attól függ, mit engedélyezel a Garmin appban.</p>
 <h3>Miért más a Garmin HRV-je, mint az Apple Health-é?</h3>

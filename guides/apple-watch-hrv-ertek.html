@@ -99,30 +99,34 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   <nav class="topnav"><a href="../notes/index.html">Jegyzetek</a><a href="../privacy.html">Adatvédelem</a><a href="../support.html">Támogatás</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Nyelv: Magyar"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>HU</span></summary><div class="lsw-menu"><a href="/guides/apple-watch-hrv-normal-range.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/apple-watch-hrv-ertek.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">Magyar</a><a href="/guides/apple-watch-hrv-normalwert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Útmutató</p>
+  <p class="g-type">Fogalom · Szív</p>
   <h1>Apple Watch HRV: mennyi a normális, és miért alacsony az enyém?</h1>
   <p class="meta lang-switch"><a href="apple-watch-hrv-normal-range.html" hreflang="en" lang="en">English</a> · <a href="apple-watch-hrv-ertek.html" hreflang="hu" lang="hu" aria-current="page">Magyar</a> · <a href="apple-watch-hrv-normalwert.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Az Aera HRV és nyugalmi pulzus csempéi, mindkettő a saját tartományhoz képest Tipikus" width="1384" height="582" decoding="async"></picture></figure>
 </div>
 <div class="wrap legal">
-<p><strong>Nincs egyetlen normális Apple Watch HRV érték.</strong> Már egészséges csoportok átlaga is nagyjából 30 és több mint 90 ezredmásodperc (ms) között mozog, az egyes emberek pedig ennél is jobban szórnak, életkortól, edzettségtől, génektől és attól függően, mikor mért az óra. „Jó” HRV az, ami a saját szokásos tartományodon belül van, az „alacsony” pedig csak akkor jelent valamit, ha hozzád képest alacsony, és nem csak egy-két reggelen.</p>
+<p class="g-answer"><strong>Nincs egyetlen normális Apple Watch HRV érték.</strong> Már egészséges csoportok átlaga is nagyjából 30 és több mint 90 ezredmásodperc (ms) között mozog, az egyes emberek pedig ennél is jobban szórnak, életkortól, edzettségtől, génektől és attól függően, mikor mért az óra. „Jó” HRV az, ami a saját szokásos tartományodon belül van, az „alacsony” pedig csak akkor jelent valamit, ha hozzád képest alacsony, és nem csak egy-két reggelen.</p>
 <!--art:keys--><ul class="keys"><li><b>32–93 ms</b>az átlagos SDNN tartománya 44 egészséges felnőttekkel végzett vizsgálatban<small>Nunan és mtsai, 2010</small></li><li><b>~29%</b>átlagos eltérés az Apple Watch HRV és a mellkaspánt között<small>O'Grady és mtsai, 2024</small></li><li><b>7 nap</b>méréseid kellenek, mielőtt az Aera bármit tipikusnak vagy alacsonynak mond<small>Aera</small></li></ul><!--/art:keys-->
-<p>Lent leírjuk, mi is valójában az órán látható szám, miért mást mutat, mint más eszközök, mi húzza le, és mikor érdemes egy alacsony érték miatt orvoshoz fordulni.</p>
 
-<h2>Mit mér valójában az Apple Watch?</h2>
+
+<ul class="g-toc" aria-label="Ezen az oldalon"><li><a href="#s1">Mit mér valójában az Apple Watch?</a></li><li><a href="#s2">SDNN és RMSSD: miért mutatnak mást az eszközök?</a></li><li><a href="#s3">Mennyi a normális HRV?</a></li><li><a href="#s4">Miért alacsony a HRV-d?</a></li></ul>
+<h2 id="s1">Mit mér valójában az Apple Watch?</h2>
 <p>A szívritmus-változékonyság (HRV) azt mutatja, mennyire ingadozik a szívverések közötti idő. Percenként 60-as pulzusnál sem pontosan egy másodperc telik el minden ütés között: hol kicsit kevesebb, hol kicsit több. Kipihent állapotban ez az ingadozás általában nagyobb, terhelés alatt összeszűkül. Bővebben: <a href="../notes/what-is-hrv.html">mi is az a HRV</a> (angolul).</p>
 <p>Az Apple HealthKit-dokumentációja szerint az Apple Watch magától rögzíti a HRV-t, és <strong>SDNN</strong>-t használ: a normál szívverések közötti időközök szórását, ezredmásodpercben. Az óra nem mér folyamatosan. Rövid méréseket végez szabálytalan időpontokban, amikor nyugton vagy, éjszaka is, és ezeket az Egészség app egyenként listázza. Egy éjszakára általában csak néhány ilyen mérés jut, vagyis mindegyik csak kis minta az éjszakádból.</p>
 
-<h2>SDNN és RMSSD: miért mutatnak mást az eszközök?</h2>
+<h2 id="s2">SDNN és RMSSD: miért mutatnak mást az eszközök?</h2>
 <p>Sok gyűrű, mellkaspánt és sportóra egy másik HRV-mutatót ad meg, az <strong>RMSSD</strong>-t, ami azt méri, átlagosan mekkorát változik az időköz egyik ütésről a másikra. Mindkettő ugyanazokból a szívverésekből készül, de más a számítás. Az RMSSD főleg az idegrendszer nyugtató (vagus-) oldalát tükrözi, az SDNN ezt is, és mellette a pulzus lassabb hullámzását is (Shaffer és Ginsberg, 2017). Abban is különböznek az eszközök, mikor mérnek: egyetlen rövid mérés, egy rögzített ablak az éjszaka elején, vagy átlag az egész alvásra.</p>
 <p>Ha tehát ugyanazon az éjszakán az Apple Watch 38 ms-ot mutat, egy másik eszköz pedig 55-öt, az nem ellentmondás, csak két különböző mérce. Egyik sem hibás, egyszerűen nem lehet őket számra összevetni. Minden eszközt önmagához hasonlíts.</p>
 
-<h2>Mennyi a normális HRV?</h2>
+<h2 id="s3">Mennyi a normális HRV?</h2>
 <p>Nunan és munkatársai (2010) 44 vizsgálatot összesítettek egészséges felnőttekről (21 438 fő), akiknél néhány perces nyugalmi mérés készült. Az SDNN átlaga ezekben nagyjából 50 ms volt, a vizsgálatok átlagai 32 és 93 ms között szóródtak. Az RMSSD átlaga körülbelül 42 ms volt, 19 és 75 ms között (Shaffer és Ginsberg 2017-es táblázata alapján). Ezek csoportátlagok, az egyének ennél sokkal szélesebb sávban vannak.</p>
 <!--art:pull--><blockquote class="pull">Két egészséges negyvenéves HRV-je 40 ms-mal is eltérhet, és mindkettejük rendben van.</blockquote><!--/art:pull-->
+<details class="g-more"><summary>Bővebben</summary>
 <p>A legtöbbet az életkor számít. Natarajan és munkatársai (2020) több mint 8 millió Fitbit-felhasználó adataiban azt találták, hogy a HRV a korral egyenletesen csökken. Altini és Plews (2021) 28 175, minden reggel mérő embernél ugyanezt látta, a nem viszont alig számított a HRV-ben. Egy 2025-ös szisztematikus áttekintés (Brozat és munkatársai) szerint ma sincsenek általánosan elfogadott HRV-normálértékek, csak nagy vizsgálatok, amelyek durva tájékozódásra jók.</p>
 <p>Ezért kevésbé hasznos egy „jó HRV életkor szerint” táblázat, mint amilyennek látszik. Két egészséges negyvenéves között lehet 40 ms különbség, és mindketten rendben vannak. A te mércéd a saját tartományod, erről szól a <a href="../notes/why-should-a-watch-compare-me-to-myself.html">miért magadhoz mérjen az órád</a> jegyzet (angolul).</p>
 
-<h2>Miért alacsony a HRV-d?</h2>
+</details>
+<h2 id="s4">Miért alacsony a HRV-d?</h2>
 <p>Ha a HRV-d a szokásos alá esett, az ok többnyire friss és hétköznapi:</p>
 <ul>
   <li><strong>Kemény edzés.</strong> Egy nehéz edzés vagy egy sűrű hét egy-két napra is lehúzhatja. Altini és Plews (2021) különböző intenzitású edzések után is változást láttak.</li>
@@ -134,19 +138,19 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 </ul>
 <p>És néha egyszerűen nincs semmi baj. Ha a HRV-d mindig is alacsonyabb volt, mint a neten talált táblázatokban, lehet, hogy egyszerűen ez a te szinted.</p>
 
-<h2>A trendet nézd, ne az egy reggelt</h2>
+<h2 id="s5">A trendet nézd, ne az egy reggelt</h2>
 <p>Az egyes mérések zajosak, és az óra abszolút értékben különösen pontatlan: mellkaspánthoz képest az Apple Watch HRV átlagosan kb. 29%-kal tért el, és kicsit alacsonyabbat mért (O'Grady és munkatársai, 2024). A saját hullámzásodat jobban követi, mint ahogy egy laborértéket visszaadna.</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">Egy rossz éjszaka zaj. Egy rossz hét jelzés.</p><svg viewBox="0 0 360 230" role="img" aria-label="Egy rossz éjszaka zaj. Egy rossz hét jelzés."><line class="grid" x1="26" x2="354" y1="169.4" y2="169.4"/><text class="t" x="18" y="173.4" text-anchor="end">35</text><line class="grid" x1="26" x2="354" y1="116.3" y2="116.3"/><text class="t" x="18" y="120.3" text-anchor="end">45</text><line class="grid" x1="26" x2="354" y1="63.2" y2="63.2"/><text class="t" x="18" y="67.2" text-anchor="end">55</text><rect class="band" x="26" y="59.4" width="328" height="39.4" rx="6"/><line class="mid" x1="26" x2="354" y1="79.1" y2="79.1"/><text class="t" x="354" y="53.4" text-anchor="end">a saját szokásos tartományod</text><circle class="dot" cx="26.0" cy="73.8" r="3.2"/><circle class="dot" cx="38.1" cy="95.1" r="3.2"/><circle class="dot" cx="50.3" cy="57.9" r="3.2"/><circle class="dot" cx="62.4" cy="84.4" r="3.2"/><circle class="dot" cx="74.6" cy="105.7" r="3.2"/><circle class="dot" cx="86.7" cy="63.2" r="3.2"/><circle class="dot" cx="98.9" cy="79.1" r="3.2"/><circle class="dot" cx="111.0" cy="89.8" r="3.2"/><circle class="dot" cx="123.2" cy="68.5" r="3.2"/><circle class="dot lo" cx="135.3" cy="169.4" r="3.2"/><circle class="dot" cx="147.5" cy="79.1" r="3.2"/><circle class="dot" cx="159.6" cy="52.6" r="3.2"/><circle class="dot" cx="171.8" cy="95.1" r="3.2"/><circle class="dot" cx="183.9" cy="73.8" r="3.2"/><circle class="dot" cx="196.1" cy="84.4" r="3.2"/><circle class="dot" cx="208.2" cy="63.2" r="3.2"/><circle class="dot" cx="220.4" cy="89.8" r="3.2"/><circle class="dot" cx="232.5" cy="79.1" r="3.2"/><circle class="dot" cx="244.7" cy="100.4" r="3.2"/><circle class="dot lo" cx="256.8" cy="132.2" r="3.2"/><circle class="dot lo" cx="269.0" cy="142.9" r="3.2"/><circle class="dot lo" cx="281.1" cy="126.9" r="3.2"/><circle class="dot lo" cx="293.3" cy="148.2" r="3.2"/><circle class="dot lo" cx="305.4" cy="137.6" r="3.2"/><circle class="dot lo" cx="317.6" cy="121.6" r="3.2"/><circle class="dot lo" cx="329.7" cy="142.9" r="3.2"/><circle class="dot" cx="341.9" cy="105.7" r="3.2"/><circle class="dot" cx="354.0" cy="89.8" r="3.2"/><path class="avg" style="--len:292" d="M98.9 79.9 L111.0 82.2 L123.2 78.4 L135.3 94.3 L147.5 93.5 L159.6 86.0 L171.8 90.5 L183.9 89.8 L196.1 89.0 L208.2 88.2 L220.4 76.8 L232.5 76.8 L244.7 83.7 L256.8 89.0 L269.0 98.9 L281.1 104.9 L293.3 117.1 L305.4 123.9 L317.6 130.0 L329.7 136.0 L341.9 132.2 L354.0 124.7"/><path class="ann" d="M135.3 177.4 L135.3 200.0"/><text class="t ann-t" x="135.3" y="214.0" text-anchor="middle">egy alacsony éjszaka</text><path class="ann" d="M256.8 162.2 L329.7 162.2"/><text class="t ann-t" x="293.3" y="181.2" text-anchor="middle">egy hét a szokásos alatt</text><text class="t" x="354" y="226" text-anchor="end">28 éjszaka →</text><path class="avg-key" d="M32 14 L48 14"/><text class="t" x="54" y="18">7 éjszakás átlag</text></svg><figcaption><b>Szemléltetés példa-éjszakákkal.</b> A pontok egy-egy éjszakát jelölnek; a sáv az illető korábbi hetekből számolt saját szokásos tartománya; a zöld vonal 7 éjszakás mozgóátlag, ahogy Plews és munkatársai (2013) javasolják olvasni a HRV-t.</figcaption></figure><!--/art:fig-->
 <p>Plews és munkatársai (2013) élvonalbeli állóképességi sportolóknál azt javasolták, hogy a HRV-t nagyjából egyhetes gördülő átlagként, a saját alapértékhez mérve olvassuk, ne egy-egy napra reagáljunk. Egy buli utáni alacsony reggel keveset mond. Ha viszont az egyhetes átlag jóval a szokásos alá csúszik, az már többet, főleg ha közben a nyugalmi pulzusod is kúszik felfelé. Ha edzel, a <a href="fussak-ha-rosszul-aludtam.html">Fussak ma, ha rosszul aludtam?</a> útmutató segít eldönteni, mit kezdj ezzel.</p>
 
-<h2>Mikor fordulj orvoshoz?</h2>
+<h2 id="s6">Mikor fordulj orvoshoz?</h2>
 <ul>
   <li>Ha a HRV-d egy hétig vagy tovább jóval a szokásos alatt marad, és nincs rá kézenfekvő magyarázat, például edzés, utazás, alkohol vagy nátha.</li>
   <li>Ha az alacsony érték mellett mellkasi fájdalmat, ájulást, szapora vagy szabálytalan szívverést, szokatlan légszomjat tapasztalsz. Ezek a tünetek a számtól függetlenül is fontosak.</li>
   <li>Ha bármi miatt aggódsz a szíved miatt. Az óra HRV-je jólléti jelzés, nem diagnózis. Ez az oldal általános tájékoztatás, nem orvosi tanács.</li>
 </ul>
 
-<h2>Így csinálja ezt az Aera</h2>
+<h2 id="s7">Így csinálja ezt az Aera</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/hrv-tiles-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/hrv-tiles-light.webp" alt="Az Aera HRV- és nyugalmipulzus-csempéje, mindkettő Tipikus a saját szokásos tartományhoz képest" width="740" height="335" loading="lazy" decoding="async"></picture></div><p><b>HRV az Aerában</b>A csempe a múlt éjszakát a saját, elmúlt két hétből számolt szokásos tartományodhoz méri: Tipikus, A szokásos alatt vagy Jóval alacsonyabb. Nincs népességi skála.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Az Aera, iPhone-ra és Apple Watch-ra</strong></p>
@@ -156,7 +160,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 </div>
 <p><a class="btn btn-primary" href="https://apps.apple.com/hu/app/id6762456252">Töltsd le az App Store-ból</a></p>
 
-<h2>Gyors válaszok</h2>
+<h2 id="s8">Gyors válaszok</h2>
 <h3>Mennyi a normális HRV az Apple Watch-on?</h3>
 <p>Nincs egyetlen normális érték. Az Apple Watch a HRV-t SDNN-ként, ezredmásodpercben adja meg, és már egészséges csoportok átlaga is nagyjából 30 és több mint 90 ms között mozog, az egyének pedig ennél is jobban szórnak, életkortól, edzettségtől, génektől és a mérés időpontjától függően. A fiatalabbaknál általában magasabb. Jó HRV az, ami a saját szokásos tartományodon belül van.</p>
 <h3>Miért alacsony a HRV-m az Apple Watch-on?</h3>
@@ -169,7 +173,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 <p>Kapcsolódó jegyzetek (angolul): <a href="../notes/what-is-hrv.html">mi a HRV</a> · <a href="../notes/why-should-a-watch-compare-me-to-myself.html">miért magadhoz mérjen az órád</a> · <a href="../notes/why-is-my-resting-heart-rate-up.html">miért magasabb a nyugalmi pulzusom?</a> · <a href="../notes/what-can-a-consumer-watch-not-measure.html">mit nem tud mérni egy okosóra</a></p>
 <p>Kapcsolódó útmutató: <a href="fussak-ha-rosszul-aludtam.html">Fussak ma, ha rosszul aludtam?</a></p>
 
-  <h2>Források</h2>
+  <h2 id="s9">Források</h2>
   <ol class="note-sources">
     <li>Apple Inc. heartRateVariabilitySDNN. HealthKit developer documentation. developer.apple.com, accessed October 2026.</li>
     <li>Nunan D, Sandercock GRH, Brodie DA. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Pacing and Clinical Electrophysiology. 2010;33(11):1407-1417.</li>
