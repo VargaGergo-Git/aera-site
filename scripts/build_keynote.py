@@ -41,6 +41,18 @@ def img(name, alt, sizes, eager=False, cls=""):
                ' fetchpriority="high"' if eager else ' loading="lazy"'))
 
 
+def localize(out, code):
+    """On /de and /hu, swap in the renders captured in that language where they
+    exist: img/k/NAME -> img/k/<code>/NAME, media/k/NAME -> media/k/<code>/NAME."""
+    import re
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    def swap(m):
+        local = "%s/%s/%s" % (m.group(1), code, m.group(2))
+        return local if os.path.exists(os.path.join(root, local)) else m.group(0)
+    return re.sub(r"\b((?:img|media)/k)/([\w.-]+\.(?:webp|jpg|png|mp4))", swap, out)
+
+
 def build(code, H):
     """H carries what the page shares with build_home: BASE, APPLE, CF_BEACON,
     OG_LOCALE, LANG_NAMES, asset(), the store URL and footer links."""
@@ -116,7 +128,7 @@ def build(code, H):
     ph = "(max-width: 759px) 44vw, 260px"
     work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
 
-    return f"""<!DOCTYPE html>
+    return localize(f"""<!DOCTYPE html>
 <html lang="{code}">
 <head>
 <meta charset="utf-8">
@@ -280,4 +292,4 @@ def build(code, H):
 {beacon}
 </body>
 </html>
-"""
+""", code)
