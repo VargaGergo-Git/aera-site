@@ -61,7 +61,7 @@ Facts, stated plainly:
 - [Hogyan tervezz futóútvonalat?](https://aerahealth.app/guides/futoutvonal-tervezes.html): the same guide in Hungarian
 - [Laufroute planen: so geht's](https://aerahealth.app/guides/laufroute-planen.html): the same guide in German
 - [Aera with Garmin, Oura, WHOOP and other trackers](https://aerahealth.app/guides/aera-with-garmin-oura-whoop.html): Aera reads Apple Health, so it explains what any tracker writes there; what reaches it, what may not (HRV from Oura and WHOOP, Garmin routes), how to connect. Not yet tested on real Garmin, Oura or WHOOP accounts
-- [Aera Garmin, Oura, WHOOP mellett](https://aerahealth.app/guides/aera-garmin-oura-whoop-vel.html): the same guide in Hungarian
+- [Az Aera Garminnal, Ourával, WHOOP-pal és más eszközökkel](https://aerahealth.app/guides/aera-garmin-oura-whoop-vel.html): the same guide in Hungarian
 - [Aera mit Garmin, Oura, WHOOP](https://aerahealth.app/guides/aera-mit-garmin-oura-whoop.html): the same guide in German
 - [Garmin data on iPhone, explained](https://aerahealth.app/guides/garmin-data-on-iphone-explained.html): why Garmin, Oura and WHOOP numbers differ from Apple Health (SDNN vs RMSSD, sleep stages and scores) and how to read them against your own normal
 - [Garmin-adatok az iPhone-on](https://aerahealth.app/guides/garmin-adatok-iphone-on.html): the same guide in Hungarian
