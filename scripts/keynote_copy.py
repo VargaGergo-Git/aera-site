@@ -83,7 +83,8 @@ K = {
      'h1': 'Az órád méri.<br>Az Aera elmagyarázza.',
      'sub': 'Az Aera elmondja, mit jelentenek neked az órád számai, és megmutatja, honnan tudja.',
      'cta': 'Letöltés az App Store-ból',
-     'note': 'Ingyenes &#183; Fiók nélkül &#183; iPhone és Apple Watch',
+     'note': 'Ingyenes &#183; Fiók nélkül &#183; Bármilyen órával vagy gyűrűvel, amelyik az Apple Health-be ír',
+        'work_link': ('guides/jo-alvas-pontszam.html', 'Nézz meg egyet: az alváspontszám'),
      'hero_alt': 'Az Aera iPhone-on és Apple Watch-on: a tegnap éjszakai alvás 55 perccel az igényed fölött, az '
                  'órán pedig az eddigi nap',
      'why_h2': 'Egy szám magyarázat nélkül csak egy szám.',
