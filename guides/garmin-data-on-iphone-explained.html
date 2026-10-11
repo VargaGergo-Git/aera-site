@@ -82,43 +82,45 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/guides/garmin-data-on-iphone-explained.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/guides/garmin-adatok-iphone-on.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/garmin-daten-auf-dem-iphone-erklaert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Guide</p>
-  <h1>Garmin data on iPhone, explained</h1>
+  <p class="g-type">Problem · Devices</p>
+  <h1>Why do my Garmin numbers differ in Apple Health?</h1>
   <p class="meta lang-switch"><a href="garmin-data-on-iphone-explained.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="garmin-adatok-iphone-on.html" hreflang="hu" lang="hu">Magyar</a> · <a href="garmin-daten-auf-dem-iphone-erklaert.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero" style="--ar:2.378"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Aera's HRV and resting heart rate tiles, both marked Typical against the person's own range" width="1384" height="582" decoding="async"></picture><figcaption class="g-cap">Aera's own HRV and resting heart rate tiles.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>A Garmin, Oura or WHOOP number and the same number in Apple Health can disagree, and neither is wrong.</strong> Each device measures at its own time of night, with its own formula, and names the result its own way. What matters is how today compares with your own usual on the same device.</p>
-<p>This page covers what actually crosses from those trackers to your iPhone, why the numbers differ, and how to read them without comparing apples to oranges. For connection steps, see <a href="aera-with-garmin-oura-whoop.html">Aera with Garmin, Oura, WHOOP and other trackers</a>.</p>
+<p class="g-answer"><strong>A Garmin, Oura or WHOOP number and the same number in Apple Health can disagree, and neither is wrong.</strong> Each device measures at its own time of night, with its own formula, and names the result its own way. What matters is how today compares with your own usual on the same device.</p>
 
-<h2>What crosses over to Apple Health</h2>
+
+<ul class="g-toc" aria-label="On this page"><li><a href="#s1">What crosses over to Apple Health</a></li><li><a href="#s2">Why HRV differs between devices</a></li><li><a href="#s3">Why sleep differs</a></li><li><a href="#s4">How to read it</a></li></ul>
+<h2 id="s1">What crosses over to Apple Health</h2>
 <p>Your tracker's app decides what it writes into Apple Health, and each maker writes a subset. From the makers' own descriptions and independent comparisons we know of, as of October 2026: sleep, heart rate and workouts are the common ones. Oura and WHOOP do not write HRV. Garmin does not write a workout's GPS route. Resting heart rate, respiratory rate and blood oxygen are written by some makers and not others. The Health app shows what any app writes: profile picture, then Apps, then the app's name.</p>
 <p>That list is theirs to change, and we have not yet checked it on a real Garmin, Oura or WHOOP account.</p>
 
-<h2>Why HRV differs between devices</h2>
+<h2 id="s2">Why HRV differs between devices</h2>
 <p>HRV is the small variation in the spacing between heartbeats, and there is more than one way to turn it into a number. Apple Watch and Apple Health use <strong>SDNN</strong>. Many rings and straps report <strong>RMSSD</strong>. The two calculations give different values from the same heartbeats, and devices also measure at different times of night and for different lengths of time. A 45 on one device and a 60 on another say nothing about who is fitter. Compare a device only with itself. More in <a href="apple-watch-hrv-normal-range.html">Apple Watch HRV: what is normal</a>.</p>
 
-<h2>Why sleep differs</h2>
+<h2 id="s3">Why sleep differs</h2>
 <ul>
 <li><strong>Stages are estimates.</strong> Wrist and ring devices infer light, deep and REM sleep from movement and heart rate. Different algorithms disagree, sometimes by tens of minutes a night.</li>
 <li><strong>Scores are each maker's own.</strong> A "sleep score" or "sleep performance" from one maker is not the same recipe as another's. Apple's own Sleep Score is a separate scale again. See <a href="what-is-a-good-sleep-score.html">what is a good sleep score</a>.</li>
 <li><strong>Only one source counts per night in Aera.</strong> If a watch and a ring both log the same night, Aera picks the fullest one with stages and does not blend them, so the night is never a mixture of two devices.</li>
 </ul>
 
-<h2>How to read it</h2>
+<h2 id="s4">How to read it</h2>
 <ol>
 <li>Pick one device as your main source for sleep and HRV and stay with it for a few weeks.</li>
 <li>Look at the trend against your own usual, not at a single night or a number from someone else's device.</li>
 <li>If you switch devices, expect your usual to shift. Give the new one a couple of weeks before drawing conclusions.</li>
 </ol>
 
-<h2>How Aera does this</h2>
+<h2 id="s5">How Aera does this</h2>
 <div class="note">
 <p><strong>Aera, for iPhone</strong></p>
 <p>Aera reads what your tracker puts into Apple Health and holds it against your own normal, not a population average. Tap a number and the Field Guide shows how it was worked out and where it stops being reliable. Everything stays on your iPhone, with no account. Aera is not a medical device.</p>
 </div>
 <p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
 
-<h2>Quick answers</h2>
+<h2 id="s6">Quick answers</h2>
 <h3>Does Garmin data show up in Apple Health?</h3>
 <p>Some of it. Garmin Connect can write sleep, heart rate and workouts to Apple Health according to Garmin&#x27;s own list, but not the GPS route of a workout. What you see depends on the settings you allow in the Garmin app.</p>
 <h3>Why is my Garmin HRV different from Apple Health?</h3>

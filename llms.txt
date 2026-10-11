@@ -34,6 +34,7 @@ Facts, stated plainly:
 ## Guides
 
 - [All guides](https://aerahealth.app/guides/): every guide in English, Hungarian and German
+- [How much sleep do I need?](https://aerahealth.app/guides/how-much-sleep-do-i-need.html): expert ranges (7+ hours, usually 7-9), why need is personal, why timing matters, how to find yours; also in Hungarian and German
 - [Apple Watch HRV normal range](https://aerahealth.app/guides/apple-watch-hrv-normal-range.html): why there is no single normal HRV, what Apple Watch measures (SDNN), why yours is low, and why your own range matters most
 - [Apple Watch HRV érték](https://aerahealth.app/guides/apple-watch-hrv-ertek.html): the same guide in Hungarian
 - [Apple Watch HRV Normalwert](https://aerahealth.app/guides/apple-watch-hrv-normalwert.html): the same guide in German

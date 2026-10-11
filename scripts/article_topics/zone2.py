@@ -66,7 +66,7 @@ SHOT = {
     "en": ("Aera's run summary: average pace 6:21 per km and average heart rate 133 bpm, each with its usual value underneath",
            "Pace beside heart rate",
            "After a run, Aera puts your average pace and average heart rate over your usual for the same kind of workout from the last 30 days, once there are three to compare. The same heart rate at a quicker pace, week after week, is the aerobic base growing."),
-    "hu": ("Az Aera futásösszegzője: átlagtempó 6:21/km és átlagpulzus 133/perc, alattuk a szokásos érték",
+    "hu": ("Az Aera futásösszesítője: átlagtempó 6:21/km és átlagpulzus 133/perc, alattuk a szokásos érték",
            "Tempó a pulzus mellett",
            "Futás után az Aera az átlagtempódat és az átlagpulzusodat az elmúlt 30 nap azonos típusú edzéseiből számolt szokásos értékeid fölé teszi, amint legalább három ilyen edzésed van az összevetéshez. Ha ugyanazon a pulzuson hétről hétre gyorsabb a tempó, az az aerob alapod épülése."),
     "de": ("Die Laufübersicht in Aera: Durchschnittstempo 6:21 pro km und Durchschnittspuls 133 bpm, darunter jeweils der übliche Wert",

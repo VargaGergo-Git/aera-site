@@ -22,7 +22,7 @@ ROUTE_SHOT = {
     "en": ("Aera's route navigation banner: 55 m, Off the route, line is north-west, still recording, with a rail showing 55 m right of the line",
            "Off the route, in Aera",
            "When you leave the planned line, the banner says how far away you are and which way the line lies, and a rail shows which side of it you are on. The run keeps recording."),
-    "hu": ("Az Aera útvonal-navigációs sávja: 55 m, letértél az útvonalról, a vonal északnyugatra van, a rögzítés megy, alatta egy sáv: 55 m-rel jobbra",
+    "hu": ("Az Aera navigációs sávja: 55 m, Letértél az útról, a vonal északnyugat felé, még rögzít, alatta egy sín: 55 m-re jobbra a vonaltól",
            "Letértél az útvonalról az Aerában",
            "Ha letérsz a megtervezett vonalról, a sáv megmondja, milyen messze vagy, és merre van a vonal, alatta pedig látod, melyik oldalán jársz. A futás rögzítése közben folytatódik."),
     "de": ("Das Navigationsbanner in Aera: 55 m, von der Route abgekommen, die Linie liegt im Nordwesten, Aufzeichnung läuft, darunter eine Leiste: 55 m rechts der Linie",
