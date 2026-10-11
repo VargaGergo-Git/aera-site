@@ -22,7 +22,7 @@ VO2_SHOT = {
     "en": ("Key stats of a run in Aera: average pace, grade-adjusted pace, average heart rate, and VO2 max 48.6 with +1.0 in a month",
            "VO₂ max on a run",
            "On an outdoor run or walk, Aera prints the estimate Apple Health recorded that day and how far it has moved against the reading about a month earlier."),
-    "hu": ("Egy futás fő adatai az Aerában: átlagtempó, emelkedőhöz igazított tempó, átlagpulzus és 48,6-os VO2 max, egy hónap alatt +1,0",
+    "hu": ("Egy futás fő adatai az Aerában: átlagtempó, lejtéskorrigált tempó, átlagpulzus és 48,6-os VO2 max, egy hónap alatt +1,0",
            "VO₂ max egy futáson",
            "Szabadtéri futásnál vagy sétánál az Aera kiírja, milyen becslést mentett aznap az Apple Health, és mennyit mozdult a nagyjából egy hónappal korábbi értékhez képest."),
     "de": ("Kennzahlen eines Laufs in Aera: Durchschnittstempo, steigungsbereinigtes Tempo, Durchschnittspuls und VO2max 48,6 mit +1,0 in einem Monat",

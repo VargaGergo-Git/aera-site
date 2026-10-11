@@ -15,7 +15,7 @@ HRV_KEYS = {
 }
 HRV_SHOT = {
     "en": ("Aera's HRV and resting heart rate tiles, each marked Typical against the person's own usual range", "HRV in Aera", "Each tile holds last night against your own usual range from the last two weeks, and says Typical, Below your usual or Notably low. No population scale."),
-    "hu": ("Az Aera HRV- és nyugalmipulzus-csempéje, mindkettő Tipikus a saját szokásos tartományhoz képest", "HRV az Aerában", "A csempe a múlt éjszakát a saját, elmúlt két hétből számolt szokásos tartományodhoz méri: Tipikus, A szokásos alatt vagy Jóval alacsonyabb. Nincs népességi skála."),
+    "hu": ("HRV és nyugalmi pulzus az Aerában, mindkettő Tipikus a saját szokásos tartományodhoz képest", "HRV az Aerában", "A kártya a múlt éjszakát a saját, elmúlt két hétből számolt szokásos tartományodhoz méri: Tipikus, A szokásos alatt vagy Jóval alacsonyabb. Nincs népességi skála."),
     "de": ("Die Kacheln HRV und Ruheherzfrequenz in Aera, beide Typisch gemessen am eigenen üblichen Bereich", "HRV in Aera", "Jede Kachel misst die letzte Nacht an deinem üblichen Bereich der letzten zwei Wochen: Typisch, Niedriger als üblich oder Auffällig niedrig. Keine Bevölkerungsskala."),
 }
 HRV_PULL = {
