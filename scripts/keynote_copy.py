@@ -71,6 +71,118 @@ K = {
         "close_note": "Free on the App Store. No account.",
         "foot_tag": "Your watch counts. Aera explains.",
     },
+    "hu": {'title': 'Aera: az órád méri, az Aera elmagyarázza',
+     'desc': 'Az Aera elmondja, mit jelentenek neked az órád számai, és megmutatja, honnan tudja. Alvás, szív és '
+             'futás az Apple Health-ből, a saját megszokottadhoz mérve. Ingyenes, fiók nélkül.',
+     'og_title': 'Az órád méri. Az Aera elmagyarázza.',
+     'skip': 'Ugrás a tartalomra',
+     'nav': [('guides/index.html', 'Útmutatók'),
+             ('notes/index.html', 'Jegyzetek'),
+             ('support.html', 'Támogatás')],
+     'get': 'Aera letöltése',
+     'h1': 'Az órád méri.<br>Az Aera elmagyarázza.',
+     'sub': 'Az Aera elmondja, mit jelentenek neked az órád számai, és megmutatja, honnan tudja.',
+     'cta': 'Letöltés az App Store-ból',
+     'note': 'Ingyenes &#183; Fiók nélkül &#183; iPhone és Apple Watch',
+     'hero_alt': 'Az Aera iPhone-on és Apple Watch-on: a tegnap éjszakai alvás 55 perccel az igényed fölött, az '
+                 'órán pedig az eddigi nap',
+     'why_h2': 'Egy szám magyarázat nélkül csak egy szám.',
+     'why_p': 'Az órák mindent megszámolnak: alvóórákat, szívveréseket, kilométereket. Aztán megállnak egy '
+              'pontszámnál, és a többit rád bízzák. <b>Az Aera ott folytatja, ahol a pontszám véget ér.</b> '
+              'Minden számot a saját megszokottadhoz mér, egyszerű szavakkal elmondja, mit jelent, és ha '
+              'megnyitod, megmutatja, hogyan jött ki.',
+     'bento_h2': 'Mindaz, amit az órád mér, hozzád mérve.',
+     'b_sleep': ('Alvás a saját igényedhez mérve.',
+                 'Nem mindenkinek nyolc óra. Az az igény, amit az Aera a saját éjszakáidból tanult meg.'),
+     'b_run': ('Minden futás a megszokottadhoz mérve.',
+               'Tempó, pulzus és idő, mindegyik amellett, ami nálad megszokott.'),
+     'b_replay': ('Nézd vissza a futásod 3D-ben.', 'Az útvonalad, a valódi terep fölött.'),
+     'b_route': ('Tervezz útvonalat a kapudtól.', 'Koppints a térképre, és a vonal a valódi utakon marad.'),
+     'b_watch': ('A csuklódon is.', 'A tegnap éjszaka és az eddigi nap, egy pillantással.'),
+     'b_lock': ('Fiók nélkül.', 'Minden pontszámot az iPhone-od számol ki.'),
+     'b_work': ('Minden szám megmutatja, honnan jön.',
+                'Koppints bármelyik számra: látod, hogyan jött ki, milyen kutatás áll mögötte, és meddig '
+                'bízhatsz benne.'),
+     'sleep_h2': 'Az alvásod, érthetően.',
+     'sleep_p': 'Az órád megmondja, mennyit aludtál. Az Aera azt mondja meg, mit jelent ez neked: <b>ahhoz '
+                'mérve, amennyi alvásra szükséged van</b>, a saját éjszakáidból tanulva. Az alvásfázisokat pedig '
+                'annak mutatja, amik: becslésnek.',
+     'sleep_alt': 'Az Aera Alvás képernyője iPhone-on: Kiváló, 55 perccel az igényed fölött, 100-ból 89 pont, 8 '
+                  'óra 19 perc alvás',
+     'run_h2': 'A futásaid, visszaolvasva.',
+     'run_p': 'Minden futás a megszokottad mellett áll: <b>gyorsabb vagy lassabb volt-e, mint nálad szokásos, és '
+              'jobban vagy kevésbé terhelte-e a szíved.</b> Aztán nézd vissza 3D-ben, a terep fölött, amin '
+              'futottál.',
+     'run_alts': ('Egy futás 3D-s visszajátszása műholdképes terep fölött, távval, tempóval és pulzussal',
+                  'Egy reggeli futás visszaolvasva: táv, idő, tempó és energia, mindegyik a megszokottadhoz '
+                  'mérve',
+                  'Az Aera Apple Watch-on futás közben: idő, táv, tempó és pulzus a 3-as zónában'),
+     'route_h2': 'Tervezd meg. Aztán csak fuss.',
+     'route_p': 'Rajzolj olyan útvonalat, ami a valódi utakon marad, vagy nyiss meg egy GPX-fájlt. <b>Minden '
+                'kanyart még előtte jelez</b>, a telefonodon, a csuklódon vagy hangosan felolvasva.',
+     'route_alts': ('Útvonal a kaputól a Green Lake körül, végig a valódi utakon',
+                    'Kanyarról kanyarra Apple Watch-on: 202 méter, elágazás, tarts jobbra'),
+     'wear_h2': 'Hordd, amit szeretsz.',
+     'wear_p': 'Az Aera az Apple Health-ből olvas, így működik Apple Watch-csal, és bármilyen órával, gyűrűvel '
+               'vagy appal, amelyik oda írja az alvásodat és az edzéseidet.',
+     'wear_list': ['Apple Watch', 'Garmin', 'Oura', 'WHOOP', 'iPhone'],
+     'wear_link': ('guides/aera-garmin-oura-whoop-vel.html', 'Mi jut át az egyes eszközökről az Apple Health-be'),
+     'priv_h2': 'Az egészségadataid az iPhone-odon maradnak.',
+     'priv_p': 'Nincs fiók, és nincs szerver, ami számolna. Az Aera az iPhone-odon olvassa az Apple Health-et, '
+               'és ott számol ki minden pontszámot. Az analitika ki van kapcsolva, amíg be nem kapcsolod, és '
+               'egészségadatot soha nem tartalmaz.',
+     'priv_link': ('privacy.html', 'Az adatvédelmi tájékoztató'),
+     'lock_alt': '',
+     'plans_h2': 'Ingyen kezdheted.',
+     'free_h': 'Ingyenes',
+     'free': ['Alvás, stressz és terhelés a megszokottadhoz mérve',
+              'Minden futás visszaolvasva, minden egyéni rekord',
+              'Útvonaltervező, kanyarról kanyarra navigációval',
+              'Flyover az elmúlt hét napra'],
+     'prem_h': 'Premium',
+     'prem': ['Mai edzés: mennyi ideig, milyen keményen',
+              'Az Alvásbankod és a helyeid',
+              'Korlátlan mentett útvonal',
+              'Régebbi Flyoverek, teljes előzmények, minden exportformátum'],
+     'prem_note': 'Havi vagy éves előfizetés, vagy egyszeri vásárlás. Az éves 7 napos ingyenes próbával indul.',
+     'faq_h2': 'Kérdések.',
+     'faq': [('Mit csinál az Aera?',
+              'Az Aera azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Health-be ír, és elmondja, '
+              'mit jelentenek neked ezek a számok. Az alvást, a stresszt, a terhelést és minden futást a saját '
+              'megszokottadhoz méri, egyszerű szavakkal mondja el, és minden számból egy rövid cikk nyílik '
+              'arról, hogyan jött ki. Útvonalat is tervez kanyarról kanyarra navigációval, és 3D-ben '
+              'visszajátssza a futásaidat.'),
+             ('Kell hozzá Apple Watch?',
+              'Nem. Az Aera az Apple Health-ből olvas, így bármilyen óra, gyűrű vagy app megfelel, amelyik oda '
+              'írja az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és mások. Csak '
+              'iPhone-nal az Aera a lépésekből és az edzésekből dolgozik, az éjszakai szívadatot igénylő '
+              'elemzések pedig megvárják, amíg ilyen adat is lesz.'),
+             ('Ingyenes az Aera?',
+              'Igen. Ingyenes az alvás, a stressz és a terhelés a megszokottadhoz mérve, minden futás '
+              'visszaolvasása, minden egyéni rekord, az útvonaltervező kanyarról kanyarra navigációval és a '
+              'Flyover az elmúlt hét napra. A Premium ehhez hozzáadja a Mai edzést, az Alvásbankot, a helyeidet, '
+              'a korlátlan mentett útvonalat, a régebbi Flyovereket, a teljes előzményeket és minden '
+              'exportformátumot.'),
+             ('Kell fiók, és hová kerülnek az adataim?',
+              'Nincs fiók. Az Aera az iPhone-odon olvassa az Apple Health-et, és ott számol ki minden '
+              'pontszámot, így az egészségadataid az iPhone-odon maradnak. A termékanalitika ki van kapcsolva, '
+              'amíg be nem kapcsolod, és egészségadatot soha nem tartalmaz.'),
+             ('Honnan tudja az Aera, mi a megszokott nálam?',
+              'Néhány hét alatt a saját éjszakáidból és edzéseidből tanulja meg a szokásos tartományodat, és '
+              'minden új napot ehhez mér. Amíg kevés az adat, nem találgat, hanem kiírja, hogy még tanul.'),
+             ('Orvosi eszköz az Aera?',
+              'Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az órás mérések, például az '
+              'alvásfázisok, becslések, és minden cikk megmondja, meddig lehet a számában bízni.'),
+             ('Milyen nyelveken érhető el az Aera?',
+              'Teljesen angolul, magyarul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul '
+              'és hagyományos kínaiul.')],
+     'maker_h2': 'Egyetlen ember készíti.',
+     'maker_p': 'Az Aerát Varga Gerg&#337; készíti, egyedül, cég nélkül. Ha az appból vagy erről az oldalról '
+                'írsz, az üzeneted egyenesen hozzá jut.',
+     'maker_link': ('mailto:hello@aerahealth.app', 'Írj neki'),
+     'close_h2': 'Az órád méri.<br>Az Aera elmagyarázza.',
+     'close_note': 'Ingyenes az App Store-ban. Fiók nélkül.',
+     'foot_tag': 'Az órád méri. Az Aera elmagyarázza.'},
     "de": {
         "title": "Aera: Deine Uhr misst, Aera erkl&#228;rt",
         "desc": "Aera sagt dir, was die Zahlen deiner Uhr f&#252;r dich bedeuten, und zeigt, woher es das wei&#223;. Schlaf, Herz und L&#228;ufe aus Apple Health, verglichen mit deinem eigenen Normal. Kostenlos, ohne Konto.",
@@ -136,5 +248,5 @@ K = {
     },
 }
 
-# The Hungarian lines arrive from the Hungarian site copy thread; until then
-# hu.html keeps the previous page (build_keynote skips a language missing here).
+# The Hungarian lines come from the Hungarian site copy thread (keynote_hu.py
+# in the project's site-polish reports); never written here by hand.

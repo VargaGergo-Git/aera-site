@@ -64,7 +64,8 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 
 /* Statement */
 .sleep { padding-top: clamp(56px, 8vw, 96px); }
-.why { padding: var(--sec) 0 0; text-align: center; }
+.why { padding: 0; }
+.more h2 { max-width: none; }
 .why p { max-width: 40ch; margin: 28px auto 0; }
 
 /* Two-up chapters */
@@ -86,16 +87,22 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .trio .film { grid-column: 1 / -1; width: 66%; justify-self: center; }
 .trio .watch { width: 82%; justify-self: center; align-self: center; }
 @media (min-width: 760px) {
-  .trio { grid-template-columns: minmax(0, 290px) minmax(0, 290px) minmax(0, 260px); justify-content: center; gap: clamp(20px, 3vw, 40px); }
+  .trio { grid-template-columns: minmax(0, 290px) minmax(0, 290px) minmax(0, 300px); justify-content: center; gap: clamp(20px, 3vw, 40px); }
   .trio .film { grid-column: auto; width: auto; order: 2; }
   .trio .phone:not(.film) { order: 1; }
-  .trio .watch { order: 3; width: 100%; align-self: center; }
+  .trio .watch { order: 3; width: 100%; align-self: end; }
 }
+.band { margin-top: var(--sec); padding-bottom: var(--sec); background: #0b0b0c; color: #f5f5f7; }
+.band .copy p { color: #a1a1a6; }
+.band b { color: #f5f5f7; }
+.band .phone, .band .watch { box-shadow: inset 0 0 0 1.5px #3a3a3e, 0 30px 60px -24px rgba(0,0,0,.8); }
+@media (prefers-color-scheme: dark) { .band { background: #121215; } }
+.band + .route { padding-top: var(--sec); }
 .pair { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(14px, 3vw, 32px); align-items: end; max-width: 520px; margin: 0 auto; width: 100%; }
 .pair .watch { margin-bottom: 0; }
 
 /* Bento */
-.more h2 { max-width: 16ch; margin: 0 auto; }
+.more h2 { margin: 0 auto; }
 .bento { display: grid; gap: 14px; margin-top: clamp(40px, 5vw, 64px); }
 .tile { position: relative; overflow: hidden; border-radius: var(--r); background: var(--card); padding: clamp(26px, 3vw, 36px); box-shadow: 0 0 0 .5px var(--line); }
 .tile p { margin-top: 10px; color: var(--ink-2); font-size: 17px; line-height: 1.45; max-width: 40ch; }
@@ -172,3 +179,5 @@ footer { border-top: .5px solid var(--line); padding: 48px 0 24px; font-size: 14
 :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
 .store span { white-space: nowrap; }
 @media (max-width: 359px) { .store { gap: 8px; padding: 0 20px 0 17px; font-size: 15px; } .store svg { width: 18px; height: 18px; } }
+.get { white-space: nowrap; }
+@media (max-width: 359px) { .get { padding: 0 12px; font-size: 13px; } .bar nav { gap: 10px; } }

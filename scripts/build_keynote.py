@@ -114,6 +114,7 @@ def build(code, H):
     F = H["foot"]
     run_alts, route_alts = k["run_alts"], k["route_alts"]
     ph = "(max-width: 759px) 44vw, 260px"
+    work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
 
     return f"""<!DOCTYPE html>
 <html lang="{code}">
@@ -175,14 +176,7 @@ def build(code, H):
   </div>
 </section>
 
-<section class="why">
-  <div class="narrow reveal">
-    <h2>{k['why_h2']}</h2>
-    <p>{k['why_p']}</p>
-  </div>
-</section>
-
-<section class="runs">
+<section class="runs band">
   <div class="wide">
     <div class="copy center reveal">
       <h2>{k['run_h2']}</h2>
@@ -213,14 +207,17 @@ def build(code, H):
 
 <section class="more">
   <div class="wide">
-    <h2 class="center reveal">{k['bento_h2']}</h2>
+    <div class="narrow center why reveal">
+      <h2>{k['why_h2']}</h2>
+      <p>{k['why_p']}</p>
+    </div>
     <div class="bento">
       <article class="tile t-priv reveal">
         <h3>{k['priv_h2']}</h3><p>{k['priv_p']}</p><a class="more-link" href="{k['priv_link'][0]}">{k['priv_link'][1]}</a>
       </article>
       <article class="tile t-work reveal" style="--d:.12s">
         <h3>{k['b_work'][0]}</h3><p>{k['b_work'][1]}</p>
-        <a class="more-link" href="{k['work_link'][0]}">{k['work_link'][1]}</a>
+        {work_link}
       </article>
       <article class="tile t-wear reveal" style="--d:.18s">
         <h3>{k['wear_h2']}</h3><p>{k['wear_p']}</p>
