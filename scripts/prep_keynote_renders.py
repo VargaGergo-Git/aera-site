@@ -55,6 +55,10 @@ def clock(path):
     cc[2190 - 485:2245 - 485, 500 - 110:700 - 110] = c[2150, 600]
     return Image.fromarray(cc)
 
+# The -de/-hu share-week/pb/clock captures still carry English text; add a language
+# here once its translated captures land, so no page mixes languages.
+SHARE_READY = set()
+
 PHONES = {'scr-age-light': 'press-phone-light-longevity.png', 'scr-age-dark': 'press-phone-dark-longevity.png',
           'scr-sleep-light': 'press-phone-light-sleep-stages.png', 'scr-sleep-dark': 'press-phone-dark-sleep-stages.png',
           'scr-loops': 'press-phone-dark-loops-from-here.png', 'scr-loop-route': 'press-phone-dark-loop-route.png'}
@@ -77,7 +81,7 @@ for lang in (None, 'de', 'hu'):
         s = src(f, lang)
         if s: save(Image.open(s).convert('RGB'), name, (422,), lang)
     for name, f, fn in (('card-week', 'share-week.png', week), ('card-pb', 'share-pb.png', key_pb), ('card-clock', 'share-clock.png', clock)):
-        s = src(f, lang)
+        s = src(f, lang) if lang is None or lang in SHARE_READY else None
         if s: save(fn(s), name, (360, 720), lang)
 print('ok')
 

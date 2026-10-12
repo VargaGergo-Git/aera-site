@@ -21,7 +21,7 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-bled": (480,), "place-braies": (480,), "place-seawall": (480,),
+    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-bled": (480,), "place-braies": (480,), "place-seawall": (480,),
     **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
@@ -70,6 +70,16 @@ def build(code, H):
     if missing:  # a language still waiting on its words for a newer section
         print("build_keynote: %s falls back to English for %s" % (code, ", ".join(missing)), file=sys.stderr)
         k = {**K["en"], **k}
+    # A page never mixes languages inside its screens: the 3D wheel and the
+    # "loops from here" frame exist in English only, so /de and /hu show the
+    # Longevity screen captured in their language and skip that loop frame.
+    here = lambda name: code == "en" or os.path.exists(os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "img/k/%s/%s" % (code, name)))
+    ph_ = "(max-width: 759px) 72vw, 300px"
+    loops = img('scr-loops', k['route_more_alts'][0], "(max-width: 759px) 44vw, 260px", cls='alt') if here("scr-loops-400.webp") else ""
+    age_fig = ('<figure class="tile3d settle reveal" style="--d:.1s">%s</figure>' % img('age-tile', k['age_alt'], '(max-width: 759px) 86vw, 480px')
+               if here("age-tile-640.webp") else
+               '<figure class="phone solo settle reveal" style="--d:.1s">%s</figure>' % pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_))
     BASE, APPLE = H["BASE"], H["APPLE"]
     file = H["file"]
 
@@ -141,12 +151,28 @@ def build(code, H):
     ph = "(max-width: 759px) 44vw, 260px"
     places_ = [(("img/k/replay-start-dark-540.webp" if n == "orbit" else "img/k/place-%s-480.webp" % n),
                 ("media/k/replay-dark.mp4" if n == "orbit" else "media/k/place-%s.mp4" % n), cap, alt)
-               for n, (cap, alt) in zip(("orbit", "bled", "braies", "seawall"), k["places"])]
+               for n, (cap, alt) in zip(("orbit", "bled", "braies", "seawall"), k["places"])
+               if n == "orbit" or here("place-%s-480.webp" % n)]
+    places_p = k["places_p"] if len(places_) > 1 else k["places_p"].rsplit(". ", 1)[0] + "."  # no "pick a place" with one place
     tabs = "".join('<button type="button" role="tab" aria-selected="%s" data-poster="%s" data-src="%s" data-label="%s">%s</button>'
                    % ("true" if i == 0 else "false", p, v, alt, cap) for i, (p, v, cap, alt) in enumerate(places_))
     cards = "".join('<li class="card" style="--i:%d"><figure>%s<figcaption>%s</figcaption></figure></li>'
                     % (i, img("card-" + c, alt, "(max-width: 759px) 62vw, 300px"), cap)
                     for i, (c, cap, alt) in enumerate(k["share_cards"]))
+    # The share rail shows on /de and /hu only once every card is captured in that language.
+    share_sec = (f'''<section class="share">
+  <div class="wide">
+    <div class="copy center reveal">
+      <h2>{k['share_h2']}</h2>
+      <p>{k['share_p']}</p>
+    </div>
+  </div>
+  <div class="rail-wrap reveal" style="--d:.1s">
+    <ul class="rail" tabindex="0">{cards}</ul>
+    <div class="wide rail-nav"><button class="rail-btn prev" type="button" aria-label="{k['share_prev']}"></button><button class="rail-btn next" type="button" aria-label="{k['share_next']}"></button></div>
+  </div>
+</section>'''
+                 if all(here("card-%s-360.webp" % c[0]) for c in k["share_cards"]) else "")
     work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
 
     return localize(f"""<!DOCTYPE html>
@@ -224,27 +250,16 @@ def build(code, H):
     </div>
     <div class="copy center places-copy reveal">
       <h2>{k['places_h2']}</h2>
-      <p>{k['places_p']}</p>
+      <p>{places_p}</p>
     </div>
     <div class="player reveal" style="--d:.1s">
       <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
-      <div class="tabs" role="tablist">{tabs}</div>
+      {'<div class="tabs" role="tablist">%s</div>' % tabs if len(places_) > 1 else ''}
     </div>
   </div>
 </section>
 
-<section class="share">
-  <div class="wide">
-    <div class="copy center reveal">
-      <h2>{k['share_h2']}</h2>
-      <p>{k['share_p']}</p>
-    </div>
-  </div>
-  <div class="rail-wrap reveal" style="--d:.1s">
-    <ul class="rail" tabindex="0">{cards}</ul>
-    <div class="wide rail-nav"><button class="rail-btn prev" type="button" aria-label="{k['share_prev']}"></button><button class="rail-btn next" type="button" aria-label="{k['share_next']}"></button></div>
-  </div>
-</section>
+{share_sec}
 
 <section class="route">
   <div class="wide split flip">
@@ -253,7 +268,7 @@ def build(code, H):
       <p>{k['route_p']}</p>
     </div>
     <div class="pair reveal" style="--d:.1s">
-      <figure class="phone cycle settle">{img('scr-route', route_alts[0], ph)}{img('scr-loops', k['route_more_alts'][0], ph, cls='alt')}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
+      <figure class="phone cycle settle">{img('scr-route', route_alts[0], ph)}{loops}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
       <figure class="watch">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
     </div>
   </div>
@@ -266,7 +281,7 @@ def build(code, H):
       <p>{k['age_p']}</p>
       <p class="fine">{k['age_note']}</p>
     </div>
-    <figure class="tile3d settle reveal" style="--d:.1s">{img('age-tile', k['age_alt'], '(max-width: 759px) 86vw, 480px')}</figure>
+    {age_fig}
   </div>
 </section>
 

@@ -305,6 +305,39 @@ K["de"].update({
 K["de"]["prem"] = ["Die Einheit f&#252;r heute: wie lange, wie hart", "Dein K&#246;rperalter", "Deine Schlafreserve und deine Orte",
                    "Unbegrenzt gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"]
 
+# Hungarian lines for the newer sections, from the Hungarian copy thread (keynote_hu_2.py), verbatim.
+HU2 = {
+ 'places_h2': 'Repüld újra bármelyik futásod.',
+ 'places_p': 'Az Aera minden futást 3D-ben visszajátszik a valódi terep fölött, azzal a tempóval és pulzussal, ahogy futottál. Válassz egy helyet.',
+ 'places': [('Green Lake', 'Futás a seattle-i Green Lake körül, 3D-ben visszajátszva, távval, tempóval és pulzussal'),
+            ('Bledi-tó', 'Futás a Bledi-tó körül, 3D-ben visszajátszva, távval, tempóval és pulzussal'),
+            ('Lago di Braies', 'Futás a Lago di Braies partján, 3D-ben visszajátszva, távval, tempóval és pulzussal'),
+            ('Vancouver Seawall', 'Futás a vancouveri Seawallon, 3D-ben visszajátszva, távval, tempóval és pulzussal')],
+ 'share_h2': 'Oszd meg a legjobb pillanatokat.',
+ 'share_p': 'A heted visszaolvasva, egy egyéni rekord matricaként, az éjszaka, amikor visszaállt az óra, vagy az a futás, amit épp befejeztél. <b>Pontosan az kerül ki, amit látsz.</b>',
+ 'share_cards': [
+   ('week', 'A heted', 'Heti kártya: október 5–11., 7 napból 5 napon mozogtál, 24,1 km, 7 óra 52 perc alvás'),
+   ('pb', 'Egyéni rekord', 'Egyéni rekord matrica: az eddigi leggyorsabb 5 km-ed, 5,02 km 24 perc alatt'),
+   ('clock', 'Óraátállítás', 'Óraátállítás kártya: az éjszaka, amikor visszakaptál egy órát, 8 óra 41 perc alvás, 89-es alváspontszám'),
+   ('splits', 'Részidők', 'Futáskártya minden kilométer részidejével, a legjobb 5:06'),
+   ('zones', 'Zónák', 'Futáskártya az egyes pulzuszónákban töltött idővel, a legtöbb a 2-es zónában')],
+ 'share_prev': 'Előző',
+ 'share_next': 'Következő',
+ 'route_p': 'Rajzolj olyan útvonalat, ami a valódi utakon marad, nyiss meg egy GPX-fájlt, vagy kérj <b>egy kört onnan, ahol állsz</b>. Minden kanyart még előtte jelez, a telefonodon, a csuklódon vagy hangosan felolvasva.',
+ 'route_more_alts': ('Körök innen: az egyetlen 5 km-es kör, amit az itteni utak kiadnak',
+                     'Kör a Green Lake körül a térképen'),
+ 'age_h2': 'Testkor, indoklással.',
+ 'age_p': 'Egyetlen becslés hat egészségmutatódból, köztük a VO&#8322;max, a nyugalmi pulzus, a HRV és az alvás rendszeressége. <b>Minden részét látod</b>, így látod, melyik dolgozik a javadra.',
+ 'age_note': 'Minden mutató ingyenes. Magát a Testkort a Premium adja.',
+ 'age_alt': 'Az Aera Hosszú élet képernyője: 35,4 éves Testkor 40 éves naptári kor mellett, a 6 részből 5 a javadra dolgozik',
+ 'prem': ['Mai edzés: mennyi ideig, milyen keményen',
+          'A Testkorod',
+          'Az Alvásbankod és a helyeid',
+          'Korlátlan mentett útvonal',
+          'Régebbi Flyoverek, teljes előzmények, minden exportformátum'],
+}
+K["hu"].update(HU2)
+
 # The 3D replay now has its own section, so the runs line stops at the comparison.
 for _c in ("en", "de", "hu"):
     K[_c]["run_p"] = K[_c]["run_p"].split("</b>")[0] + "</b>"
