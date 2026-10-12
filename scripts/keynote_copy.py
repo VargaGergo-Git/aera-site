@@ -251,3 +251,60 @@ K = {
 
 # The Hungarian lines come from the Hungarian site copy thread (keynote_hu.py
 # in the project's site-polish reports); never written here by hand.
+
+# Second pass (12 Oct): sleep render, replays at three places, sharing, loops, body age.
+K["en"].update({
+    "sleep_art_alt": "The article behind Aera's sleep score: two things carry most of it, and neither of them is your heart",
+    "places_h2": "Fly any run again.",
+    "places_p": "Aera replays each run in 3D over the real ground, with your pace and heart rate as you went. Pick a place.",
+    "places": [("Green Lake", "A run around Green Lake, Seattle, replayed in 3D with distance, pace and heart rate"),
+               ("Bled", "A run around Lake Bled, replayed in 3D with distance, pace and heart rate"),
+               ("Braies", "A run along Lago di Braies, replayed in 3D with distance, pace and heart rate"),
+               ("Seawall", "A run on the Vancouver Seawall, replayed in 3D with distance, pace and heart rate")],
+    "share_h2": "Share the good bits.",
+    "share_p": "A week read back, a personal best as a sticker, the night the clocks went back, or the run you just finished. <b>What you see is what posts.</b>",
+    "share_cards": [("week", "Your week", "Week card: October 5 to 11, out 5 of 7 days, 24.1 km, 7 hours 52 minutes of sleep"),
+                    ("pb", "Personal best", "Personal best sticker: your fastest 5K yet, 5.02 km in 24 minutes"),
+                    ("clock", "Clock change", "Clock change card: the night you got an hour back, 8 hours 41 minutes asleep, sleep score 89"),
+                    ("splits", "Splits", "Run card with every kilometre split, best split 5:06"),
+                    ("zones", "Zones", "Run card with time in each heart rate zone, most in zone 2")],
+    "share_prev": "Previous", "share_next": "Next",
+    "route_p": "Draw a route that keeps to real paths, open a GPX file, or ask for <b>a loop from where you stand</b>. Every turn comes before you reach it, on your phone, your wrist or read aloud.",
+    "route_more_alts": ("Loops from here: the only 5 km loop the paths here make", "A loop drawn around Green Lake on the map"),
+    "age_h2": "Body age, with its reasons.",
+    "age_p": "One estimate built from six measures of your health, among them VO&#8322;max, resting heart rate, HRV and sleep regularity. <b>Each part is shown</b>, so you can see which are pulling their weight.",
+    "age_note": "Every measure is free. The age itself comes with Premium.",
+    "age_alt": "Aera's body age wheel: 35.4 against a calendar age of 40, built from six parts of your health",
+})
+K["en"]["prem"] = ["Today&#8217;s session: how long, how hard", "Your body age", "Your sleep reserve and your places",
+                   "Unlimited saved routes", "Older Flyovers, full history, every export"]
+
+K["de"].update({
+    "sleep_art_alt": "Der Artikel hinter Aeras Schlafwert: Zwei Dinge tragen das meiste, und keins davon ist dein Herz",
+    "places_h2": "Flieg jeden Lauf noch einmal.",
+    "places_p": "Aera zeigt jeden Lauf noch einmal in 3D &#252;ber dem echten Gel&#228;nde, mit Tempo und Puls, so wie du gelaufen bist. W&#228;hl einen Ort.",
+    "places": [("Green Lake", "Ein Lauf um den Green Lake in Seattle, in 3D wiedergegeben mit Distanz, Tempo und Puls"),
+               ("Bled", "Ein Lauf um den Bleder See, in 3D wiedergegeben mit Distanz, Tempo und Puls"),
+               ("Braies", "Ein Lauf am Pragser Wildsee, in 3D wiedergegeben mit Distanz, Tempo und Puls"),
+               ("Seawall", "Ein Lauf auf dem Seawall in Vancouver, in 3D wiedergegeben mit Distanz, Tempo und Puls")],
+    "share_h2": "Teil die guten Momente.",
+    "share_p": "Deine Woche im R&#252;ckblick, eine Bestzeit als Sticker, die Nacht der Zeitumstellung oder der Lauf, den du gerade beendet hast. <b>Was du siehst, wird gepostet.</b>",
+    "share_cards": [("week", "Deine Woche", "Wochenkarte: 5. bis 11. Oktober, an 5 von 7 Tagen drau&#223;en, 24,1 km, 7 Stunden 52 Minuten Schlaf"),
+                    ("pb", "Bestzeit", "Bestzeit-Sticker: deine schnellsten 5 km bisher, 5,02 km in 24 Minuten"),
+                    ("clock", "Zeitumstellung", "Karte zur Zeitumstellung: die Nacht mit einer Stunde mehr, 8 Stunden 41 Minuten Schlaf, Schlafwert 89"),
+                    ("splits", "Splits", "Laufkarte mit jedem Kilometer, bester Split 5:06"),
+                    ("zones", "Zonen", "Laufkarte mit der Zeit in jeder Pulszone, am meisten in Zone 2")],
+    "share_prev": "Zur&#252;ck", "share_next": "Weiter",
+    "route_p": "Zeichne eine Route, die echten Wegen folgt, &#246;ffne eine GPX-Datei oder lass dir <b>eine Runde ab deinem Standort</b> vorschlagen. Jede Abzweigung kommt, bevor du sie erreichst, auf dem iPhone, am Handgelenk oder vorgelesen.",
+    "route_more_alts": ("Runden ab hier: die einzige 5-km-Runde, die die Wege hier ergeben", "Eine Runde um den Green Lake auf der Karte"),
+    "age_h2": "K&#246;rperalter, mit Begr&#252;ndung.",
+    "age_p": "Eine Sch&#228;tzung aus sechs Messwerten deiner Gesundheit, darunter VO&#8322;max, Ruhepuls, HRV und Schlafregelm&#228;&#223;igkeit. <b>Jeder Teil wird gezeigt</b>, damit du siehst, welche ihren Beitrag leisten.",
+    "age_note": "Jeder Messwert ist kostenlos. Das Alter selbst geh&#246;rt zu Premium.",
+    "age_alt": "Aeras K&#246;rperalter-Rad: 35,4 bei einem Kalenderalter von 40, aus sechs Teilen deiner Gesundheit",
+})
+K["de"]["prem"] = ["Die Einheit f&#252;r heute: wie lange, wie hart", "Dein K&#246;rperalter", "Deine Schlafreserve und deine Orte",
+                   "Unbegrenzt gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"]
+
+# The 3D replay now has its own section, so the runs line stops at the comparison.
+for _c in ("en", "de", "hu"):
+    K[_c]["run_p"] = K[_c]["run_p"].split("</b>")[0] + "</b>"

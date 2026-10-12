@@ -6,9 +6,10 @@ motion in keynote.js.
     python3 scripts/build_home.py   # calls build() here for each language
 
 One idea per section, a real app render beside it, and nothing drawn over a
-device. Motion is a fade-up as a section enters and one replay film that plays
-once in view; the page scrolls natively, with no pinned or scroll-driven
-scenes."""
+device. Motion: sections fade up as they enter, devices settle in on scroll
+where the browser supports view timelines, one 3D replay plays at a time with
+places to pick, the route phone's screens take turns, and the share cards fan
+in. The page scrolls natively, with no pinned or scroll-hijacking scenes."""
 import html
 import json
 import os
@@ -20,7 +21,8 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,),
+    "w-turn": (422,), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-bled": (480,), "place-braies": (480,), "place-seawall": (480,),
+    **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
 
@@ -41,6 +43,13 @@ def img(name, alt, sizes, eager=False, cls=""):
                ' fetchpriority="high"' if eager else ' loading="lazy"'))
 
 
+def pic(light, dark, alt, sizes, cls=""):
+    """A render with its dark-mode capture swapped in by the browser."""
+    srcset = ", ".join("img/k/%s-%d.webp %dw" % (dark, x, x) for x in WIDTHS[dark])
+    return ('<picture><source media="(prefers-color-scheme: dark)" srcset="%s" sizes="%s">%s</picture>'
+            % (srcset, sizes, img(light, alt, sizes, cls=cls)))
+
+
 def localize(out, code):
     """On /de and /hu, swap in the renders captured in that language where they
     exist: img/k/NAME -> img/k/<code>/NAME, media/k/NAME -> media/k/<code>/NAME."""
@@ -57,6 +66,10 @@ def build(code, H):
     """H carries what the page shares with build_home: BASE, APPLE, CF_BEACON,
     OG_LOCALE, LANG_NAMES, asset(), the store URL and footer links."""
     k = K[code]
+    missing = [x for x in K["en"] if x not in k]
+    if missing:  # a language still waiting on its words for a newer section
+        print("build_keynote: %s falls back to English for %s" % (code, ", ".join(missing)), file=sys.stderr)
+        k = {**K["en"], **k}
     BASE, APPLE = H["BASE"], H["APPLE"]
     file = H["file"]
 
@@ -80,7 +93,7 @@ def build(code, H):
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS",
          "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
          "url": canonical, "downloadUrl": H["store"], "installUrl": H["store"], "description": plain(k["desc"]),
-         "screenshot": [BASE + "img/k/hero-pair-1800.webp", BASE + "img/k/scr-run-light-800.webp",
+         "screenshot": [BASE + "img/k/hero-pair-1800.webp", BASE + "img/k/art-sleep-light-800.webp", BASE + "img/k/scr-run-light-800.webp",
                         BASE + "img/k/scr-route-800.webp"],
          "author": {"@id": BASE + "#maker"}, "publisher": {"@id": BASE + "#org"}, "isAccessibleForFree": True,
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}},
@@ -126,6 +139,14 @@ def build(code, H):
     F = H["foot"]
     run_alts, route_alts = k["run_alts"], k["route_alts"]
     ph = "(max-width: 759px) 44vw, 260px"
+    places_ = [(("img/k/replay-start-dark-540.webp" if n == "orbit" else "img/k/place-%s-480.webp" % n),
+                ("media/k/replay-dark.mp4" if n == "orbit" else "media/k/place-%s.mp4" % n), cap, alt)
+               for n, (cap, alt) in zip(("orbit", "bled", "braies", "seawall"), k["places"])]
+    tabs = "".join('<button type="button" role="tab" aria-selected="%s" data-poster="%s" data-src="%s" data-label="%s">%s</button>'
+                   % ("true" if i == 0 else "false", p, v, alt, cap) for i, (p, v, cap, alt) in enumerate(places_))
+    cards = "".join('<li class="card" style="--i:%d"><figure>%s<figcaption>%s</figcaption></figure></li>'
+                    % (i, img("card-" + c, alt, "(max-width: 759px) 62vw, 300px"), cap)
+                    for i, (c, cap, alt) in enumerate(k["share_cards"]))
     work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
 
     return localize(f"""<!DOCTYPE html>
@@ -182,9 +203,12 @@ def build(code, H):
 </section>
 
 <section class="sleep">
-  <div class="wide intro reveal">
-    <h2>{k['sleep_h2']}</h2>
-    <p>{k['sleep_p']}</p>
+  <div class="wide split">
+    <div class="copy reveal">
+      <h2>{k['sleep_h2']}</h2>
+      <p>{k['sleep_p']}</p>
+    </div>
+    <figure class="phone solo settle reveal" style="--d:.1s">{pic('art-sleep-light', 'art-sleep-dark', k['sleep_art_alt'], ph)}</figure>
   </div>
 </section>
 
@@ -194,13 +218,31 @@ def build(code, H):
       <h2>{k['run_h2']}</h2>
       <p>{k['run_p']}</p>
     </div>
-    <div class="trio">
-      <figure class="phone film reveal">
-        <video muted playsinline preload="none" poster="img/k/replay-start-light-540.webp" data-light="media/k/replay-light.mp4" data-dark="media/k/replay-dark.mp4" data-poster-dark="img/k/replay-start-dark-540.webp" aria-label="{run_alts[0]}" width="540" height="1174"></video>
-      </figure>
-      <figure class="phone reveal" style="--d:.08s">{img('scr-run-light', run_alts[1], ph)}</figure>
-      <figure class="watch reveal" style="--d:.16s">{img('w-run', run_alts[2], '(max-width: 759px) 40vw, 200px')}</figure>
+    <div class="pair runs-pair">
+      <figure class="phone settle reveal">{img('scr-run-light', run_alts[1], ph)}</figure>
+      <figure class="watch settle reveal" style="--d:.1s">{img('w-run', run_alts[2], '(max-width: 759px) 34vw, 180px')}</figure>
     </div>
+    <div class="copy center places-copy reveal">
+      <h2>{k['places_h2']}</h2>
+      <p>{k['places_p']}</p>
+    </div>
+    <div class="player reveal" style="--d:.1s">
+      <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
+      <div class="tabs" role="tablist">{tabs}</div>
+    </div>
+  </div>
+</section>
+
+<section class="share">
+  <div class="wide">
+    <div class="copy center reveal">
+      <h2>{k['share_h2']}</h2>
+      <p>{k['share_p']}</p>
+    </div>
+  </div>
+  <div class="rail-wrap reveal" style="--d:.1s">
+    <ul class="rail" tabindex="0">{cards}</ul>
+    <div class="wide rail-nav"><button class="rail-btn prev" type="button" aria-label="{k['share_prev']}"></button><button class="rail-btn next" type="button" aria-label="{k['share_next']}"></button></div>
   </div>
 </section>
 
@@ -211,9 +253,20 @@ def build(code, H):
       <p>{k['route_p']}</p>
     </div>
     <div class="pair reveal" style="--d:.1s">
-      <figure class="phone">{img('scr-route', route_alts[0], ph)}</figure>
+      <figure class="phone cycle settle">{img('scr-route', route_alts[0], ph)}{img('scr-loops', k['route_more_alts'][0], ph, cls='alt')}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
       <figure class="watch">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
     </div>
+  </div>
+</section>
+
+<section class="age">
+  <div class="wide split">
+    <div class="copy reveal">
+      <h2>{k['age_h2']}</h2>
+      <p>{k['age_p']}</p>
+      <p class="fine">{k['age_note']}</p>
+    </div>
+    <figure class="tile3d settle reveal" style="--d:.1s">{img('age-tile', k['age_alt'], '(max-width: 759px) 86vw, 480px')}</figure>
   </div>
 </section>
 
