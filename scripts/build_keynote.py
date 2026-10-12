@@ -21,7 +21,7 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-bled": (480,), "place-braies": (480,), "place-seawall": (480,),
+    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
     **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
@@ -149,10 +149,12 @@ def build(code, H):
     F = H["foot"]
     run_alts, route_alts = k["run_alts"], k["route_alts"]
     ph = "(max-width: 759px) 44vw, 260px"
-    places_ = [(("img/k/replay-start-dark-540.webp" if n == "orbit" else "img/k/place-%s-480.webp" % n),
-                ("media/k/replay-dark.mp4" if n == "orbit" else "media/k/place-%s.mp4" % n), cap, alt)
-               for n, (cap, alt) in zip(("orbit", "bled", "braies", "seawall"), k["places"])
-               if n == "orbit" or here("place-%s-480.webp" % n)]
+    # Land first: Gergő found the Green Lake opening "only water", so the seawall
+    # leads and every clip is cut where the route runs over land.
+    names = ("greenlake", "bled", "braies", "seawall")
+    places_ = [("img/k/place-%s-480.webp" % n, "media/k/place-%s.mp4" % n) + k["places"][names.index(n)]
+               for n in ("seawall", "greenlake", "braies")
+               if here("place-%s-480.webp" % n)]
     places_p = k["places_p"] if len(places_) > 1 else k["places_p"].rsplit(". ", 1)[0] + "."  # no "pick a place" with one place
     tabs = "".join('<button type="button" role="tab" aria-selected="%s" data-poster="%s" data-src="%s" data-label="%s">%s</button>'
                    % ("true" if i == 0 else "false", p, v, alt, cap) for i, (p, v, cap, alt) in enumerate(places_))

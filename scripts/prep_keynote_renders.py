@@ -5,7 +5,8 @@ and into img/k/<lang>/ wherever a -de or -hu capture exists.
 
 Share cards sit on a blurred frame of a real replay, so a sticker or an ink
 tile has ground under it. The place replays in media/k/ are cut separately
-with ffmpeg (9 s, 480 px wide, no audio)."""
+at the end of this script: 9 s at 480 px, no audio, cut where the route runs over
+land, since a replay that opens on open water reads as nothing."""
 import os, subprocess, sys, tempfile
 import numpy as np
 from PIL import Image, ImageFilter
@@ -94,3 +95,22 @@ for lang in (None, 'de', 'hu'):
     m = int((x1 - x0) * .06)
     im = im.crop((max(0, x0 - m), max(0, y0 - m), min(im.width, x1 + m), min(im.height, y1 + int(m * 1.6))))
     save(im, 'age-tile', (640, 1280), lang)
+
+# Replay clips for the place player, per language wherever a capture exists.
+# (source, start second, poster second): each start sits where the route crosses land.
+MEDIA = os.path.join(os.path.dirname(OUT.rstrip('/')), '..', 'media/k/')
+CLIPS = {'seawall': ('press-replay-seawall.mp4', 2.5, 3), 'braies': ('press-replay-braies.mp4', 0.3, 4),
+         'greenlake': ('press-clip-replay-orbit-dark.mp4', 11, 1)}
+for lang in (None, 'de', 'hu'):
+    for name, (f, t0, tp) in CLIPS.items():
+        s_ = src(f, lang)
+        if not s_: continue
+        d = os.path.normpath(MEDIA) + '/' + (lang + '/' if lang else '')
+        os.makedirs(d, exist_ok=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(t0), '-t', '9', '-i', s_, '-an', '-vf', 'scale=480:-2,fps=30',
+                        '-c:v', 'libx264', '-crf', '27', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-movflags', '+faststart',
+                        d + 'place-%s.mp4' % name], check=True)
+        dp = OUT + (lang + '/' if lang else '')
+        os.makedirs(dp, exist_ok=True)
+        subprocess.run(['ffmpeg', '-v', 'error', '-y', '-ss', str(tp), '-i', d + 'place-%s.mp4' % name, '-frames:v', '1',
+                        '-c:v', 'libwebp', '-quality', '82', dp + 'place-%s-480.webp' % name], check=True)
