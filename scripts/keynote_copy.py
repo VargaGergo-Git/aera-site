@@ -50,15 +50,15 @@ K = {
         "lock_alt": "",
         "plans_h2": "Free to start.",
         "free_h": "Free",
-        "free": ["Sleep, stress and strain, against your usual", "Every run read back, every personal best", "Route planner with turn by turn", "Flyover for the last seven days"],
+        "free": ["Sleep, stress and strain, against your usual", "Every run read back, every personal best", "Route planner with turn by turn", "Your first saved route", "Flyover for the last seven days"],
         "prem_h": "Premium",
-        "prem": ["Today&#8217;s session: how long, how hard", "Your sleep reserve and your places", "Unlimited saved routes", "Older Flyovers, full history, every export"],
+        "prem": ["Today&#8217;s session: how long, how hard", "Your sleep reserve and your places", "More saved routes", "Older Flyovers, full history, every export"],
         "prem_note": "Monthly, yearly or a one-time purchase. Yearly starts with a 7-day free trial.",
         "faq_h2": "Questions.",
         "faq": [
             ("What does Aera do?", "Aera reads what your watch, ring or phone writes to Apple Health and tells you what those numbers mean for you. Sleep, stress, strain and every run are held against your own usual, said in plain words, and each number opens a short article on how it was worked out. It also plans routes with turn-by-turn directions and replays runs in 3D."),
             ("Do I need an Apple Watch?", "No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some."),
-            ("Is Aera free?", "Yes. Sleep, stress and strain against your usual, every run read back, every personal best, the route planner with turn by turn and Flyover for the last seven days are free. Premium adds today&#8217;s session, your sleep reserve, your places, unlimited saved routes, older Flyovers, full history and every export format."),
+            ("Is Aera free?", "Yes. Sleep, stress and strain against your usual, every run read back, every personal best, the route planner with turn by turn, your first saved route and Flyover for the last seven days are free. Premium adds today&#8217;s session, your sleep reserve, your places, more saved routes, older Flyovers, full history and every export format."),
             ("Do I need an account, and where does my data go?", "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. Product analytics stay off until you turn them on and never include health values."),
             ("How does Aera know what is normal for me?", "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."),
             ("Is Aera a medical device?", "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."),
@@ -138,12 +138,12 @@ K = {
      'free_h': 'Ingyenes',
      'free': ['Alvás, stressz és terhelés a megszokottadhoz mérve',
               'Minden futás visszaolvasva, minden egyéni rekord',
-              'Útvonaltervező, kanyarról kanyarra navigációval',
+              'Útvonaltervező, kanyarról kanyarra navigációval', 'Az első mentett útvonalad',
               'Flyover az elmúlt hét napra'],
      'prem_h': 'Premium',
      'prem': ['Mai edzés: mennyi ideig, milyen keményen',
               'Az Alvásbankod és a helyeid',
-              'Korlátlan mentett útvonal',
+              'Több mentett útvonal',
               'Régebbi Flyoverek, teljes előzmények, minden exportformátum'],
      'prem_note': 'Havi vagy éves előfizetés, vagy egyszeri vásárlás. Az éves 7 napos ingyenes próbával indul.',
      'faq_h2': 'Kérdések.',
@@ -160,9 +160,9 @@ K = {
               'elemzések pedig megvárják, amíg ilyen adat is lesz.'),
              ('Ingyenes az Aera?',
               'Igen. Ingyenes az alvás, a stressz és a terhelés a megszokottadhoz mérve, minden futás '
-              'visszaolvasása, minden egyéni rekord, az útvonaltervező kanyarról kanyarra navigációval és a '
+              'visszaolvasása, minden egyéni rekord, az útvonaltervező kanyarról kanyarra navigációval, az első mentett útvonalad és a '
               'Flyover az elmúlt hét napra. A Premium ehhez hozzáadja a Mai edzést, az Alvásbankot, a helyeidet, '
-              'a korlátlan mentett útvonalat, a régebbi Flyovereket, a teljes előzményeket és minden '
+              'a további mentett útvonalakat, a régebbi Flyovereket, a teljes előzményeket és minden '
               'exportformátumot.'),
              ('Kell fiók, és hová kerülnek az adataim?',
               'Nincs fiók. Az Aera az iPhone-odon olvassa az Apple Health-et, és ott számol ki minden '
@@ -226,15 +226,15 @@ K = {
         "lock_alt": "",
         "plans_h2": "Kostenlos starten.",
         "free_h": "Kostenlos",
-        "free": ["Schlaf, Stress und Belastung, verglichen mit deinem Normal", "Jeder Lauf im R&#252;ckblick, jede Bestzeit", "Routenplaner mit Abbiegehinweisen", "Flyover f&#252;r die letzten sieben Tage"],
+        "free": ["Schlaf, Stress und Belastung, verglichen mit deinem Normal", "Jeder Lauf im R&#252;ckblick, jede Bestzeit", "Routenplaner mit Abbiegehinweisen", "Deine erste gespeicherte Route", "Flyover f&#252;r die letzten sieben Tage"],
         "prem_h": "Premium",
-        "prem": ["Die Einheit f&#252;r heute: wie lange, wie hart", "Deine Schlafreserve und deine Orte", "Unbegrenzt gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"],
+        "prem": ["Die Einheit f&#252;r heute: wie lange, wie hart", "Deine Schlafreserve und deine Orte", "Weitere gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"],
         "prem_note": "Monatlich, j&#228;hrlich oder als Einmalkauf. J&#228;hrlich beginnt mit 7 Tagen gratis.",
         "faq_h2": "Fragen.",
         "faq": [
             ("Was macht Aera?", "Aera liest, was deine Uhr, dein Ring oder dein iPhone in Apple Health schreibt, und sagt dir, was diese Zahlen f&#252;r dich bedeuten. Schlaf, Stress, Belastung und jeder Lauf werden mit deinem eigenen Normal verglichen und in klaren Worten erkl&#228;rt, und jede Zahl &#246;ffnet einen kurzen Artikel dar&#252;ber, wie sie berechnet wurde. Dazu plant Aera Routen mit Abbiegehinweisen und zeigt L&#228;ufe in 3D."),
             ("Brauche ich eine Apple Watch?", "Nein. Aera liest Apple Health, also passt jede Uhr, jeder Ring und jede App, die Schlaf, Herzfrequenz und Training dorthin schreibt: Apple Watch, Garmin, Oura, WHOOP und andere. Nur mit dem iPhone arbeitet Aera mit Schritten und Trainings, und was n&#228;chtliche Herzdaten braucht, wartet, bis es welche gibt."),
-            ("Ist Aera kostenlos?", "Ja. Schlaf, Stress und Belastung im Vergleich zu deinem Normal, jeder Lauf im R&#252;ckblick, jede Bestzeit, der Routenplaner mit Abbiegehinweisen und Flyover f&#252;r die letzten sieben Tage sind kostenlos. Premium bringt die Einheit f&#252;r heute, deine Schlafreserve, deine Orte, unbegrenzt gespeicherte Routen, &#228;ltere Flyover, die ganze Historie und jedes Exportformat."),
+            ("Ist Aera kostenlos?", "Ja. Schlaf, Stress und Belastung im Vergleich zu deinem Normal, jeder Lauf im R&#252;ckblick, jede Bestzeit, der Routenplaner mit Abbiegehinweisen, deine erste gespeicherte Route und Flyover f&#252;r die letzten sieben Tage sind kostenlos. Premium bringt die Einheit f&#252;r heute, deine Schlafreserve, deine Orte, weitere gespeicherte Routen, &#228;ltere Flyover, die ganze Historie und jedes Exportformat."),
             ("Brauche ich ein Konto, und wohin gehen meine Daten?", "Es gibt kein Konto. Aera liest Apple Health auf deinem iPhone und berechnet dort jeden Wert, also bleiben Gesundheitsdaten auf deinem iPhone. Produktanalysen bleiben aus, bis du sie einschaltest, und enthalten nie Gesundheitswerte."),
             ("Woher wei&#223; Aera, was f&#252;r mich normal ist?", "Es lernt deinen &#252;blichen Bereich &#252;ber einige Wochen aus deinen eigenen N&#228;chten und Einheiten und vergleicht jeden neuen Tag damit. Solange deine Historie d&#252;nn ist, sagt es, dass es noch lernt, statt zu raten."),
             ("Ist Aera ein Medizinprodukt?", "Nein. Aera ist f&#252;r Wohlbefinden und Training im Alltag. Messwerte der Uhr wie Schlafphasen sind Sch&#228;tzungen, und jeder Artikel sagt, wo seine Zahl an Grenzen st&#246;&#223;t."),
@@ -277,7 +277,7 @@ K["en"].update({
     "age_alt": "Aera's body age wheel: 35.4 against a calendar age of 40, built from six parts of your health",
 })
 K["en"]["prem"] = ["Today&#8217;s session: how long, how hard", "Your body age", "Your sleep reserve and your places",
-                   "Unlimited saved routes", "Older Flyovers, full history, every export"]
+                   "More saved routes", "Older Flyovers, full history, every export"]
 
 K["de"].update({
     "sleep_art_alt": "Der Artikel hinter Aeras Schlafwert: Zwei Dinge tragen das meiste, und keins davon ist dein Herz",
@@ -303,7 +303,7 @@ K["de"].update({
     "age_alt": "Aeras K&#246;rperalter-Rad: 35,4 bei einem Kalenderalter von 40, aus sechs Teilen deiner Gesundheit",
 })
 K["de"]["prem"] = ["Die Einheit f&#252;r heute: wie lange, wie hart", "Dein K&#246;rperalter", "Deine Schlafreserve und deine Orte",
-                   "Unbegrenzt gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"]
+                   "Weitere gespeicherte Routen", "&#196;ltere Flyover, ganze Historie, jeder Export"]
 
 # Hungarian lines for the newer sections, from the Hungarian copy thread (keynote_hu_2.py), verbatim.
 HU2 = {
@@ -334,7 +334,7 @@ HU2 = {
  'prem': ['Mai edzés: mennyi ideig, milyen keményen',
           'A Testkorod',
           'Az Alvásbankod és a helyeid',
-          'Korlátlan mentett útvonal',
+          'Több mentett útvonal',
           'Régebbi Flyoverek, teljes előzmények, minden exportformátum'],
 }
 K["hu"].update(HU2)
