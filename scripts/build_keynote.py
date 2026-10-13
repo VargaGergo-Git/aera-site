@@ -85,8 +85,8 @@ def build(code, H):
     def store(place):
         return "/get/%s/%s/" % (place, code)
 
-    def btn(place, small=False):
-        return '<a class="store%s" href="%s">%s<span>%s</span></a>' % (" small" if small else "", store(place), APPLE, k["cta"])
+    def btn(place, small=False, light=False):
+        return '<a class="store%s%s" href="%s">%s<span>%s</span></a>' % (" small" if small else "", " light" if light else "", store(place), APPLE, k["cta"])
 
     canonical = BASE + ("" if file == "index.html" else file)
     alternates = "".join('<link rel="alternate" hreflang="%s" href="%s%s">' % (lc, BASE, "" if f == "index.html" else f)
@@ -137,8 +137,12 @@ def build(code, H):
     faq = "".join('<details class="qa"><summary><h3>%s</h3><i aria-hidden="true"></i></summary><p>%s</p></details>' % qa
                   for qa in k["faq"])
     li = lambda xs: "".join("<li>%s</li>" % x for x in xs)
-    marks = "".join("<li>%s</li>" % x for x in k["wear_list"])
+    marks = "".join('<li class="reveal" style="--d:%.2fs">%s</li>' % (i * .06, x) for i, x in enumerate(k["wear_list"]))
     why_b = re.search(r"<b>(.*?)</b>", k["why_p"]).group(1)
+    # The lead lights up word by word as it crosses the screen (CSS scroll timeline;
+    # without one it simply shows in full).
+    _w = [(w, "g") for w in k["why_h2"].split()] + [(w, "") for w in why_b.split()]
+    lead = " ".join('<span class="w %s" style="--i:%d">%s</span>' % (c, i, w) for i, (w, c) in enumerate(_w))
 
     def foot_col(title, links):
         return "<div><h4>%s</h4>%s</div>" % (title, "".join(
@@ -227,7 +231,7 @@ def build(code, H):
     <p class="lede rise" style="--d:.08s">{k['sub']}</p>
     <div class="cta rise" style="--d:.16s">{btn('hero')}<p class="note">{k['note']}</p></div>
   </div>
-  <div class="hero-shot rise" style="--d:.24s">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div>
+  <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div></div>
 </section>
 
 <section class="works">
@@ -240,33 +244,33 @@ def build(code, H):
 
 <section class="statement">
   <div class="wide">
-    <p class="lead reveal"><span>{k['why_h2']}</span> {why_b}</p>
+    <p class="lead" style="--n:{len(_w)}">{lead}</p>
   </div>
 </section>
 
 <section class="ch">
   <div class="wide">
-    <div class="panel p-sleep">
+    <div class="panel grow p-sleep">
       <div class="copy reveal">
         <h2>{k['sleep_h2']}</h2>
         <p>{k['sleep_p']}</p>
       </div>
-      <div class="stage"><figure class="phone settle">{sleep_pic}</figure></div>
+      <div class="stage"><figure class="phone rise-in">{sleep_pic}</figure></div>
     </div>
   </div>
 </section>
 
 <section class="ch">
   <div class="wide">
-    <div class="dark-pair">
+    <div class="dark-pair grow">
     <div class="panel p-dark p-runs">
       <div class="copy reveal">
         <h2>{k['run_h2']}</h2>
         <p>{k['run_p']}</p>
       </div>
       <div class="stage wide-stage"><div class="pair">
-        <figure class="phone settle">{img('scr-run-light', run_alts[1], ph)}</figure>
-        <figure class="watch settle" style="--d:.1s">{img('w-run', run_alts[2], '(max-width: 759px) 34vw, 180px')}</figure>
+        <figure class="phone rise-in">{img('scr-run-light', run_alts[1], ph)}</figure>
+        <figure class="watch slide-in">{img('w-run', run_alts[2], '(max-width: 759px) 34vw, 180px')}</figure>
       </div></div>
     </div>
     <div class="panel p-dark p-fly">
@@ -278,6 +282,7 @@ def build(code, H):
         <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
         {'<div class="tabs" role="tablist">%s</div>' % tabs if len(places_) > 1 else ''}
       </div>
+      <div class="panel-cta reveal">{btn('flyover', light=True)}</div>
     </div>
     </div>
   </div>
@@ -287,14 +292,14 @@ def build(code, H):
 
 <section class="ch">
   <div class="wide">
-    <div class="panel p-route flip">
+    <div class="panel grow p-route flip">
       <div class="copy reveal">
         <h2>{k['route_h2']}</h2>
         <p>{k['route_p']}</p>
       </div>
       <div class="stage wide-stage"><div class="pair">
-        <figure class="phone cycle settle">{img('scr-route', route_alts[0], ph)}{loops}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
-        <figure class="watch settle" style="--d:.1s">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
+        <figure class="phone cycle rise-in">{img('scr-route', route_alts[0], ph)}{loops}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
+        <figure class="watch slide-in">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
       </div></div>
     </div>
   </div>
@@ -302,24 +307,25 @@ def build(code, H):
 
 <section class="ch">
   <div class="wide">
-    <div class="panel p-age">
+    <div class="panel grow p-age">
       <div class="copy reveal">
         <h2>{k['age_h2']}</h2>
         <p>{k['age_p']}</p>
         <p class="fine">{k['age_note']}</p>
       </div>
-      <div class="stage"><figure class="phone settle">{pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_)}</figure></div>
+      <div class="stage"><figure class="phone rise-in">{pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_)}</figure></div>
     </div>
   </div>
 </section>
 
 <section class="priv-sec">
   <div class="wide">
-    <div class="priv reveal">
-      <img class="priv-icon" src="assets/icon.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+    <div class="priv grow">
+      <img class="priv-icon pop" src="assets/icon.png" alt="" width="72" height="72" loading="lazy" decoding="async">
       <h2>{k['priv_h2']}</h2>
       <p>{k['priv_p']}</p>
       <a class="more-link" href="{k['priv_link'][0]}">{k['priv_link'][1]}</a>
+      <div class="panel-cta">{btn('engine', light=True)}</div>
     </div>
     <div class="work narrow center reveal">
       <h2>{k['b_work'][0]}</h2>

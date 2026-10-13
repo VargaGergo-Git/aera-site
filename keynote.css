@@ -123,7 +123,7 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 /* The lead: one sentence, its first half in green. */
 .statement { padding: clamp(88px, 12vw, 160px) 0 clamp(56px, 8vw, 104px); }
 .lead { max-width: 24ch; margin: 0 auto; text-align: center; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; letter-spacing: -.035em; font-weight: 700; text-wrap: balance; }
-.lead span { color: var(--green-ink); }
+.lead .g { color: var(--green-ink); }
 
 /* Chapters: one tinted panel each, the phone standing in it and cut by its lower edge. */
 .ch + .ch { padding-top: 24px; }
@@ -159,6 +159,9 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 @media (prefers-color-scheme: dark) {
   .p-sleep { --tint: #14162a; } .p-route { --tint: #101b15; } .p-age { --tint: #1f1912; } .p-dark { --tint: #121215; }
 }
+
+.panel-cta { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }
+.store.light { background: #f5f5f7; color: #0b0b0c; }
 
 /* Privacy: one big card, the way the app keeps it. */
 .priv-sec { padding: var(--sec) 0 0; }
@@ -235,6 +238,29 @@ footer { border-top: .5px solid var(--line); padding: 48px 0 24px; font-size: 14
     .settle { animation: settle linear both; animation-timeline: view(); animation-range: entry 0% cover 38%; }
     @keyframes settle { from { transform: translateY(48px) scale(.92); } to { transform: none; } }
   }
+}
+/* Scroll-linked motion, native CSS only: the page scrolls as usual and each
+   piece is tied to where it sits on screen. A browser without view timelines,
+   or anyone with reduced motion, sees every piece in its final place. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-zoom { animation: hero-zoom linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+    @keyframes hero-zoom { to { transform: translateY(-6%) scale(1.08); opacity: .35; } }
+    .lead .w { animation: word linear both; animation-timeline: view(); animation-range: cover calc(18% + var(--i) * 1.6%) cover calc(26% + var(--i) * 1.6%); }
+    @keyframes word { from { opacity: .16; } }
+    .grow { animation: grow linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+    @keyframes grow { from { transform: scale(.92); border-radius: calc(var(--r) * 2); } }
+    .rise-in { animation: rise-in linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    @keyframes rise-in { from { transform: translateY(34%); } }
+    .slide-in { animation: slide-in linear both; animation-timeline: view(); animation-range: entry 10% cover 50%; }
+    @keyframes slide-in { from { transform: translate(40%, 20%) rotate(8deg); opacity: 0; } }
+    .pop { animation: pop linear both; animation-timeline: view(); animation-range: entry 20% cover 40%; }
+    @keyframes pop { from { transform: scale(.5) rotate(-10deg); opacity: 0; } }
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .closing .icon { animation: float 6s ease-in-out infinite; will-change: transform; }
+  @keyframes float { 50% { transform: translateY(-8px) rotate(-2deg); } }
 }
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: none; }
