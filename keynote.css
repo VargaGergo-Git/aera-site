@@ -57,7 +57,8 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 /* Hero */
 .hero { padding-top: clamp(112px, 16vw, 168px); text-align: center; overflow: hidden;
         background: radial-gradient(70% 46% at 50% 100%, color-mix(in srgb, var(--green) 16%, transparent), transparent 70%), radial-gradient(50% 36% at 22% 88%, rgba(120, 160, 220, .14), transparent 70%); }
-.hero h1 { margin: 0 auto; }
+.hero h1 { margin: 0 auto; text-wrap: balance; }
+@media (max-width: 759px) { .hero h1 br { display: none; } }
 .lede { max-width: 32ch; margin: 24px auto 0; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.38; color: var(--ink-2); letter-spacing: -.015em; text-wrap: balance; }
 .cta { margin-top: 34px; }
 .hero-shot { width: min(820px, 100%); margin: clamp(28px, 5vw, 56px) auto 0; }
@@ -147,6 +148,9 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 }
 @media (max-width: 759px) { .stage { padding: 30px 30px 0; margin: -30px -30px 0; } }
 .p-sleep { --tint: #e3e6f1; }
+.p-normal { --tint: #e6eee8; }
+.stage.full { aspect-ratio: 300 / 655; }
+.ch-first { padding-top: clamp(56px, 8vw, 104px); }
 .p-route { --tint: #e2ebe2; }
 .p-age { --tint: #f1e8da; }
 .p-dark { --tint: #0b0b0c; color: #f5f5f7; }
@@ -157,7 +161,7 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .p-fly .copy { justify-self: center; padding-bottom: 0 !important; }
 .p-fly .player { margin-top: 0; }
 @media (prefers-color-scheme: dark) {
-  .p-sleep { --tint: #14162a; } .p-route { --tint: #101b15; } .p-age { --tint: #1f1912; } .p-dark { --tint: #121215; }
+  .p-sleep { --tint: #14162a; } .p-normal { --tint: #101b15; } .p-route { --tint: #101b15; } .p-age { --tint: #1f1912; } .p-dark { --tint: #121215; }
 }
 
 .panel-cta { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }

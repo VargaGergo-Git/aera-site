@@ -22,7 +22,7 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
+    "w-turn": (422,), "scr-age-light": (400, 800), "scr-vitals": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
     **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
@@ -79,6 +79,21 @@ def build(code, H):
     loops = img('scr-loops', k['route_more_alts'][0], "(max-width: 759px) 44vw, 260px", cls='alt') if here("scr-loops-400.webp") else ""
     sleep_pic = (pic('scr-sleep-light', 'scr-sleep-dark', k['sleep_alt'], ph_) if here("scr-sleep-light-400.webp")
                  else pic('art-sleep-light', 'art-sleep-dark', k['sleep_art_alt'], ph_))
+    # Section one of the identity brief: one number inside its band explains "usual".
+    # Shown only where its words exist in this language (no mixed pages).
+    normal_sec = (f'''<section class="ch ch-first">
+  <div class="wide">
+    <div class="panel grow p-normal">
+      <div class="copy reveal">
+        <h2>{k['normal_h2']}</h2>
+        <p>{k['normal_p']}</p>
+        <p class="fine">{k['normal_cap']}</p>
+      </div>
+      <div class="stage full"><figure class="phone rise-in">{img('scr-vitals', k['normal_alt'], ph_)}</figure></div>
+    </div>
+  </div>
+</section>
+''' if "normal_h2" in K[code] else "")
     BASE, APPLE = H["BASE"], H["APPLE"]
     file = H["file"]
 
@@ -242,6 +257,7 @@ def build(code, H):
   </div>
 </section>
 
+{normal_sec}
 <section class="statement">
   <div class="wide">
     <p class="lead" style="--n:{len(_w)}">{lead}</p>

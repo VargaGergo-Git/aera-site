@@ -9,14 +9,18 @@ Hungarian site copy thread, never written here by hand."""
 
 K = {
     "en": {
-        "title": "Aera: your watch counts, Aera explains",
-        "desc": "Aera tells you what your watch's numbers mean for you, and shows how it knows. Sleep, heart and runs from Apple Health, against your own usual. Free, no account.",
-        "og_title": "Your watch counts. Aera explains.",
+        "title": "Aera: your body, your usual, your next move",
+        "desc": "Aera reads your Apple Watch against your own normal. Each morning it says how today compares, and after a walk, run or ride, what changed. Free, no account.",
+        "og_title": "Your body, your usual, your next move.",
         "skip": "Skip to content",
         "nav": [("guides/index.html", "Guides"), ("notes/index.html", "Notes"), ("support.html", "Support")],
         "get": "Get Aera",
-        "h1": "Your watch counts.<br>Aera explains.",
-        "sub": "Aera tells you what your watch&#8217;s numbers mean for you, and shows how it knows.",
+        "h1": "Your body, your usual, <br>your next move.",
+        "sub": "Aera reads your Apple Watch against your own normal. Each morning it says how today compares, and after a walk, run or ride, what changed.",
+        "normal_h2": "Your normal.",
+        "normal_p": "Sleep, recovery, blood pressure and strength, each held against a range learned from your own weeks. <b>A number means little on its own.</b> Next to your usual, it tells you something.",
+        "normal_cap": "Resting heart rate 49 bpm, inside the green band: your usual.",
+        "normal_alt": "Aera's vitals this morning: HRV 71 ms, above your usual, and resting heart rate 49 bpm, inside your usual band",
         "cta": "Download on the App Store",
         "note": "Free &#183; No account &#183; Works with any watch or ring that writes to Apple Health",
         "hero_alt": "Aera on iPhone and Apple Watch: last night's sleep, 55 minutes over your need, and the day so far on the watch",
