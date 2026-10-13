@@ -274,7 +274,7 @@ K["en"].update({
     "age_h2": "Body age, with its reasons.",
     "age_p": "One estimate built from six measures of your health, among them VO&#8322;max, resting heart rate, HRV and sleep regularity. <b>Each part is shown</b>, so you can see which are pulling their weight.",
     "age_note": "Every measure is free. The age itself comes with Premium.",
-    "age_alt": "Aera's body age wheel: 35.4 against a calendar age of 40, built from six parts of your health",
+    "age_alt": "Aera's Longevity screen: a body age of 35.4 against a calendar age of 40, with 5 of 6 measures pulling their weight",
 })
 K["en"]["prem"] = ["Today&#8217;s session: how long, how hard", "Your body age", "Your sleep reserve and your places",
                    "More saved routes", "Older Flyovers, full history, every export"]

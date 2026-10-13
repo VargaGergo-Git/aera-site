@@ -86,16 +86,6 @@ for lang in (None, 'de', 'hu'):
         if s: save(fn(s), name, (360, 720), lang)
 print('ok')
 
-# Body age: the Press 3D tile of the wheel, cut to the object with its soft shadow.
-for lang in (None, 'de', 'hu'):
-    s = src('press-3d-tile-bodyage.png', lang)
-    if not s: continue
-    im = Image.open(s).convert('RGBA'); a = np.array(im)[..., 3]
-    ys, xs = np.where(a > 140); x0, x1, y0, y1 = xs.min(), xs.max(), ys.min(), ys.max()
-    m = int((x1 - x0) * .06)
-    im = im.crop((max(0, x0 - m), max(0, y0 - m), min(im.width, x1 + m), min(im.height, y1 + int(m * 1.6))))
-    save(im, 'age-tile', (640, 1280), lang)
-
 # Replay clips for the place player, per language wherever a capture exists.
 # (source, start second, poster second): each start sits where the route crosses land.
 MEDIA = os.path.join(os.path.dirname(OUT.rstrip('/')), '..', 'media/k/')
