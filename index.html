@@ -27,7 +27,7 @@
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="preload" as="image" href="img/k/hero-pair-900.webp" imagesrcset="img/k/hero-pair-900.webp 900w, img/k/hero-pair-1800.webp 1800w" imagesizes="(max-width: 759px) 100vw, 820px">
-<link rel="stylesheet" href="keynote.css?v=2fba3ab939">
+<link rel="stylesheet" href="keynote.css?v=32018b3949">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "Your watch counts. Aera explains.", "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/", "downloadUrl": "https://apps.apple.com/app/id6762456252", "installUrl": "https://apps.apple.com/app/id6762456252", "description": "Aera tells you what your watch's numbers mean for you, and shows how it knows. Sleep, heart and runs from Apple Health, against your own usual. Free, no account.", "screenshot": ["https://aerahealth.app/img/k/hero-pair-1800.webp", "https://aerahealth.app/img/k/art-sleep-light-800.webp", "https://aerahealth.app/img/k/scr-run-light-800.webp", "https://aerahealth.app/img/k/scr-route-800.webp"], "author": {"@id": "https://aerahealth.app/#maker"}, "publisher": {"@id": "https://aerahealth.app/#org"}, "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "Organization", "@id": "https://aerahealth.app/#org", "name": "Aera", "url": "https://aerahealth.app/", "logo": "https://aerahealth.app/assets/icon.png", "email": "hello@aerahealth.app", "founder": {"@id": "https://aerahealth.app/#maker"}, "sameAs": ["https://apps.apple.com/app/id6762456252"]}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "en", "publisher": {"@id": "https://aerahealth.app/#org"}}, {"@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What does Aera do?", "acceptedAnswer": {"@type": "Answer", "text": "Aera reads what your watch, ring or phone writes to Apple Health and tells you what those numbers mean for you. Sleep, stress, strain and every run are held against your own usual, said in plain words, and each number opens a short article on how it was worked out. It also plans routes with turn-by-turn directions and replays runs in 3D."}}, {"@type": "Question", "name": "Do I need an Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some."}}, {"@type": "Question", "name": "Is Aera free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Sleep, stress and strain against your usual, every run read back, every personal best, the route planner with turn by turn, your first saved route and Flyover for the last seven days are free. Premium adds today’s session, your sleep reserve, your places, more saved routes, older Flyovers, full history and every export format."}}, {"@type": "Question", "name": "Do I need an account, and where does my data go?", "acceptedAnswer": {"@type": "Answer", "text": "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. Product analytics stay off until you turn them on and never include health values."}}, {"@type": "Question", "name": "How does Aera know what is normal for me?", "acceptedAnswer": {"@type": "Answer", "text": "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."}}, {"@type": "Question", "name": "Is Aera a medical device?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."}}, {"@type": "Question", "name": "Which languages does Aera speak?", "acceptedAnswer": {"@type": "Answer", "text": "English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part."}}]}]}</script>
 <script>
 // The old single-page site lived at /#privacy, /#support, /#terms and /#eula.
@@ -107,36 +107,59 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
     <p class="lede rise" style="--d:.08s">Aera tells you what your watch&#8217;s numbers mean for you, and shows how it knows.</p>
     <div class="cta rise" style="--d:.16s"><a class="store" href="/get/hero/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download on the App Store</span></a><p class="note">Free &#183; No account &#183; Works with any watch or ring that writes to Apple Health</p></div>
   </div>
-  <div class="hero-shot rise" style="--d:.24s"><img src="img/k/hero-pair-900.webp" srcset="img/k/hero-pair-900.webp 900w, img/k/hero-pair-1800.webp 1800w" sizes="(max-width: 759px) 100vw, 820px" alt="Aera on iPhone and Apple Watch: last night's sleep, 55 minutes over your need, and the day so far on the watch" width="1800" height="1762" fetchpriority="high" decoding="async"></div>
+  <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom"><img src="img/k/hero-pair-900.webp" srcset="img/k/hero-pair-900.webp 900w, img/k/hero-pair-1800.webp 1800w" sizes="(max-width: 759px) 100vw, 820px" alt="Aera on iPhone and Apple Watch: last night's sleep, 55 minutes over your need, and the day so far on the watch" width="1800" height="1762" fetchpriority="high" decoding="async"></div></div>
 </section>
 
-<section class="sleep">
-  <div class="wide split">
-    <div class="copy reveal">
-      <h2>Sleep, explained.</h2>
-      <p>Your watch says how long you slept. Aera says what that means for you: <b>measured against the sleep you need</b>, learned from your own nights. Stages are shown as what they are: an estimate.</p>
-    </div>
-    <figure class="phone solo settle reveal" style="--d:.1s"><picture><source media="(prefers-color-scheme: dark)" srcset="img/k/art-sleep-dark-400.webp 400w, img/k/art-sleep-dark-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px"><img src="img/k/art-sleep-light-400.webp" srcset="img/k/art-sleep-light-400.webp 400w, img/k/art-sleep-light-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="The article behind Aera's sleep score: two things carry most of it, and neither of them is your heart" width="800" height="1739" loading="lazy" decoding="async"></picture></figure>
+<section class="works">
+  <div class="wide reveal">
+    <p class="works-h">Wear what you like.</p>
+    <ul class="marks"><li class="reveal" style="--d:0.00s">Apple Watch</li><li class="reveal" style="--d:0.06s">Garmin</li><li class="reveal" style="--d:0.12s">Oura</li><li class="reveal" style="--d:0.18s">WHOOP</li><li class="reveal" style="--d:0.24s">iPhone</li></ul>
+    <a class="more-link" href="guides/aera-with-garmin-oura-whoop.html">What reaches Apple Health from each</a>
   </div>
 </section>
 
-<section class="runs band">
+<section class="statement">
   <div class="wide">
-    <div class="copy center reveal">
-      <h2>Runs, read back.</h2>
-      <p>Every run sits beside your usual: <b>faster or slower than normal for you, harder or easier on your heart.</b></p>
+    <p class="lead" style="--n:16"><span class="w g" style="--i:0">A</span> <span class="w g" style="--i:1">number</span> <span class="w g" style="--i:2">with</span> <span class="w g" style="--i:3">no</span> <span class="w g" style="--i:4">reason</span> <span class="w g" style="--i:5">is</span> <span class="w g" style="--i:6">just</span> <span class="w g" style="--i:7">a</span> <span class="w g" style="--i:8">number.</span> <span class="w " style="--i:9">Aera</span> <span class="w " style="--i:10">picks</span> <span class="w " style="--i:11">up</span> <span class="w " style="--i:12">where</span> <span class="w " style="--i:13">the</span> <span class="w " style="--i:14">score</span> <span class="w " style="--i:15">stops.</span></p>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-sleep">
+      <div class="copy reveal">
+        <h2>Sleep, explained.</h2>
+        <p>Your watch says how long you slept. Aera says what that means for you: <b>measured against the sleep you need</b>, learned from your own nights. Stages are shown as what they are: an estimate.</p>
+      </div>
+      <div class="stage"><figure class="phone rise-in"><picture><source media="(prefers-color-scheme: dark)" srcset="img/k/scr-sleep-dark-400.webp 400w, img/k/scr-sleep-dark-800.webp 800w" sizes="(max-width: 759px) 72vw, 300px"><img src="img/k/scr-sleep-light-400.webp" srcset="img/k/scr-sleep-light-400.webp 400w, img/k/scr-sleep-light-800.webp 800w" sizes="(max-width: 759px) 72vw, 300px" alt="Aera's Sleep screen on iPhone: Excellent, 55 minutes over your need, 89 of 100, 8 hours 19 minutes asleep" width="800" height="1739" loading="lazy" decoding="async"></picture></figure></div>
     </div>
-    <div class="pair runs-pair">
-      <figure class="phone settle reveal"><img src="img/k/scr-run-light-400.webp" srcset="img/k/scr-run-light-400.webp 400w, img/k/scr-run-light-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A morning run read back: distance, time, pace and energy, each against your usual" width="800" height="1739" loading="lazy" decoding="async"></figure>
-      <figure class="watch settle reveal" style="--d:.1s"><img src="img/k/w-run-422.webp" srcset="img/k/w-run-422.webp 422w" sizes="(max-width: 759px) 34vw, 180px" alt="Aera on Apple Watch during a run: time, distance, pace and heart rate in zone 3" width="422" height="514" loading="lazy" decoding="async"></figure>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="dark-pair grow">
+    <div class="panel p-dark p-runs">
+      <div class="copy reveal">
+        <h2>Runs, read back.</h2>
+        <p>Every run sits beside your usual: <b>faster or slower than normal for you, harder or easier on your heart.</b></p>
+      </div>
+      <div class="stage wide-stage"><div class="pair">
+        <figure class="phone rise-in"><img src="img/k/scr-run-light-400.webp" srcset="img/k/scr-run-light-400.webp 400w, img/k/scr-run-light-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A morning run read back: distance, time, pace and energy, each against your usual" width="800" height="1739" loading="lazy" decoding="async"></figure>
+        <figure class="watch slide-in"><img src="img/k/w-run-422.webp" srcset="img/k/w-run-422.webp 422w" sizes="(max-width: 759px) 34vw, 180px" alt="Aera on Apple Watch during a run: time, distance, pace and heart rate in zone 3" width="422" height="514" loading="lazy" decoding="async"></figure>
+      </div></div>
     </div>
-    <div class="copy center places-copy reveal">
-      <h2>Fly any run again.</h2>
-      <p>Aera replays each run in 3D over the real ground, with your pace and heart rate as you went. Pick a place.</p>
+    <div class="panel p-dark p-fly">
+      <div class="copy center reveal">
+        <h2>Fly any run again.</h2>
+        <p>Aera replays each run in 3D over the real ground, with your pace and heart rate as you went. Pick a place.</p>
+      </div>
+      <div class="player reveal" style="--d:.1s">
+        <div class="phone clip settle"><video muted playsinline preload="none" poster="img/k/place-seawall-480.webp" data-src="media/k/place-seawall.mp4" aria-label="A run on the Vancouver Seawall, replayed in 3D with distance, pace and heart rate" width="480" height="1044"></video></div>
+        <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-poster="img/k/place-seawall-480.webp" data-src="media/k/place-seawall.mp4" data-label="A run on the Vancouver Seawall, replayed in 3D with distance, pace and heart rate">Seawall</button><button type="button" role="tab" aria-selected="false" data-poster="img/k/place-greenlake-480.webp" data-src="media/k/place-greenlake.mp4" data-label="A run around Green Lake, Seattle, replayed in 3D with distance, pace and heart rate">Green Lake</button><button type="button" role="tab" aria-selected="false" data-poster="img/k/place-braies-480.webp" data-src="media/k/place-braies.mp4" data-label="A run along Lago di Braies, replayed in 3D with distance, pace and heart rate">Braies</button></div>
+      </div>
+      <div class="panel-cta reveal"><a class="store light" href="/get/flyover/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download on the App Store</span></a></div>
     </div>
-    <div class="player reveal" style="--d:.1s">
-      <div class="phone clip settle"><video muted playsinline preload="none" poster="img/k/place-seawall-480.webp" data-src="media/k/place-seawall.mp4" aria-label="A run on the Vancouver Seawall, replayed in 3D with distance, pace and heart rate" width="480" height="1044"></video></div>
-      <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-poster="img/k/place-seawall-480.webp" data-src="media/k/place-seawall.mp4" data-label="A run on the Vancouver Seawall, replayed in 3D with distance, pace and heart rate">Seawall</button><button type="button" role="tab" aria-selected="false" data-poster="img/k/place-greenlake-480.webp" data-src="media/k/place-greenlake.mp4" data-label="A run around Green Lake, Seattle, replayed in 3D with distance, pace and heart rate">Green Lake</button><button type="button" role="tab" aria-selected="false" data-poster="img/k/place-braies-480.webp" data-src="media/k/place-braies.mp4" data-label="A run along Lago di Braies, replayed in 3D with distance, pace and heart rate">Braies</button></div>
     </div>
   </div>
 </section>
@@ -154,49 +177,47 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   </div>
 </section>
 
-<section class="route">
-  <div class="wide split flip">
-    <div class="copy reveal">
-      <h2>Plan it. Then just run.</h2>
-      <p>Draw a route that keeps to real paths, open a GPX file, or ask for <b>a loop from where you stand</b>. Every turn comes before you reach it, on your phone, your wrist or read aloud.</p>
-    </div>
-    <div class="pair reveal" style="--d:.1s">
-      <figure class="phone cycle settle"><img src="img/k/scr-route-400.webp" srcset="img/k/scr-route-400.webp 400w, img/k/scr-route-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A route drawn from the door around Green Lake, keeping to real paths" width="800" height="1739" loading="lazy" decoding="async"><img class="alt" src="img/k/scr-loops-400.webp" srcset="img/k/scr-loops-400.webp 400w, img/k/scr-loops-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="Loops from here: the only 5 km loop the paths here make" width="800" height="1739" loading="lazy" decoding="async"><img class="alt" src="img/k/scr-loop-route-400.webp" srcset="img/k/scr-loop-route-400.webp 400w, img/k/scr-loop-route-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A loop drawn around Green Lake on the map" width="800" height="1739" loading="lazy" decoding="async"></figure>
-      <figure class="watch"><img src="img/k/w-turn-422.webp" srcset="img/k/w-turn-422.webp 422w" sizes="(max-width: 759px) 40vw, 200px" alt="Turn by turn on Apple Watch: 202 metres, fork, keep right" width="422" height="514" loading="lazy" decoding="async"></figure>
-    </div>
-  </div>
-</section>
-
-<section class="age">
-  <div class="wide split">
-    <div class="copy reveal">
-      <h2>Body age, with its reasons.</h2>
-      <p>One estimate built from six measures of your health, among them VO&#8322;max, resting heart rate, HRV and sleep regularity. <b>Each part is shown</b>, so you can see which are pulling their weight.</p>
-      <p class="fine">Every measure is free. The age itself comes with Premium.</p>
-    </div>
-    <figure class="tile3d settle reveal" style="--d:.1s"><img src="img/k/age-tile-640.webp" srcset="img/k/age-tile-640.webp 640w, img/k/age-tile-1280.webp 1280w" sizes="(max-width: 759px) 86vw, 480px" alt="Aera's body age wheel: 35.4 against a calendar age of 40, built from six parts of your health" width="1280" height="1276" loading="lazy" decoding="async"></figure>
-  </div>
-</section>
-
-<section class="more">
+<section class="ch">
   <div class="wide">
-    <div class="narrow center why reveal">
-      <h2>A number with no reason is just a number.</h2>
-      <p>Watches count everything: hours asleep, heartbeats, kilometres. Then they stop at a score and leave you guessing. <b>Aera picks up where the score stops.</b> It holds each number against your own usual, says in plain words what it means, and opens it to show how it was worked out.</p>
+    <div class="panel grow p-route flip">
+      <div class="copy reveal">
+        <h2>Plan it. Then just run.</h2>
+        <p>Draw a route that keeps to real paths, open a GPX file, or ask for <b>a loop from where you stand</b>. Every turn comes before you reach it, on your phone, your wrist or read aloud.</p>
+      </div>
+      <div class="stage wide-stage"><div class="pair">
+        <figure class="phone cycle rise-in"><img src="img/k/scr-route-400.webp" srcset="img/k/scr-route-400.webp 400w, img/k/scr-route-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A route drawn from the door around Green Lake, keeping to real paths" width="800" height="1739" loading="lazy" decoding="async"><img class="alt" src="img/k/scr-loops-400.webp" srcset="img/k/scr-loops-400.webp 400w, img/k/scr-loops-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="Loops from here: the only 5 km loop the paths here make" width="800" height="1739" loading="lazy" decoding="async"><img class="alt" src="img/k/scr-loop-route-400.webp" srcset="img/k/scr-loop-route-400.webp 400w, img/k/scr-loop-route-800.webp 800w" sizes="(max-width: 759px) 44vw, 260px" alt="A loop drawn around Green Lake on the map" width="800" height="1739" loading="lazy" decoding="async"></figure>
+        <figure class="watch slide-in"><img src="img/k/w-turn-422.webp" srcset="img/k/w-turn-422.webp 422w" sizes="(max-width: 759px) 40vw, 200px" alt="Turn by turn on Apple Watch: 202 metres, fork, keep right" width="422" height="514" loading="lazy" decoding="async"></figure>
+      </div></div>
     </div>
-    <div class="bento">
-      <article class="tile t-priv reveal">
-        <h3>Health numbers stay on your iPhone.</h3><p>No account and no server doing the maths. Aera reads Apple Health on your phone and works out every score there. Analytics stay off until you turn them on, and never include health values.</p><a class="more-link" href="privacy.html">Read the privacy policy</a>
-      </article>
-      <article class="tile t-work reveal" style="--d:.12s">
-        <h3>Every number shows its work.</h3><p>Tap any number for how it was worked out, the research behind it, and where it stops being reliable.</p>
-        <a class="more-link" href="guides/what-is-a-good-sleep-score.html">Read one: the sleep score</a>
-      </article>
-      <article class="tile t-wear reveal" style="--d:.18s">
-        <h3>Wear what you like.</h3><p>Aera reads Apple Health, so it works with an Apple Watch, and with any watch, ring or app that writes your sleep and workouts there.</p>
-        <ul class="chips"><li>Apple Watch</li><li>Garmin</li><li>Oura</li><li>WHOOP</li><li>iPhone</li></ul>
-        <a class="more-link" href="guides/aera-with-garmin-oura-whoop.html">What reaches Apple Health from each</a>
-      </article>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-age">
+      <div class="copy reveal">
+        <h2>Body age, with its reasons.</h2>
+        <p>One estimate built from six measures of your health, among them VO&#8322;max, resting heart rate, HRV and sleep regularity. <b>Each part is shown</b>, so you can see which are pulling their weight.</p>
+        <p class="fine">Every measure is free. The age itself comes with Premium.</p>
+      </div>
+      <div class="stage"><figure class="phone rise-in"><picture><source media="(prefers-color-scheme: dark)" srcset="img/k/scr-age-dark-400.webp 400w, img/k/scr-age-dark-800.webp 800w" sizes="(max-width: 759px) 72vw, 300px"><img src="img/k/scr-age-light-400.webp" srcset="img/k/scr-age-light-400.webp 400w, img/k/scr-age-light-800.webp 800w" sizes="(max-width: 759px) 72vw, 300px" alt="Aera's Longevity screen: a body age of 35.4 against a calendar age of 40, with 5 of 6 measures pulling their weight" width="800" height="1739" loading="lazy" decoding="async"></picture></figure></div>
+    </div>
+  </div>
+</section>
+
+<section class="priv-sec">
+  <div class="wide">
+    <div class="priv grow">
+      <img class="priv-icon pop" src="assets/icon.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+      <h2>Health numbers stay on your iPhone.</h2>
+      <p>No account and no server doing the maths. Aera reads Apple Health on your phone and works out every score there. Analytics stay off until you turn them on, and never include health values.</p>
+      <a class="more-link" href="privacy.html">Read the privacy policy</a>
+      <div class="panel-cta"><a class="store light" href="/get/engine/en/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Download on the App Store</span></a></div>
+    </div>
+    <div class="work narrow center reveal">
+      <h2>Every number shows its work.</h2>
+      <p>Tap any number for how it was worked out, the research behind it, and where it stops being reliable.</p>
+      <a class="more-link" href="guides/what-is-a-good-sleep-score.html">Read one: the sleep score</a>
     </div>
   </div>
 </section>
@@ -213,7 +234,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 </section>
 
 <section class="faq-sec">
-  <div class="narrow">
+  <div class="wide qa-grid">
     <h2 class="reveal">Questions.</h2>
     <div class="faq reveal"><details class="qa"><summary><h3>What does Aera do?</h3><i aria-hidden="true"></i></summary><p>Aera reads what your watch, ring or phone writes to Apple Health and tells you what those numbers mean for you. Sleep, stress, strain and every run are held against your own usual, said in plain words, and each number opens a short article on how it was worked out. It also plans routes with turn-by-turn directions and replays runs in 3D.</p></details><details class="qa"><summary><h3>Do I need an Apple Watch?</h3><i aria-hidden="true"></i></summary><p>No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some.</p></details><details class="qa"><summary><h3>Is Aera free?</h3><i aria-hidden="true"></i></summary><p>Yes. Sleep, stress and strain against your usual, every run read back, every personal best, the route planner with turn by turn, your first saved route and Flyover for the last seven days are free. Premium adds today&#8217;s session, your sleep reserve, your places, more saved routes, older Flyovers, full history and every export format.</p></details><details class="qa"><summary><h3>Do I need an account, and where does my data go?</h3><i aria-hidden="true"></i></summary><p>There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. Product analytics stay off until you turn them on and never include health values.</p></details><details class="qa"><summary><h3>How does Aera know what is normal for me?</h3><i aria-hidden="true"></i></summary><p>It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing.</p></details><details class="qa"><summary><h3>Is Aera a medical device?</h3><i aria-hidden="true"></i></summary><p>No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable.</p></details><details class="qa"><summary><h3>Which languages does Aera speak?</h3><i aria-hidden="true"></i></summary><p>English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part.</p></details></div>
   </div>

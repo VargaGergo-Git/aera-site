@@ -11,6 +11,7 @@ where the browser supports view timelines, one 3D replay plays at a time with
 places to pick, the route phone's screens take turns, and the share cards fan
 in. The page scrolls natively, with no pinned or scroll-hijacking scenes."""
 import html
+import re
 import json
 import os
 import sys
@@ -21,7 +22,7 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "age-tile": (640, 1280), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
+    "w-turn": (422,), "scr-age-light": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
     **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
@@ -70,24 +71,22 @@ def build(code, H):
     if missing:  # a language still waiting on its words for a newer section
         print("build_keynote: %s falls back to English for %s" % (code, ", ".join(missing)), file=sys.stderr)
         k = {**K["en"], **k}
-    # A page never mixes languages inside its screens: the 3D wheel and the
-    # "loops from here" frame exist in English only, so /de and /hu show the
-    # Longevity screen captured in their language and skip that loop frame.
+    # A page never mixes languages inside its screens: the "loops from here"
+    # frame exists in English only, so /de and /hu skip it.
     here = lambda name: code == "en" or os.path.exists(os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "img/k/%s/%s" % (code, name)))
     ph_ = "(max-width: 759px) 72vw, 300px"
     loops = img('scr-loops', k['route_more_alts'][0], "(max-width: 759px) 44vw, 260px", cls='alt') if here("scr-loops-400.webp") else ""
-    age_fig = ('<figure class="tile3d settle reveal" style="--d:.1s">%s</figure>' % img('age-tile', k['age_alt'], '(max-width: 759px) 86vw, 480px')
-               if here("age-tile-640.webp") else
-               '<figure class="phone solo settle reveal" style="--d:.1s">%s</figure>' % pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_))
+    sleep_pic = (pic('scr-sleep-light', 'scr-sleep-dark', k['sleep_alt'], ph_) if here("scr-sleep-light-400.webp")
+                 else pic('art-sleep-light', 'art-sleep-dark', k['sleep_art_alt'], ph_))
     BASE, APPLE = H["BASE"], H["APPLE"]
     file = H["file"]
 
     def store(place):
         return "/get/%s/%s/" % (place, code)
 
-    def btn(place, small=False):
-        return '<a class="store%s" href="%s">%s<span>%s</span></a>' % (" small" if small else "", store(place), APPLE, k["cta"])
+    def btn(place, small=False, light=False):
+        return '<a class="store%s%s" href="%s">%s<span>%s</span></a>' % (" small" if small else "", " light" if light else "", store(place), APPLE, k["cta"])
 
     canonical = BASE + ("" if file == "index.html" else file)
     alternates = "".join('<link rel="alternate" hreflang="%s" href="%s%s">' % (lc, BASE, "" if f == "index.html" else f)
@@ -138,7 +137,12 @@ def build(code, H):
     faq = "".join('<details class="qa"><summary><h3>%s</h3><i aria-hidden="true"></i></summary><p>%s</p></details>' % qa
                   for qa in k["faq"])
     li = lambda xs: "".join("<li>%s</li>" % x for x in xs)
-    chips = "".join("<li>%s</li>" % x for x in k["wear_list"])
+    marks = "".join('<li class="reveal" style="--d:%.2fs">%s</li>' % (i * .06, x) for i, x in enumerate(k["wear_list"]))
+    why_b = re.search(r"<b>(.*?)</b>", k["why_p"]).group(1)
+    # The lead lights up word by word as it crosses the screen (CSS scroll timeline;
+    # without one it simply shows in full).
+    _w = [(w, "g") for w in k["why_h2"].split()] + [(w, "") for w in why_b.split()]
+    lead = " ".join('<span class="w %s" style="--i:%d">%s</span>' % (c, i, w) for i, (w, c) in enumerate(_w))
 
     def foot_col(title, links):
         return "<div><h4>%s</h4>%s</div>" % (title, "".join(
@@ -227,85 +231,106 @@ def build(code, H):
     <p class="lede rise" style="--d:.08s">{k['sub']}</p>
     <div class="cta rise" style="--d:.16s">{btn('hero')}<p class="note">{k['note']}</p></div>
   </div>
-  <div class="hero-shot rise" style="--d:.24s">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div>
+  <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div></div>
 </section>
 
-<section class="sleep">
-  <div class="wide split">
-    <div class="copy reveal">
-      <h2>{k['sleep_h2']}</h2>
-      <p>{k['sleep_p']}</p>
-    </div>
-    <figure class="phone solo settle reveal" style="--d:.1s">{pic('art-sleep-light', 'art-sleep-dark', k['sleep_art_alt'], ph)}</figure>
+<section class="works">
+  <div class="wide reveal">
+    <p class="works-h">{k['wear_h2']}</p>
+    <ul class="marks">{marks}</ul>
+    <a class="more-link" href="{k['wear_link'][0]}">{k['wear_link'][1]}</a>
   </div>
 </section>
 
-<section class="runs band">
+<section class="statement">
   <div class="wide">
-    <div class="copy center reveal">
-      <h2>{k['run_h2']}</h2>
-      <p>{k['run_p']}</p>
+    <p class="lead" style="--n:{len(_w)}">{lead}</p>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-sleep">
+      <div class="copy reveal">
+        <h2>{k['sleep_h2']}</h2>
+        <p>{k['sleep_p']}</p>
+      </div>
+      <div class="stage"><figure class="phone rise-in">{sleep_pic}</figure></div>
     </div>
-    <div class="pair runs-pair">
-      <figure class="phone settle reveal">{img('scr-run-light', run_alts[1], ph)}</figure>
-      <figure class="watch settle reveal" style="--d:.1s">{img('w-run', run_alts[2], '(max-width: 759px) 34vw, 180px')}</figure>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="dark-pair grow">
+    <div class="panel p-dark p-runs">
+      <div class="copy reveal">
+        <h2>{k['run_h2']}</h2>
+        <p>{k['run_p']}</p>
+      </div>
+      <div class="stage wide-stage"><div class="pair">
+        <figure class="phone rise-in">{img('scr-run-light', run_alts[1], ph)}</figure>
+        <figure class="watch slide-in">{img('w-run', run_alts[2], '(max-width: 759px) 34vw, 180px')}</figure>
+      </div></div>
     </div>
-    <div class="copy center places-copy reveal">
-      <h2>{k['places_h2']}</h2>
-      <p>{places_p}</p>
+    <div class="panel p-dark p-fly">
+      <div class="copy center reveal">
+        <h2>{k['places_h2']}</h2>
+        <p>{places_p}</p>
+      </div>
+      <div class="player reveal" style="--d:.1s">
+        <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
+        {'<div class="tabs" role="tablist">%s</div>' % tabs if len(places_) > 1 else ''}
+      </div>
+      <div class="panel-cta reveal">{btn('flyover', light=True)}</div>
     </div>
-    <div class="player reveal" style="--d:.1s">
-      <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
-      {'<div class="tabs" role="tablist">%s</div>' % tabs if len(places_) > 1 else ''}
     </div>
   </div>
 </section>
 
 {share_sec}
 
-<section class="route">
-  <div class="wide split flip">
-    <div class="copy reveal">
-      <h2>{k['route_h2']}</h2>
-      <p>{k['route_p']}</p>
-    </div>
-    <div class="pair reveal" style="--d:.1s">
-      <figure class="phone cycle settle">{img('scr-route', route_alts[0], ph)}{loops}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
-      <figure class="watch">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
-    </div>
-  </div>
-</section>
-
-<section class="age">
-  <div class="wide split">
-    <div class="copy reveal">
-      <h2>{k['age_h2']}</h2>
-      <p>{k['age_p']}</p>
-      <p class="fine">{k['age_note']}</p>
-    </div>
-    {age_fig}
-  </div>
-</section>
-
-<section class="more">
+<section class="ch">
   <div class="wide">
-    <div class="narrow center why reveal">
-      <h2>{k['why_h2']}</h2>
-      <p>{k['why_p']}</p>
+    <div class="panel grow p-route flip">
+      <div class="copy reveal">
+        <h2>{k['route_h2']}</h2>
+        <p>{k['route_p']}</p>
+      </div>
+      <div class="stage wide-stage"><div class="pair">
+        <figure class="phone cycle rise-in">{img('scr-route', route_alts[0], ph)}{loops}{img('scr-loop-route', k['route_more_alts'][1], ph, cls='alt')}</figure>
+        <figure class="watch slide-in">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
+      </div></div>
     </div>
-    <div class="bento">
-      <article class="tile t-priv reveal">
-        <h3>{k['priv_h2']}</h3><p>{k['priv_p']}</p><a class="more-link" href="{k['priv_link'][0]}">{k['priv_link'][1]}</a>
-      </article>
-      <article class="tile t-work reveal" style="--d:.12s">
-        <h3>{k['b_work'][0]}</h3><p>{k['b_work'][1]}</p>
-        {work_link}
-      </article>
-      <article class="tile t-wear reveal" style="--d:.18s">
-        <h3>{k['wear_h2']}</h3><p>{k['wear_p']}</p>
-        <ul class="chips">{chips}</ul>
-        <a class="more-link" href="{k['wear_link'][0]}">{k['wear_link'][1]}</a>
-      </article>
+  </div>
+</section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-age">
+      <div class="copy reveal">
+        <h2>{k['age_h2']}</h2>
+        <p>{k['age_p']}</p>
+        <p class="fine">{k['age_note']}</p>
+      </div>
+      <div class="stage"><figure class="phone rise-in">{pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_)}</figure></div>
+    </div>
+  </div>
+</section>
+
+<section class="priv-sec">
+  <div class="wide">
+    <div class="priv grow">
+      <img class="priv-icon pop" src="assets/icon.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+      <h2>{k['priv_h2']}</h2>
+      <p>{k['priv_p']}</p>
+      <a class="more-link" href="{k['priv_link'][0]}">{k['priv_link'][1]}</a>
+      <div class="panel-cta">{btn('engine', light=True)}</div>
+    </div>
+    <div class="work narrow center reveal">
+      <h2>{k['b_work'][0]}</h2>
+      <p>{k['b_work'][1]}</p>
+      {work_link}
     </div>
   </div>
 </section>
@@ -322,7 +347,7 @@ def build(code, H):
 </section>
 
 <section class="faq-sec">
-  <div class="narrow">
+  <div class="wide qa-grid">
     <h2 class="reveal">{k['faq_h2']}</h2>
     <div class="faq reveal">{faq}</div>
   </div>
