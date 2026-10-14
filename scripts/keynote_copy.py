@@ -353,3 +353,48 @@ K["hu"].update(HU2)
 # The 3D replay now has its own section, so the runs line stops at the comparison.
 for _c in ("en", "de", "hu"):
     K[_c]["run_p"] = K[_c]["run_p"].split("</b>")[0] + "</b>"
+
+# New home page lines from the HU copy thread (14 Oct). The new sections
+# show only once this language's Vitals and Today captures exist.
+K["hu"].update({
+ "h1": "A tested, a megszokottad, <br>a következő lépésed.",
+ "sub": "Az Aera az Apple Watch-od adatait a saját normál szintedhez méri. Minden reggel megmondja, hogyan áll a mai nap, egy séta, futás vagy tekerés után pedig azt, mi változott.",
+ "title": "Aera: a tested, a megszokottad, a következő lépésed",
+ "desc": "Az Aera az Apple Watch-od adatait a saját normál szintedhez méri. Minden reggel megmondja, hogyan áll a mai nap, egy séta, futás vagy tekerés után pedig azt, mi változott. Ingyenes, fiók nélkül.",
+ "og_title": "A tested, a megszokottad, a következő lépésed.",
+ "normal_h2": "A megszokottad.",
+ "normal_p": "Alvás, regenerálódás, vérnyomás és erőedzés, mindegyik egy olyan tartományhoz mérve, amit az Aera a saját heteidből tanult meg. <b>Egy szám önmagában keveset mond.</b> A megszokottad mellett már elárul valamit.",
+ "normal_cap": "A zöld sáv a megszokottad. A 71 ms-os HRV fölötte van, a 49/perces nyugalmi pulzus benne.",
+ "normal_alt": "Az Aera ma reggeli életjelei: HRV 71 ms, a megszokottad fölött, nyugalmi pulzus 49/perc, a megszokott sávodon belül",
+ "today_h2": "Ma.",
+ "today_p": "Az Aera minden reggel megmondja, mit bír el a mai nap, a legutóbbi éjszakáid és napjaid alapján, a megszokottadhoz mérve. <b>Javaslat, nem utasítás.</b> Vágj neki egy útvonalon, amit már ismersz, vagy tervezz új kört, és minden kanyart még előtte látsz.",
+ "today_alt": "Az Aera Ma képernyője: belefér egy hosszú, könnyű túra, egy 10,8 km-es kör 410 m emelkedéssel, nagyjából 3 óra 40 perc",
+ "changed_h2": "Ami változott.",
+ "changed_p": "Egy séta, futás vagy tekerés után az Aera a megszokottadhoz méri az edzést. <b>A heteid összefoglaló filmként térnek vissza,</b> egy útvonalat pedig 3D-ben újra átrepülhetsz, a valódi terep fölött.",
+ "long_p": "És a hosszú távú kép: <b>a Testkorod és az Alvásbankod</b>, hónapokon át.",
+ "closer": "Minden szám megmutatja, hogyan jött ki, és megmondja, ha valamit nem tud. Az iPhone-odon. Fiók nélkül.",
+ "close_h2": "A tested, a megszokottad, <br>a következő lépésed.",
+ "close_note": "Ingyenes az App Store-ban.",
+ "foot_tag": "A tested, a megszokottad, a következő lépésed."
+})
+K["de"].update({
+ "h1": "Dein Körper, dein Normal, <br>dein nächster Schritt.",
+ "sub": "Aera misst die Werte deiner Apple Watch an deinem eigenen Normal. Jeden Morgen sagt Aera dir, wie der heutige Tag im Vergleich dasteht, und nach einem Spaziergang, Lauf oder einer Radtour, was sich verändert hat.",
+ "title": "Aera: dein Körper, dein Normal, dein nächster Schritt",
+ "desc": "Aera misst die Werte deiner Apple Watch an deinem eigenen Normal. Jeden Morgen sagt Aera dir, wie der heutige Tag im Vergleich dasteht, und nach einem Spaziergang, Lauf oder einer Radtour, was sich verändert hat. Kostenlos, ohne Konto.",
+ "og_title": "Dein Körper, dein Normal, dein nächster Schritt.",
+ "normal_h2": "Dein Normal.",
+ "normal_p": "Schlaf, Erholung, Blutdruck und Kraft, jeweils gemessen an einem Bereich, den Aera aus deinen eigenen Wochen gelernt hat. <b>Eine Zahl allein sagt wenig.</b> Neben deinem üblichen Wert sagt sie dir etwas.",
+ "normal_cap": "Das grüne Band ist dein üblicher Bereich. Die HRV von 71 ms liegt darüber, der Ruhepuls von 49/min liegt darin.",
+ "normal_alt": "Aeras Vitalwerte heute Morgen: HRV 71 ms, über deinem üblichen Bereich, und Ruhepuls 49/min, innerhalb deines üblichen Bereichs",
+ "today_h2": "Heute.",
+ "today_p": "Jeden Morgen sagt Aera, was heute drin ist, aus deinen letzten Nächten und Tagen, gemessen an deinen üblichen Werten. <b>Ein Anstoß, nie ein Befehl.</b> Geh es auf einer Strecke an, die du schon kennst, oder plane eine neue Runde und sieh jede Abzweigung, bevor du dort bist.",
+ "today_alt": "Aeras Heute-Bildschirm: Raum für eine lange, lockere Wanderung, eine Runde von 10,8 km mit 410 Höhenmetern und rund 3 Stunden 40 Minuten",
+ "changed_h2": "Was sich verändert hat.",
+ "changed_p": "Nach einem Spaziergang, Lauf oder einer Radtour vergleicht Aera das Training mit deinen üblichen Werten. <b>Deine Wochen kommen als Rückblick-Film zurück,</b> und eine Strecke kannst du in 3D über dem echten Gelände noch einmal abfliegen.",
+ "long_p": "Und der lange Blick: <b>Körperalter und Schlafbank</b>, über Monate.",
+ "closer": "Jede Zahl lässt sich öffnen und zeigt, wie sie berechnet wurde, und sagt es, wenn sie etwas nicht weiß. Auf deinem iPhone. Ohne Konto.",
+ "close_h2": "Dein Körper, dein Normal, <br>dein nächster Schritt.",
+ "close_note": "Kostenlos im App Store.",
+ "foot_tag": "Dein Körper, dein Normal, dein nächster Schritt."
+})
