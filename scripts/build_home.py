@@ -323,7 +323,10 @@ CF_BEACON = "4fc0403d67364f1ab92526387bdd0b81"
 # 2026-10-09 with itunes.apple.com/lookup?id=6762456252&country=hu (5.0, 7).
 # Re-check before each rebuild; set to 0 to drop the line if the average falls.
 HU_RATINGS = 7
-APPSTORE_PT = ""
+# Provider token from Gergő's App Store campaign link (14 Oct 2026). Each store
+# link carries its own ct= so App Analytics > Campaigns shows where installs came
+# from: get/ pages here, every other page via scripts/add_campaign.py.
+APPSTORE_PT = "128795793"
 OG_LOCALE = {"en": "en_US", "hu": "hu_HU", "de": "de_DE"}
 
 LANG_NAMES = [("en", "index.html", "English"), ("hu", "hu.html", "Magyar"), ("de", "de.html", "Deutsch")]
@@ -845,12 +848,15 @@ def plan_items(items):
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
 
 
-def get_page(store, lang, src):
+def campaign(url, ct):
+    """The store URL with Apple's campaign tags (provider token, campaign, mt=8)."""
+    return url.split("?")[0] + ("?pt=%s&ct=%s&mt=8" % (APPSTORE_PT, ct) if APPSTORE_PT else "")
+
+
+def get_page(store, lang, ct):
     """One forwarding page: on to that language's App Store page, with
     the campaign tags once APPSTORE_PT is set. Out of search."""
-    url = store
-    if APPSTORE_PT:
-        url += "?pt=%s&ct=site-%s-%s&mt=8" % (APPSTORE_PT, lang, src)
+    url = campaign(store, ct)
     beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
               "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""
     return """<!doctype html>
@@ -876,15 +882,21 @@ def get_page(store, lang, src):
 
 def write_get_pages():
     """get/<place>/<lang>/index.html for every store button, plus get/index.html
-    for a bare /get/ (English store)."""
+    for a bare /get/ (English store). Site buttons get ct=site-<place>-<lang>;
+    the outside channels already in get/ (list-, mail-, post-) get <place>-<lang>."""
+    places = list(GET_PLACES) + sorted(
+        d for d in os.listdir(os.path.join(ROOT, "get"))
+        if d not in GET_PLACES and os.path.isdir(os.path.join(ROOT, "get", d)))
     for c in COPY.values():
-        for place in GET_PLACES:
+        for place in places:
+            ct = ("site-%s-%s" if place in GET_PLACES else "%s-%s") % (place, c["lang"])
+            assert len(ct) <= 40 and re.fullmatch(r"[a-z0-9-]+", ct), ct
             d = os.path.join(ROOT, "get", place, c["lang"])
             os.makedirs(d, exist_ok=True)
             with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
-                f.write(get_page(c["store"], c["lang"], place))
+                f.write(get_page(c["store"], c["lang"], ct))
     with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
-        f.write(get_page(COPY["en"]["store"], "en", "site"))
+        f.write(get_page(COPY["en"]["store"], "en", "site-get-en"))
 
 
 if __name__ == "__main__":
