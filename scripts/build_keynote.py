@@ -22,7 +22,7 @@ from keynote_copy import K  # noqa: E402
 # Widths written for each render in img/k/ (name-<w>.webp).
 WIDTHS = {
     "hero-pair": (900, 1800), "scr-run-light": (400, 800), "scr-route": (400, 800), "w-run": (422,),
-    "w-turn": (422,), "scr-age-light": (400, 800), "scr-vitals": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
+    "w-turn": (422,), "scr-age-light": (400, 800), "scr-vitals": (400, 800), "scr-today": (400, 800), "scr-age-dark": (400, 800), "scr-sleep-light": (400, 800), "scr-sleep-dark": (400, 800), "art-sleep-light": (400, 800), "art-sleep-dark": (400, 800), "scr-loops": (400, 800), "scr-loop-route": (400, 800), "w-now": (422,), "place-greenlake": (480,), "place-braies": (480,), "place-seawall": (480,),
     **{"card-" + c: (360, 720) for c in ("week", "pb", "clock", "splits", "zones")},
 }
 
@@ -196,69 +196,11 @@ def build(code, H):
                  if all(here("card-%s-360.webp" % c[0]) for c in k["share_cards"]) else "")
     work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
 
-    return localize(f"""<!DOCTYPE html>
-<html lang="{code}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-itunes-app" content="app-id=6762456252">
-<title>{k['title']}</title>
-<meta name="description" content="{k['desc']}">
-<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-<meta property="og:title" content="{k['og_title']}">
-<meta property="og:description" content="{k['desc']}">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Aera">
-<meta property="og:locale" content="{H['OG_LOCALE'][code]}">{og_alt}
-<meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{BASE}assets/og-k.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{k['og_title']}">
-<meta name="twitter:description" content="{k['desc']}">
-<meta name="twitter:image" content="{BASE}assets/og-k.jpg">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="{canonical}">
-{alternates}
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
-<link rel="preload" as="image" href="img/k/hero-pair-900.webp" imagesrcset="img/k/hero-pair-900.webp 900w, img/k/hero-pair-1800.webp 1800w" imagesizes="(max-width: 759px) 100vw, 820px">
-<link rel="stylesheet" href="{H['asset']('keynote.css')}">
-<script type="application/ld+json">{ld}</script>
-{legacy}
-</head>
-<body>
-<a class="skip" href="#main">{k['skip']}</a>
-
-<header class="bar">
-  <div class="wide">
-    <a class="brand" href="{file}"><img src="assets/icon.png" alt="" width="28" height="28">Aera</a>
-    <nav>{nav}<a class="get" href="{store('nav')}">{k['get']}</a></nav>
-  </div>
-</header>
-
-<main id="main">
-<section class="hero">
-  <div class="wide">
-    <h1 class="rise">{k['h1']}</h1>
-    <p class="lede rise" style="--d:.08s">{k['sub']}</p>
-    <div class="cta rise" style="--d:.16s">{btn('hero')}<p class="note">{k['note']}</p></div>
-  </div>
-  <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div></div>
-</section>
-
-<section class="works">
-  <div class="wide reveal">
-    <p class="works-h">{k['wear_h2']}</p>
-    <ul class="marks">{marks}</ul>
-    <a class="more-link" href="{k['wear_link'][0]}">{k['wear_link'][1]}</a>
-  </div>
-</section>
-
-{normal_sec}
-<section class="statement">
+    # The identity brief (Gergő, 13 Oct): hero, then Your normal, Today, What
+    # changed, the long view, and the closer. A language gets it once its words
+    # exist; until then it keeps the earlier chapters (no mixed pages).
+    new = "today_h2" in K[code]
+    old_story = f'''<section class="statement">
   <div class="wide">
     <p class="lead" style="--n:{len(_w)}">{lead}</p>
   </div>
@@ -332,7 +274,110 @@ def build(code, H):
       <div class="stage"><figure class="phone rise-in">{pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_)}</figure></div>
     </div>
   </div>
+</section>'''
+    fly_player = f'''<div class="player reveal" style="--d:.1s">
+        <div class="phone clip settle"><video muted playsinline preload="none" poster="{places_[0][0]}" data-src="{places_[0][1]}" aria-label="{places_[0][3]}" width="480" height="1044"></video></div>
+        {'<div class="tabs" role="tablist">%s</div>' % tabs if len(places_) > 1 else ''}
+      </div>'''
+    new_story = (f'''<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-today flip">
+      <div class="copy reveal">
+        <h2>{k.get('today_h2', '')}</h2>
+        <p>{k.get('today_p', '')}</p>
+      </div>
+      <div class="stage full"><figure class="phone rise-in">{img('scr-today', k.get('today_alt', ''), ph_)}</figure></div>
+    </div>
+  </div>
 </section>
+
+<section class="ch">
+  <div class="wide">
+    <div class="panel grow p-dark p-fly">
+      <div class="copy center reveal">
+        <h2>{k.get('changed_h2', '')}</h2>
+        <p>{k.get('changed_p', '')}</p>
+      </div>
+      {fly_player}
+      <div class="panel-cta reveal">{btn('flyover', light=True)}</div>
+    </div>
+  </div>
+</section>
+
+<section class="longview">
+  <div class="narrow center reveal"><p>{k.get('long_p', '')}</p></div>
+</section>
+
+{share_sec}
+''' if new else "")
+    story = (normal_sec + new_story) if new else (normal_sec + old_story)
+    work_blk = "" if new else f'''    <div class="work narrow center reveal">
+      <h2>{k['b_work'][0]}</h2>
+      <p>{k['b_work'][1]}</p>
+      {work_link}
+    </div>'''
+    return localize(f"""<!DOCTYPE html>
+<html lang="{code}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>{k['title']}</title>
+<meta name="description" content="{k['desc']}">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="{k['og_title']}">
+<meta property="og:description" content="{k['desc']}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aera">
+<meta property="og:locale" content="{H['OG_LOCALE'][code]}">{og_alt}
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{BASE}assets/og-k.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{k['og_title']}">
+<meta name="twitter:description" content="{k['desc']}">
+<meta name="twitter:image" content="{BASE}assets/og-k.jpg">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{canonical}">
+{alternates}
+<link rel="icon" href="assets/icon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="preload" as="image" href="img/k/hero-pair-900.webp" imagesrcset="img/k/hero-pair-900.webp 900w, img/k/hero-pair-1800.webp 1800w" imagesizes="(max-width: 759px) 100vw, 820px">
+<link rel="stylesheet" href="{H['asset']('keynote.css')}">
+<script type="application/ld+json">{ld}</script>
+{legacy}
+</head>
+<body>
+<a class="skip" href="#main">{k['skip']}</a>
+
+<header class="bar">
+  <div class="wide">
+    <a class="brand" href="{file}"><img src="assets/icon.png" alt="" width="28" height="28">Aera</a>
+    <nav>{nav}<a class="get" href="{store('nav')}">{k['get']}</a></nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wide">
+    <h1 class="rise">{k['h1']}</h1>
+    <p class="lede rise" style="--d:.08s">{k['sub']}</p>
+    <div class="cta rise" style="--d:.16s">{btn('hero')}<p class="note">{k['note']}</p></div>
+  </div>
+  <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div></div>
+</section>
+
+<section class="works">
+  <div class="wide reveal">
+    <p class="works-h">{k['wear_h2']}</p>
+    <ul class="marks">{marks}</ul>
+    <a class="more-link" href="{k['wear_link'][0]}">{k['wear_link'][1]}</a>
+  </div>
+</section>
+
+{story}
 
 <section class="priv-sec">
   <div class="wide">
@@ -343,11 +388,7 @@ def build(code, H):
       <a class="more-link" href="{k['priv_link'][0]}">{k['priv_link'][1]}</a>
       <div class="panel-cta">{btn('engine', light=True)}</div>
     </div>
-    <div class="work narrow center reveal">
-      <h2>{k['b_work'][0]}</h2>
-      <p>{k['b_work'][1]}</p>
-      {work_link}
-    </div>
+{work_blk}
   </div>
 </section>
 
@@ -381,6 +422,7 @@ def build(code, H):
   <div class="wide center reveal">
     <img class="icon" src="assets/icon.png" alt="" width="88" height="88" loading="lazy" decoding="async">
     <h2>{k['close_h2']}</h2>
+    {'<p class="closer">%s</p>' % k['closer'] if 'closer' in K[code] else ''}
     {btn('closing')}
     <p class="note">{k['close_note']}</p>
   </div>
