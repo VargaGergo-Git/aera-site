@@ -55,9 +55,9 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .note { margin-top: 14px; font-size: 16px; color: var(--ink-3); }
 
 /* Hero */
-.hero { padding-top: clamp(112px, 16vw, 168px); text-align: center; overflow: hidden;
-        background: radial-gradient(70% 46% at 50% 100%, color-mix(in srgb, var(--green) 16%, transparent), transparent 70%), radial-gradient(50% 36% at 22% 88%, rgba(120, 160, 220, .14), transparent 70%); }
-.hero h1 { margin: 0 auto; }
+.hero { padding-top: clamp(112px, 16vw, 168px); text-align: center; overflow: hidden; }
+.hero h1 { margin: 0 auto; text-wrap: balance; }
+@media (max-width: 759px) { .hero h1 br { display: none; } }
 .lede { max-width: 32ch; margin: 24px auto 0; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.38; color: var(--ink-2); letter-spacing: -.015em; text-wrap: balance; }
 .cta { margin-top: 34px; }
 .hero-shot { width: min(820px, 100%); margin: clamp(28px, 5vw, 56px) auto 0; }
@@ -130,7 +130,7 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .dark-pair { overflow: hidden; border-radius: var(--r); background: #0b0b0c; }
 .dark-pair .panel { border-radius: 0; }
 .p-fly { padding-top: clamp(24px, 4vw, 48px) !important; }
-@media (prefers-color-scheme: dark) { .dark-pair { background: #121215; } }
+@media (prefers-color-scheme: dark) { .dark-pair { background: #121215; } .p-dark, .priv { box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); } }
 .share + .ch { padding-top: var(--sec); }
 .panel { display: grid; gap: clamp(32px, 5vw, 56px); overflow: hidden; border-radius: var(--r); background: var(--tint); padding: clamp(36px, 6vw, 80px) clamp(24px, 6vw, 80px) 0; }
 .panel .copy { max-width: 30ch; }
@@ -147,6 +147,13 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 }
 @media (max-width: 759px) { .stage { padding: 30px 30px 0; margin: -30px -30px 0; } }
 .p-sleep { --tint: #e3e6f1; }
+.p-normal { --tint: #e6eee8; }
+.p-today { --tint: #f1e8da; }
+.longview { padding-top: clamp(56px, 8vw, 96px); }
+.longview p { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.3; letter-spacing: -.02em; color: var(--ink-2); text-wrap: balance; }
+.closer { max-width: 34ch; margin: 0 auto 32px; font-size: clamp(19px, 1.9vw, 23px); line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+.stage.full { aspect-ratio: 300 / 655; }
+.ch-first { padding-top: clamp(56px, 8vw, 104px); }
 .p-route { --tint: #e2ebe2; }
 .p-age { --tint: #f1e8da; }
 .p-dark { --tint: #0b0b0c; color: #f5f5f7; }
@@ -157,9 +164,11 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .p-fly .copy { justify-self: center; padding-bottom: 0 !important; }
 .p-fly .player { margin-top: 0; }
 @media (prefers-color-scheme: dark) {
-  .p-sleep { --tint: #14162a; } .p-route { --tint: #101b15; } .p-age { --tint: #1f1912; } .p-dark { --tint: #121215; }
+  .p-sleep { --tint: #14162a; } .p-normal { --tint: #101b15; } .p-today { --tint: #1f1912; } .p-route { --tint: #101b15; } .p-age { --tint: #1f1912; } .p-dark { --tint: #121215; }
 }
 
+.panel > *, .priv > * { min-width: 0; max-width: 100%; }
+@media (max-width: 359px) { .panel-cta .store { gap: 7px; padding: 0 16px 0 14px; font-size: 14px; } .panel, .priv { padding-left: 20px; padding-right: 20px; } }
 .panel-cta { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }
 .store.light { background: #f5f5f7; color: #0b0b0c; }
 
@@ -212,7 +221,9 @@ h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; font-weight: 650
 .maker p { max-width: 34ch; margin-left: auto; margin-right: auto; }
 .closing { padding-bottom: var(--sec); }
 .closing .icon { width: 120px; height: 120px; margin: 0 auto 32px; border-radius: 27px; box-shadow: 0 0 0 .5px var(--line); }
-.closing h2 { font-size: clamp(40px, 7vw, 88px); letter-spacing: -.045em; margin-bottom: 34px; }
+.closing h2 { font-size: clamp(40px, 7vw, 88px); letter-spacing: -.045em; margin-bottom: 34px; text-wrap: balance; }
+.closing h2:has(+ .closer) { margin-bottom: 20px; }
+@media (max-width: 759px) { .closing h2 br { display: none; } }
 
 /* Footer */
 footer { border-top: .5px solid var(--line); padding: 48px 0 24px; font-size: 14px; color: var(--ink-2); }
