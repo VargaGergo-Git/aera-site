@@ -93,7 +93,7 @@ def build(code, H):
     </div>
   </div>
 </section>
-''' if "normal_h2" in K[code] else "")
+''' if "normal_h2" in K[code] and here("scr-vitals-400.webp") else "")
     BASE, APPLE = H["BASE"], H["APPLE"]
     file = H["file"]
 
@@ -199,7 +199,7 @@ def build(code, H):
     # The identity brief (Gergő, 13 Oct): hero, then Your normal, Today, What
     # changed, the long view, and the closer. A language gets it once its words
     # exist; until then it keeps the earlier chapters (no mixed pages).
-    new = "today_h2" in K[code]
+    new = "today_h2" in K[code] and here("scr-vitals-400.webp") and here("scr-today-400.webp")
     old_story = f'''<section class="statement">
   <div class="wide">
     <p class="lead" style="--n:{len(_w)}">{lead}</p>
