@@ -50,7 +50,7 @@ def main():
             raise SystemExit("bad channel name: %r" % ch)
         for c in COPY.values():
             lang = c["lang"]
-            for kind, body in (("hi", hi_page(lang, HOME[lang])), ("get", get_page(c["store"], lang, ch))):
+            for kind, body in (("hi", hi_page(lang, HOME[lang])), ("get", get_page(c["store"], lang, "%s-%s" % (ch, lang)))):
                 d = os.path.join(ROOT, kind, ch, lang)
                 os.makedirs(d, exist_ok=True)
                 with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
