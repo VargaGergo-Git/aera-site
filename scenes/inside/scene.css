@@ -1,0 +1,50 @@
+/* Inside film: a real-time 3D tracking shot (scenes/inside/film.js) through the
+   rules behind today's session, set in Aera's valley from night to morning.
+   The film sits on the page like a photograph; one caption at a time sits
+   under it. The poster and the caption list stand in under reduced motion or
+   without WebGL. */
+.scene-inside {
+  position: relative; overflow: clip; background: var(--bg); color: var(--ink);
+  padding: clamp(80px, 12vw, 150px) 0 clamp(56px, 8vw, 96px);
+}
+.scene-inside .ix-head { text-align: center; max-width: 980px; }
+.scene-inside .ix-h2 { margin: 0; font: 800 clamp(40px, 6.4vw, 84px)/1.03 var(--rounded); letter-spacing: -.03em; text-wrap: balance; }
+.scene-inside .ix-t2 { color: var(--green); }
+.scene-inside .ix-sub { margin: 20px auto 0; max-width: 34em; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+
+.scene-inside .ix-film {
+  position: relative; margin: clamp(32px, 5vw, 64px) auto 0; width: min(100% - 2 * var(--gutter), 1320px);
+  display: grid; gap: clamp(18px, 2.4vw, 28px);
+}
+.scene-inside .ix-frame {
+  position: relative; aspect-ratio: 4 / 5; border-radius: clamp(20px, 3vw, 36px); overflow: hidden;
+  background: linear-gradient(180deg, #8a6f8c, #d9c98a); box-shadow: var(--shadow);
+}
+@media (min-aspect-ratio: 1/1) and (min-width: 700px) { .scene-inside .ix-frame { aspect-ratio: 16 / 9; } }
+.scene-inside .ix-poster img, .scene-inside .ix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.scene-inside .ix-canvas { z-index: 1; opacity: 0; transition: opacity .8s var(--ease); }
+.scene-inside .live .ix-canvas { opacity: 1; }
+.scene-inside .ix-replay {
+  z-index: 2; position: absolute; top: clamp(12px, 2vw, 22px); right: clamp(12px, 2vw, 22px); min-height: 44px; padding: 0 18px; border-radius: 999px;
+  font: 600 15px var(--rounded); color: #17161b; background: rgba(251, 247, 238, .9); border: 1px solid rgba(23, 22, 27, .1); cursor: pointer;
+  box-shadow: 0 6px 18px -8px rgba(40, 30, 10, .35);
+}
+
+/* Captions: one at a time under the film, all stacked in one grid cell so the
+   page never jumps as they change. */
+.scene-inside .ix-caps { list-style: none; margin: 0; padding: 0 clamp(4px, 1vw, 12px); display: grid; }
+.scene-inside .ix-cap { grid-area: 1 / 1; max-width: 40em; opacity: 0; translate: 0 10px; transition: opacity .6s var(--ease), translate .8s var(--ease); }
+.scene-inside .ix-cap.on { opacity: 1; translate: 0 0; }
+.scene-inside .ix-cap b { display: block; font: 800 clamp(26px, 3.4vw, 44px)/1.05 var(--rounded); letter-spacing: -.025em; color: var(--ink); }
+.scene-inside .ix-cap b::before { content: ""; display: inline-block; width: .3em; height: .3em; margin: 0 .3em .12em 0; border-radius: 50%; background: var(--c); vertical-align: middle; }
+.scene-inside .ix-cap span { display: block; margin-top: 8px; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.45; color: var(--ink-2); text-wrap: pretty; }
+.scene-inside .ix-note { margin-top: 22px; text-align: center; font-size: 14px; line-height: 1.45; color: var(--ink-3); }
+
+/* Still mode: poster, then every caption as a list under it. */
+.scene-inside .still .ix-caps { gap: 22px; }
+.scene-inside .still .ix-cap { grid-area: auto; opacity: 1; translate: none; }
+.scene-inside .still .ix-cap b { font-size: clamp(22px, 2.4vw, 30px); }
+.scene-inside .still .ix-poster { display: block; }
+@media (min-aspect-ratio: 1/1) and (min-width: 700px) {
+  .scene-inside .still .ix-caps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
