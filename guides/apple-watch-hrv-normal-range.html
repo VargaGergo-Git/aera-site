@@ -50,21 +50,45 @@
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .lsw svg{width:16px;height:16px;flex:none}
 .lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
 .lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
-@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
 .lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
 @media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
 .lsw-menu a[aria-current]{font-weight:600}
 .lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
 @media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
-@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
 .bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
 .bar.scrolled .lsw{color:var(--ink-2)}
 .bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
-.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
-.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
 @media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
@@ -75,54 +99,60 @@
   <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/guides/apple-watch-hrv-normal-range.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/guides/apple-watch-hrv-ertek.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/apple-watch-hrv-normalwert.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Guide</p>
-  <h1>Apple Watch HRV: what is normal, and why is mine low?</h1>
+  <p class="g-type">Concept · Heart</p>
+  <h1>What is a normal Apple Watch HRV?</h1>
   <p class="meta lang-switch"><a href="apple-watch-hrv-normal-range.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="apple-watch-hrv-ertek.html" hreflang="hu" lang="hu">Magyar</a> · <a href="apple-watch-hrv-normalwert.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Aera's HRV and resting heart rate tiles, both marked Typical against the person's own range" width="1384" height="582" decoding="async"></picture><figcaption class="g-cap">Aera's own HRV and resting heart rate tiles.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>There is no single normal Apple Watch HRV.</strong> Even the averages of healthy groups run from about 30 to over 90 milliseconds, and individuals spread wider still, depending on age, fitness, genes and when the watch took the reading. A "good" HRV is one that sits inside your own usual range, and a "low" one only means something when it is low for you, for more than a morning or two.</p>
+<p class="g-answer"><strong>There is no single normal HRV.</strong> Healthy people range from about 30 to over 90 ms. A good number is one inside your own usual range, and a low one only matters when it stays low for more than a morning or two.</p>
 <!--art:keys--><ul class="keys"><li><b>32–93 ms</b>range of average SDNN across 44 studies of healthy adults<small>Nunan et al. 2010</small></li><li><b>~29%</b>average gap between Apple Watch HRV and a chest strap<small>O'Grady et al. 2024</small></li><li><b>7 days</b>of your readings before Aera calls anything typical or low<small>Aera</small></li></ul><!--/art:keys-->
-<p>Below: what the number on your watch actually is, why it differs from other devices, what pulls it down, and when a low reading is worth a call to a doctor.</p>
 
-<h2>What Apple Watch actually measures</h2>
+
+<ul class="g-toc" aria-label="On this page"><li><a href="#number">The number</a></li><li><a href="#normal">Normal range</a></li><li><a href="#low">Why low</a></li><li><a href="#trend">What to watch</a></li></ul>
+<h2 id="number">What is the number?</h2>
 <p>Heart rate variability (HRV) is the small change in spacing between heartbeats. Even at 60 beats a minute, the gaps are not all one second; some are a little shorter, some a little longer. When your body is rested, that spacing tends to vary more. Under strain it tightens up. More in <a href="../notes/what-is-hrv.html">what HRV actually is</a>.</p>
 <p>Apple's HealthKit documentation says Apple Watch records HRV automatically and that it uses <strong>SDNN</strong>: the standard deviation of the intervals between normal heartbeats, in milliseconds. The watch does not measure all the time. It takes short readings at irregular moments when you are still, including through the night, and the Health app lists each one. A night usually holds only a handful of them, so each is a small sample of your night.</p>
 
-<h2>SDNN and RMSSD: why devices disagree</h2>
+<h2 id="devices">Why does another device say something else?</h2>
+<details class="g-more"><summary>Read why the numbers differ</summary>
 <p>Many rings, straps and sports watches report a different HRV figure, <strong>RMSSD</strong>, the average size of the change from one beat to the next. Both come from the same heartbeats, but they are different calculations. RMSSD mostly reflects the calming (vagal) side of the nervous system; SDNN picks up that too, plus slower swings in heart rate (Shaffer and Ginsberg, 2017). Devices also differ in when they measure: one short reading, a fixed window early in the night, or an average over the whole sleep.</p>
 <p>So an Apple Watch reading of 38 ms and another device's 55 ms on the same night are not a contradiction. They are two different rulers. Neither is wrong; they just cannot be compared number for number. Compare each device with itself.</p>
 
-<h2>What is a normal range?</h2>
+</details>
+<h2 id="normal">What is a normal range?</h2>
 <p>Nunan and colleagues (2010) pooled 44 studies of healthy adults (21,438 people) measured over a few minutes at rest. Average SDNN across those studies was about 50 ms, with study averages ranging from 32 to 93 ms. RMSSD averaged about 42 ms, from 19 to 75 ms (as tabulated by Shaffer and Ginsberg, 2017). Those are averages of groups; individuals spread much wider.</p>
 <!--art:pull--><blockquote class="pull">Two healthy 40-year-olds can sit 40 ms apart and both be fine.</blockquote><!--/art:pull-->
+<details class="g-more"><summary>The studies behind the range</summary>
 <p>Age matters most. In data from over 8 million Fitbit users, Natarajan and colleagues (2020) found HRV falls steadily with age. Altini and Plews (2021), with 28,175 people measuring each morning, found the same, while sex made little difference to HRV. A 2025 systematic review (Brozat and colleagues) concluded that there are still no generally accepted HRV normal values, only large studies that can be used for rough orientation.</p>
 <p>That is why a chart of "good HRV by age" is less useful than it looks. Two healthy 40-year-olds can sit 40 ms apart and both be fine. Your own range is the reference that matters, which is the point of <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a>.</p>
 
-<h2>Why your HRV is low</h2>
+</details>
+<h2 id="low">Why is mine low?</h2>
 <p>If your HRV has dropped below your usual, the cause is usually recent and ordinary:</p>
-<ul>
+<div class="g-do"><strong>Common causes</strong><ul>
   <li><strong>Hard training.</strong> A heavy session or a big week can lower HRV for a day or more. Altini and Plews (2021) saw changes after training of different intensities.</li>
   <li><strong>Alcohol.</strong> In over 4,000 Finnish employees, Pietilä and colleagues (2018) found that HRV during the first hours of sleep fell with each step up in how much people drank, and resting heart rate rose. Even small amounts showed an effect.</li>
   <li><strong>Illness.</strong> Altini and Plews (2021) found HRV about 10% lower during sickness, often alongside a raised resting heart rate. See <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a></li>
   <li><strong>Stress.</strong> A review of 37 studies (Kim and colleagues, 2018) found HRV changes under psychological stress, most often a drop in calming activity.</li>
   <li><strong>Heat.</strong> In older adults monitored through a summer, warmer bedrooms went with lower overnight HRV (O'Connor and colleagues, 2025). More in <a href="../notes/why-does-heat-raise-my-heart-rate.html">why heat raises your heart rate</a>.</li>
   <li><strong>Other everyday things.</strong> A short or broken night or a late heavy meal can move it, and Altini and Plews (2021) saw a small shift between phases of the menstrual cycle.</li>
-</ul>
+</ul></div>
 <p>And sometimes nothing is wrong. If your HRV has always been low compared with charts online, that may simply be your level.</p>
 
-<h2>Read the trend, not the morning</h2>
+<h2 id="trend">What should I look at instead?</h2>
 <p>Single readings are noisy, and the watch's reading is especially rough in absolute terms: against a chest strap, Apple Watch HRV was off by about 29% on average and read slightly lower (O'Grady and colleagues, 2024). It follows your own ups and downs better than it matches a lab value.</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">One low night is noise. A low week is a signal.</p><svg viewBox="0 0 360 230" role="img" aria-label="One low night is noise. A low week is a signal."><line class="grid" x1="26" x2="354" y1="169.4" y2="169.4"/><text class="t" x="18" y="173.4" text-anchor="end">35</text><line class="grid" x1="26" x2="354" y1="116.3" y2="116.3"/><text class="t" x="18" y="120.3" text-anchor="end">45</text><line class="grid" x1="26" x2="354" y1="63.2" y2="63.2"/><text class="t" x="18" y="67.2" text-anchor="end">55</text><rect class="band" x="26" y="59.4" width="328" height="39.4" rx="6"/><line class="mid" x1="26" x2="354" y1="79.1" y2="79.1"/><text class="t" x="354" y="53.4" text-anchor="end">your usual range</text><circle class="dot" cx="26.0" cy="73.8" r="3.2"/><circle class="dot" cx="38.1" cy="95.1" r="3.2"/><circle class="dot" cx="50.3" cy="57.9" r="3.2"/><circle class="dot" cx="62.4" cy="84.4" r="3.2"/><circle class="dot" cx="74.6" cy="105.7" r="3.2"/><circle class="dot" cx="86.7" cy="63.2" r="3.2"/><circle class="dot" cx="98.9" cy="79.1" r="3.2"/><circle class="dot" cx="111.0" cy="89.8" r="3.2"/><circle class="dot" cx="123.2" cy="68.5" r="3.2"/><circle class="dot lo" cx="135.3" cy="169.4" r="3.2"/><circle class="dot" cx="147.5" cy="79.1" r="3.2"/><circle class="dot" cx="159.6" cy="52.6" r="3.2"/><circle class="dot" cx="171.8" cy="95.1" r="3.2"/><circle class="dot" cx="183.9" cy="73.8" r="3.2"/><circle class="dot" cx="196.1" cy="84.4" r="3.2"/><circle class="dot" cx="208.2" cy="63.2" r="3.2"/><circle class="dot" cx="220.4" cy="89.8" r="3.2"/><circle class="dot" cx="232.5" cy="79.1" r="3.2"/><circle class="dot" cx="244.7" cy="100.4" r="3.2"/><circle class="dot lo" cx="256.8" cy="132.2" r="3.2"/><circle class="dot lo" cx="269.0" cy="142.9" r="3.2"/><circle class="dot lo" cx="281.1" cy="126.9" r="3.2"/><circle class="dot lo" cx="293.3" cy="148.2" r="3.2"/><circle class="dot lo" cx="305.4" cy="137.6" r="3.2"/><circle class="dot lo" cx="317.6" cy="121.6" r="3.2"/><circle class="dot lo" cx="329.7" cy="142.9" r="3.2"/><circle class="dot" cx="341.9" cy="105.7" r="3.2"/><circle class="dot" cx="354.0" cy="89.8" r="3.2"/><path class="avg" style="--len:292" d="M98.9 79.9 L111.0 82.2 L123.2 78.4 L135.3 94.3 L147.5 93.5 L159.6 86.0 L171.8 90.5 L183.9 89.8 L196.1 89.0 L208.2 88.2 L220.4 76.8 L232.5 76.8 L244.7 83.7 L256.8 89.0 L269.0 98.9 L281.1 104.9 L293.3 117.1 L305.4 123.9 L317.6 130.0 L329.7 136.0 L341.9 132.2 L354.0 124.7"/><path class="ann" d="M135.3 177.4 L135.3 200.0"/><text class="t ann-t" x="135.3" y="214.0" text-anchor="middle">one low night</text><path class="ann" d="M256.8 162.2 L329.7 162.2"/><text class="t ann-t" x="293.3" y="181.2" text-anchor="middle">a week below your usual</text><text class="t" x="354" y="226" text-anchor="end">28 nights →</text><path class="avg-key" d="M32 14 L48 14"/><text class="t" x="54" y="18">7-night average</text></svg><figcaption><b>Illustration with example nights.</b> Dots are single nights; the shaded band is this person's own usual range from earlier weeks; the green line is a 7-night rolling average, the way Plews and colleagues (2013) suggest reading HRV.</figcaption></figure><!--/art:fig-->
 <p>Plews and colleagues (2013), working with elite endurance athletes, recommended reading HRV as a rolling average over about a week against the person's own baseline rather than reacting to any one day. One low morning after a party says little. A week-long average sliding well below your usual says more, especially if your resting heart rate is creeping up at the same time. If you train, <a href="should-i-run-after-bad-sleep.html">should I run after a bad night's sleep?</a> covers what to do with that.</p>
 
-<h2>When to see a doctor</h2>
+<h2 id="doctor">When to see a doctor</h2>
 <ul>
   <li>HRV well below your usual for a week or more with no obvious reason such as training, travel, drinking or a cold.</li>
   <li>A low reading together with chest pain, fainting, a racing or irregular heartbeat, or unusual breathlessness. Those symptoms matter on their own, whatever the number says.</li>
   <li>Any worry about your heart. HRV from a watch is a wellness signal, not a diagnosis. This page is general information, not medical advice.</li>
 </ul>
 
-<h2>How Aera does this</h2>
+<h2 id="aera">How Aera shows it</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/hrv-tiles-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/hrv-tiles-light.webp" alt="Aera's HRV and resting heart rate tiles, each marked Typical against the person's own usual range" width="740" height="335" loading="lazy" decoding="async"></picture></div><p><b>HRV in Aera</b>Each tile holds last night against your own usual range from the last two weeks, and says Typical, Below your usual or Notably low. No population scale.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Aera, for iPhone and Apple Watch</strong></p>
@@ -130,9 +160,9 @@
 <p>Aera never puts HRV on a population "good for your age" scale, because no agreed reference exists. Tap the number and the Field Guide explains how it was read, why the watch differs from a chest strap, and why one night is mostly noise. The HRV sheet can also show the raw readings the watch took, hour by hour, gaps included. There is no account, and health numbers are worked out on your iPhone. Your HRV against your usual is free.</p>
 <p>Aera is not a medical device.</p>
 </div>
-<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=guide-apple-watch-hrv-normal-range&amp;mt=8">Get Aera on the App Store</a></p>
 
-<h2>Quick answers</h2>
+<h2 id="quick-answers">Quick answers</h2>
 <h3>What is a normal HRV on Apple Watch?</h3>
 <p>There is no single normal value. Apple Watch reports HRV as SDNN in milliseconds, and even the averages of healthy groups run from about 30 to over 90 ms, with individuals spreading wider, depending on age, fitness, genes and when the reading was taken. Younger people tend to read higher. A good HRV is one that sits inside your own usual range.</p>
 <h3>Why is my HRV low on Apple Watch?</h3>
@@ -145,7 +175,7 @@
 <p>Related field notes: <a href="../notes/what-is-hrv.html">what HRV is</a> · <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a> · <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a> · <a href="../notes/what-can-a-consumer-watch-not-measure.html">what a consumer watch cannot measure</a></p>
 <p>Related guide: <a href="should-i-run-after-bad-sleep.html">Should I run after a bad night's sleep?</a></p>
 
-  <h2>Sources</h2>
+  <h2 id="sources">Sources</h2>
   <ol class="note-sources">
     <li>Apple Inc. heartRateVariabilitySDNN. HealthKit developer documentation. developer.apple.com, accessed October 2026.</li>
     <li>Nunan D, Sandercock GRH, Brodie DA. A quantitative systematic review of normal values for short-term heart rate variability in healthy adults. Pacing and Clinical Electrophysiology. 2010;33(11):1407-1417.</li>
@@ -170,9 +200,19 @@ function shut(o){o.removeAttribute('open')}
 d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
 if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
 [].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
 d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
-var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var s=d.querySelector('.lsw');if(!s)return;
 var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
 var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->

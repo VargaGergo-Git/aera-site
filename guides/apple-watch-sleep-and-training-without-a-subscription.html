@@ -42,21 +42,45 @@
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .lsw svg{width:16px;height:16px;flex:none}
 .lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
 .lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
-@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
 .lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
 @media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
 .lsw-menu a[aria-current]{font-weight:600}
 .lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
 @media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
-@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
 .bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
 .bar.scrolled .lsw{color:var(--ink-2)}
 .bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
-.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
-.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
 @media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
@@ -67,14 +91,17 @@
   <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/guides/apple-watch-sleep-and-training-without-a-subscription.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/hu.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/whoop-alternative-apple-watch.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Guide</p>
-  <h1>Tracking sleep and training on Apple Watch: no strap, no subscription needed</h1>
+  <p class="g-type">Problem · Devices</p>
+  <h1>Do I need a strap or a subscription to track sleep?</h1>
   <p class="meta lang-switch"><a href="apple-watch-sleep-and-training-without-a-subscription.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="whoop-alternative-apple-watch.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-nosub-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-nosub-light.webp" alt="Aera's sleep score for a night: 94 of 100, 7h 25m asleep, against the sleep need" width="1036" height="646" decoding="async"></picture><figcaption class="g-cap">Aera's own sleep score, measured against your need.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>If you already wear an Apple Watch, most of what you need is already on your wrist.</strong> Sleep stages, a nightly sleep score, overnight vitals, a cardio fitness estimate and a training load view are built in, with no extra fee. What a separate app can add is mostly interpretation: putting the pieces side by side, comparing them with your own usual, and explaining what each number can and cannot tell you.</p>
+<p class="g-answer"><strong>If you already wear an Apple Watch, most of what you need is already on your wrist.</strong> Sleep stages, a nightly sleep score, overnight vitals, a cardio fitness estimate and a training load view are built in, with no extra fee. What a separate app can add is mostly interpretation: putting the pieces side by side, comparing them with your own usual, and explaining what each number can and cannot tell you.</p>
 <!--art:keys--><ul class="keys"><li><b>0.53</b>Cohen's kappa for Apple Watch sleep stages against a sleep lab, best of six wrist devices<small>Schyvens et al. 2025</small></li><li><b>24 h</b>battery rating for Series 11, including six hours of sleep tracking<small>Apple</small></li><li><b>10 of 100</b>points Aera's sleep score gives to sleep stages<small>Aera</small></li></ul><!--/art:keys-->
-<h2>What Apple Watch already does on its own</h2>
+
+<ul class="g-toc" aria-label="On this page"><li><a href="#s1">What Apple Watch already does on its own</a></li><li><a href="#s2">How a dedicated strap differs</a></li><li><a href="#s3">How far to trust the wrist</a></li><li><a href="#s4">What an app on top can add</a></li></ul>
+<h2 id="s1">What Apple Watch already does on its own</h2>
 <ul>
   <li><strong>Sleep and sleep stages.</strong> With Track Sleep with Apple Watch turned on, the watch records time asleep and estimates time in REM, Core and Deep sleep, which you can review in the Health app on iPhone.</li>
   <li><strong>Sleep Score.</strong> Since watchOS 26, the Sleep app gives each night a score out of 100: up to 50 points for duration, 30 for bedtime consistency compared with the previous 13 nights, and 20 for interruptions.</li>
@@ -84,9 +111,10 @@
 </ul>
 <p>All of this comes with the watch. You need a recent iPhone and current software, and some features depend on the model.</p>
 
-<h2>How a dedicated strap differs</h2>
+<h2 id="s2">How a dedicated strap differs</h2>
 <p>WHOOP is the best known of the screen-free trackers. It is sold as a yearly membership in three tiers (One, Peak and Life) with the sensor included, and it tracks sleep, strain and recovery. WHOOP rates the battery of its 5.0 and MG sensors at about 14 days, and its battery pack can charge the sensor while you keep wearing it. The device has no screen, by design. Current prices are on whoop.com.</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">What each setup asks of you</p><svg viewBox="0 0 360 354" role="img" aria-label="What each setup asks of you"><rect class="f-bg" x="0" y="0" width="176" height="260" rx="14"/><text class="tb" x="12" y="25">Apple Watch you own</text><rect class="f-bg" x="184" y="0" width="176" height="260" rx="14"/><text class="tb" x="196" y="25">Dedicated strap</text><text class="t" x="12" y="50">Cost</text><text class="tb" x="12" y="68">No extra fee</text><text class="t ann-t" x="12" y="83">for the built-in features</text><text class="t" x="196" y="50">Cost</text><text class="tb" x="196" y="68">Yearly membership</text><text class="t ann-t" x="196" y="83">sensor included</text><line class="grid" x1="12" x2="164" y1="90" y2="90"/><line class="grid" x1="196" x2="348" y1="90" y2="90"/><text class="t" x="12" y="106">Battery, maker's rating</text><text class="tb" x="12" y="124">Up to 24 h</text><text class="t ann-t" x="12" y="139">Series 11, with 6 h of sleep</text><text class="t" x="196" y="106">Battery, maker's rating</text><text class="tb" x="196" y="124">About 14 days</text><text class="t ann-t" x="196" y="139">5.0 and MG sensors</text><line class="grid" x1="12" x2="164" y1="146" y2="146"/><line class="grid" x1="196" x2="348" y1="146" y2="146"/><text class="t" x="12" y="162">Charging</text><text class="tb" x="12" y="180">A daily top-up</text><text class="t ann-t" x="12" y="195">e.g. shower or breakfast</text><text class="t" x="196" y="162">Charging</text><text class="tb" x="196" y="180">Battery pack</text><text class="t ann-t" x="196" y="195">charges while you wear it</text><line class="grid" x1="12" x2="164" y1="202" y2="202"/><line class="grid" x1="196" x2="348" y1="202" y2="202"/><text class="t" x="12" y="218">Screen</text><text class="tb" x="12" y="236">Yes</text><text class="t ann-t" x="12" y="251">with notifications</text><text class="t" x="196" y="218">Screen</text><text class="tb" x="196" y="236">None</text><text class="t ann-t" x="196" y="251">by design</text><rect class="f-bg" x="0" y="272" width="360" height="76" rx="14"/><text class="tb" x="12" y="294">Optional: an app on top of Apple Health</text><text class="t ann-t" x="12" y="311">Sleep, heart signals and workouts on one screen.</text><text class="t" x="12" y="327">Aera: a free tier, plus optional Premium as a</text><text class="t" x="12" y="341">subscription or a one-time Lifetime purchase.</text></svg><figcaption><b>Drawn from the facts on this page.</b> Battery figures are the makers' own ratings: Apple for Series 11, WHOOP for its 5.0 and MG sensors. Current prices are on whoop.com and in the App Store.</figcaption></figure><!--/art:fig-->
+<details class="g-more"><summary>Read more</summary>
 <p>A strap like this suits you better if:</p>
 <ul>
   <li>you want one device that stays on around the clock without a daily charge,</li>
@@ -95,12 +123,13 @@
 </ul>
 <p>Apple rates the Series 11 at up to 24 hours of normal use, including six hours of sleep tracking, so wearing it every night means finding another time of day to charge. For many people a top-up during a shower or breakfast is enough.</p>
 
-<h2>How far to trust the wrist</h2>
+</details>
+<h2 id="s3">How far to trust the wrist</h2>
 <p>Every wrist device estimates sleep from movement and heart rate. It does not record brain waves the way a sleep lab does. De Zambotti and colleagues (2019) reviewed wearable sleep technology and found these devices are generally good at telling sleep from wake and much weaker at separating the stages. Schyvens and colleagues (2025) tested six wrist devices against polysomnography in 62 adults; the Apple Watch Series 8 agreed best on sleep stages, with a Cohen's kappa of 0.53, which is moderate agreement, not a perfect match. So read time asleep and how broken the night was with more confidence than minutes of deep or REM sleep. More in <a href="../notes/watch-sleep-stages-are-an-estimate.html">watch sleep stages are an estimate</a>.</p>
 <!--art:pull--><blockquote class="pull">A wrist tells sleep from wake well, and the stages much less well.</blockquote><!--/art:pull-->
 <p>Heart signals need care too. Plews and colleagues (2013) argued for reading HRV as a rolling weekly average against your own baseline, because single mornings are noisy, and Buchheit (2014) made the same case for heart-rate measures in general: the trend against your own normal means more than any one value. See <a href="../notes/what-is-hrv.html">what HRV actually is</a> and <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a>.</p>
 
-<h2>What an app on top can add</h2>
+<h2 id="s4">What an app on top can add</h2>
 <p>Several Apple Watch apps read Apple Health and build on it, each in its own way. What they tend to add:</p>
 <ul>
   <li>sleep, overnight heart signals and workouts on one screen instead of three apps,</li>
@@ -110,7 +139,7 @@
 </ul>
 <p>Before you pick one, check three things: whether it needs an account, where your health data is processed, and what is free versus paid. Many are free to start.</p>
 
-<h2>How Aera does this</h2>
+<h2 id="s5">How Aera does this</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/no-sub-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/no-sub-light.webp" alt="Aera's sleep screen: a score of 94 of 100, 7 h 25 min asleep, and the last seven nights drawn against a band marked Your need" width="740" height="462" loading="lazy" decoding="async"></picture></div><p><b>Sleep in Aera</b>Last night's score and time asleep, then the week as one line against your own sleep need, so a short night reads against what you usually need.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Aera, for iPhone and Apple Watch</strong></p>
@@ -119,9 +148,9 @@
 <p>Free: the daily scores, your sleep with its stages, workout summaries, personal bests, the route planner, a Flyover of any workout from the last seven days, the last 12 months of every trend, and your raw data as JSON or GPX. Premium is optional and adds the Sleep Reserve, history older than 12 months, reports, your places, more than one saved route, a written session for the day, and Flyover of older workouts. It is a subscription, monthly or yearly with a one-week free trial, or a one-time Lifetime purchase if you would rather not subscribe. The App Store shows the current price in your currency.</p>
 <p>Aera is not a medical device. It needs a few weeks of your nights and workouts before its comparisons with your usual settle.</p>
 </div>
-<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=guide-apple-watch-sleep-and-training&amp;mt=8">Get Aera on the App Store</a></p>
 
-<h2>Quick answers</h2>
+<h2 id="s6">Quick answers</h2>
 <h3>Can Apple Watch track sleep and training without a subscription?</h3>
 <p>Yes. Sleep stages, a nightly Sleep Score, overnight vitals, a cardio fitness estimate and training load are built into Apple Watch and the Health and Fitness apps on iPhone, with no extra fee. You only need the watch, a recent iPhone and current software.</p>
 <h3>Is Apple Watch a good Whoop alternative?</h3>
@@ -134,7 +163,7 @@
 <p>Related field notes: <a href="../notes/what-does-a-sleep-score-mean.html">what a sleep score means</a> · <a href="../notes/what-is-vo2max-on-a-watch.html">what VO₂max on a watch is</a> · <a href="../notes/what-is-training-strain.html">what training strain is</a> · <a href="../notes/what-can-a-consumer-watch-not-measure.html">what a consumer watch cannot measure</a></p>
 <p>Related guide: <a href="should-i-run-after-bad-sleep.html">Should I run after a bad night's sleep?</a></p>
 
-  <h2>Sources</h2>
+  <h2 id="s7">Sources</h2>
   <ol class="note-sources">
     <li>Apple Support. Track your sleep on Apple Watch and use Sleep on iPhone. https://support.apple.com/en-us/108906</li>
     <li>Apple Support. View your Sleep Score and sleep history on Apple Watch. https://support.apple.com/guide/watch/apded441a669</li>
@@ -159,9 +188,19 @@ function shut(o){o.removeAttribute('open')}
 d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
 if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
 [].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
 d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
-var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var s=d.querySelector('.lsw');if(!s)return;
 var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
 var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->

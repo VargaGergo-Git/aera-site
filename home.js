@@ -265,3 +265,85 @@
   if ('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
   request();
 })();
+
+/* Numbers count up the first time they come into view, the way a reading
+   settles on a device: every number in the element runs from zero to its
+   value in its own format (decimal comma, mm:ss), eased out over ~1.2 s.
+   The page always holds the real value (crawlers, no-JS readers and full-page
+   captures see it); a number only reads lower during its own count.
+   Reduced motion, or no IntersectionObserver, leaves the numbers as written. */
+(function () {
+  var armed = [];
+  try {
+    if (!('IntersectionObserver' in window) || !window.requestAnimationFrame) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var COUNT = '.eng-val, .wg-hero b, .wg-v b, .wg-c-time, .wg-c-heart, .wg-c-energy, .pl-num, .pl-wd-num, .ix-card .m';
+    var NUM = /\d+(?:[.,]\d+)?/g;
+    var els = [].slice.call(document.querySelectorAll(COUNT));
+    if (!els.length) return;
+    function nodes(el) {
+      var out = [], w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), n;
+      while ((n = w.nextNode())) if (/\d/.test(n.nodeValue)) out.push({ n: n, t: n.nodeValue });
+      return out;
+    }
+    function frame(t, k) {
+      return t.replace(NUM, function (m, at) {
+        var sep = m.match(/[.,]/), dec = sep ? m.split(sep[0])[1].length : 0;
+        var v = parseFloat(m.replace(',', '.')) * k;
+        var s = dec ? v.toFixed(dec) : String(Math.round(v));
+        if (sep) s = s.replace('.', sep[0]);
+        if (t.charAt(at - 1) === ':') while (s.length < m.length) s = '0' + s;
+        return s;
+      });
+    }
+    function run(el) {
+      var list = el._cnt; if (!list) return;
+      var t0 = null, dur = 1200;
+      function step(now) {
+        if (t0 === null) t0 = now;
+        var p = Math.min(1, (now - t0) / dur), k = 1 - Math.pow(1 - p, 3);
+        list.forEach(function (x) { x.n.nodeValue = p < 1 ? frame(x.t, k) : x.t; });
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        run(e.target);
+      });
+    }, { threshold: 0.6 });
+    // When the number sits in a block that is still hidden waiting for its
+    // reveal, the count starts as that block (or its widget) appears, so the
+    // number is never seen at its full value first. Otherwise it starts when
+    // the number itself is well in view.
+    function delayFor(el) {
+      var w = el.closest('.wg-w');
+      if (w) return (parseFloat(getComputedStyle(w).getPropertyValue('--wd')) || 0) * 1000 + 250;
+      if (el.closest('.pl-hud')) return 850;
+      return 300;
+    }
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < innerHeight && r.bottom > 0) return; // already on screen at load: leave it
+      // The real value stays in the page until the moment the count starts.
+      el._cnt = nodes(el);
+      armed.push(el);
+      el.style.fontVariantNumeric = 'tabular-nums';
+      var rv = el.closest('.reveal');
+      if (rv && document.documentElement.classList.contains('motion') && !rv.classList.contains('in') && window.MutationObserver) {
+        var mo = new MutationObserver(function () {
+          if (!rv.classList.contains('in')) return;
+          mo.disconnect();
+          setTimeout(function () { run(el); }, delayFor(el));
+        });
+        mo.observe(rv, { attributes: true, attributeFilter: ['class'] });
+      } else {
+        io.observe(el);
+      }
+    });
+  } catch (err) {
+    armed.forEach(function (el) { (el._cnt || []).forEach(function (x) { x.n.nodeValue = x.t; }); });
+  }
+})();

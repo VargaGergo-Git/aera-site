@@ -28,8 +28,6 @@ APPLE = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.9
          ' 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83'
          '-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>')
 
-LOCK = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="3"/>'
-        '<path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>')
 
 COPY = {
     "en": {
@@ -145,7 +143,7 @@ COPY = {
         "title": "Aera: alvás- és futáskövető iPhone-ra és Apple Watch-ra",
         "desc": "Az Aera megnézi, hogyan aludtál, mit csinált éjjel a szíved és milyen volt a heted, és mindezt ahhoz méri, ami nálad megszokott. Aztán megmondja, mennyire hajthatsz ma. Magyarul, fiók nélkül.",
         "og_title": "Aera: a mai futásod az éjszakádnál kezdődik",
-        "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Segítség")],
+        "nav": [("tools/milyen-messze.html", "Kalkulátor"), ("notes/index.html", "Jegyzetek"), ("support.html", "Támogatás")],
         "get": "Letöltés",
         "skip": "Ugrás a tartalomra",
         "eyebrow": "Alvás- és futáskövető <span class=\"nw\">iPhone-ra</span> és <span class=\"nw\">Apple Watch-ra</span>",
@@ -155,8 +153,8 @@ COPY = {
         "hero_free": "Ingyenes &#183; Fiók nélkül &#183; Magyarul",
         "hero_proof": "5,0 csillag a magyar App Store-ban",
         "proof": "5,0 csillag a magyar App Store-ban, %d értékelés alapján",
-        "chip_night": "7 ó 25 p alvás, pont amennyi kell", "chip_day": "Regenerálódás: jobb a szokásosnál", "sleep_alt": "Az Aera Alvás képernyője: 7 ó 25 p alvás, pont amennyi kell",
-        "hero_alt": "Az Aera Alvás képernyője a tegnapi éjszakáról: Kiváló, pont annyi alvás, amennyi kell, 94/100, 7 óra 25 perc",
+        "chip_night": "7 ó 20 p alvás, pont amennyi kell", "chip_day": "Regenerálódás: jobb a szokásosnál", "sleep_alt": "Az Aera Alvás képernyője: 7 ó 20 p alvás, pont amennyi kell",
+        "hero_alt": "Az Aera Alvás képernyője a tegnapi éjszakáról: Kiváló, pont annyi alvás, amennyi kell, 89/100, 7 óra 20 perc",
         "watch_alt": "Az Aera futás közben az Apple Watch-on: 148-as pulzus a saját 3-as zónádban, eddig 23 perc 53 másodperc ebben a zónában",
         "story_kicker": "Egy reggel az Aerával",
         "story_h2": "Az éjszakától a kapuig.",
@@ -168,7 +166,7 @@ COPY = {
         "quote": "Az Apple Watch az alvásszakaszokat csak becsüli. Ezért az Aera kisebb súllyal számol velük, és ezt meg is mondja.",
         "quote_src": "Az alváspontszámról szóló cikkből",
         "guide_link": "Angol nyelvű jegyzetek az oldalon",
-        "how": [("Koppints egy számra", "Minden pontszámhoz tartozik egy rövid cikk.", "Az Alvás képernyő: 94/100, ujj a pontszámon"), ("Nézd meg, hogyan jött ki", "Mi számít bele, melyik rész mennyit nyom a latban, és milyen kutatásra épül.", "A Field Guide cikke az alváspontszámról, ujj a 12 forráson"), ("Lapozd át az egész Field Guide-ot", "Minden, amit az Aera figyel, közérthetően, mindenhol a forrásokkal.", "A Field Guide: minden, amit az Aera figyel, közérthetően")],
+        "how": [("Koppints egy számra", "Minden pontszámhoz tartozik egy rövid cikk.", "Az Alvás képernyő: 89/100, ujj a pontszámon"), ("Nézd meg, hogyan jött ki", "Mi számít bele, melyik rész mennyit nyom a latban, és milyen kutatásra épül.", "A Field Guide cikke az alváspontszámról, ujj a 12 forráson"), ("Lapozd át az egész Field Guide-ot", "Minden, amit az Aera figyel, közérthetően, mindenhol a forrásokkal.", "A Field Guide: minden, amit az Aera figyel, közérthetően")],
         "after_kicker": "Futás után",
         "after_h2": "Nézd vissza a futásodat 3D-ben.",
         "after_sub": "A Flyover rövid filmet készít a futásodból, a valódi terep fölött. Megáll a leggyorsabb részidődnél és az emelkedő tetején. Az elmúlt hét nap futásaihoz ingyenes.",
@@ -200,7 +198,7 @@ COPY = {
         "close_h2": "Holnap reggel nézd meg, mit mond rólad az éjszaka.",
         "foot_tag": "Az éjszakád és a mai futásod, a saját mércéd szerint.",
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Továbbiak",
-        "foot_links_app": [("store", "Letöltés"), ("support.html", "Segítség"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
+        "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
         "foot_links_legal": [("privacy.html", "Adatvédelem"), ("terms.html", "Felhasználási feltételek"), ("terms.html#eula", "EULA")],
         "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek (angolul)"), ("guides/index.html#hu", "Útmutatók")],
         "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. Megnézi, hogyan aludtál a saját megszokott éjszakáidhoz képest, és megmondja, mennyire hajthatsz ma. Ingyenes.",
@@ -221,8 +219,8 @@ COPY = {
         "hero_free": "Kostenlos &#183; Kein Konto",
         "hero_proof": "5,0 im ungarischen App Store",
         "proof": "5,0 aus %d Bewertungen im ungarischen App Store",
-        "chip_night": "7 Std. 25 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 25 Min. Schlaf, genau dein Bedarf",
-        "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 94 von 100 und 7 Std. 25 Min. Schlaf",
+        "chip_night": "7 Std. 23 Min. Schlaf, genau dein Bedarf", "chip_day": "Erholung über deinem Üblichen", "sleep_alt": "Der Schlaf-Bildschirm von Aera: 7 Std. 23 Min. Schlaf, genau dein Bedarf",
+        "hero_alt": "Der Schlaf-Bildschirm von Aera für letzte Nacht: ausgezeichnet, genau dein Bedarf, 92 von 100 und 7 Std. 23 Min. Schlaf",
         "watch_alt": "Aera auf der Apple Watch beim Laufen: Puls 148 in deiner eigenen Zone 3, 23 Minuten 53 Sekunden in der Zone",
         "story_kicker": "Ein Morgen mit Aera",
         "story_h2": "Von letzter Nacht bis vor die Haustür.",
@@ -252,7 +250,7 @@ COPY = {
         "guide_link": "Notizen auf dieser Seite (auf Englisch)",
         "how": [
             ("Tipp auf eine Zahl", "Hinter jedem Wert steht ein eigener kurzer Artikel.",
-             "Der Schlaf-Bildschirm: 94 von 100, mit einem Tipp auf den Wert"),
+             "Der Schlaf-Bildschirm: 92 von 100, mit einem Tipp auf den Wert"),
             ("Sieh, wie sie entsteht", "Was hineinfließt, wie viel jeder Teil zählt, und die Forschung dahinter.",
              "Der Field-Guide-Artikel über deinen Schlafwert, mit einem Tipp auf seine 12 Quellen"),
             ("Lies den ganzen Field Guide", "Alles, was Aera liest, in klaren Worten, jeweils mit Quellen.",
@@ -325,7 +323,10 @@ CF_BEACON = "4fc0403d67364f1ab92526387bdd0b81"
 # 2026-10-09 with itunes.apple.com/lookup?id=6762456252&country=hu (5.0, 7).
 # Re-check before each rebuild; set to 0 to drop the line if the average falls.
 HU_RATINGS = 7
-APPSTORE_PT = ""
+# Provider token from Gergő's App Store campaign link (14 Oct 2026). Each store
+# link carries its own ct= so App Analytics > Campaigns shows where installs came
+# from: get/ pages here, every other page via scripts/add_campaign.py.
+APPSTORE_PT = "128795793"
 OG_LOCALE = {"en": "en_US", "hu": "hu_HU", "de": "de_DE"}
 
 LANG_NAMES = [("en", "index.html", "English"), ("hu", "hu.html", "Magyar"), ("de", "de.html", "Deutsch")]
@@ -443,7 +444,7 @@ def reviews_section(code):
 # Cinematic scroll scenes live in scenes/<name>/ (see scenes/CONTRACT.md):
 # section.html with {{key}} placeholders, strings.json per language, scene.css
 # and scene.js. The page links one bundled scenes.css and scenes.js.
-SCENES = ["engine", "flyover", "planner", "widgets"]  # add a scene here once it is reviewed
+SCENES = ["engine", "inside", "flyover", "planner", "widgets"]  # add a scene here once it is reviewed
 
 
 def scene_ready(name):
@@ -722,6 +723,8 @@ def build(code):
 
 {with_get(scene('engine', code), 'engine', scene_note('engine'))}
 
+{scene('inside', code)}
+
 <section id="guide" class="guide-sec">
   <div class="wide">
     <div class="guide-head reveal">
@@ -746,7 +749,6 @@ def build(code):
 
 <section class="privacy">
   <div class="wide center reveal">
-    <div class="lock">{LOCK}</div>
     <h2 class="h2 split">{c['priv_h2']}</h2>
     <p class="sub">{c['priv_sub']}</p>
     <a class="link" href="privacy.html">{c['priv_link']} &#8594;</a>
@@ -768,8 +770,8 @@ def build(code):
   <div class="wide">
     <h2 class="h2 split center reveal">{c['plans_h2']}</h2>
     <div class="plans">
-      <div class="plan reveal"><h3>{c['free_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['free'])}</ul></div>
-      <div class="plan reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{''.join('<li>%s</li>' % x for x in c['prem'])}</ul></div>
+      <div class="plan plan-free reveal"><h3>{c['free_h']}</h3><ul>{plan_items(c['free'])}</ul></div>
+      <div class="plan plan-prem reveal" style="--d:.1s"><h3>{c['prem_h']}</h3><ul>{plan_items(c['prem'])}</ul></div>
     </div>
     <p class="plans-note center reveal">{c['prem_note']}</p>
   </div>
@@ -839,15 +841,22 @@ def localize_media(out, code):
     return re.sub(r"\b(img|media/[\w-]+)/([\w.-]+\.(?:webp|png|jpg|mp4|webm))", swap, out)
 
 
+def plan_items(items):
+    return "".join('<li style="--i:%d">%s</li>' % (i, x) for i, x in enumerate(items))
+
+
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
 
 
-def get_page(store, lang, src):
+def campaign(url, ct):
+    """The store URL with Apple's campaign tags (provider token, campaign, mt=8)."""
+    return url.split("?")[0] + ("?pt=%s&ct=%s&mt=8" % (APPSTORE_PT, ct) if APPSTORE_PT else "")
+
+
+def get_page(store, lang, ct):
     """One forwarding page: on to that language's App Store page, with
     the campaign tags once APPSTORE_PT is set. Out of search."""
-    url = store
-    if APPSTORE_PT:
-        url += "?pt=%s&ct=site-%s-%s&mt=8" % (APPSTORE_PT, lang, src)
+    url = campaign(store, ct)
     beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
               "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""
     return """<!doctype html>
@@ -873,21 +882,40 @@ def get_page(store, lang, src):
 
 def write_get_pages():
     """get/<place>/<lang>/index.html for every store button, plus get/index.html
-    for a bare /get/ (English store)."""
+    for a bare /get/ (English store). Site buttons get ct=site-<place>-<lang>;
+    the outside channels already in get/ (list-, mail-, post-) get <place>-<lang>."""
+    places = list(GET_PLACES) + sorted(
+        d for d in os.listdir(os.path.join(ROOT, "get"))
+        if d not in GET_PLACES and os.path.isdir(os.path.join(ROOT, "get", d)))
     for c in COPY.values():
-        for place in GET_PLACES:
+        for place in places:
+            ct = ("site-%s-%s" if place in GET_PLACES else "%s-%s") % (place, c["lang"])
+            assert len(ct) <= 40 and re.fullmatch(r"[a-z0-9-]+", ct), ct
             d = os.path.join(ROOT, "get", place, c["lang"])
             os.makedirs(d, exist_ok=True)
             with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
-                f.write(get_page(c["store"], c["lang"], place))
+                f.write(get_page(c["store"], c["lang"], ct))
     with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
-        f.write(get_page(COPY["en"]["store"], "en", "site"))
+        f.write(get_page(COPY["en"]["store"], "en", "site-get-en"))
 
 
 if __name__ == "__main__":
     bundle_scenes()
+    import build_keynote
     for code in COPY:
-        out = localize_media(build(code), code)
+        c = COPY[code]
+        if code in build_keynote.K:
+            # The keynote home (scripts/build_keynote.py). A language without its
+            # words in keynote_copy.py keeps the previous page until they arrive.
+            out = build_keynote.build(code, {
+                "BASE": BASE, "APPLE": APPLE, "CF_BEACON": CF_BEACON, "OG_LOCALE": OG_LOCALE,
+                "LANG_NAMES": LANG_NAMES, "asset": asset, "file": c["file"], "store": c["store"],
+                "store_en": COPY["en"]["store"],
+                "foot": {"app": c["foot_app"], "links_app": c["foot_links_app"], "legal": c["foot_legal"],
+                         "links_legal": c["foot_links_legal"], "more": c["foot_more"],
+                         "links_more": c["foot_links_more"], "base": c["foot_base"]}})
+        else:
+            out = localize_media(build(code), code)
         if "—" in out:
             raise SystemExit("em dash in %s" % code)
         with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:

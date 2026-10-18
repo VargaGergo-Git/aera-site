@@ -43,21 +43,45 @@
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .lsw svg{width:16px;height:16px;flex:none}
 .lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
 .lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
-@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
 .lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
 @media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
 .lsw-menu a[aria-current]{font-weight:600}
 .lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
 @media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
-@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
 .bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
 .bar.scrolled .lsw{color:var(--ink-2)}
 .bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
-.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
-.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
 @media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
@@ -68,16 +92,18 @@
   <nav class="topnav"><a href="../notes/index.html">Notizen</a><a href="../privacy.html">Datenschutz</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Sprache: Deutsch"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>DE</span></summary><div class="lsw-menu"><a href="/guides/plan-a-running-route.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/futoutvonal-tervezes.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/laufroute-planen.html" lang="de" hreflang="de" data-lsw="de" aria-current="page">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Ratgeber</p>
-  <h1>Laufroute planen: so geht's</h1>
+  <p class="g-type">Problem · Laufen</p>
+  <h1>Wie plane ich eine Laufroute?</h1>
   <p class="meta lang-switch"><a href="plan-a-running-route.html" hreflang="en" lang="en">English</a> · <a href="futoutvonal-tervezes.html" hreflang="hu" lang="hu">Magyar</a> · <a href="laufroute-planen.html" hreflang="de" lang="de" aria-current="page">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-route-loop-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-route-loop-light.webp" alt="Aeras Routenplaner mit einer Runde um einen See auf der Karte" width="1206" height="1370" decoding="async"></picture><figcaption class="g-cap">Aeras Routenplaner.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>Starte an der Haustür, richte die Distanz nach der Zeit, die du hast, und kläre die schwierigen Fragen vor dem Loslaufen.</strong> Eine gute Route ist eine, über die du beim Laufen nicht nachdenken musst: die richtige Länge, eine Form, die zum Tag passt, Höhenmeter ohne Überraschung, ein Untergrund, auf dem du laufen kannst, Licht, wenn es dunkel ist, und Wasser, wenn es lang wird. Steht das, kommt die Route aufs Handy oder die Uhr, und die Abbiegungen melden sich von selbst.</p>
+<p class="g-answer"><strong>Starte an der Haustür, richte die Distanz nach der Zeit, die du hast, und kläre die schwierigen Fragen vor dem Loslaufen.</strong> Eine gute Route ist eine, über die du beim Laufen nicht nachdenken musst: die richtige Länge, eine Form, die zum Tag passt, Höhenmeter ohne Überraschung, ein Untergrund, auf dem du laufen kannst, Licht, wenn es dunkel ist, und Wasser, wenn es lang wird. Steht das, kommt die Route aufs Handy oder die Uhr, und die Abbiegungen melden sich von selbst.</p>
 <!--art:keys--><ul class="keys"><li><b>>1,5×</b>so viel Energie pro Meter bei 10 % Steigung wie in der Ebene<small>Minetti et al. 2002</small></li><li><b>3 Formen</b>hin und zurück, Runde oder von A nach B: nimm die, die zum Tag passt<small>Dieser Ratgeber</small></li><li><b>7 Tage</b>so weit zurück spielt Flyover deine Läufe kostenlos in 3D ab<small>Aera</small></li></ul><!--/art:keys-->
-<p>Dieser Ratgeber geht jede Entscheidung durch, zeigt, wie du abschätzt, wie lange eine Route dauert, worauf du bei einer Routen-App für iPhone und Apple Watch achten solltest, und wie Aera das macht.</p>
 
-<h2>Fang mit der Distanz an</h2>
+
+<ul class="g-toc" aria-label="Auf dieser Seite"><li><a href="#s1">Fang mit der Distanz an</a></li><li><a href="#s2">Hin und zurück, Runde oder von A nach B</a></li><li><a href="#s3">Höhenmeter, und was sie mit deiner Zeit machen</a></li><li><a href="#s4">Untergrund</a></li></ul>
+<h2 id="s1">Fang mit der Distanz an</h2>
 <p>Die meisten Läufe richten sich eigentlich nach der Zeit: „40 Minuten locker“ vor der Arbeit oder eine Stunde am Sonntag. Geh also von den Minuten aus, die du hast, und von dem Tempo, das du locker läufst, und mach daraus eine Distanz. <a href="../tools/wie-weit.html">Wie weit laufe ich?</a> rechnet das für dich aus und schätzt dein lockeres Tempo auch aus einem aktuellen Wettkampf.</p>
 <ul>
   <li><strong>Starte an der Haustür.</strong> Eine Route, die zu Hause beginnt und endet, spart die Anfahrt, die Parkplatzsuche und eine Ausrede mehr. In den meisten Orten gibt es im Umkreis von ein, zwei Kilometern mehr gute Laufstrecken, als du denkst.</li>
@@ -85,16 +111,17 @@
   <li><strong>Plan eine Abkürzung ein.</strong> Kenne ein, zwei Stellen, an denen du abkürzen kannst, wenn die Beine oder das Wetter nicht mitspielen.</li>
 </ul>
 
-<h2>Hin und zurück, Runde oder von A nach B</h2>
+<h2 id="s2">Hin und zurück, Runde oder von A nach B</h2>
 <ul>
   <li><strong>Hin und zurück.</strong> Lauf die halbe Zeit oder Distanz, dreh um und komm denselben Weg zurück. Am einfachsten zu planen und einzuteilen, den Rückweg kennst du schon, und du kannst jederzeit früher umdrehen. Geht es hin bergauf oder gegen den Wind, bist du auf dem Rückweg schneller. Der Nachteil: Du siehst alles zweimal.</li>
   <li><strong>Runde.</strong> Die ganze Zeit neue Wege und kein Zurücklaufen. Für die meisten die schönste Form, aber auf der anderen Seite lässt sie sich schwer abkürzen, und es braucht mehr Planung, bis sie genau auf die gewünschte Distanz kommt. Eine kleinere Runde, die du wiederholen kannst, etwa um einen Park, bringt die Abwechslung einer Runde mit einem einfachen Ausstieg.</li>
   <li><strong>Von A nach B.</strong> Von einem Punkt zum anderen, dann mit Bahn oder Bus nach Hause, oder jemand holt dich ab. Ideal für den Heimweg von der Arbeit oder einen langen Lauf an einem Fluss oder See entlang. Prüf den Rückweg vorher, vor allem spät am Tag.</li>
 </ul>
 
-<h2>Höhenmeter, und was sie mit deiner Zeit machen</h2>
+<h2 id="s3">Höhenmeter, und was sie mit deiner Zeit machen</h2>
 <p>An den Steigungen scheitern die meisten Routenpläne. Zwei gleich lange Routen können sehr unterschiedlich lange dauern. Minetti und Kollegen (2002) haben Läufer auf einem Laufband gemessen, das von steil bergab bis steil bergauf geneigt war: Bei 10 Prozent Steigung kostete Laufen pro Meter mehr als anderthalbmal so viel Energie wie in der Ebene. Ein leichtes Gefälle war günstiger als die Ebene, ab einer gewissen Steilheit stiegen die Kosten aber wieder, weil die Beine bei jedem Schritt bremsen. Vernillo und Kollegen (2017) haben dasselbe Muster in einer Übersichtsarbeit beschrieben, ebenso die zusätzliche Belastung, die steile Bergabpassagen für die Muskeln bedeuten.</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">Bergauf kostet weit mehr als die Ebene. Bergab gibt nur einen Teil zurück.</p><svg viewBox="0 0 360 236" role="img" aria-label="Bergauf kostet weit mehr als die Ebene. Bergab gibt nur einen Teil zurück."><line class="grid" x1="28" x2="352" y1="146.2" y2="146.2"/><text class="t" x="22" y="150.2" text-anchor="end">1×</text><line class="grid" x1="28" x2="352" y1="77.8" y2="77.8"/><text class="t" x="22" y="81.8" text-anchor="end">2×</text><text class="t" x="28" y="16">Energie pro Meter</text><text class="t" x="28.0" y="210" text-anchor="start">−30%</text><text class="t" x="92.8" y="210" text-anchor="middle">−20%</text><text class="t" x="157.6" y="210" text-anchor="middle">−10%</text><text class="t" x="222.4" y="210" text-anchor="middle">0</text><text class="t" x="287.2" y="210" text-anchor="middle">+10%</text><text class="t" x="352.0" y="210" text-anchor="end">+20%</text><text class="t" x="28" y="230">← bergab</text><text class="t" x="352" y="230" text-anchor="end">bergauf →</text><path class="s-green" style="--len:368" d="M28.0 167.8 L31.2 168.7 L34.5 169.7 L37.7 170.6 L41.0 171.5 L44.2 172.3 L47.4 173.2 L50.7 173.9 L53.9 174.7 L57.2 175.4 L60.4 176.1 L63.6 176.7 L66.9 177.3 L70.1 177.8 L73.4 178.3 L76.6 178.8 L79.8 179.2 L83.1 179.5 L86.3 179.9 L89.6 180.1 L92.8 180.3 L96.0 180.5 L99.3 180.6 L102.5 180.7 L105.8 180.7 L109.0 180.6 L112.2 180.6 L115.5 180.4 L118.7 180.2 L122.0 180.0 L125.2 179.7 L128.4 179.3 L131.7 178.9 L134.9 178.4 L138.2 177.9 L141.4 177.3 L144.6 176.7 L147.9 176.0 L151.1 175.3 L154.4 174.5 L157.6 173.7 L160.8 172.8 L164.1 171.8 L167.3 170.8 L170.6 169.8 L173.8 168.7 L177.0 167.5 L180.3 166.3 L183.5 165.0 L186.8 163.7 L190.0 162.4 L193.2 161.0 L196.5 159.5 L199.7 158.0 L203.0 156.5 L206.2 154.9 L209.4 153.2 L212.7 151.5 L215.9 149.8 L219.2 148.0 L222.4 146.2 L225.6 144.3 L228.9 142.4 L232.1 140.4 L235.4 138.4 L238.6 136.4 L241.8 134.3 L245.1 132.2 L248.3 130.0 L251.6 127.8 L254.8 125.6 L258.0 123.3 L261.3 121.0 L264.5 118.6 L267.8 116.2 L271.0 113.8 L274.2 111.4 L277.5 108.9 L280.7 106.4 L284.0 103.8 L287.2 101.2 L290.4 98.6 L293.7 95.9 L296.9 93.3 L300.2 90.6 L303.4 87.8 L306.6 85.1 L309.9 82.3 L313.1 79.4 L316.4 76.6 L319.6 73.7 L322.8 70.8 L326.1 67.9 L329.3 64.9 L332.6 61.9 L335.8 58.9 L339.0 55.9 L342.3 52.9 L345.5 49.8 L348.8 46.7 L352.0 43.5"/><circle class="dot" cx="222.4" cy="146.2" r="3.6"/><text class="t ann-t" x="230.4" y="161.2">Ebene: 1×</text><circle class="dot" cx="287.2" cy="101.2" r="3.6"/><text class="tb" x="279.2" y="95.2" text-anchor="end">10 % Steigung: über 1,5×</text><circle class="dot" cx="104.1" cy="180.7" r="3.2"/><path class="ann" d="M104.1 173.7 L104.1 138.0"/><text class="t ann-t" x="104.1" y="117.5" text-anchor="middle">bergab günstiger,</text><text class="t ann-t" x="104.1" y="130.5" text-anchor="middle">bis es steil wird</text></svg><figcaption><b>Illustration nach der Kurve, die Minetti und Kollegen (2002) an ihre Laufbandmessungen angepasst haben.</b> Wie viel Energie ein Meter Laufen auf jeder Neigung kostet, im Vergleich zur Ebene. Bei 10 % Steigung mehr als das Anderthalbfache; ein leichtes Gefälle ist günstiger, ab einer gewissen Steilheit steigen die Kosten aber wieder, weil die Beine bei jedem Schritt bremsen.</figcaption></figure><!--/art:fig-->
+<details class="g-more"><summary>Mehr dazu</summary>
 <p>Für die Planung heißt das:</p>
 <ul>
   <li><strong>Schau auf die Höhenmeter, nicht nur auf die Distanz.</strong> Flache 8 km und hügelige 8 km sind zwei verschiedene Läufe. Bei gleicher Anstrengung ist der hügelige langsamer.</li>
@@ -102,7 +129,8 @@
   <li><strong>Beurteile deine Form auf hügeligen Strecken nicht nach dem Tempo.</strong> Das steigungsbereinigte Tempo (Grade Adjusted Pace) rechnet jeden Anstieg und jedes Gefälle in das flache Tempo um, das es wert war, so bekommt ein langsamer Anstieg die Anerkennung, die er verdient. Mehr dazu: <a href="../notes/what-is-grade-adjusted-pace.html">was steigungsbereinigtes Tempo ist</a> (auf Englisch).</li>
 </ul>
 
-<h2>Untergrund</h2>
+</details>
+<h2 id="s4">Untergrund</h2>
 <ul>
   <li><strong>Asphalt und Gehwege.</strong> Schnell, berechenbar, meist beleuchtet und leicht zu vermessen. Du teilst sie mit Autos, Ampeln und Fußgängern.</li>
   <li><strong>Parkwege und Schotter.</strong> Weicher und ruhiger, etwas langsamer. Gut für lockere Läufe.</li>
@@ -111,7 +139,7 @@
 </ul>
 <p>Untergründe zu mischen ist kein Problem. Wichtig ist vor allem, dass der Boden zur Einheit passt: Ein Tempolauf braucht glatten, gleichmäßigen Untergrund, ein lockerer Lauf darf umherstreifen.</p>
 
-<h2>Licht und Sicherheit</h2>
+<h2 id="s5">Licht und Sicherheit</h2>
 <ul>
   <li><strong>Im Dunkeln beleuchtete Straßen und Wege wählen,</strong> die du kennst. Unbeleuchtete Trails hebst du dir für das Tageslicht auf.</li>
   <li><strong>Sichtbar sein.</strong> Wood und Kollegen (2005) haben untersucht, wie gut Autofahrer nachts Fußgänger erkennen. Reflektierende Streifen an den beweglichen Körperteilen wie Knöcheln und Knien machten Menschen viel leichter erkennbar als eine Warnweste allein, und in dunkler Kleidung wurden sie kaum wahrgenommen. Eine Stirnlampe oder ein Clip-Licht hilft dir außerdem, den Boden zu sehen.</li>
@@ -120,7 +148,7 @@
   <li><strong>Kenne deine Ausstiege.</strong> Merk dir auf langen Routen, wo Straßen, Haltestellen oder belebte Orte sind, falls du aufhören musst.</li>
 </ul>
 
-<h2>Wasser</h2>
+<h2 id="s6">Wasser</h2>
 <p>Das Positionspapier des American College of Sports Medicine zur Flüssigkeitszufuhr (Sawka und Kollegen, 2007) empfiehlt statt einer festen Menge einen persönlichen Plan: genug trinken, um durch Schwitzen nicht viel Körpergewicht zu verlieren, aber nicht so viel, dass du beim Sport zunimmst. Der Bedarf hängt stark von Hitze, Körpergröße und Tempo ab.</p>
 <ul>
   <li>Viele kommen bei kurzen, lockeren Läufen und mildem Wetter ohne Flasche aus.</li>
@@ -128,7 +156,7 @@
   <li>Prüf, ob die Trinkbrunnen wirklich laufen. Viele werden im Winter abgestellt.</li>
 </ul>
 
-<h2>Wie lange dauert die Route?</h2>
+<h2 id="s7">Wie lange dauert die Route?</h2>
 <p>So schätzt du eine Route vor dem Loslaufen ab:</p>
 <!--art:pull--><blockquote class="pull">Die ehrliche Zeit für eine Route ist eine Spanne aus deinen eigenen Läufen, keine einzelne Zahl von einer Karte.</blockquote><!--/art:pull-->
 <ul>
@@ -138,7 +166,7 @@
   <li><strong>Vertrau am meisten deinen eigenen Läufen.</strong> Die beste Schätzung ist eine Spanne aus deinen letzten Läufen auf ähnlichem Gelände, nicht eine einzelne Zahl von einer Karte. Mehr dazu: <a href="../notes/how-long-will-this-route-take-me.html">wie lange brauche ich für diese Route?</a> (auf Englisch)</li>
 </ul>
 
-<h2>Routen auf iPhone und Apple Watch: die Möglichkeiten</h2>
+<h2 id="s8">Routen auf iPhone und Apple Watch: die Möglichkeiten</h2>
 <p>Es gibt drei gängige Wege, eine geplante Route aufs Handgelenk oder ins Ohr zu bekommen:</p>
 <ul>
   <li><strong>Die Fußgängernavigation einer Karten-App.</strong> Gut, um zu Fuß von A nach B zu kommen. Sie sucht den schnellsten Weg zu einem Ziel, keinen Lauf mit einer bestimmten Länge, und plant dir keine Runde.</li>
@@ -156,7 +184,7 @@
   <li>Was kostet sie, und was steckt hinter einem Abo?</li>
 </ul>
 
-<h2>So macht Aera das</h2>
+<h2 id="s9">So macht Aera das</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/route-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/route-light.webp" alt="Das Navigationsbanner in Aera: 55 m, von der Route abgekommen, die Linie liegt im Nordwesten, Aufzeichnung läuft, darunter eine Leiste: 55 m rechts der Linie" width="740" height="299" loading="lazy" decoding="async"></picture></div><p><b>Von der Route ab, in Aera</b>Verlässt du die geplante Linie, sagt das Banner, wie weit du weg bist und in welcher Richtung die Linie liegt, und eine Leiste zeigt, auf welcher Seite du bist. Der Lauf wird weiter aufgezeichnet.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Aera, für iPhone und Apple Watch</strong></p>
@@ -164,9 +192,9 @@
 <p>Auch die Abbiegehinweise sind kostenlos. Premium speichert jede Route, die du zeichnest; die erste bleibt kostenlos gespeichert. Nach dem Lauf spielt <a href="../flyover.html">Flyover</a> (auf Englisch) ihn in 3D über dem echten Gelände ab, kostenlos für Läufe der letzten sieben Tage.</p>
 <p>Aera liest Apple Health und läuft auf iPhone und Apple Watch. Es gibt kein Konto. Eine geplante Linie sieht kein verschlossenes Tor, keinen frischen Matsch und keine Baustelle, also behalte im Blick, wo du läufst.</p>
 </div>
-<p><a class="btn btn-primary" href="https://apps.apple.com/de/app/id6762456252">Aera im App Store laden</a></p>
+<p><a class="btn btn-primary" href="https://apps.apple.com/de/app/id6762456252?pt=128795793&amp;ct=guide-laufroute-planen&amp;mt=8">Aera im App Store laden</a></p>
 
-<h2>Kurz beantwortet</h2>
+<h2 id="s10">Kurz beantwortet</h2>
 <h3>Wie plane ich eine Laufroute?</h3>
 <p>Starte an der Haustür. Rechne die Distanz aus der Zeit, die du hast, und deinem lockeren Tempo aus, und wähle dann eine Form: hin und zurück, Runde oder von A nach B. Prüf, wie viele Höhenmeter die Strecke hat, wie der Untergrund ist, ob sie beleuchtet ist, wenn du im Dunkeln läufst, und wo du bei einem langen oder heißen Lauf an Wasser kommst. Dann kommt die Route aufs Handy oder die Uhr, damit du unterwegs nicht über Abbiegungen nachdenken musst.</p>
 <h3>Runde oder hin und zurück: Was ist besser zum Laufen?</h3>
@@ -179,7 +207,7 @@
 <p>Verwandte Notizen (auf Englisch): <a href="../notes/what-is-grade-adjusted-pace.html">was steigungsbereinigtes Tempo ist</a> · <a href="../notes/how-long-will-this-route-take-me.html">wie lange brauche ich für diese Route?</a> · <a href="../notes/what-is-pacing.html">was Pacing ist</a></p>
 <p>Verwandter Ratgeber: <a href="laufen-nach-schlechtem-schlaf.html">Heute laufen nach schlechtem Schlaf?</a></p>
 
-  <h2>Quellen</h2>
+  <h2 id="s11">Quellen</h2>
   <ol class="note-sources">
     <li>Minetti AE, Moia C, Roi GS, Susta D, Ferretti G. Energy cost of walking and running at extreme uphill and downhill slopes. Journal of Applied Physiology. 2002;93(3):1039-1046.</li>
     <li>Vernillo G, Giandolini M, Edwards WB, et al. Biomechanics and Physiology of Uphill and Downhill Running. Sports Medicine. 2017;47(4):615-629.</li>
@@ -197,9 +225,19 @@ function shut(o){o.removeAttribute('open')}
 d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
 if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
 [].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
 d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
-var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var s=d.querySelector('.lsw');if(!s)return;
 var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
 var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->

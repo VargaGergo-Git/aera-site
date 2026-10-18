@@ -44,21 +44,45 @@
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .lsw svg{width:16px;height:16px;flex:none}
 .lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
 .lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
-@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
 .lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
 @media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
 .lsw-menu a[aria-current]{font-weight:600}
 .lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
 @media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
-@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
 .bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
 .bar.scrolled .lsw{color:var(--ink-2)}
 .bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
-.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
-.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
 @media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
@@ -69,18 +93,22 @@
   <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/guides/should-i-run-after-bad-sleep.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/guides/fussak-ha-rosszul-aludtam.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/laufen-nach-schlechtem-schlaf.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Guide</p>
-  <h1>Should I run after a bad night's sleep?</h1>
+  <p class="g-type">Problem · Sleep</p>
+  <h1>Should I run after a bad night?</h1>
   <p class="meta lang-switch"><a href="should-i-run-after-bad-sleep.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="fussak-ha-rosszul-aludtam.html" hreflang="hu" lang="hu">Magyar</a> · <a href="laufen-nach-schlechtem-schlaf.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero" style="--ar:1.098"><picture><source srcset="../assets/guide/hero-run-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-run-light.webp" alt="Aera's run summary: distance, time, pace and heart rate, each against the person's usual" width="1206" height="1098" decoding="async"></picture><figcaption class="g-cap">Aera's own run summary, against your usual.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>Usually yes, just easier.</strong> One short night on its own rarely calls for a rest day, but it is a good reason to drop the hard session. What tips the answer towards rest is when the bad night comes with other signs: a resting heart rate above your usual, lower heart rate variability (HRV) than your usual, a heavy week of training, or anything that feels like illness.</p>
+<p class="g-answer"><strong>Usually yes, just easier.</strong> One short night on its own rarely calls for a rest day, but it is a good reason to drop the hard session. What tips the answer towards rest is when the bad night comes with other signs: a resting heart rate above your usual, lower heart rate variability (HRV) than your usual, a heavy week of training, or anything that feels like illness.</p>
 <!--art:keys--><ul class="keys"><li><b>8 weeks</b>of HRV-guided training: recreational runners did at least as well as on a fixed plan<small>Vesterinen et al. 2016</small></li><li><b>1 week</b>rolling average: read HRV against your own baseline, not one morning<small>Plews et al. 2013</small></li><li><b>10 min</b>of easy running, then check in, on any doubtful morning<small>This guide</small></li></ul><!--/art:keys-->
 <p>The key word is <em>your</em>. A resting heart rate of 58 can be calm for one runner and high for another. Every signal below only means something against your own normal range.</p>
 
-<h2>What a bad night does to a run</h2>
+
+<ul class="g-toc" aria-label="On this page"><li><a href="#s1">What a bad night does to a run</a></li><li><a href="#s2">What your heart did overnight</a></li><li><a href="#s3">A simple guide for this morning</a></li><li><a href="#s4">Honest caveats</a></li></ul>
+<h2 id="s1">What a bad night does to a run</h2>
 <p>Fullagar and colleagues (2015) reviewed the research on sleep loss and exercise. The effects are less dramatic than people fear, and they are uneven. Mood, focus and how hard an effort feels tend to suffer reliably. Long, steady efforts tend to suffer more than one short all-out effort. Craven and colleagues (2022) pooled the studies on acute sleep loss and found that it lowered physical performance on average, by a modest amount, with wide differences between studies and between people.</p>
 <!--art:pull--><blockquote class="pull">After a short night, the same pace simply feels harder.</blockquote><!--/art:pull-->
+<details class="g-more"><summary>Read more</summary>
 <p>For a normal training day, that means:</p>
 <ul>
   <li>The same pace will likely feel harder than usual. An easy run still works at a slightly slower pace.</li>
@@ -88,16 +116,19 @@
   <li>One night matters less than a run of them. Lost sleep adds up, so a third short night in a row deserves more caution than the first. See <a href="../notes/what-is-sleep-debt.html">what sleep debt is</a>.</li>
 </ul>
 
-<h2>What your heart did overnight</h2>
+</details>
+<h2 id="s2">What your heart did overnight</h2>
 <p>Sleep is only half of the morning picture. The other half is what your heart did while you slept.</p>
 <ul>
   <li><strong>Resting heart rate above your usual.</strong> Your overnight low creeps up after hard training, alcohol, a late meal, heat, dehydration, stress, a short night, or an illness starting. More in <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a></li>
   <li><strong>HRV below your usual.</strong> Heart rate variability is the small change in spacing between beats. It tends to drop under the same kinds of strain, often while resting heart rate rises. More in <a href="../notes/what-is-hrv.html">what HRV actually is</a>.</li>
 </ul>
+<details class="g-more"><summary>Read more</summary>
 <p>Plews and colleagues (2013), working with elite endurance athletes, argued for reading HRV as a rolling weekly average against the person's own baseline rather than reacting to any single morning, because day-to-day values are noisy. That is the same reason a single odd reading is not a verdict.</p>
 <p>There is also evidence that listening to these signals pays off. In Kiviniemi and colleagues (2007), men who trained hard only on mornings when their HRV had not dropped, and went easy or rested when it had, improved their fitness more than a group on a fixed plan. Vesterinen and colleagues (2016) found something similar in recreational runners over eight weeks: plans adjusted to each runner's HRV against their own baseline did at least as well as a fixed plan. The lesson is not that a number knows best. It is that easing off on strained days and pushing on fresh ones works at least as well as following a calendar. Why the comparison has to be with yourself: <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a>.</p>
 
-<h2>A simple guide for this morning</h2>
+</details>
+<h2 id="s3">A simple guide for this morning</h2>
 <ul>
   <li><strong>Rest.</strong> You have a fever, body aches, a chest cold, or a stomach bug. Or the short night comes with a resting heart rate clearly above your usual and HRV clearly below it for more than one morning, after a heavy week. Or you simply feel unwell.</li>
   <li><strong>Easy.</strong> One bad night and everything else looks normal or a little off. Or one morning with resting heart rate up and HRV down, but you feel fine. Run at a pace where you can talk in full sentences, and cut it short if you want to. Move the intervals to another day.</li>
@@ -107,7 +138,7 @@
 <p>A useful habit on any doubtful morning: start easy and check in after ten minutes. If your legs feel heavy, your heart rate is unusually high for the pace, or the effort feels wrong, keep it easy or head home. You lose almost nothing by doing that. If you end up skipping, <a href="../notes/should-i-make-up-a-missed-workout.html">should I make up a missed workout?</a> covers what to do next.</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">A bad night is one column, not the whole answer.</p><svg viewBox="0 0 360 226" role="img" aria-label="A bad night is one column, not the whole answer."><text class="t" x="106" y="36" text-anchor="middle">Sleep</text><text class="t" x="160" y="36" text-anchor="middle">Resting HR</text><text class="t" x="214" y="36" text-anchor="middle">HRV</text><text class="t" x="268" y="36" text-anchor="middle">Week</text><text class="t" x="322" y="36" text-anchor="middle">Feel</text><line class="grid" x1="2" x2="358" y1="44" y2="44"/><text class="tb" x="2" y="66.5">Hard</text><circle class="dot f-green" style="transition-delay:0ms" cx="106" cy="62" r="8"/><circle class="dot f-green" style="transition-delay:40ms" cx="160" cy="62" r="8"/><circle class="dot f-green" style="transition-delay:80ms" cx="214" cy="62" r="8"/><circle class="dot f-green" style="transition-delay:120ms" cx="268" cy="62" r="8"/><circle class="dot f-green" style="transition-delay:160ms" cx="322" cy="62" r="8"/><line class="grid" x1="2" x2="358" y1="80" y2="80"/><text class="tb" x="2" y="102.5">Normal</text><circle class="dot f-gold" style="transition-delay:200ms" cx="106" cy="98" r="8"/><circle class="dot f-green" style="transition-delay:240ms" cx="160" cy="98" r="8"/><circle class="dot f-green" style="transition-delay:280ms" cx="214" cy="98" r="8"/><circle class="dot f-green" style="transition-delay:320ms" cx="268" cy="98" r="8"/><circle class="dot f-green" style="transition-delay:360ms" cx="322" cy="98" r="8"/><line class="grid" x1="2" x2="358" y1="116" y2="116"/><text class="tb" x="2" y="138.5">Easy</text><circle class="dot f-pink" style="transition-delay:400ms" cx="106" cy="134" r="8"/><circle class="dot f-gold" style="transition-delay:440ms" cx="160" cy="134" r="8"/><circle class="dot f-gold" style="transition-delay:480ms" cx="214" cy="134" r="8"/><circle class="dot f-green" style="transition-delay:520ms" cx="268" cy="134" r="8"/><circle class="dot f-green" style="transition-delay:560ms" cx="322" cy="134" r="8"/><line class="grid" x1="2" x2="358" y1="152" y2="152"/><text class="tb" x="2" y="174.5">Rest</text><circle class="dot f-pink" style="transition-delay:600ms" cx="106" cy="170" r="8"/><circle class="dot f-pink" style="transition-delay:640ms" cx="160" cy="170" r="8"/><circle class="dot f-pink" style="transition-delay:680ms" cx="214" cy="170" r="8"/><circle class="dot f-pink" style="transition-delay:720ms" cx="268" cy="170" r="8"/><circle class="dot f-pink" style="transition-delay:760ms" cx="322" cy="170" r="8"/><line class="grid" x1="2" x2="358" y1="188" y2="188"/><circle class="dot f-green" cx="8" cy="214" r="5"/><text class="t" x="19" y="218">as usual</text><circle class="dot f-gold" cx="124" cy="214" r="5"/><text class="t" x="135" y="218">a little off</text><circle class="dot f-pink" cx="240" cy="214" r="5"/><text class="t" x="251" y="218">clearly off</text></svg><figcaption><b>Illustration of the guide.</b> Each row is one example morning for that answer, every signal read against your own usual. One bad night, with everything else normal or a little off, points to an easy run. Rest comes when it stacks up with heart signals off for more than one morning and a heavy week. Fever, aches or feeling ill mean rest on their own.</figcaption></figure><!--/art:fig-->
 
-<h2>Honest caveats</h2>
+<h2 id="s4">Honest caveats</h2>
 <ul>
   <li><strong>Single nights are noisy.</strong> A late meal, one drink or a warm bedroom can move one morning's numbers. Trust a pattern over several days more than any one reading.</li>
   <li><strong>Watch sleep stages are estimates.</strong> A watch guesses deep and REM sleep from movement and heart rate; it does not measure your brain. Total time asleep and how often you woke are the more dependable parts. More in <a href="../notes/watch-sleep-stages-are-an-estimate.html">watch sleep stages are an estimate</a>.</li>
@@ -115,7 +146,7 @@
   <li><strong>Illness changes the answer.</strong> A common rule of thumb is that mild symptoms only above the neck, like a runny nose, may allow an easy run, while fever, aches or chest symptoms mean rest. Chest pain, unusual breathlessness, fainting or a racing, irregular heartbeat during exercise mean stop and get medical advice. This page is general information, not medical advice.</li>
 </ul>
 
-<h2>How Aera does this every morning</h2>
+<h2 id="s5">How Aera does this every morning</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/bad-sleep-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/bad-sleep-light.webp" alt="Aera's Sleep chart: the last seven nights drawn against a shaded band marked Your need, from a 6h 40m night to an 8h 27m one" width="640" height="276" loading="lazy" decoding="async"></picture></div><p><b>Your nights against your need</b>Aera's Sleep tab draws your last seven nights against the sleep need it learned from your own nights, so one short night and a run of them look different at a glance.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Aera, for iPhone and Apple Watch</strong></p>
@@ -123,9 +154,9 @@
 <p>Every number opens a Field Guide article that shows how it was worked out and where it stops being reliable. There is no account, and health numbers are worked out on your iPhone. The morning call is free. Also free: a route planner that keeps to real paths, with turn-by-turn directions on iPhone or Apple Watch.</p>
 <p>Aera is not a medical device. Watch sleep stages are estimates, so they count for less, and Aera says so.</p>
 </div>
-<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=guide-should-i-run-after-bad-sleep&amp;mt=8">Get Aera on the App Store</a></p>
 
-<h2>Quick answers</h2>
+<h2 id="s6">Quick answers</h2>
 <h3>Should I run after a bad night's sleep?</h3>
 <p>Usually yes, but make it easy. One short night on its own rarely calls for a rest day, but it is a good reason to swap intervals or a race-pace session for an easy run. Rest instead if you have signs of illness, or if the short night comes with a resting heart rate above your usual, lower HRV than your usual and a heavy week behind you.</p>
 <h3>Is it better to skip the workout or run tired?</h3>
@@ -138,7 +169,7 @@
 <p>Related field notes: <a href="../notes/what-does-a-readiness-score-mean.html">what a readiness score means</a> · <a href="../notes/how-much-sleep-you-actually-need.html">how much sleep you actually need</a> · <a href="../notes/what-is-zone-2-training.html">what zone 2 training is</a></p>
 <p>Related guide: <a href="plan-a-running-route.html">How to plan a running route</a></p>
 
-  <h2>Sources</h2>
+  <h2 id="s7">Sources</h2>
   <ol class="note-sources">
     <li>Fullagar HHK, Skorski S, Duffield R, Hammes D, Coutts AJ, Meyer T. Sleep and athletic performance: the effects of sleep loss on exercise performance, and physiological and cognitive responses to exercise. Sports Medicine. 2015;45(2):161-186.</li>
     <li>Craven J, McCartney D, Desbrow B, et al. Effects of acute sleep loss on physical performance: a systematic and meta-analytical review. Sports Medicine. 2022;52(11):2669-2690.</li>
@@ -157,9 +188,19 @@ function shut(o){o.removeAttribute('open')}
 d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
 if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
 [].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
 d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
-var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var s=d.querySelector('.lsw');if(!s)return;
 var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
 var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->

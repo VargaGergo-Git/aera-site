@@ -54,21 +54,45 @@
 .lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .lsw svg{width:16px;height:16px;flex:none}
 .lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
 .lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
-@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
 .lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
 @media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
 .lsw-menu a[aria-current]{font-weight:600}
 .lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
 @media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
-@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
 .bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
 .bar.scrolled .lsw{color:var(--ink-2)}
 .bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
-.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;padding-block:2px 22px;font-size:14px}
-.lsw-foot a{color:inherit;opacity:.72;text-decoration:none}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .lsw-foot a[aria-current]{opacity:1;font-weight:600}
 @media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
 @media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
@@ -79,35 +103,37 @@
   <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Language: English"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>EN</span></summary><div class="lsw-menu"><a href="/guides/apple-watch-resting-heart-rate.html" lang="en" hreflang="en" data-lsw="en" aria-current="page">English</a><a href="/guides/nyugalmi-pulzus-apple-watch.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/ruhepuls-apple-watch.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div></details><!--/lsw--></nav>
 </div></div>
 <div class="wrap page-head">
-  <p class="eyebrow">Guide</p>
-  <h1>Apple Watch resting heart rate: what is normal, and what is good for a runner?</h1>
+  <p class="g-type">Concept · Heart</p>
+  <h1>What is a normal resting heart rate?</h1>
   <p class="meta lang-switch"><a href="apple-watch-resting-heart-rate.html" hreflang="en" lang="en" aria-current="page">English</a> · <a href="nyugalmi-pulzus-apple-watch.html" hreflang="hu" lang="hu">Magyar</a> · <a href="ruhepuls-apple-watch.html" hreflang="de" lang="de">Deutsch</a></p>
+<figure class="g-hero"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Aera's HRV and resting heart rate tiles, both marked Typical against the person's own range" width="1384" height="582" decoding="async"></picture><figcaption class="g-cap">Aera's own HRV and resting heart rate tiles.</figcaption></figure>
 </div>
 <div class="wrap legal">
-<p><strong>A normal resting heart rate is a wide band, not a single number.</strong> The textbook adult range is 60 to 100 beats per minute (bpm), yet healthy people sit anywhere from the 40s to around 100, and trained runners usually sit low in that spread. What tells you most is your own number against your own usual, over days rather than one morning.</p>
+<p class="g-answer"><strong>A normal resting heart rate is a wide band, not a single number.</strong> The textbook adult range is 60 to 100 beats per minute (bpm), yet healthy people sit anywhere from the 40s to around 100, and trained runners usually sit low in that spread. What tells you most is your own number against your own usual, over days rather than one morning.</p>
 <!--art:keys--><ul class="keys"><li><b>60–100</b>beats per minute: the textbook adult range<small>American Heart Association</small></li><li><b>40–109</b>bpm: personal averages across 92,457 wearable users<small>Quer et al. 2020</small></li><li><b>~3 bpm</b>average day-to-day change in one person's resting rate<small>Quer et al. 2020</small></li></ul><!--/art:keys-->
-<p>Below: how Apple Watch arrives at the figure, what the ranges do and do not say, why runners read lower, what pushes it up, and when it is worth a call to a doctor.</p>
 
-<h2>How Apple Watch works out resting heart rate</h2>
+
+<ul class="g-toc" aria-label="On this page"><li><a href="#s1">How Apple Watch works out resting heart rate</a></li><li><a href="#s2">What is a normal resting heart rate?</a></li><li><a href="#s3">What is a good resting heart rate for a runner?</a></li><li><a href="#s4">Why your own trend matters more</a></li></ul>
+<h2 id="s1">How Apple Watch works out resting heart rate</h2>
 <p>Apple's HealthKit documentation describes resting heart rate as an estimate of your lowest heart rate during periods of rest. It is not simply a reading taken when you sit down, which after a workout can still run high. The system estimates it from the readings it takes while you are still, throughout the day, and may replace earlier values as the estimate improves. That is why today's number can shift by evening.</p>
 <p>Resting heart rate is not the same as your heart rate while asleep, which usually runs lower still. That overnight figure has its own field note: <a href="../notes/what-is-sleeping-heart-rate.html">what sleeping heart rate is</a>.</p>
 
-<h2>What is a normal resting heart rate?</h2>
+<h2 id="s2">What is a normal resting heart rate?</h2>
 <p>The American Heart Association gives 60 to 100 bpm as the normal range for most adults. That range is a convention rather than a measured norm. Spodick and colleagues (1992) argued that 50 to 90 bpm fits healthy adults better, and the gap shows how loose the edges are.</p>
 <p>Wearable data makes the point sharper. Quer and colleagues (2020) looked at nearly 33 million days of resting heart rate from 92,457 adults wearing Fitbit trackers. The average was 65 bpm, but personal averages ran from about 40 to 109 bpm. One healthy person's normal could differ from another's by as much as 70 bpm, and age, sex, body mass and sleep together explained only a small part of that spread. Women read a few beats higher than men at every age.</p>
 <p>So 52 or 78 is not good or bad on its own.</p>
 
-<h2>What is a good resting heart rate for a runner?</h2>
+<h2 id="s3">What is a good resting heart rate for a runner?</h2>
 <p>There is no target number, but the direction is well documented. A review of 191 exercise studies (Reimers and colleagues, 2018) found that training lowers resting heart rate, with endurance training showing a clear drop in both men and women. A fitter heart moves more blood per beat, so it can settle slower at rest. Work in mice (D'Souza and colleagues, 2014) suggests part of the slowing also comes from changes in the heart's own pacemaker, not only from calmer nerves.</p>
 <!--art:pull--><blockquote class="pull">A low resting heart rate is not a score to chase.</blockquote><!--/art:pull-->
 <p>That is why trained runners often read in the 50s or below, and why a reading in the 40s is not unusual in healthy, fit people and is no worry on its own. A low number is not a score to chase. The useful sign is your own rate drifting down a few beats across a training block.</p>
 
-<h2>Why your own trend matters more</h2>
+<h2 id="s4">Why your own trend matters more</h2>
 <p>The same wearable study found that each person's resting heart rate is far steadier than the spread between people. Day to day it moved by about 3 bpm on average, and most people's weekly swings stayed under 10 bpm. There was also a small seasonal drift of about 2 bpm across the year, highest in early January (Quer and colleagues, 2020).</p>
 <!--art:fig--><figure class="fig"><p class="fig-h">Wide between people, narrow within one</p><svg viewBox="0 0 360 260" role="img" aria-label="Wide between people, narrow within one"><line class="grid" x1="34.8" x2="34.8" y1="28" y2="232"/><text class="t" x="34.8" y="248" text-anchor="middle">40</text><line class="grid" x1="117.8" x2="117.8" y1="28" y2="232"/><text class="t" x="117.8" y="248" text-anchor="middle">60</text><line class="grid" x1="200.8" x2="200.8" y1="28" y2="232"/><text class="t" x="200.8" y="248" text-anchor="middle">80</text><line class="grid" x1="283.8" x2="283.8" y1="28" y2="232"/><text class="t" x="283.8" y="248" text-anchor="middle">100</text><text class="t" x="346" y="248" text-anchor="end">bpm</text><text class="tb" x="14" y="20">Textbook adult range</text><text class="t" x="346" y="20" text-anchor="end">60–100</text><rect class="f-mute" x="14" y="32" width="332" height="12" rx="6"/><rect class="bar h f-gold" style="--d:0ms" x="117.8" y="32" width="166.0" height="12" rx="6"/><text class="tb" x="14" y="76">Spodick et al. (1992)</text><text class="t" x="346" y="76" text-anchor="end">50–90</text><rect class="f-mute" x="14" y="88" width="332" height="12" rx="6"/><rect class="bar h f-gold" style="--d:140ms" x="76.2" y="88" width="166.0" height="12" rx="6"/><text class="tb" x="14" y="132">Personal averages, 92,457 adults</text><text class="t" x="346" y="132" text-anchor="end">40–109, mean 65</text><rect class="f-mute" x="14" y="144" width="332" height="12" rx="6"/><rect class="bar h f-sage" style="--d:280ms" x="34.8" y="144" width="286.4" height="12" rx="6"/><circle class="dot" cx="138.5" cy="150" r="4"/><text class="tb" x="14" y="188">One person, one week</text><text class="t" x="346" y="188" text-anchor="end">~3 bpm a day</text><rect class="f-mute" x="14" y="200" width="332" height="12" rx="6"/><rect class="bar h f-green" style="--d:420ms" x="97.0" y="200" width="24.9" height="12" rx="6"/></svg><figcaption><b>Illustration.</b> The top three bars are the ranges the sources give; the dot marks the wearable study's mean of 65 (Quer and colleagues, 2020). The bottom row is an example person's week, moving about 3 bpm from day to day, as that study found on average.</figcaption></figure><!--/art:fig-->
 <p>That is why your own usual is the reference that matters (more in <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a>). A rise of 5 beats over several days means more than any chart line. Still, resting heart rate is a fairly blunt training signal: Buchheit (2014) found it noisier than HRV for tracking fatigue, and in long-trained athletes heavy fatigue can even come with a lower rate. Read it alongside your <a href="apple-watch-hrv-normal-range.html">Apple Watch HRV</a> and how you feel.</p>
 
-<h2>What raises resting heart rate</h2>
+<h2 id="s5">What raises resting heart rate</h2>
 <p>If your number has gone up, the reason is usually recent and ordinary:</p>
 <ul>
   <li><strong>Illness.</strong> In Altini and Plews (2021), resting heart rate was about 6% higher on days people reported being sick. Across about 200,000 Fitbit users, weeks with raised resting heart rates tracked flu-like illness in the population (Radin and colleagues, 2020).</li>
@@ -119,10 +145,10 @@
 </ul>
 <p>Patterns for a single high morning versus a run of them are covered in <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a></p>
 
-<h2>How accurate is the wrist?</h2>
+<h2 id="s6">How accurate is the wrist?</h2>
 <p>At rest, the optical sensor does reasonably well. Against a chest strap, Apple Watch resting heart rate was off by about 3.7 bpm on average, with almost no overall bias (O'Grady and colleagues, 2024). Wrist sensors are least accurate during movement: error was about 30% higher during activity than at rest across several devices (Bent and colleagues, 2020). Treat a change of 1 or 2 beats as noise, and look for shifts that last.</p>
 
-<h2>When to see a doctor</h2>
+<h2 id="s7">When to see a doctor</h2>
 <ul>
   <li>Resting heart rate that stays above 100 bpm.</li>
   <li>Resting heart rate below 50 bpm together with dizziness, fainting, unusual tiredness, chest pain or breathlessness. In a fit runner with no symptoms, a low rate is usually fitness.</li>
@@ -130,7 +156,7 @@
   <li>Any symptoms that worry you, whatever the number. Apple Watch can also alert you if your heart rate stays above or below a level you choose while you have been inactive for 10 minutes. A watch reading is a wellness signal, not a diagnosis, and this page is general information, not medical advice.</li>
 </ul>
 
-<h2>How Aera does this</h2>
+<h2 id="s8">How Aera does this</h2>
 <!--art:shot--><div class="shot"><div class="frame"><picture><source srcset="../assets/article/resting-hr-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/article/resting-hr-light.webp" alt="Aera's Resting HR tile: 53 bpm, marked Typical, with a dot inside the person's usual band" width="364" height="320" loading="lazy" decoding="async"></picture></div><p><b>Resting heart rate in Aera</b>The tile holds the resting heart rate from Apple Health against your own last two weeks and says Typical, Above your usual or Notably high (or the same downward). With fewer than seven days of readings it says Building baseline.</p></div><!--/art:shot-->
 <div class="note">
 <p><strong>Aera, for iPhone and Apple Watch</strong></p>
@@ -138,9 +164,9 @@
 <p>The Sleep screen does the same for your heart rate while asleep, against your last 28 nights, and says whether last night ran above, about or below your usual once it has two weeks of nights. Aera never grades your resting heart rate on a population chart. The tile links to a Field Guide section on what moves resting heart rate and when the reading is cleanest. There is no account, and health numbers are worked out on your iPhone. Your resting heart rate against your usual is free, as is the last 12 months of history.</p>
 <p>Aera is not a medical device.</p>
 </div>
-<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
+<p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=guide-apple-watch-resting-heart-rate&amp;mt=8">Get Aera on the App Store</a></p>
 
-<h2>Quick answers</h2>
+<h2 id="s9">Quick answers</h2>
 <h3>What is a normal resting heart rate on Apple Watch?</h3>
 <p>The usual adult range is quoted as 60 to 100 beats per minute, but healthy people spread much wider. In data from 92,457 wearable users, personal averages ran from about 40 to 109 bpm, with a mean of 65. A normal resting heart rate is one that sits steady inside your own usual range.</p>
 <h3>What is a good resting heart rate for a runner?</h3>
@@ -153,7 +179,7 @@
 <p>Related field notes: <a href="../notes/why-is-my-resting-heart-rate-up.html">why is my resting heart rate up?</a> · <a href="../notes/what-is-sleeping-heart-rate.html">what sleeping heart rate is</a> · <a href="../notes/why-should-a-watch-compare-me-to-myself.html">why a watch should compare you to yourself</a> · <a href="../notes/what-can-a-consumer-watch-not-measure.html">what a consumer watch cannot measure</a></p>
 <p>Related guides: <a href="apple-watch-hrv-normal-range.html">Apple Watch HRV: what is normal?</a> · <a href="should-i-run-after-bad-sleep.html">Should I run after a bad night's sleep?</a></p>
 
-  <h2>Sources</h2>
+  <h2 id="s10">Sources</h2>
   <ol class="note-sources">
     <li>Apple Inc. restingHeartRate. HealthKit developer documentation. developer.apple.com, accessed October 2026.</li>
     <li>Apple Inc. Check your heart rate on Apple Watch. Apple Watch User Guide. support.apple.com, accessed October 2026.</li>
@@ -182,9 +208,19 @@ function shut(o){o.removeAttribute('open')}
 d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
 if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
 [].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
 d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
-var s=d.querySelector('.lsw');if(!s||s.getAttribute('data-alt')!=='0')return;
+var s=d.querySelector('.lsw');if(!s)return;
 var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
 var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->

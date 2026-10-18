@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>Garmin-Daten auf dem iPhone, erklärt: Schlaf, HRV, Workouts</title>
+<meta name="description" content="Warum deine Werte von Garmin, Oura oder WHOOP von Apple Health abweichen, was wirklich ankommt und wie du sie an deinem eigenen Normal liest.">
+<meta property="og:title" content="Garmin-Daten auf dem iPhone, erklärt">
+<meta property="og:description" content="Warum ein Wert von Garmin, Oura oder WHOOP von Apple Health oder der Apple Watch abweicht, was ankommt und wie du Schlaf und HRV an deinem Normal liest.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://aerahealth.app/assets/icon.png">
+<link rel="canonical" href="https://aerahealth.app/guides/garmin-daten-auf-dem-iphone-erklaert.html">
+<link rel="alternate" hreflang="en" href="https://aerahealth.app/guides/garmin-data-on-iphone-explained.html">
+<link rel="alternate" hreflang="hu" href="https://aerahealth.app/guides/garmin-adatok-iphone-on.html">
+<link rel="alternate" hreflang="de" href="https://aerahealth.app/guides/garmin-daten-auf-dem-iphone-erklaert.html">
+<link rel="alternate" hreflang="x-default" href="https://aerahealth.app/guides/garmin-data-on-iphone-explained.html">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../article.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Garmin-Daten auf dem iPhone, erklärt", "name": "Garmin-Daten auf dem iPhone, erklärt: Schlaf, HRV, Workouts", "inLanguage": "de", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "image": "https://aerahealth.app/assets/icon.png", "author": {"@type": "Person", "name": "Gergő Varga"}, "publisher": {"@type": "Organization", "name": "Aera", "url": "https://aerahealth.app/"}, "mainEntityOfPage": "https://aerahealth.app/guides/garmin-daten-auf-dem-iphone-erklaert.html", "description": "Warum Werte von Garmin, Oura und WHOOP von Apple Health und Apple Watch abweichen: andere HRV-Formeln, Schlafphasen und Schlafscores, und wie du am eigenen Normal vergleichst."}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "de", "mainEntity": [{"@type": "Question", "name": "Erscheinen Garmin-Daten in Apple Health?", "acceptedAnswer": {"@type": "Answer", "text": "Teilweise. Laut Garmins eigener Liste kann Garmin Connect Schlaf, Herzfrequenz und Workouts in Apple Health schreiben, aber nicht die GPS-Strecke eines Workouts. Was du siehst, hängt davon ab, was du in der Garmin-App erlaubst."}}, {"@type": "Question", "name": "Warum weicht die HRV von Garmin von Apple Health ab?", "acceptedAnswer": {"@type": "Answer", "text": "Andere Formel, anderer Zeitpunkt. Apple Health speichert HRV als SDNN, viele andere Geräte zeigen RMSSD. Beide ergeben aus denselben Herzschlägen unterschiedliche Zahlen, also vergleiche ein Gerät nur mit sich selbst."}}, {"@type": "Question", "name": "Warum weicht mein Garmin-Schlafscore von der Apple Watch ab?", "acceptedAnswer": {"@type": "Answer", "text": "Jeder Hersteller schätzt die Schlafphasen mit eigenem Algorithmus und baut einen eigenen Score. Die Scores sind nicht austauschbar, und Unterschiede von ein paar Punkten oder Minuten sind normal."}}, {"@type": "Question", "name": "Kann ich zwei Tracker gleichzeitig nutzen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja, aber wähle einen als Hauptquelle für Schlaf und HRV. Aera liest den Schlaf pro Nacht aus einer Quelle und mischt nicht zwei Geräte."}}]}
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
+<!--lsw--><style>
+.lsw{position:relative;display:inline-flex;align-items:center}
+.topnav:has(.lsw){align-items:center}
+.lsw>summary{list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:44px;justify-content:center;padding:0 10px;margin:0 -6px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.04em;line-height:1;color:inherit;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+.lsw>summary::-webkit-details-marker{display:none}
+@media (hover:hover){.lsw>summary:hover{background:color-mix(in srgb,currentColor 12%,transparent)}}
+.lsw>summary:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.lsw svg{width:16px;height:16px;flex:none}
+.lsw-menu{position:absolute;top:calc(100% + 8px);right:-6px;z-index:80;display:grid;min-width:172px;padding:6px;border-radius:14px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.18),0 0 0 .5px rgba(0,0,0,.1)}
+.lsw-menu{transform-origin:calc(100% - 28px) -8px}
+.lsw[open] .lsw-menu{animation:lsw-in .2s cubic-bezier(.2,.8,.2,1)}
+.lsw>summary{transition:background-color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}
+.lsw>summary:active{background:color-mix(in srgb,currentColor 16%,transparent);transform:scale(.94);transition-duration:0s}
+.lsw-menu a:active{background:rgba(127,127,127,.18)}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@keyframes lsw-in{from{opacity:0;transform:translateY(-6px) scale(.94)}}
+.lsw-menu a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;padding:0 12px;border-radius:9px;color:inherit!important;text-decoration:none;font-size:15px;font-weight:500;line-height:1.2;white-space:nowrap}
+@media (hover:hover){.lsw-menu a:hover{background:rgba(0,0,0,.055)}}
+.lsw-menu a[aria-current]{font-weight:600}
+.lsw-menu a[aria-current]::after{content:"";width:12px;height:6px;margin-top:-3px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(-45deg)}
+@media (prefers-color-scheme:dark){.lsw-menu{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}@media (hover:hover){.lsw-menu a:hover{background:rgba(255,255,255,.08)}}}
+@media (prefers-reduced-motion:reduce){.lsw[open] .lsw-menu{animation:none}.lsw>summary:active{transform:none}}
+.bar .lsw{color:var(--hero-ink-2);transition:opacity .35s ease .2s,visibility 0s}
+.bar.scrolled .lsw{color:var(--ink-2)}
+.bar.ch-on .lsw{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility 0s .2s}
+.wrap.lsw-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:0 18px;padding-block:0 12px;font-size:14px}
+.lsw-foot a{display:inline-flex;align-items:center;min-height:44px;color:inherit;opacity:.72;text-decoration:none}
+.topnav>a,.topbar .mark,header .mark{display:inline-flex;align-items:center;min-height:44px}
+footer:not(:has(.foot)) a:not(.lsw-foot a){position:relative}
+footer:not(:has(.foot)) .lsw-foot{margin-top:12px}
+footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
+.lsw-foot a[aria-current]{opacity:1;font-weight:600}
+@media (hover:hover){.lsw-foot a:hover{opacity:1}}
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:#fff;color:#1d1d1f;box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px rgba(0,0,0,.1);font:500 15px/1.2 -apple-system,BlinkMacSystemFont,"Inter",system-ui,sans-serif;white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint a,.lsw-hint button{transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+.lsw-hint a:active,.lsw-hint button:active{transform:scale(.94);transition-duration:0s}
+.lsw-hint button:active{opacity:1}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{white-space:nowrap}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#1d1d1f;color:#fff;font-weight:600;text-decoration:none}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
+@media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
+@media (max-width:359px){.topnav:has(.lsw){gap:9px}}
+</style><!--/lsw-->
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="../notes/index.html">Notizen</a><a href="../privacy.html">Datenschutz</a><a href="../support.html">Support</a><!--lsw--><details class="lsw" data-alt="1"><summary aria-label="Sprache: Deutsch"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="8" cy="8" r="6.5"/><path d="M1.5 8h13M8 1.5c1.9 2 2.8 4.1 2.8 6.5S9.9 12.5 8 14.5M8 1.5C6.1 3.5 5.2 5.6 5.2 8s.9 4.5 2.8 6.5"/></g></svg><span>DE</span></summary><div class="lsw-menu"><a href="/guides/garmin-data-on-iphone-explained.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/garmin-adatok-iphone-on.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/garmin-daten-auf-dem-iphone-erklaert.html" lang="de" hreflang="de" data-lsw="de" aria-current="page">Deutsch</a></div></details><!--/lsw--></nav>
+</div></div>
+<div class="wrap page-head">
+  <p class="g-type">Problem · Geräte</p>
+  <h1>Warum weichen meine Garmin-Werte in Apple Health ab?</h1>
+  <p class="meta lang-switch"><a href="garmin-data-on-iphone-explained.html" hreflang="en" lang="en">English</a> · <a href="garmin-adatok-iphone-on.html" hreflang="hu" lang="hu">Magyar</a> · <a href="garmin-daten-auf-dem-iphone-erklaert.html" hreflang="de" lang="de" aria-current="page">Deutsch</a></p>
+<figure class="g-hero" style="--ar:2.378"><picture><source srcset="../assets/guide/hero-hrv-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/guide/hero-hrv-light.webp" alt="Aeras Kacheln für HRV und Ruhepuls, beide im eigenen Bereich als Typisch markiert" width="1384" height="582" decoding="async"></picture><figcaption class="g-cap">Aeras eigene Kacheln für HRV und Ruhepuls.</figcaption></figure>
+</div>
+<div class="wrap legal">
+<p class="g-answer"><strong>Ein Wert von Garmin, Oura oder WHOOP und derselbe Wert in Apple Health können sich unterscheiden, und keiner ist falsch.</strong> Jedes Gerät misst zu einer anderen Zeit der Nacht, mit eigener Formel, und benennt das Ergebnis auf seine Art. Entscheidend ist, wie heute im Vergleich zu deinem eigenen Üblichen auf demselben Gerät aussieht.</p>
+
+
+<ul class="g-toc" aria-label="Auf dieser Seite"><li><a href="#s1">Was in Apple Health ankommt</a></li><li><a href="#s2">Warum die HRV je nach Gerät anders ist</a></li><li><a href="#s3">Warum der Schlaf abweicht</a></li><li><a href="#s4">So liest du es</a></li></ul>
+<h2 id="s1">Was in Apple Health ankommt</h2>
+<p>Die App deines Trackers entscheidet, was sie in Apple Health schreibt, und jeder Hersteller schreibt nur einen Teil. Nach den Angaben der Hersteller und unabhängigen Vergleichen, Stand Oktober 2026: Schlaf, Herzfrequenz und Workouts sind die gängigen. Oura und WHOOP schreiben keine HRV. Garmin schreibt nicht die GPS-Strecke eines Workouts. Ruhepuls, Atemfrequenz und Blutsauerstoff schreiben manche Hersteller, andere nicht. Was eine App schreibt, zeigt die Health-App: Profilbild, dann Apps, dann der Name der App.</p>
+<p>Diese Liste kann der Hersteller ändern, und wir haben sie mit einem echten Garmin-, Oura- oder WHOOP-Konto noch nicht geprüft.</p>
+
+<h2 id="s2">Warum die HRV je nach Gerät anders ist</h2>
+<p>HRV ist die kleine Schwankung im Abstand zwischen Herzschlägen, und es gibt mehr als einen Weg, daraus eine Zahl zu machen. Apple Watch und Apple Health nutzen <strong>SDNN</strong>. Viele Ringe und Brustgurte zeigen <strong>RMSSD</strong>. Beide Berechnungen liefern aus denselben Herzschlägen unterschiedliche Werte, und die Geräte messen außerdem zu unterschiedlichen Zeiten der Nacht und unterschiedlich lang. Eine 45 auf einem und eine 60 auf einem anderen Gerät sagen nichts darüber, wer fitter ist. Vergleiche ein Gerät nur mit sich selbst. Mehr dazu: <a href="apple-watch-hrv-normalwert.html">Apple-Watch-HRV: Was ist normal?</a></p>
+
+<h2 id="s3">Warum der Schlaf abweicht</h2>
+<ul>
+<li><strong>Schlafphasen sind Schätzungen.</strong> Geräte am Handgelenk oder Finger schließen aus Bewegung und Herzfrequenz auf Leicht-, Tief- und REM-Schlaf. Verschiedene Algorithmen weichen teils um mehrere Minuten bis Dutzende Minuten pro Nacht ab.</li>
+<li><strong>Scores sind die eigenen des Herstellers.</strong> Ein „Schlafscore“ oder „Schlafleistung“ des einen Herstellers ist nicht dasselbe Rezept wie das eines anderen. Apples eigener Schlafscore ist wieder eine eigene Skala. Siehe <a href="guter-schlafscore.html">was ein guter Schlafscore ist</a>.</li>
+<li><strong>Aera nutzt pro Nacht nur eine Quelle.</strong> Protokollieren Uhr und Ring dieselbe Nacht, wählt Aera die vollständigste mit Schlafphasen und mischt sie nicht, sodass eine Nacht nie ein Mix aus zwei Geräten ist.</li>
+</ul>
+
+<h2 id="s4">So liest du es</h2>
+<ol>
+<li>Wähle ein Gerät als Hauptquelle für Schlaf und HRV und bleib ein paar Wochen dabei.</li>
+<li>Schau auf den Verlauf gegenüber deinem eigenen Üblichen, nicht auf eine einzelne Nacht oder den Wert eines fremden Geräts.</li>
+<li>Wechselst du das Gerät, verschiebt sich dein Übliches. Gib dem neuen ein paar Wochen, bevor du Schlüsse ziehst.</li>
+</ol>
+
+<h2 id="s5">So macht Aera das</h2>
+<div class="note">
+<p><strong>Aera, für iPhone</strong></p>
+<p>Aera liest, was dein Tracker in Apple Health ablegt, und misst es an deinem eigenen Normal, nicht an einem Bevölkerungsdurchschnitt. Tippe auf eine Zahl, und der Field Guide zeigt, wie sie entstanden ist und wo sie unzuverlässig wird. Alles bleibt auf deinem iPhone, ohne Konto. Aera ist kein Medizinprodukt.</p>
+</div>
+<p><a class="btn btn-primary" href="https://apps.apple.com/de/app/id6762456252?pt=128795793&amp;ct=guide-garmin-daten-auf-dem-iphone&amp;mt=8">Aera im App Store laden</a></p>
+
+<h2 id="s6">Kurz beantwortet</h2>
+<h3>Erscheinen Garmin-Daten in Apple Health?</h3>
+<p>Teilweise. Laut Garmins eigener Liste kann Garmin Connect Schlaf, Herzfrequenz und Workouts in Apple Health schreiben, aber nicht die GPS-Strecke eines Workouts. Was du siehst, hängt davon ab, was du in der Garmin-App erlaubst.</p>
+<h3>Warum weicht die HRV von Garmin von Apple Health ab?</h3>
+<p>Andere Formel, anderer Zeitpunkt. Apple Health speichert HRV als SDNN, viele andere Geräte zeigen RMSSD. Beide ergeben aus denselben Herzschlägen unterschiedliche Zahlen, also vergleiche ein Gerät nur mit sich selbst.</p>
+<h3>Warum weicht mein Garmin-Schlafscore von der Apple Watch ab?</h3>
+<p>Jeder Hersteller schätzt die Schlafphasen mit eigenem Algorithmus und baut einen eigenen Score. Die Scores sind nicht austauschbar, und Unterschiede von ein paar Punkten oder Minuten sind normal.</p>
+<h3>Kann ich zwei Tracker gleichzeitig nutzen?</h3>
+<p>Ja, aber wähle einen als Hauptquelle für Schlaf und HRV. Aera liest den Schlaf pro Nacht aus einer Quelle und mischt nicht zwei Geräte.</p>
+<p>Passend dazu: <a href="aera-mit-garmin-oura-whoop.html">Aera mit Garmin, Oura, WHOOP und anderen Trackern</a> · <a href="index.html#de">Alle Ratgeber</a></p>
+</div>
+<footer class="footer-base"><div class="wrap">
+  <p class="meta">Aera wird von Gergő Varga entwickelt. <a href="../de.html">Über die App</a> · <a href="../support.html">Kontakt</a></p>
+</div><!--lsw--><div class="wrap lsw-foot"><a href="/guides/garmin-data-on-iphone-explained.html" lang="en" hreflang="en" data-lsw="en">English</a><a href="/guides/garmin-adatok-iphone-on.html" lang="hu" hreflang="hu" data-lsw="hu">Magyar</a><a href="/guides/garmin-daten-auf-dem-iphone-erklaert.html" lang="de" hreflang="de" data-lsw="de" aria-current="page">Deutsch</a><a href="/privacy.html">Datenschutz</a></div><!--/lsw-->
+</footer>
+<script src="../article.js" defer></script>
+<!--lsw--><script>(function(){var d=document,K='aera-lang';
+function shut(o){o.removeAttribute('open')}
+d.addEventListener('click',function(e){var t=e.target,a=t.closest&&t.closest('[data-lsw]');
+if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}
+[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){if(!o.contains(t))shut(o)})});
+d.addEventListener('touchstart',function(){},{passive:true});
+d.addEventListener('keydown',function(e){if(e.key!=='Escape')return;[].forEach.call(d.querySelectorAll('.lsw[open]'),function(o){shut(o);o.querySelector('summary').focus()})});
+var s=d.querySelector('.lsw');if(!s)return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+// An English page, a browser set to Hungarian or German, no choice made yet: one quiet offer, never a redirect.
+var H={hu:['Magyarul is olvasható.','Magyar','Bezárás'],de:['Auch auf Deutsch.','Deutsch','Schließen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),
+to=s.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&d.documentElement.lang==='en'&&to)setTimeout(function(){var b=d.createElement('div');b.className='lsw-hint';b.setAttribute('role','region');b.setAttribute('aria-label',H[nv][1]);b.setAttribute('lang',nv);
+b.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">×</button>';
+b.firstChild.textContent=H[nv][0];b.children[1].textContent=H[nv][1];b.children[1].href=to.getAttribute('href');b.lastChild.setAttribute('aria-label',H[nv][2]);
+b.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}b.classList.add('out');setTimeout(function(){b.remove()},320)};d.body.appendChild(b)},1200)}catch(x){}
+if(s.getAttribute('data-alt')!=='0')return;
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||d.documentElement.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.lsw-foot'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/lsw-->
+</body>
+</html>
