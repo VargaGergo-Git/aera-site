@@ -44,7 +44,7 @@ FIG_T = {
     "de": dict(title="Eine 65 nach einer Hochzeit sagt wenig. Fünf Nächte um die 60 sagen viel.",
                band="dein Übliches", apple="Ab 81 beginnt Apples Stufe „Hoch“", one="eine Hochzeit",
                five="fünf Nächte um die 60", nights="Nächte",
-               cap="<b>Illustration mit Beispielnächten.</b> Punkte sind die Werte einzelner Nächte. Das Band ist das eigene Übliche dieser Person, bei hohen 80ern; an der gestrichelten Linie beginnt Apples Stufe „Hoch“. Die eine schwache Nacht nach einer Hochzeit zählt kaum. Fünf Nächte in Folge unter dem Üblichen sind das, worum du dich kümmern solltest."),
+               cap="<b>Illustration mit Beispielnächten.</b> Punkte sind die Werte einzelner Nächte. Das Band ist der eigene Normalwert dieser Person, bei hohen 80ern; an der gestrichelten Linie beginnt Apples Stufe „Hoch“. Die eine schwache Nacht nach einer Hochzeit zählt kaum. Fünf Nächte in Folge unter dem Normalwert sind das, worum du dich kümmern solltest."),
 }
 
 # Example scores: usual in the high 80s, one low night (index 6), then five nights in the 60s.

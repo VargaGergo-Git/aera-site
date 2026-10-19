@@ -47,7 +47,7 @@ FIG_T = {
                cols=[["Schlaf"], ["Ruhepuls"], ["HRV"], ["Woche"], ["Gefühl"]],
                rows=["Hart", "Wie geplant", "Locker", "Pause"],
                legend=["wie üblich", "etwas daneben", "klar daneben"],
-               cap="<b>Illustration zur Entscheidungshilfe.</b> Jede Zeile ist ein Beispielmorgen für diese Antwort, jedes Signal an deinem eigenen Üblichen gemessen. Eine schlechte Nacht, sonst alles normal oder nur etwas daneben, spricht für einen lockeren Lauf. Pause heißt es, wenn dazu Herzwerte über mehr als einen Morgen daneben liegen und eine harte Woche kommt. Fieber, Gliederschmerzen oder Krankheitsgefühl bedeuten für sich allein schon Pause."),
+               cap="<b>Illustration zur Entscheidungshilfe.</b> Jede Zeile ist ein Beispielmorgen für diese Antwort, jedes Signal an deinem eigenen Normalwert gemessen. Eine schlechte Nacht, sonst alles normal oder nur etwas daneben, spricht für einen lockeren Lauf. Pause heißt es, wenn dazu Herzwerte über mehr als einen Morgen daneben liegen und eine harte Woche kommt. Fieber, Gliederschmerzen oder Krankheitsgefühl bedeuten für sich allein schon Pause."),
 }
 
 # 0 = as usual, 1 = a little off, 2 = clearly off. Columns: sleep, resting HR, HRV, week, feel.
