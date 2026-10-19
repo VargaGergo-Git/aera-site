@@ -1,6 +1,7 @@
 // Feature requests API for aerahealth.app/requests.html. Cloudflare Worker + one KV namespace (REQ).
 // No accounts: one vote per browser id per post, plus a per-IP daily post limit.
-// Statuses are set by Gergő with the ADMIN_KEY secret: POST /status {id,status}.
+// Statuses are set by Gergő with the ADMIN_KEY secret: POST /status {id,status|hidden|title}.
+// Anyone can add a detail under a request: POST /comment {id,text}.
 const STATUSES = ["open", "review", "planned", "progress", "done"];
 const ORIGIN = "https://aerahealth.app";
 const cors = { "Access-Control-Allow-Origin": ORIGIN, "Access-Control-Allow-Methods": "GET,POST,OPTIONS", "Access-Control-Allow-Headers": "content-type,x-admin-key" };
@@ -15,7 +16,7 @@ export default {
     const url = new URL(req.url), ip = req.headers.get("cf-connecting-ip") || "x";
     if (req.method === "GET" && url.pathname === "/posts") {
       const p = await all(env);
-      return json(p.filter(x => !x.hidden).map(({ id, title, details, votes, status, created }) => ({ id, title, details, votes, status, created })));
+      return json(p.filter(x => !x.hidden).map(({ id, title, details, votes, status, created, comments }) => ({ id, title, details, votes, status, created, comments: (comments || []).filter(c => !c.hidden).map(c => ({ text: c.text, at: c.at })) })));
     }
     if (req.method !== "POST") return json({ error: "not found" }, 404);
     const body = await req.json().catch(() => ({}));
@@ -43,6 +44,20 @@ export default {
       else { await env.REQ.put(key, "1"); post.votes++; }
       await save(env, p);
       return json({ id, votes: post.votes, voted: !had });
+    }
+    if (url.pathname === "/comment") {
+      const day = new Date().toISOString().slice(0, 10), k = `rc:${ip}:${day}`;
+      const n = +((await env.REQ.get(k)) || 0);
+      if (n >= 20) return json({ error: "limit" }, 429);
+      const id = clean(body.id, 16), text = clean(body.text, 600);
+      if (text.length < 2) return json({ error: "text" }, 400);
+      const p = await all(env), post = p.find(x => x.id === id);
+      if (!post) return json({ error: "missing" }, 404);
+      const c = { text, at: Date.now() };
+      (post.comments = post.comments || []).push(c);
+      await save(env, p);
+      await env.REQ.put(k, String(n + 1), { expirationTtl: 90000 });
+      return json(c);
     }
     if (url.pathname === "/status") {
       if (req.headers.get("x-admin-key") !== env.ADMIN_KEY) return json({ error: "no" }, 403);

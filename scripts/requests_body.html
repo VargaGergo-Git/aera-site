@@ -25,6 +25,17 @@
 .fr-thanks{margin:-6px 0 18px;color:var(--green);font-size:15.5px}
 .fr-row.fresh{animation:fr-in .6s cubic-bezier(.22,1,.36,1)}
 @keyframes fr-in{from{opacity:0;transform:translateY(-8px)}}
+.fr-row .txt{cursor:pointer}
+.fr-meta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.fr-ccount{font-size:13px;font-weight:600;color:var(--faint)}
+.fr-thread{display:none;margin-top:12px}
+.fr-row.open .fr-thread{display:block}
+.fr-row.open p{-webkit-line-clamp:unset}
+.fr-c{margin:0 0 8px;padding:10px 14px;border-radius:12px;background:var(--surface-solid);border:1px solid var(--border);font-size:15px;line-height:1.45;color:var(--text)}
+.fr-add{display:flex;align-items:center;gap:8px;margin-top:4px;padding:4px 4px 4px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface-solid)}
+.fr-add input{flex:1;min-width:0;border:0;background:transparent;color:var(--text);font:inherit;font-size:15px;padding:8px 0;outline:none}
+.fr-add .fr-send{width:34px;height:34px}
+.fr-add.ready .fr-send{background:var(--accent);color:#17120a}
 .fr-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--border)}
 .fr-btn{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1)}
 .fr-btn.primary{background:var(--accent);color:#17120a}
@@ -88,7 +99,7 @@
 (function(){
 var API=window.FR_API||"https://requests.aerahealth.app";
 var LABEL={review:"Under review",planned:"Planned",progress:"In progress",done:"Done"};
-var posts=[],mine={};
+var posts=[],mine={},openId=null;
 try{mine=JSON.parse(localStorage.getItem("frVotes")||"{}")}catch(e){}
 var voter;try{voter=localStorage.getItem("frVoter");if(!voter){voter=crypto.randomUUID();localStorage.setItem("frVoter",voter)}}catch(e){voter=String(Math.random()).slice(2)+Date.now()}
 var $=function(id){return document.getElementById(id)};
@@ -99,7 +110,7 @@ function draw(){
   var list=posts.filter(function(p){return !q||(p.title+" "+(p.details||"")).toLowerCase().indexOf(q)>-1});
   list.sort(s==="top"?function(a,b){return b.votes-a.votes}:s==="new"?function(a,b){return b.created-a.created}:function(a,b){return score(b)-score(a)});
   $("frCount").textContent=posts.length||"";
-  $("frRows").innerHTML=list.length?list.map(function(p){var on=!!mine[p.id];return '<div class="fr-row'+(p.id===fresh?' fresh':'')+'"><div class="txt"><h3>'+esc(p.title)+'</h3>'+(p.details?'<p>'+esc(p.details)+'</p>':'')+(LABEL[p.status]?'<span class="fr-pill s-'+p.status+'">'+LABEL[p.status]+'</span>':'')+'</div><button class="fr-vote" data-id="'+p.id+'" aria-pressed="'+on+'" aria-label="Vote, '+p.votes+' votes"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+p.votes+'</button></div>'}).join(""):'<p class="fr-empty">'+(q?"Nothing matches yet. Add it above.":"No requests yet. Be the first.")+'</p>';
+  $("frRows").innerHTML=list.length?list.map(function(p){var on=!!mine[p.id];return '<div class="fr-row'+(p.id===fresh?' fresh':'')+(p.id===openId?' open':'')+'" data-id="'+p.id+'"><div class="txt"><h3>'+esc(p.title)+'</h3>'+(p.details?'<p>'+esc(p.details)+'</p>':'')+'<div class="fr-meta">'+(LABEL[p.status]?'<span class="fr-pill s-'+p.status+'">'+LABEL[p.status]+'</span>':'')+'<span class="fr-ccount">'+((p.comments||[]).length?(p.comments.length+((p.comments.length===1)?' detail':' details')):'Add a detail')+'</span></div><div class="fr-thread">'+(p.comments||[]).map(function(c){return '<p class="fr-c">'+esc(c.text)+'</p>'}).join("")+'<form class="fr-add" data-id="'+p.id+'"><input maxlength="600" placeholder="Add a detail" enterkeyhint="send" aria-label="Add a detail"><button class="fr-send" aria-label="Send detail"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></form></div></div><button class="fr-vote" data-id="'+p.id+'" aria-pressed="'+on+'" aria-label="Plus one, '+p.votes+' votes"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+p.votes+'</button></div>'}).join(""):'<p class="fr-empty">'+(q?"Nothing matches yet. Add it above.":"No requests yet. Be the first.")+'</p>';
 }
 function call(path,body){if(window.FR_DEMO)return Promise.resolve(window.FR_DEMO(path,body));return fetch(API+path,body?{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}:{}).then(function(r){if(!r.ok)throw r;return r.json()})}
 call("/posts").then(function(p){posts=p;draw()}).catch(function(){posts=[];draw()});
@@ -107,7 +118,10 @@ document.querySelectorAll("input[name=frSort]").forEach(function(r){r.onchange=d
 function vote(id){var p=posts.find(function(x){return x.id===id});
   var on=!mine[id];p.votes+=on?1:-1;if(on)mine[id]=1;else delete mine[id];try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}draw();
   call("/vote",{id:id,voter:voter}).then(function(r){p.votes=r.votes;draw()}).catch(function(){})}
-$("frRows").onclick=function(e){var b=e.target.closest(".fr-vote");if(b)vote(b.dataset.id)};
+$("frRows").onclick=function(e){var b=e.target.closest(".fr-vote");if(b)return vote(b.dataset.id);if(e.target.closest(".fr-add"))return;var r=e.target.closest(".fr-row");if(!r)return;openId=openId===r.dataset.id?null:r.dataset.id;draw();if(openId){var i=document.querySelector('.fr-row.open .fr-add input');if(i)i.focus({preventScroll:true})}};
+$("frRows").addEventListener("input",function(e){var f=e.target.closest(".fr-add");if(f)f.classList.toggle("ready",e.target.value.trim().length>1)});
+$("frRows").addEventListener("submit",function(e){e.preventDefault();var f=e.target,t=f.querySelector("input").value.trim(),id=f.dataset.id;if(t.length<2)return;
+  var p=posts.find(function(x){return x.id===id});call("/comment",{id:id,text:t,voter:voter}).then(function(c){(p.comments=p.comments||[]).push(c);if(!mine[id])vote(id);else draw();thanks("Added. Thank you.")}).catch(function(){thanks("That did not go through. Try again in a minute.")})});
 var f=$("frNew"),fresh=null;
 function words(t){return t.toLowerCase().split(/[^a-z0-9\u00c0-\u024f]+/).filter(function(w){return w.length>3})}
 f.title.oninput=function(){var v=f.title.value.trim();f.classList.toggle("ready",v.length>3);f.classList.toggle("open",v.length>0);
