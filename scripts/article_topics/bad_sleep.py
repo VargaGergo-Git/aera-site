@@ -6,7 +6,7 @@ BS_KEYS = {
            ("1 week", "rolling average: read HRV against your own baseline, not one morning", "Plews et al. 2013"),
            ("10 min", "of easy running, then check in, on any doubtful morning", "This guide")],
     "hu": [("8 hét", "HRV szerint igazított edzés: a hobbifutók legalább olyan jól jártak, mint rögzített tervvel", "Vesterinen és mtsai, 2016"),
-           ("1 hét", "mozgóátlaga: a HRV-t a saját alapszintedhez mérd, ne egy reggelhez", "Plews és mtsai, 2013"),
+           ("1 hét", "átlagát nézd: a HRV-t a saját alapszintedhez mérd, ne egy reggelhez", "Plews és mtsai, 2013"),
            ("10 perc", "laza futás után figyelj magadra minden bizonytalan reggelen", "Ez az útmutató")],
     "de": [("8 Wochen", "HRV-gesteuertes Training: Freizeitläufer fuhren mindestens so gut wie mit festem Plan", "Vesterinen et al. 2016"),
            ("1 Woche", "gleitender Schnitt: HRV am eigenen Ausgangswert lesen, nicht an einem Morgen", "Plews et al. 2013"),
