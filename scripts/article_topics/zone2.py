@@ -71,7 +71,7 @@ SHOT = {
            "Futás után az Aera az átlagtempódat és az átlagpulzusodat az elmúlt 30 nap azonos típusú edzéseiből számolt szokásos értékeid fölé teszi, amint legalább három ilyen edzésed van az összevetéshez. Ha ugyanazon a pulzuson hétről hétre gyorsabb a tempó, az az aerob alapod épülése."),
     "de": ("Die Laufübersicht in Aera: Durchschnittstempo 6:21 pro km und Durchschnittspuls 133 bpm, darunter jeweils der übliche Wert",
            "Tempo neben Puls",
-           "Nach einem Lauf stellt Aera dein Durchschnittstempo und deinen Durchschnittspuls über dein Übliches aus gleichartigen Trainings der letzten 30 Tage, sobald es drei zum Vergleichen gibt. Gleicher Puls bei schnellerem Tempo, Woche für Woche: So wächst deine aerobe Basis."),
+           "Nach einem Lauf stellt Aera dein Durchschnittstempo und deinen Durchschnittspuls über deinen Normalwert aus gleichartigen Trainings der letzten 30 Tage, sobald es drei zum Vergleichen gibt. Gleicher Puls bei schnellerem Tempo, Woche für Woche: So wächst deine aerobe Basis."),
 }
 
 ARTICLES = {}

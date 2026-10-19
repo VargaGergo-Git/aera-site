@@ -13,7 +13,7 @@ T = {
         "hu": dict(title="Egy rossz éjszaka zaj. Egy rossz hét jelzés.", y="HRV (ms)", band="a saját szokásos tartományod", avg="7 éjszakás átlag",
                    one="egy alacsony éjszaka", week="egy hét a szokásos alatt", nights="éjszaka", cap="<b>Szemléltetés példa-éjszakákkal.</b> A pontok egy-egy éjszakát jelölnek; a sáv az illető korábbi hetekből számolt saját szokásos tartománya; a zöld vonal 7 éjszakás mozgóátlag, ahogy Plews és munkatársai (2013) javasolják olvasni a HRV-t."),
         "de": dict(title="Eine schlechte Nacht ist Rauschen. Eine schlechte Woche ein Signal.", y="HRV (ms)", band="dein üblicher Bereich", avg="7-Nächte-Mittel",
-                   one="eine niedrige Nacht", week="eine Woche unter deinem Üblichen", nights="Nächte", cap="<b>Illustration mit Beispielnächten.</b> Punkte sind einzelne Nächte; das Band ist der übliche Bereich dieser Person aus früheren Wochen; die grüne Linie ist ein gleitendes 7-Nächte-Mittel, so wie Plews und Kollegen (2013) HRV zu lesen empfehlen."),
+                   one="eine niedrige Nacht", week="eine Woche unter deinem Normalwert", nights="Nächte", cap="<b>Illustration mit Beispielnächten.</b> Punkte sind einzelne Nächte; das Band ist der übliche Bereich dieser Person aus früheren Wochen; die grüne Linie ist ein gleitendes 7-Nächte-Mittel, so wie Plews und Kollegen (2013) HRV zu lesen empfehlen."),
     }
 }
 

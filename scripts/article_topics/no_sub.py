@@ -17,7 +17,7 @@ NOSUB_SHOT = {
     "en": ("Aera's sleep screen: a score of 94 of 100, 7 h 25 min asleep, and the last seven nights drawn against a band marked Your need",
            "Sleep in Aera",
            "Last night's score and time asleep, then the week as one line against your own sleep need, so a short night reads against what you usually need."),
-    "de": ("Der Schlafbildschirm von Aera: Wert 94 von 100, 7 h 25 min Schlaf und die letzten sieben Nächte vor einem Band mit der Aufschrift Your need",
+    "de": ("Der Schlafbildschirm von Aera: Wert 94 von 100, 7 h 25 min Schlaf und die letzten sieben Nächte vor einem Band mit der Aufschrift Dein Bedarf",
            "Schlaf in Aera",
            "Wert und Schlafdauer der letzten Nacht, darunter die Woche als Linie gegen deinen eigenen Schlafbedarf. So liest du eine kurze Nacht an dem, was du sonst brauchst."),
 }
