@@ -787,7 +787,7 @@ footer a:hover { color: var(--text); }
 /* Matches the homepage (home.css): rounded display type for page titles. */
 h1, h2 { font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif; letter-spacing: -0.015em; }
 
-@media (max-width: 360px) { .topnav { gap: 10px; font-size: 13px; } }
+@media (max-width: 360px) { .topnav { gap: 10px; font-size: 13px; } .topnav a[href$="notes/index.html"] { display: none; } .seg label { padding: 7px 8px; font-size: 14px; } }
 
 /* ---------- field notes: article rhythm (2026-10-10) ----------
    Scoped with :has(.note-sources), so only the notes change; privacy, terms
