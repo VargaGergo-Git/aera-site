@@ -68,37 +68,37 @@
 </style>
 <div class="wrap page-head">
   <p class="eyebrow">Aera</p>
-  <h1>Feature requests</h1>
+  <h1>{{title}}</h1>
 </div>
 <div class="wrap fr">
-  <p class="fr-intro">Write what you would like Aera to do and send it. No account, no sign up. Every request is read by the person who builds Aera.</p>
+  <p class="fr-intro">{{intro}}</p>
   <form class="fr-card fr-new" id="frNew" autocomplete="off">
-    <div class="fr-line"><input name="title" maxlength="120" required placeholder="What should Aera do next?" enterkeyhint="send"><button class="fr-send" aria-label="Send request"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    <div class="fr-line"><input name="title" maxlength="120" required placeholder="{{ph}}" enterkeyhint="send"><button class="fr-send" aria-label="{{send}}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     <div class="fr-similar" id="frSim" hidden></div>
     <div class="more">
-      <textarea id="frDet" name="details" maxlength="2000" placeholder="Anything else? Optional" aria-label="Details, optional"></textarea>
-      <input id="frMail" name="email" type="email" maxlength="200" placeholder="Email to hear when it ships. Optional" aria-label="Email, optional">
+      <textarea id="frDet" name="details" maxlength="2000" placeholder="{{det}}" aria-label="{{det}}"></textarea>
+      <input id="frMail" name="email" type="email" maxlength="200" placeholder="{{mail}}" aria-label="{{mail}}">
     </div>
   </form>
   <p class="fr-thanks" id="frMsg" role="status" hidden></p>
   <div class="fr-tools" id="list">
-    <h2>Requests <span id="frCount" style="color:var(--faint);font-weight:500"></span></h2>
+    <h2>{{list}} <span id="frCount" style="color:var(--faint);font-weight:500"></span></h2>
     <div class="ctl">
-      <div class="seg" role="radiogroup" aria-label="Sort">
-        <input type="radio" name="frSort" id="s1" value="trending" checked><label for="s1">Trending</label>
-        <input type="radio" name="frSort" id="s2" value="top"><label for="s2">Top</label>
-        <input type="radio" name="frSort" id="s3" value="new"><label for="s3">New</label>
+      <div class="seg" role="radiogroup" aria-label="{{sort}}">
+        <input type="radio" name="frSort" id="s1" value="trending" checked><label for="s1">{{trending}}</label>
+        <input type="radio" name="frSort" id="s2" value="top"><label for="s2">{{top}}</label>
+        <input type="radio" name="frSort" id="s3" value="new"><label for="s3">{{new}}</label><input type="radio" name="frSort" id="s4" value="shipped"><label for="s4">{{shipped}}</label>
       </div>
-      <input id="frSearch" type="search" placeholder="Search" aria-label="Search requests">
+      <input id="frSearch" type="search" placeholder="{{search}}" aria-label="{{search}}">
     </div>
   </div>
-  <section class="fr-card" style="padding:0" id="frRows"><p class="fr-empty">Loading requests</p></section>
-  <p class="meta">For a bug, write to <a href="support.html">Support</a> so we can reply to you.</p>
+  <section class="fr-card" style="padding:0" id="frRows"><p class="fr-empty">{{loading}}</p></section>
+  <p class="meta">{{bug}}</p>
 </div>
 <script>
 (function(){
 var API=window.FR_API||"https://requests.aerahealth.app";
-var LABEL={review:"Under review",planned:"Planned",progress:"In progress",done:"Done"};
+/*FR_T*/var LABEL={review:T.review,planned:T.planned,progress:T.progress,done:T.done};
 var posts=[],mine={},openId=null;
 try{mine=JSON.parse(localStorage.getItem("frVotes")||"{}")}catch(e){}
 var voter;try{voter=localStorage.getItem("frVoter");if(!voter){voter=crypto.randomUUID();localStorage.setItem("frVoter",voter)}}catch(e){voter=String(Math.random()).slice(2)+Date.now()}
@@ -107,13 +107,14 @@ function esc(s){var d=document.createElement("div");d.textContent=s;return d.inn
 function score(p){var h=(Date.now()-p.created)/36e5;return p.votes/Math.pow(h+2,1.2)}
 function draw(){
   var q=$("frSearch").value.trim().toLowerCase(),s=(document.querySelector("input[name=frSort]:checked")||{}).value;
-  var list=posts.filter(function(p){return !q||(p.title+" "+(p.details||"")).toLowerCase().indexOf(q)>-1});
-  list.sort(s==="top"?function(a,b){return b.votes-a.votes}:s==="new"?function(a,b){return b.created-a.created}:function(a,b){return score(b)-score(a)});
+  var list=posts.filter(function(p){return (s!=="shipped"||p.status==="done")&&(!q||(p.title+" "+(p.details||"")).toLowerCase().indexOf(q)>-1)});
+  list.sort(s==="top"||s==="shipped"?function(a,b){return b.votes-a.votes}:s==="new"?function(a,b){return b.created-a.created}:function(a,b){return score(b)-score(a)});
   $("frCount").textContent=posts.length||"";
-  $("frRows").innerHTML=list.length?list.map(function(p){var on=!!mine[p.id];return '<div class="fr-row'+(p.id===fresh?' fresh':'')+(p.id===openId?' open':'')+'" data-id="'+p.id+'"><div class="txt"><h3>'+esc(p.title)+'</h3>'+(p.details?'<p>'+esc(p.details)+'</p>':'')+'<div class="fr-meta">'+(LABEL[p.status]?'<span class="fr-pill s-'+p.status+'">'+LABEL[p.status]+'</span>':'')+'<span class="fr-ccount">'+((p.comments||[]).length?(p.comments.length+((p.comments.length===1)?' detail':' details')):'Add a detail')+'</span></div><div class="fr-thread">'+(p.comments||[]).map(function(c){return '<p class="fr-c">'+esc(c.text)+'</p>'}).join("")+'<form class="fr-add" data-id="'+p.id+'"><input maxlength="600" placeholder="Add a detail" enterkeyhint="send" aria-label="Add a detail"><button class="fr-send" aria-label="Send detail"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></form></div></div><button class="fr-vote" data-id="'+p.id+'" aria-pressed="'+on+'" aria-label="Plus one, '+p.votes+' votes"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+p.votes+'</button></div>'}).join(""):'<p class="fr-empty">'+(q?"Nothing matches yet. Add it above.":"No requests yet. Be the first.")+'</p>';
+  $("frRows").innerHTML=list.length?list.map(function(p){var on=!!mine[p.id];return '<div class="fr-row'+(p.id===fresh?' fresh':'')+(p.id===openId?' open':'')+'" data-id="'+p.id+'"><div class="txt"><h3>'+esc(p.title)+'</h3>'+(p.details?'<p>'+esc(p.details)+'</p>':'')+'<div class="fr-meta">'+(LABEL[p.status]?'<span class="fr-pill s-'+p.status+'">'+LABEL[p.status]+'</span>':'')+'<span class="fr-ccount">'+((p.comments||[]).length?(p.comments.length+' '+(p.comments.length===1?T.one:T.many)):T.add)+'</span></div><div class="fr-thread">'+(p.comments||[]).map(function(c){return '<p class="fr-c">'+esc(c.text)+'</p>'}).join("")+'<form class="fr-add" data-id="'+p.id+'"><input maxlength="600" placeholder="'+T.add+'" enterkeyhint="send" aria-label="'+T.add+'"><button class="fr-send" aria-label="Send detail"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></form></div></div><button class="fr-vote" data-id="'+p.id+'" aria-pressed="'+on+'" aria-label="+1, '+p.votes+' '+T.votes+'"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'+p.votes+'</button></div>'}).join(""):'<p class="fr-empty">'+(s==="shipped"?T.noship:q?T.nomatch:T.empty)+'</p>';
 }
 function call(path,body){if(window.FR_DEMO)return Promise.resolve(window.FR_DEMO(path,body));return fetch(API+path,body?{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}:{}).then(function(r){if(!r.ok)throw r;return r.json()})}
-call("/posts").then(function(p){posts=p;draw()}).catch(function(){posts=[];draw()});
+var LANG=document.documentElement.lang||"en";
+call("/posts").then(function(p){posts=p.filter(function(x){return (x.lang||"en")===LANG});draw()}).catch(function(){posts=[];draw()});
 document.querySelectorAll("input[name=frSort]").forEach(function(r){r.onchange=draw});$("frSearch").oninput=draw;
 function vote(id){var p=posts.find(function(x){return x.id===id});
   var on=!mine[id];p.votes+=on?1:-1;if(on)mine[id]=1;else delete mine[id];try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}draw();
@@ -121,18 +122,18 @@ function vote(id){var p=posts.find(function(x){return x.id===id});
 $("frRows").onclick=function(e){var b=e.target.closest(".fr-vote");if(b)return vote(b.dataset.id);if(e.target.closest(".fr-add"))return;var r=e.target.closest(".fr-row");if(!r)return;openId=openId===r.dataset.id?null:r.dataset.id;draw();if(openId){var i=document.querySelector('.fr-row.open .fr-add input');if(i)i.focus({preventScroll:true})}};
 $("frRows").addEventListener("input",function(e){var f=e.target.closest(".fr-add");if(f)f.classList.toggle("ready",e.target.value.trim().length>1)});
 $("frRows").addEventListener("submit",function(e){e.preventDefault();var f=e.target,t=f.querySelector("input").value.trim(),id=f.dataset.id;if(t.length<2)return;
-  var p=posts.find(function(x){return x.id===id});call("/comment",{id:id,text:t,voter:voter}).then(function(c){(p.comments=p.comments||[]).push(c);if(!mine[id])vote(id);else draw();thanks("Added. Thank you.")}).catch(function(){thanks("That did not go through. Try again in a minute.")})});
+  var p=posts.find(function(x){return x.id===id});call("/comment",{id:id,text:t,voter:voter}).then(function(c){(p.comments=p.comments||[]).push(c);if(!mine[id])vote(id);else draw();thanks(T.thanksAdd)}).catch(function(){thanks(T.fail)})});
 var f=$("frNew"),fresh=null;
 function words(t){return t.toLowerCase().split(/[^a-z0-9\u00c0-\u024f]+/).filter(function(w){return w.length>3})}
 f.title.oninput=function(){var v=f.title.value.trim();f.classList.toggle("ready",v.length>3);f.classList.toggle("open",v.length>0);
   var w=words(v),sim=v.length<4?[]:posts.filter(function(p){var pw=words(p.title+" "+(p.details||""));return w.some(function(x){return pw.some(function(y){return y.indexOf(x)===0||x.indexOf(y)===0})})}).slice(0,2);
-  var box=$("frSim");box.hidden=!sim.length;box.innerHTML=sim.length?"Already asked? Add your vote instead."+sim.map(function(p){return '<button type="button" data-id="'+p.id+'">'+esc(p.title)+'<span>'+(mine[p.id]?"Voted":"Vote")+'</span></button>'}).join(""):""};
-$("frSim").onclick=function(e){var b=e.target.closest("button");if(!b)return;if(!mine[b.dataset.id])vote(b.dataset.id);f.reset();f.title.oninput();thanks("Your vote is in. Thank you.")};
+  var box=$("frSim");box.hidden=!sim.length;box.innerHTML=sim.length?T.similar+sim.map(function(p){return '<button type="button" data-id="'+p.id+'">'+esc(p.title)+'<span>'+(mine[p.id]?T.voted:T.vote)+'</span></button>'}).join(""):""};
+$("frSim").onclick=function(e){var b=e.target.closest("button");if(!b)return;if(!mine[b.dataset.id])vote(b.dataset.id);f.reset();f.title.oninput();thanks(T.thanksVote)};
 function thanks(t){var m=$("frMsg");m.textContent=t;m.hidden=false;clearTimeout(thanks.t);thanks.t=setTimeout(function(){m.hidden=true},5000)}
 f.onsubmit=function(e){e.preventDefault();var t=f.title.value.trim();if(t.length<4){f.title.focus();return}
-  var b={title:t,details:f.details.value,email:f.email.value,voter:voter};
-  call("/posts",b).then(function(p){mine[p.id]=1;try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}posts.push(p);fresh=p.id;f.reset();f.title.oninput();$("s3").checked=true;draw();thanks("Sent. It is on the board with your vote.")})
-  .catch(function(){thanks("That did not go through. Try again in a minute.")})};
+  var b={title:t,details:f.details.value,email:f.email.value,voter:voter,lang:LANG};
+  call("/posts",b).then(function(p){mine[p.id]=1;try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}posts.push(p);fresh=p.id;f.reset();f.title.oninput();$("s3").checked=true;draw();thanks(T.thanksSent)})
+  .catch(function(){thanks(T.fail)})};
 })();
 </script>
 
