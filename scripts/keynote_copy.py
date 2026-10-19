@@ -25,7 +25,7 @@ K = {
         "long_p": "And the long view: <b>biological age and sleep reserve</b>, over months.",
         "closer": "Every number opens to show how it was worked out, and says so when it doesn&#8217;t know. On your iPhone. No account.",
         "normal_h2": "Your normal.",
-        "normal_p": "Sleep, recovery, blood pressure and strength, each held against a range learned from your own weeks. <b>A number means little on its own.</b> Next to your usual, it tells you something.",
+        "normal_p": "Sleep, heart rate, blood pressure and strength, each held against a range learned from your own weeks. <b>A number means little on its own.</b> Next to your usual, it tells you something.",
         "normal_cap": "The green band is your usual. HRV 71 ms sits above it; resting heart rate 49 bpm sits inside.",
         "normal_alt": "Aera's vitals this morning: HRV 71 ms, above your usual, and resting heart rate 49 bpm, inside your usual band",
         "cta": "Download on the App Store",
