@@ -26,7 +26,7 @@ export default {
 async function handle(req, env) {
   {
     if (req.method === "OPTIONS") return new Response(null, { headers: cors });
-    const url = new URL(req.url), ip = req.headers.get("cf-connecting-ip") || "x";
+    const url = new URL(req.url); url.pathname = url.pathname.replace(/^\/api\/requests/, "") || "/"; const ip = req.headers.get("cf-connecting-ip") || "x";
     if (req.method === "GET" && url.pathname === "/posts") {
       const p = await all(env);
       return json(p.filter(x => !x.hidden).map(({ id, title, details, votes, status, created, comments, lang }) => ({ id, title, details, votes, status, created, lang: lang || "en", comments: (comments || []).filter(c => !c.hidden).map(c => ({ text: c.text, at: c.at })) })));

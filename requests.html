@@ -177,7 +177,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 </div>
 <script>
 (function(){
-var API=window.FR_API||"https://requests.aerahealth.app";
+var API=window.FR_API||"/api/requests";
 var T={"title": "Feature requests", "desc": "Ask for a feature in Aera, add details to other requests and +1 the ones you want. No account needed.", "intro": "Write what you would like Aera to do and send it. No account, no sign up. Every request is read by the person who builds Aera.", "ph": "What should Aera do next?", "send": "Send request", "det": "Anything else? Optional", "mail": "Email to hear when it ships. Optional", "list": "Requests", "trending": "Trending", "top": "Top", "new": "New", "shipped": "Shipped", "search": "Search", "sort": "Sort", "bug": "For a bug, write to <a href=\"support.html\">Support</a> so we can reply to you.", "loading": "Loading requests", "review": "Under review", "planned": "Planned", "progress": "In progress", "done": "Done", "one": "detail", "many": "details", "add": "Add a detail", "empty": "No requests yet. Be the first.", "nomatch": "Nothing matches yet. Add it above.", "noship": "Nothing shipped from requests yet.", "similar": "Already asked? Add your vote instead.", "vote": "Vote", "voted": "Voted", "thanksVote": "Your vote is in. Thank you.", "thanksSent": "Sent. It is on the board with your vote.", "thanksAdd": "Added. Thank you.", "fail": "That did not go through. Try again in a minute.", "votes": "votes", "home": "index.html", "footHome": "Home"};var LABEL={review:T.review,planned:T.planned,progress:T.progress,done:T.done};
 var posts=[],mine={},openId=null;
 try{mine=JSON.parse(localStorage.getItem("frVotes")||"{}")}catch(e){}
