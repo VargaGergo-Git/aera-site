@@ -1,72 +1,75 @@
 <style>
-.fr{display:grid;gap:32px;padding-block:24px 64px}
-@media (min-width:900px){.fr{grid-template-columns:240px minmax(0,1fr)}}
-.fr-side h4{margin:0 0 10px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;opacity:.6}
-.fr-side a{display:flex;justify-content:space-between;align-items:center;min-height:40px;padding:0 12px;border-radius:10px;background:color-mix(in srgb,currentColor 7%,transparent);color:inherit;text-decoration:none;font-weight:500;font-size:15px}
-.fr-side a span{opacity:.6;font-size:13px;font-variant-numeric:tabular-nums}
-.fr-main{padding:0;min-width:0}
-.fr-main h1{margin:0 0 8px;font-size:clamp(28px,4.4vw,40px)}
-.fr-intro{margin:0 0 20px;opacity:.75;line-height:1.5}
-.fr .fr-box{padding:0;min-height:0;border:1px solid color-mix(in srgb,currentColor 14%,transparent);border-radius:14px;overflow:hidden;margin-bottom:20px}
-.fr-new input,.fr-new textarea{display:block;width:100%;box-sizing:border-box;border:0;background:transparent;color:inherit;font:inherit;padding:14px 16px 4px;outline:none}
-.fr-new input[name=title]{font-size:17px;font-weight:600}
-.fr-new textarea{min-height:76px;resize:vertical;font-size:15px;padding-top:6px}
-.fr-new label{display:block;padding:10px 16px 0;font-size:13px;font-weight:600;opacity:.7}
-.fr-new input[name=email]{font-size:15px;padding-bottom:12px}
+.fr{padding-block:8px 72px}
+.fr-intro{margin:0 0 28px;color:var(--muted);font-size:clamp(17px,2.2vw,19px);line-height:1.5;max-width:46ch}
+.fr-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:18px;overflow:hidden}
+.fr-new input,.fr-new textarea{display:block;width:100%;border:0;background:transparent;color:var(--text);font:inherit;padding:18px 22px 6px;outline:none}
+.fr-new input::placeholder,.fr-new textarea::placeholder,.fr-tools input::placeholder{color:var(--faint)}
+.fr-new input[name=title]{font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,sans-serif;font-size:19px;font-weight:620;letter-spacing:-.01em;padding-bottom:16px}
+.fr-new.open input[name=title]{padding-bottom:6px}
+.fr-new textarea{min-height:84px;resize:vertical;font-size:16px;padding-top:4px}
+.fr-new label{display:block;padding:12px 22px 0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.fr-new input[name=email]{font-size:16px;padding-bottom:14px}
 .fr-new .more{display:none}.fr-new.open .more{display:block}
-.fr-bar{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;background:color-mix(in srgb,currentColor 4%,transparent);border-top:1px solid color-mix(in srgb,currentColor 10%,transparent)}
-.fr-btn{min-height:40px;padding:0 18px;border-radius:10px;border:1px solid color-mix(in srgb,currentColor 18%,transparent);background:transparent;color:inherit;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
-.fr-btn.primary{background:#1d1d1f;color:#fff;border-color:#1d1d1f}
-@media (prefers-color-scheme:dark){.fr-btn.primary{background:#f5f5f7;color:#000;border-color:#f5f5f7}}
-.fr-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:color-mix(in srgb,currentColor 4%,transparent);border-bottom:1px solid color-mix(in srgb,currentColor 10%,transparent)}
-.fr-head select{font:inherit;font-weight:600;border:0;background:transparent;color:inherit;padding:4px 2px;border-bottom:1px solid color-mix(in srgb,currentColor 25%,transparent)}
-.fr-head input{font:inherit;font-size:15px;min-height:38px;width:150px;max-width:100%;box-sizing:border-box;padding:0 12px;border-radius:10px;border:1px solid color-mix(in srgb,currentColor 18%,transparent);background:transparent;color:inherit}
-.fr-row{display:flex;gap:16px;align-items:flex-start;padding:16px;border-top:1px solid color-mix(in srgb,currentColor 10%,transparent)}
+.fr-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--border)}
+.fr-btn{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.fr-btn.primary{background:var(--accent);color:#17120a}
+.fr-btn:active{transform:scale(.96);transition-duration:0s}
+.fr-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 14px}
+.fr-tools h2{margin:0;font-size:clamp(22px,3vw,27px)}
+.fr-tools .ctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fr-tools input{font:inherit;font-size:15px;min-height:40px;width:160px;max-width:100%;padding:0 16px;border-radius:999px;border:1px solid var(--border);background:var(--surface-solid);color:var(--text)}
+.fr-row{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-top:1px solid var(--border)}
 .fr-row:first-child{border-top:0}
-.fr-row h3{margin:0 0 4px;font-size:16px;font-weight:600}
-.fr-row p{margin:0 0 8px;font-size:15px;line-height:1.45;opacity:.75;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .fr-row .txt{flex:1;min-width:0}
-.fr-pill{display:inline-block;padding:2px 9px;border-radius:7px;font-size:12.5px;font-weight:600}
+.fr-row h3{margin:0 0 4px;font-size:17px;font-weight:620;letter-spacing:-.01em}
+.fr-row p{margin:0 0 10px;font-size:15.5px;line-height:1.5;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fr-pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--muted)}
+.fr-pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
 .s-open{display:none}
-.s-review{background:rgba(142,142,147,.16)}
-.s-planned{background:rgba(10,132,255,.14);color:#0a6bd6}
-.s-progress{background:rgba(191,90,242,.15);color:#9a3fd0}
-.s-done{background:rgba(48,176,80,.15);color:#228a3d}
-@media (prefers-color-scheme:dark){.s-planned{color:#64aaff}.s-progress{color:#d08cf7}.s-done{color:#5fd27a}}
-.fr-vote{flex:none;display:grid;place-items:center;width:44px;min-height:48px;padding:4px 0;border-radius:10px;border:1px solid color-mix(in srgb,currentColor 18%,transparent);background:transparent;color:inherit;font:inherit;font-size:13px;font-weight:600;cursor:pointer;font-variant-numeric:tabular-nums}
-.fr-vote svg{width:12px;height:12px}
-.fr-vote[aria-pressed=true]{border-color:#1d1d1f;background:#1d1d1f;color:#fff}
-@media (prefers-color-scheme:dark){.fr-vote[aria-pressed=true]{border-color:#f5f5f7;background:#f5f5f7;color:#000}}
-.fr-empty,.fr-note{padding:28px 16px;text-align:center;opacity:.65;font-size:15px}
-.fr-note{padding:0 16px 12px;text-align:left}
+.s-review{color:var(--faint)}
+.s-planned{color:#8a7cf0}
+.s-progress{color:var(--accent)}
+.s-done{color:var(--green)}
+.fr-vote{flex:none;display:grid;place-items:center;gap:2px;width:52px;min-height:56px;padding:6px 0;border-radius:16px;border:1px solid var(--border);background:var(--surface-solid);color:var(--text);font:inherit;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,sans-serif;font-size:16px;font-weight:660;cursor:pointer;font-variant-numeric:tabular-nums;transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .2s ease}
+.fr-vote svg{width:13px;height:13px;color:var(--faint)}
+.fr-vote:active{transform:scale(.94);transition-duration:0s}
+.fr-vote[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#17120a}
+.fr-vote[aria-pressed=true] svg{color:#17120a}
+.fr-empty,.fr-note{padding:32px 22px;text-align:center;color:var(--faint);font-size:15.5px;margin:0}
+.fr-note{padding:0 22px 12px;text-align:left}
+@media (max-width:560px){.fr-tools .ctl{width:100%}.fr-tools input{flex:1;width:auto}}
+@media (prefers-reduced-motion:reduce){.fr-btn,.fr-vote{transition:none}.fr-btn:active,.fr-vote:active{transform:none}}
 </style>
+<div class="wrap page-head">
+  <p class="eyebrow">Aera</p>
+  <h1>Feature requests</h1>
+</div>
 <div class="wrap fr">
-  <aside class="fr-side">
-    <h4>Boards</h4>
-    <a href="#list">Feature requests <span id="frCount"></span></a>
-  </aside>
-  <main class="fr-main">
-    <h1>Feature requests</h1>
-    <p class="fr-intro">Tell us what you would like Aera to do, and vote for the ideas you want most. Search first, your idea may already be here. No account needed. For a bug, email <a href="support.html">Support</a> so we can reply.</p>
-    <form class="fr-box fr-new" id="frNew" autocomplete="off">
-      <input name="title" maxlength="120" required placeholder="Short, descriptive title">
-      <div class="more">
-        <label for="frDet">Details</label>
-        <textarea id="frDet" name="details" maxlength="2000" placeholder="What would you use it for?"></textarea>
-        <label for="frMail">Email, if you want to hear when it ships (optional)</label>
-        <input id="frMail" name="email" type="email" maxlength="200" placeholder="you@example.com">
-        <p class="fr-note" id="frMsg" hidden></p>
-        <div class="fr-bar"><button type="button" class="fr-btn" id="frCancel">Cancel</button><button class="fr-btn primary">Submit</button></div>
+  <p class="fr-intro">Tell us what you would like Aera to do, and vote for the ideas you want most. No account needed. Every request is read by the person who builds Aera.</p>
+  <form class="fr-card fr-new" id="frNew" autocomplete="off">
+    <input name="title" maxlength="120" required placeholder="What would you like Aera to do?">
+    <div class="more">
+      <label for="frDet">Details</label>
+      <textarea id="frDet" name="details" maxlength="2000" placeholder="How would you use it?"></textarea>
+      <label for="frMail">Email, optional</label>
+      <input id="frMail" name="email" type="email" maxlength="200" placeholder="To hear when it ships">
+      <p class="fr-note" id="frMsg" hidden></p>
+      <div class="fr-bar"><button type="button" class="fr-btn" id="frCancel">Cancel</button><button class="fr-btn primary">Send request</button></div>
+    </div>
+  </form>
+  <div class="fr-tools" id="list">
+    <h2>Requests <span id="frCount" style="color:var(--faint);font-weight:500"></span></h2>
+    <div class="ctl">
+      <div class="seg" role="radiogroup" aria-label="Sort">
+        <input type="radio" name="frSort" id="s1" value="trending" checked><label for="s1">Trending</label>
+        <input type="radio" name="frSort" id="s2" value="top"><label for="s2">Top</label>
+        <input type="radio" name="frSort" id="s3" value="new"><label for="s3">New</label>
       </div>
-    </form>
-    <section class="fr-box" id="list">
-      <div class="fr-head">
-        <label>Showing <select id="frSort"><option value="trending">Trending</option><option value="top">Top</option><option value="new">New</option></select> requests</label>
-        <input id="frSearch" type="search" placeholder="Search">
-      </div>
-      <div id="frRows"><p class="fr-empty">Loading requests</p></div>
-    </section>
-  </main>
+      <input id="frSearch" type="search" placeholder="Search" aria-label="Search requests">
+    </div>
+  </div>
+  <section class="fr-card" style="padding:0" id="frRows"><p class="fr-empty">Loading requests</p></section>
+  <p class="meta">For a bug, write to <a href="support.html">Support</a> so we can reply to you.</p>
 </div>
 <script>
 (function(){
@@ -79,7 +82,7 @@ var $=function(id){return document.getElementById(id)};
 function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
 function score(p){var h=(Date.now()-p.created)/36e5;return p.votes/Math.pow(h+2,1.2)}
 function draw(){
-  var q=$("frSearch").value.trim().toLowerCase(),s=$("frSort").value;
+  var q=$("frSearch").value.trim().toLowerCase(),s=(document.querySelector("input[name=frSort]:checked")||{}).value;
   var list=posts.filter(function(p){return !q||(p.title+" "+(p.details||"")).toLowerCase().indexOf(q)>-1});
   list.sort(s==="top"?function(a,b){return b.votes-a.votes}:s==="new"?function(a,b){return b.created-a.created}:function(a,b){return score(b)-score(a)});
   $("frCount").textContent=posts.length||"";
@@ -87,14 +90,14 @@ function draw(){
 }
 function call(path,body){if(window.FR_DEMO)return Promise.resolve(window.FR_DEMO(path,body));return fetch(API+path,body?{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)}:{}).then(function(r){if(!r.ok)throw r;return r.json()})}
 call("/posts").then(function(p){posts=p;draw()}).catch(function(){posts=[];draw()});
-$("frSort").onchange=draw;$("frSearch").oninput=draw;
+document.querySelectorAll("input[name=frSort]").forEach(function(r){r.onchange=draw});$("frSearch").oninput=draw;
 $("frRows").onclick=function(e){var b=e.target.closest(".fr-vote");if(!b)return;var id=b.dataset.id,p=posts.find(function(x){return x.id===id});
   var on=!mine[id];p.votes+=on?1:-1;if(on)mine[id]=1;else delete mine[id];try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}draw();
   call("/vote",{id:id,voter:voter}).then(function(r){p.votes=r.votes;draw()}).catch(function(){})};
 var f=$("frNew");f.title.onfocus=function(){f.classList.add("open")};
 $("frCancel").onclick=function(){f.reset();f.classList.remove("open");$("frMsg").hidden=true};
 f.onsubmit=function(e){e.preventDefault();var b={title:f.title.value,details:f.details.value,email:f.email.value,voter:voter};
-  call("/posts",b).then(function(p){mine[p.id]=1;try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}posts.push(p);f.reset();f.classList.remove("open");$("frSort").value="new";draw()})
+  call("/posts",b).then(function(p){mine[p.id]=1;try{localStorage.setItem("frVotes",JSON.stringify(mine))}catch(e){}posts.push(p);f.reset();f.classList.remove("open");document.getElementById("s3").checked=true;draw()})
   .catch(function(){var m=$("frMsg");m.hidden=false;m.textContent="That did not go through. Try again in a minute."})};
 })();
 </script>
