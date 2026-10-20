@@ -91,6 +91,7 @@ def build(code, H):
       </div>
       <div class="stage full"><figure class="phone rise-in">{img('scr-vitals', k['normal_alt'], ph_)}</figure></div>
     </div>
+    @@SEC_NORMAL@@
   </div>
 </section>
 ''' if "normal_h2" in K[code] and here("scr-vitals-400.webp") else "")
@@ -102,6 +103,11 @@ def build(code, H):
 
     def btn(place, small=False, light=False):
         return '<a class="store%s%s" href="%s">%s<span>%s</span></a>' % (" small" if small else "", " light" if light else "", store(place), APPLE, k["cta"])
+
+    def sec_cta(place):
+        # The same store button once more at the foot of a main section, so the
+        # next step is never far; each place is its own /get/ path (GET_PLACES).
+        return '<div class="panel-cta sec-cta reveal">%s</div>' % btn(place)
 
     canonical = BASE + ("" if file == "index.html" else file)
     alternates = "".join('<link rel="alternate" hreflang="%s" href="%s%s">' % (lc, BASE, "" if f == "index.html" else f)
@@ -192,6 +198,7 @@ def build(code, H):
     <ul class="rail" tabindex="0">{cards}</ul>
     <div class="wide rail-nav"><button class="rail-btn prev" type="button" aria-label="{k['share_prev']}"></button><button class="rail-btn next" type="button" aria-label="{k['share_next']}"></button></div>
   </div>
+  <div class="wide">{sec_cta('sec-share')}</div>
 </section>'''
                  if all(here("card-%s-360.webp" % c[0]) for c in k["share_cards"]) else "")
     work_link = ('<a class="more-link" href="%s">%s</a>' % k["work_link"]) if "work_link" in k else ""
@@ -215,6 +222,7 @@ def build(code, H):
       </div>
       <div class="stage"><figure class="phone rise-in">{sleep_pic}</figure></div>
     </div>
+    {sec_cta('sec-sleep')}
   </div>
 </section>
 
@@ -260,6 +268,7 @@ def build(code, H):
         <figure class="watch slide-in">{img('w-turn', route_alts[1], '(max-width: 759px) 40vw, 200px')}</figure>
       </div></div>
     </div>
+    {sec_cta('sec-route')}
   </div>
 </section>
 
@@ -273,6 +282,7 @@ def build(code, H):
       </div>
       <div class="stage"><figure class="phone rise-in">{pic('scr-age-light', 'scr-age-dark', k['age_alt'], ph_)}</figure></div>
     </div>
+    {sec_cta('sec-age')}
   </div>
 </section>'''
     fly_player = f'''<div class="player reveal" style="--d:.1s">
@@ -288,6 +298,7 @@ def build(code, H):
       </div>
       <div class="stage full"><figure class="phone rise-in">{img('scr-today', k.get('today_alt', ''), ph_)}</figure></div>
     </div>
+    {sec_cta('sec-today')}
   </div>
 </section>
 
@@ -310,6 +321,7 @@ def build(code, H):
 
 {share_sec}
 ''' if new else "")
+    normal_sec = normal_sec.replace("@@SEC_NORMAL@@", sec_cta("sec-normal"))
     story = (normal_sec + new_story) if new else (normal_sec + old_story)
     work_blk = "" if new else f'''    <div class="work narrow center reveal">
       <h2>{k['b_work'][0]}</h2>
@@ -400,6 +412,7 @@ def build(code, H):
       <div class="plan prem reveal" style="--d:.08s"><h3>{k['prem_h']}</h3><ul>{li(k['prem'])}</ul></div>
     </div>
     <p class="plans-note center reveal">{k['prem_note']}</p>
+    {sec_cta('sec-plans')}
   </div>
 </section>
 
@@ -408,6 +421,7 @@ def build(code, H):
     <h2 class="reveal">{k['faq_h2']}</h2>
     <div class="faq reveal">{faq}</div>
   </div>
+  <div class="wide">{sec_cta('sec-faq')}</div>
 </section>
 
 <section class="maker">

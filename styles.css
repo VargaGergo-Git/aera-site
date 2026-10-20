@@ -833,3 +833,9 @@ a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: man
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
   .topbar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
+
+/* A long German compound in a note title (Herzfrequenzbereiche) is wider than a
+   320 px phone at the note h1 size: hyphenate it, and break it if the browser
+   has no German hyphenation. */
+.page-head h1 { overflow-wrap: break-word; }
+.page-head h1:lang(de) { -webkit-hyphens: auto; hyphens: auto; }
