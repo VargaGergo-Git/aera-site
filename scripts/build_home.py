@@ -845,7 +845,10 @@ def plan_items(items):
     return "".join('<li style="--i:%d">%s</li>' % (i, x) for i, x in enumerate(items))
 
 
-GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer")
+GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer",
+              # Repeats at the foot of each main home section (build_keynote sec_cta).
+              "sec-normal", "sec-today", "sec-share", "sec-sleep", "sec-route", "sec-age",
+              "sec-plans", "sec-faq")
 
 
 def campaign(url, ct):
