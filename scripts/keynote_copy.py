@@ -53,7 +53,7 @@ K = {
         "route_alts": ("A route drawn from the door around Green Lake, keeping to real paths", "Turn by turn on Apple Watch: 202 metres, fork, keep right"),
         "wear_h2": "Wear what you like.",
         "wear_p": "Aera reads Apple Health, so it works with an Apple Watch, and with any watch, ring or app that writes your sleep and workouts there.",
-        "wear_list": ["Apple Watch", "Garmin", "Oura", "WHOOP", "iPhone"],
+        "wear_list": ["Apple Watch", "Garmin", "Polar", "COROS", "Oura", "WHOOP", "iPhone"],
         "wear_link": ("guides/aera-with-garmin-oura-whoop.html", "What reaches Apple Health from each"),
         "priv_h2": "Health numbers stay on your iPhone.",
         "priv_p": "No account and no server doing the maths. Aera reads Apple Health on your phone and works out every score there. Analytics stay off until you turn them on, and never include health values.",
@@ -68,7 +68,7 @@ K = {
         "faq_h2": "Questions.",
         "faq": [
             ("What does Aera do?", "Aera reads what your watch, ring or phone writes to Apple Health and tells you what those numbers mean for you. Sleep, stress, strain and every run are held against your own usual, said in plain words, and each number opens a short article on how it was worked out. It also plans routes with turn-by-turn directions and replays runs in 3D."),
-            ("Do I need an Apple Watch?", "No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some."),
+            ("Do I need an Apple Watch?", "No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Polar, COROS, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some."),
             ("Is Aera free?", "Yes. Sleep, stress and strain against your usual, every run read back, every personal best, the route planner with turn by turn, your first saved route and Flyover for the last seven days are free. Premium adds today&#8217;s session, your sleep reserve, your places, more saved routes, older Flyovers, full history and every export format."),
             ("Do I need an account, and where does my data go?", "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. Product analytics stay off until you turn them on and never include health values."),
             ("How does Aera know what is normal for me?", "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."),
@@ -137,7 +137,7 @@ K = {
      'wear_h2': 'Hordd, amit szeretsz.',
      'wear_p': 'Az Aera az Apple Health-ből olvas, így működik Apple Watch-csal, és bármilyen órával, gyűrűvel '
                'vagy appal, amelyik oda írja az alvásodat és az edzéseidet.',
-     'wear_list': ['Apple Watch', 'Garmin', 'Oura', 'WHOOP', 'iPhone'],
+     'wear_list': ['Apple Watch', 'Garmin', 'Polar', 'COROS', 'Oura', 'WHOOP', 'iPhone'],
      'wear_link': ('guides/aera-garmin-oura-whoop-vel.html', 'Mi jut át az egyes eszközökről az Apple Health-be'),
      'priv_h2': 'Az egészségadataid az iPhone-odon maradnak.',
      'priv_p': 'Nincs fiók, és nincs szerver, ami számolna. Az Aera az iPhone-odon olvassa az Apple Health-et, '
@@ -166,7 +166,7 @@ K = {
               'visszajátssza a futásaidat.'),
              ('Kell hozzá Apple Watch?',
               'Nem. Az Aera az Apple Health-ből olvas, így bármilyen óra, gyűrű vagy app megfelel, amelyik oda '
-              'írja az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és mások. Csak '
+              'írja az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Polar, COROS, Oura, WHOOP és mások. Csak '
               'iPhone-nal az Aera a lépésekből és az edzésekből dolgozik, az éjszakai szívadatot igénylő '
               'elemzések pedig megvárják, amíg ilyen adat is lesz.'),
              ('Ingyenes az Aera?',
@@ -229,7 +229,7 @@ K = {
         "route_alts": ("Eine Route ab der Haust&#252;r um den Green Lake, auf echten Wegen", "Abbiegehinweis auf der Apple Watch: 202 Meter, Gabelung, rechts halten"),
         "wear_h2": "Trag, was du magst.",
         "wear_p": "Aera liest Apple Health. Es funktioniert also mit der Apple Watch und mit jeder Uhr, jedem Ring und jeder App, die Schlaf und Training dorthin schreibt.",
-        "wear_list": ["Apple Watch", "Garmin", "Oura", "WHOOP", "iPhone"],
+        "wear_list": ["Apple Watch", "Garmin", "Polar", "COROS", "Oura", "WHOOP", "iPhone"],
         "wear_link": ("guides/aera-mit-garmin-oura-whoop.html", "Was von welchem Ger&#228;t in Apple Health ankommt"),
         "priv_h2": "Gesundheitsdaten bleiben auf deinem iPhone.",
         "priv_p": "Kein Konto und kein Server, der rechnet. Aera liest Apple Health auf deinem Telefon und berechnet dort jeden Wert. Analysen bleiben aus, bis du sie einschaltest, und enthalten nie Gesundheitswerte.",
@@ -244,7 +244,7 @@ K = {
         "faq_h2": "Fragen.",
         "faq": [
             ("Was macht Aera?", "Aera liest, was deine Uhr, dein Ring oder dein iPhone in Apple Health schreibt, und sagt dir, was diese Zahlen f&#252;r dich bedeuten. Schlaf, Stress, Belastung und jeder Lauf werden mit deinem eigenen Normal verglichen und in klaren Worten erkl&#228;rt, und jede Zahl &#246;ffnet einen kurzen Artikel dar&#252;ber, wie sie berechnet wurde. Dazu plant Aera Routen mit Abbiegehinweisen und zeigt L&#228;ufe in 3D."),
-            ("Brauche ich eine Apple Watch?", "Nein. Aera liest Apple Health, also passt jede Uhr, jeder Ring und jede App, die Schlaf, Herzfrequenz und Training dorthin schreibt: Apple Watch, Garmin, Oura, WHOOP und andere. Nur mit dem iPhone arbeitet Aera mit Schritten und Trainings, und was n&#228;chtliche Herzdaten braucht, wartet, bis es welche gibt."),
+            ("Brauche ich eine Apple Watch?", "Nein. Aera liest Apple Health, also passt jede Uhr, jeder Ring und jede App, die Schlaf, Herzfrequenz und Training dorthin schreibt: Apple Watch, Garmin, Polar, COROS, Oura, WHOOP und andere. Nur mit dem iPhone arbeitet Aera mit Schritten und Trainings, und was n&#228;chtliche Herzdaten braucht, wartet, bis es welche gibt."),
             ("Ist Aera kostenlos?", "Ja. Schlaf, Stress und Belastung im Vergleich zu deinem Normal, jeder Lauf im R&#252;ckblick, jede Bestzeit, der Routenplaner mit Abbiegehinweisen, deine erste gespeicherte Route und Flyover f&#252;r die letzten sieben Tage sind kostenlos. Premium bringt die Einheit f&#252;r heute, deine Schlafreserve, deine Orte, weitere gespeicherte Routen, &#228;ltere Flyover, die ganze Historie und jedes Exportformat."),
             ("Brauche ich ein Konto, und wohin gehen meine Daten?", "Es gibt kein Konto. Aera liest Apple Health auf deinem iPhone und berechnet dort jeden Wert, also bleiben Gesundheitsdaten auf deinem iPhone. Produktanalysen bleiben aus, bis du sie einschaltest, und enthalten nie Gesundheitswerte."),
             ("Woher wei&#223; Aera, was f&#252;r mich normal ist?", "Es lernt deinen &#252;blichen Bereich &#252;ber einige Wochen aus deinen eigenen N&#228;chten und Einheiten und vergleicht jeden neuen Tag damit. Solange deine Historie d&#252;nn ist, sagt es, dass es noch lernt, statt zu raten."),
@@ -458,7 +458,7 @@ K["hu"].update({
  "faq": [("Mit csinál az Aera?",
           "Azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Health-be ment, és elmondja, mit jelentenek ezek a számok neked. Az alvást, a stresszt, a terhelést és minden futást ahhoz méri, ami nálad szokásos, érthetően elmondja, és minden szám mögött ott van egy rövid cikk arról, hogyan jött ki. Útvonalat is tervez, kanyarról kanyarra navigál, és 3D-ben visszajátssza a futásaidat."),
          ("Kell hozzá Apple Watch?",
-          "Nem. Az Aera az Apple Health-ből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van."),
+          "Nem. Az Aera az Apple Health-ből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Polar, COROS, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van."),
          ("Ingyenes az Aera?",
           "Igen. Ingyenes az alvás, a stressz és a terhelés a szokásodhoz mérve, minden futásod elemzése, az egyéni rekordok, az útvonaltervezés kanyarról kanyarra navigációval, az első mentett útvonal és a Flyover az elmúlt hét napra. A Premiummal jön a Mai edzés, az Alvásbank, a helyeid, a további mentett útvonalak, a régebbi Flyoverek, a teljes előzmény és minden exportformátum."),
          ("Kell fiók? Hová kerülnek az adataim?",
@@ -526,7 +526,7 @@ K["de"]["faq"] = [
  ("Was macht Aera?",
   "Aera liest, was deine Uhr, dein Ring oder dein iPhone in Apple Health ablegt, und sagt dir, was diese Zahlen für dich bedeuten. Schlaf, Stress, Belastung und jeder Lauf werden an deinem Normalwert gemessen und in klaren Worten erklärt, und hinter jeder Zahl steckt ein kurzer Artikel, wie sie zustande kommt. Dazu plant Aera Routen mit Navigation und spielt Läufe in 3D ab."),
  ("Brauche ich eine Apple Watch?",
-  "Nein. Aera arbeitet mit Apple Health, also passt jede Uhr, jeder Ring und jede App, die Schlaf, Puls und Training dort ablegt: Apple Watch, Garmin, Oura, WHOOP und andere. Mit nur einem iPhone nutzt Aera Schritte und Trainings. Was nächtliche Herzdaten braucht, startet, sobald es welche gibt."),
+  "Nein. Aera arbeitet mit Apple Health, also passt jede Uhr, jeder Ring und jede App, die Schlaf, Puls und Training dort ablegt: Apple Watch, Garmin, Polar, COROS, Oura, WHOOP und andere. Mit nur einem iPhone nutzt Aera Schritte und Trainings. Was nächtliche Herzdaten braucht, startet, sobald es welche gibt."),
  ("Ist Aera kostenlos?",
   "Ja. Kostenlos sind Schlaf, Stress und Belastung im Vergleich zu deinem Normalwert, die Auswertung jedes Laufs, deine Bestzeiten, der Routenplaner mit Navigation, deine erste gespeicherte Route und Flyover für die letzten sieben Tage. Premium bringt die Einheit für heute, deine Schlafreserve, deine Orte, weitere gespeicherte Routen, ältere Flyover, die ganze Historie und jedes Exportformat."),
  ("Brauche ich ein Konto? Wohin gehen meine Daten?",
