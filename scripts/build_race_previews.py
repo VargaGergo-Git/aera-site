@@ -54,12 +54,17 @@ def stats(pts):
     cum, gain = [0.0], 0.0
     for i in range(1, len(pts)):
         cum.append(cum[-1] + hav(pts[i - 1], pts[i]))
-    # smooth elevation (5-point mean), count rises over 1 m steps to ignore noise
+    # smoothed elevation for the profile line
     el = [sum(p[2] for p in pts[max(0, i - 2):i + 3]) / len(pts[max(0, i - 2):i + 3]) for i in range(len(pts))]
-    for i in range(1, len(el)):
-        d = el[i] - el[i - 1]
-        if d > 0:
-            gain += d
+    # climb: count a rise only once it exceeds 5 m from the last reference, so GPS noise
+    # is not summed (Budai XL: 1158 m here vs 1114 m in the organizer's specs, 1302 m unfiltered)
+    ref = pts[0][2]
+    for p in pts:
+        if p[2] - ref >= 5:
+            gain += p[2] - ref
+            ref = p[2]
+        elif ref - p[2] >= 5:
+            ref = p[2]
     return cum, el, gain
 
 
