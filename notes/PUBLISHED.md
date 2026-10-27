@@ -66,3 +66,12 @@ Track what shipped, the chatbot question it answers, and the corpus source. INDE
 
 
 Remaining of 62: 3 unpublished (skipped product-thin: explore.basics, review.monthly, fitness.routeMemories) / fifty-nine live.
+
+## Hungarian translations (same corpus ids, not new notes)
+
+| Date | HU slug | EN slug | Corpus id | Source |
+|---|---|---|---|---|
+| 2026-10-27 | terhelestures | what-is-durability | fitness.durability | App's shipped HU strings (Localizable.xcstrings); untranslated strings omitted |
+| 2026-10-27 | szokasos | why-should-a-watch-compare-me-to-myself | guide.baselines | App's shipped HU strings (Localizable.xcstrings); untranslated strings omitted |
+| 2026-10-27 | regeneralodas | what-does-recovery-actually-measure | recovery.basics | App's shipped HU strings (Localizable.xcstrings); untranslated strings omitted |
+| 2026-10-27 | alvaspontszam | what-does-a-sleep-score-mean | sleep.score | App's shipped HU strings (Localizable.xcstrings); untranslated strings omitted |
