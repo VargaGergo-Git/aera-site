@@ -655,6 +655,10 @@ function pushNumber(n, out) {
   out.push(B64[v]);
 }
 
+// A point as the link keeps it (1e-5 degrees, about a metre). Placing points this way means a route
+// opened from the link is found from exactly the same points as the one on screen.
+export const linkPoint = ([lng, lat]) => [Math.round(lng * 1e5) / 1e5, Math.round(lat * 1e5) / 1e5];
+
 export function encodeLink({ sport, points, name, version }) {
   const out = [];
   let lat0 = 0, lng0 = 0;

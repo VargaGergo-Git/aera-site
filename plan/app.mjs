@@ -1,6 +1,6 @@
 // The route planner page: the map, the points, and sending the route to Aera.
 import * as maplibregl from './maplibre/maplibre-gl.mjs';
-import { Tiles, routeLeg, joinLegs, gpx, encodeLink, decodeLink, MAX_POINTS, MAX_METRES } from './planner.mjs';
+import { Tiles, routeLeg, joinLegs, gpx, encodeLink, decodeLink, linkPoint, MAX_POINTS, MAX_METRES } from './planner.mjs';
 import { qrSvg } from './qr.mjs';
 
 const $ = id => document.getElementById(id);
@@ -111,7 +111,7 @@ map.on('click', e => {
     say('zoom');
     return;
   }
-  addPoint([e.lngLat.lng, e.lngLat.lat]);
+  addPoint(linkPoint([e.lngLat.lng, e.lngLat.lat]));
 });
 
 function makeMarker(p) {
@@ -199,7 +199,7 @@ function moved(marker) {
     const i = markers.indexOf(marker);
     if (i < 0) return;
     const old = points[i], ll = marker.getLngLat();
-    points[i] = [ll.lng, ll.lat];
+    points[i] = linkPoint([ll.lng, ll.lat]);
     say('finding');
     try {
       const before = i > 0 ? await leg(points[i - 1], points[i], sport) : null;

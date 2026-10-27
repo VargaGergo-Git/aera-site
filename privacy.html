@@ -120,7 +120,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
   <h3 id="planner">The route planner</h3>
   <p>The route planner at aerahealth.app/plan works inside your browser. The points you place and the route it finds are never sent to Aera.</p>
   <p>The map and the paths come from OpenFreeMap, a free map service built on OpenStreetMap data. Your browser downloads map tiles straight from OpenFreeMap, which receives your IP address and the areas of the map you load, as any website you visit does.</p>
-  <p>When you send a route to your iPhone, the QR code holds a link with your points written after the # sign. Browsers keep that part of a link to themselves and never send it to a server. If you download a GPX file, your browser saves it on your computer.</p>
+  <p>When you send a route to your iPhone, the QR code holds a link with your points written after the # sign. Browsers don't send that part when they open the page, so it never reaches Aera or OpenFreeMap. If you download a GPX file, your browser saves it on your computer.</p>
   <p>If you press the locate button, your browser asks before sharing your location, and the planner uses it only to move the map. This page has no Cloudflare visit counter, because that counter reads the whole address, including the part after the #.</p>
 
   <h2>What Aera does not do</h2>
