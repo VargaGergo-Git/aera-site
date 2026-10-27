@@ -25,7 +25,8 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 from build_home import ROOT  # noqa: E402
 
-SKIP_DIRS = {".git", "scenes", "shots", "assets", "img", "scripts", "get", "hi", "media"}
+# plan/: the route planner is English only, and the language card would sit on its map.
+SKIP_DIRS = {".git", "scenes", "shots", "assets", "img", "scripts", "get", "hi", "media", "plan"}
 HOME = {"index.html", "hu.html", "de.html"}
 LANGS = (("en", "English", "/"), ("hu", "Magyar", "/hu.html"), ("de", "Deutsch", "/de.html"))
 LABEL = {"en": "Language", "hu": "Nyelv", "de": "Sprache"}

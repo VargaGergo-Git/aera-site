@@ -14,7 +14,8 @@ sys.path.insert(0, os.path.dirname(__file__))
 from build_home import CF_BEACON, ROOT  # noqa: E402
 
 HOME = {"index.html", "hu.html", "de.html"}
-SKIP_DIRS = {".git", "scenes", "shots", "assets", "img", "scripts"}
+# plan/: the route planner promises no visit counter (privacy.html#planner).
+SKIP_DIRS = {".git", "scenes", "shots", "assets", "img", "scripts", "plan"}
 TAG = re.compile(r'\n?<script defer src="https://static\.cloudflareinsights\.com/beacon\.min\.js"[^>]*></script>')
 
 
