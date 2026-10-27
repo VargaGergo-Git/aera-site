@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-itunes-app" content="app-id=6762456252">
+<title>Route planner: plan a run, walk, hike or ride on real paths, free</title>
+<meta name="description" content="Plan a route on the map that keeps to real roads and trails. Send it to your iPhone with a QR code, or download it as a GPX file. Free, no sign-up.">
+<meta property="og:title" content="Plan a route">
+<meta property="og:description" content="A route on real roads and trails, sent to your iPhone with a QR code. Free, no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aerahealth.app/assets/icon.png">
+<link rel="canonical" href="https://aerahealth.app/plan/">
+<link rel="icon" href="../assets/icon.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="maplibre/maplibre-gl.css">
+<!-- No Cloudflare visitor counter on this page: it reads the full address, and the route rides after the #. -->
+<style>
+:root { --route: #0f7a57; --panel-shadow: 0 18px 50px rgba(0, 0, 0, 0.18); }
+@media (prefers-color-scheme: dark) { :root { --panel-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); } }
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
+.topbar { position: relative; flex: none; border-bottom-color: var(--border); }
+.planner { position: relative; flex: 1 1 auto; min-height: 0; }
+#map { position: absolute; inset: 0; }
+
+.panel {
+  position: absolute; z-index: 2; top: 16px; left: 16px; width: 344px; max-height: calc(100% - 32px); overflow: auto;
+  padding: 22px; border-radius: var(--radius); background: var(--surface-solid); border: 1px solid var(--border);
+  box-shadow: var(--panel-shadow);
+}
+.panel .eyebrow { margin: 0 0 8px; }
+.panel h1 {
+  margin: 0 0 8px; font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
+  font-size: 30px; font-weight: 680; line-height: 1.1; letter-spacing: -0.02em;
+}
+.panel .lede { margin: 0 0 18px; color: var(--muted); font-size: 15.5px; line-height: 1.45; }
+.sports { display: flex; width: 100%; }
+.sports label { flex: 1; text-align: center; }
+.readout { margin: 18px 0 14px; }
+.readout .big {
+  margin: 0; font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
+  font-size: 40px; font-weight: 660; line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
+.readout .status { margin: 4px 0 0; min-height: 2.8em; color: var(--muted); font-size: 15px; line-height: 1.4; }
+.readout .status.error { color: var(--accent); }
+.field label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 14.5px; }
+.field input {
+  width: 100%; padding: 10px 12px; font: inherit; font-size: 16px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+}
+.field input:focus-visible { outline: 2px solid var(--accent-cool); outline-offset: 1px; }
+.actions { display: grid; gap: 10px; margin-top: 16px; }
+.actions .btn { width: 100%; font-family: inherit; text-align: center; cursor: pointer; }
+.actions .btn[disabled] { opacity: 0.4; cursor: default; transform: none; }
+.edits { display: flex; gap: 20px; margin-top: 6px; }
+.edits button {
+  min-height: 44px; padding: 0; background: none; border: 0; color: var(--accent-cool);
+  font: inherit; font-size: 15px; cursor: pointer;
+}
+.edits button[disabled] { color: var(--faint); cursor: default; }
+.fine { margin: 10px 0 0; color: var(--faint); font-size: 13px; line-height: 1.45; }
+.fine a { color: inherit; }
+
+.pin { width: 34px; height: 34px; display: grid; place-items: center; cursor: grab; touch-action: none; }
+.pin::after {
+  content: ""; width: 12px; height: 12px; border-radius: 50%; background: #fff;
+  border: 3px solid var(--route); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.pin.start::after, .pin.end::after { width: 14px; height: 14px; border-color: #fff; }
+.pin.start::after { background: var(--route); }
+.pin.end::after { background: #1d1d1f; }
+.pin:active { cursor: grabbing; }
+
+dialog#qr {
+  width: min(380px, calc(100vw - 32px)); padding: 30px 26px 24px; border: 0; border-radius: 22px;
+  background: var(--surface-solid); color: var(--text); text-align: center; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+dialog#qr::backdrop { background: rgba(0, 0, 0, 0.45); }
+#qr h2 { margin: 0 0 8px; font-size: 22px; line-height: 1.2; }
+#qr p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.45; }
+#qr .code { width: 236px; height: 236px; margin: 20px auto 18px; }
+#qr .code svg { display: block; width: 100%; height: 100%; border-radius: 12px; }
+#qr .fine { margin-top: 10px; font-size: 13px; color: var(--faint); }
+#qr .close {
+  position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; background: none;
+  color: var(--muted); font-size: 26px; line-height: 1; cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .topbar .topnav { gap: 16px; }
+  .planner { display: flex; flex-direction: column; }
+  #map { position: relative; flex: 1 1 auto; min-height: 0; }
+  .panel {
+    position: relative; top: auto; left: auto; width: auto; max-height: none; flex: none;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); border-width: 1px 0 0; border-radius: 0; box-shadow: none;
+  }
+  .intro, .field, .fine.wide { display: none; }
+  .readout { display: flex; align-items: baseline; gap: 12px; margin: 10px 0 8px; }
+  .readout .big { flex: none; font-size: 28px; }
+  .readout .status { min-height: 0; font-size: 14px; }
+  .actions { grid-template-columns: 1fr 1fr; margin-top: 4px; }
+  .actions .btn { padding: 12px 10px; font-size: 15.5px; }
+  .edits { justify-content: center; margin-top: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap-wide">
+  <a class="mark" href="../index.html">Aera</a>
+  <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
+</div></div>
+<main class="planner">
+  <div id="map" aria-label="Map. Click to add a point to your route."></div>
+  <section class="panel" aria-labelledby="title">
+    <div class="intro">
+      <p class="eyebrow">Free tool</p>
+      <h1 id="title">Plan a route</h1>
+      <p class="lede">Click the map to add points. The route keeps to real roads and trails, then goes to Aera on your iPhone.</p>
+    </div>
+    <div class="seg sports" role="radiogroup" aria-label="Activity">
+      <input type="radio" name="sport" id="s-run" value="run" checked><label for="s-run">Run</label>
+      <input type="radio" name="sport" id="s-walk" value="walk"><label for="s-walk">Walk</label>
+      <input type="radio" name="sport" id="s-hike" value="hike"><label for="s-hike">Hike</label>
+      <input type="radio" name="sport" id="s-ride" value="ride"><label for="s-ride">Ride</label>
+    </div>
+    <div class="readout">
+      <p class="big" id="dist">0.00 km</p>
+      <p class="status" id="status" aria-live="polite">Click the map to place your start.</p>
+    </div>
+    <div class="field">
+      <label for="name">Route name</label>
+      <input id="name" type="text" maxlength="80" placeholder="Morning loop" autocomplete="off">
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" id="send" type="button" disabled>Send to iPhone</button>
+      <button class="btn btn-ghost" id="download" type="button" disabled>Download GPX file</button>
+    </div>
+    <div class="edits">
+      <button type="button" id="undo" disabled>Undo last point</button>
+      <button type="button" id="clear" disabled>Clear route</button>
+    </div>
+    <p class="fine wide">Your route stays in this browser and is never sent to Aera. <a href="../privacy.html#planner">How the planner handles your data</a></p>
+  </section>
+</main>
+<dialog id="qr" aria-labelledby="qr-title">
+  <form method="dialog"><button class="close" aria-label="Close">&times;</button></form>
+  <h2 id="qr-title">Open it on your iPhone</h2>
+  <p>Point your iPhone camera at the code. The route opens on the phone, ready for Aera.</p>
+  <div class="code" id="qr-code"></div>
+  <p class="fine">Your points travel in the link itself, after the #. Browsers never send that part to a server.</p>
+  <p class="fine">No Aera yet? <a href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=tool-plan&amp;mt=8">Get it on the App Store</a></p>
+</dialog>
+<noscript><p class="wrap">The planner needs JavaScript to draw the map.</p></noscript>
+<script type="module" src="app.mjs"></script>
+</body>
+</html>
