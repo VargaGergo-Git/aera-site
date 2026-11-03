@@ -199,7 +199,7 @@ COPY = {
         "foot_tag": "Az éjszakád és a mai futásod, a saját mércéd szerint.",
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Továbbiak",
         "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
-        "foot_links_legal": [("privacy.html", "Adatvédelem"), ("terms.html", "Felhasználási feltételek"), ("terms.html#eula", "EULA")],
+        "foot_links_legal": [("adatvedelem.html", "Adatvédelem"), ("felhasznalasi-feltetelek.html", "Felhasználási feltételek"), ("felhasznalasi-feltetelek.html#eula", "EULA")],
         "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek (angolul)"), ("guides/index.html#hu", "Útmutatók")],
         "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. Megnézi, hogyan aludtál a saját megszokott éjszakáidhoz képest, és megmondja, mennyire hajthatsz ma. Ingyenes.",
         "foot_base": ("&#169; 2026 Aera", "Nem orvostechnikai eszköz."),

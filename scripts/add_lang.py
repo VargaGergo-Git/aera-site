@@ -31,6 +31,7 @@ HOME = {"index.html", "hu.html", "de.html"}
 LANGS = (("en", "English", "/"), ("hu", "Magyar", "/hu.html"), ("de", "Deutsch", "/de.html"))
 LABEL = {"en": "Language", "hu": "Nyelv", "de": "Sprache"}
 PRIVACY = {"en": "Privacy", "hu": "Adatvédelem", "de": "Datenschutz"}
+PRIVACY_HREF = {"en": "/privacy.html", "hu": "/adatvedelem.html", "de": "/privacy.html"}
 MARK = re.compile(r"<!--lsw-->.*?<!--/lsw-->\n?", re.S)
 ALT = re.compile(r'<link rel="alternate" hreflang="(en|hu|de)" href="https://aerahealth\.app([^"]*)">')
 
@@ -86,7 +87,7 @@ footer:not(:has(.foot)) a:not(.lsw-foot a)::after{content:"";position:absolute;l
 @media (hover:hover){.lsw-hint button:hover{opacity:1}}
 @media (prefers-color-scheme:dark){.lsw-hint{background:#2c2c2e;color:#f5f5f7;box-shadow:0 14px 36px rgba(0,0,0,.55),0 0 0 .5px rgba(255,255,255,.12)}.lsw-hint a{background:#f5f5f7;color:#000}}
 @media (prefers-reduced-motion:reduce){.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0;transition:opacity .2s ease}.lsw-hint a:active,.lsw-hint button:active{transform:none}}
-@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"]{display:none}}
+@media (max-width:479px){.topnav .lsw>summary{padding:0;margin:0 -10px 0 -6px}.topnav .lsw>summary span{display:none}.topnav:has(.lsw){gap:12px}.topnav:has(.lsw)>a[href*="privacy"],.topnav:has(.lsw)>a[href*="adatvedelem"]{display:none}}
 @media (max-width:359px){.topnav:has(.lsw){gap:9px}}
 </style><!--/lsw-->
 """
@@ -156,8 +157,8 @@ def process(path, home):
         new = new[:j] + btn + new[j:]
         k = new.rfind("</footer>")
         if k > 0:
-            new = new[:k] + '<!--lsw--><div class="wrap lsw-foot">%s<a href="/privacy.html">%s</a></div><!--/lsw-->\n' % (
-                links(cur, tg), PRIVACY[cur]) + new[k:]
+            new = new[:k] + '<!--lsw--><div class="wrap lsw-foot">%s<a href="%s">%s</a></div><!--/lsw-->\n' % (
+                links(cur, tg), PRIVACY_HREF[cur], PRIVACY[cur]) + new[k:]
     new = new.replace("</head>", CSS + "</head>", 1)
     b = new.rfind("</body>")
     new = new[:b] + JS + new[b:]

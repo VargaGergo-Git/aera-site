@@ -144,7 +144,7 @@ K = {
      'priv_p': 'Nincs fiók, és nincs szerver, ami számolna. Az Aera az iPhone-odon olvassa az Apple Health-et, '
                'és ott számol ki minden pontszámot. Az analitika ki van kapcsolva, amíg be nem kapcsolod, és '
                'egészségadatot soha nem tartalmaz.',
-     'priv_link': ('privacy.html', 'Az adatvédelmi tájékoztató'),
+     'priv_link': ('adatvedelem.html', 'Az adatvédelmi tájékoztató'),
      'lock_alt': '',
      'plans_h2': 'Ingyen kezdheted.',
      'free_h': 'Ingyenes',
@@ -440,7 +440,7 @@ K["hu"].update({
  "age_p": "Egy becslés hat mutatóból, többek között a VO&#8322;maxból, a nyugalmi pulzusból, a HRV-ből és abból, mennyire rendszeresen alszol. <b>Mindegyiket külön is látod</b>, így kiderül, melyik áll jól, és melyiken van még mit dolgozni.",
  "age_note": "Minden mutató ingyenes. Magát a Testkort a Premiumban látod.",
  "priv_p": "Nincs fiók, és nincs szerver, ami helyetted számolna. Az Aera az iPhone-odon olvassa az Apple Health-et, és ott is számol. Az analitika alapból ki van kapcsolva, és ha bekapcsolod, akkor sem kerül bele egészségadat.",
- "priv_link": ("privacy.html", "Adatvédelmi tájékoztató"),
+ "priv_link": ("adatvedelem.html", "Adatvédelmi tájékoztató"),
  "b_work": ("Minden számnál látod, honnan jön.",
             "Koppints rá bármelyikre: megmutatja, hogyan számolta, milyen kutatásra épül, és meddig bízhatsz benne."),
  "work_link": ("guides/jo-alvas-pontszam.html", "Egy példa: az alváspontszám"),
