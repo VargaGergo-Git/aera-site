@@ -119,7 +119,7 @@ def build(code, H):
     plain = html.unescape
 
     graph = [
-        {"@type": "MobileApplication", "@id": BASE + "#app", "name": "Aera", "alternateName": plain(k["og_title"]),
+        {"@type": "MobileApplication", "@id": BASE + "#app", "name": "Aera", "alternateName": k.get("alt_names", plain(k["og_title"])),
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS",
          "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
          "url": canonical, "downloadUrl": H["store"], "installUrl": H["store"], "description": plain(k["desc"]),
