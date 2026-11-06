@@ -92,7 +92,7 @@ K = {
              ('notes/index.html', 'Jegyzetek'),
              ('support.html', 'Támogatás')],
      'get': 'Aera letöltése',
-     'h1': 'Az órád méri.<br>Az Aera elmagyarázza.',
+     'h1': 'Az órád méri. <br>Az Aera elmagyarázza.',
      'sub': 'Az Aera elmondja, mit jelentenek neked az órád számai, és megmutatja, honnan tudja.',
      'cta': 'Letöltés az App Store-ból',
      'note': 'Ingyenes &#183; Fiók nélkül &#183; Bármilyen órával vagy gyűrűvel, amelyik az Apple Health-be ír',
@@ -193,7 +193,7 @@ K = {
      'maker_p': 'Az Aerát Varga Gerg&#337; készíti, egyedül, cég nélkül. Ha az appból vagy erről az oldalról '
                 'írsz, az üzeneted egyenesen hozzá jut.',
      'maker_link': ('mailto:hello@aerahealth.app', 'Írj neki'),
-     'close_h2': 'Az órád méri.<br>Az Aera elmagyarázza.',
+     'close_h2': 'Az órád méri. <br>Az Aera elmagyarázza.',
      'close_note': 'Ingyenes az App Store-ban. Fiók nélkül.',
      'foot_tag': 'Az órád méri. Az Aera elmagyarázza.'},
     "de": {
@@ -203,7 +203,7 @@ K = {
         "skip": "Zum Inhalt springen",
         "nav": [("plan/", "Routenplaner"), ("guides/index.html", "Ratgeber"), ("notes/index.html", "Notizen"), ("support.html", "Support")],
         "get": "Aera laden",
-        "h1": "Deine Uhr misst.<br>Aera erkl&#228;rt.",
+        "h1": "Deine Uhr misst. <br>Aera erkl&#228;rt.",
         "sub": "Aera sagt dir, was die Zahlen deiner Uhr f&#252;r dich bedeuten, und zeigt, woher es das wei&#223;.",
         "cta": "Laden im App Store",
         "note": "Kostenlos &#183; Kein Konto &#183; Mit jeder Uhr und jedem Ring, die in Apple Health schreiben",
@@ -255,7 +255,7 @@ K = {
         "maker_h2": "Von einem Menschen gemacht.",
         "maker_p": "Aera wird von Gerg&#337; Varga gebaut, allein und ohne Firma dahinter. Eine Nachricht aus der App oder von dieser Seite erreicht ihn direkt.",
         "maker_link": ("mailto:hello@aerahealth.app", "Schreib ihm"),
-        "close_h2": "Deine Uhr misst.<br>Aera erkl&#228;rt.",
+        "close_h2": "Deine Uhr misst. <br>Aera erkl&#228;rt.",
         "close_note": "Kostenlos im App Store. Kein Konto.",
         "foot_tag": "Deine Uhr misst. Aera erkl&#228;rt.",
     },
@@ -540,3 +540,56 @@ K["de"]["faq"] = [
   "Vollständig auf Englisch, Ungarisch, Deutsch, Spanisch und Französisch, teilweise auf Italienisch, Japanisch, Portugiesisch und traditionellem Chinesisch."),
 ]
 K["de"]["work_link"] = ("guides/guter-schlafscore.html", "Ein Beispiel: der Schlafwert")
+
+# ---- 3.4 launch (24 Nov 2026) -------------------------------------------------
+# Slogan from the launch page; free and Premium lines match PremiumWindow in the app
+# (scores and every export: 30 days free; the 3D replay: 7 days free; 5 saved routes).
+# No "Flyover", no coach session, no races or Events (off in 3.4).
+_L34 = {
+    "en": {
+        "title": "Aera fitness app: sleep, HRV and runs against your usual",
+        "alt_names": ["Aera fitness app", "Aera health app", "Replay your run. Understand your body."],
+        "og_title": "Replay your run. Understand your body.",
+        "h1": "Replay your run. <br>Understand your body.",
+        "close_h2": "Replay your run. <br>Understand your body.",
+        "foot_tag": "Replay your run. Understand your body.",
+        "places_h2": "Replay any run in 3D.",
+        "free": ["Your scores every day, with their last 30 days", "Every run of the past week replayed in 3D",
+                 "Route planner with turn by turn", "Five saved routes", "Every number explained, with its sources"],
+        "prem": ["Your whole history and Trends past 30 days", "Every run replayed in 3D, however old",
+                 "More saved routes", "Every export, at any length"],
+        "faq_free": ("Is Aera free?", "Yes. Your scores every day with their last 30 days, the 3D replay of every run from the past week, the route planner with turn by turn, five saved routes, the Field Guide and the last 30 days of every export are free. Premium keeps your whole history, every replay however old, more saved routes and the longer reports. The yearly plan starts with a free week."),
+    },
+    "hu": {
+        "title": "Aera: nézd vissza a futásod, értsd meg a tested",
+        "og_title": "Nézd vissza a futásod. Értsd meg a tested.",
+        "h1": "Nézd vissza a futásod. <br>Értsd meg a tested.",
+        "close_h2": "Nézd vissza a futásod. <br>Értsd meg a tested.",
+        "foot_tag": "Nézd vissza a futásod. Értsd meg a tested.",
+        "places_h2": "Nézd vissza bármelyik futásod 3D-ben.",
+        "free": ["A pontszámaid minden nap, az elmúlt 30 nappal", "Az elmúlt hét minden futása 3D-ben",
+                 "Útvonaltervező kanyarról kanyarra navigációval", "Öt mentett útvonal", "Minden szám elmagyarázva, forrásokkal"],
+        "prem": ["A teljes előzményed és a trendek 30 napon túl", "Minden futásod 3D-ben, akármilyen régi",
+                 "További mentett útvonalak", "Minden export, bármilyen hosszan"],
+        "faq_free": ("Ingyenes az Aera?", "Igen. Ingyenesek a pontszámaid minden nap az elmúlt 30 nappal, az elmúlt hét minden futása 3D-ben, az útvonaltervező kanyarról kanyarra navigációval, öt mentett útvonal, a Field Guide és minden export az elmúlt 30 napra. A Premium megőrzi a teljes előzményedet, minden futásodat 3D-ben, akármilyen régi, több mentett útvonalat és a hosszabb jelentéseket. Az éves előfizetés egy ingyenes héttel indul."),
+    },
+    "de": {
+        "title": "Aera: erlebe deinen Lauf noch einmal, versteh deinen Körper",
+        "og_title": "Erlebe deinen Lauf noch einmal. Versteh deinen Körper.",
+        "h1": "Erlebe deinen Lauf noch einmal. <br>Versteh deinen Körper.",
+        "close_h2": "Erlebe deinen Lauf noch einmal. <br>Versteh deinen Körper.",
+        "foot_tag": "Erlebe deinen Lauf noch einmal. Versteh deinen Körper.",
+        "places_h2": "Jeden Lauf noch einmal in 3D.",
+        "free": ["Deine Werte jeden Tag, mit ihren letzten 30 Tagen", "Jeder Lauf der letzten Woche in 3D",
+                 "Routenplaner mit Abbiegehinweisen", "Fünf gespeicherte Routen", "Jede Zahl erklärt, mit Quellen"],
+        "prem": ["Dein ganzer Verlauf und Trends über 30 Tage hinaus", "Jeder Lauf in 3D, egal wie alt",
+                 "Weitere gespeicherte Routen", "Jeder Export, in jeder Länge"],
+        "faq_free": ("Ist Aera kostenlos?", "Ja. Kostenlos sind deine Werte jeden Tag mit ihren letzten 30 Tagen, jeder Lauf der letzten Woche in 3D, der Routenplaner mit Abbiegehinweisen, fünf gespeicherte Routen, der Field Guide und die letzten 30 Tage jedes Exports. Premium behält deinen ganzen Verlauf, jeden Lauf in 3D, egal wie alt, weitere gespeicherte Routen und die längeren Berichte. Das Jahresabo beginnt mit einer kostenlosen Woche."),
+    },
+}
+_L34["hu"]["alt_names"] = _L34["hu"]["og_title"]
+_L34["de"]["alt_names"] = _L34["de"]["og_title"]
+for _lang, _v in _L34.items():
+    _q, _a = _v.pop("faq_free")
+    K[_lang]["faq"] = [(q, _a) if q == _q else (q, a) for q, a in K[_lang]["faq"]]
+    K[_lang].update(_v)
