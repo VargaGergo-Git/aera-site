@@ -589,6 +589,12 @@ _L34 = {
 }
 _L34["hu"]["alt_names"] = _L34["hu"]["og_title"]
 _L34["de"]["alt_names"] = _L34["de"]["og_title"]
+_L34["en"]["store_h2"] = "A look inside."
+_L34["hu"]["store_h2"] = "Egy pillantás az appba."
+_L34["de"]["store_h2"] = "Ein Blick in die App."
+_L34["en"]["store_alts"] = ["Replay your run in 3D.", "Body age, not your birthday.", "Every run, next to your usual.", "Last night, against your need.", "Every number shows its work.", "Your watch. Your iPhone. No account.", "Your cuff's readings, ready for your doctor.", "New loops from your front door.", "Every turn, on your wrist.", "Share the replay as a video."]
+_L34["hu"]["store_alts"] = ["Nézd vissza a futásod 3D-ben.", "Testkor, nem a naptár szerint.", "Minden futás, a szokásosodhoz mérve.", "Az éjszakád, az igényedhez mérve.", "Minden szám megmutatja, honnan jön.", "Az órád. Az iPhone-od. Fiók nélkül.", "A mérőd adatai, az orvosodnak.", "Új körök, a házad elől.", "Minden kanyar a csuklódon.", "Oszd meg a futásod videóként."]
+_L34["de"]["store_alts"] = ["Dein Lauf, noch einmal in 3D.", "Körperalter, nicht dein Geburtstag.", "Jeder Lauf, an deinem Normal gemessen.", "Letzte Nacht, gemessen an deinem Bedarf.", "Jede Zahl zeigt ihren Rechenweg.", "Deine Uhr. Dein iPhone. Kein Konto.", "Deine Messwerte, bereit für deinen Arzt.", "Neue Runden ab deiner Haustür.", "Jede Abbiegung, am Handgelenk.", "Teile den Lauf als Video."]
 for _lang, _v in _L34.items():
     _q, _a = _v.pop("faq_free")
     K[_lang]["faq"] = [(q, _a) if q == _q else (q, a) for q, a in K[_lang]["faq"]]
