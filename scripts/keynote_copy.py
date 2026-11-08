@@ -132,7 +132,7 @@ K = {
                   'Az Aera Apple Watch-on futás közben: idő, táv, tempó és pulzus a 3-as zónában'),
      'route_h2': 'Tervezd meg. Aztán csak fuss.',
      'route_p': 'Rajzolj olyan útvonalat, ami a valódi utakon marad, vagy nyiss meg egy GPX-fájlt. <b>Minden '
-                'kanyart még előtte jelez</b>, a telefonodon, a csuklódon vagy hangosan felolvasva.',
+                'kanyart még előtte jelez</b>, a telefonodon vagy a csuklódon.',
      'route_alts': ('Útvonal a kaputól a Green Lake körül, végig a valódi utakon',
                     'Kanyarról kanyarra Apple Watch-on: 202 méter, elágazás, tarts jobbra'),
      'wear_h2': 'Hordd, amit szeretsz.',
@@ -335,7 +335,7 @@ HU2 = {
    ('zones', 'Zónák', 'Futáskártya az egyes pulzuszónákban töltött idővel, a legtöbb a 2-es zónában')],
  'share_prev': 'Előző',
  'share_next': 'Következő',
- 'route_p': 'Rajzolj olyan útvonalat, ami a valódi utakon marad, nyiss meg egy GPX-fájlt, vagy kérj <b>egy kört onnan, ahol állsz</b>. Minden kanyart még előtte jelez, a telefonodon, a csuklódon vagy hangosan felolvasva.',
+ 'route_p': 'Rajzolj olyan útvonalat, ami a valódi utakon marad, nyiss meg egy GPX-fájlt, vagy kérj <b>egy kört onnan, ahol állsz</b>. Minden kanyart még előtte jelez, a telefonodon vagy a csuklódon.',
  'route_more_alts': ('Körök innen: az egyetlen 5 km-es kör, amit az itteni utak kiadnak',
                      'Kör a Green Lake körül a térképen'),
  'sleep_art_alt': 'Az Aera alváspontszáma mögötti cikk: a pontszám nagy részét két dolog adja, és egyik sem a szíved',
