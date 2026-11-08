@@ -134,7 +134,7 @@ COPY = {
         "foot_app": "App", "foot_legal": "Legal", "foot_more": "More",
         "foot_links_app": [("store", "Download"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Press")],
         "foot_links_legal": [("privacy.html", "Privacy Policy"), ("terms.html", "Terms of Use"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?"), ("guides/index.html", "Guides")],
+        "foot_links_more": [("notes/index.html", "Notes"), ("tools/how-far.html", "How far will I run?"), ("guides/index.html", "Guides"), ("whats-new.html", "What&#8217;s new")],
         "meta_desc": "Sleep and running tracker for iPhone and Apple Watch. Aera compares last night with your own usual and says how hard to go today. Free, no account.",
         "foot_base": ("&#169; 2026 Aera", "Not a medical device."),
     },
@@ -200,7 +200,7 @@ COPY = {
         "foot_app": "App", "foot_legal": "Jogi információk", "foot_more": "Továbbiak",
         "foot_links_app": [("store", "Letöltés"), ("support.html", "Támogatás"), ("flyover.html", "Flyover"), ("press/", "Sajtó")],
         "foot_links_legal": [("adatvedelem.html", "Adatvédelem"), ("felhasznalasi-feltetelek.html", "Felhasználási feltételek"), ("felhasznalasi-feltetelek.html#eula", "EULA")],
-        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek (angolul)"), ("guides/index.html#hu", "Útmutatók")],
+        "foot_links_more": [("tools/milyen-messze.html", "Milyen messzire futok?"), ("notes/index.html", "Jegyzetek (angolul)"), ("guides/index.html#hu", "Útmutatók"), ("ujdonsagok.html", "Újdonságok")],
         "meta_desc": "Alvás- és futáskövető iPhone-ra és Apple Watch-ra, magyarul. Megnézi, hogyan aludtál a saját megszokott éjszakáidhoz képest, és megmondja, mennyire hajthatsz ma. Ingyenes.",
         "foot_base": ("&#169; 2026 Aera", "Nem orvostechnikai eszköz."),
     },
@@ -308,7 +308,7 @@ COPY = {
         "foot_app": "App", "foot_legal": "Rechtliches", "foot_more": "Mehr",
         "foot_links_app": [("store", "Laden"), ("support.html", "Support"), ("flyover.html", "Flyover"), ("press/", "Presse")],
         "foot_links_legal": [("privacy.html", "Datenschutz"), ("terms.html", "Nutzungsbedingungen"), ("terms.html#eula", "EULA")],
-        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen"), ("guides/index.html#de", "Ratgeber")],
+        "foot_links_more": [("tools/wie-weit.html", "Wie weit laufe ich?"), ("notes/index.html", "Notizen"), ("guides/index.html#de", "Ratgeber"), ("neuigkeiten.html", "Neu in Aera")],
         "meta_desc": "Schlaf- und Lauftracker für iPhone und Apple Watch. Aera vergleicht die Nacht mit deinem Normalwert und sagt, wie hart du heute läufst. Kostenlos, ohne Konto.",
         "foot_base": ("&#169; 2026 Aera", "Kein Medizinprodukt."),
     },
@@ -848,7 +848,9 @@ def plan_items(items):
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer",
               # Repeats at the foot of each main home section (build_keynote sec_cta).
               "sec-normal", "sec-today", "sec-share", "sec-sleep", "sec-route", "sec-age",
-              "sec-plans", "sec-faq")
+              "sec-plans", "sec-faq",
+              # The 3.4 home (build_home3.py): the link above the store strip.
+              "shelf")
 
 
 def campaign(url, ct):
@@ -909,25 +911,8 @@ def write_get_pages():
 
 
 if __name__ == "__main__":
-    bundle_scenes()
-    import build_keynote
-    for code in COPY:
-        c = COPY[code]
-        if code in build_keynote.K:
-            # The keynote home (scripts/build_keynote.py). A language without its
-            # words in keynote_copy.py keeps the previous page until they arrive.
-            out = build_keynote.build(code, {
-                "BASE": BASE, "APPLE": APPLE, "CF_BEACON": CF_BEACON, "OG_LOCALE": OG_LOCALE,
-                "LANG_NAMES": LANG_NAMES, "asset": asset, "file": c["file"], "store": c["store"],
-                "store_en": COPY["en"]["store"],
-                "foot": {"app": c["foot_app"], "links_app": c["foot_links_app"], "legal": c["foot_legal"],
-                         "links_legal": c["foot_links_legal"], "more": c["foot_more"],
-                         "links_more": c["foot_links_more"], "base": c["foot_base"]}})
-        else:
-            out = localize_media(build(code), code)
-        if "—" in out:
-            raise SystemExit("em dash in %s" % code)
-        with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:
-            f.write(out)
-        print(COPY[code]["file"], len(out) // 1024, "KB")
+    # Since the 3.4 site (8 Nov 2026) the home pages come from build_home3.py;
+    # this file keeps the shared settings and writes the /get/ store links.
+    import build_home3
+    build_home3.main()
     write_get_pages()

@@ -63,6 +63,22 @@ def localize(out, code):
     return re.sub(r"\b((?:img|media)/k)/([\w.-]+\.(?:webp|jpg|png|mp4))", swap, out)
 
 
+def store_strip(code, k):
+    """The ten 3.4 App Store pictures, in this page's language only."""
+    alts = k.get("store_alts") or []
+    figs = "".join(
+        '<li><img src="img/store/%s/%02d.webp" alt="%s" width="540" height="1173" loading="lazy" decoding="async"></li>'
+        % (code, i + 1, alts[i] if i < len(alts) else "") for i in range(10))
+    return ('<section class="store-strip"><style>'
+            '.store-strip{padding:8px 0 40px}.store-strip h2{text-align:center;margin:0 16px 20px}'
+            '.store-strip ul{list-style:none;margin:0;padding:0 16px 8px;display:flex;gap:12px;overflow-x:auto;'
+            'scroll-snap-type:x mandatory;scrollbar-width:none}.store-strip ul::-webkit-scrollbar{display:none}'
+            '.store-strip li{flex:none;width:min(46vw,220px);scroll-snap-align:center}'
+            '.store-strip img{display:block;width:100%%;height:auto;border-radius:18px}'
+            '.store-strip li:first-child{margin-left:auto}.store-strip li:last-child{margin-right:auto}</style>'
+            '<h2 class="reveal">%s</h2><ul>%s</ul></section>') % (k["store_h2"], figs)
+
+
 def build(code, H):
     """H carries what the page shares with build_home: BASE, APPLE, CF_BEACON,
     OG_LOCALE, LANG_NAMES, asset(), the store URL and footer links."""
@@ -119,7 +135,7 @@ def build(code, H):
     plain = html.unescape
 
     graph = [
-        {"@type": "MobileApplication", "@id": BASE + "#app", "name": "Aera", "alternateName": plain(k["og_title"]),
+        {"@type": "MobileApplication", "@id": BASE + "#app", "name": "Aera", "alternateName": k.get("alt_names", plain(k["og_title"])),
          "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS",
          "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"],
          "url": canonical, "downloadUrl": H["store"], "installUrl": H["store"], "description": plain(k["desc"]),
@@ -380,6 +396,8 @@ def build(code, H):
   </div>
   <div class="hero-shot rise" style="--d:.24s"><div class="hero-zoom">{img('hero-pair', k['hero_alt'], '(max-width: 759px) 100vw, 820px', eager=True)}</div></div>
 </section>
+
+{store_strip(code, k)}
 
 <section class="works">
   <div class="wide reveal">
