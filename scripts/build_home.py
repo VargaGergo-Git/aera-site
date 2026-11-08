@@ -848,7 +848,9 @@ def plan_items(items):
 GET_PLACES = ("nav", "hero", "engine", "planner", "flyover", "closing", "footer",
               # Repeats at the foot of each main home section (build_keynote sec_cta).
               "sec-normal", "sec-today", "sec-share", "sec-sleep", "sec-route", "sec-age",
-              "sec-plans", "sec-faq")
+              "sec-plans", "sec-faq",
+              # The 3.4 home (build_home3.py): the link above the store strip.
+              "shelf")
 
 
 def campaign(url, ct):
@@ -909,25 +911,8 @@ def write_get_pages():
 
 
 if __name__ == "__main__":
-    bundle_scenes()
-    import build_keynote
-    for code in COPY:
-        c = COPY[code]
-        if code in build_keynote.K:
-            # The keynote home (scripts/build_keynote.py). A language without its
-            # words in keynote_copy.py keeps the previous page until they arrive.
-            out = build_keynote.build(code, {
-                "BASE": BASE, "APPLE": APPLE, "CF_BEACON": CF_BEACON, "OG_LOCALE": OG_LOCALE,
-                "LANG_NAMES": LANG_NAMES, "asset": asset, "file": c["file"], "store": c["store"],
-                "store_en": COPY["en"]["store"],
-                "foot": {"app": c["foot_app"], "links_app": c["foot_links_app"], "legal": c["foot_legal"],
-                         "links_legal": c["foot_links_legal"], "more": c["foot_more"],
-                         "links_more": c["foot_links_more"], "base": c["foot_base"]}})
-        else:
-            out = localize_media(build(code), code)
-        if "—" in out:
-            raise SystemExit("em dash in %s" % code)
-        with open(os.path.join(ROOT, COPY[code]["file"]), "w", encoding="utf-8") as f:
-            f.write(out)
-        print(COPY[code]["file"], len(out) // 1024, "KB")
+    # Since the 3.4 site (8 Nov 2026) the home pages come from build_home3.py;
+    # this file keeps the shared settings and writes the /get/ store links.
+    import build_home3
+    build_home3.main()
     write_get_pages()
