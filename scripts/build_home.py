@@ -239,7 +239,7 @@ COPY = {
              "Aera schreibt dir die heutige Einheit aus der Woche, die du wirklich hattest: zum Beispiel 35 Minuten locker, und an einem Ruhetag gar nichts.",
              "Premium", "Die heutige Einheit: bereit, nur die Frische bremst noch"),
             ("planner", "Vor die Tür", "var(--orange)", "Zeichne die Route ab deiner Haustür",
-             "Tipp auf die Karte, und die Linie folgt echten Wegen, die Distanz zählt beim Zeichnen mit. Folge ihr mit Abbiegehinweisen auf dem iPhone oder der Apple Watch, auf Wunsch gesprochen, auch ohne Empfang.",
+             "Tipp auf die Karte, und die Linie folgt echten Wegen, die Distanz zählt beim Zeichnen mit. Folge ihr mit Abbiegehinweisen auf dem iPhone oder der Apple Watch, auch ohne Empfang.",
              None, "Der Routenplaner über einer Satellitenkarte"),
         ],
         "guide_kicker": "Der Field Guide",
