@@ -29,9 +29,19 @@ python3 scripts/add_campaign.py      # tags the App Store links per page (run af
 - `loop_paths.json`: the runner's path on the route picture, per language.
 - `head-<lang>.html`: title, description, social cards, canonical, hreflang, schema and the /#privacy redirect.
 - `faq-<lang>.html`: the questions; the FAQ schema in the head repeats them, so change both together.
-- `frames_web.js`: renders the store strip's layers (`h/field.webp`, `h/store/{,hu/,de/}{t,d}NN.webp`). Run it in the project's store-picture folder with `LAYER=field|text|dev`.
+- `lines.py` also holds `STORE`: the alt text of the ten store pictures, in each store's own order. The build fills the carousel from it (`h/store/{,hu/,de/}lNN.webp`, the light store set at 600 x 1304).
+- `frames_web.js` and the `h/store/{t,d}NN.webp` and `h/field.webp` layers belong to the old night-green strip. The page no longer uses them.
 
-Pictures live in `h/`. Motion is time-based, plays in view and stops under reduced motion; nothing is tied to scrolling.
+Pictures live in `h/`.
+
+## Motion
+
+The page plays like the film. Everything is time-based, plays once when it comes into view and is off under reduced motion. Nothing is pinned and nothing is tied to the scroll position.
+
+- The kit is in `chrome.py`, so every page has it: `<head>` sets `html.mo` when motion is allowed; `.kin` headlines arrive word by word, `.rv` blocks rise in (`--d` delays one). If the page script fails, `mo` comes off after 3.5 s and everything shows. Inner pages get it on their page head and closing band without any markup. Pages cross-fade into each other, and the light and dark switch opens from the button.
+- The hero phone plays `h/film.mp4`: the app's own replay of the Budapest run with the English words blurred out of the footage. The title and the four figures are drawn over it in the page's language from a table read off the recording (in `page-en.html`, the arrays `D`, `S`, `P`, `H`). `h/film.webp` is the last frame: the still before the film loads, under Save-Data and under reduced motion.
+- Figures marked `.ct` count up. Body age starts at the calendar age and each ledger row takes its part off. Ledgers marked `.led.sq` build row by row.
+- "A look inside" is a carousel of the store pictures (`.flow`). Without script it is a row you swipe.
 
 ## Words
 
