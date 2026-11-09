@@ -73,16 +73,16 @@ T = {
 "hu": dict(
     title="Garmin-futás 3D visszajátszása iPhone-on: exportáld a fájlt, nyisd meg az Aerában",
     og="Garmin-futás visszajátszása 3D-ben",
-    desc="A Garmin Connect útvonal nélkül küldi a futásokat az Apple Health-be. Exportáld a futás fájlját a Garminból, Polarból, COROS-ból vagy Suuntóból, nyisd meg az Aerában, és játszd vissza 3D-ben.",
+    desc="A Garmin Connect útvonal nélkül küldi a futásokat az Apple Healthbe. Exportáld a futás fájlját a Garminból, Polarból, COROS-ból vagy Suuntóból, nyisd meg az Aerában, és játszd vissza 3D-ben.",
     kind="A gyakorlatban · Eszközök",
     h1="Hogyan játszhatom vissza 3D-ben a Garminnal futott futásomat?",
     alt="Egy futás 3D visszajátszása a valódi terep fölött az Aerában, távval, tempóval és pulzussal",
     cap="3D visszajátszás az Aerában.",
-    answer="<strong>Exportáld a futást fájlként, és nyisd meg az Aerában.</strong> A Garmin Connect a GPS-útvonal nélkül írja a futásaidat az Apple Health-be, így nincs mit végigrepülni. A futás fájljában viszont benne van. Az Aera ezt az útvonalat az iPhone-odon tartja a futás mellett, a Flyover pedig 3D-ben, a valódi terep fölött játssza vissza. Az Aera 4.0 vagy újabb kell hozzá.",
+    answer="<strong>Exportáld a futást fájlként, és nyisd meg az Aerában.</strong> A Garmin Connect a GPS-útvonal nélkül írja a futásaidat az Apple Healthbe, így nincs mit végigrepülni. A futás fájljában viszont benne van. Az Aera ezt az útvonalat az iPhone-odon tartja a futás mellett, a Flyover pedig 3D-ben, a valódi terep fölött játssza vissza. Az Aera 4.0 vagy újabb kell hozzá.",
     toc="Ezen az oldalon",
     s=[
      ("Miért hiányzik az útvonal?",
-      "<p>A Garmin Connect idővel, távval és pulzussal írja a futásaidat az Apple Health-be, de útvonal nélkül. Egy edzéshez utólag csak az az app adhat útvonalat, amelyik elmentette, ezért más app nem tudja visszatenni az Apple Health-be.</p>"
+      "<p>A Garmin Connect idővel, távval és pulzussal írja a futásaidat az Apple Healthbe, de útvonal nélkül. Egy edzéshez utólag csak az az app adhat útvonalat, amelyik elmentette, ezért más app nem tudja visszatenni az Apple Healthbe.</p>"
       "<p>Ha odaadod az Aerának a futás fájlját, kiolvassa belőle az útvonalat, és ezen az iPhone-on tartja, a Garmin által már elmentett futás mellett. Innentől a térkép és a visszajátszás ezt használja. Az útvonal a telefonon marad, a biztonsági mentésbe sem kerül. Nincs fiók, nincs feltöltés.</p>"),
      ("Futás exportálása a Garmin Connectből",
       "<ol><li>Nyisd meg a <strong>connect.garmin.com</strong> oldalt böngészőben, és jelentkezz be. iPhone-on, ha az oldal az appba küld, koppints az <strong>aA</strong> gombra, és kérd az asztali webhelyet.</li>"
@@ -98,19 +98,19 @@ T = {
       "<p>Két út van:</p><ul>"
       "<li><strong>A Fájlokból, a Mailből vagy egy megosztás gombbal:</strong> oszd meg a fájlt az Aerával. Egy futásnál az Aera megkérdezi, mi ez: koppints a <strong>Hozzáadás edzésként</strong> gombra. A zip egyenesen az importáláshoz megy.</li>"
       "<li><strong>Az Aerából:</strong> Beállítások, majd <strong>Eszközök</strong>, majd <strong>Edzések importálása</strong>, és <strong>Export vagy fájlok kiválasztása</strong>.</li></ul>"
-      "<p>Az Aera előbb megmutatja, mit talált, és csak utána változtat bármin. Ha az Apple Health-ben már megvan a futás a Garmintól, a <strong>Megtartandó GPS-útvonalak</strong> sort látod: koppints a <strong>GPS-útvonalak megtartása az Aerában</strong> gombra. Ha az Apple Health-ben nincs meg, koppints az <strong>Edzések hozzáadása az Apple Health-hez</strong> gombra, és az Aera az útvonalával együtt menti a futást.</p>"),
+      "<p>Az Aera előbb megmutatja, mit talált, és csak utána változtat bármin. Ha az Apple Healthben már megvan a futás a Garmintól, a <strong>Megtartandó GPS-útvonalak</strong> sort látod: koppints a <strong>GPS-útvonalak megtartása az Aerában</strong> gombra. Ha az Apple Healthben nincs meg, koppints az <strong>Edzések hozzáadása az Apple Healthhez</strong> gombra, és az Aera az útvonalával együtt menti a futást.</p>"),
      ("A visszajátszás",
       "<p>Nyisd meg a futást az Aerában, és koppints a <strong>Flyover</strong> gombra. A kamera a valódi terep fölött repüli végig az útvonalat, alul fut a táv, a tempó és a pulzus. Premiummal rövid, álló videót is menthetsz belőle a Fotókba.</p>"
       "<p>Az elmúlt 7 nap futásai ingyen játszhatók vissza, a régebbiek a Premiummal. A visszajátszás csak annyira pontos, mint a GPS, amely az útvonalat rögzítette. Bővebben: <a href=\"futas-3d-visszajatszas.html\">futás 3D visszajátszása</a>.</p>"),
     ],
     note_t="Aera, iPhone-ra",
-    note="Az Aera azt olvassa, amit az órád az Apple Health-be ír, és a saját megszokott szintedhez méri. Koppints egy számra, és a Field Guide megmutatja, hogyan jött ki. Minden az iPhone-odon marad, fiók nélkül. Az Aera nem orvostechnikai eszköz.",
+    note="Az Aera azt olvassa, amit az órád az Apple Healthbe ír, és a saját megszokott szintedhez méri. Koppints egy számra, és a Field Guide megmutatja, hogyan jött ki. Minden az iPhone-odon marad, fiók nélkül. Az Aera nem orvostechnikai eszköz.",
     btn="Töltsd le az App Store-ból",
     faq_t="Gyors válaszok",
     faq=[
-     ("Meg tudja szerezni az Aera magától az útvonalat a Garmintól?", "Nem. A Garmin Connect nem írja az útvonalat az Apple Health-be, és az Aera nem kapcsolódik Garmin-fiókhoz, ezért az útvonal egy általad exportált fájlból jön."),
+     ("Meg tudja szerezni az Aera magától az útvonalat a Garmintól?", "Nem. A Garmin Connect nem írja az útvonalat az Apple Healthbe, és az Aera nem kapcsolódik Garmin-fiókhoz, ezért az útvonal egy általad exportált fájlból jön."),
      ("Milyen fájlok jók?", "FIT, GPX és TCX, tömörítve vagy anélkül, és a teljes Garmin- vagy Strava-export zip is."),
-     ("Kétszer fog megjelenni a futás?", "Nem. Egy futás akkor számít már meglévőnek az Apple Health-ben, ha ott ugyanabban az időben van egy edzés, akár más sportágként is. Ilyenkor az Aera csak az útvonalát tartja meg."),
+     ("Kétszer fog megjelenni a futás?", "Nem. Egy futás akkor számít már meglévőnek az Apple Healthben, ha ott ugyanabban az időben van egy edzés, akár más sportágként is. Ilyenkor az Aera csak az útvonalát tartja meg."),
      ("Elhagyja a fájl az iPhone-omat?", "Nem. Az Aera a telefonon olvassa be, és ott tartja az útvonalat, a biztonsági mentésen kívül. Nincs fiók."),
      ("Minden órával kipróbáltátok?", "Nem. Az importálás a gyártók által használt FIT, GPX és TCX formátumot olvassa, de nem próbáltunk ki minden órát és appverziót. Ha egy fájl nem nyílik meg, írj nekünk a támogatási oldalról."),
     ],
