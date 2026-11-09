@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>WHOOP in Aera · Mockup</title>
+<style>
+:root{--bg:#f4efe4;--card:#fffdf8;--ink:#1f2a24;--mute:#6b6f66;--line:#e4dccb;--route:#d9672b;--green:#1f5a43;--soft:#e9f0ea}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 16px 64px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--route);border:1px solid var(--route);border-radius:999px;padding:3px 10px}
+h1{font-size:30px;margin:12px 0 8px}
+.lead{color:var(--mute);max-width:640px;margin:0 0 28px}
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;justify-items:center}
+figure{margin:0;width:100%;max-width:320px}
+figcaption{font-size:14px;color:var(--mute);margin-top:10px;text-align:center}
+.phone{background:#121513;border-radius:44px;padding:10px;box-shadow:0 18px 40px rgba(31,42,36,.18)}
+.screen{position:relative;background:var(--bg);border-radius:35px;overflow:hidden;min-height:600px;padding:52px 18px 20px}
+.screen:before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(circle at 80% 10%,transparent 0 22px,rgba(31,90,67,.06) 22px 23px);pointer-events:none}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:28px;background:#121513;border-radius:20px}
+.title{font-size:24px;font-weight:700;margin:0 0 4px;position:relative}
+.sub{font-size:13px;color:var(--mute);margin:0 0 16px;position:relative}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lbl{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.big{font-size:28px;font-weight:700}
+.unit{font-size:13px;color:var(--mute);font-weight:500}
+.src{font-size:11px;font-weight:700;border-radius:6px;padding:2px 6px;background:var(--soft);color:var(--green)}
+.src.w{background:#1f2a24;color:#fff}
+.btn{display:block;text-align:center;background:var(--green);color:#fff;border-radius:14px;padding:13px;font-weight:600;margin-top:10px}
+.btn.ghost{background:transparent;color:var(--green);border:1px solid var(--green)}
+ul.chk{list-style:none;padding:0;margin:8px 0 0;font-size:14px}
+ul.chk li{padding:6px 0;border-top:1px solid var(--line)}
+ul.chk li:first-child{border-top:0}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--route)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.note{font-size:12px;color:var(--mute);position:relative}
+footer{margin-top:40px;font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="tag">Mockup, not yet built</span>
+<h1>How WHOOP data will look in Aera</h1>
+<p class="lead">Aera is an iPhone and Apple Watch health app with no account and no server. A WHOOP member connects once; their recovery, sleep, strain and workouts go straight to their phone and appear next to their Apple Health data. Numbers below are sample values.</p>
+
+<div class="phones">
+<figure><div class="phone"><div class="screen"><div class="notch"></div>
+<p class="title">Connect WHOOP</p>
+<p class="sub">Settings · Data sources</p>
+<div class="card">
+<div class="row"><b>WHOOP</b><span class="src">Not connected</span></div>
+<p class="note" style="margin:8px 0 0">Aera will read, for you only:</p>
+<ul class="chk"><li>Recovery and HRV</li><li>Sleep stages and performance</li><li>Day strain and cycles</li><li>Workouts</li></ul>
+<span class="btn">Connect WHOOP</span>
+</div>
+<div class="card">
+<p class="note" style="margin:0">Data goes from WHOOP to this iPhone and stays here. Aera has no account and no server. Disconnect any time in Settings.</p>
+</div>
+<div class="card"><div class="row"><b>Apple Health</b><span class="src">Connected</span></div></div>
+</div></div><figcaption>1. Connect screen in Settings</figcaption></figure>
+
+<figure><div class="phone"><div class="screen"><div class="notch"></div>
+<p class="title">Sleep</p>
+<p class="sub">Last night · Tue 4 Nov</p>
+<div class="card">
+<div class="row"><span class="lbl">Sleep performance</span><span class="src w">WHOOP</span></div>
+<div class="big">86<span class="unit"> %</span></div>
+<div class="bar"><i style="width:86%"></i></div>
+</div>
+<div class="two">
+<div class="card"><div class="lbl">Asleep</div><div class="big" style="font-size:22px">7h 12m</div><span class="src w">WHOOP</span></div>
+<div class="card"><div class="lbl">Deep</div><div class="big" style="font-size:22px">1h 28m</div><span class="src w">WHOOP</span></div>
+</div>
+<div class="card">
+<div class="row"><span class="lbl">Overnight HRV</span><span class="src">Apple Watch</span></div>
+<div class="big">58<span class="unit"> ms</span></div>
+<p class="note" style="margin:4px 0 0">WHOOP: 61 ms. Both shown so you can compare.</p>
+</div>
+<span class="btn ghost">How this is calculated</span>
+</div></div><figcaption>2. WHOOP sleep next to Apple Health</figcaption></figure>
+
+<figure><div class="phone"><div class="screen"><div class="notch"></div>
+<p class="title">Today</p>
+<p class="sub">Recovery and strain</p>
+<div class="card">
+<div class="row"><span class="lbl">Recovery</span><span class="src w">WHOOP</span></div>
+<div class="big">72<span class="unit"> %</span></div>
+<p class="note" style="margin:4px 0 0">Resting heart rate 49 bpm · HRV 61 ms</p>
+</div>
+<div class="card">
+<div class="row"><span class="lbl">Day strain</span><span class="src w">WHOOP</span></div>
+<div class="big">11.4</div>
+<div class="bar"><i style="width:54%"></i></div>
+</div>
+<div class="card">
+<div class="row"><span class="lbl">Morning run</span><span class="src w">WHOOP</span></div>
+<div class="row" style="margin-top:6px"><span>8.2 km · 42:10</span><span>Strain 9.8</span></div>
+<p class="note" style="margin:4px 0 0">Route and pace from Apple Health</p>
+</div>
+<div class="card">
+<div class="row"><span class="lbl">Steps</span><span class="src">iPhone</span></div>
+<div class="big">9,340</div>
+</div>
+</div></div><figcaption>3. Recovery, strain and workouts on Today</figcaption></figure>
+</div>
+
+<footer>Aera · <a href="https://apps.apple.com/app/id6762456252">App Store</a> · <a href="/privacy.html">Privacy</a> · WHOOP is a trademark of WHOOP, Inc. This page is a design mockup for the WHOOP developer review.</footer>
+</div>
+</body>
+</html>

@@ -3,12 +3,12 @@ import math
 from article_kit import keys, shot, pull
 
 REPLAY_KEYS = {
-    "hu": [("≈45 mp", "alatt repül végig egy hosszabb futás, a megállók külön kapnak egy pillanatot", "Aera"),
+    "hu": [("≈1 perc", "alatt repül végig egy futás, a megállók külön kapnak egy pillanatot", "Aera"),
            ("7 nap", "edzéseinek visszajátszása ingyenes, a régebbieké a Premium része", "Aera"),
-           ("15 / 20 / 30 mp", "hosszú álló, 9:16-os videó lesz belőle a Fotókban", "Aera")],
-    "de": [("≈45 s", "dauert der Flug über einen längeren Lauf, jeder Halt bekommt einen eigenen Moment", "Aera"),
+           ("9:16", "álló videó a megosztáshoz, a Premium része", "Aera")],
+    "de": [("≈1 Min.", "dauert der Flug über einen Lauf, jeder Halt bekommt einen eigenen Moment", "Aera"),
            ("7 Tage", "zurück ist das Abspielen kostenlos, ältere Trainings gehören zu Premium", "Aera"),
-           ("15 / 20 / 30 s", "lang wird das Video im Hochformat 9:16 in deinen Fotos", "Aera")],
+           ("9:16", "Video im Hochformat zum Teilen, mit Premium", "Aera")],
 }
 REPLAY_PULL = {
     "hu": "A visszajátszás csak annyira pontos, mint a GPS, amely a nyomvonalat rögzítette.",
@@ -26,12 +26,12 @@ REPLAY_SHOT = {
 FIG_T = {
     "hu": {"title": "Így lesz a futásból rövid repülés", "key": "A kamera magassága",
            "whole": "Teljes útvonal", "dive": "Lemerül a futó mögé", "lift": "Kanyar előtt emelkedik",
-           "s1": "Leggyorsabb km", "s2": "Emelkedő teteje", "t0": "0 mp", "t1": "≈ 45 mp + megállók",
-           "cap": "<b>Szemléltetés, nem valódi repülés.</b> A kamera a teljes útvonal fölött indul, lemerül a futó mögé, a kanyarok előtt kicsit felemelkedik, és megáll néhány érdekes ponton, a végén pedig visszaemelkedik a teljes képre. Egy hosszabb futás nagyjából 45 másodperc alatt repül végig, a megállók külön kapnak egy-egy pillanatot."},
+           "s1": "Leggyorsabb km", "s2": "Emelkedő teteje", "t0": "0 mp", "t1": "≈ 1 perc + megállók",
+           "cap": "<b>Szemléltetés, nem valódi repülés.</b> A kamera a teljes útvonal fölött indul, lemerül a futó mögé, a kanyarok előtt kicsit felemelkedik, és megáll néhány érdekes ponton, a végén pedig visszaemelkedik a teljes képre. Egy futás nagyjából egy perc alatt repül végig, a megállók külön kapnak egy-egy pillanatot."},
     "de": {"title": "Wie aus einem Lauf ein kurzer Flug wird", "key": "Höhe der Kamera",
            "whole": "Ganze Strecke", "dive": "Taucht hinter dir ein", "lift": "Steigt vor Kurven",
-           "s1": "Schnellster km", "s2": "Gipfel des Anstiegs", "t0": "0 s", "t1": "≈ 45 s + Halte",
-           "cap": "<b>Illustration, kein echter Flug.</b> Die Kamera beginnt über der ganzen Strecke, taucht hinter dir ein, steigt vor Kurven ein Stück an und hält an ein paar Stellen kurz an. Am Ende steigt sie wieder auf den Überblick. Ein längerer Lauf ist in etwa 45 Sekunden durchgeflogen, jeder Halt bekommt einen eigenen Moment."},
+           "s1": "Schnellster km", "s2": "Gipfel des Anstiegs", "t0": "0 s", "t1": "≈ 1 Min. + Halte",
+           "cap": "<b>Illustration, kein echter Flug.</b> Die Kamera beginnt über der ganzen Strecke, taucht hinter dir ein, steigt vor Kurven ein Stück an und hält an ein paar Stellen kurz an. Am Ende steigt sie wieder auf den Überblick. Ein Lauf ist in gut einer Minute durchgeflogen, jeder Halt bekommt einen eigenen Moment."},
 }
 
 
