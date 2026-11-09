@@ -224,9 +224,9 @@ T = [
     ('<li id="n4">Body age is an estimate for everyday wellbeing, not a medical measurement. It needs a watch that records VO&#8322; max and heart rate.</li>',
      '<li id="n4">A testkor a mindennapi jólléthez készült becslés, nem orvosi mérés. Olyan óra kell hozzá, amely méri a VO&#8322;max-ot és a pulzust.</li>',
      '<li id="n4">Das Körperalter ist eine Schätzung für das tägliche Wohlbefinden, keine medizinische Messung. Es braucht eine Uhr, die VO&#8322;max und Herzfrequenz misst.</li>'),
-    ('<li id="n5">Garmin, Polar and COROS workouts reach Aera through Apple Health without their route. Import the workout file, or link Polar, to replay them.</li>',
-     '<li id="n5">A Garmin, Polar és COROS edzések útvonal nélkül érkeznek az Apple Healthen keresztül. A visszajátszáshoz importáld az edzésfájlt, vagy kapcsold össze a Polart.</li>',
-     '<li id="n5">Garmin-, Polar- und COROS-Trainings kommen über Apple Health ohne Route an. Importiere die Trainingsdatei oder verbinde Polar, um sie abzuspielen.</li>'),
+    ('<li id="n5">Garmin, Polar and COROS workouts reach Aera through Apple Health without their route. Import the workout file to replay them (<a href="/guides/replay-a-garmin-run-in-3d.html">how</a>).</li>',
+     '<li id="n5">A Garmin, Polar és COROS edzések útvonal nélkül érkeznek az Apple Healthen keresztül. A visszajátszáshoz importáld az edzésfájlt (<a href="/guides/garmin-futas-3d-visszajatszasa.html">így megy</a>).</li>',
+     '<li id="n5">Garmin-, Polar- und COROS-Trainings kommen über Apple Health ohne Route an. Importiere die Trainingsdatei, um sie abzuspielen (<a href="/guides/garmin-lauf-in-3d-abspielen.html">so geht es</a>).</li>'),
 
     # footer
     ('The health app that shows its work. Made in Hungary.', 'Az egészségapp, amely megmutatja, honnan jönnek a számai. Magyarországon készült.', 'Die Gesundheits-App, die ihren Rechenweg zeigt. Gemacht in Ungarn.'),
