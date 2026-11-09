@@ -5,10 +5,10 @@ from article_kit import keys, shot, pull
 REPLAY_KEYS = {
     "hu": [("≈45 mp", "alatt repül végig egy hosszabb futás, a megállók külön kapnak egy pillanatot", "Aera"),
            ("7 nap", "edzéseinek visszajátszása ingyenes, a régebbieké a Premium része", "Aera"),
-           ("15 / 20 / 30 mp", "hosszú álló, 9:16-os videó lesz belőle a Fotókban", "Aera")],
+           ("15 / 20 / 30 mp", "hosszú álló, 9:16-os videó lesz belőle a Fotókban, a Premiummal", "Aera")],
     "de": [("≈45 s", "dauert der Flug über einen längeren Lauf, jeder Halt bekommt einen eigenen Moment", "Aera"),
            ("7 Tage", "zurück ist das Abspielen kostenlos, ältere Trainings gehören zu Premium", "Aera"),
-           ("15 / 20 / 30 s", "lang wird das Video im Hochformat 9:16 in deinen Fotos", "Aera")],
+           ("15 / 20 / 30 s", "lang wird das Video im Hochformat 9:16 in deinen Fotos, mit Premium", "Aera")],
 }
 REPLAY_PULL = {
     "hu": "A visszajátszás csak annyira pontos, mint a GPS, amely a nyomvonalat rögzítette.",
