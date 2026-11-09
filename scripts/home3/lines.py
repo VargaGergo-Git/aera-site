@@ -137,7 +137,7 @@ C = {
 # The App Store pictures of the carousel, h/store/<lang>/lNN.webp, in each store's own order.
 # Each alt text repeats the words inside its picture, so it changes only with the picture.
 STORE = {
-    "en": ["Body age, not your birthday.", "Last night, against your need.", "Replay your run in 3D. With Apple Watch or iPhone.",
+    "en": ["Biological age, not your birthday.", "Last night, against your need.", "Replay your run in 3D. With Apple Watch or iPhone.",
            "Every run, next to your usual.", "Every number shows its work.", "Know a route before you run it.",
            "Your cuff's readings, ready for your doctor.", "Every turn, on your wrist.", "Your watch. Your iPhone. No account.",
            "Share the replay as a video."],
@@ -145,7 +145,7 @@ STORE = {
            "Az éjszakád, az alvásigényedhez mérve.", "Minden futásod, a többihez mérve.", "Minden szám megmutatja, honnan jön.",
            "Ismerd meg az utat, mielőtt lefutod.", "Vérnyomásnapló, az orvosodnak.", "Minden kanyar a csuklódon.",
            "Az órád. Az iPhone-od. Fiók nélkül.", "Oszd meg a futásod videóként."],
-    "de": ["Körperalter, nicht dein Geburtstag.", "Letzte Nacht, gemessen an deinem Schlafbedarf.",
+    "de": ["Biologisches Alter, nicht dein Geburtsjahr.", "Letzte Nacht, gemessen an deinem Schlafbedarf.",
            "Dein Lauf, noch einmal in 3D. Mit Apple Watch oder iPhone.", "Jeder Lauf, verglichen mit deinen eigenen.",
            "Jede Zahl zeigt ihren Rechenweg.", "Kenn jede Strecke vor dem Lauf.", "Dein Blutdruck, fertig für den Arzttermin.",
            "Jede Abbiegung am Handgelenk.", "Deine Uhr. Dein iPhone. Kein Konto.", "Teile den Lauf als Video."],
