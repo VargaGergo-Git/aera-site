@@ -26,45 +26,107 @@
 <link rel="alternate" hreflang="en" href="https://aerahealth.app/"><link rel="alternate" hreflang="hu" href="https://aerahealth.app/hu.html"><link rel="alternate" hreflang="de" href="https://aerahealth.app/de.html"><link rel="alternate" hreflang="x-default" href="https://aerahealth.app/">
 <link rel="icon" href="assets/icon.png">
 <link rel="apple-touch-icon" href="assets/icon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "Nézd vissza a futásod. Értsd meg a tested.", "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/hu.html", "downloadUrl": "https://apps.apple.com/hu/app/id6762456252", "installUrl": "https://apps.apple.com/hu/app/id6762456252", "description": "Az Aera ahhoz méri az Apple Watch-od számait, ami nálad megszokott. Minden reggel megmutatja, hogy állsz ma, edzés után pedig azt, mi változott. Ingyenes, fiók nélkül.", "screenshot": ["https://aerahealth.app/img/k/hu/hero-pair-1800.webp", "https://aerahealth.app/img/k/hu/art-sleep-light-800.webp", "https://aerahealth.app/img/k/hu/scr-run-light-800.webp", "https://aerahealth.app/img/k/hu/scr-route-800.webp"], "author": {"@id": "https://aerahealth.app/#maker"}, "publisher": {"@id": "https://aerahealth.app/#org"}, "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "Organization", "@id": "https://aerahealth.app/#org", "name": "Aera", "url": "https://aerahealth.app/", "logo": "https://aerahealth.app/assets/icon.png", "email": "hello@aerahealth.app", "founder": {"@id": "https://aerahealth.app/#maker"}, "sameAs": ["https://apps.apple.com/app/id6762456252"]}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "hu", "publisher": {"@id": "https://aerahealth.app/#org"}}, {"@type": "FAQPage", "inLanguage": "hu", "mainEntity": [{"@type": "Question", "name": "Mit csinál az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Healthbe ír, és elmondja, mit jelentenek ezek a számok neked. Az alvást, a stresszt, a terhelést és minden futást ahhoz méri, ami nálad szokásos, érthetően elmondja, és minden szám mögött ott van egy rövid cikk arról, hogyan jött ki. Útvonalat is tervez, kanyarról kanyarra navigál, és 3D-ben visszajátssza a futásaidat."}}, {"@type": "Question", "name": "Kell hozzá Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Nem. Az Aera az Apple Healthből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van."}}, {"@type": "Question", "name": "Ingyenes az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Igen. Ingyenesek a pontszámaid minden nap az elmúlt 30 nappal, az elmúlt hét minden futása 3D-ben, az útvonaltervező kanyarról kanyarra navigációval, öt mentett útvonal, a Field Guide és minden export az elmúlt 30 napra. A Premium megőrzi a teljes előzményedet, minden futásodat 3D-ben, akármilyen régi, a visszajátszást megosztható videóként, több mentett útvonalat és a hosszabb jelentéseket. Az éves előfizetés egy ingyenes héttel indul."}}, {"@type": "Question", "name": "Kell fiók? Hová kerülnek az adataim?", "acceptedAnswer": {"@type": "Answer", "text": "Nem kell fiók. Az Aera az iPhone-odon olvassa az Apple Healthet, és ott is számol, így az egészségadataid a telefonodon maradnak. Az analitika alapból ki van kapcsolva, és egészségadat akkor sem kerül bele, ha bekapcsolod."}}, {"@type": "Question", "name": "Honnan tudja az Aera, mi a normális nálam?", "acceptedAnswer": {"@type": "Answer", "text": "Néhány hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos nálad, és minden új napot ehhez hasonlít. Amíg kevés az adat, nem találgat: kiírja, hogy még tanul."}}, {"@type": "Question", "name": "Orvosi eszköz az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az órák mérései, például az alvásfázisok, becslések, és minden cikk megírja, meddig lehet bízni a számában."}}, {"@type": "Question", "name": "Milyen nyelveken érhető el?", "acceptedAnswer": {"@type": "Answer", "text": "Teljes egészében angolul, magyarul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul."}}]}]}</script>
-<meta name="color-scheme" content="light dark">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": "Nézd vissza a futásod. Értsd meg a tested.", "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/hu.html", "downloadUrl": "https://apps.apple.com/hu/app/id6762456252", "installUrl": "https://apps.apple.com/hu/app/id6762456252", "description": "Az Aera ahhoz méri az Apple Watch-od számait, ami nálad megszokott. Minden reggel megmutatja, hogy állsz ma, edzés után pedig azt, mi változott. Ingyenes, fiók nélkül.", "screenshot": ["https://aerahealth.app/img/k/hu/hero-pair-1800.webp", "https://aerahealth.app/img/k/hu/art-sleep-light-800.webp", "https://aerahealth.app/img/k/hu/scr-run-light-800.webp", "https://aerahealth.app/img/k/hu/scr-route-800.webp"], "author": {"@id": "https://aerahealth.app/#maker"}, "publisher": {"@id": "https://aerahealth.app/#org"}, "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "Organization", "@id": "https://aerahealth.app/#org", "name": "Aera", "url": "https://aerahealth.app/", "logo": "https://aerahealth.app/assets/icon.png", "email": "hello@aerahealth.app", "founder": {"@id": "https://aerahealth.app/#maker"}, "sameAs": ["https://apps.apple.com/app/id6762456252"]}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "hu", "publisher": {"@id": "https://aerahealth.app/#org"}}, {"@type": "FAQPage", "inLanguage": "hu", "mainEntity": [{"@type": "Question", "name": "Mit csinál az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Health-be ment, és elmondja, mit jelentenek ezek a számok neked. Az alvást, a stresszt, a terhelést és minden futást ahhoz méri, ami nálad szokásos, érthetően elmondja, és minden szám mögött ott van egy rövid cikk arról, hogyan jött ki. Útvonalat is tervez, kanyarról kanyarra navigál, és 3D-ben visszajátssza a futásaidat."}}, {"@type": "Question", "name": "Kell hozzá Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "Nem. Az Aera az Apple Health-ből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van."}}, {"@type": "Question", "name": "Ingyenes az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Igen. Ingyenesek a pontszámaid minden nap az elmúlt 30 nappal, az elmúlt hét minden futása 3D-ben, az útvonaltervező kanyarról kanyarra navigációval, öt mentett útvonal, a Field Guide és minden export az elmúlt 30 napra. A Premium megőrzi a teljes előzményedet, minden futásodat 3D-ben, akármilyen régi, a visszajátszást megosztható videóként, több mentett útvonalat és a hosszabb jelentéseket. Az éves előfizetés egy ingyenes héttel indul."}}, {"@type": "Question", "name": "Kell fiók? Hová kerülnek az adataim?", "acceptedAnswer": {"@type": "Answer", "text": "Nem kell fiók. Az Aera az iPhone-odon olvassa az Apple Health-et, és ott is számol, így az egészségadataid a telefonodon maradnak. Az analitika alapból ki van kapcsolva, és egészségadat akkor sem kerül bele, ha bekapcsolod."}}, {"@type": "Question", "name": "Honnan tudja az Aera, mi a normális nálam?", "acceptedAnswer": {"@type": "Answer", "text": "Néhány hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos nálad, és minden új napot ehhez hasonlít. Amíg kevés az adat, nem találgat: kiírja, hogy még tanul."}}, {"@type": "Question", "name": "Orvosi eszköz az Aera?", "acceptedAnswer": {"@type": "Answer", "text": "Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az órák mérései, például az alvásfázisok, becslések, és minden cikk megírja, meddig lehet bízni a számában."}}, {"@type": "Question", "name": "Milyen nyelveken érhető el?", "acceptedAnswer": {"@type": "Answer", "text": "Teljes egészében angolul, magyarul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul."}}]}]}</script>
+<script>try{var l=localStorage.getItem('aera-look');if(l==='light'||l==='dark')document.documentElement.dataset.theme=l}catch(e){}</script>
 <style>
-/* Take 3. One idea carries the page: a real run over Liberty Bridge, played as you scroll, that lands inside the app.
-   Apple's product-page pacing, Bevel's big figures, take 2's restraint. Aera's night green and amber only.
-   Follows the system's light or dark look; the footer switch overrides it. */
+/* The home page, in the one Aera look (scripts/chrome.py holds the tokens, header, footer and closing band).
+   A warm white page, white panels, black type. A panel says one thing: a small label, one big real figure,
+   one sentence, then the real screen. Follows the system's light or dark look; the footer switch overrides it. */
 :root{
   color-scheme:light;
-  --paper:#ffffff; --grey:#f5f5f2; --card:#f2f2ee; --ink:#111613; --ink-2:#6b706c; --ink-3:#878c88; --rule:#e3e4df;
-  --accent:#173828; --pill-bg:#173828; --pill-ink:#ffffff;
-  --nav-bg:rgba(255,255,255,.8); --nav-solid:#ffffff; --nav-ink:#3d423f; --nav-rule:rgba(0,0,0,.07);
-  --paddle:#e8e8e4; --paddle-hover:#dcdcd7; --paddle-ink:#2f3331; --shadow:rgba(17,22,19,.15); --works-ink:#5c615d;
-  --store-edge:transparent; --foot:#121513; --foot-rule:transparent;
-  --night:#173828; --amber:#f2a02b; --sage:#80b49e;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter Tight","Helvetica Neue",Arial,sans-serif;
-  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter Tight","Helvetica Neue",Arial,sans-serif;
-  --wide:1120px; --nav-h:52px;
+  --paper:#f5f5f3; --panel:#ffffff; --ink:#131313; --ink-2:#6b6b68; --ink-3:#8c8c88; --rule:#e4e3de;
+  --btn:#131313; --btn-ink:#ffffff; --route:#f0672b;
+  --t-peach:#fbe2cf; --t-lav:#e7e1f8; --t-sky:#dbe8f8; --t-sage:#dcebdf; --t-rose:#f9dfe4; --aura:.9;
+  --head-bg:rgba(245,245,243,.8); --head-rule:rgba(0,0,0,.08); --foot:#111211; --foot-rule:transparent; --lift:0 1px 2px rgba(20,20,18,.04),0 18px 44px -22px rgba(20,20,18,.22);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter Tight","Inter","Helvetica Neue",Arial,sans-serif;
+  --display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter Tight","Inter","Helvetica Neue",Arial,sans-serif;
+  --head-h:52px; --r:30px;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --paper:#000000; --grey:#0d0f0e; --card:#161917; --ink:#f2f3f1; --ink-2:#a0a5a2; --ink-3:#7f8582; --rule:#272b29;
-    --accent:#80b49e; --pill-bg:#f2f3f1; --pill-ink:#173828;
-    --nav-bg:rgba(0,0,0,.72); --nav-solid:#000000; --nav-ink:rgba(255,255,255,.8); --nav-rule:rgba(255,255,255,.09);
-    --paddle:#232725; --paddle-hover:#2e3330; --paddle-ink:#e6e8e6; --shadow:transparent; --works-ink:#a7aca9;
-    --store-edge:rgba(255,255,255,.32); --foot:#000000; --foot-rule:#272b29;
+    --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
+    --btn:#f3f3f1; --btn-ink:#131313;
+    --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+    --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --paper:#000000; --grey:#0d0f0e; --card:#161917; --ink:#f2f3f1; --ink-2:#a0a5a2; --ink-3:#7f8582; --rule:#272b29;
-  --accent:#80b49e; --pill-bg:#f2f3f1; --pill-ink:#173828;
-  --nav-bg:rgba(0,0,0,.72); --nav-solid:#000000; --nav-ink:rgba(255,255,255,.8); --nav-rule:rgba(255,255,255,.09);
-  --paddle:#232725; --paddle-hover:#2e3330; --paddle-ink:#e6e8e6; --shadow:transparent; --works-ink:#a7aca9;
-  --store-edge:rgba(255,255,255,.32); --foot:#000000; --foot-rule:#272b29;
+  --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
+  --btn:#f3f3f1; --btn-ink:#131313;
+  --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+  --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
 }
+
+/* header */
+.site-head{position:sticky;top:0;z-index:40;background:var(--head-bg);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);box-shadow:inset 0 -1px 0 var(--head-rule);font-family:var(--font);letter-spacing:-.01em;line-height:1.2;padding-top:env(safe-area-inset-top,0px)}
+.site-head .sh-w{display:flex;align-items:center;gap:26px;height:var(--head-h);max-width:1120px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.sh-brand{display:inline-flex;align-items:center;gap:9px;min-height:44px;font-family:var(--font);font-weight:600;font-size:17px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.sh-brand img{width:26px;height:26px;border-radius:6.5px;display:block;box-shadow:0 0 0 .5px rgba(0,0,0,.16)}
+.site-head nav{display:flex;gap:26px;margin-left:auto;font-size:13.5px}
+.site-head nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2);text-decoration:none;transition:color .2s}
+.site-head nav a:hover,.site-head nav a[aria-current]{color:var(--ink)}
+.sh-langs{display:flex;gap:1px;font-size:12.5px;font-weight:500}
+.sh-langs a{position:relative;padding:5px 7px;border-radius:7px;color:var(--ink-2);text-decoration:none}
+.sh-langs a::after{content:"";position:absolute;inset:-9px -1px}
+.sh-langs a:hover{color:var(--ink)}
+.sh-langs a[aria-current]{color:var(--ink);box-shadow:inset 0 0 0 1px var(--head-rule)}
+.sh-get{position:relative;flex:none;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .2s}
+.sh-get::after{content:"";position:absolute;inset:-7px 0}
+.sh-get:hover{color:var(--btn-ink);opacity:.86}
+.sh-get:active{transform:scale(.96)}
+@media (max-width:820px){.site-head nav{display:none}.sh-langs{margin-left:auto}.site-head .sh-w{gap:12px}}
+
+/* App Store badge */
+.store{display:inline-flex;align-items:center;gap:9px;height:52px;background:#000;color:#fff;text-decoration:none;border-radius:12px;padding:0 19px 0 16px;line-height:1.1;font-family:var(--font);box-shadow:inset 0 0 0 1px rgba(255,255,255,var(--store-edge,0));transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.store:hover{color:#fff}
+.store:active{transform:scale(.97)}
+.store svg{width:20px;height:24px;flex:none;margin-top:-2px}
+.store span{display:flex;flex-direction:column;font-size:19px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+.store small{font-size:10.5px;font-weight:500;letter-spacing:0;margin-bottom:1px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .store{--store-edge:.32}}
+:root[data-theme="dark"] .store{--store-edge:.32}
+
+/* the closing band: the slogan, the badge, and a code to scan on a computer */
+.site-get{position:relative;overflow:hidden;isolation:isolate;text-align:center;font-family:var(--font);color:var(--ink);background:var(--paper);padding:clamp(84px,10vw,136px) 22px clamp(84px,10vw,128px)}
+.site-get::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:max(1100px,120%);height:560px;transform:translate(-50%,-46%);background:url(/h/aura.webp) center/100% 100% no-repeat;opacity:var(--aura)}
+.site-get .sg-icon{width:84px;height:84px;border-radius:19px;display:block;margin:0 auto 28px;box-shadow:0 0 0 .5px rgba(0,0,0,.14),0 18px 34px -14px rgba(20,20,18,.35)}
+.site-get h2{margin:0;font-family:var(--display);font-size:clamp(30px,8.2vw,80px);font-weight:700;letter-spacing:-.042em;line-height:1.02;color:var(--ink)}
+.site-get h2 span{display:block}
+.sg-cta{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:clamp(30px,3.4vw,42px)}
+.sg-qr{display:none;align-items:center;gap:12px;text-align:left;font-size:13.5px;line-height:1.3;color:var(--ink-2);max-width:11.5em}
+.sg-qr img{width:76px;height:76px;flex:none;border-radius:10px;background:#fff;box-shadow:0 0 0 1px var(--rule)}
+@media (min-width:900px) and (hover:hover){.sg-qr{display:flex}}
+.site-get p{margin:18px auto 0;max-width:30em;font-size:15px;line-height:1.45;color:var(--ink-2)}
+
+/* footer */
+.site-foot{background:var(--foot);box-shadow:inset 0 1px 0 var(--foot-rule);color:rgba(255,255,255,.62);font-family:var(--font);font-size:13.5px;line-height:1.45;letter-spacing:-.005em;padding:56px 0 calc(48px + env(safe-area-inset-bottom,0px));text-align:left}
+.site-foot .sf-w{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:30px;max-width:1120px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.site-foot .sh-brand{color:#fff;margin-bottom:6px}
+.site-foot p{margin:0;max-width:23em;color:inherit}
+.site-foot h4{margin:12px 0 12px;font:600 13px/1.3 var(--font);letter-spacing:0;color:#fff;text-transform:none}
+.site-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.site-foot li{margin:0}
+.site-foot a{color:inherit;text-decoration:none}
+.site-foot a:hover{color:#fff}
+.sf-base{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:22px;padding-top:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.sf-langs{display:flex;gap:16px;margin-right:auto;margin-left:22px}
+.sf-langs a[aria-current]{color:#fff}
+.sf-look{display:inline-flex;padding:2px;border-radius:9px;background:rgba(255,255,255,.1)}
+.sf-look button{border:0;background:transparent;color:rgba(255,255,255,.72);font:500 12.5px/1.2 var(--font);padding:6px 12px;border-radius:7px;cursor:pointer}
+.sf-look button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
+@media (max-width:820px){.site-foot .sf-w{grid-template-columns:repeat(2,minmax(0,1fr))}.site-foot .sf-about{grid-column:1/-1}.sf-langs{margin-left:0;flex-basis:100%;order:3}}
+@media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}}
+:root{
+  --card:var(--panel); --grey:var(--paper); --accent:var(--ink); --sans:var(--font); --wide:1120px; --nav-h:var(--head-h);
+  --paddle:#e9e8e3; --paddle-hover:#dddcd6; --paddle-ink:#2c2c2a; --shadow:rgba(20,20,18,.17); --amber:var(--route); --sage:#80b49e; --works-ink:var(--ink-2);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paddle:#232423;--paddle-hover:#2e2f2d;--paddle-ink:#e6e6e3;--shadow:transparent}}
+:root[data-theme="dark"]{--paddle:#232423;--paddle-hover:#2e2f2d;--paddle-ink:#e6e6e3;--shadow:transparent}
 *{box-sizing:border-box}
 html{background:var(--paper);-webkit-text-size-adjust:100%;text-size-adjust:100%;touch-action:manipulation}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.47;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.47;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal}
 a{color:inherit;-webkit-tap-highlight-color:transparent}
 button{-webkit-tap-highlight-color:transparent;font:inherit}
 img{max-width:100%}
@@ -74,38 +136,10 @@ p{text-wrap:pretty}
 sup{font-size:.6em;line-height:0;vertical-align:.7em;margin-left:1px}
 sup a{text-decoration:none;color:var(--ink-2);padding:0 2px}
 section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-
-/* nav: follows the page, turns dark while the film fills the screen */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:var(--nav-solid)}
-.nav{position:fixed;inset:env(safe-area-inset-top,0px) 0 auto;z-index:30;background:var(--nav-bg);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);box-shadow:inset 0 -1px 0 var(--nav-rule);transition:background-color .3s,color .3s,box-shadow .3s}
-.nav .w{display:flex;align-items:center;gap:30px;height:var(--nav-h)}
-.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:17px;letter-spacing:-.02em}
-.brand img{width:26px;height:26px;border-radius:6px;display:block;box-shadow:0 0 0 .5px rgba(0,0,0,.14)}
-.nav nav{display:flex;gap:28px;margin-left:auto;font-size:13.5px;color:var(--nav-ink);transition:color .3s}
-.nav nav a{text-decoration:none}
-.nav nav a:hover{color:var(--ink)}
-.pill{display:inline-flex;align-items:center;height:28px;background:var(--pill-bg);color:var(--pill-ink);text-decoration:none;font-size:13px;font-weight:500;border-radius:999px;padding:0 13px;transition:background-color .3s,color .3s}
-.nav.over{background:rgba(8,15,11,.4);color:#fff;box-shadow:inset 0 -1px 0 rgba(255,255,255,.08)}
-.nav.over nav{color:rgba(255,255,255,.84)}
-.nav.over nav a:hover{color:#fff}
-.nav.over .pill{background:#fff;color:#173828}
-.langs{display:flex;gap:2px;font-size:12.5px;font-weight:500;letter-spacing:0}
-.langs a{text-decoration:none;color:var(--nav-ink);padding:4px 6px;border-radius:6px;opacity:.75}
-.langs a:hover{opacity:1}
-.langs a[aria-current="page"]{opacity:1;color:var(--ink);box-shadow:inset 0 0 0 1px var(--nav-rule)}
-.nav.over .langs a{color:#fff}
-.nav.over .langs a[aria-current="page"]{box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
-.nav nav + .langs{margin-left:-6px}
-main{padding-top:var(--nav-h)}
-
-/* App Store button */
-.store{display:inline-flex;align-items:center;gap:9px;height:52px;background:#000;color:#fff;text-decoration:none;border-radius:12px;padding:0 19px 0 16px;line-height:1.1;box-shadow:inset 0 0 0 1px var(--store-edge)}
-.store svg{width:20px;height:24px;flex:none;margin-top:-2px}
-.store span{display:flex;flex-direction:column;font-size:19px;font-weight:600;letter-spacing:-.01em}
-.store small{font-size:10.5px;font-weight:500;letter-spacing:0;margin-bottom:1px}
-.link{color:var(--accent);text-decoration:none;font-size:17px}
-.link:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+.link{color:var(--ink);text-decoration:none;font-size:17px;font-weight:500;white-space:nowrap}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+.nw{white-space:nowrap}
 
 /* phone in Apple's own iPhone frame */
 .ph{position:relative;flex:none;width:var(--w,300px);aspect-ratio:1350/2760}
@@ -121,34 +155,68 @@ main{padding-top:var(--nav-h)}
 .ph .scr > img:first-child{width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
 .ph .fr{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
-/* ---------- the film ---------- */
-/* the banner: the real app, big, on a calm field */
-.hero{position:relative;overflow:hidden;padding:clamp(56px,7vw,96px) 22px clamp(80px,9vw,120px);text-align:center;background:var(--paper)}
-.hero .kicker{margin:0 0 16px;font-size:clamp(17px,1.5vw,21px);font-weight:600;letter-spacing:-.01em;color:var(--accent)}
-.hero h1{font-size:var(--h1,clamp(50px,7vw,108px));font-weight:700;letter-spacing:-.045em;line-height:.98;color:var(--ink)}
-:lang(de) .hero h1{--h1:clamp(42px,5.4vw,88px)}
+/* ---------- the opening: the poster. Slogan, badge, the replay on a phone, its figures beside it ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;text-align:center;padding:clamp(44px,6vw,88px) 22px clamp(56px,7vw,96px)}
+.hero::before{content:"";position:absolute;z-index:-1;left:50%;bottom:clamp(40px,8vw,120px);width:max(1180px,150%);height:clamp(520px,60vw,760px);transform:translateX(-50%);background:url(h/aura.webp) center/100% 100% no-repeat;opacity:var(--aura)}
+.hero .kicker{margin:0 0 14px;font-size:clamp(16px,1.4vw,19px);font-weight:600;letter-spacing:-.01em;color:var(--ink-2)}
+.hero h1{font-size:var(--h1,clamp(46px,7.2vw,104px));font-weight:700;letter-spacing:-.045em;line-height:.98;color:var(--ink)}
+:lang(de) .hero h1{--h1:clamp(40px,5.6vw,84px)}
 .hero h1 span{display:block}
-.hero h1 span + span{color:var(--ink)}
-.hero .sub{max-width:27em;margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(19px,1.75vw,24px);line-height:1.35;font-weight:500;letter-spacing:-.015em;color:var(--ink-2)}
-.hero .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 24px;margin-top:clamp(28px,3vw,40px)}
+.hero .sub{max-width:25em;margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(19px,1.75vw,24px);line-height:1.35;font-weight:500;letter-spacing:-.015em;color:var(--ink-2)}
+.hero .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:clamp(26px,3vw,38px)}
 .hero .cta p{margin:0;font-size:16px;color:var(--ink-2)}
-.lineup{--mw:clamp(230px,24vw,330px);position:relative;height:calc(var(--mw) * 2.045 + 40px);max-width:1100px;margin:clamp(48px,5.5vw,72px) auto 0}
-.lineup .ph{position:absolute;left:50%;--w:var(--mw)}
-.lineup .ph.main{top:0;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 40px 60px var(--shadow))}
-.lineup .ph.side{--w:calc(var(--mw) * .84);top:calc(var(--mw) * .26);z-index:1;filter:drop-shadow(0 28px 44px var(--shadow))}
-.lineup .ph.l{transform:translateX(calc(-50% - var(--mw) * .86))}
-.lineup .ph.r{transform:translateX(calc(-50% + var(--mw) * .86))}
-.wt{position:absolute;z-index:4;left:calc(50% + var(--mw) * .42);top:calc(var(--mw) * 1.42);width:calc(var(--mw) * .5);aspect-ratio:416/496;padding:calc(var(--mw) * .032);border-radius:30% / 26%;background:#050506;box-shadow:0 0 0 calc(var(--mw) * .016) #3a3b3d,0 0 0 calc(var(--mw) * .024) #cfd0cc,0 26px 44px rgba(17,22,19,.28)}
-.wt img{width:100%;height:100%;border-radius:22% / 19%;display:block}
-.wt::after{content:"";position:absolute;right:calc(var(--mw) * -.04);top:24%;width:calc(var(--mw) * .03);height:17%;border-radius:4px;background:linear-gradient(90deg,#bdbdb9,#e4e4e0)}
+.stage{--mw:clamp(250px,25vw,326px);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(40px,7vw,104px);max-width:1060px;margin:clamp(48px,5.5vw,76px) auto 0;text-align:left}
+.stage .dev{position:relative}
+.stage .ph{--w:var(--mw);filter:drop-shadow(0 40px 60px var(--shadow))}
+.stage .wt{position:absolute;right:calc(var(--mw) * -.42);bottom:calc(var(--mw) * -.04);width:calc(var(--mw) * .6);height:auto;display:block;filter:drop-shadow(0 30px 34px rgba(40,30,20,.26))}
+.hf{display:grid;gap:clamp(30px,3.6vw,52px);margin:0}
+.hf.l{justify-self:end}
+.hf.r{justify-self:start;padding-left:calc(var(--mw) * .26)}
+.hf div{display:flex;flex-direction:column}
+.hf dt{font-size:clamp(15px,1.3vw,18px);font-weight:500;color:var(--ink-2)}
+.hf dd{margin:2px 0 0;font-family:var(--display);font-size:clamp(46px,5.4vw,78px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hf dd i{font-style:normal;font-size:.34em;font-weight:600;letter-spacing:-.01em;color:var(--ink-2);margin-left:.2em}
 
+/* works with */
+.works{padding-block:6px clamp(18px,3vw,30px)}
+.works .w{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:8px 30px}
+.works p{margin:0;font-size:14px;color:var(--ink-3)}
+.works ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 30px;font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.02em;color:var(--works-ink)}
 
-.step h2{font-size:clamp(46px,5.6vw,84px);font-weight:700;letter-spacing:-.04em;line-height:1}
-.nw{white-space:nowrap}
-.step p{margin:22px 0 0;font-size:clamp(18px,1.6vw,21px);line-height:1.42;letter-spacing:-.015em;color:var(--ink-2);max-width:25em}
-.step p b{color:var(--ink);font-weight:600}
+/* ---------- chapters and panels ---------- */
+.chap{padding-top:clamp(84px,10vw,144px)}
+.huge{font-size:clamp(50px,8vw,108px);font-weight:700;letter-spacing:-.045em;line-height:.98}
+:lang(de) .chap .huge{font-size:clamp(38px,7vw,96px)}
+.intro{font-size:clamp(19px,1.8vw,23px);line-height:1.36;font-weight:500;letter-spacing:-.015em;color:var(--ink-2);max-width:29em;margin:clamp(18px,2vw,26px) 0 0}
+.intro em{font-style:normal;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px;max-width:var(--wide);margin:clamp(36px,4.6vw,60px) auto 0;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.pn{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;margin:0;border-radius:var(--r);background:var(--panel)}
+.pn::before{content:"";position:absolute;z-index:-1;left:-25%;right:-25%;bottom:-34%;height:92%;background:radial-gradient(closest-side,var(--tint,transparent),transparent)}
+.pn.peach{--tint:var(--t-peach)}.pn.lav{--tint:var(--t-lav)}.pn.sky{--tint:var(--t-sky)}.pn.sage{--tint:var(--t-sage)}.pn.rose{--tint:var(--t-rose)}
+.pn .tx{padding:clamp(28px,3.3vw,44px) clamp(24px,3.3vw,44px) 0}
+.pn h3{font:inherit;letter-spacing:inherit}
+.pn-l,.pn-n{display:block}
+.pn-l{margin:0;font-size:16px;font-weight:600;letter-spacing:-.012em;color:var(--ink-2)}
+.pn-n{margin:8px 0 0;font-family:var(--display);font-size:var(--n,clamp(60px,7.2vw,100px));font-weight:700;letter-spacing:-.05em;line-height:.95;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.pn-n small{font-size:.3em;font-weight:600;letter-spacing:-.015em;color:var(--ink-2);margin-left:.26em}
+.pn-s{margin:16px 0 0;font-size:clamp(16.5px,1.42vw,18.5px);line-height:1.42;letter-spacing:-.012em;color:var(--ink-2);max-width:24em}
+.pn-s b{color:var(--ink);font-weight:600}
+.pn .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto 0;filter:drop-shadow(0 26px 40px var(--shadow))}
+.pn.crop .ph{margin-bottom:calc(var(--w) * -.58)}
+.steps .pn.replay{grid-column:span 7;flex-direction:row;align-items:center;justify-content:space-between}
+.steps .pn.replay::before{left:30%;right:-30%;bottom:-20%;height:120%}
+.steps .pn.replay .tx{padding-bottom:clamp(28px,3.3vw,44px);flex:1;min-width:0}
+.steps .pn.replay .ph{--w:clamp(200px,19vw,236px);margin:clamp(30px,3.3vw,44px) clamp(28px,3.3vw,44px) clamp(30px,3.3vw,44px) 0}
+.steps .pn.run{grid-column:span 5}
+.steps .pn.work{grid-column:span 12;flex-direction:row;align-items:flex-start;justify-content:space-between}
+.steps .pn.work::before{left:38%;right:-20%;bottom:-40%;height:120%}
+.steps .pn.work .tx{flex:1;min-width:0;padding-bottom:clamp(28px,3.3vw,44px)}
+.steps .pn.work .ph{--w:clamp(250px,26vw,310px);margin:clamp(34px,4vw,56px) clamp(40px,7vw,104px) calc(var(--w) * -.7) clamp(20px,3vw,40px)}
+.trio{margin-top:clamp(36px,4.6vw,60px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.trio .pn-n{--n:clamp(54px,6vw,84px)}
+.trio .pn-s{min-height:5.7em}
 
-/* after the hero: the replay story as plain sections */
+/* the working: one minute of the run, counted */
 .calc{position:relative;margin:34px 0 0;max-width:470px;padding:24px 24px 22px;border-radius:24px;background:var(--card);--p:1}
 .calc .c-top{display:flex;justify-content:space-between;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
 .calc .c-clock{font-variant-numeric:tabular-nums;color:var(--ink-2);font-weight:500}
@@ -185,32 +253,14 @@ main{padding-top:var(--nav-h)}
 .calc.anim.solve .den{transition-delay:.45s}
 .calc.anim.solve .is{transition-delay:.85s}
 .calc.anim.solve .res{transition-delay:1s}
-.steps{padding-block:clamp(70px,9vw,120px) 0}
-.steps .step{display:flex;align-items:center;gap:clamp(30px,6vw,90px);max-width:var(--wide);margin:0 auto clamp(70px,9vw,120px);padding-inline:22px}
-.steps .step .ph{--w:min(320px,62vw);filter:drop-shadow(0 26px 40px var(--shadow))}
-.steps .step:nth-child(even){flex-direction:row-reverse}
+.calc{--card:var(--paper);margin-top:clamp(26px,3vw,36px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .calc{--card:#1d1e1d}}
+:root[data-theme="dark"] .calc{--card:#1d1e1d}
 
 html.reveal .steps .step,html.reveal .trio > *,html.reveal .shelf .top{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 html.reveal .in{opacity:1!important;transform:none!important}
 
-/* works with */
-.works{box-shadow:inset 0 -1px 0 var(--rule);padding-block:30px}
-.works .w{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:10px 36px}
-.works p{margin:0;font-size:14px;color:var(--ink-3)}
-.works ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 34px;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--works-ink)}
-
-/* ---------- body ---------- */
-.body{background:var(--grey);padding-block:clamp(90px,11vw,150px)}
-.huge{font-size:clamp(52px,8vw,112px);font-weight:700;letter-spacing:-.045em;line-height:.98}
-.intro{font-size:clamp(19px,1.8vw,22px);line-height:1.38;font-weight:600;letter-spacing:-.015em;max-width:31em;margin:28px 0 0}
-.intro em{font-style:normal;color:var(--accent)}
-.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:clamp(56px,7vw,90px)}
-.trio figure{margin:0;display:flex;flex-direction:column}
-.trio .num{margin:0;font-family:var(--display);font-size:clamp(56px,6.4vw,92px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
-.trio .num small{font-size:.34em;letter-spacing:-.01em;font-weight:600;color:var(--ink-2);margin-left:.3em}
-.trio .cap{margin:14px 0 0;font-size:16px;line-height:1.45;color:var(--ink-2);max-width:20em;min-height:4.35em}
-.trio .cap b{color:var(--ink);font-weight:600}
-.trio .ph{--w:min(100%,300px);margin-top:28px;filter:drop-shadow(0 24px 34px var(--shadow))}
+.body{padding-bottom:clamp(84px,10vw,140px)}
 
 /* ---------- the store pictures, as one continuous strip ---------- */
 .shelf{background:#0f261a;color:#fff;padding-block:clamp(80px,10vw,120px) clamp(60px,7vw,90px)}
@@ -262,21 +312,21 @@ html.reveal .in{opacity:1!important;transform:none!important}
 .gal .pp:not([data-s="play"]) .i-pause,.gal .pp:not([data-s="paused"]) .i-play,.gal .pp:not([data-s="end"]) .i-again{opacity:0;transform:scale(.6)}
 .gal .pp .i-again{width:17px;height:17px}
 
-/* ---------- out the door: take 2's card row ---------- */
-.topic{padding-block:clamp(90px,11vw,140px) clamp(64px,7vw,96px)}
-.chap{padding-top:clamp(90px,11vw,150px)}
-:lang(de) .chap .huge{font-size:clamp(40px,10.6vw,100px)}
-.chap + .steps{padding-top:clamp(56px,6vw,84px)}
+/* ---------- out the door: a row of panels ---------- */
+.topic{padding-block:clamp(84px,10vw,128px) clamp(64px,7vw,96px)}
 .topic h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04;max-width:12em}
-.cards{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:clamp(44px,5vw,60px);padding-bottom:4px;scrollbar-width:none;scroll-padding-left:max(22px,calc((100vw - var(--wide))/2 + 22px));overscroll-behavior-x:contain}
+.cards{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:clamp(36px,4.6vw,60px);padding-bottom:4px;scrollbar-width:none;scroll-padding-left:max(22px,calc((100vw - var(--wide))/2 + 22px));overscroll-behavior-x:contain}
 .cards::-webkit-scrollbar{display:none}
 .cards::before,.cards::after{content:"";flex:none;width:max(2px,calc((100vw - var(--wide))/2))}
-.c{flex:none;width:min(372px,78vw);scroll-snap-align:start;margin:0}
-.c .art{position:relative;height:470px;border-radius:26px;background:var(--card);overflow:hidden;display:flex;justify-content:center}
-.c .art .ph{--w:250px;margin-top:44px}
-.c figcaption{font-size:14.5px;line-height:1.45;color:var(--ink-2);margin-top:18px;padding-right:12px}
+.c{flex:none;width:min(346px,78vw);scroll-snap-align:start;margin:0}
+.c .art{position:relative;isolation:isolate;height:470px;border-radius:var(--r);background:var(--panel);overflow:hidden;display:flex;justify-content:center}
+.c .art::before{content:"";position:absolute;z-index:-1;left:-25%;right:-25%;bottom:-30%;height:90%;background:radial-gradient(closest-side,var(--tint,transparent),transparent)}
+.c:nth-child(1) .art{--tint:var(--t-sage)}.c:nth-child(3) .art{--tint:var(--t-sky)}
+.c .art .ph{--w:250px;margin-top:44px;filter:drop-shadow(0 26px 40px var(--shadow))}
+.c figcaption{font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:18px;padding-right:12px}
 .c figcaption b{color:var(--ink);font-weight:600}
-.c.watch .art{background:#000;align-items:center}
+.c.watch .art{background:#0b0c0d;align-items:center}
+.c.watch .art::before{display:none}
 .c.watch .art img{width:260px;height:auto;border-radius:44px;display:block}
 .ov{position:absolute;pointer-events:none;z-index:2}
 .ov > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -300,12 +350,14 @@ html.reveal .in{opacity:1!important;transform:none!important}
 .d-hl.on{opacity:1}
 .ov:has(.d-hl){container-type:inline-size}
 
-/* privacy */
-.priv{background:var(--grey);padding-block:clamp(90px,11vw,140px)}
-.priv h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04;max-width:11em}
-.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:56px;box-shadow:inset 0 1px 0 var(--rule);padding-top:28px}
-.three h3{font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0 0 8px}
-.three p{margin:0;color:var(--ink-2);font-size:16px}
+/* privacy: one panel */
+.priv{padding-bottom:clamp(84px,10vw,128px)}
+.priv .pn{padding:clamp(30px,4vw,56px) clamp(24px,4vw,56px) clamp(30px,4vw,52px)}
+.priv .pn::before{left:-10%;right:40%;bottom:-60%;height:140%}
+.priv h2{margin-top:8px;font-size:clamp(38px,5.4vw,68px);font-weight:700;letter-spacing:-.04em;line-height:1.02;max-width:11em}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:clamp(34px,4vw,52px);box-shadow:inset 0 1px 0 var(--rule);padding-top:26px}
+.three h3{font-family:var(--font);font-size:18px;font-weight:600;letter-spacing:-.015em;margin:0 0 6px}
+.three p{margin:0;color:var(--ink-2);font-size:16px;line-height:1.45}
 
 /* what's new */
 .new{padding-block:clamp(80px,10vw,120px)}
@@ -386,68 +438,58 @@ html.reveal .in{opacity:1!important;transform:none!important}
 .day .chips span{padding:6px 11px;font-size:13px}
 .pick span.off{background:transparent;box-shadow:inset 0 0 0 1px var(--rule)}
 .pick span.on{background:var(--ink);color:var(--paper);box-shadow:none}
+.new{padding-block:0 clamp(84px,10vw,128px)}
+.wg{border-radius:var(--r)}
+.wg[data-w=all]{background:linear-gradient(180deg,var(--t-lav),var(--panel) 78%)}
+.ar{background:var(--panel)}
 
-/* closing */
-.closing{background:var(--grey);text-align:center;padding-block:clamp(90px,11vw,140px)}
-.closing img{width:88px;height:88px;border-radius:20px;display:block;margin:0 auto 30px}
-.closing h2{font-size:clamp(44px,6.4vw,84px);font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:36px}
-.closing p{margin:18px 0 0;font-size:14px;color:var(--ink-3)}
-
-/* footnotes and footer */
-.notes{background:var(--grey);box-shadow:inset 0 1px 0 var(--rule);padding-block:30px 40px;font-size:12px;line-height:1.55;color:var(--ink-3)}
+/* footnotes */
+.notes{box-shadow:inset 0 1px 0 var(--rule);padding-block:30px 40px;font-size:12px;line-height:1.55;color:var(--ink-3)}
 .notes ol{margin:0;padding-left:18px;display:grid;gap:8px;max-width:62em}
-footer{background:var(--foot);box-shadow:inset 0 1px 0 var(--foot-rule);color:rgba(255,255,255,.62);padding-block:56px calc(56px + env(safe-area-inset-bottom,0px));font-size:13.5px}
-footer .w{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:30px}
-footer .brand{color:#fff;margin-bottom:12px}
-footer h4{margin:0 0 12px;font-size:13px;font-weight:600;color:#fff}
-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-footer a{text-decoration:none}
-footer a:hover{color:#fff}
-.look{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:22px;padding-top:22px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
-.look p{margin:0}
-.seg{display:inline-flex;padding:2px;border-radius:9px;background:rgba(255,255,255,.1)}
-.seg button{border:0;background:transparent;color:rgba(255,255,255,.72);font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:7px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
 
-/* phones and portrait screens: the film runs tall, the phone sits on top, the words under it */
-@media (max-width:860px),(max-aspect-ratio:4/5){
-  .nav nav a.opt{display:none}
-  .hero h1{--h1:min(13.4vw,92px)}
-  :lang(de) .hero h1{--h1:min(10.8vw,80px)}
-  .lineup{--mw:min(58vw,250px)}
-  .lineup .ph.side{display:none}
-  .wt{left:calc(50% + var(--mw) * .3);top:calc(var(--mw) * 1.5);width:calc(var(--mw) * .44)}
-  .step h2{font-size:clamp(32px,8.6vw,52px)}
-  .step p{margin-top:12px;font-size:16px;line-height:1.45}
-  .steps .step,.steps .step:nth-child(even){flex-direction:column;align-items:flex-start}
+/* phones and portrait screens: one column, the phone under its words */
+@media (max-width:940px),(max-aspect-ratio:4/5){
+  .hero h1{--h1:min(12.6vw,84px)}
+  :lang(de) .hero h1{--h1:min(10.4vw,76px)}
+  :lang(hu) .hero h1{--h1:min(11.6vw,80px)}
+  .stage{--mw:min(60vw,270px);grid-template-columns:auto auto;justify-content:center;gap:34px clamp(30px,12vw,72px);margin-top:44px}
+  .stage .dev{grid-column:1/-1;grid-row:1;justify-self:center;margin-right:calc(var(--mw) * .2)}
+  .stage .wt{right:calc(var(--mw) * -.34);width:calc(var(--mw) * .56)}
+  .hf.l,.hf.r{justify-self:start;padding:0;gap:22px}
+  .hf dd{font-size:clamp(40px,11.4vw,54px)}
+  .hf dt{font-size:15px}
+  .grid{gap:16px}
+  .steps .pn.replay,.steps .pn.run,.steps .pn.work{grid-column:1/-1;flex-direction:column;align-items:stretch}
+  .steps .pn.replay::before,.steps .pn.work::before{left:-25%;right:-25%;bottom:-34%;height:92%}
+  .steps .pn.replay .tx,.steps .pn.work .tx{padding-bottom:0}
+  .steps .pn.replay .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto 34px}
+  .steps .pn.work .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto calc(var(--w) * -.86)}
+  .trio{grid-template-columns:minmax(0,1fr);gap:16px}
+  .trio .pn-s{min-height:0}
+  .trio .pn-n{--n:clamp(60px,17vw,84px)}
   .st{height:140px}
-  .calc{margin-top:24px;padding:20px 18px 18px;border-radius:20px;width:100%}
+  .calc{padding:20px 18px 18px;border-radius:20px;width:100%}
   .calc .v b{font-size:26px}
   .calc .fr{font-size:24px}
   .calc .res{font-size:38px}
   .calc .eq{gap:14px}
-  .trio{grid-template-columns:minmax(0,1fr);gap:72px}
-  .trio .cap{min-height:0}
-  .trio .ph{--w:min(78vw,300px)}
-  .three,.list{grid-template-columns:minmax(0,1fr);gap:26px}
+  .three,.list{grid-template-columns:minmax(0,1fr);gap:22px}
   .wgs{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"cam cam" "all all" "eff trd" "dev fg" "day day";gap:16px}
-  footer .w{grid-template-columns:repeat(2,minmax(0,1fr))}
-  footer .w > div:first-child{grid-column:1/-1}
   .c .art{height:430px}
 }
-@media (max-width:520px){
+@media (max-width:560px){
+  :root{--r:26px}
+  .w,.grid{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .chap.w,.topic > .w:first-child{padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
   .wgs{grid-template-columns:minmax(0,1fr);grid-template-areas:"cam" "all" "eff" "trd" "dev" "day" "fg"}
   .wg[data-w=cam] .st{min-height:220px}
   .cam .figs{right:10px;bottom:10px;gap:4px 16px;padding:9px 12px 10px}
   .cam .figs b{font-size:17px}
-
-  .nav .w{gap:10px}
-  .nav nav a{display:none}
-  .works ul{gap:6px 22px;font-size:17px}
+  .works ul{gap:4px 20px;font-size:16.5px}
 }
 
 /* Questions: the live site's answers, in this page's look. */
-.faq-sec{padding:clamp(80px,10vw,128px) 0;background:var(--paper)}
+.faq-sec{padding:0 0 clamp(72px,9vw,112px);background:var(--paper)}
 .faq-sec .qa-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 56px;align-items:start}
 .faq-sec h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04;margin:0}
 .faq-sec .faq{border-top:1px solid var(--rule)}
@@ -466,62 +508,21 @@ footer a:hover{color:#fff}
 </style>
 </head>
 <body>
-<header class="nav" id="nav">
-  <div class="w">
-    <a class="brand" href="#top"><img src="h/icon.png" alt="" width="26" height="26">Aera</a>
-    <nav>
-      <a href="#replay">Visszajátszás</a>
-      <a href="#body" class="opt">A tested</a>
-      <a href="#inside" class="opt">Az app</a>
-      <a href="#new">Újdonságok</a>
-    </nav>
-    <div class="langs" aria-label="Nyelv"><a href="./" hreflang="en">EN</a><a href="hu.html" aria-current="page" hreflang="hu">HU</a><a href="de.html" hreflang="de">DE</a></div>
-    <a class="pill" href="/get/nav/hu/">Letöltés</a>
-  </div>
-</header>
+<header class="site-head" id="nav"><div class="sh-w"><a class="sh-brand" href="/hu.html"><img src="/assets/icon.png" alt="" width="26" height="26">Aera</a><nav aria-label="Oldal"><a href="/hu.html#replay">Visszajátszás</a><a href="/hu.html#body">A tested</a><a href="/guides/#hu">Útmutatók</a><a href="/ujdonsagok.html">Újdonságok</a></nav><div class="sh-langs lsw" data-alt="1" role="group" aria-label="Nyelv"><a href="/" lang="en" hreflang="en" data-lsw="en">EN</a><a href="/hu.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">HU</a><a href="/de.html" lang="de" hreflang="de" data-lsw="de">DE</a></div><a class="sh-get" href="/get/nav/hu/">Letöltés</a></div></header>
 
 <main id="top">
 
-<section class="film" id="replay" aria-label="Egy reggeli futás a budapesti Szabadság hídon, 3D-ben visszajátszva">
-  <div class="hero">
-    <p class="kicker">Aera iPhone-ra és Apple Watchra</p>
-    <h1><span>Nézd vissza a futásod.</span> <span>Értsd meg a tested.</span></h1>
-    <p class="sub">A futásaid 3D-ben, a valódi utcák fölött. A számaid ahhoz mérve, ami nálad&nbsp;szokásos.</p>
-    <div class="cta">
-        <a class="store" href="/get/hero/hu/"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.2 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM11.7 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg><span><small>Letölthető az</small>App Store-ból</span></a>
-        <p>Ingyen elkezdheted. Fiók nélkül.</p>
-      </div>
-    <div class="lineup">
-      <div class="ph side l"><div class="scr"><img src="h/hu/age.webp" alt="Testkor 35,0, 3,4 évvel fiatalabb a naptári korodnál" width="828" height="1800"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div class="ph side r"><div class="scr"><img src="h/hu/run.webp" alt="A futás oldala: 11,57 km, 5:06-os tempó, a szokásoshoz mérve" width="828" height="1800"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div class="ph main"><div class="scr"><img src="h/hu/replay-low.webp" alt="Futás 3D-ben visszajátszva a budapesti Szabadság hídon: leggyorsabb km 4:38" width="828" height="1800" fetchpriority="high"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div class="wt"><img src="h/hu/watch.webp" alt="Apple Watch: a következő kanyar, még 92 méter" width="416" height="496"></div>
-    </div>
+<section class="hero" aria-label="Reggeli futás a budapesti Szabadság hídon, 3D-ben visszajátszva">
+  <p class="kicker">Aera iPhone-ra és Apple Watchra</p>
+  <h1><span>Nézd vissza a futásod.</span> <span>Értsd meg a tested.</span></h1>
+  <p class="sub">A futásaid 3D-ben, a valódi utcák fölött. A számaid ahhoz mérve, ami nálad&nbsp;megszokott.</p>
+  <div class="cta"><a class="store" href="/get/hero/hu/"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.2 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM11.7 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg><span><small>Letölthető az</small>App Store-ból</span></a>
+    <p>Ingyen letölthető. Regisztráció nélkül.</p>
   </div>
-  <div class="w chap">
-    <h2 class="huge">Nézd vissza<br>a futásod.</h2>
-    <p class="intro">Egy szombat reggeli futás Budapesten, 11,57&nbsp;km. <em>Ezt hozta ki belőle az Aera.</em></p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="ph"><div class="scr"><img src="h/hu/replay.webp" alt="A visszajátszás megállítva a Szabadság hídon: leggyorsabb km 4:38, 7,07 km, 36:24, pulzus 148" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div><h2>4:38 a Szabadság&nbsp;hídon.</h2><p>Az Aera az elmúlt hét bármelyik futását visszajátssza a valódi terepen, a menet közbeni távval, idővel, tempóval és pulzussal, és <b>ott jelöli a leggyorsabb kilométered, ahol lefutottad</b>.<sup><a href="#n3">3</a></sup></p></div>
-    </div>
-    <div class="step">
-      <div class="ph"><div class="scr"><img src="h/hu/run.webp" alt="A futás oldala: 11,57 km, 59 perc, 5:06-os tempó a szokásos 5:23 mellett, pulzus 149 a szokásos 154 mellett" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div><h2>11,57&#8239;km, <span class="nw">5:06-os&nbsp;tempó.</span></h2><p>Aztán az egész futás, <b>minden érték mellett ott a szokásos</b>.<sup><a href="#n1">1</a></sup> A szokásos tempód 5:23. Az átlagpulzusod 149 volt, a szokásos&nbsp;154.</p></div>
-    </div>
-    <div class="step">
-      <div class="ph"><div class="scr"><img src="h/hu/formula.webp" alt="Mennyire egyenletes: 196 méter 149 szívverésre, vagyis 1,32 méter szívverésenként" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div>
-      <div><h2>1,32&#8239;m szívverésenként.</h2><p>És <b>minden szám mögött ott van a számítás</b>. 196 méter 149 szívverésre, mennyire egyenletesen futottál, mennyire volt nehéz. Koppints bármelyik értékre, és megmutatja, honnan&nbsp;jön.</p>
-        <figure class="calc" aria-label="Így számolja ki az Aera az 1,32 métert szívverésenként: a futás egy perce alatt 196 métert tettél meg, a szíved 149-et vert. 196 méter osztva 149 szívveréssel 1,32 méter.">
-          <div class="c-top" aria-hidden="true"><span>Egy perc ebből a futásból</span><span class="c-clock" data-n="c">1:00</span></div>
-          <div class="lane" aria-hidden="true"><div class="l-h"><span>Táv</span><span class="v"><b data-n="m">196</b>&#8239;m</span></div><div class="trk d"><svg viewBox="0 0 600 44" preserveAspectRatio="none"><path class="rt-bg" d="M3 30 C 70 31, 105 9, 175 12 S 290 37, 372 28 S 515 7, 597 15"/><path class="rt" pathLength="1" d="M3 30 C 70 31, 105 9, 175 12 S 290 37, 372 28 S 515 7, 597 15"/></svg><i class="dot"></i></div></div>
-          <div class="lane" aria-hidden="true"><div class="l-h"><span>Szívverés</span><span class="v"><b data-n="b">149</b></span></div><div class="trk h"><svg class="beats" viewBox="0 0 300 50"></svg></div></div>
-          <div class="sum"><div class="s-l" aria-hidden="true">Táv szívverésenként</div><div class="eq" aria-hidden="true"><span class="fr"><span class="num">196&#8239;m</span><i class="bar"></i><span class="den">149</span></span><span class="is">=</span><span class="res">1,32<small>m</small></span></div><button class="again" type="button" aria-label="Lejátszás újra"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.7-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.6 2.6v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
-        </figure>
-      </div>
-    </div>
+  <div class="stage">
+    <dl class="hf l"><div><dt>Táv</dt><dd>7,03<i>km</i></dd></div><div><dt>Idő</dt><dd>36:12</dd></div></dl>
+    <div class="dev"><div class="ph"><div class="scr"><img src="h/hu/replay-low.webp" alt="Futás 3D-ben visszajátszva a budapesti Szabadság hídon, a leggyorsabb kilométer 4:38" width="828" height="1800" fetchpriority="high"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249"></div><img class="wt" src="h/hu/watch-real.webp" alt="Apple Watch: elágazás, tarts balra, még 92 méter" width="520" height="844"></div>
+    <dl class="hf r"><div><dt>Leggyorsabb km</dt><dd>4:38</dd></div><div><dt>Tempó</dt><dd>4:55<i>/km</i></dd></div></dl>
   </div>
 </section>
 
@@ -532,32 +533,59 @@ footer a:hover{color:#fff}
   </div>
 </div>
 
+<section id="replay">
+  <div class="w chap">
+    <h2 class="huge">Nézd vissza<br>a futásod.</h2>
+    <p class="intro">Szombat reggeli futás Budapesten, 11,57&nbsp;km. <em>Ezt hozta ki belőle az Aera.</em></p>
+  </div>
+  <div class="grid steps">
+    <figure class="pn step replay peach">
+      <div class="tx"><h3><span class="pn-l">Leggyorsabb kilométer</span><span class="pn-n">4:38</span></h3><p class="pn-s"><b>A Szabadság hídon.</b> Az Aera az elmúlt hét bármelyik futását lejátssza a valódi terep fölött. Közben végig látod a távot, az időt, a tempót és a pulzust, a leggyorsabb kilométeredet pedig ott jelöli meg, ahol futottad.<sup><a href="#n3">3</a></sup></p></div>
+      <div class="ph"><div class="scr"><img src="h/hu/replay.webp" alt="A visszajátszás megállítva a Szabadság hídon: a leggyorsabb kilométer 4:38, 7,07 km, 36:24, pulzus 148" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn step run sky crop">
+      <div class="tx"><h3><span class="pn-l">Az egész futás</span><span class="pn-n">11,57<small>km</small></span></h3><p class="pn-s"><b>5:06-os tempóban.</b> Minden adat mellett ott van, mi a megszokott nálad.<sup><a href="#n1">1</a></sup> Általában 5:23-as tempót futsz. Az átlagpulzusod most 149 volt, máskor 154 körül&nbsp;van.</p></div>
+      <div class="ph"><div class="scr"><img src="h/hu/run.webp" alt="A futás oldala: 11,57 km, 59 perc, 5:06-os tempó a szokásos 5:23 helyett, 149-es pulzus a szokásos 154 helyett" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn step work lav">
+      <div class="tx"><h3><span class="pn-l">Táv szívverésenként</span><span class="pn-n">1,32<small>m</small></span></h3><p class="pn-s"><b>Minden szám mögött ott a számítás.</b> 196 méter 149 szívverés alatt: ennyire egyenletesen futottál. Koppints az Aerában bármelyik számra, és megmutatja, hogyan jött&nbsp;ki.</p>
+        <figure class="calc" aria-label="Így jön ki az 1,32 méter szívverésenként: a futás egy perce alatt 196 métert tettél meg, a szíved pedig 149-et vert. 196 méter osztva 149-cel, az 1,32 méter.">
+          <div class="c-top" aria-hidden="true"><span>Egy perc ebből a futásból</span><span class="c-clock" data-n="c">1:00</span></div>
+          <div class="lane" aria-hidden="true"><div class="l-h"><span>Táv</span><span class="v"><b data-n="m">196</b>&#8239;m</span></div><div class="trk d"><svg viewBox="0 0 600 44" preserveAspectRatio="none"><path class="rt-bg" d="M3 30 C 70 31, 105 9, 175 12 S 290 37, 372 28 S 515 7, 597 15"/><path class="rt" pathLength="1" d="M3 30 C 70 31, 105 9, 175 12 S 290 37, 372 28 S 515 7, 597 15"/></svg><i class="dot"></i></div></div>
+          <div class="lane" aria-hidden="true"><div class="l-h"><span>Szívverés</span><span class="v"><b data-n="b">149</b></span></div><div class="trk h"><svg class="beats" viewBox="0 0 300 50"></svg></div></div>
+          <div class="sum"><div class="s-l" aria-hidden="true">Táv szívverésenként</div><div class="eq" aria-hidden="true"><span class="fr"><span class="num">196&#8239;m</span><i class="bar"></i><span class="den">149</span></span><span class="is">=</span><span class="res">1,32<small>m</small></span></div><button class="again" type="button" aria-label="Lejátszás újra"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.7-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.6 2.6v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+        </figure>
+      </div>
+      <div class="ph"><div class="scr"><img src="h/hu/formula.webp" alt="Egyenletesség: 196 méter 149 szívverés alatt, vagyis 1,32 méter szívverésenként" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+  </div>
+</section>
+
 <section class="body" id="body">
-  <div class="w">
+  <div class="w chap">
     <h2 class="huge">Értsd meg<br>a tested.</h2>
-    <p class="intro">Ami az egyik embernek normális nyugalmi pulzus, az a másiknak szokatlan lehet.<sup><a href="#n2">2</a></sup> Ezért az Aera <em>az éjszakáidat, a szívedet és a vérnyomásodat a saját heteidhez méri</em>, és megmutatja, miből számol.</p>
+    <p class="intro">Ami az egyik embernél teljesen normális nyugalmi pulzus, az a másiknál már szokatlan.<sup><a href="#n2">2</a></sup> Ezért az Aera <em>az éjszakáidat, a szívedet és a vérnyomásodat a saját heteidhez méri</em>, és azt is megmutatja, miért.</p>
+  </div>
+  <div class="w">
     <div class="trio">
-      <figure>
-        <p class="num">35,0<small>év</small></p>
-        <p class="cap"><b>Testkor.</b> 3,4 évvel fiatalabb a naptári korodnál, a VO&#8322;max, a nyugalmi pulzus, a HRV, az alvás és a lépések alapján, minden részével együtt.<sup><a href="#n4">4</a></sup></p>
-        <div class="ph"><div class="scr"><img src="h/hu/age.webp" alt="Testkor 35,0, 3,4 évvel fiatalabb a naptári korodnál" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+      <figure class="pn crop sage">
+        <div class="tx"><h3><span class="pn-l">Testkor</span><span class="pn-n">35,0<small>év</small></span></h3><p class="pn-s"><b>3,4 évvel fiatalabb, mint amennyit a naptár mutat.</b> A VO&#8322;max, a nyugalmi pulzus, a HRV, az alvás és a lépések alapján, és mindegyik részét külön is látod.<sup><a href="#n4">4</a></sup></p></div>
+        <div class="ph"><div class="scr"><img src="h/hu/age.webp" alt="A testkor 35,0 év, 3,4 évvel kevesebb a valódi életkornál" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
       </figure>
-      <figure>
-        <p class="num">80<small>Nagyszerű</small></p>
-        <p class="cap"><b>A múlt éjszaka.</b> 6&nbsp;ó 53&nbsp;p alvás, 37 perccel kevesebb, mint amennyit az éjszakáid alapján aludnod kellene.</p>
-        <div class="ph"><div class="scr"><img src="h/hu/sleep.webp" alt="Alváspontszám 80, Nagyszerű: 6 ó 53 p alvás, 37 perccel az igényed alatt" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+      <figure class="pn crop lav">
+        <div class="tx"><h3><span class="pn-l">Múlt éjjel</span><span class="pn-n">80<small>Nagyszerű</small></span></h3><p class="pn-s"><b>6&nbsp;óra 53&nbsp;percet aludtál.</b> Ez 37 perccel kevesebb, mint amennyire a saját éjszakáid alapján szükséged van.</p></div>
+        <div class="ph"><div class="scr"><img src="h/hu/sleep.webp" alt="Alváspontszám 80, Nagyszerű: 6 óra 53 perc alvás, 37 perccel kevesebb a szükségesnél" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
       </figure>
-      <figure>
-        <p class="num">124/77</p>
-        <p class="cap"><b>Vérnyomás.</b> A reggelek az esték mellett, címkékkel, PDF-ben az orvosodnak.</p>
-        <div class="ph"><div class="scr"><img src="h/hu/bp.webp" alt="Vérnyomás 124/77, reggelekkel és estékkel" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+      <figure class="pn crop rose">
+        <div class="tx"><h3><span class="pn-l">Vérnyomás</span><span class="pn-n">124/77</span></h3><p class="pn-s"><b>Reggeli és esti mérések egymás mellett.</b> Címkézve, PDF-ben, amit megmutathatsz az orvosodnak.</p></div>
+        <div class="ph"><div class="scr"><img src="h/hu/bp.webp" alt="Vérnyomás 124/77, reggeli és esti mérésekkel" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
       </figure>
     </div>
   </div>
 </section>
 
 <section class="shelf" id="inside">
-  <div class="w top"><h2>Egy pillantás az appba.</h2><a class="link" href="/get/shelf/hu/">Nézd meg az App Store-ban &#8250;</a></div>
+  <div class="w top"><h2>Nézz bele az appba.</h2><a class="link" href="/get/shelf/hu/">Nézd meg az App Store-ban &#8250;</a></div>
   <div class="reel" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Az Aera képei az App Store-ban"><div class="track"><div class="set"><img class="fld" src="h/field.webp" alt="" width="6400" height="1391" loading="lazy"><svg class="run" viewBox="0 0 13200 2868" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="rglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter></defs><path class="rp" d="M490 2140 C890 2120 910 2020 1090 1990 C1170 1980 1290 1960 1320 1960 S1430 1950 1430 1930 C1810 1920 2150 2000 2410 1990 C2490 1980 2610 1960 2640 1960 S2750 1950 2750 1930 C3130 1920 3470 2000 3730 1990 C3810 1980 3930 1960 3960 1960 S4070 1950 4070 1930 C4450 1920 4790 2000 5050 1990 C5130 1980 5250 1960 5280 1960 S5390 1950 5390 1930 C5770 1920 6110 2000 6370 1990 C6450 1980 6570 1960 6600 1960 S6710 1950 6710 1930 C7090 1920 7430 2000 7690 1990 C7770 1980 7890 1960 7920 1960 S8030 1950 8030 1930 C8410 1920 8750 2000 9010 1990 C9090 1980 9210 1960 9240 1960 S9350 1950 9350 1930 C9730 1920 10070 2000 10330 1990 C10410 1980 10530 1960 10560 1960 S10670 1950 10670 1930 C11050 1920 11390 2000 11650 1990 C11730 1980 11850 1960 11880 1960 S11990 1950 11990 1930 C12370 1920 12710 2000 12970 1990"/><path class="trail" d=""/><g class="dot"><circle r="58" class="halo" filter="url(#rglow)"/><circle r="22" class="core"/></g></svg><div class="pnl" style="--i:0"><img class="dv" src="h/store/hu/d01.webp" alt="Nézd vissza a futásod 3D-ben. Apple Watch-csal vagy iPhone-nal." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t01.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:1"><img class="dv" src="h/store/hu/d02.webp" alt="Testkor, nem a naptár szerint." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t02.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:2"><img class="dv" src="h/store/hu/d03.webp" alt="Minden futás, a szokásosodhoz mérve." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t03.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:3"><img class="dv" src="h/store/hu/d04.webp" alt="Ismerd meg az utat, mielőtt futsz." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t04.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:4"><img class="dv" src="h/store/hu/d05.webp" alt="Az éjszakád, az igényedhez mérve." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t05.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:5"><img class="dv" src="h/store/hu/d06.webp" alt="Minden szám megmutatja, honnan jön." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t06.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:6"><img class="dv" src="h/store/hu/d07.webp" alt="Az órád. Az iPhone-od. Fiók nélkül." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t07.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:7"><img class="dv" src="h/store/hu/d08.webp" alt="A mérőd adatai, az orvosodnak." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t08.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:8"><img class="dv" src="h/store/hu/d09.webp" alt="Minden kanyar a csuklódon." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t09.webp" alt="" width="640" height="1391" loading="lazy"></div><div class="pnl" style="--i:9"><img class="dv" src="h/store/hu/d10.webp" alt="Oszd meg a futásod videóként." width="640" height="1391" loading="lazy"><img class="tx" src="h/store/hu/t10.webp" alt="" width="640" height="1391" loading="lazy"></div></div></div></div>
   <div class="w gal"><div class="dots" role="group" aria-label="Képek"></div><button class="pp" type="button" aria-label="Szünet" data-pause="Szünet" data-play="Lejátszás" data-again="Lejátszás újra"><svg class="i-pause" viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 2.5v9M9.5 2.5v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 14 14" aria-hidden="true"><path d="M4.5 2.6v8.8l7-4.4z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><svg class="i-again" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.7-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.6 2.6v3.9h3.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="arrows"><button type="button" data-dir="-1" aria-label="Előző"><svg viewBox="0 0 14 14"><path d="M9 2 4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" data-dir="1" aria-label="Következő"><svg viewBox="0 0 14 14"><path d="m5 2 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></span></div>
 </section>
@@ -565,38 +593,41 @@ footer a:hover{color:#fff}
 <section class="topic" id="out">
   <div class="w">
     <h2>Ki a szabadba.</h2>
-    <p class="intro">Kérj egy kört onnan, ahol állsz, táv vagy percek szerint, és <em>kövess minden kanyart a csuklódon</em>. Apple Watch-csal, bármilyen más órával, vagy óra nélkül is.</p>
+    <p class="intro">Kérj egy kört onnan, ahol éppen állsz, kilométerre vagy percre, és <em>a csuklódon kövesd a kanyarokat</em>. Apple Watch-csal, bármilyen más órával, de óra nélkül is megy.</p>
   </div>
   <div class="cards" data-row>
-    <figure class="c"><div class="art"><div class="ph"><div class="scr"><img src="h/hu/loops.webp" alt="Egy 9,8 km-es kör 30 látnivaló mellett, indulásra készen" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div></div><figcaption><b>Körök a házad elől.</b> Legfeljebb három közül választhatsz, sétához, futáshoz, bringázáshoz vagy túrához.</figcaption></figure>
-    <figure class="c watch"><div class="art"><img src="h/hu/watch.webp" alt="Apple Watch: elágazás, tarts balra, még 92 méter" width="416" height="496" loading="lazy"></div><figcaption><b>Minden kanyar a csuklódon.</b> Az Apple Watch előre mutatja a következő kanyart, és hat sportot rögzít.</figcaption></figure>
-    <figure class="c"><div class="art"><div class="ph"><div class="scr"><img src="h/hu/devices.webp" alt="Eszközök: Apple Watch, Garmin, COROS, Oura és egy összekapcsolt Polar" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div></div><figcaption><b>Bármilyen órával, vagy óra nélkül is.</b> A Garmin, a COROS és az Oura az Apple Healthen keresztül. A Polart közvetlenül is összekötheted, így az alvásod és az edzéseid is bejönnek.<sup><a href="#n5">5</a></sup></figcaption></figure>
+    <figure class="c"><div class="art"><div class="ph"><div class="scr"><img src="h/hu/loops.webp" alt="9,8 km-es kör 30 látnivaló mellett, indulásra készen" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div></div><figcaption><b>Körök egyenesen a kapudtól.</b> Akár három közül is választhatsz, sétához, futáshoz, bringázáshoz vagy túrához.</figcaption></figure>
+    <figure class="c watch"><div class="art"><img src="h/hu/watch.webp" alt="Apple Watch: elágazás, tarts balra, még 92 méter" width="416" height="496" loading="lazy"></div><figcaption><b>Minden kanyar a csuklódon.</b> Az Apple Watch még a kanyar előtt szól, és hat sportot tud rögzíteni.</figcaption></figure>
+    <figure class="c"><div class="art"><div class="ph"><div class="scr"><img src="h/hu/devices.webp" alt="Eszközök: Apple Watch, Garmin, COROS, Oura és egy összekötött Polar" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div></div><figcaption><b>Bármilyen óra jó, de óra nélkül is megy.</b> A Garmin, a COROS és az Oura adatai az Apple Egészségen keresztül érkeznek. A Polart közvetlenül is összekötheted, így az éjszakáid és az edzéseid is átjönnek.<sup><a href="#n5">5</a></sup></figcaption></figure>
   </div>
   <div class="w paddles"><button type="button" data-dir="-1" aria-label="Előző"><svg viewBox="0 0 14 14"><path d="M9 2 4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" data-dir="1" aria-label="Következő"><svg viewBox="0 0 14 14"><path d="m5 2 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 </section>
 
 <section class="priv">
   <div class="w">
-    <h2>Az egészséged az iPhone-odon marad.</h2>
-    <div class="three">
-      <div><h3>Nincs fiók</h3><p>Nyisd meg az appot, és kezdd el. Nem kell regisztrálni.</p></div>
-      <div><h3>Nincs egészségügyi szerver</h3><p>Az Aera a telefonodon olvassa az Apple Healtht, és minden számítást ott végez.</p></div>
-      <div><h3>Egészségadat soha</h3><p>A használati statisztika és a hibajelentések soha nem visznek egészségadatot. Mindkettőt kikapcsolhatod a Beállításokban.</p></div>
+    <div class="pn sage">
+      <p class="pn-l">Adatvédelem</p>
+      <h2>Az egészségadataid az iPhone-odon maradnak.</h2>
+      <div class="three">
+        <div><h3>Nincs fiók</h3><p>Megnyitod az appot, és már használhatod. Nem kell regisztrálni.</p></div>
+        <div><h3>Nincs szerver az adataidnak</h3><p>Az Aera a telefonodon olvassa ki az Apple Egészség adatait, és ott is számol mindent.</p></div>
+        <div><h3>Egészségadat sosem megy ki</h3><p>A használati statisztikában és a hibajelentésekben soha nincs egészségadat. Mindkettőt kikapcsolhatod a Beállításokban.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="new" id="new">
   <div class="w">
-    <div class="top"><h2>Újdonságok az Aera 3.4-ben</h2><a class="link" href="ujdonsagok.html">A teljes lista &#8250;</a></div>
+    <div class="top"><h2>Újdonságok az Aera 4.0-ban</h2><a class="link" href="ujdonsagok.html">A teljes lista &#8250;</a></div>
     <div class="list wgs">
-      <div class="wg" data-w="cam"><div class="st cam" aria-hidden="true"><img src="h/replay-wide.webp" alt="" width="1600" height="900" loading="lazy"><div class="figs"><span><small>Táv</small><b>11,57<i>km</i></b></span><span><small>Idő</small><b>59<i>perc</i></b></span><span><small>Tempó</small><b>5:06<i>/km</i></b></span><span><small>Pulzus</small><b>149<i>bpm</i></b></span></div></div><div><h3>A 3D-s nézet, újraépítve</h3><p>Négy élő érték, kameranézetek és térképstílusok, Prémiummal pedig álló videó a megosztáshoz.</p></div></div>
-      <div class="wg" data-w="all"><div class="st all" aria-hidden="true"><div class="ah"><span class="wn">Újdonságok</span><span class="ct"><b>1</b>/8</span></div><div class="areas"><section class="ar on" data-d="0"><h4>Otthon és a mutatóid</h4><ul><li><i class="mk " data-g="bolt"></i>Az Energia vezeti az Idővonalat</li><li><i class="mk hg" data-g="ring"></i>A Regenerálódás jobban figyel az alvás közbeni szívedre</li><li><i class="mk " data-g="ring"></i>A gyűrűk a mai pontszámokat mutatják</li><li><i class="mk hh" data-g="heart"></i>Vérnyomás az Otthon lapon</li></ul></section><section class="ar"><h4>Alvás</h4><ul><li><i class="mk " data-g="clock"></i>Az óraátállítás</li><li><i class="mk " data-g="sun"></i>Az ébredés utáni alvás szundinak számít</li><li><i class="mk hs" data-g="moon"></i>Egy alváspontszám, ami nem változik</li></ul></section><section class="ar"><h4>Edzések és Fitnesz</h4><ul><li><i class="mk hr" data-g="run"></i>Mondd meg, mennyire volt nehéz</li><li><i class="mk " data-g="gauge"></i>Tempó és pulzuscsúszás a szokásoshoz képest</li><li><i class="mk " data-g="drag"></i>Húzd végig az ujjad egy görbén, és leolvashatod</li><li><i class="mk " data-g="plane"></i>A Flyover a térképeden indul</li></ul></section><section class="ar"><h4>A Térkép</h4><ul><li><i class="mk " data-g="map"></i>Forgasd és döntsd meg a térképet</li><li><i class="mk " data-g="pin"></i>A látnivalók oszlopként állnak</li><li><i class="mk " data-g="flame"></i>Élesebb hőtérkép</li><li><i class="mk " data-g="loop"></i>Körök, amiket tényleg lefutnál</li></ul></section><section class="ar"><h4>Az órád</h4><ul><li><i class="mk " data-g="compass"></i>Iránytűoldal</li><li><i class="mk " data-g="map"></i>Térkép útvonal nélkül</li><li><i class="mk " data-g="battery"></i>Lépések és akkumulátor útközben</li><li><i class="mk hr" data-g="run"></i>A saját nyomvonalad szabad futásnál</li></ul></section><section class="ar"><h4>Widgetek, Siri és értesítések</h4><ul><li><i class="mk " data-g="sync"></i>Szinkronizálás a zárolási képernyőn</li><li><i class="mk " data-g="mic"></i>Siri vezeti az edzésedet</li><li><i class="mk " data-g="switch"></i>Futás tervezése és Múlt éjszaka a Vezérlőközpontban</li><li><i class="mk " data-g="sun"></i>Reggeli értesítés az éjszakádról</li></ul></section><section class="ar"><h4>Megosztás és adataid</h4><ul><li><i class="mk " data-g="frame"></i>A képernyőkép megosztási kártyát nyit</li><li><i class="mk hs" data-g="moon"></i>Múlt éjszaka megosztása</li><li><i class="mk " data-g="star"></i>Egyéni csúcsok és a heted</li><li><i class="mk " data-g="globe"></i>Kártyák a saját nyelveden</li></ul></section><section class="ar"><h4>Általános</h4><ul><li><i class="mk " data-g="palette"></i>Egy harmadik megjelenés: Szín</li><li><i class="mk " data-g="book"></i>Bővebb Field Guide</li><li><i class="mk " data-g="bolt"></i>Azonnal használható</li><li><i class="mk hw" data-g="hike"></i>Minden túra a teljes tempóvonalával</li></ul></section></div></div><div><h3>És még sok minden</h3><p>A frissítés minden változását, a javításokat is, a Beállítások › Újdonságok alatt találod.</p></div></div>
-      <div class="wg" data-w="eff"><div class="st eff" aria-hidden="true"><div class="eh"><b data-v>8</b><span>Érzett terhelés</span></div><div class="t10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><em></em></div><div class="ends"><span>Könnyű</span><span>Maximális</span></div></div><div><h3>Mennyire volt nehéz</h3><p>Értékelj bármelyik edzést 1-től 10-ig. A legjobb részidők megmondják, hol áll egy futás, például 41-ből a második&nbsp;leggyorsabb.</p></div></div>
-      <div class="wg" data-w="trd"><div class="st trd" aria-hidden="true"><div class="eh"><span class="sw"><span class="on">Kardiofittség</span><span>Nyugalmi pulzus</span></span><b class="sw"><span class="on">48,9</span><span>54<small>bpm</small></span></b></div><svg viewBox="0 0 300 80" preserveAspectRatio="none"><path class="band" d="M0 22 C60 20 120 26 180 24 S260 20 300 23 L300 52 C240 50 180 55 120 53 S40 50 0 52Z"/><path class="ln on" pathLength="1" d="M0 30 C25 26 40 40 62 36 S95 24 118 31 S150 44 172 38 S205 30 228 40 S262 47 282 44 L300 46"/><path class="ln" pathLength="1" d="M0 46 C22 44 44 34 66 38 S100 48 124 42 S158 30 180 36 S214 46 236 38 S270 30 300 33"/><circle class="dt on" cx="300" cy="46" r="4.5"/><circle class="dt" cx="300" cy="33" r="4.5"/></svg></div><div><h3>Trendek</h3><p>Kardiofittség, nyugalmi pulzus és állóképesség, és mindegyikből látod, hogy tényleg változott-e valami.</p></div></div>
-      <div class="wg" data-w="dev"><div class="st dev" aria-hidden="true"><div class="eh"><span>Ezekkel működik</span></div><div class="roll"><span class="on">Apple Watch</span><span>Garmin</span><span>Polar</span><span>COROS</span><span>Óra nélkül</span></div><div class="chips"><span>FIT</span><span>GPX</span><span>TCX</span></div></div><div><h3>Bármilyen órával, vagy óra nélkül</h3><p>Teljes oldalak a Garminnak, a Polarnak és a COROS-nak. A Garmin-, FIT-, GPX- és TCX-fájlok az útvonalukkal együtt importálhatók.</p></div></div>
-      <div class="wg" data-w="day"><div class="st day" aria-hidden="true"><div class="chips pick"><span>Kimerült</span><span>Fáradt</span><span class="on">Rendben</span><span>Topformában</span><span class="off">Beteg</span><span class="off">Sérült</span><span class="off">Úton</span></div></div><div><h3>Milyen a napod?</h3><p>Mondd el az Aerának, milyen a napod, és jelölj pihenőt, ha beteg vagy, vagy elutaztál.</p></div></div>
-      <div class="wg" data-w="fg"><div class="st fg" aria-hidden="true"><div class="eh"><b>+10</b><span>Field Guide</span></div><div class="roll"><span class="on">Szokásos</span><span>Biológiai kor</span><span>Alvásigény és tartalék</span><span>Pulzuszónák</span><span>Biológiai óra</span></div></div><div><h3>Bővebb Field Guide</h3><p>16 cikk újraírva és 10 új, mindegyik a forrásaival.</p></div></div>
+      <div class="wg" data-w="cam"><div class="st cam" aria-hidden="true"><img src="h/replay-wide.webp" alt="" width="1600" height="900" loading="lazy"><div class="figs"><span><small>Táv</small><b>11,57<i>km</i></b></span><span><small>Idő</small><b>59<i>perc</i></b></span><span><small>Tempó</small><b>5:06<i>/km</i></b></span><span><small>Pulzus</small><b>149<i>bpm</i></b></span></div></div><div><h3>Megújult a visszajátszás</h3><p>Négy élő adat, kameranézetek és térképstílusok, Premiummal pedig álló videó, amit megoszthatsz.</p></div></div>
+      <div class="wg" data-w="all"><div class="st all" aria-hidden="true"><div class="ah"><span class="wn">Újdonságok</span><span class="ct"><b>1</b>/8</span></div><div class="areas"><section class="ar on" data-d="0"><h4>Főoldal és a mutatóid</h4><ul><li><i class="mk " data-g="bolt"></i>Az Idővonal élén az Energia áll</li><li><i class="mk hg" data-g="ring"></i>A Regenerálódásnál többet számít az alvás alatti pulzusod</li><li><i class="mk " data-g="ring"></i>A gyűrűk a mai pontszámokat mutatják</li><li><i class="mk hh" data-g="heart"></i>Vérnyomás a Főoldalon</li></ul></section><section class="ar"><h4>Alvás</h4><ul><li><i class="mk " data-g="clock"></i>Az óraátállítás</li><li><i class="mk " data-g="sun"></i>Az ébredés utáni szundi szundinak számít</li><li><i class="mk hs" data-g="moon"></i>Alváspontszám, ami utólag sem változik</li></ul></section><section class="ar"><h4>Edzések és Fitnesz</h4><ul><li><i class="mk hr" data-g="run"></i>Te mondod meg, mennyire volt nehéz</li><li><i class="mk " data-g="gauge"></i>Tempótartás és pulzusdrift a megszokotthoz képest</li><li><i class="mk " data-g="drag"></i>Húzd az ujjad a grafikonon, és leolvasod</li><li><i class="mk " data-g="plane"></i>A Flyover a térképeden indul</li></ul></section><section class="ar"><h4>A Térkép</h4><ul><li><i class="mk " data-g="map"></i>Forgatható, dönthető térkép</li><li><i class="mk " data-g="pin"></i>A látnivalók jelzőoszlopot kaptak</li><li><i class="mk " data-g="flame"></i>Élesebb hőtérkép</li><li><i class="mk " data-g="loop"></i>Körök, amiket tényleg lefutnál</li></ul></section><section class="ar"><h4>Az órád</h4><ul><li><i class="mk " data-g="compass"></i>Iránytű oldal</li><li><i class="mk " data-g="map"></i>Térkép útvonal nélkül</li><li><i class="mk " data-g="battery"></i>Lépések és akkumulátor útközben</li><li><i class="mk hr" data-g="run"></i>Szabad futásnál is látod a nyomvonalad</li></ul></section><section class="ar"><h4>Widgetek, Siri és értesítések</h4><ul><li><i class="mk " data-g="sync"></i>Szinkronizálás a zárolási képernyőn</li><li><i class="mk " data-g="mic"></i>Sirivel is indíthatod az edzést</li><li><i class="mk " data-g="switch"></i>Futástervezés és Múlt éjszaka a Vezérlőközpontban</li><li><i class="mk " data-g="sun"></i>Reggeli értesítés az éjszakádról</li></ul></section><section class="ar"><h4>Megosztás és adataid</h4><ul><li><i class="mk " data-g="frame"></i>Képernyőfotóból megosztható kártya</li><li><i class="mk hs" data-g="moon"></i>Oszd meg a múlt éjszakád</li><li><i class="mk " data-g="star"></i>Egyéni csúcsok és a heted</li><li><i class="mk " data-g="globe"></i>Kártyák a saját nyelveden</li></ul></section><section class="ar"><h4>Általános</h4><ul><li><i class="mk " data-g="palette"></i>Harmadik megjelenés: Szín</li><li><i class="mk " data-g="book"></i>Bővebb Field Guide</li><li><i class="mk " data-g="bolt"></i>Azonnal használható</li><li><i class="mk hw" data-g="hike"></i>Minden túra, a teljes tempógörbével</li></ul></section></div></div><div><h3>És még sok minden</h3><p>A frissítés összes változását, a javításokkal együtt, a Beállítások › Újdonságok alatt találod.</p></div></div>
+      <div class="wg" data-w="eff"><div class="st eff" aria-hidden="true"><div class="eh"><b data-v>8</b><span>Érzett terhelés</span></div><div class="t10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><em></em></div><div class="ends"><span>Könnyű</span><span>Maximális</span></div></div><div><h3>Mennyire volt nehéz</h3><p>Bármelyik edzést értékelheted 1-től 10-ig. A legjobb eredményeidnél azt is látod, hol áll egy futás: például a 2. leggyorsabb a&nbsp;41-ből.</p></div></div>
+      <div class="wg" data-w="trd"><div class="st trd" aria-hidden="true"><div class="eh"><span class="sw"><span class="on">Kardiofittség</span><span>Nyugalmi pulzus</span></span><b class="sw"><span class="on">48,9</span><span>54<small>bpm</small></span></b></div><svg viewBox="0 0 300 80" preserveAspectRatio="none"><path class="band" d="M0 22 C60 20 120 26 180 24 S260 20 300 23 L300 52 C240 50 180 55 120 53 S40 50 0 52Z"/><path class="ln on" pathLength="1" d="M0 30 C25 26 40 40 62 36 S95 24 118 31 S150 44 172 38 S205 30 228 40 S262 47 282 44 L300 46"/><path class="ln" pathLength="1" d="M0 46 C22 44 44 34 66 38 S100 48 124 42 S158 30 180 36 S214 46 236 38 S270 30 300 33"/><circle class="dt on" cx="300" cy="46" r="4.5"/><circle class="dt" cx="300" cy="33" r="4.5"/></svg></div><div><h3>Trendek</h3><p>Kardiofittség, nyugalmi pulzus, állóképesség. Mindegyiknél megmondja, valódi-e a változás.</p></div></div>
+      <div class="wg" data-w="dev"><div class="st dev" aria-hidden="true"><div class="eh"><span>Ezekkel működik</span></div><div class="roll"><span class="on">Apple Watch</span><span>Garmin</span><span>Polar</span><span>COROS</span><span>Óra nélkül</span></div><div class="chips"><span>FIT</span><span>GPX</span><span>TCX</span></div></div><div><h3>Bármilyen óra jó, de nem kell óra</h3><p>Saját oldalt kapott a Garmin, a Polar és a COROS. A Garmin-exportok és a FIT-, GPX- és TCX-fájlok az útvonalukkal együtt importálhatók.</p></div></div>
+      <div class="wg" data-w="day"><div class="st day" aria-hidden="true"><div class="chips pick"><span>Kimerült</span><span>Fáradt</span><span class="on">Rendben</span><span>Topformában</span><span class="off">Beteg</span><span class="off">Sérült</span><span class="off">Úton</span></div></div><div><h3>Milyen napod van?</h3><p>Megmondhatod az Aerának, hogy érzed magad, és jelezheted, ha beteg vagy, vagy éppen úton.</p></div></div>
+      <div class="wg" data-w="fg"><div class="st fg" aria-hidden="true"><div class="eh"><b>+10</b><span>Field Guide</span></div><div class="roll"><span class="on">Szokásos</span><span>Biológiai kor</span><span>Alvásigény és tartalék</span><span>Pulzuszónák</span><span>Biológiai óra</span></div></div><div><h3>Bővebb Field Guide</h3><p>16 cikk újraírva, 10 új, mindegyik forrásokkal.</p></div></div>
     </div>
   </div>
 </section>
@@ -604,58 +635,31 @@ footer a:hover{color:#fff}
 <section class="faq-sec" id="faq">
   <div class="w qa-grid">
     <h2>Kérdések.</h2>
-    <div class="faq"><details class="qa"><summary><h3>Mit csinál az Aera?</h3><i aria-hidden="true"></i></summary><p>Azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Healthbe ír, és elmondja, mit jelentenek ezek a számok neked. Az alvást, a stresszt, a terhelést és minden futást ahhoz méri, ami nálad szokásos, érthetően elmondja, és minden szám mögött ott van egy rövid cikk arról, hogyan jött ki. Útvonalat is tervez, kanyarról kanyarra navigál, és 3D-ben visszajátssza a futásaidat.</p></details><details class="qa"><summary><h3>Kell hozzá Apple Watch?</h3><i aria-hidden="true"></i></summary><p>Nem. Az Aera az Apple Healthből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van.</p></details><details class="qa"><summary><h3>Ingyenes az Aera?</h3><i aria-hidden="true"></i></summary><p>Igen. Ingyenesek a pontszámaid minden nap az elmúlt 30 nappal, az elmúlt hét minden futása 3D-ben, az útvonaltervező kanyarról kanyarra navigációval, öt mentett útvonal, a Field Guide és minden export az elmúlt 30 napra. A Premium megőrzi a teljes előzményedet, minden futásodat 3D-ben, akármilyen régi, a visszajátszást megosztható videóként, több mentett útvonalat és a hosszabb jelentéseket. Az éves előfizetés egy ingyenes héttel indul.</p></details><details class="qa"><summary><h3>Kell fiók? Hová kerülnek az adataim?</h3><i aria-hidden="true"></i></summary><p>Nem kell fiók. Az Aera az iPhone-odon olvassa az Apple Healthet, és ott is számol, így az egészségadataid a telefonodon maradnak. Az analitika alapból ki van kapcsolva, és egészségadat akkor sem kerül bele, ha bekapcsolod.</p></details><details class="qa"><summary><h3>Honnan tudja az Aera, mi a normális nálam?</h3><i aria-hidden="true"></i></summary><p>Néhány hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos nálad, és minden új napot ehhez hasonlít. Amíg kevés az adat, nem találgat: kiírja, hogy még tanul.</p></details><details class="qa"><summary><h3>Orvosi eszköz az Aera?</h3><i aria-hidden="true"></i></summary><p>Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az órák mérései, például az alvásfázisok, becslések, és minden cikk megírja, meddig lehet bízni a számában.</p></details><details class="qa"><summary><h3>Milyen nyelveken érhető el?</h3><i aria-hidden="true"></i></summary><p>Teljes egészében angolul, magyarul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul.</p></details></div>
+    <div class="faq"><details class="qa"><summary><h3>Mit csinál az Aera?</h3><i aria-hidden="true"></i></summary><p>Azt olvassa, amit az órád, a gyűrűd vagy a telefonod az Apple Health-be ment, és elmondja, mit jelentenek ezek a számok neked. Az alvást, a stresszt, a terhelést és minden futást ahhoz méri, ami nálad szokásos, érthetően elmondja, és minden szám mögött ott van egy rövid cikk arról, hogyan jött ki. Útvonalat is tervez, kanyarról kanyarra navigál, és 3D-ben visszajátssza a futásaidat.</p></details><details class="qa"><summary><h3>Kell hozzá Apple Watch?</h3><i aria-hidden="true"></i></summary><p>Nem. Az Aera az Apple Health-ből dolgozik, így jó hozzá bármilyen óra, gyűrű vagy app, ami oda menti az alvásodat, a pulzusodat és az edzéseidet: Apple Watch, Garmin, Oura, WHOOP és a többi. Ha csak iPhone-od van, a lépésekből és az edzésekből dolgozik, az éjszakai szívadatra épülő részek pedig akkor indulnak, amikor már ilyen adat is van.</p></details><details class="qa"><summary><h3>Ingyenes az Aera?</h3><i aria-hidden="true"></i></summary><p>Igen. Ingyenesek a pontszámaid minden nap az elmúlt 30 nappal, az elmúlt hét minden futása 3D-ben, az útvonaltervező kanyarról kanyarra navigációval, öt mentett útvonal, a Field Guide és minden export az elmúlt 30 napra. A Premium megőrzi a teljes előzményedet, minden futásodat 3D-ben, akármilyen régi, a visszajátszást megosztható videóként, több mentett útvonalat és a hosszabb jelentéseket. Az éves előfizetés egy ingyenes héttel indul.</p></details><details class="qa"><summary><h3>Kell fiók? Hová kerülnek az adataim?</h3><i aria-hidden="true"></i></summary><p>Nem kell fiók. Az Aera az iPhone-odon olvassa az Apple Health-et, és ott is számol, így az egészségadataid a telefonodon maradnak. Az analitika alapból ki van kapcsolva, és egészségadat akkor sem kerül bele, ha bekapcsolod.</p></details><details class="qa"><summary><h3>Honnan tudja az Aera, mi a normális nálam?</h3><i aria-hidden="true"></i></summary><p>Néhány hét alatt megtanulja a saját éjszakáidból és edzéseidből, mi a szokásos nálad, és minden új napot ehhez hasonlít. Amíg kevés az adat, nem találgat: kiírja, hogy még tanul.</p></details><details class="qa"><summary><h3>Orvosi eszköz az Aera?</h3><i aria-hidden="true"></i></summary><p>Nem. Az Aera a mindennapi jólléthez és az edzéshez készült. Az órák mérései, például az alvásfázisok, becslések, és minden cikk megírja, meddig lehet bízni a számában.</p></details><details class="qa"><summary><h3>Milyen nyelveken érhető el?</h3><i aria-hidden="true"></i></summary><p>Teljes egészében angolul, magyarul, németül, spanyolul és franciául, részben olaszul, japánul, portugálul és hagyományos kínaiul.</p></details></div>
   </div>
   
 </section>
-<section class="closing">
-  <div class="w">
-    <img src="h/icon.png" alt="Az Aera ikonja" width="88" height="88" loading="lazy">
-    <h2>Nézd vissza a futásod.<br>Értsd meg a tested.</h2>
-    <a class="store" href="/get/closing/hu/"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.2 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM11.7 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg><span><small>Letölthető az</small>App Store-ból</span></a>
-    <p>Ingyen elkezdheted. Fiók nélkül. Azzal az órával működik, amit már most is hordasz.</p>
-  </div>
-</section>
+<section class="site-get"><img class="sg-icon" src="/assets/icon.png" alt="Az Aera ikonja" width="84" height="84" loading="lazy"><h2><span>Nézd vissza a futásod.</span> <span>Értsd meg a tested.</span></h2><div class="sg-cta"><a class="store" href="/get/closing/hu/"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.2 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM11.7 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg><span><small>Letölthető az</small>App Store-ból</span></a><span class="sg-qr"><img src="/assets/qr-hu.svg" alt="QR-kód, amely megnyitja az Aerát az App Store-ban" width="76" height="76" loading="lazy">Vagy olvasd be az iPhone-oddal</span></div><p>Ingyen kipróbálhatod, regisztráció nélkül. Azzal az órával is megy, amit most hordasz.</p></section>
 
 <div class="notes">
   <div class="w">
     <ol>
       <li id="n1">Fisher AJ, Medaglia JD, Jeronimus BF. Lack of group-to-individual generalizability is a threat to human subjects research. <i>PNAS</i>. 2018;115(27):E6106&#8211;E6115.</li>
       <li id="n2">Quer G, Gouda P, Galarnyk M, Topol EJ, Steinhubl SR. Inter- and intraindividual variability in daily resting heart rate and its associations with age, sex, sleep, BMI, and time of year. <i>PLOS ONE</i>. 2020;15(2):e0227709.</li>
-      <li id="n3">A 3D-s visszajátszás az elmúlt 7 nap futásaira, sétáira, bringázásaira és túráira ingyenes. A régebbi edzések a Premiummal nézhetők vissza.</li>
-      <li id="n4">A testkor a mindennapi jólléthez készült becslés, nem orvosi mérés. Olyan óra kell hozzá, amely méri a VO&#8322;max-ot és a pulzust.</li>
-      <li id="n5">A Garmin, Polar és COROS edzések útvonal nélkül érkeznek az Apple Healthen keresztül. A visszajátszáshoz importáld az edzésfájlt, vagy kapcsold össze a Polart.</li>
+      <li id="n3">A 3D-s visszajátszás az elmúlt 7 nap futásainál, sétáinál, bringázásainál és túráinál ingyenes. A régebbi edzésekhez Premium kell.</li>
+      <li id="n4">A testkor becslés, amely a mindennapi jóllétedhez készült, nem orvosi mérés. Olyan óra kell hozzá, amely méri a VO&#8322;max-ot és a pulzust.</li>
+      <li id="n5">A Garmin-, Polar- és COROS-edzések útvonal nélkül érkeznek meg az Apple Egészségből. Ha vissza akarod játszani őket, importáld az edzésfájlt, vagy kösd össze a Polart.</li>
     </ol>
   </div>
 </div>
 
 </main>
 
-<footer>
-  <div class="w">
-    <div><a class="brand" href="#top"><img src="h/icon.png" alt="" width="26" height="26" loading="lazy">Aera</a><p style="margin:0;max-width:22em">Az egészségapp, amely megmutatja, honnan jönnek a számai. Magyarországon készült.</p></div>
-    <div><h4>Aera</h4><ul><li><a href="#replay">Visszajátszás</a></li><li><a href="#body">A tested</a></li><li><a href="#new">Újdonságok</a></li><li><a href="plan/">Útvonaltervező</a></li></ul></div>
-    <div><h4>Olvasnivaló</h4><ul><li><a href="notes/index.html">Field Guide</a></li><li><a href="guides/index.html#hu">Útmutatók</a></li><li><a href="press/">Sajtó</a></li></ul></div>
-    <div><h4>Segítség</h4><ul><li><a href="support.html">Támogatás</a></li><li><a href="adatvedelem.html">Adatvédelem</a></li><li><a href="felhasznalasi-feltetelek.html">Felhasználási feltételek</a></li><li><a href="./" hreflang="en">English</a> &#183; <a href="de.html" hreflang="de">Deutsch</a></li></ul></div>
-    <div class="look"><p>&#169; 2026 Aera</p><div class="seg" role="group" aria-label="Megjelenés"><button type="button" data-look="auto" aria-pressed="true">Auto</button><button type="button" data-look="light" aria-pressed="false">Világos</button><button type="button" data-look="dark" aria-pressed="false">Sötét</button></div></div>
-  </div>
-</footer>
+<footer class="site-foot"><div class="sf-w"><div class="sf-about"><a class="sh-brand" href="/hu.html"><img src="/assets/icon.png" alt="" width="26" height="26" loading="lazy">Aera</a><p>Egészségapp, amelyik megmutatja, hogyan számol. Magyarországon készül.</p></div><div><h4>Aera</h4><ul><li><a href="/hu.html#replay">Visszajátszás</a></li><li><a href="/hu.html#body">A tested</a></li><li><a href="/ujdonsagok.html">Újdonságok</a></li><li><a href="/plan/">Útvonaltervező</a></li></ul></div><div><h4>Olvasnivaló</h4><ul><li><a href="/notes/">Field Guide</a></li><li><a href="/guides/#hu">Útmutatók</a></li><li><a href="/press/">Sajtó</a></li></ul></div><div><h4>Segítség</h4><ul><li><a href="/support.html">Ügyfélszolgálat</a></li><li><a href="/otletek.html">Ötletek</a></li><li><a href="/adatvedelem.html">Adatvédelem</a></li><li><a href="/felhasznalasi-feltetelek.html">Felhasználási feltételek</a></li></ul></div><div class="sf-base"><p>&#169; 2026 Aera</p><div class="sf-langs"><a href="/" lang="en" hreflang="en" data-lsw="en">English</a><a href="/hu.html" lang="hu" hreflang="hu" data-lsw="hu" aria-current="page">Magyar</a><a href="/de.html" lang="de" hreflang="de" data-lsw="de">Deutsch</a></div><div class="sf-look" role="group" aria-label="Megjelenés"><button type="button" data-look="auto" aria-pressed="true">Auto</button><button type="button" data-look="light" aria-pressed="false">Világos</button><button type="button" data-look="dark" aria-pressed="false">Sötét</button></div></div></div></footer>
 
 <script>
 (() => {
   const root = document.documentElement;
-
-  // Appearance: follows the system unless the footer switch says otherwise.
-  const looks = [...document.querySelectorAll('[data-look]')];
-  const setLook = v => {
-    if (v === 'light' || v === 'dark') root.dataset.theme = v; else delete root.dataset.theme;
-    looks.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.look === (v || 'auto'))));
-  };
-  try { setLook(localStorage.getItem('aera-look')); } catch (e) { setLook('auto'); }
-  looks.forEach(b => b.addEventListener('click', () => {
-    setLook(b.dataset.look);
-    try { localStorage.setItem('aera-look', b.dataset.look); } catch (e) {}
-  }));
 
   // Card rows and the store strip: paddles move one item and dim at the ends.
   document.querySelectorAll('.paddles').forEach(p => {
@@ -781,7 +785,7 @@ footer a:hover{color:#fff}
     const li = document.querySelector('.cards img[src$="loops.webp"]');
     if (li && motion) {
       const o = onCover(li, 828, 1800);
-      o.innerHTML = `<svg viewBox="0 0 828 1800" class="lp"><defs><filter id="lpg" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="7"/></filter></defs><path class="lp-r" d="M608.1 467.4 C602.8 466.2 588.3 464.7 576.3 460.3 C564.3 455.9 544.0 439.9 535.9 441.0 C527.8 442.1 532.5 457.6 527.9 467.1 C523.3 476.6 516.2 483.7 508.4 498.1 C500.6 512.5 488.7 537.2 481.1 553.5 C473.5 569.8 469.6 582.2 462.6 595.8 C455.6 609.4 448.7 618.1 438.9 634.9 C429.1 651.7 410.5 686.1 404.0 696.5 C397.5 706.9 402.1 692.2 399.8 697.2 C397.5 702.2 390.2 700.6 390.0 726.3 C389.8 752.0 402.3 829.9 398.5 851.2 C394.7 872.5 372.8 854.4 367.3 854.1 C361.8 853.8 372.1 856.2 365.4 849.6 C358.6 843.0 335.4 831.9 326.8 814.3 C318.2 796.7 313.5 757.6 313.6 744.2 C313.7 730.8 326.1 745.5 327.4 734.1 C328.7 722.7 324.1 690.1 321.2 675.8 C318.3 661.5 311.5 660.1 310.0 648.5 C308.5 636.9 323.4 616.3 312.4 605.9 C301.4 595.5 256.7 595.2 244.2 586.2 C231.7 577.2 240.5 563.2 237.3 552.2 C234.1 541.2 227.1 529.9 224.8 520.3 C222.6 510.6 224.8 499.8 223.8 494.3 C222.9 488.8 221.8 489.9 219.1 487.1 C216.4 484.3 209.2 482.0 207.8 477.4 C206.4 472.8 207.6 469.1 210.7 459.4 C213.8 449.7 215.7 424.3 226.2 419.0 C236.7 413.7 254.2 429.0 273.6 427.6 C293.0 426.2 324.4 414.5 342.4 410.9 C360.4 407.3 373.5 407.1 381.4 405.9 C389.3 404.7 386.0 399.9 389.7 403.5 C393.4 407.1 385.7 422.4 403.3 427.7 C420.9 433.0 473.1 433.3 495.2 435.5 C517.3 437.7 522.4 436.9 535.9 441.0 C549.4 445.1 564.3 455.9 576.3 460.3 C588.3 464.7 602.8 466.2 608.1 467.4"/><path class="lp-t" d="M608.1 467.4 C602.8 466.2 588.3 464.7 576.3 460.3 C564.3 455.9 544.0 439.9 535.9 441.0 C527.8 442.1 532.5 457.6 527.9 467.1 C523.3 476.6 516.2 483.7 508.4 498.1 C500.6 512.5 488.7 537.2 481.1 553.5 C473.5 569.8 469.6 582.2 462.6 595.8 C455.6 609.4 448.7 618.1 438.9 634.9 C429.1 651.7 410.5 686.1 404.0 696.5 C397.5 706.9 402.1 692.2 399.8 697.2 C397.5 702.2 390.2 700.6 390.0 726.3 C389.8 752.0 402.3 829.9 398.5 851.2 C394.7 872.5 372.8 854.4 367.3 854.1 C361.8 853.8 372.1 856.2 365.4 849.6 C358.6 843.0 335.4 831.9 326.8 814.3 C318.2 796.7 313.5 757.6 313.6 744.2 C313.7 730.8 326.1 745.5 327.4 734.1 C328.7 722.7 324.1 690.1 321.2 675.8 C318.3 661.5 311.5 660.1 310.0 648.5 C308.5 636.9 323.4 616.3 312.4 605.9 C301.4 595.5 256.7 595.2 244.2 586.2 C231.7 577.2 240.5 563.2 237.3 552.2 C234.1 541.2 227.1 529.9 224.8 520.3 C222.6 510.6 224.8 499.8 223.8 494.3 C222.9 488.8 221.8 489.9 219.1 487.1 C216.4 484.3 209.2 482.0 207.8 477.4 C206.4 472.8 207.6 469.1 210.7 459.4 C213.8 449.7 215.7 424.3 226.2 419.0 C236.7 413.7 254.2 429.0 273.6 427.6 C293.0 426.2 324.4 414.5 342.4 410.9 C360.4 407.3 373.5 407.1 381.4 405.9 C389.3 404.7 386.0 399.9 389.7 403.5 C393.4 407.1 385.7 422.4 403.3 427.7 C420.9 433.0 473.1 433.3 495.2 435.5 C517.3 437.7 522.4 436.9 535.9 441.0 C549.4 445.1 564.3 455.9 576.3 460.3 C588.3 464.7 602.8 466.2 608.1 467.4"/><g class="lp-d"><circle r="20" class="h" filter="url(#lpg)"/><circle r="8" class="c"/></g></svg>`;
+      o.innerHTML = `<svg viewBox="0 0 828 1800" class="lp"><defs><filter id="lpg" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="7"/></filter></defs><path class="lp-r" d="M627 440 C621.5 438.4 607.0 435.9 593.8 430.7 C580.5 425.5 556.9 407.5 547.5 408.9 C538.1 410.3 542.4 427.3 537.2 438.9 C532.0 450.5 524.8 463.4 516.5 478.7 C508.2 493.9 495.3 514.5 487.7 530.4 C480.1 546.2 477.6 559.0 470.6 573.8 C463.6 588.6 456.4 600.8 445.7 619.0 C435.0 637.2 414.9 669.6 406.5 683.0 C398.1 696.4 397.0 694.2 395.1 699.6 C393.2 705.0 393.3 690.4 395.4 715.3 C397.5 740.2 411.6 826.0 407.6 848.8 C403.6 871.6 379.6 852.8 371.4 852.3 C363.1 851.8 365.0 855.3 358.1 846.0 C351.2 836.7 337.4 814.5 330.0 796.4 C322.6 778.3 315.3 749.9 313.8 737.5 C312.3 725.1 320.5 734.7 321.2 722.3 C321.9 709.9 320.9 677.8 318.0 662.9 C315.1 648.0 306.6 645.9 304.0 633.0 C301.4 620.1 314.1 596.3 302.1 585.3 C290.1 574.2 245.0 575.2 232.1 566.7 C219.2 558.2 227.5 544.8 224.8 534.5 C222.2 524.2 218.7 515.6 216.2 504.8 C213.7 494.0 211.5 477.3 209.9 469.7 C208.3 462.1 209.2 462.2 206.4 459.0 C203.6 455.8 194.7 454.9 192.8 450.2 C190.9 445.5 191.8 441.5 195.0 430.8 C198.2 420.1 200.4 392.1 211.8 385.8 C223.2 379.5 241.9 394.0 263.2 392.9 C284.5 391.8 320.5 382.8 339.7 379.4 C358.9 376.0 370.0 374.3 378.3 372.4 C386.6 370.5 385.2 364.2 389.7 368.2 C394.2 372.2 386.1 390.5 405.3 396.4 C424.5 402.3 481.4 401.7 505.1 403.8 C528.8 405.9 532.7 404.4 547.5 408.9 C562.3 413.4 580.5 425.5 593.8 430.7 C607.0 435.9 621.5 438.4 627 440"/><path class="lp-t" d="M627 440 C621.5 438.4 607.0 435.9 593.8 430.7 C580.5 425.5 556.9 407.5 547.5 408.9 C538.1 410.3 542.4 427.3 537.2 438.9 C532.0 450.5 524.8 463.4 516.5 478.7 C508.2 493.9 495.3 514.5 487.7 530.4 C480.1 546.2 477.6 559.0 470.6 573.8 C463.6 588.6 456.4 600.8 445.7 619.0 C435.0 637.2 414.9 669.6 406.5 683.0 C398.1 696.4 397.0 694.2 395.1 699.6 C393.2 705.0 393.3 690.4 395.4 715.3 C397.5 740.2 411.6 826.0 407.6 848.8 C403.6 871.6 379.6 852.8 371.4 852.3 C363.1 851.8 365.0 855.3 358.1 846.0 C351.2 836.7 337.4 814.5 330.0 796.4 C322.6 778.3 315.3 749.9 313.8 737.5 C312.3 725.1 320.5 734.7 321.2 722.3 C321.9 709.9 320.9 677.8 318.0 662.9 C315.1 648.0 306.6 645.9 304.0 633.0 C301.4 620.1 314.1 596.3 302.1 585.3 C290.1 574.2 245.0 575.2 232.1 566.7 C219.2 558.2 227.5 544.8 224.8 534.5 C222.2 524.2 218.7 515.6 216.2 504.8 C213.7 494.0 211.5 477.3 209.9 469.7 C208.3 462.1 209.2 462.2 206.4 459.0 C203.6 455.8 194.7 454.9 192.8 450.2 C190.9 445.5 191.8 441.5 195.0 430.8 C198.2 420.1 200.4 392.1 211.8 385.8 C223.2 379.5 241.9 394.0 263.2 392.9 C284.5 391.8 320.5 382.8 339.7 379.4 C358.9 376.0 370.0 374.3 378.3 372.4 C386.6 370.5 385.2 364.2 389.7 368.2 C394.2 372.2 386.1 390.5 405.3 396.4 C424.5 402.3 481.4 401.7 505.1 403.8 C528.8 405.9 532.7 404.4 547.5 408.9 C562.3 413.4 580.5 425.5 593.8 430.7 C607.0 435.9 621.5 438.4 627 440"/><g class="lp-d"><circle r="20" class="h" filter="url(#lpg)"/><circle r="8" class="c"/></g></svg>`;
       const r = o.querySelector('.lp-r'), tr = o.querySelector('.lp-t'), dot = o.querySelector('.lp-d'), L = r.getTotalLength();
       let raf = 0, t0 = 0;
       const tick = t => { if (!t0) t0 = t; const lap = 9000, k = ((t - t0) % (lap + 1400)) / lap, p = Math.min(1, k), e = p < 1 ? p : 1, at = e * L;
@@ -837,7 +841,7 @@ footer a:hover{color:#fff}
     items.forEach(el => io.observe(el));
   }
 
-  // ---------- New in 3.4, the app's own closing film: each area in turn, its changes arriving one under another ----------
+  // ---------- New in this release, the app's own closing film: each area in turn, its changes arriving one under another ----------
   (() => {
     const G = {
       bolt: '<path d="M11 2.5 4.5 11H10l-1 6.5L15.5 9H10z"/>',
@@ -1015,6 +1019,12 @@ footer a:hover{color:#fff}
   }
 })();
 </script>
+<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]'));
+function set(v){if(v==='light'||v==='dark')r.dataset.theme=v;else delete r.dataset.theme;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.look===(v==='light'||v==='dark'?v:'auto')))})}
+var s=null;try{s=localStorage.getItem('aera-look')}catch(e){}set(s);
+b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.look);try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem('aera-lang',a.getAttribute('data-lsw'))}catch(x){}}});
+})();</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
 </body>
 </html>

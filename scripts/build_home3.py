@@ -29,21 +29,17 @@ SRC = os.path.join(HERE, "home3")
 sys.path.insert(0, SRC)
 sys.path.insert(0, HERE)
 import words  # noqa: E402
+import lines  # noqa: E402
+import chrome  # noqa: E402
 from build_home import CF_BEACON  # noqa: E402
 
 FILES = {"en": "index.html", "hu": "hu.html", "de": "de.html"}
 
-# Footer links that were placeholders in the mock, in the order they appear.
-FOOT = {
-    "en": ["plan/", "notes/index.html", "guides/index.html", "press/", "support.html", "privacy.html", "terms.html"],
-    "hu": ["plan/", "notes/index.html", "guides/index.html#hu", "press/", "support.html", "adatvedelem.html", "felhasznalasi-feltetelek.html"],
-    "de": ["plan/", "notes/index.html", "guides/index.html#de", "press/", "support.html", "privacy.html", "terms.html"],
-}
 NEWS = {"en": "whats-new.html", "hu": "ujdonsagok.html", "de": "neuigkeiten.html"}
 
 FAQ_CSS = """
 /* Questions: the live site's answers, in this page's look. */
-.faq-sec{padding:clamp(80px,10vw,128px) 0;background:var(--paper)}
+.faq-sec{padding:0 0 clamp(72px,9vw,112px);background:var(--paper)}
 .faq-sec .qa-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:24px 56px;align-items:start}
 .faq-sec h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04;margin:0}
 .faq-sec .faq{border-top:1px solid var(--rule)}
@@ -64,6 +60,11 @@ FAQ_CSS = """
 
 def page(lang, src):
     out = src
+    for key, val in lines.C[lang].items():
+        out = out.replace("{{%s}}" % key, val)
+    left = re.search(r"\{\{\w+\}\}", out)
+    if left:
+        sys.exit("%s: no words for %s" % (lang, left.group(0)))
     if lang != "en":
         col = 1 if lang == "hu" else 2
         for row in words.T:
@@ -75,35 +76,35 @@ def page(lang, src):
             out = out.replace('src="s/%s.webp"' % p, 'src="s/%s/%s.webp"' % (lang, p))
         out = out.replace('src="s/store/', 'src="s/store/%s/' % lang)
 
-    # Head: the live page's own, then the page's look.
-    cut = out.index('<header class="nav"')
+    # Head: the live page's own, then the page's look with the shared tokens and chrome.
+    cut = out.index("<!--chrome:header-->")
     look, body = out[:cut], out[cut:]
     look = re.sub(r"<title>.*?</title>\n?", "", look)
-    look = re.sub(r'<meta name="(claude:viewport-fit-sides|viewport)"[^>]*>\n?', "", look)
-    look = re.sub(r'<link rel="(preconnect|stylesheet)" href="https://fonts\.[^>]*>\n?', "", look)
+    look = re.sub(r'<meta name="(claude:viewport-fit-sides|viewport|color-scheme)"[^>]*>\n?', "", look)
+    look = look.replace("/*chrome:css*/", chrome.CSS.strip(), 1)
     look = look.replace("</style>", FAQ_CSS + "</style>", 1)
     head = open(os.path.join(SRC, "head-%s.html" % lang), encoding="utf-8").read()
 
-    # Store links, each counted on its own.
-    places = iter(["nav", "hero", "shelf", "closing"])
-    body = re.sub(r'href="https://apps\.apple\.com/app/id6762456252"',
-                  lambda m: 'href="/get/%s/%s/"' % (next(places), lang), body)
-    if next(places, None) is not None:
-        sys.exit("%s: a store link went missing" % lang)
+    # The shared header, badge, closing band and footer; store links counted by place.
+    alts = dict((c, h) for c, _, _, h in chrome.LANGS)
+    get = lambda place: "/get/%s/%s/" % (place, lang)
+    body = body.replace("<!--chrome:header-->", chrome.header(lang, alts, get("nav")), 1)
+    body = body.replace("<!--chrome:badge-->", chrome.badge(lang, get("hero")), 1)
+    body = body.replace("<!--chrome:closing-->", "<!--closing-->" + chrome.closing(lang, get("closing")), 1)
+    body = body.replace("<!--chrome:footer-->", chrome.footer(lang, alts), 1)
+    n = body.count('href="https://apps.apple.com/app/id6762456252"')
+    if n != 1:
+        sys.exit("%s: expected the one store link of the picture strip, found %d" % (lang, n))
+    body = body.replace('href="https://apps.apple.com/app/id6762456252"', 'href="%s"' % get("shelf"))
+    if "<!--chrome:" in body:
+        sys.exit("%s: a chrome slot was left unfilled" % lang)
 
-    # Release notes link and footer.
+    # Release notes link, then the questions above the closing band.
     body = body.replace('<a class="link" href="#new">', '<a class="link" href="%s">' % NEWS[lang], 1)
-    f = body.index("<footer")
-    foot = body[f:]
-    links = iter(FOOT[lang])
-    foot = re.sub(r'(<li><a href=")#top(")', lambda m: m.group(1) + next(links) + m.group(2), foot)
-    if next(links, None) is not None:
-        sys.exit("%s: footer links changed" % lang)
     faq = open(os.path.join(SRC, "faq-%s.html" % lang), encoding="utf-8").read()
     faq = faq.replace('<section class="faq-sec">', '<section class="faq-sec" id="faq">', 1)
     faq = faq.replace('class="wide qa-grid"', 'class="w qa-grid"').replace(' class="reveal"', "").replace("faq reveal", "faq")
-    closing = body.index('<section class="closing">')
-    body = body[:closing] + faq + body[closing:f] + foot
+    body = body.replace("<!--closing-->", faq, 1)
 
     # Pictures live in h/.
     body = re.sub(r'(["\'`(])s/', r"\1h/", body)
@@ -111,10 +112,10 @@ def page(lang, src):
 
     beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
               "data-cf-beacon='{\"token\": \"%s\"}'></script>\n" % CF_BEACON) if CF_BEACON else ""
-    html = ('<!DOCTYPE html>\n<html lang="%s">\n<head>\n%s%s</head>\n<body>\n%s\n%s</body>\n</html>\n'
-            % (lang, head, look.strip() + "\n", body.strip(), beacon))
+    html = ('<!DOCTYPE html>\n<html lang="%s">\n<head>\n%s%s\n%s\n</head>\n<body>\n%s\n%s\n%s</body>\n</html>\n'
+            % (lang, head, chrome.LOOK_HEAD_JS, look.strip(), body.strip(), chrome.JS, beacon))
 
-    for bad in ("—", 'href="https://apps.apple.com', "fonts.googleapis", 'href="#top">Support'):
+    for bad in ("—", 'href="https://apps.apple.com', "fonts.googleapis", "{{"):
         if bad in (html if bad == "—" else body):
             sys.exit("%s: left in the page: %s" % (lang, bad))
     text = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", body, flags=re.S)
@@ -122,7 +123,7 @@ def page(lang, src):
     if lang != "en":
         for word in ("Replay your", "Understand", "Download on", "Free to start", "Your body", "What’s new",
                      "Works with", "usual", "Heartbeats", "One minute", "Last night", "Blood pressure",
-                     "Body age", "Out the door", "No account", "Route planner"):
+                     "Body age", "Out the door", "No account", "Route planner", "Fastest", "Private"):
             if word in text:
                 sys.exit("%s: English left on the page: %s" % (lang, word))
     return html
