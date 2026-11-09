@@ -54,6 +54,10 @@ class MetaError(RuntimeError):
     pass
 
 
+class ProcessingFailed(MetaError):
+    """Meta rejected the video itself: the post is not live, so it should be retried."""
+
+
 # ---------- HTTP ----------
 
 def _redact(text: str) -> str:
@@ -86,6 +90,17 @@ def request(method: str, url: str, params: dict | None = None, data: bytes | Non
         return json.loads(body)
     except json.JSONDecodeError:
         return {"raw": body[:600]}
+
+
+def best_effort(what: str, fetch, default):
+    """A follow-up call after a post is already live: never let it fail the post."""
+    try:
+        return fetch()
+    except ProcessingFailed:
+        raise
+    except (MetaError, KeyError) as err:
+        print(f"  note: {what} failed after publishing ({_redact(str(err))[:200]})")
+        return default
 
 
 def wait_until(check, what: str, tries: int = 60, pause: float = 10.0) -> None:
@@ -158,8 +173,10 @@ def post_instagram(acc: Accounts, video: Path, caption: str, cover_ms: int | Non
     published = request("POST", f"{GRAPH}/{acc.ig_id}/media_publish",
                         {"creation_id": cid, "access_token": acc.meta_token})
     media_id = published["id"]
-    link = request("GET", f"{GRAPH}/{media_id}", {"fields": "permalink", "access_token": acc.meta_token})
-    return link.get("permalink") or media_id
+    # Live from here on. The permalink is a nicety; the post must be logged either way.
+    return best_effort("Instagram permalink", lambda: request(
+        "GET", f"{GRAPH}/{media_id}", {"fields": "permalink", "access_token": acc.meta_token}
+    ).get("permalink") or media_id, media_id)
 
 
 def post_facebook(acc: Accounts, video: Path, caption: str, title: str | None) -> str:
@@ -180,11 +197,12 @@ def post_facebook(acc: Accounts, video: Path, caption: str, title: str | None) -
         status = request("GET", f"{GRAPH}/{vid}", {"fields": "status", "access_token": acc.page_token})
         st = status.get("status", {})
         if st.get("video_status") == "error":
-            raise MetaError(f"Facebook processing error: {json.dumps(st)[:300]}")
+            raise ProcessingFailed(f"Facebook processing error: {json.dumps(st)[:300]}")
         publishing = (st.get("publishing_phase") or {}).get("status")
         return st.get("video_status") == "ready" or publishing == "complete"
 
-    wait_until(ready, "Facebook")
+    # The finish call publishes; waiting for processing only confirms it.
+    best_effort("Facebook processing check", lambda: wait_until(ready, "Facebook"), None)
     return f"https://www.facebook.com/reel/{vid}"
 
 
@@ -207,9 +225,10 @@ def post_threads(acc: Accounts, video_name: str, text: str) -> str:
     wait_until(ready, "Threads")
     published = request("POST", f"{THREADS}/me/threads_publish",
                         {"creation_id": cid, "access_token": acc.threads_token})
-    post = request("GET", f"{THREADS}/{published['id']}", {"fields": "permalink",
-                                                           "access_token": acc.threads_token})
-    return post.get("permalink") or published["id"]
+    post_id = published["id"]
+    return best_effort("Threads permalink", lambda: request(
+        "GET", f"{THREADS}/{post_id}", {"fields": "permalink", "access_token": acc.threads_token}
+    ).get("permalink") or post_id, post_id)
 
 
 # ---------- Queue and copy rules ----------
@@ -373,6 +392,13 @@ def run_check(data_dir: Path) -> int:
     return 0 if ok else 1
 
 
+def stamp_of(value: str | None) -> dt.datetime:
+    """Meta times look like 2026-11-17T18:00:00+0000. A missing one counts as old."""
+    if not value:
+        return dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+    return dt.datetime.fromisoformat(re.sub(r"([+-]\d\d)(\d\d)$", r"\1:\2", value))
+
+
 def run_comments(data_dir: Path) -> int:
     since = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=14)
     acc = Accounts(os.environ.get("META_TOKEN"), os.environ.get("THREADS_TOKEN"))
@@ -399,8 +425,7 @@ def run_comments(data_dir: Path) -> int:
                          "limit": "25", "access_token": acc.meta_token}).get("data", [])
         for item in media:
             for c in (item.get("comments") or {}).get("data", []):
-                stamp = dt.datetime.fromisoformat(c["timestamp"].replace("+0000", "+00:00"))
-                if c.get("username") != "aerahealthapp" and stamp > since:
+                if c.get("username") != "aerahealthapp" and stamp_of(c.get("timestamp")) > since:
                     add("Instagram", item.get("permalink", item["id"]), "@" + c.get("username", "?"),
                         c.get("text", ""), c["id"])
 
@@ -409,10 +434,11 @@ def run_comments(data_dir: Path) -> int:
                         {"fields": "id,permalink_url", "access_token": acc.page_token}).get("data", [])
         for item in reels[:25]:
             comments = request("GET", f"{GRAPH}/{item['id']}/comments",
-                               {"fields": "id,from,message", "access_token": acc.page_token}).get("data", [])
+                               {"fields": "id,from,message,created_time",
+                                "access_token": acc.page_token}).get("data", [])
             for c in comments:
                 who = (c.get("from") or {}).get("name", "someone")
-                if who != "Aera Health":
+                if who != "Aera Health" and stamp_of(c.get("created_time")) > since:
                     link = item.get("permalink_url") or item["id"]
                     if link.startswith("/"):
                         link = "https://www.facebook.com" + link
@@ -423,9 +449,10 @@ def run_comments(data_dir: Path) -> int:
                                                           "access_token": acc.threads_token}).get("data", [])
         for item in posts:
             replies = request("GET", f"{THREADS}/{item['id']}/replies",
-                              {"fields": "id,username,text", "access_token": acc.threads_token}).get("data", [])
+                              {"fields": "id,username,text,timestamp",
+                               "access_token": acc.threads_token}).get("data", [])
             for r in replies:
-                if r.get("username") != "aerahealthapp":
+                if r.get("username") != "aerahealthapp" and stamp_of(r.get("timestamp")) > since:
                     add("Threads", item.get("permalink", item["id"]), "@" + r.get("username", "?"),
                         r.get("text", ""), r["id"])
 

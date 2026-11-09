@@ -97,7 +97,8 @@ jobs:
         if: always() && steps.mode.outputs.skip != 'true'
         working-directory: social
         run: |
-          git add -A posted.json comments 2>/dev/null || true
+          git add -A comments
+          if [ -f posted.json ]; then git add posted.json; fi
           if git diff --cached --quiet; then exit 0; fi
           git -c user.name="aera-social-bot" -c user.email="actions@github.com" \
             commit -m "Social log: ${{ steps.mode.outputs.mode }} $(date -u +%FT%TZ)"
