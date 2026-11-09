@@ -1,0 +1,105 @@
+name: Social posts (Instagram, Facebook, Threads)
+
+# Posts the queue on the social-media branch through Meta's official APIs.
+# Script and guide: scripts/social/. Nothing runs until the META_TOKEN secret exists.
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # post anything that is due
+    - cron: "0 7 * * *"      # comment digest (08:00 Budapest in winter)
+    - cron: "0 6 * * 1"      # Threads token check, Mondays
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: post, check, comments or threads-token
+        default: check
+        type: choice
+        options: [check, post, comments, threads-token]
+      dry_run:
+        description: Show what would be posted, post nothing
+        type: boolean
+        default: true
+      only:
+        description: Post this queue id now, ignoring its time (mode post)
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: social-post
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      META_TOKEN: ${{ secrets.META_TOKEN }}
+      THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+      META_PAGE_ID: ${{ vars.META_PAGE_ID }}
+    steps:
+      - name: Pick the mode
+        id: mode
+        run: |
+          case "${{ github.event_name }}:${{ github.event.schedule }}" in
+            "schedule:0 7 * * *") echo "mode=comments" >> "$GITHUB_OUTPUT" ;;
+            "schedule:0 6 * * 1") echo "mode=threads-token" >> "$GITHUB_OUTPUT" ;;
+            schedule:*)           echo "mode=post" >> "$GITHUB_OUTPUT" ;;
+            *)                    echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT" ;;
+          esac
+          if [ -z "$META_TOKEN" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Not set up yet (no META_TOKEN secret). Nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.mode.outputs.skip != 'true'
+        with:
+          sparse-checkout: scripts/social
+
+      - name: Create the social-media branch on first run
+        if: steps.mode.outputs.skip != 'true'
+        run: |
+          if git ls-remote --exit-code --heads origin social-media >/dev/null; then exit 0; fi
+          dir=$(mktemp -d) && cd "$dir"
+          git init -q -b social-media
+          mkdir media comments && touch media/.gitkeep comments/.gitkeep
+          echo '{"posts": []}' > queue.json
+          printf '%s\n' "# Aera social posts" "" \
+            "Queue, videos and logs for .github/workflows/social-post.yml on main." \
+            "Weekly packs arrive as pull requests into this branch. Guide: scripts/social/README.md on main." > README.md
+          git add -A
+          git -c user.name="aera-social-bot" -c user.email="actions@github.com" commit -qm "Start the social-media branch"
+          git push "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" social-media
+
+      - uses: actions/checkout@v4
+        if: steps.mode.outputs.skip != 'true'
+        with:
+          ref: social-media
+          path: social
+
+      - name: Run
+        if: steps.mode.outputs.skip != 'true'
+        env:
+          MODE: ${{ steps.mode.outputs.mode }}
+          EVENT: ${{ github.event_name }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          ONLY: ${{ inputs.only }}
+        run: |
+          args=("$MODE" --data social)
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+            if [ -n "$ONLY" ]; then args+=(--only "$ONLY"); fi
+          fi
+          python3 scripts/social/meta_post.py "${args[@]}"
+
+      - name: Save the log
+        if: always() && steps.mode.outputs.skip != 'true'
+        working-directory: social
+        run: |
+          git add -A posted.json comments 2>/dev/null || true
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name="aera-social-bot" -c user.email="actions@github.com" \
+            commit -m "Social log: ${{ steps.mode.outputs.mode }} $(date -u +%FT%TZ)"
+          git -c user.name="aera-social-bot" -c user.email="actions@github.com" pull --rebase origin social-media
+          git push origin HEAD:social-media
