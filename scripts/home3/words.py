@@ -40,7 +40,7 @@ T = [
      '<h2 class="kin">Ki a szabadba.</h2>',
      '<h2 class="kin">Raus vor die Tür.</h2>'),
     ('<p class="intro rv" style="--d:220ms">Ask for a loop from where you stand, by distance or by minutes, and <em>follow every turn on your wrist</em>. With Apple Watch, any other watch, or no watch at all.</p>',
-     '<p class="intro rv" style="--d:220ms">Kérj egy kört onnan, ahol éppen állsz, kilométerre vagy percre, és <em>a csuklódon kövesd a kanyarokat</em>. Apple Watch-csal, bármilyen más órával, de óra nélkül is megy.</p>',
+     '<p class="intro rv" style="--d:220ms">Kérj egy kört onnan, ahol éppen állsz, kilométerre vagy percre, és <em>a csuklódon kövesd a kanyarokat</em>. Apple Watchcsal, bármilyen más órával, de óra nélkül is megy.</p>',
      '<p class="intro rv" style="--d:220ms">Lass dir von dort, wo du gerade stehst, eine Runde planen, nach Kilometern oder Minuten, und <em>folge jeder Abbiegung am Handgelenk</em>. Mit der Apple Watch, mit jeder anderen Uhr oder ganz ohne.</p>'),
     ('alt="A 9.8 km loop past 30 sights, ready to start"',
      'alt="9,8 km-es kör 30 látnivaló mellett, indulásra készen"',

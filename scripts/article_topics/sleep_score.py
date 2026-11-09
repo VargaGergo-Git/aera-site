@@ -42,7 +42,7 @@ FIG_T = {
                five="öt éjszaka 60 körül", nights="éjszaka",
                cap="<b>Szemléltetés példa-éjszakákkal.</b> A pontok egy-egy éjszaka pontszámát jelölik. A sáv az illető saját szokása, 85 fölött; a szaggatott vonalnál kezdődik az Apple „Maximum” sávja. Az egy lagzi utáni gyenge éjszaka alig számít. Az öt egymást követő éjszaka a szokásod alatt viszont már az, amivel érdemes foglalkozni."),
     "de": dict(title="Eine 65 nach einer Hochzeit sagt wenig. Fünf Nächte um die 60 sagen viel.",
-               band="dein Übliches", apple="Ab 81 beginnt Apples Stufe „Hoch“", one="eine Hochzeit",
+               band="dein Normalwert", apple="Ab 81 beginnt Apples Stufe „Hoch“", one="eine Hochzeit",
                five="fünf Nächte um die 60", nights="Nächte",
                cap="<b>Illustration mit Beispielnächten.</b> Punkte sind die Werte einzelner Nächte. Das Band ist der eigene Normalwert dieser Person, bei hohen 80ern; an der gestrichelten Linie beginnt Apples Stufe „Hoch“. Die eine schwache Nacht nach einer Hochzeit zählt kaum. Fünf Nächte in Folge unter dem Normalwert sind das, worum du dich kümmern solltest."),
 }

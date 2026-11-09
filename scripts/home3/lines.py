@@ -141,7 +141,7 @@ STORE = {
            "Every run, next to your usual.", "Every number shows its work.", "Know a route before you run it.",
            "Your cuff's readings, ready for your doctor.", "Every turn, on your wrist.", "Your watch. Your iPhone. No account.",
            "Share the replay as a video."],
-    "hu": ["Nézd vissza a futásod 3D-ben. Apple Watch-csal vagy iPhone-nal.", "Testkor, nem a naptár szerint.",
+    "hu": ["Nézd vissza a futásod 3D-ben. Apple Watchcsal vagy iPhone-nal.", "Testkor, nem a naptár szerint.",
            "Az éjszakád, az alvásigényedhez mérve.", "Minden futásod, a többihez mérve.", "Minden szám megmutatja, honnan jön.",
            "Ismerd meg az utat, mielőtt lefutod.", "Vérnyomásnapló, az orvosodnak.", "Minden kanyar a csuklódon.",
            "Az órád. Az iPhone-od. Fiók nélkül.", "Oszd meg a futásod videóként."],
