@@ -54,7 +54,7 @@ T = {
       "<li><strong>From Aera:</strong> Settings, then <strong>Devices</strong>, then <strong>Import workouts</strong>, and <strong>Choose export or files</strong>.</li></ul>"
       "<p>Aera shows what it found before it changes anything. If Apple Health already has the run from Garmin, you see <strong>GPS tracks to keep</strong>: tap <strong>Keep GPS tracks in Aera</strong>. If Apple Health doesn't have it, tap <strong>Add workouts to Apple Health</strong>, and Aera saves the run with its route.</p>"),
      ("Watch the replay",
-      "<p>Open the run in Aera and tap <strong>Flyover</strong>. The camera flies the route over the real ground, with distance, pace and heart rate running underneath. From the replay you can save a short upright video to Photos.</p>"
+      "<p>Open the run in Aera and tap <strong>Flyover</strong>. The camera flies the route over the real ground, with distance, pace and heart rate running underneath. With Premium, you can also save a short upright video of the replay to Photos.</p>"
       "<p>Runs from the last 7 days replay free. Older runs replay with Premium. The replay is only as exact as the GPS that recorded the route. More in <a href=\"../flyover.html\">the 3D replay</a>.</p>"),
     ],
     note_t="Aera, for iPhone",
@@ -100,7 +100,7 @@ T = {
       "<li><strong>Az Aerából:</strong> Beállítások, majd <strong>Eszközök</strong>, majd <strong>Edzések importálása</strong>, és <strong>Export vagy fájlok kiválasztása</strong>.</li></ul>"
       "<p>Az Aera előbb megmutatja, mit talált, és csak utána változtat bármin. Ha az Apple Health-ben már megvan a futás a Garmintól, a <strong>Megtartandó GPS-útvonalak</strong> sort látod: koppints a <strong>GPS-útvonalak megtartása az Aerában</strong> gombra. Ha az Apple Health-ben nincs meg, koppints az <strong>Edzések hozzáadása az Apple Health-hez</strong> gombra, és az Aera az útvonalával együtt menti a futást.</p>"),
      ("A visszajátszás",
-      "<p>Nyisd meg a futást az Aerában, és koppints a <strong>Flyover</strong> gombra. A kamera a valódi terep fölött repüli végig az útvonalat, alul fut a táv, a tempó és a pulzus. A visszajátszásból rövid, álló videót menthetsz a Fotókba.</p>"
+      "<p>Nyisd meg a futást az Aerában, és koppints a <strong>Flyover</strong> gombra. A kamera a valódi terep fölött repüli végig az útvonalat, alul fut a táv, a tempó és a pulzus. Premiummal rövid, álló videót is menthetsz belőle a Fotókba.</p>"
       "<p>Az elmúlt 7 nap futásai ingyen játszhatók vissza, a régebbiek a Premiummal. A visszajátszás csak annyira pontos, mint a GPS, amely az útvonalat rögzítette. Bővebben: <a href=\"futas-3d-visszajatszas.html\">futás 3D visszajátszása</a>.</p>"),
     ],
     note_t="Aera, iPhone-ra",
@@ -146,7 +146,7 @@ T = {
       "<li><strong>In Aera:</strong> Einstellungen, dann <strong>Geräte</strong>, dann <strong>Trainings importieren</strong>, und <strong>Export oder Dateien wählen</strong>.</li></ul>"
       "<p>Aera zeigt erst, was es gefunden hat, bevor es etwas ändert. Hat Apple Health den Lauf schon von Garmin, siehst du <strong>GPS-Strecken zum Behalten</strong>: Tippe auf <strong>GPS-Strecken in Aera behalten</strong>. Hat Apple Health ihn nicht, tippe auf <strong>Einheiten zu Apple Health hinzufügen</strong>, und Aera speichert den Lauf mit seiner Route.</p>"),
      ("Die Wiedergabe",
-      "<p>Öffne den Lauf in Aera und tippe auf <strong>Flyover</strong>. Die Kamera fliegt die Route über echtem Gelände ab, unten laufen Distanz, Tempo und Puls mit. Aus der Wiedergabe kannst du ein kurzes Video im Hochformat in deinen Fotos sichern.</p>"
+      "<p>Öffne den Lauf in Aera und tippe auf <strong>Flyover</strong>. Die Kamera fliegt die Route über echtem Gelände ab, unten laufen Distanz, Tempo und Puls mit. Mit Premium sicherst du daraus auch ein kurzes Video im Hochformat in deinen Fotos.</p>"
       "<p>Läufe der letzten 7 Tage spielst du kostenlos ab, ältere mit Premium. Die Wiedergabe ist nur so genau wie das GPS, das die Route aufgezeichnet hat. Mehr dazu: <a href=\"lauf-in-3d-abspielen.html\">einen Lauf in 3D abspielen</a>.</p>"),
     ],
     note_t="Aera, für iPhone",
@@ -166,7 +166,8 @@ T = {
 
 
 def strip(s):
-    return html.unescape(re.sub(r"<[^>]+>", "", s))
+    s = re.sub(r"</(p|li)>", " ", s)
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
 
 
 def page(lang):
