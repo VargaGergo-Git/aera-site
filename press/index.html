@@ -201,6 +201,6 @@ c.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}c.clas
 if(w.getAttribute('data-alt')!=='0')return;
 var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||r.lang===l)return;
 [].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.sf-langs'))return;
-var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/chrome:js-->
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html'))a.setAttribute('href',home+u.hash)})})();</script><!--/chrome:js-->
 </body>
 </html>
