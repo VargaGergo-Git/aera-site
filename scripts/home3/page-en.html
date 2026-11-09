@@ -743,6 +743,8 @@ html.mo .wgs > .rv:nth-child(even){--d:110ms}
   // the device list lights one row at a time. All drawn over the real screens, time-based, still under reduced motion. ----------
   (() => {
     const motion = mo;
+    // the row scrolls sideways on a phone: its cards arrive together with the first one, not when each is swiped to
+    { const row = document.querySelector('.cards'); if (mo && row) { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); row.querySelectorAll('.c.rv').forEach(c => c.classList.add('in')); } }, { rootMargin: '0px 0px -8% 0px' }); io.observe(row); } }
     const lang = (document.documentElement.lang || 'en').slice(0, 2);
     const SVGNS = 'http://www.w3.org/2000/svg';
     // an overlay that sits exactly on an object-fit:cover picture, in the picture's own pixels
