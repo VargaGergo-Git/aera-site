@@ -354,6 +354,8 @@ html.mo .pn.rv:not(.in) .ph{opacity:0;transform:perspective(1100px) translate3d(
 html.mo .led.sq > div,html.mo .led.sq + .led-n{opacity:0;transform:translate3d(0,10px,0);transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
 html.mo .led.sq > div.on,html.mo .led.sq + .led-n.on{opacity:1;transform:none}
 .pn-l{transition:opacity .22s ease}
+.pn-n{transition:opacity .3s ease}
+.pn-n.pre{opacity:0}
 .pn-l.sw{opacity:0}
 .night .led > div{position:relative}
 .night .led > div:not(.tot){padding-bottom:22px}
@@ -840,12 +842,17 @@ html.mo .wgs > .rv:nth-child(even){--d:110ms}
       v = document.createElement('video');
       v.muted = true; v.defaultMuted = true; v.playsInline = true; v.preload = 'auto'; v.tabIndex = -1; v.disableRemotePlayback = true;
       v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
-      v.addEventListener('canplaythrough', () => { ready = true; go(); }, { once: true });
+      // Safari on iPhone may not fetch a video until it is asked to play, so do not wait for the whole film:
+      // the first frame is enough, and after a moment ask anyway (a refused play leaves the still in place).
+      const can = () => { if (ready) return; ready = true; go(); };
+      ['loadeddata', 'canplay', 'canplaythrough'].forEach(n => v.addEventListener(n, can, { once: true }));
+      setTimeout(can, 1500);
       // at the end the whole route stands for a moment with its final figures, then the run starts over
       v.addEventListener('ended', () => { scr.classList.remove('live'); paint(END); fk.classList.remove('dim'); clearTimeout(wait); wait = setTimeout(() => { v.currentTime = 0; blend0 = 0; go(); }, 2600); });
       v.addEventListener('error', () => { scr.classList.remove('live'); paint(END); });
       v.src = 'h/film.mp4';
       scr.insertBefore(v, scr.querySelector('.hud'));
+      v.load();
     };
     new IntersectionObserver(es => { seen = es.some(e => e.isIntersecting); dev.classList.toggle('off', !seen); hero.classList.toggle('off', !seen); if (!v) return; if (seen) { if (v.paused && !v.ended) go(); } else v.pause(); }, { threshold: .05 }).observe(hero);
     document.addEventListener('visibilitychange', () => { if (!v) return; if (document.hidden) v.pause(); else if (v.paused && !v.ended) go(); });
@@ -997,8 +1004,9 @@ html.mo .wgs > .rv:nth-child(even){--d:110ms}
         : sep === '/' ? k => Math.round(a * k) + '/' + Math.round(+b * k)
         : sep ? k => (parseFloat(a + '.' + b) * k).toFixed(b.length).replace('.', sep)
         : k => String(Math.round(a * k));
-      el.textContent = fmt(0);
-      once(el, () => setTimeout(() => tween(1200, k => { el.textContent = fmt(k); }, () => { el.textContent = txt; }), 180), 1);
+      // until it counts, the figure is not shown at all: a panel peeking in at the edge never reads "0"
+      const box = el.closest('.pn-n'); el.textContent = fmt(0); box.classList.add('pre');
+      once(el, () => setTimeout(() => { box.classList.remove('pre'); tween(1200, k => { el.textContent = fmt(k); }, () => { el.textContent = txt; }); }, 180),.9);
     });
     // body age: it starts at the calendar's age and each part takes its share off, row by row, down to 35.0
     const age = document.querySelector('.pn.age');
