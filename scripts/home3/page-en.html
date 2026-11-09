@@ -50,7 +50,7 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .hero h1{font-size:var(--h1,clamp(46px,7.2vw,104px));font-weight:700;letter-spacing:-.045em;line-height:.98;color:var(--ink)}
 :lang(de) .hero h1{--h1:clamp(40px,5.6vw,84px)}
 .hero h1 span{display:block}
-.hero .sub{max-width:25em;margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(19px,1.75vw,24px);line-height:1.35;font-weight:500;letter-spacing:-.015em;color:var(--ink-2)}
+.hero .sub{margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(20px,2.5vw,32px);line-height:1.25;font-weight:500;letter-spacing:-.022em;color:var(--ink-2)}
 .hero .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:clamp(26px,3vw,38px)}
 .hero .cta p{margin:0;font-size:16px;color:var(--ink-2)}
 .stage{--mw:clamp(250px,25vw,326px);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(40px,7vw,104px);max-width:1060px;margin:clamp(48px,5.5vw,76px) auto 0;text-align:left}
@@ -100,9 +100,24 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .steps .pn.work::before{left:38%;right:-20%;bottom:-40%;height:120%}
 .steps .pn.work .tx{flex:1;min-width:0;padding-bottom:clamp(28px,3.3vw,44px)}
 .steps .pn.work .ph{--w:clamp(250px,26vw,310px);margin:clamp(34px,4vw,56px) clamp(40px,7vw,104px) calc(var(--w) * -.7) clamp(20px,3vw,40px)}
-.trio{margin-top:clamp(36px,4.6vw,60px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.trio .pn-n{--n:clamp(54px,6vw,84px)}
-.trio .pn-s{min-height:5.7em}
+.parts .pn.age{grid-column:span 12;flex-direction:row;align-items:flex-start;justify-content:space-between}
+.parts .pn.age::before{left:38%;right:-20%;bottom:-40%;height:120%}
+.parts .pn.age .tx,.parts .pn.night .tx{flex:1;min-width:0;padding-bottom:clamp(28px,3.3vw,44px)}
+.parts .pn.age .ph{--w:clamp(250px,26vw,310px);margin:clamp(34px,4vw,56px) clamp(40px,7vw,104px) calc(var(--w) * -.86) clamp(20px,3vw,40px)}
+.parts .pn.night{grid-column:span 7;flex-direction:row;align-items:flex-start;justify-content:space-between}
+.parts .pn.night::before{left:30%;right:-30%;bottom:-20%;height:120%}
+.parts .pn.night .ph{--w:clamp(210px,20vw,252px);align-self:flex-end;margin:clamp(30px,3.3vw,44px) clamp(28px,3.3vw,44px) calc(var(--w) * -.42) 0}
+.parts .pn.bp{grid-column:span 5}
+.parts .pn-n{--n:clamp(60px,7.2vw,100px)}
+.parts .pn.night .pn-n,.parts .pn.bp .pn-n{--n:clamp(54px,6vw,84px)}
+.led{margin:clamp(22px,2.4vw,30px) 0 0;max-width:27em;font-size:clamp(15.5px,1.3vw,17px);line-height:1.3;letter-spacing:-.01em}
+.led div{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:11px 0;box-shadow:inset 0 1px 0 var(--rule)}
+.led dt{color:var(--ink);font-weight:600}
+.led dt i{font-style:normal;font-weight:400;color:var(--ink-2);margin-left:.35em}
+.led dd{margin:0;flex:none;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.led .tot{box-shadow:inset 0 1.5px 0 var(--ink)}
+.led .tot dd{font-family:var(--display);font-size:1.5em;letter-spacing:-.03em;line-height:1}
+.led-n{margin:12px 0 0;max-width:30em;font-size:14.5px;line-height:1.4;color:var(--ink-3)}
 
 /* the working: one minute of the run, counted */
 .calc{position:relative;margin:34px 0 0;max-width:470px;padding:24px 24px 22px;border-radius:24px;background:var(--card);--p:1}
@@ -145,13 +160,13 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .calc{--card:#1d1e1d}}
 :root[data-theme="dark"] .calc{--card:#1d1e1d}
 
-html.reveal .steps .step,html.reveal .trio > *,html.reveal .shelf .top{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+html.reveal .steps .step,html.reveal .parts .part,html.reveal .shelf .top{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 html.reveal .in{opacity:1!important;transform:none!important}
 
 .body{padding-bottom:clamp(84px,10vw,140px)}
 
 /* ---------- the store pictures, as one continuous strip ---------- */
-.shelf{background:#0f261a;color:#fff;padding-block:clamp(80px,10vw,120px) clamp(60px,7vw,90px)}
+.shelf{background:#111211;color:#fff;padding-block:clamp(80px,10vw,120px) clamp(60px,7vw,90px)}
 .shelf .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 30px}
 .shelf h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
 .shelf .link{color:#fff}
@@ -159,7 +174,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
 .reel.drag{cursor:grabbing}
 .track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
 .set{position:relative;flex:none;width:calc(var(--pw) * 10);height:100%}
-.set .fld{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.set .fld{display:none}
 .set .run{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .run .rp{fill:none;stroke:none}
 .run .trail{fill:none;stroke:#ffd37a;stroke-width:16;stroke-linecap:round;opacity:.95;mix-blend-mode:screen}
@@ -352,9 +367,12 @@ html.reveal .in{opacity:1!important;transform:none!important}
   .steps .pn.replay .tx,.steps .pn.work .tx{padding-bottom:0}
   .steps .pn.replay .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto 34px}
   .steps .pn.work .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto calc(var(--w) * -.86)}
-  .trio{grid-template-columns:minmax(0,1fr);gap:16px}
-  .trio .pn-s{min-height:0}
-  .trio .pn-n{--n:clamp(60px,17vw,84px)}
+  .parts .pn.age,.parts .pn.night,.parts .pn.bp{grid-column:1/-1;flex-direction:column;align-items:stretch}
+  .parts .pn.age::before,.parts .pn.night::before{left:-25%;right:-25%;bottom:-34%;height:92%}
+  .parts .pn.age .tx,.parts .pn.night .tx{padding-bottom:0}
+  .parts .pn.age .ph,.parts .pn.night .ph{--w:min(70%,290px);align-self:auto;margin:clamp(28px,3vw,40px) auto calc(var(--w) * -.58)}
+  .parts .pn-n,.parts .pn.night .pn-n,.parts .pn.bp .pn-n{--n:clamp(60px,17vw,84px)}
+  .led{max-width:none}
   .st{height:140px}
   .calc{padding:20px 18px 18px;border-radius:20px;width:100%}
   .calc .v b{font-size:26px}
@@ -365,6 +383,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
   .wgs{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"cam cam" "all all" "eff trd" "dev fg" "day day";gap:16px}
   .c .art{height:430px}
 }
+@media (max-width:359px){.gal .dots{gap:5px}.gal .dots button{width:6px}.gal .dots button[aria-current="true"]{width:22px}.gal .arrows{gap:8px}}
 @media (max-width:560px){
   :root{--r:26px}
   .w,.grid{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -435,21 +454,24 @@ html.reveal .in{opacity:1!important;transform:none!important}
     <h2 class="huge">{{c2_h}}</h2>
     <p class="intro">{{c2_intro}}</p>
   </div>
-  <div class="w">
-    <div class="trio">
-      <figure class="pn crop sage">
-        <div class="tx"><h3><span class="pn-l">{{t1_l}}</span><span class="pn-n">{{t1_n}}<small>{{t1_u}}</small></span></h3><p class="pn-s">{{t1_s}}</p></div>
-        <div class="ph"><div class="scr"><img src="s/age.webp" alt="{{alt_age}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-      <figure class="pn crop lav">
-        <div class="tx"><h3><span class="pn-l">{{t2_l}}</span><span class="pn-n">80<small>{{t2_u}}</small></span></h3><p class="pn-s">{{t2_s}}</p></div>
-        <div class="ph"><div class="scr"><img src="s/sleep.webp" alt="{{alt_sleep}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-      <figure class="pn crop rose">
-        <div class="tx"><h3><span class="pn-l">{{t3_l}}</span><span class="pn-n">124/77</span></h3><p class="pn-s">{{t3_s}}</p></div>
-        <div class="ph"><div class="scr"><img src="s/bp.webp" alt="{{alt_bp}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-    </div>
+  <div class="grid parts">
+    <figure class="pn part age sage">
+      <div class="tx"><h3><span class="pn-l">{{t1_l}}</span><span class="pn-n">{{t1_n}}<small>{{t1_u}}</small></span></h3><p class="pn-s">{{t1_s}}</p>
+        <dl class="led"><div><dt>{{a1}} <i>{{a1_w}}</i></dt><dd>{{a1_v}}</dd></div><div><dt>{{a2}} <i>{{a2_w}}</i></dt><dd>{{a2_v}}</dd></div><div><dt>{{a3}} <i>{{a3_w}}</i></dt><dd>{{a3_v}}</dd></div><div><dt>{{a4}} <i>{{a4_w}}</i></dt><dd>{{a4_v}}</dd></div><div class="tot"><dt>{{a_sum}}</dt><dd>{{a_sum_v}}</dd></div></dl>
+        <p class="led-n">{{a_note}}</p>
+      </div>
+      <div class="ph"><div class="scr"><img src="s/age.webp" alt="{{alt_age}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn part night lav">
+      <div class="tx"><h3><span class="pn-l">{{t2_l}}</span><span class="pn-n">80<small>{{t2_u}}</small></span></h3><p class="pn-s">{{t2_s}}</p>
+        <dl class="led"><div><dt>{{s1}}</dt><dd>{{s1_v}}</dd></div><div><dt>{{s2}}</dt><dd>{{s2_v}}</dd></div><div class="tot"><dt>{{s_sum}}</dt><dd>{{s_sum_v}}</dd></div></dl>
+      </div>
+      <div class="ph"><div class="scr"><img src="s/sleep.webp" alt="{{alt_sleep}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn part bp rose crop">
+      <div class="tx"><h3><span class="pn-l">{{t3_l}}</span><span class="pn-n">124/77</span></h3><p class="pn-s">{{t3_s}}</p></div>
+      <div class="ph"><div class="scr"><img src="s/bp.webp" alt="{{alt_bp}}" width="828" height="1800" loading="lazy"></div><img class="fr" src="s/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
   </div>
 </section>
 
@@ -696,7 +718,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
 
   // ---------- sections ease in as they arrive (no pinning, no scroll-driven drawing) ----------
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = document.querySelectorAll('.steps .step, .trio > *, .shelf .top');
+  const items = document.querySelectorAll('.steps .step, .parts .part, .shelf .top');
   if (!reduce && 'IntersectionObserver' in window) {
     root.classList.add('reveal');
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });

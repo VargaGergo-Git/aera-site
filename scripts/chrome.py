@@ -2,8 +2,8 @@
 """The one Aera look: the tokens, header, footer and closing band every page shares.
 
 The home page (build_home3.py) takes these directly. Every other page gets them
-from add_chrome.py, and styles.css and article.css carry CSS between
-/* chrome */ markers that add_chrome.py refreshes from here. Change the look
+from add_chrome.py, and styles.css carries this CSS between its two
+/* chrome */ markers, which add_chrome.py refreshes from here. Change the look
 here, then run the build chain (see scripts/home3/README.md).
 
 The style, in short:
@@ -46,7 +46,7 @@ T = {
         "cols": [
             ("Aera", [("Visszajátszás", "/hu.html#replay"), ("A tested", "/hu.html#body"), ("Újdonságok", "/ujdonsagok.html"), ("Útvonaltervező", "/plan/")]),
             ("Olvasnivaló", [("Field Guide", "/notes/"), ("Útmutatók", "/guides/#hu"), ("Sajtó", "/press/")]),
-            ("Segítség", [("Ügyfélszolgálat", "/support.html"), ("Ötletek", "/otletek.html"), ("Adatvédelem", "/adatvedelem.html"), ("Felhasználási feltételek", "/felhasznalasi-feltetelek.html")]),
+            ("Segítség", [("Kapcsolat", "/support.html"), ("Ötletek", "/otletek.html"), ("Adatvédelem", "/adatvedelem.html"), ("Felhasználási feltételek", "/felhasznalasi-feltetelek.html")]),
         ],
         "look": ("Megjelenés", "Auto", "Világos", "Sötét"),
         "close_h": ("Nézd vissza a futásod.", "Értsd meg a tested."),
@@ -87,7 +87,7 @@ TOKENS = """
     color-scheme:dark;
     --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
     --btn:#f3f3f1; --btn-ink:#131313;
-    --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+    --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.2;
     --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
   }
 }
@@ -95,7 +95,7 @@ TOKENS = """
   color-scheme:dark;
   --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
   --btn:#f3f3f1; --btn-ink:#131313;
-  --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+  --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.2;
   --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
 }
 """
@@ -159,20 +159,47 @@ CSS = TOKENS + """
 .sf-look button{border:0;background:transparent;color:rgba(255,255,255,.72);font:500 12.5px/1.2 var(--font);padding:6px 12px;border-radius:7px;cursor:pointer}
 .sf-look button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
 @media (max-width:820px){.site-foot .sf-w{grid-template-columns:repeat(2,minmax(0,1fr))}.site-foot .sf-about{grid-column:1/-1}.sf-langs{margin-left:0;flex-basis:100%;order:3}}
-@media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}}
+
+/* one quiet offer of the reader's own language, never a redirect */
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:var(--panel);color:var(--ink);box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px var(--head-rule);font:500 15px/1.2 var(--font);white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-weight:600;text-decoration:none;white-space:nowrap}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0}}
 """
 
 # Runs before paint in <head>: the chosen look, so a dark reader never sees a white flash.
 LOOK_HEAD_JS = ("<script>try{var l=localStorage.getItem('aera-look');if(l==='light'||l==='dark')"
                 "document.documentElement.dataset.theme=l}catch(e){}</script>")
 
-# The footer's look switch, and remembering a language picked in the header or footer.
-JS = """<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]'));
+# The footer's look switch; remembering a language picked in the header or footer;
+# on an English page, for a browser set to Hungarian or German that has made no
+# choice, one quiet bottom card offering that language (closed for good with its
+# button); and on a page with no translation, links to the English home go to
+# the chosen language's home. Nothing ever redirects.
+JS = """<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]')),K='aera-lang';
 function set(v){if(v==='light'||v==='dark')r.dataset.theme=v;else delete r.dataset.theme;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.look===(v==='light'||v==='dark'?v:'auto')))})}
 var s=null;try{s=localStorage.getItem('aera-look')}catch(e){}set(s);
 b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.look);try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}})});
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem('aera-lang',a.getAttribute('data-lsw'))}catch(x){}}});
-})();</script>"""
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}});
+d.addEventListener('touchstart',function(){},{passive:true});
+var w=d.querySelector('.lsw');if(!w)return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+var H={hu:['Magyarul is olvashatod.','Magyar','Bez\\u00e1r\\u00e1s'],de:['Gibt es auch auf Deutsch.','Deutsch','Schlie\\u00dfen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),to=w.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&r.lang==='en'&&to&&w.getAttribute('data-hint')!=='0')setTimeout(function(){var c=d.createElement('div');c.className='lsw-hint';c.setAttribute('role','region');c.setAttribute('aria-label',H[nv][1]);c.setAttribute('lang',nv);
+c.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">\\u00d7</button>';
+c.firstChild.textContent=H[nv][0];c.children[1].textContent=H[nv][1];c.children[1].href=to.getAttribute('href');c.lastChild.setAttribute('aria-label',H[nv][2]);
+c.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}c.classList.add('out');setTimeout(function(){c.remove()},320)};d.body.appendChild(c)},1200)}catch(x){}
+if(w.getAttribute('data-alt')!=='0')return;
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||r.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.sf-langs'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script>"""
 
 
 def badge(lang, href, extra=""):
@@ -189,16 +216,16 @@ def lang_links(lang, alts, short=True):
     return "".join(out)
 
 
-def header(lang, alts, store_href, current=None, has_alt=True):
+def header(lang, alts, store_href, current=None, has_alt=True, hint=True):
     t = T[lang]
     nav = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if current and h.split("#")[0] == current else "", n)
                   for n, h in t["nav"])
     return ('<header class="site-head" id="nav"><div class="sh-w">'
             '<a class="sh-brand" href="%s"><img src="/assets/icon.png" alt="" width="26" height="26">Aera</a>'
             '<nav aria-label="%s">%s</nav>'
-            '<div class="sh-langs lsw" data-alt="%d" role="group" aria-label="%s">%s</div>'
+            '<div class="sh-langs lsw" data-alt="%d"%s role="group" aria-label="%s">%s</div>'
             '<a class="sh-get" href="%s">%s</a>'
-            '</div></header>' % (t["home"], t["nav_label"], nav, 1 if has_alt else 0, t["lang_label"],
+            '</div></header>' % (t["home"], t["nav_label"], nav, 1 if has_alt else 0, "" if hint else ' data-hint="0"', t["lang_label"],
                                  lang_links(lang, alts), store_href, t["get"]))
 
 

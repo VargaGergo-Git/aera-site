@@ -12,7 +12,9 @@
 <meta property="og:image" content="https://aerahealth.app/assets/icon.png">
 <link rel="canonical" href="https://aerahealth.app/plan/">
 <link rel="icon" href="../assets/icon.png">
-<link rel="stylesheet" href="../styles.css">
+
+<!--chrome:head--><script>try{var l=localStorage.getItem('aera-look');if(l==='light'||l==='dark')document.documentElement.dataset.theme=l}catch(e){}</script><!--/chrome:head-->
+<link rel="stylesheet" href="../styles.css?v=81191d4b">
 <link rel="stylesheet" href="maplibre/maplibre-gl.css">
 <!-- No Cloudflare visitor counter on this page: it reads the full address, and the route rides after the #. -->
 <style>
@@ -106,10 +108,7 @@ dialog#qr::backdrop { background: rgba(0, 0, 0, 0.45); }
 </style>
 </head>
 <body>
-<div class="topbar"><div class="wrap-wide">
-  <a class="mark" href="../index.html">Aera</a>
-  <nav class="topnav"><a href="../notes/index.html">Notes</a><a href="../privacy.html">Privacy</a><a href="../support.html">Support</a></nav>
-</div></div>
+<!--chrome:header--><header class="site-head" id="nav"><div class="sh-w"><a class="sh-brand" href="/"><img src="/assets/icon.png" alt="" width="26" height="26">Aera</a><nav aria-label="Site"><a href="/#replay">Replay</a><a href="/#body">Your body</a><a href="/guides/">Guides</a><a href="/whats-new.html">What’s new</a></nav><div class="sh-langs lsw" data-alt="0" data-hint="0" role="group" aria-label="Language"><a href="/" lang="en" hreflang="en" data-lsw="en" aria-current="page">EN</a><a href="/hu.html" lang="hu" hreflang="hu" data-lsw="hu">HU</a><a href="/de.html" lang="de" hreflang="de" data-lsw="de">DE</a></div><a class="sh-get" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=page-plan&amp;mt=8">Download</a></div></header><!--/chrome:header-->
 <main class="planner">
   <div id="map" aria-label="Map. Click to add a point to your route."></div>
   <section class="panel" aria-labelledby="title">
@@ -149,9 +148,29 @@ dialog#qr::backdrop { background: rgba(0, 0, 0, 0.45); }
   <p>Point your iPhone camera at the code. The route opens on the phone, ready for Aera.</p>
   <div class="code" id="qr-code"></div>
   <p class="fine">Your points travel in the link, after the #. Browsers don't send that part when they open it.</p>
-  <p class="fine">No Aera yet? <a href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=tool-plan&amp;mt=8">Get it on the App Store</a></p>
+  <p class="fine">No Aera yet? <a href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=page-plan&amp;mt=8">Get it on the App Store</a></p>
 </dialog>
 <noscript><p class="wrap">The planner needs JavaScript to draw the map.</p></noscript>
 <script type="module" src="app.mjs"></script>
+
+
+<!--chrome:js--><script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]')),K='aera-lang';
+function set(v){if(v==='light'||v==='dark')r.dataset.theme=v;else delete r.dataset.theme;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.look===(v==='light'||v==='dark'?v:'auto')))})}
+var s=null;try{s=localStorage.getItem('aera-look')}catch(e){}set(s);
+b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.look);try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}})});
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}});
+d.addEventListener('touchstart',function(){},{passive:true});
+var w=d.querySelector('.lsw');if(!w)return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+var H={hu:['Magyarul is olvashatod.','Magyar','Bez\u00e1r\u00e1s'],de:['Gibt es auch auf Deutsch.','Deutsch','Schlie\u00dfen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),to=w.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&r.lang==='en'&&to&&w.getAttribute('data-hint')!=='0')setTimeout(function(){var c=d.createElement('div');c.className='lsw-hint';c.setAttribute('role','region');c.setAttribute('aria-label',H[nv][1]);c.setAttribute('lang',nv);
+c.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">\u00d7</button>';
+c.firstChild.textContent=H[nv][0];c.children[1].textContent=H[nv][1];c.children[1].href=to.getAttribute('href');c.lastChild.setAttribute('aria-label',H[nv][2]);
+c.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}c.classList.add('out');setTimeout(function(){c.remove()},320)};d.body.appendChild(c)},1200)}catch(x){}
+if(w.getAttribute('data-alt')!=='0')return;
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||r.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.sf-langs'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script><!--/chrome:js-->
 </body>
 </html>

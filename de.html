@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="Aera">
 <meta property="og:locale" content="de_DE"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="hu_HU">
 <meta property="og:url" content="https://aerahealth.app/de.html">
-<meta property="og:image" content="https://aerahealth.app/assets/og-k.jpg">
+<meta property="og:image" content="https://aerahealth.app/assets/og-4.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Erlebe deinen Lauf noch einmal. Versteh deinen Körper.">
 <meta name="twitter:description" content="Aera misst die Werte deiner Apple Watch an dem, was für dich normal ist. Jeden Morgen zeigt Aera dir, wo du heute stehst, und nach dem Training, was sich getan hat. Kostenlos, ohne Konto.">
-<meta name="twitter:image" content="https://aerahealth.app/assets/og-k.jpg">
+<meta name="twitter:image" content="https://aerahealth.app/assets/og-4.jpg">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://aerahealth.app/de.html">
 <link rel="alternate" hreflang="en" href="https://aerahealth.app/"><link rel="alternate" hreflang="hu" href="https://aerahealth.app/hu.html"><link rel="alternate" hreflang="de" href="https://aerahealth.app/de.html"><link rel="alternate" hreflang="x-default" href="https://aerahealth.app/">
@@ -47,7 +47,7 @@
     color-scheme:dark;
     --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
     --btn:#f3f3f1; --btn-ink:#131313;
-    --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+    --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.2;
     --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
   }
 }
@@ -55,7 +55,7 @@
   color-scheme:dark;
   --paper:#000000; --panel:#141514; --ink:#f3f3f1; --ink-2:#a2a29f; --ink-3:#7c7c79; --rule:#282927;
   --btn:#f3f3f1; --btn-ink:#131313;
-  --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.34;
+  --t-peach:#33200f; --t-lav:#221c38; --t-sky:#132437; --t-sage:#14271b; --t-rose:#351820; --aura:.2;
   --head-bg:rgba(0,0,0,.72); --head-rule:rgba(255,255,255,.1); --foot:#000000; --foot-rule:#282927; --lift:0 0 0 1px rgba(255,255,255,.06);
 }
 
@@ -117,7 +117,18 @@
 .sf-look button{border:0;background:transparent;color:rgba(255,255,255,.72);font:500 12.5px/1.2 var(--font);padding:6px 12px;border-radius:7px;cursor:pointer}
 .sf-look button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
 @media (max-width:820px){.site-foot .sf-w{grid-template-columns:repeat(2,minmax(0,1fr))}.site-foot .sf-about{grid-column:1/-1}.sf-langs{margin-left:0;flex-basis:100%;order:3}}
-@media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}}
+
+/* one quiet offer of the reader's own language, never a redirect */
+.lsw-hint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:4px;width:max-content;max-width:calc(100vw - 24px);box-sizing:border-box;padding:5px 5px 5px 18px;border-radius:999px;background:var(--panel);color:var(--ink);box-shadow:0 14px 36px rgba(0,0,0,.2),0 0 0 .5px var(--head-rule);font:500 15px/1.2 var(--font);white-space:nowrap;transform:translateX(-50%);animation:lsw-up .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes lsw-up{from{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint.out{animation:lsw-down .3s cubic-bezier(.4,0,1,1) both;pointer-events:none}
+@keyframes lsw-down{to{opacity:0;transform:translate(-50%,18px)}}
+.lsw-hint span{min-width:0;margin-right:8px;white-space:normal;line-height:1.25}
+.lsw-hint a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--btn);color:var(--btn-ink);font-weight:600;text-decoration:none;white-space:nowrap}
+.lsw-hint button{flex:none;width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font-size:22px;line-height:1;cursor:pointer;opacity:.6}
+@media (hover:hover){.lsw-hint button:hover{opacity:1}}
+@media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0}}
 :root{
   --card:var(--panel); --grey:var(--paper); --accent:var(--ink); --sans:var(--font); --wide:1120px; --nav-h:var(--head-h);
   --paddle:#e9e8e3; --paddle-hover:#dddcd6; --paddle-ink:#2c2c2a; --shadow:rgba(20,20,18,.17); --amber:var(--route); --sage:#80b49e; --works-ink:var(--ink-2);
@@ -162,7 +173,7 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .hero h1{font-size:var(--h1,clamp(46px,7.2vw,104px));font-weight:700;letter-spacing:-.045em;line-height:.98;color:var(--ink)}
 :lang(de) .hero h1{--h1:clamp(40px,5.6vw,84px)}
 .hero h1 span{display:block}
-.hero .sub{max-width:25em;margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(19px,1.75vw,24px);line-height:1.35;font-weight:500;letter-spacing:-.015em;color:var(--ink-2)}
+.hero .sub{margin:clamp(18px,2vw,26px) auto 0;font-size:clamp(20px,2.5vw,32px);line-height:1.25;font-weight:500;letter-spacing:-.022em;color:var(--ink-2)}
 .hero .cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px 22px;margin-top:clamp(26px,3vw,38px)}
 .hero .cta p{margin:0;font-size:16px;color:var(--ink-2)}
 .stage{--mw:clamp(250px,25vw,326px);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(40px,7vw,104px);max-width:1060px;margin:clamp(48px,5.5vw,76px) auto 0;text-align:left}
@@ -212,9 +223,24 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .steps .pn.work::before{left:38%;right:-20%;bottom:-40%;height:120%}
 .steps .pn.work .tx{flex:1;min-width:0;padding-bottom:clamp(28px,3.3vw,44px)}
 .steps .pn.work .ph{--w:clamp(250px,26vw,310px);margin:clamp(34px,4vw,56px) clamp(40px,7vw,104px) calc(var(--w) * -.7) clamp(20px,3vw,40px)}
-.trio{margin-top:clamp(36px,4.6vw,60px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.trio .pn-n{--n:clamp(54px,6vw,84px)}
-.trio .pn-s{min-height:5.7em}
+.parts .pn.age{grid-column:span 12;flex-direction:row;align-items:flex-start;justify-content:space-between}
+.parts .pn.age::before{left:38%;right:-20%;bottom:-40%;height:120%}
+.parts .pn.age .tx,.parts .pn.night .tx{flex:1;min-width:0;padding-bottom:clamp(28px,3.3vw,44px)}
+.parts .pn.age .ph{--w:clamp(250px,26vw,310px);margin:clamp(34px,4vw,56px) clamp(40px,7vw,104px) calc(var(--w) * -.86) clamp(20px,3vw,40px)}
+.parts .pn.night{grid-column:span 7;flex-direction:row;align-items:flex-start;justify-content:space-between}
+.parts .pn.night::before{left:30%;right:-30%;bottom:-20%;height:120%}
+.parts .pn.night .ph{--w:clamp(210px,20vw,252px);align-self:flex-end;margin:clamp(30px,3.3vw,44px) clamp(28px,3.3vw,44px) calc(var(--w) * -.42) 0}
+.parts .pn.bp{grid-column:span 5}
+.parts .pn-n{--n:clamp(60px,7.2vw,100px)}
+.parts .pn.night .pn-n,.parts .pn.bp .pn-n{--n:clamp(54px,6vw,84px)}
+.led{margin:clamp(22px,2.4vw,30px) 0 0;max-width:27em;font-size:clamp(15.5px,1.3vw,17px);line-height:1.3;letter-spacing:-.01em}
+.led div{display:flex;align-items:baseline;justify-content:space-between;gap:18px;padding:11px 0;box-shadow:inset 0 1px 0 var(--rule)}
+.led dt{color:var(--ink);font-weight:600}
+.led dt i{font-style:normal;font-weight:400;color:var(--ink-2);margin-left:.35em}
+.led dd{margin:0;flex:none;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.led .tot{box-shadow:inset 0 1.5px 0 var(--ink)}
+.led .tot dd{font-family:var(--display);font-size:1.5em;letter-spacing:-.03em;line-height:1}
+.led-n{margin:12px 0 0;max-width:30em;font-size:14.5px;line-height:1.4;color:var(--ink-3)}
 
 /* the working: one minute of the run, counted */
 .calc{position:relative;margin:34px 0 0;max-width:470px;padding:24px 24px 22px;border-radius:24px;background:var(--card);--p:1}
@@ -257,13 +283,13 @@ section[id],[id^="n"]{scroll-margin-top:calc(var(--nav-h) + 12px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .calc{--card:#1d1e1d}}
 :root[data-theme="dark"] .calc{--card:#1d1e1d}
 
-html.reveal .steps .step,html.reveal .trio > *,html.reveal .shelf .top{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+html.reveal .steps .step,html.reveal .parts .part,html.reveal .shelf .top{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
 html.reveal .in{opacity:1!important;transform:none!important}
 
 .body{padding-bottom:clamp(84px,10vw,140px)}
 
 /* ---------- the store pictures, as one continuous strip ---------- */
-.shelf{background:#0f261a;color:#fff;padding-block:clamp(80px,10vw,120px) clamp(60px,7vw,90px)}
+.shelf{background:#111211;color:#fff;padding-block:clamp(80px,10vw,120px) clamp(60px,7vw,90px)}
 .shelf .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 30px}
 .shelf h2{font-size:clamp(40px,5.6vw,64px);font-weight:700;letter-spacing:-.035em;line-height:1.04}
 .shelf .link{color:#fff}
@@ -271,7 +297,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
 .reel.drag{cursor:grabbing}
 .track{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
 .set{position:relative;flex:none;width:calc(var(--pw) * 10);height:100%}
-.set .fld{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.set .fld{display:none}
 .set .run{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 .run .rp{fill:none;stroke:none}
 .run .trail{fill:none;stroke:#ffd37a;stroke-width:16;stroke-linecap:round;opacity:.95;mix-blend-mode:screen}
@@ -464,9 +490,12 @@ html.reveal .in{opacity:1!important;transform:none!important}
   .steps .pn.replay .tx,.steps .pn.work .tx{padding-bottom:0}
   .steps .pn.replay .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto 34px}
   .steps .pn.work .ph{--w:min(70%,290px);margin:clamp(28px,3vw,40px) auto calc(var(--w) * -.86)}
-  .trio{grid-template-columns:minmax(0,1fr);gap:16px}
-  .trio .pn-s{min-height:0}
-  .trio .pn-n{--n:clamp(60px,17vw,84px)}
+  .parts .pn.age,.parts .pn.night,.parts .pn.bp{grid-column:1/-1;flex-direction:column;align-items:stretch}
+  .parts .pn.age::before,.parts .pn.night::before{left:-25%;right:-25%;bottom:-34%;height:92%}
+  .parts .pn.age .tx,.parts .pn.night .tx{padding-bottom:0}
+  .parts .pn.age .ph,.parts .pn.night .ph{--w:min(70%,290px);align-self:auto;margin:clamp(28px,3vw,40px) auto calc(var(--w) * -.58)}
+  .parts .pn-n,.parts .pn.night .pn-n,.parts .pn.bp .pn-n{--n:clamp(60px,17vw,84px)}
+  .led{max-width:none}
   .st{height:140px}
   .calc{padding:20px 18px 18px;border-radius:20px;width:100%}
   .calc .v b{font-size:26px}
@@ -477,6 +506,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
   .wgs{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"cam cam" "all all" "eff trd" "dev fg" "day day";gap:16px}
   .c .art{height:430px}
 }
+@media (max-width:359px){.gal .dots{gap:5px}.gal .dots button{width:6px}.gal .dots button[aria-current="true"]{width:22px}.gal .arrows{gap:8px}}
 @media (max-width:560px){
   :root{--r:26px}
   .w,.grid{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -515,7 +545,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
 <section class="hero" aria-label="Ein Morgenlauf über die Freiheitsbrücke in Budapest, in 3D abgespielt">
   <p class="kicker">Aera für iPhone und Apple Watch</p>
   <h1><span>Erlebe deinen Lauf noch einmal.</span> <span>Versteh deinen Körper.</span></h1>
-  <p class="sub">Deine Läufe in 3D, über den echten Straßen. Deine Werte im Vergleich zu dem, was bei dir normal&nbsp;ist.</p>
+  <p class="sub">Jede Zahl erklärt. Kein&nbsp;Rätselraten.</p>
   <div class="cta"><a class="store" href="/get/hero/de/"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.2 10.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.2zM11.7 3c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3.1-1.5z"/></svg><span><small>Laden im</small>App Store</span></a>
     <p>Kostenlos laden. Ohne Konto.</p>
   </div>
@@ -566,21 +596,24 @@ html.reveal .in{opacity:1!important;transform:none!important}
     <h2 class="huge">Versteh<br>deinen Körper.</h2>
     <p class="intro">Ein Ruhepuls, der bei einem Menschen völlig normal ist, kann bei einem anderen schon auffällig sein.<sup><a href="#n2">2</a></sup> Deshalb <em>vergleicht Aera deine Nächte, dein Herz und deinen Blutdruck mit deinen eigenen Wochen</em> und zeigt, wie es darauf kommt.</p>
   </div>
-  <div class="w">
-    <div class="trio">
-      <figure class="pn crop sage">
-        <div class="tx"><h3><span class="pn-l">Körperalter</span><span class="pn-n">35,0<small>Jahre</small></span></h3><p class="pn-s"><b>3,4 Jahre jünger als auf dem Papier.</b> Berechnet aus VO&#8322;max, Ruhepuls, HRV, Schlaf und Schritten, und jeder Baustein ist einzeln zu sehen.<sup><a href="#n4">4</a></sup></p></div>
-        <div class="ph"><div class="scr"><img src="h/de/age.webp" alt="Körperalter 35,0, das sind 3,4 Jahre weniger als das Lebensalter" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-      <figure class="pn crop lav">
-        <div class="tx"><h3><span class="pn-l">Letzte Nacht</span><span class="pn-n">80<small>Sehr gut</small></span></h3><p class="pn-s"><b>6&nbsp;Std. 53&nbsp;Min. geschlafen.</b> Das sind 37 Minuten weniger, als du nach deinen eigenen Nächten brauchst.</p></div>
-        <div class="ph"><div class="scr"><img src="h/de/sleep.webp" alt="Schlafwert 80, Sehr gut: 6 Std. 53 Min. geschlafen, 37 Minuten unter deinem Bedarf" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-      <figure class="pn crop rose">
-        <div class="tx"><h3><span class="pn-l">Blutdruck</span><span class="pn-n">124/77</span></h3><p class="pn-s"><b>Morgens und abends im Vergleich.</b> Mit Notizen versehen und als PDF fertig für die Arztpraxis.</p></div>
-        <div class="ph"><div class="scr"><img src="h/de/bp.webp" alt="Blutdruck 124/77 mit Morgen- und Abendwerten" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
-      </figure>
-    </div>
+  <div class="grid parts">
+    <figure class="pn part age sage">
+      <div class="tx"><h3><span class="pn-l">Körperalter</span><span class="pn-n">35,0<small>Jahre</small></span></h3><p class="pn-s"><b>3,4 Jahre jünger als auf dem Papier.</b> Und du siehst, woraus sich diese Jahre zusammensetzen.<sup><a href="#n4">4</a></sup></p>
+        <dl class="led"><div><dt>Fitness <i>VO&#8322;max</i></dt><dd>2,3 Jahre</dd></div><div><dt>Herz <i>Ruhepuls</i></dt><dd>6 Monate</dd></div><div><dt>Bewegung <i>aktive Minuten</i></dt><dd>5 Monate</dd></div><div><dt>Schlaf <i>wie regelmäßig deine Nächte sind</i></dt><dd>2 Monate</dd></div><div class="tot"><dt>So viel jünger als auf dem Papier</dt><dd>3,4 Jahre</dd></div></dl>
+        <p class="led-n">Kraft und Gehen zählen noch nicht mit. Auch das steht auf dem Bildschirm: 4 von 6.</p>
+      </div>
+      <div class="ph"><div class="scr"><img src="h/de/age.webp" alt="Körperalter 35,0, das sind 3,4 Jahre weniger als das Lebensalter" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn part night lav">
+      <div class="tx"><h3><span class="pn-l">Letzte Nacht</span><span class="pn-n">80<small>Sehr gut</small></span></h3><p class="pn-s"><b>6&nbsp;Std. 53&nbsp;Min. geschlafen.</b> Wie viel Schlaf du brauchst, lernt Aera aus deinen eigenen Nächten und nicht aus einer Tabelle.</p>
+        <dl class="led"><div><dt>Dein Bedarf</dt><dd>7 h 30 m</dd></div><div><dt>Geschlafen</dt><dd>6 h 53 m</dd></div><div class="tot"><dt>Unter deinem Bedarf</dt><dd>37 min</dd></div></dl>
+      </div>
+      <div class="ph"><div class="scr"><img src="h/de/sleep.webp" alt="Schlafwert 80, Sehr gut: 6 Std. 53 Min. geschlafen, 37 Minuten unter deinem Bedarf" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
+    <figure class="pn part bp rose crop">
+      <div class="tx"><h3><span class="pn-l">Blutdruck</span><span class="pn-n">124/77</span></h3><p class="pn-s"><b>Morgens und abends im Vergleich.</b> Mit Notizen versehen und als PDF fertig für die Arztpraxis.</p></div>
+      <div class="ph"><div class="scr"><img src="h/de/bp.webp" alt="Blutdruck 124/77 mit Morgen- und Abendwerten" width="828" height="1800" loading="lazy"></div><img class="fr" src="h/frame.webp" alt="" width="1100" height="2249" loading="lazy"></div>
+    </figure>
   </div>
 </section>
 
@@ -624,9 +657,9 @@ html.reveal .in{opacity:1!important;transform:none!important}
       <div class="wg" data-w="cam"><div class="st cam" aria-hidden="true"><img src="h/replay-wide.webp" alt="" width="1600" height="900" loading="lazy"><div class="figs"><span><small>Distanz</small><b>11,57<i>km</i></b></span><span><small>Zeit</small><b>59<i>min</i></b></span><span><small>Tempo</small><b>5:06<i>/km</i></b></span><span><small>Herzfrequenz</small><b>149<i>bpm</i></b></span></div></div><div><h3>Die 3D-Wiedergabe, neu gebaut</h3><p>Vier Live-Werte, Kameraperspektiven und Kartenstile, und mit Premium ein Hochkant-Video zum Teilen.</p></div></div>
       <div class="wg" data-w="all"><div class="st all" aria-hidden="true"><div class="ah"><span class="wn">Was ist neu</span><span class="ct"><b>1</b>/8</span></div><div class="areas"><section class="ar on" data-d="0"><h4>Heute und Auswertungen</h4><ul><li><i class="mk " data-g="bolt"></i>Energie steht in der Zeitachse ganz oben</li><li><i class="mk hg" data-g="ring"></i>Erholung achtet stärker auf dein Herz im Schlaf</li><li><i class="mk " data-g="ring"></i>Ringe zeigen die Werte von heute</li><li><i class="mk hh" data-g="heart"></i>Blutdruck auf Home</li></ul></section><section class="ar"><h4>Schlaf</h4><ul><li><i class="mk " data-g="clock"></i>Die Zeitumstellung</li><li><i class="mk " data-g="sun"></i>Ein Nickerchen nach dem Aufwachen zählt als Nickerchen</li><li><i class="mk hs" data-g="moon"></i>Ein Schlafwert, der bleibt</li></ul></section><section class="ar"><h4>Trainings und Fitness</h4><ul><li><i class="mk hr" data-g="run"></i>Sag, wie anstrengend es war</li><li><i class="mk " data-g="gauge"></i>Tempoverlauf und Pulsdrift, verglichen mit sonst</li><li><i class="mk " data-g="drag"></i>Über ein Diagramm ziehen und Werte ablesen</li><li><i class="mk " data-g="plane"></i>Flyover beginnt auf deiner Karte</li></ul></section><section class="ar"><h4>Die Karte</h4><ul><li><i class="mk " data-g="map"></i>Karte drehen und neigen</li><li><i class="mk " data-g="pin"></i>Sehenswürdigkeiten als Wegmarken</li><li><i class="mk " data-g="flame"></i>Eine schärfere Heatmap</li><li><i class="mk " data-g="loop"></i>Runden, die man wirklich läuft</li></ul></section><section class="ar"><h4>Deine Uhr</h4><ul><li><i class="mk " data-g="compass"></i>Eine Kompassseite</li><li><i class="mk " data-g="map"></i>Eine Karte ohne Route</li><li><i class="mk " data-g="battery"></i>Schritte und Akku unterwegs</li><li><i class="mk hr" data-g="run"></i>Deine eigene Spur beim freien Lauf</li></ul></section><section class="ar"><h4>Widgets, Siri und Hinweise</h4><ul><li><i class="mk " data-g="sync"></i>Synchronisierung auf dem Sperrbildschirm</li><li><i class="mk " data-g="mic"></i>Siri steuert dein Training</li><li><i class="mk " data-g="switch"></i>Lauf planen und Letzte Nacht im Kontrollzentrum</li><li><i class="mk " data-g="sun"></i>Morgens eine Mitteilung zu deiner Nacht</li></ul></section><section class="ar"><h4>Teilen und deine Daten</h4><ul><li><i class="mk " data-g="frame"></i>Aus einem Screenshot wird eine Karte zum Teilen</li><li><i class="mk hs" data-g="moon"></i>Letzte Nacht teilen</li><li><i class="mk " data-g="star"></i>Bestleistungen und deine Woche</li><li><i class="mk " data-g="globe"></i>Karten in deiner Sprache</li></ul></section><section class="ar"><h4>Überall</h4><ul><li><i class="mk " data-g="palette"></i>Ein dritter Look: Farbe</li><li><i class="mk " data-g="book"></i>Ein größerer Field Guide</li><li><i class="mk " data-g="bolt"></i>Sofort startklar</li><li><i class="mk hw" data-g="hike"></i>Jede Wanderung mit ihrem ganzen Tempoverlauf</li></ul></section></div></div><div><h3>Und vieles mehr</h3><p>Jede Änderung in diesem Update, auch die Fehlerbehebungen, findest du in den Einstellungen unter Was ist neu.</p></div></div>
       <div class="wg" data-w="eff"><div class="st eff" aria-hidden="true"><div class="eh"><b data-v>8</b><span>Gefühlte Anstrengung</span></div><div class="t10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><em></em></div><div class="ends"><span>Locker</span><span>Maximal</span></div></div><div><h3>Wie anstrengend war es?</h3><p>Bewerte jedes Training von 1 bis 10. Bei Bestleistungen siehst du, wo ein Lauf steht, zum Beispiel als zweitschnellster von&nbsp;41.</p></div></div>
-      <div class="wg" data-w="trd"><div class="st trd" aria-hidden="true"><div class="eh"><span class="sw"><span class="on">Cardiofitness</span><span>Ruhepuls</span></span><b class="sw"><span class="on">48,9</span><span>54<small>bpm</small></span></b></div><svg viewBox="0 0 300 80" preserveAspectRatio="none"><path class="band" d="M0 22 C60 20 120 26 180 24 S260 20 300 23 L300 52 C240 50 180 55 120 53 S40 50 0 52Z"/><path class="ln on" pathLength="1" d="M0 30 C25 26 40 40 62 36 S95 24 118 31 S150 44 172 38 S205 30 228 40 S262 47 282 44 L300 46"/><path class="ln" pathLength="1" d="M0 46 C22 44 44 34 66 38 S100 48 124 42 S158 30 180 36 S214 46 236 38 S270 30 300 33"/><circle class="dt on" cx="300" cy="46" r="4.5"/><circle class="dt" cx="300" cy="33" r="4.5"/></svg></div><div><h3>Trends</h3><p>Cardiofitness, Ruhepuls und Ausdauer, jeweils mit dem Hinweis, ob sich wirklich etwas verändert hat.</p></div></div>
+      <div class="wg" data-w="trd"><div class="st trd" aria-hidden="true"><div class="eh"><span class="sw"><span class="on">Cardiofitness</span><span>Ruhepuls</span></span><b class="sw"><span class="on">48,9</span><span>54<small>bpm</small></span></b></div><svg viewBox="0 0 300 80" preserveAspectRatio="none"><path class="band" d="M0 22 C60 20 120 26 180 24 S260 20 300 23 L300 52 C240 50 180 55 120 53 S40 50 0 52Z"/><path class="ln on" pathLength="1" d="M0 30 C25 26 40 40 62 36 S95 24 118 31 S150 44 172 38 S205 30 228 40 S262 47 282 44 L300 46"/><path class="ln" pathLength="1" d="M0 46 C22 44 44 34 66 38 S100 48 124 42 S158 30 180 36 S214 46 236 38 S270 30 300 33"/><circle class="dt on" cx="300" cy="46" r="4.5"/><circle class="dt" cx="300" cy="33" r="4.5"/></svg></div><div><h3>Verläufe</h3><p>Cardiofitness, Ruhepuls und Ausdauer, jeweils mit dem Hinweis, ob sich wirklich etwas verändert hat.</p></div></div>
       <div class="wg" data-w="dev"><div class="st dev" aria-hidden="true"><div class="eh"><span>Funktioniert mit</span></div><div class="roll"><span class="on">Apple Watch</span><span>Garmin</span><span>Polar</span><span>COROS</span><span>Ohne Uhr</span></div><div class="chips"><span>FIT</span><span>GPX</span><span>TCX</span></div></div><div><h3>Jede Uhr, oder gar keine</h3><p>Eigene Seiten für Garmin, Polar und COROS. Garmin-Exporte sowie FIT-, GPX- und TCX-Dateien lassen sich samt Route importieren.</p></div></div>
-      <div class="wg" data-w="day"><div class="st day" aria-hidden="true"><div class="chips pick"><span>Ausgelaugt</span><span>Müde</span><span class="on">Bereit</span><span>Startklar</span><span class="off">Krank</span><span class="off">Verletzt</span><span class="off">Unterwegs</span></div></div><div><h3>Wie geht es dir heute?</h3><p>Sag Aera, wie sich der Tag anfühlt, und trag eine Pause ein, wenn du krank oder verreist bist.</p></div></div>
+      <div class="wg" data-w="day"><div class="st day" aria-hidden="true"><div class="chips pick"><span>Ausgelaugt</span><span>Müde</span><span class="on">Bereit</span><span>Startklar</span><span class="off">Krank</span><span class="off">Verletzt</span><span class="off">Unterwegs</span></div></div><div><h3>Wie war heute?</h3><p>Sag Aera, wie sich der Tag anfühlt, und trag eine Pause ein, wenn du krank oder verreist bist.</p></div></div>
       <div class="wg" data-w="fg"><div class="st fg" aria-hidden="true"><div class="eh"><b>+10</b><span>Field Guide</span></div><div class="roll"><span class="on">Üblich</span><span>Das biologische Alter</span><span>Bedarf und Reserve</span><span>Herzfrequenzbereiche</span><span>Innere Uhr</span></div></div><div><h3>Ein größerer Field Guide</h3><p>16 Artikel überarbeitet und 10 neue, alle mit Quellen.</p></div></div>
     </div>
   </div>
@@ -834,7 +867,7 @@ html.reveal .in{opacity:1!important;transform:none!important}
 
   // ---------- sections ease in as they arrive (no pinning, no scroll-driven drawing) ----------
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = document.querySelectorAll('.steps .step, .trio > *, .shelf .top');
+  const items = document.querySelectorAll('.steps .step, .parts .part, .shelf .top');
   if (!reduce && 'IntersectionObserver' in window) {
     root.classList.add('reveal');
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
@@ -1019,12 +1052,24 @@ html.reveal .in{opacity:1!important;transform:none!important}
   }
 })();
 </script>
-<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]'));
+<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]')),K='aera-lang';
 function set(v){if(v==='light'||v==='dark')r.dataset.theme=v;else delete r.dataset.theme;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.look===(v==='light'||v==='dark'?v:'auto')))})}
 var s=null;try{s=localStorage.getItem('aera-look')}catch(e){}set(s);
 b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.look);try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}})});
-d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem('aera-lang',a.getAttribute('data-lsw'))}catch(x){}}});
-})();</script>
+d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}});
+d.addEventListener('touchstart',function(){},{passive:true});
+var w=d.querySelector('.lsw');if(!w)return;
+var l;try{l=localStorage.getItem(K)}catch(x){}
+var H={hu:['Magyarul is olvashatod.','Magyar','Bez\u00e1r\u00e1s'],de:['Gibt es auch auf Deutsch.','Deutsch','Schlie\u00dfen']},HK='aera-lang-hint';
+try{var nv=(navigator.languages||[navigator.language||''])[0].slice(0,2).toLowerCase(),seen=localStorage.getItem(HK),to=w.querySelector('[data-lsw="'+nv+'"]');
+if(!l&&!seen&&H[nv]&&r.lang==='en'&&to&&w.getAttribute('data-hint')!=='0')setTimeout(function(){var c=d.createElement('div');c.className='lsw-hint';c.setAttribute('role','region');c.setAttribute('aria-label',H[nv][1]);c.setAttribute('lang',nv);
+c.innerHTML='<span></span><a data-lsw="'+nv+'" hreflang="'+nv+'"></a><button type="button">\u00d7</button>';
+c.firstChild.textContent=H[nv][0];c.children[1].textContent=H[nv][1];c.children[1].href=to.getAttribute('href');c.lastChild.setAttribute('aria-label',H[nv][2]);
+c.lastChild.onclick=function(){try{localStorage.setItem(HK,'1')}catch(x){}c.classList.add('out');setTimeout(function(){c.remove()},320)};d.body.appendChild(c)},1200)}catch(x){}
+if(w.getAttribute('data-alt')!=='0')return;
+var home={hu:'/hu.html',de:'/de.html'}[l];if(!home||r.lang===l)return;
+[].forEach.call(d.querySelectorAll('a[href]'),function(a){if(a.closest('.lsw,.sf-langs'))return;
+var u=new URL(a.href,location.href);if(u.origin===location.origin&&(u.pathname==='/'||u.pathname==='/index.html')&&!u.hash)a.setAttribute('href',home)})})();</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
 </body>
 </html>
