@@ -171,11 +171,37 @@ CSS = TOKENS + """
 @media (hover:hover){.lsw-hint button:hover{opacity:1}}
 @media (max-width:359px){.lsw-hint{padding-left:14px;font-size:14px}.lsw-hint span{margin-right:4px}.lsw-hint a{padding:0 14px}}
 @media (prefers-reduced-motion:reduce){.sh-get,.store{transition:none}.lsw-hint{animation:none}.lsw-hint.out{animation:none;opacity:0}}
+
+/* motion, shared by every page. Only where html.mo is set (in <head>, when the reader has not asked for less motion).
+   Pages cross-fade into each other and the header stays put; headlines rise word by word; blocks ease in as they arrive;
+   the aura breathes. Everything is time-based and plays once: nothing is pinned or tied to the scroll position. */
+@view-transition{navigation:auto}
+.site-head{view-transition-name:site-head}
+::view-transition-old(root){animation:vt-out .2s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(root){animation:vt-in .55s cubic-bezier(.16,1,.3,1) both}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;transform:translate3d(0,16px,0)}}
+html.vt-look::view-transition-old(root){animation:none;z-index:0}
+html.vt-look::view-transition-new(root){animation:vt-look .7s cubic-bezier(.4,0,.2,1) both;z-index:1}
+html.vt-look::view-transition-group(site-head){display:none}
+@keyframes vt-look{from{clip-path:circle(0 at var(--lx,50%) var(--ly,100%))}to{clip-path:circle(150vmax at var(--lx,50%) var(--ly,100%))}}
+html.mo .kin .kw{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em .05em .18em;margin:-.1em -.05em -.18em}
+html.mo .kin .kw>i{display:inline-block;font-style:normal;transform:translate3d(0,115%,0);transition:transform .95s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*60ms + var(--d,0ms))}
+html.mo .kin.in .kw>i{transform:none}
+html.mo .rv{opacity:0;transform:translate3d(0,24px,0);transition:opacity .7s ease,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0ms)}
+html.mo .rv.in{opacity:1;transform:none}
+html.mo :is(.page-head h1,.site-get h2):not(.kin),html.mo :is(.page-head .eyebrow,.page-head .lede,.page-head .meta):not(.rv){opacity:0}
+html.mo .site-get::before{animation:aura-a 17s ease-in-out infinite alternate}
+@keyframes aura-a{from{transform:translate(-50%,-46%)}to{transform:translate(-46%,-52%) scale(1.14) rotate(5deg)}}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
 """
 
 # Runs before paint in <head>: the chosen look, so a dark reader never sees a white flash.
 LOOK_HEAD_JS = ("<script>try{var l=localStorage.getItem('aera-look');if(l==='light'||l==='dark')"
-                "document.documentElement.dataset.theme=l}catch(e){}</script>")
+                "document.documentElement.dataset.theme=l}catch(e){}"
+                "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){"
+                "var R=document.documentElement;R.classList.add('mo');"
+                "setTimeout(function(){if(!R.classList.contains('mo-ok'))R.classList.remove('mo')},3500)}}catch(e){}</script>")
 
 # The footer's look switch; remembering a language picked in the header or footer;
 # on an English page, for a browser set to Hungarian or German that has made no
@@ -185,7 +211,8 @@ LOOK_HEAD_JS = ("<script>try{var l=localStorage.getItem('aera-look');if(l==='lig
 JS = """<script>(function(){var d=document,r=d.documentElement,b=[].slice.call(d.querySelectorAll('[data-look]')),K='aera-lang';
 function set(v){if(v==='light'||v==='dark')r.dataset.theme=v;else delete r.dataset.theme;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.look===(v==='light'||v==='dark'?v:'auto')))})}
 var s=null;try{s=localStorage.getItem('aera-look')}catch(e){}set(s);
-b.forEach(function(x){x.addEventListener('click',function(){set(x.dataset.look);try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}})});
+b.forEach(function(x){x.addEventListener('click',function(ev){var go=function(){set(x.dataset.look)};try{localStorage.setItem('aera-look',x.dataset.look)}catch(e){}if(d.startViewTransition&&r.classList.contains('mo')){r.style.setProperty('--lx',ev.clientX+'px');r.style.setProperty('--ly',ev.clientY+'px');r.classList.add('vt-look');var t=d.startViewTransition(go);t.finished.then(function(){r.classList.remove('vt-look')},function(){r.classList.remove('vt-look')})}else go()})});
+if(r.classList.contains('mo')){try{var split=function(el){var i=0;(function walk(n){[].slice.call(n.childNodes).forEach(function(c){if(c.nodeType===3){var f=d.createDocumentFragment();c.nodeValue.split(/( +|\\n+)/).forEach(function(w){if(!w)return;if(/^[ \\n]+$/.test(w)){f.appendChild(d.createTextNode(' '));return}var o=d.createElement('span'),k=d.createElement('i');o.className='kw';k.textContent=w;k.style.setProperty('--i',i++);o.appendChild(k);f.appendChild(o)});n.replaceChild(f,c)}else if(c.nodeType===1&&c.tagName!=='SUP'&&c.tagName!=='BR')walk(c)})})(el)};[].forEach.call(d.querySelectorAll('.page-head h1,.site-get h2'),function(e){e.classList.add('kin')});[].forEach.call(d.querySelectorAll('.page-head .eyebrow,.page-head .lede,.page-head .meta'),function(e,i){e.classList.add('rv');e.style.setProperty('--d',(120+i*90)+'ms')});[].forEach.call(d.querySelectorAll('.kin'),split);var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});void r.offsetWidth;[].forEach.call(d.querySelectorAll('.kin,.rv'),function(e){io.observe(e)});r.classList.add('mo-ok')}catch(e){r.classList.remove('mo')}}
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-lsw]');if(a){try{localStorage.setItem(K,a.getAttribute('data-lsw'))}catch(x){}}});
 d.addEventListener('touchstart',function(){},{passive:true});
 var w=d.querySelector('.lsw');if(!w)return;
@@ -231,9 +258,9 @@ def header(lang, alts, store_href, current=None, has_alt=True, hint=True):
 
 def closing(lang, store_href):
     t = T[lang]
-    return ('<section class="site-get"><img class="sg-icon" src="/assets/icon.png" alt="%s" width="84" height="84" loading="lazy">'
+    return ('<section class="site-get"><img class="sg-icon rv" src="/assets/icon.png" alt="%s" width="84" height="84" loading="lazy">'
             '<h2><span>%s</span> <span>%s</span></h2>'
-            '<div class="sg-cta">%s<span class="sg-qr"><img src="/assets/qr-%s.svg" alt="%s" width="76" height="76" loading="lazy">%s</span></div>'
+            '<div class="sg-cta rv" style="--d:420ms">%s<span class="sg-qr"><img src="/assets/qr-%s.svg" alt="%s" width="76" height="76" loading="lazy">%s</span></div>'
             '<p>%s</p></section>' % (t["icon_alt"], t["close_h"][0], t["close_h"][1], badge(lang, store_href),
                                      lang, t["qr_alt"], t["qr"], t["close_p"]))
 

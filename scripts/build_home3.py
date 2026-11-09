@@ -15,9 +15,10 @@ it expects is gone. This builder then puts the live site's own parts around it:
 - tracked store links (/get/<place>/<lang>/), real footer links, and the
   Cloudflare beacon (cookieless).
 
-Pictures live in h/ (h/hu/, h/de/ for the ones with words in them). The
-store strip's layers (h/store/{t,d}NN.webp and h/field.webp) come from
-scripts/home3/frames_web.js, run in the project's store-picture folder.
+Pictures live in h/ (h/hu/, h/de/ for the ones with words in them). The opening's
+replay is h/film.mp4 with its last frame h/film.webp (the app's own recording of the
+Budapest run, its words blurred out so the page can draw them in each language).
+The carousel's store pictures are h/store/lNN.webp, h/store/hu/, h/store/de/.
 """
 import os
 import re
@@ -62,6 +63,13 @@ def page(lang, src):
     out = src
     for key, val in lines.C[lang].items():
         out = out.replace("{{%s}}" % key, val)
+    # The carousel: that language's store pictures, in that store's order.
+    folder = "s/store/" if lang == "en" else "s/store/%s/" % lang
+    deck = "".join('<figure class="cd"><img src="%sl%02d.webp" alt="%s" width="600" height="1304" loading="lazy" draggable="false"></figure>'
+                   % (folder, i + 1, alt.replace('"', "&quot;")) for i, alt in enumerate(lines.STORE[lang]))
+    if out.count("<!--deck-->") != 1:
+        sys.exit("the carousel's slot is gone from page-en.html")
+    out = out.replace("<!--deck-->", deck)
     left = re.search(r"\{\{\w+\}\}", out)
     if left:
         sys.exit("%s: no words for %s" % (lang, left.group(0)))
@@ -74,7 +82,6 @@ def page(lang, src):
             out = out.replace(en, tr)
         for p in words.PICS:
             out = out.replace('src="s/%s.webp"' % p, 'src="s/%s/%s.webp"' % (lang, p))
-        out = out.replace('src="s/store/', 'src="s/store/%s/' % lang)
 
     # Head: the live page's own, then the page's look with the shared tokens and chrome.
     cut = out.index("<!--chrome:header-->")
