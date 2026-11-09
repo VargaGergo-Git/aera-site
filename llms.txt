@@ -1,14 +1,14 @@
 # Aera
 
-> Aera is a sleep and running tracker for iPhone and Apple Watch. It reads Apple Health, compares last night and the past week with your own usual range, and tells you each morning how hard to go today: rest day, go easy, good to go or go for it. Every number in the app opens a short article that shows how it was worked out and where it stops being reliable. There is no account, and health numbers are worked out and kept on the iPhone.
+> Aera is a sleep and running tracker for iPhone and Apple Watch. It reads Apple Health, compares last night and the past week with your own usual range, and replays runs in 3D over the real ground. Every number in the app opens a short article that shows how it was worked out and where it stops being reliable. There is no account, and health numbers are worked out and kept on the iPhone.
 
 Facts, stated plainly:
 
 - Platform: iPhone and Apple Watch (reads Apple Health). Made by one person, Gergő Varga.
 - Price: free to download and free to use. Premium is optional (monthly, yearly with a 7-day trial, or a one-time purchase).
-- Free: recovery, stress, strain and a sleep score; a hard, easy or rest call every morning; a route planner on real paths with turn-by-turn directions on iPhone or Apple Watch; every workout read and every personal best; Flyover replays of runs from the last seven days; twelve months of history; raw data export as JSON or GPX.
-- Premium: today's session (how long and how hard), sleep reserve, places, Flyover for older runs, every drawn route kept, history past twelve months, reports and every export format.
-- Privacy: no account, no sign-in, no language model in the app. Product analytics stay off until the user turns them on and never include health values.
+- Free: Your scores every day with their last 30 days (recovery, stress, strain, sleep); body age; a route planner on real paths with turn-by-turn directions on iPhone or Apple Watch and five saved routes; every workout read and every personal best; the 3D replay of any workout with a GPS route from the last seven days; the last 30 days of every export.
+- Premium: Your whole history; body age month by month; the 3D replay of older workouts, as a video to share, and of a route before you go; more than five saved routes; the report for yourself and the longer reports for your doctor.
+- Privacy: no account, no sign-in, no language model in the app. Usage counts stay off until the user turns them on (in the UK and Switzerland, until the user turns them off), and neither they nor crash reports include health values.
 - Without an Apple Watch, Aera works from what the iPhone records (steps, workouts); reads that need overnight watch data wait until there is data.
 - Not a medical device. Watch measurements such as sleep stages are estimates.
 - Languages: English, Hungarian, German, Spanish and French in full; Italian, Japanese, Portuguese and Traditional Chinese in part.
