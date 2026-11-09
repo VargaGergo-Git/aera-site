@@ -1,65 +1,33 @@
-/* Aera articles (guides/ and notes/). Same tokens as home.css so a guide reads
-   as part of the site. Motion is opacity + transform only, added by article.js;
-   without JS or with reduced motion everything is simply visible. */
+/* Aera guides (guides/*.html): the parts only an article has, on top of
+   styles.css (which every guide links first and which carries the look).
+   Motion is opacity + transform only, added by article.js; without JS or with
+   reduced motion everything is simply visible. */
 :root {
-  color-scheme: light dark;
-  --bg: #f6f4ef; --bg-2: #efebe2; --card: #ffffff;
-  --ink: #17161b; --ink-2: #57535d; --ink-3: #8a8690;
-  --line: rgba(23, 22, 27, 0.09);
+  --bg-2: color-mix(in srgb, var(--ink) 5%, var(--paper)); --card: var(--panel);
+  --line: var(--rule);
   --green: #23966f; --sage: #80b49e; --gold: #a8741f; --indigo: #5e5ce6; --pink: #e2335f;
-  --shadow: 0 1px 2px rgba(40, 30, 10, 0.05), 0 24px 60px -24px rgba(40, 30, 10, 0.28);
+  --shadow: var(--lift);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --rounded: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --text: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, "Segoe UI", Roboto, sans-serif;
   --measure: 680px;
   --gutter: clamp(16px, 5vw, 40px);
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000; --bg-2: #0b0b0d; --card: #121215;
-    --ink: #f5f3ee; --ink-2: #aaa6af; --ink-3: #6f6b76;
-    --line: rgba(255, 255, 255, 0.085);
-    --green: #4ecca3; --sage: #6fae95; --gold: #e8b366; --indigo: #8e8cff; --pink: #ff4572;
-    --shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 70px -30px rgba(0, 0, 0, 0.9);
-  }
+  :root:not([data-theme="light"]) { --green: #4ecca3; --sage: #6fae95; --gold: #e8b366; --indigo: #8e8cff; --pink: #ff4572; }
 }
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.62 var(--text); -webkit-font-smoothing: antialiased; }
-a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { text-decoration-thickness: 2px; }
-img { max-width: 100%; height: auto; display: block; }
+:root[data-theme="dark"] { --green: #4ecca3; --sage: #6fae95; --gold: #e8b366; --indigo: #8e8cff; --pink: #ff4572; }
 
-/* Top bar */
-.topbar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid var(--line); }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; max-width: 1120px; }
-.mark { font: 700 20px/1 var(--rounded); color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-.topnav { display: flex; gap: clamp(12px, 3vw, 24px); }
-.topnav a { color: var(--ink-2); text-decoration: none; font-size: 15px; }
-.topnav a:hover, .topnav a[aria-current] { color: var(--ink); }
-@media (max-width: 380px) { .topbar .wrap { gap: 10px; } .topnav { gap: 10px; min-width: 0; } .topnav a { font-size: 13.5px; } .topnav a[href*="privacy"] { display: none; } }
-
-.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 var(--gutter); }
-
-/* Header */
-.page-head { padding-top: clamp(40px, 9vw, 96px); padding-bottom: 8px; }
-.eyebrow { margin: 0 0 14px; font: 600 13px/1 var(--text); letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
-h1 { margin: 0; font: 700 clamp(34px, 6.4vw, 54px)/1.06 var(--rounded); letter-spacing: -0.022em; text-wrap: balance; }
-.lang-switch { margin: 22px 0 0; font-size: 14px; color: var(--ink-3); }
-.lang-switch a { color: var(--ink-2); }
-.lang-switch a[aria-current] { color: var(--ink); text-decoration: none; font-weight: 600; }
+body { font-size: 18px; line-height: 1.62; }
+.wrap { max-width: var(--measure); padding-left: var(--gutter); padding-right: var(--gutter); }
 
 /* Body */
-.legal { padding-top: 24px; padding-bottom: 64px; }
-.legal > p:first-of-type { font-size: clamp(20px, 2.6vw, 23px); line-height: 1.5; color: var(--ink); }
-.legal > p:first-of-type strong { font-weight: 650; }
-.legal p, .legal li { color: var(--ink-2); }
-.legal p strong, .legal li strong { color: var(--ink); }
-h2 { margin: 2.4em 0 0.6em; font: 700 clamp(25px, 3.6vw, 31px)/1.18 var(--rounded); letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
-h3 { margin: 1.8em 0 0.4em; font: 650 19px/1.35 var(--text); color: var(--ink); }
+.legal { padding-top: 24px; padding-bottom: 72px; }
+.legal > p:first-of-type { font-size: clamp(20px, 2.6vw, 23px); line-height: 1.45; font-weight: 500; letter-spacing: -0.018em; color: var(--ink); }
+.legal > p:first-of-type strong { font-weight: 600; }
+h2 { margin: 2.2em 0 0.55em; }
+.legal h2 { margin-top: 2.2em; }
+h3 { margin: 1.8em 0 0.4em; }
 ul, ol { padding-left: 1.2em; }
 li { margin: 0.45em 0; }
-li::marker { color: var(--ink-3); }
 
 /* Key numbers */
 .keys { list-style: none; padding: 0; margin: 36px 0 8px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
@@ -67,18 +35,18 @@ li::marker { color: var(--ink-3); }
 /* The number sizes to its card (container units), and may break between the
    value and its unit, so "1.5 ml/kg/min" never runs out of a narrow card. */
 .keys li { container-type: inline-size; }
-.keys b { display: block; margin-bottom: 6px; font: 700 clamp(20px, 19cqi, 32px)/1.08 var(--rounded); color: var(--ink); letter-spacing: -0.02em; text-wrap: balance; }
+.keys b { display: block; margin-bottom: 6px; font: 700 clamp(20px, 19cqi, 32px)/1.08 var(--display); color: var(--ink); letter-spacing: -0.035em; text-wrap: balance; }
 .keys small { display: block; margin-top: 6px; color: var(--ink-3); font-size: 12px; }
 @media (max-width: 560px) { .keys { grid-template-columns: 1fr; gap: 10px; } .keys li { padding: 16px 18px; } }
 
 /* Figures */
 .fig { margin: 40px calc(-1 * min(var(--gutter), 24px)); background: var(--card); border-radius: 24px; padding: clamp(18px, 4vw, 28px); box-shadow: var(--shadow); }
 .fig svg { display: block; width: 100%; max-width: 540px; margin: 0 auto; height: auto; overflow: visible; }
-.fig .fig-h { margin: 0 0 14px; font: 650 17px/1.35 var(--rounded); color: var(--ink); }
+.fig .fig-h { margin: 0 0 14px; font: 600 18px/1.3 var(--display); letter-spacing: -0.018em; color: var(--ink); }
 .fig figcaption { margin-top: 14px; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
 .fig figcaption b { color: var(--ink); font-weight: 600; }
-.fig .t { font: 500 11px var(--text); fill: var(--ink-3); }
-.fig .tb { font: 650 13px var(--text); fill: var(--ink); }
+.fig .t { font: 500 11px var(--font); fill: var(--ink-3); }
+.fig .tb { font: 600 13px var(--font); fill: var(--ink); }
 .fig .grid { stroke: var(--line); stroke-width: 1; }
 .fig .band { fill: var(--sage); fill-opacity: 0.24; }
 .fig .mid { stroke: var(--sage); stroke-width: 1.5; stroke-dasharray: 4 5; opacity: 0.9; }
@@ -100,25 +68,14 @@ li::marker { color: var(--ink-3); }
 .shot { margin: 40px 0; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(16px, 4vw, 32px); align-items: center; }
 .shot .frame { border-radius: 26px; overflow: hidden; box-shadow: var(--shadow); background: var(--card); border: 1px solid var(--line); }
 .shot p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-3); }
-.shot p b { display: block; margin-bottom: 4px; color: var(--ink); font: 650 17px/1.3 var(--rounded); }
+.shot p b { display: block; margin-bottom: 4px; color: var(--ink); font: 600 18px/1.3 var(--display); letter-spacing: -0.018em; }
 @media (max-width: 560px) { .shot { grid-template-columns: 1fr; } }
-
-/* Pull quote */
-.pull { margin: 40px 0; padding: 0 0 0 20px; border-left: 3px solid var(--green); font: 600 clamp(21px, 3vw, 25px)/1.36 var(--rounded); color: var(--ink); letter-spacing: -0.01em; }
 
 /* Aera box */
 .note { margin: 20px 0 8px; background: var(--card); border-radius: 24px; padding: clamp(20px, 4vw, 28px); box-shadow: var(--shadow); }
 .note p { font-size: 16px; }
-.note p:first-child strong { font: 700 18px/1.3 var(--rounded); }
-.btn { display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 8px; padding: 14px 22px; border-radius: 999px; background: var(--ink); color: var(--bg); font: 600 16px/1 var(--text); text-decoration: none; }
-.btn:hover { opacity: 0.88; }
-
-/* Sources, footer */
-.note-sources { font-size: 13px; line-height: 1.5; color: var(--ink-3); }
-.note-sources li { color: var(--ink-3); overflow-wrap: anywhere; }
-.meta { color: var(--ink-3); font-size: 14px; }
-.footer-base { border-top: 1px solid var(--line); padding: 24px 0 48px; }
-.footer-base .wrap { max-width: var(--measure); }
+.note p:first-child strong { font: 600 19px/1.3 var(--display); letter-spacing: -0.018em; }
+.note .btn, .legal .btn { margin: 14px 0 6px; }
 
 /* Motion: article.js adds .rv to blocks below the fold and .in when they arrive. */
 .rv { opacity: 0; transform: translate3d(0, 18px, 0); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -141,41 +98,27 @@ li::marker { color: var(--ink-3); }
    touching the screen edges with its rounded corners. */
 @media (max-width: 560px) { .fig { margin-inline: -6px; border-radius: 20px; } }
 
-/* Feel: press feedback on pointer-down, a critically damped settle, no stacked glass. */
-:root { --spring: cubic-bezier(0.22, 1, 0.36, 1); }
-@supports (transition-timing-function: linear(0, 1)) {
-  :root { --spring: linear(0, 0.049, 0.156, 0.283, 0.408, 0.522, 0.62, 0.702, 0.769, 0.822, 0.864, 0.897, 0.922, 0.941, 0.956, 0.967, 0.976, 0.982, 0.987, 0.99, 1); }
-}
-a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-.btn { transition: transform .35s var(--spring), opacity .2s ease; }
-.btn:active { transform: scale(.96); transition-duration: 0s; }
-.topnav a:active, .mark:active { opacity: .55; }
-@media (prefers-reduced-motion: reduce) { .btn:active { transform: none; opacity: .7; } }
-@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
-  .topbar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
-}
-
 /* Guide rework (Oct 2026): one idea per page, answer first, art on top.
    Static only: no pins, no scroll JS. <details> carries the deeper reading. */
-.g-pill { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 14px 10px; padding: 5px 11px; border-radius: 999px; background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green); font: 600 12px/1 var(--text); letter-spacing: 0.06em; text-transform: uppercase; vertical-align: top; }
+.g-pill { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 12px 10px; color: var(--ink-3); font: 500 14px/1.2 var(--font); vertical-align: top; }
 .page-head .eyebrow { display: inline-block; }
 .g-hero { margin: 26px calc(-1 * min(var(--gutter), 24px)) 0; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--bg-2); }
 .g-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 @media (min-width: 700px) { .g-hero { aspect-ratio: 16 / 10; } .g-hero img { object-position: 50% 38%; } }
 .legal > p.g-answer { position: relative; margin: 8px 0 0; padding: 22px 22px 20px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); font-size: clamp(19px, 2.4vw, 22px); line-height: 1.45; }
-.g-answer .g-label { display: block; margin-bottom: 8px; font: 600 12px/1 var(--text); letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); }
+.g-answer .g-label { display: block; margin-bottom: 8px; font: 600 15px/1.2 var(--font); letter-spacing: -0.01em; color: var(--ink-2); }
 .g-toc { margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
 .g-toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; background: var(--bg-2); color: var(--ink-2); font-size: 15px; text-decoration: none; }
 .g-toc a:hover { color: var(--ink); }
 .g-more { margin: 18px 0 0; border-radius: 18px; background: var(--bg-2); }
-.g-more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 0 18px; font: 600 16px/1.3 var(--text); color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.g-more > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 0 18px; font: 600 16px/1.3 var(--font); color: var(--ink); -webkit-tap-highlight-color: transparent; }
 .g-more > summary::-webkit-details-marker { display: none; }
 .g-more > summary::after { content: ""; flex: none; width: 9px; height: 9px; border: solid var(--ink-3); border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-2px); transition: transform 0.3s var(--ease); }
 .g-more[open] > summary::after { transform: rotate(-135deg) translateY(-2px); }
 .g-more > :not(summary) { margin-left: 18px; margin-right: 18px; }
 .g-more > :last-child { margin-bottom: 18px; }
-.g-do { margin: 22px 0 0; padding: 18px 20px; border-radius: 20px; border: 1px solid color-mix(in srgb, var(--green) 40%, transparent); background: color-mix(in srgb, var(--green) 7%, transparent); }
-.g-do > strong { display: block; margin-bottom: 6px; color: var(--green); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+.g-do { margin: 22px 0 0; padding: 20px 22px; border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+.g-do > strong { display: block; margin-bottom: 6px; color: var(--ink-2); font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
 .g-do p, .g-do ul { margin: 0; }
 @media (prefers-reduced-motion: reduce) { .g-more > summary::after { transition: none; } }
 @media (max-width: 560px) {
@@ -187,18 +130,18 @@ a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: man
 @media (max-width: 560px) { .g-answer ~ .keys li { overflow-wrap: anywhere; hyphens: auto; font-size: 12px; } }
 
 /* Guide rework, round 2 (after critic): no glow, no cut text, no extra labels */
-.g-type { margin: 0 0 14px; font: 600 15px/1.2 var(--text); color: var(--green); }
+.g-type { margin: 0 0 12px; font: 600 15px/1.2 var(--font); letter-spacing: -0.01em; color: var(--ink-2); }
 .g-hero { margin: 22px 0 0; border-radius: 0; box-shadow: none; aspect-ratio: auto; background: none; overflow: visible; }
 .g-hero img { width: 100%; height: auto; object-fit: initial; }
 .legal > p.g-answer { margin: 4px 0 0; padding: 0; background: none; box-shadow: none; border-radius: 0; font-size: clamp(21px, 2.6vw, 24px); line-height: 1.42; }
 .g-answer ~ .keys { display: block; margin: 22px 0 0; }
 .g-answer ~ .keys li { display: flex; align-items: baseline; gap: 16px; margin: 0; padding: 12px 0; background: none; box-shadow: none; border-radius: 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.35; container-type: normal; overflow-wrap: normal; hyphens: manual; }
 .g-answer ~ .keys li:last-child { border-bottom: 1px solid var(--line); }
-.g-answer ~ .keys b { flex: none; min-width: 7.2ch; margin: 0; font: 700 28px/1.1 var(--rounded); white-space: nowrap; }
+.g-answer ~ .keys b { flex: none; min-width: 7.2ch; margin: 0; font: 700 30px/1.05 var(--display); letter-spacing: -0.04em; white-space: nowrap; }
 .g-answer ~ .keys small { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-3); }
 .g-toc { margin: 24px 0 0; display: block; }
 .g-toc li { margin: 0; display: block; }
-.g-toc a { display: flex; align-items: center; min-height: 44px; padding: 0; border-radius: 0; background: none; color: var(--green); font-size: 17px; text-decoration: none; border-top: 1px solid var(--line); }
+.g-toc a { display: flex; align-items: center; min-height: 44px; padding: 0; border-radius: 0; background: none; color: var(--ink); font-size: 17px; font-weight: 500; text-decoration: none; border-top: 1px solid var(--line); }
 .g-toc li:last-child a { border-bottom: 1px solid var(--line); }
 .g-answer ~ .keys li { display: grid; grid-template-columns: minmax(7.4ch, 36%) 1fr; column-gap: 16px; align-items: start; }
 .g-answer ~ .keys b { grid-row: 1 / span 2; }

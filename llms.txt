@@ -67,6 +67,9 @@ Facts, stated plainly:
 - [Garmin data on iPhone, explained](https://aerahealth.app/guides/garmin-data-on-iphone-explained.html): why Garmin, Oura and WHOOP numbers differ from Apple Health (SDNN vs RMSSD, sleep stages and scores) and how to read them against your own normal
 - [Garmin-adatok az iPhone-on](https://aerahealth.app/guides/garmin-adatok-iphone-on.html): the same guide in Hungarian
 - [Garmin-Daten auf dem iPhone, erklärt](https://aerahealth.app/guides/garmin-daten-auf-dem-iphone-erklaert.html): the same guide in German
+- [Replay a Garmin run in 3D](https://aerahealth.app/guides/replay-a-garmin-run-in-3d.html): Garmin Connect sends runs to Apple Health without the route; export the FIT, GPX or TCX file (also from Polar, COROS, Suunto), open it in Aera 4.0 or later, and Aera keeps the route on the iPhone for the 3D replay
+- [Garmin-futás visszajátszása 3D-ben](https://aerahealth.app/guides/garmin-futas-3d-visszajatszasa.html): the same guide in Hungarian
+- [Einen Garmin-Lauf in 3D abspielen](https://aerahealth.app/guides/garmin-lauf-in-3d-abspielen.html): the same guide in German
 
 ## Legal and support
 
