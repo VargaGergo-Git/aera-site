@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from build_home import APPSTORE_PT, ROOT  # noqa: E402
 
 HOME = {"index.html", "hu.html", "de.html"}
-SKIP_DIRS = {".git", "get", "scenes", "shots", "assets", "img", "scripts"}
+SKIP_DIRS = {".git", "get", "scenes", "shots", "assets", "img", "scripts", "replay"}
 LINK = re.compile(r'(href="|url=|replace\(")(https://apps\.apple\.com/(?:[a-z]{2}/)?app/id6762456252)(\?[^"\s<]*)?')
 
 
