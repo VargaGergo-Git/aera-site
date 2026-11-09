@@ -50,7 +50,7 @@ T = {
         ],
         "look": ("Megjelenés", "Auto", "Világos", "Sötét"),
         "close_h": ("Nézd vissza a futásod.", "Értsd meg a tested."),
-        "close_p": "Ingyen kipróbálhatod, regisztráció nélkül. Azzal az órával is megy, amit most hordasz.",
+        "close_p": "Ingyen letölthető. Regisztráció nélkül. Azzal az órával is megy, amit most hordasz.",
         "qr": "Vagy olvasd be az iPhone-oddal", "qr_alt": "QR-kód, amely megnyitja az Aerát az App Store-ban", "icon_alt": "Az Aera ikonja",
     },
     "de": {
@@ -65,7 +65,7 @@ T = {
         ],
         "look": ("Darstellung", "Auto", "Hell", "Dunkel"),
         "close_h": ("Erlebe deinen Lauf noch einmal.", "Versteh deinen Körper."),
-        "close_p": "Kostenlos loslegen, ganz ohne Konto. Läuft mit der Uhr, die du schon trägst.",
+        "close_p": "Kostenlos laden. Ohne Konto. Läuft mit der Uhr, die du schon trägst.",
         "qr": "Oder mit dem iPhone scannen", "qr_alt": "QR-Code, der Aera im App Store öffnet", "icon_alt": "Das Aera-Symbol",
     },
 }
