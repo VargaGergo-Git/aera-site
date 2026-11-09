@@ -89,7 +89,7 @@ C = {
         "alt_bp": "Vérnyomás 124/77, reggeli és esti mérésekkel",
         "pr_l": "Adatvédelem", "pr_h": "Az egészségadataid az iPhone&#8209;odon maradnak.",
         "pr1_h": "Nincs fiók", "pr1_p": "Megnyitod az appot, és már használhatod. Nem kell regisztrálni.",
-        "pr2_h": "Nincs szerver az adataidnak", "pr2_p": "Az Aera a telefonodon olvassa ki az Apple Egészség adatait, és ott is számol mindent.",
+        "pr2_h": "Nincs szerver az adataidnak", "pr2_p": "Az Aera a telefonodon olvassa ki az Apple Health adatait, és ott is számol mindent.",
         "pr3_h": "Egészségadat sosem megy ki", "pr3_p": "A használati statisztikában és a hibajelentésekben soha nincs egészségadat. Mindkettőt kikapcsolhatod a Beállításokban.",
     },
     "de": {
