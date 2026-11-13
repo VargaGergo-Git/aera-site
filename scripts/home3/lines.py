@@ -53,7 +53,7 @@ C = {
         "pr3_h": "Never your health data", "pr3_p": "Usage counts and crash reports never carry health data. You can turn each off in Settings.",
     },
     "hu": {
-        "kicker": "Aera iPhone-ra és Apple Watchra",
+        "kicker": "Aera iPhone-ra és Apple Watch-ra",
         "h1_a": "Nézd vissza a futásod.", "h1_b": "Értsd meg a tested.",
         "hero_sub": "Minden számhoz jár magyarázat. Semmi&nbsp;találgatás.",
         "hero_free": "Ingyen letölthető. Regisztráció nélkül.",
@@ -141,7 +141,7 @@ STORE = {
            "Every run, next to your usual.", "Every number shows its work.", "Know a route before you run it.",
            "Your cuff's readings, ready for your doctor.", "Every turn, on your wrist.", "Your watch. Your iPhone. No account.",
            "Share the replay as a video."],
-    "hu": ["Nézd vissza a futásod 3D-ben. Apple Watchcsal vagy iPhone-nal.", "Testkor, nem a naptár szerint.",
+    "hu": ["Nézd vissza a futásod 3D-ben. Apple Watch-csal vagy iPhone-nal.", "Testkor, nem a naptár szerint.",
            "Az éjszakád, az alvásigényedhez mérve.", "Minden futásod, a többihez mérve.", "Minden szám megmutatja, honnan jön.",
            "Ismerd meg az utat, mielőtt lefutod.", "Vérnyomásnapló, az orvosodnak.", "Minden kanyar a csuklódon.",
            "Az órád. Az iPhone-od. Fiók nélkül.", "Oszd meg a futásod videóként."],
