@@ -134,3 +134,18 @@ header.plain { padding: max(14px, env(safe-area-inset-top)) 16px 0; max-width: 1
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 @media print { .band, .toc, .next, footer, .top { display: none; } .sheet { margin: 0; } }
+
+/* Japanese and Traditional Chinese: each script's own system faces (nothing loads from another host); the latin
+   stack stays first so numbers and names keep their look. */
+html:lang(ja) {
+  --sans: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Meiryo, "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+  --serif: ui-serif, "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Noto Serif CJK JP", "Noto Serif JP", serif;
+  --rounded: ui-rounded, "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+html:lang(zh-Hant) {
+  --sans: system-ui, -apple-system, "PingFang TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Noto Sans TC", sans-serif;
+  --serif: ui-serif, "Songti TC", "PMingLiU", "Noto Serif CJK TC", "Noto Serif TC", serif;
+  --rounded: ui-rounded, "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+html:lang(ja) body, html:lang(zh-Hant) body { line-break: strict; }
+html:lang(ja) h1, html:lang(ja) h2, html:lang(zh-Hant) h1, html:lang(zh-Hant) h2 { letter-spacing: 0; }
