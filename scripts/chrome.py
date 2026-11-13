@@ -26,11 +26,12 @@ T = {
     "en": {
         "home": "/", "nav_label": "Site", "lang_label": "Language",
         "nav": [("Replay", "/#replay"), ("Your body", "/#body"), ("Guides", "/guides/"), ("What’s new", "/whats-new.html")],
+        "learn": ("Learn", "/learn/"),
         "get": "Download", "badge": ("Download on the", "App Store"),
         "line": "The health app that shows its work. Made in Hungary.",
         "cols": [
             ("Aera", [("Replay", "/#replay"), ("Your body", "/#body"), ("What’s new", "/whats-new.html"), ("Route planner", "/plan/")]),
-            ("Read", [("Field Guide", "/notes/"), ("Guides", "/guides/"), ("Press", "/press/")]),
+            ("Read", [("Learn", "/learn/"), ("Guides", "/guides/"), ("Press", "/press/")]),
             ("Help", [("Support", "/support.html"), ("Feature requests", "/requests.html"), ("Privacy", "/privacy.html"), ("Terms", "/terms.html")]),
         ],
         "look": ("Appearance", "Auto", "Light", "Dark"),
@@ -41,11 +42,12 @@ T = {
     "hu": {
         "home": "/hu.html", "nav_label": "Oldal", "lang_label": "Nyelv",
         "nav": [("Visszajátszás", "/hu.html#replay"), ("A tested", "/hu.html#body"), ("Útmutatók", "/guides/#hu"), ("Újdonságok", "/ujdonsagok.html")],
+        "learn": ("Tudástár", "/learn/hu/"),
         "get": "Letöltés", "badge": ("Letölthető az", "App Store-ból"),
         "line": "Egészségapp, amelyik megmutatja, hogyan számol. Magyarországon készül.",
         "cols": [
             ("Aera", [("Visszajátszás", "/hu.html#replay"), ("A tested", "/hu.html#body"), ("Újdonságok", "/ujdonsagok.html"), ("Útvonaltervező", "/plan/")]),
-            ("Olvasnivaló", [("Field Guide", "/notes/"), ("Útmutatók", "/guides/#hu"), ("Sajtó", "/press/")]),
+            ("Olvasnivaló", [("Tudástár", "/learn/hu/"), ("Útmutatók", "/guides/#hu"), ("Sajtó", "/press/")]),
             ("Segítség", [("Kapcsolat", "/support.html"), ("Ötletek", "/otletek.html"), ("Adatvédelem", "/adatvedelem.html"), ("Felhasználási feltételek", "/felhasznalasi-feltetelek.html")]),
         ],
         "look": ("Megjelenés", "Auto", "Világos", "Sötét"),
@@ -56,11 +58,12 @@ T = {
     "de": {
         "home": "/de.html", "nav_label": "Seite", "lang_label": "Sprache",
         "nav": [("3D-Wiedergabe", "/de.html#replay"), ("Dein Körper", "/de.html#body"), ("Ratgeber", "/guides/#de"), ("Neuigkeiten", "/neuigkeiten.html")],
+        "learn": ("Wissen", "/learn/de/"),
         "get": "Laden", "badge": ("Laden im", "App Store"),
         "line": "Die Gesundheits-App, die zeigt, wie sie rechnet. Entwickelt in Ungarn.",
         "cols": [
             ("Aera", [("3D-Wiedergabe", "/de.html#replay"), ("Dein Körper", "/de.html#body"), ("Neuigkeiten", "/neuigkeiten.html"), ("Routenplaner", "/plan/")]),
-            ("Lesen", [("Field Guide", "/notes/"), ("Ratgeber", "/guides/#de"), ("Presse", "/press/")]),
+            ("Lesen", [("Wissen", "/learn/de/"), ("Ratgeber", "/guides/#de"), ("Presse", "/press/")]),
             ("Hilfe", [("Support", "/support.html"), ("Wünsche", "/wuensche.html"), ("Datenschutz", "/privacy.html"), ("Nutzungsbedingungen", "/terms.html")]),
         ],
         "look": ("Darstellung", "Auto", "Hell", "Dunkel"),
@@ -246,10 +249,14 @@ def lang_links(lang, alts, short=True):
     return "".join(out)
 
 
-def header(lang, alts, store_href, current=None, has_alt=True, hint=True):
+def header(lang, alts, store_href, current=None, has_alt=True, hint=True, home=False):
+    """`home`: the three home pages also list Learn in the header, after "Your body"."""
     t = T[lang]
+    links = list(t["nav"])
+    if home:
+        links.insert(2, t["learn"])
     nav = "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if current and h.split("#")[0] == current else "", n)
-                  for n, h in t["nav"])
+                  for n, h in links)
     return ('<header class="site-head" id="nav"><div class="sh-w">'
             '<a class="sh-brand" href="%s"><img src="/assets/icon.png" alt="" width="26" height="26">Aera</a>'
             '<nav aria-label="%s">%s</nav>'

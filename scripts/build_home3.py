@@ -95,7 +95,7 @@ def page(lang, src):
     # The shared header, badge, closing band and footer; store links counted by place.
     alts = dict((c, h) for c, _, _, h in chrome.LANGS)
     get = lambda place: "/get/%s/%s/" % (place, lang)
-    body = body.replace("<!--chrome:header-->", chrome.header(lang, alts, get("nav")), 1)
+    body = body.replace("<!--chrome:header-->", chrome.header(lang, alts, get("nav"), home=True), 1)
     body = body.replace("<!--chrome:badge-->", chrome.badge(lang, get("hero")), 1)
     body = body.replace("<!--chrome:closing-->", "<!--closing-->" + chrome.closing(lang, get("closing")), 1)
     body = body.replace("<!--chrome:footer-->", chrome.footer(lang, alts), 1)

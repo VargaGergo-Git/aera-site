@@ -22,7 +22,7 @@ Facts, stated plainly:
 
 ## Field notes
 
-- [Field notes](https://aerahealth.app/notes/index.html): short articles on sleep, recovery, heart rate variability, training load and what a consumer watch can and cannot measure, with the research and the error bars left in
+- [Learn](https://aerahealth.app/learn/): articles on sleep, recovery, heart rate variability, training load and what a consumer watch can and cannot measure, with the research and the error bars left in; also in Hungarian, German and seven other languages
 - [Notes feed](https://aerahealth.app/notes/feed.xml): RSS
 
 ## Tools
