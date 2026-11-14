@@ -11,7 +11,7 @@ VO2_KEYS = {
            ("1,5 ml/kg/perc", "változás kell, mielőtt az Aera Fittebbnek vagy Csökkennek nevezi a kardiofittségedet", "Aera")],
     "de": [("13–16 %", "mittlere Abweichung der Apple Watch von einem Labortest bis zur Erschöpfung, meist zu niedrig", "Caserman 2024; Lambe 2025"),
            ("+4,9–5,5", "ml/kg/min durch Ausdauer- oder Intervalltraining in 28 kontrollierten Studien", "Milanović et al. 2015"),
-           ("1,5 ml/kg/min", "Veränderung, bevor Aera deine Ausdauerfitness Fitter oder Sinkt nennt", "Aera")],
+           ("1,5 ml/kg/min", "Veränderung, bevor Aera deine Ausdauerfitness (bei Apple: Cardiofitness) Fitter oder Sinkt nennt", "Aera")],
 }
 VO2_PULL = {
     "en": "VO2 max is built over weeks and months, so a steady habit beats any one big week.",

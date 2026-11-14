@@ -64,14 +64,14 @@ def main():
 <body>
 <div class="topbar"><div class="wrap">
   <a class="mark" href="../index.html">Aera</a>
-  <nav class="topnav"><a href="index.html" aria-current="page">Guides</a><a href="../notes/index.html">Notes</a><a href="../support.html">Support</a></nav>
+  <nav class="topnav"><a href="index.html" aria-current="page">Guides</a><a href="../learn/">Learn</a><a href="../support.html">Support</a></nav>
 </div></div>
 <div class="wrap page-head">
   <p class="eyebrow">Aera</p>
   <h1>Guides</h1>
 </div>
 <div class="wrap legal">
-  <p>Plain answers to questions runners and Apple Watch owners ask, each with the research behind it and the point where a watch stops being reliable. For shorter pieces on single numbers, see the <a href="../notes/index.html">field notes</a>. For a quick distance sum, try <a href="../tools/how-far.html">how far will I run?</a></p>
+  <p>Plain answers to questions runners and Apple Watch owners ask, each with the research behind it and the point where a watch stops being reliable. For shorter pieces on single numbers, see <a href="../learn/">Learn</a>. For a quick distance sum, try <a href="../tools/how-far.html">how far will I run?</a></p>
 {chr(10).join(sections)}
   <p><a class="btn btn-primary" href="https://apps.apple.com/app/id6762456252">Get Aera on the App Store</a></p>
 </div>

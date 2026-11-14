@@ -1,6 +1,6 @@
 """Build the feature request board in EN, HU and DE from support.html's head and footer.
 
-Run add_lang.py afterwards (it adds the language switch). The board talks to the
+Run add_chrome.py afterwards (it adds the shared header and footer). The board talks to the
 aera-requests Cloudflare Worker (worker/requests-worker.js); one shared board for all languages.
 """
 import pathlib, re, json
@@ -39,9 +39,10 @@ T = {
    thanksVote="Deine Stimme ist da. Danke.", thanksSent="Gesendet. Er steht mit deiner Stimme auf der Liste.", thanksAdd="Hinzugefügt. Danke.",
    fail="Das hat nicht geklappt. Versuch es in einer Minute noch einmal.", votes="Stimmen", home="de.html", nav=("Notizen","Datenschutz","Support","AGB"), footHome="Startseite"),
 }
-src = MARK.sub("", (root / "support.html").read_text())
-head0 = src[: src.index('<div class="wrap page-head">')]
-foot0 = src[src.index("<footer>"):]
+# support.html's <head>, then empty markers that add_chrome.py fills with the shared header and footer.
+src = (root / "support.html").read_text()
+head0 = src[: src.index("<!--chrome:header-->")] + "<!--chrome:header--><!--/chrome:header-->\n"
+foot0 = "<!--chrome:footer--><!--/chrome:footer-->\n</body>\n</html>\n"
 body0 = (root / "scripts/requests_body.html").read_text()
 alts = "".join(f'<link rel="alternate" hreflang="{l}" href="https://aerahealth.app/{p}">\n' for l, p in PAGES.items())
 for lang, page in PAGES.items():
@@ -50,12 +51,7 @@ for lang, page in PAGES.items():
     h = h.replace("<title>Support · Aera</title>", f"<title>{t['title']} · Aera</title>")
     h = re.sub(r'<meta name="description" content="[^"]*">', f'<meta name="description" content="{t["desc"]}">', h)
     h = h.replace('href="https://aerahealth.app/support.html">', f'href="https://aerahealth.app/{page}">\n' + alts.rstrip("\n") + ">"[:0])
-    h = h.replace(' aria-current="page">Support', '>Support').replace('href="index.html">Aera', f'href="{t["home"]}">Aera')
-    for en, x in zip(("Notes", "Privacy", "Support", "Terms"), t["nav"]):
-        h = h.replace(f'.html">{en}</a>', f'.html">{x}</a>')
-    f = foot0.replace('href="index.html">Home', f'href="{t["home"]}">{t["footHome"]}')
-    for en, x in zip(("Privacy", "Terms"), (t["nav"][1], t["nav"][3])):
-        f = f.replace(f'.html">{en}</a>', f'.html">{x}</a>')
+    f = foot0
     b = body0
     for k in re.findall(r"\{\{(\w+)\}\}", body0):
         b = b.replace("{{%s}}" % k, t[k])
