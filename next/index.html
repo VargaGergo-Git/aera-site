@@ -402,7 +402,8 @@ function drawWheel(svg) {
   const pt = (r, a) => [C + r * Math.cos(a * Math.PI / 180), C + r * Math.sin(a * Math.PI / 180)];
   const night = !!svg.closest('.night'), id = night ? 'n' : 'd';
   /* type at the page's own sizes whatever width the wheel is drawn at: 17/15 labels, 64/40 figure */
-  const k = 460 / (svg.getBoundingClientRect().width || 460), small = k > 1;
+  const ph = !!svg.closest('.phone'); if (ph) svg.setAttribute('viewBox', '38 4 396 420');
+  const vbw = ph ? 396 : 460, k = vbw / (svg.getBoundingClientRect().width || vbw), small = k > 1;
   const defs = el('defs', {});
   const hl = el('linearGradient', {id: 'hl' + id, x1: 0, y1: 0, x2: .3, y2: 1});
   [[0, .55], [.45, .12], [1, 0]].forEach(([o, a]) => hl.append(el('stop', {offset: o, 'stop-color': '#fff', 'stop-opacity': a})));
@@ -424,7 +425,8 @@ function drawWheel(svg) {
     { const [tx, ty] = pt(r0 + len * (label ? .6 : .58), mid), gs = 26 * Math.min(k, 1.15), fs = (small ? 17 : 19) * k;
       const gy = label ? ty - gs - 2 : ty - gs / 2;
       const ic = el('g', {transform: `translate(${tx - gs / 2},${gy}) scale(${gs / 24})`, fill: ink, color: ink, style: `--pc:${col}`}); ic.innerHTML = GLYPH[sym]; g.append(ic);
-      if (label) { const t = el('text', {x: tx, y: ty + fs * .75, 'text-anchor': 'middle', fill: ink, 'font-size': fs, 'font-weight': 600}); t.textContent = label; g.append(t); } }
+      if (label) { const t = el('text', {x: tx, y: ty + fs * .75, 'text-anchor': 'middle', fill: ink, 'font-size': fs, 'font-weight': 600});
+        (ph ? label.split(/ (?=\d)/) : [label]).forEach((ln, j) => { const sp = el('tspan', {x: tx, dy: j ? fs * 1.15 : 0}); sp.textContent = ln; t.append(sp); }); g.append(t); } }
     g.style.transformBox = 'view-box'; g.style.transformOrigin = '230px 230px';
     g.style.opacity = 0; g.style.transform = 'scale(.6)';
     g.style.transition = `opacity .35s var(--smooth) ${.3 + i * .12}s, transform .6s var(--smooth) ${.3 + i * .12}s`;
@@ -432,8 +434,9 @@ function drawWheel(svg) {
   });
   const hub = el('g', {class: 'petal'});
   hub.append(el('circle', {cx: C, cy: C, r: r0 - 4, fill: night ? 'rgba(255,255,255,.07)' : 'rgba(255,255,255,.42)', stroke: night ? 'rgba(255,255,255,.22)' : 'rgba(255,255,255,.9)', 'stroke-width': 1.5}));
-  const n = el('text', {x: C, y: C + 4, 'text-anchor': 'middle', 'font-size': (small ? 40 : 64) * k, 'font-weight': 700, style: 'fill:var(--ink);font-family:var(--rounded)', 'letter-spacing': -1.5}); n.textContent = '37';
-  const sub = el('text', {x: C, y: C + 4 + (small ? 22 : 22) * k, 'text-anchor': 'middle', 'font-size': (small ? 17 : 19) * k, style: 'fill:var(--ink2)'}); sub.textContent = 'years 11 months';
+  const n = el('text', {x: C, y: ph ? C - 6 : C + 4, 'text-anchor': 'middle', 'font-size': (small ? 40 : 64) * k, 'font-weight': 700, style: 'fill:var(--ink);font-family:var(--rounded)', 'letter-spacing': -1.5}); n.textContent = '37';
+  const sub = el('text', {x: C, y: (ph ? C - 6 : C + 4) + 22 * k, 'text-anchor': 'middle', 'font-size': (small ? 17 : 19) * k, style: 'fill:var(--ink2)'});
+  (ph ? ['years', '11 months'] : ['years 11 months']).forEach((ln, j) => { const sp = el('tspan', {x: C, dy: j ? 20 * k : 0}); sp.textContent = ln; sub.append(sp); });
   hub.append(n, sub); hub.style.transformBox = 'view-box'; hub.style.transformOrigin = '230px 230px'; hub.style.opacity = 0; hub.style.transform = 'scale(.8)';
   hub.style.transition = 'opacity .3s var(--smooth) 1.1s, transform .55s var(--bounce) 1.1s';
   svg.append(hub);
