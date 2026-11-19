@@ -352,13 +352,17 @@ html{background:#000}body{display:block;margin:0;padding:0;gap:0;background:#000
 :where(.page a[href]){color:inherit;text-decoration:none}
 a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff}
 [data-copy]{cursor:pointer}
+
+.store i svg{display:block;width:24px;height:24px;margin-top:-2px}
+button.burger{padding:0;font:inherit}button.play{border:0;font:inherit;color:#fff}
+.fbase{justify-content:flex-start}
 </style>
 </head><body>
 <div class="page" data-page></div>
 <template id="tpl">
 <div class="top lt"><div class="wrap"><div class="bar"><a class="mark" href="/next/" aria-label="Aera, home"><i></i>Aera</a>
    <nav class="rooms site"><a href="/next/">Your body</a><a href="/next/replay/">Replay</a><a href="/learn/">Articles</a><a href="/next/whats-new/">What&#8217;s new</a></nav>
-   <a class="dl" href="https://apps.apple.com/app/id6762456252" aria-label="Download Aera on the App Store"></a><div class="burger"></div></div></div><nav class="menu"><a href="/next/">Your body</a><a href="/next/replay/">Replay</a><a href="/learn/">Articles</a><a href="/next/whats-new/">What&#8217;s new</a><p><a href="/next/support/">Support</a><a class="on" href="/next/privacy/">Privacy</a><a href="/next/press/">Press</a></p></nav></div>
+   <a class="dl" href="https://apps.apple.com/app/id6762456252" aria-label="Download Aera on the App Store"></a><button class="burger" aria-label="Menu" aria-expanded="false"></button></div></div><nav class="menu"><a href="/next/">Your body</a><a href="/next/replay/">Replay</a><a href="/learn/">Articles</a><a href="/next/whats-new/">What&#8217;s new</a><p><a href="/next/support/">Support</a><a class="on" href="/next/privacy/">Privacy</a><a href="/next/press/">Press</a></p></nav></div>
  <section class="rdopen" data-room><div class="wrap"><div class="k a">Privacy policy · November 2026</div><h1 class="a long" style="--b:1">Your health data never leaves your&nbsp;phone.</h1><p class="lede a" style="--b:2">Aera works everything out on your iPhone. There is no Aera account, and Aera&#8217;s own servers never see your health data. This policy covers what does leave, and&nbsp;why.</p></div></section><section class="rd"><div class="wrap"><div class="sec" data-room><h2 class="a">In short</h2><div class="body a" style="--b:1"><div class="sum"><p><b>Health data stays here</b><span>Read from Apple Health and worked out on this phone. Never sent.</span></p><p><b>Usage counts, if you say yes</b><span>Which screens you open and what you tap, under a random code.</span></p><p><b>Crash reports</b><span>Sent when something fails, so it gets fixed. No health data.</span></p><p><b>Maps see an area, not you</b><span>Map services get the place you look at, never your name.</span></p><p><b>Purchases go through Apple</b><span>Aera never sees your card or your Apple ID.</span></p><p><b>Your rights</b><span>See, erase or object at any time. Just write.</span></p></div></div></div><div class="sec" data-room><h2 class="a">Who is responsible</h2><div class="body a" style="--b:1"><p>Aera is made by Gergo Varga, 8000 Székesfehérvár, Nagyszombati utca 156., Hungary, who is responsible for your data ("we"). Write to <a href="mailto:Aerahealthapp@gmail.com">Aerahealthapp@gmail.com</a>, or use Contact in Settings.</p></div></div><div class="sec" data-room><h2 class="a">What stays on your iPhone</h2><div class="body a" style="--b:1"><p>Your health values, scores, workouts, sleep, notes and your name. Aera reads Apple Health only with your permission, which you can change any time in iOS Settings › Privacy &amp; Security › Health. We never receive any of it.</p></div></div><div class="sec" data-room><h2 class="a">What leaves, and where</h2><div class="body a" style="--b:1"><ul>
     <li><strong>Usage counts</strong> go to Mixpanel in the EU, only if you say yes. In the UK and Switzerland they start on, with a notice, until you turn them off.</li>
     <li><strong>Crash reports</strong> go to Sentry in the EU.</li>
@@ -394,13 +398,13 @@ a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff
  <section class="close" data-room><div class="wrap">
   <h2 class="a">Replay your run.<br>Understand your&nbsp;body.</h2>
   <p class="lede a" style="--b:1">Free to start. No account. Works with the watch you already&nbsp;wear.</p>
-  <div class="cta a" style="--b:2"><a class="store" href="https://apps.apple.com/app/id6762456252"><i>&#xF8FF;</i><div>Download on the<b>App Store</b></div></a></div>
+  <div class="cta a" style="--b:2"><a class="store" href="https://apps.apple.com/app/id6762456252"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></i><div>Download on the<b>App Store</b></div></a></div>
   <footer class="foot">
    <div class="fmark"><a class="mark" href="/next/"><i></i>Aera</a><p>Every reading, against your usual.<br>Free to start, no&nbsp;account.</p></div>
    <div class="fcol"><b>The app</b><a href="/next/">Your body</a><a href="/next/replay/">Replay</a><a href="/next/whats-new/">What&#8217;s new</a></div>
    <div class="fcol"><b>Read</b><a href="/learn/">Articles</a></div>
    <div class="fcol"><b>Help</b><a href="/next/support/">Support</a><a class="on" href="/next/privacy/">Privacy</a><a href="/next/press/">Press</a></div>
-   <div class="fbase"><p class="legal">&#169; 2026 Aera. Apple Health and Apple Watch are trademarks of Apple&nbsp;Inc.</p><span class="lang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>English<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 10l5 5 5-5"/></svg></span></div>
+   <div class="fbase"><p class="legal">&#169; 2026 Aera. Apple Health and Apple Watch are trademarks of Apple&nbsp;Inc.</p></div>
   </footer>
  </div></section>
 </template>
@@ -547,7 +551,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
   if (still) page.classList.add('still');
   { const top = page.querySelector('.top'), cur = page.querySelector('.rooms a.on');
     if (cur) page.querySelectorAll('.menu a').forEach(a => a.classList.toggle('on', a.textContent === cur.textContent));
-    const b = page.querySelector('.burger'); if (b) b.onclick = () => top.classList.toggle('menu-on'); }
+    const b = page.querySelector('.burger'); if (b) b.onclick = () => b.setAttribute('aria-expanded', String(top.classList.toggle('menu-on'))); }
   const ph = page.classList.contains('phone');
   if (page.querySelector('[data-film]')) { const v = page.querySelector('[data-film]'), [src, poster] = ph ? FILM.phone : FILM.desk;
     if (still) { const i = new Image(); i.src = poster; v.replaceWith(i); }
@@ -570,7 +574,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
     addEventListener('scroll', tick, {passive: true}); tick(); }
   const rooms = page.querySelectorAll('[data-room]');
-  if (still) { rooms.forEach(arrive); return; }
+  if (still || matchMedia('(prefers-reduced-motion: reduce)').matches) { rooms.forEach(arrive); return; }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arrive(e.target); io.unobserve(e.target); } }), {rootMargin: '0px 0px -18% 0px'}); /* a room arrives when its top passes 82% of the screen, however tall it is */
   rooms.forEach(r => io.observe(r));
 });
