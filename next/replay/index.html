@@ -190,16 +190,16 @@ h2{font:700 64px/1.04 var(--serif);letter-spacing:-.015em}
 .c-run .split{min-height:520px}.phone .c-run .split{min-height:0}
 .rp{padding:120px 0 110px}.rp,.page .c-run{--field:#000}.c-run{background:#000}
 .rp .amb{position:absolute;inset:0;background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(#000 40%,rgba(0,0,0,0));mask-image:linear-gradient(#000 40%,rgba(0,0,0,0))}
-.rpgrid{position:relative;display:grid;grid-template-columns:1fr 430px;gap:72px;align-items:center}
+
 .rp h1{font-size:84px;letter-spacing:-.015em;line-height:1;text-align:left;margin:0}
 .rp .lede{text-align:left;margin:28px 0 0;max-width:500px}
 .rp .cta{justify-content:flex-start}.rp .free{text-align:left;padding-bottom:0}
-.rpfilm video,.rpfilm img{display:block;width:100%;border-radius:44px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.1)}
-.phone .rp{padding:80px 0 56px}.phone .rpfilm{order:-1}.phone .rp .lede{display:none}
-.phone .rpgrid{grid-template-columns:1fr;gap:40px}
+
+.phone .rp{padding:80px 0 56px}.phone .rp .lede{display:none}
+
 .phone .rp h1{font-size:46px;letter-spacing:-.015em;margin-top:0}
 .phone .rp .lede{font-size:20px;margin-top:18px;padding:0}
-.phone .rpfilm video,.phone .rpfilm img{border-radius:34px}
+
 .frame{position:relative;height:640px;margin-top:56px;overflow:hidden}
 .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
 .frame .credit,.map .credit{position:absolute;right:24px;bottom:22px;z-index:2;font:600 13px var(--text);color:rgba(255,255,255,.86);text-shadow:0 0 6px rgba(0,0,0,.9)}
@@ -257,6 +257,24 @@ html{background:#000}body{display:block;margin:0;padding:0;gap:0;background:#000
 :where(.page a[href]){color:inherit;text-decoration:none}
 a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff}
 [data-copy]{cursor:pointer}
+
+/* ---- Replay opens on the flyover itself: the film runs off the right edge, the words sit on black ---- */
+.rp2{position:relative;min-height:780px;display:flex;align-items:center;padding:140px 0 110px;overflow:hidden}
+.rp2 .wrap{position:relative;z-index:1;width:100%}
+.rp2 .rptext{max-width:540px}
+.rp2 .rpbleed{position:absolute;right:0;top:0;bottom:0;width:64%;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 16%,#000 34%);mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 16%,#000 34%)}
+.rp2 .rpbleed video,.rp2 .rpbleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rp2 .rpbleed:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0) 24%,rgba(0,0,0,0) 76%,rgba(0,0,0,.7));pointer-events:none}
+.mid .rp2,.phone .rp2{display:block;min-height:0;padding:0 0 80px}
+.mid .rp2 .rpbleed,.phone .rp2 .rpbleed{position:relative;width:auto;height:540px;-webkit-mask-image:linear-gradient(#000 78%,rgba(0,0,0,0));mask-image:linear-gradient(#000 78%,rgba(0,0,0,0))}
+.mid .rp2 .rptext{padding-top:36px;max-width:680px}
+.phone .rp2{padding-bottom:56px}
+.phone .rp2 .rpbleed{height:560px}
+.phone .rp2 .rpbleed video,.phone .rp2 .rpbleed img{object-position:50% 0}
+.phone .rp2 .rptext{padding-top:24px}
+.phone .rp2 .lede{display:block}
+.mid .c-run .split{grid-template-columns:1fr}.mid .c-run{padding-bottom:0}
+.mid .map{position:relative;width:auto;height:560px;margin-top:48px;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 90px);mask-image:linear-gradient(rgba(0,0,0,0),#000 90px)}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -264,15 +282,13 @@ a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff
 <div class="top"><div class="wrap"><div class="bar"><a class="mark" href="/next/" aria-label="Aera, home"><i></i>Aera</a>
    <nav class="rooms site"><a href="/next/">Your body</a><a class="on" href="/next/replay/">Replay</a><a href="/learn/">Articles</a><a href="/next/whats-new/">What&#8217;s new</a></nav>
    <a class="dl" href="https://apps.apple.com/app/id6762456252" aria-label="Download Aera on the App Store"></a><div class="burger"></div></div></div><nav class="menu"><a href="/next/">Your body</a><a href="/next/replay/">Replay</a><a href="/learn/">Articles</a><a href="/next/whats-new/">What&#8217;s new</a><p><a href="/next/support/">Support</a><a href="/next/privacy/">Privacy</a><a href="/next/press/">Press</a></p></nav></div>
- <section class="open rp" data-room>
-  <div class="wrap"><div class="rpgrid">
-   <div class="rptext">
+ <section class="open rp rp2" data-room>
+  <div class="rpbleed a" style="--b:1"><video data-film muted playsinline autoplay loop preload="auto"></video></div>
+  <div class="wrap"><div class="rptext">
     <h1 class="a">Your run, flown back over the real&nbsp;ground.</h1>
     <p class="lede a" style="--b:2">Finish a run, open it in Aera and tap Flyover. The camera lifts off and flies your route back, your pace and heart rate playing&nbsp;along.</p>
     <div class="cta a" style="--b:3"><a class="store" href="https://apps.apple.com/app/id6762456252"><i>&#xF8FF;</i><div>Download on the<b>App Store</b></div></a></div>
-   </div>
-   <div class="rpfilm a" style="--b:1"><video data-film muted playsinline autoplay loop preload="auto"></video></div>
-  </div></div>
+   </div></div>
  </section>
 
  <section class="ch c-run" data-room><div class="wrap"><div class="split">
@@ -320,7 +336,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
 new MutationObserver(reTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-const FILM = {desk: ['/next/media/replay-tall-300b4859.mp4', '/next/media/fcf398c384.jpg'], phone: ['/next/media/replay-tall-300b4859.mp4', '/next/media/fcf398c384.jpg']};
+const FILM = {desk: ['/next/media/replay-wide-d11989a6.mp4', '/next/media/replay-wide-d11989a6-p4.jpg'], phone: ['/next/media/replay-phone-39f6aba4.mp4', '/next/media/replay-phone-39f6aba4.jpg']};
 
 /* the night (the film's press seed): 6 h 37 m asleep in 402 min, from 23:18 to 06:00 */
 const NIGHT = [['L',12],['D',28],['L',22],['R',14],['L',30],['D',22],['L',26],['R',22],['A',2],['L',30],['D',12],
