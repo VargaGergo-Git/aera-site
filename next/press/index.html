@@ -384,9 +384,9 @@ a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff
  </div></section>
 </template>
 <script>
-const PH0 = innerWidth < 760;
-document.querySelectorAll('[data-page]').forEach(p => p.classList.add(PH0 ? 'phone' : 'desk'));
-addEventListener('resize', () => { if ((innerWidth < 760) !== PH0) location.reload(); });
+const PH0 = innerWidth < 760, MID0 = !PH0 && innerWidth < 1100;
+document.querySelectorAll('[data-page]').forEach(p => { p.classList.add(PH0 ? 'phone' : 'desk'); if (MID0) p.classList.add('mid'); });
+addEventListener('resize', () => { const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
 
 const H = location.hash, still = H.startsWith('#still');
 const themeNow = () => /dark/.test(H) ? 'night' : /light/.test(H) ? 'day'
@@ -545,7 +545,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
     a.onclick = () => ch.scrollIntoView({behavior: 'smooth'}); });
   if (!still) { const top = page.querySelector('.top'), film = page.querySelector('.open, .rdopen'), links = page.querySelectorAll('.rooms a[data-go]');
     const tick = () => { const y = top.getBoundingClientRect().bottom;
-      top.classList.toggle('glass', film.getBoundingClientRect().bottom < y + 40);
+      const hl = film.querySelector('h1'); top.classList.toggle('glass', hl ? hl.getBoundingClientRect().top < y + 12 : film.getBoundingClientRect().bottom < y + 40);
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
     addEventListener('scroll', tick, {passive: true}); tick(); }
   const rooms = page.querySelectorAll('[data-room]');
