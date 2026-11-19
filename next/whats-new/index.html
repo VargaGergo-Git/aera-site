@@ -330,6 +330,7 @@ a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff
 .phone .board span{font-size:19px}.phone .board b{font-size:64px;margin-top:0;grid-row:1/3;grid-column:2}
 .phone .board em{font-size:17px;margin-top:4px}
 .wtr{--field:var(--fRec);--room:var(--recInk)}
+.wn.wfilm,.wn.wpb,.wn.wtr{background:var(--field)}
 .wtr .tc .now{box-shadow:0 0 0 4px var(--field)}.phone .wtr .tc .now{box-shadow:0 0 0 3px var(--field)}
 </style>
 </head><body>
@@ -402,7 +403,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
 new MutationObserver(reTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-const FILM = {desk: ['/next/media/replay-wide-d11989a6.mp4', '/next/media/replay-wide-d11989a6.jpg'], phone: ['/next/media/replay-wide-d11989a6.mp4', '/next/media/replay-wide-d11989a6.jpg']};
+const FILM = {desk: ['/next/media/replay-wide-d11989a6.mp4', '/next/media/replay-wide-d11989a6-p4.jpg'], phone: ['/next/media/replay-wide-d11989a6.mp4', '/next/media/replay-wide-d11989a6-p4.jpg']};
 
 /* the night (the film's press seed): 6 h 37 m asleep in 402 min, from 23:18 to 06:00 */
 const NIGHT = [['L',12],['D',28],['L',22],['R',14],['L',30],['D',22],['L',26],['R',22],['A',2],['L',30],['D',12],
