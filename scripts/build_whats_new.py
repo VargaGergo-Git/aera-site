@@ -94,7 +94,7 @@ CSS = """<style>
 
 
 def page(lang):
-    src = (ROOT / "support.html").read_text()
+    src = (ROOT / "scripts/old_support_template.html").read_text()  # the old-design support page; support.html is the new site since 2026-11-20
     head = src[:src.index("</head>")]
     u = UI[lang]
     head = head.replace('<html lang="en">', f'<html lang="{lang}">')
@@ -119,5 +119,9 @@ def page(lang):
 
 
 for lang, f in FILES.items():
+    # Since 2026-11-20 the English What's new is the new site, hand-built; this builder makes the old design.
+    if (ROOT / f).exists() and 'name="aera-site"' in (ROOT / f).read_text():
+        print(f, "kept: it is the new site page, not built here")
+        continue
     (ROOT / f).write_text(page(lang))
     print(f)

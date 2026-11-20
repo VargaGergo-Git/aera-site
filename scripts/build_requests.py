@@ -40,7 +40,7 @@ T = {
    fail="Das hat nicht geklappt. Versuch es in einer Minute noch einmal.", votes="Stimmen", home="de.html", nav=("Notizen","Datenschutz","Support","AGB"), footHome="Startseite"),
 }
 # support.html's <head>, then empty markers that add_chrome.py fills with the shared header and footer.
-src = (root / "support.html").read_text()
+src = (root / "scripts/old_support_template.html").read_text()  # the old-design support page; support.html is the new site since 2026-11-20
 head0 = src[: src.index("<!--chrome:header-->")] + "<!--chrome:header--><!--/chrome:header-->\n"
 foot0 = "<!--chrome:footer--><!--/chrome:footer-->\n</body>\n</html>\n"
 body0 = (root / "scripts/requests_body.html").read_text()

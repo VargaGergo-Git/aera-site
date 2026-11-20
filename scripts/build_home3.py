@@ -140,7 +140,12 @@ def main():
     src = open(os.path.join(SRC, "page-en.html"), encoding="utf-8").read()
     for lang, name in FILES.items():
         out = page(lang, src)
-        with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
+        dest = os.path.join(ROOT, name)
+        # Since 2026-11-20 the English home is the new site, hand-built; this builder makes the old design.
+        if os.path.exists(dest) and 'name="aera-site"' in open(dest, encoding="utf-8").read():
+            print(name, "kept: it is the new site page, not built here")
+            continue
+        with open(dest, "w", encoding="utf-8") as f:
             f.write(out)
         print(name, len(out) // 1024, "KB")
 
