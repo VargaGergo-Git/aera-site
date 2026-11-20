@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="hu"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="aera-site" content="2026-11">
+<meta name="robots" content="noindex">
+<title>Versenypálya egy linkből: Aera</title>
+<meta name="description" content="A szervező linkje megnyitja az Aerát, a futó kiválasztja a távot, és a pálya a telefonján van: hossz, emelkedő, a saját tempójára számolt idő és a Flyover.">
+<meta property="og:title" content="Versenypálya egy linkből">
+<meta property="og:description" content="Egy link, és a pálya a futó telefonján van: hossz, emelkedő, saját tempóra számolt idő, Flyover.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://aerahealth.app/media/web/verseny-fdbd3528.jpg">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
+<noscript><style>.a{opacity:1!important;transform:none!important}</style></noscript>
+<style>
+
+@font-face{font-family:AeraRounded;src:local("SF Pro Rounded")}
+:root{--serif:-apple-system,"SF Pro Display",system-ui,sans-serif;--rounded:AeraRounded,ui-rounded,-apple-system,sans-serif;--text:-apple-system,"SF Pro Text",system-ui,sans-serif;
+  --smooth:cubic-bezier(.23,1,.32,1);--bounce:cubic-bezier(.34,1.56,.64,1)}
+/* Values from AeraColors.swift, AeraPageTokens.swift, PageLand.swift, AeraUsualTracks.swift and the canvas film */
+.day{--paper:#F6F4EF;--ink:rgba(0,0,0,.88);--ink2:rgba(0,0,0,.60);--ink3:rgba(0,0,0,.45);--hair:rgba(0,0,0,.10);
+  --plate:rgba(255,255,255,.62);--track:rgba(0,0,0,.07);--band:rgba(128,180,158,.52);--bandEdge:rgba(128,180,158,.62);--pearl:rgba(0,0,0,.88);
+  --fRec:#C8E7CB;--fSleep:#E2D9F5;--fAge:#F3DDD0;--recInk:#23773E;--sleepInk:#5D5AEA;--ageInk:#B8541E;--care:#9A6105;
+  --sA:#E0820A;--sR:#1C93CF;--sL:#4F74E0;--sD:#6E52E8;--laneA:.16;--hub:#F3DDD0}
+.night{--paper:#1C1C1E;--ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.64);--ink3:rgba(255,255,255,.46);--hair:rgba(255,255,255,.12);
+  --plate:rgba(255,255,255,.07);--track:rgba(255,255,255,.11);--band:#4F675F;--bandEdge:transparent;--pearl:#fff;
+  --fRec:#1F3326;--fSleep:#2C2843;--fAge:#3A2A24;--recInk:#3CB464;--sleepInk:#8E8CF0;--ageInk:#EF8A55;--care:#F1B451;
+  --sA:#EF951F;--sR:#64D2FF;--sL:#6D92EC;--sD:#8266F0;--laneA:.2;--hub:#3A2A24}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#141210;font-family:var(--text);display:flex;gap:76px;padding:56px;align-items:flex-start}
+.col{display:flex;flex-direction:column;gap:14px}
+.caption{color:rgba(255,255,255,.55);font-size:13px}.caption b{color:#F0B24A;font-weight:600}
+.notes{color:rgba(255,255,255,.62);font-size:13px;line-height:1.55;max-width:640px}
+.notes li{margin:0 0 6px 16px}.notes b{color:rgba(255,255,255,.9)}
+
+.page{background:var(--paper);color:var(--ink);border-radius:12px;overflow:hidden}
+.desk{width:1280px}.phone{width:393px;border-radius:34px}
+.wrap{padding:0 80px;position:relative}.phone .wrap{padding:0 20px}
+svg text{font-family:var(--text)}
+
+/* ---- the opening: the film's settled frame fills the first screen; the nav floats on it; the words come after ---- */
+.open{background:#000;color:#fff;position:relative;overflow:hidden}
+/* the header: the page's own rooms, not a sitemap. Clear over the film; past it, dark glass that names the room you are in */
+.page{overflow:clip}
+.top{position:sticky;top:0;height:72px;margin-bottom:-72px;z-index:6;color:#fff;transition:background .35s var(--smooth),box-shadow .35s var(--smooth)}
+.top:before{content:"";position:absolute;inset:0 0 -40px;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0));pointer-events:none;transition:opacity .35s}
+.top.glass{background:rgba(14,14,16,.62);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);box-shadow:inset 0 -1px 0 rgba(255,255,255,.08)}
+.top.glass:before{opacity:0}
+.bar{display:flex;align-items:center;height:72px;position:relative;z-index:2}
+.mark{font:600 20px var(--rounded);letter-spacing:-.3px;display:flex;align-items:center;gap:9px;flex:1}
+.mark i{width:26px;height:26px;border-radius:7px;background:linear-gradient(140deg,#F3DDD0 0%,#BE8FA0 55%,#858DB6 100%)}
+.rooms{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.rooms a{display:flex;align-items:center;gap:7px;font:600 17px var(--text);color:rgba(255,255,255,.72);padding:8px 14px 8px 11px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+.rooms a svg{width:16px;height:16px;color:var(--hue)}
+.rooms a:hover{color:#fff}
+.rooms a.on{background:rgba(255,255,255,.14);color:#fff}
+.rooms [data-go=c-rec]{--hue:#3CB464}.rooms [data-go=c-sleep]{--hue:#8E8CF0}.rooms [data-go=c-run]{--hue:#F1641C}.rooms [data-go=c-age]{--hue:#EF8A55}
+.dl{flex:1;display:flex;justify-content:flex-end}
+.dl:before{content:"Letöltés";font:600 17px var(--text);padding:10px 18px;border-radius:999px;background:#fff;color:#000}
+.burger{display:none;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.14);place-items:center;margin-left:10px}
+.burger:before{content:"";width:15px;height:9px;border-top:2px solid #fff;border-bottom:2px solid #fff}
+.phone .rooms{display:none}.phone .burger{display:grid}.phone .dl{flex:0}.phone .dl:before{content:"Letöltés";padding:9px 16px}
+/* the film: 16:9 on the desktop (the canvas film re-framed wide), the vertical cut on the phone; it plays once,
+   muted, and holds on its last frame, the three pages; the words then rise out of its dark foot */
+.world{position:relative;height:780px;overflow:hidden}.world video,.world img{top:60px!important}
+.world video,.world img{position:absolute;left:0;top:0;width:100%;display:block}
+.world:after{content:"";position:absolute;left:0;right:0;bottom:0;height:470px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.7) 12%,rgba(0,0,0,.97) 28%,#000 36%);pointer-events:none}
+.phone .world{height:763px}
+.phone .world video,.phone .world img{top:64px}
+.phone .world:after{height:430px;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.75) 12%,rgba(0,0,0,.97) 30%,#000 40%)}
+.open h1{font:700 96px/1 var(--serif);letter-spacing:-.015em;text-align:center;margin-top:-210px;position:relative;z-index:2}
+.open .lede{font-size:22px;line-height:1.45;color:rgba(255,255,255,.66);text-align:center;max-width:600px;margin:24px auto 0}
+.cta{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:32px}
+.open .cta{margin-top:36px}
+.free{text-align:center;font-size:17px;color:rgba(255,255,255,.6);margin-top:16px;padding-bottom:110px}
+.store,.open .play{height:54px;box-sizing:border-box;flex-shrink:0}
+.phone .open .play{padding:13px 16px 13px 14px}.phone .open .play small{display:none}
+.store{display:flex;align-items:center;gap:9px;background:#000;color:#fff;border-radius:12px;padding:9px 18px 9px 14px;border:1px solid rgba(255,255,255,.4)}
+.store i{font:normal 28px/1 -apple-system}
+.store div{font:12px/1.1 var(--text)}.store b{display:block;font:600 20px/1.1 var(--text);letter-spacing:-.3px}
+.play{cursor:pointer;display:flex;align-items:center;gap:11px;padding:13px 20px 13px 16px;border-radius:14px;background:rgba(255,255,255,.16);backdrop-filter:blur(16px);color:#fff;font:600 18px var(--text);white-space:nowrap}
+.play:before{content:"";border-left:12px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.play small{font-weight:400;color:rgba(255,255,255,.6);font-size:17px}
+.phone .open h1{font-size:48px;letter-spacing:-.015em;margin-top:-150px}
+.phone .open .lede{font-size:20px;margin-top:16px;padding:0 6px}
+.phone .open .cta{margin-top:24px}.phone .free{padding-bottom:72px}
+
+/* ---- a chapter: the room's own colour edge to edge, one sentence, one instrument at full size ---- */
+.ch{position:relative;background:var(--field);padding:120px 0 120px}
+.phone .ch{padding:72px 0 64px}
+.c-rec{--field:var(--fRec);--room:var(--recInk)}.c-sleep{--field:var(--fSleep);--room:var(--sleepInk)}
+.c-age{--field:var(--fAge);--room:var(--ageInk)}
+.c-run{--field:#0B0B0D;--room:#F1641C;--ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.64);--ink3:rgba(255,255,255,.46);color:var(--ink)}
+.k{font:600 19px var(--text);color:var(--room);display:flex;align-items:center;gap:9px;margin-bottom:22px}
+.ic{width:30px;height:30px}
+h2{font:700 64px/1.04 var(--serif);letter-spacing:-.015em}
+.phone h2{font-size:36px;letter-spacing:-.015em}
+.lede{font-size:22px;line-height:1.45;color:var(--ink2)}
+.phone .lede{font-size:20px}
+.read{display:flex;align-items:baseline;gap:12px;margin-top:30px}
+.fig{font:700 64px/1 var(--rounded);letter-spacing:-2.2px}
+.fig small{font-size:24px;letter-spacing:-.4px;color:var(--ink2);margin:0 4px 0 2px}
+.word{font:700 30px/1 var(--rounded);letter-spacing:-.4px;color:var(--room)}
+.phone .fig{font-size:40px;letter-spacing:-1.2px}.phone .fig small{font-size:19px}.phone .word{font-size:22px}
+.line{font-size:22px;line-height:1.4;color:var(--ink2);margin-top:14px;max-width:520px}.phone .line{font-size:20px}
+.split{display:grid;grid-template-columns:1fr 540px;gap:70px;align-items:center}
+.phone .split{grid-template-columns:1fr;gap:40px}
+
+/* Recovery: AeraUsualTracks at chapter size */
+.rtracks{margin-top:64px}.phone .rtracks{margin-top:40px}
+.day .c-rec{--track:rgba(255,255,255,.5);--band:rgba(88,150,122,.40);--bandEdge:rgba(88,150,122,.55)}
+.night .c-rec{--track:rgba(255,255,255,.08)}
+.rtracks{--th:340px;--tw:54px;--reach:26px;max-width:940px;margin-left:auto;margin-right:auto}.phone .rtracks{--th:250px;--tw:34px;--reach:16px}
+.tracks{position:relative;height:var(--th);display:grid;grid-template-columns:repeat(3,1fr)}
+.syms{display:grid;grid-template-columns:repeat(3,1fr);justify-items:center;margin-bottom:20px}.syms svg{width:38px;height:38px;display:block}.phone .syms svg{width:28px;height:28px}.phone .syms{margin-bottom:14px}
+.tracks .band{position:absolute;top:calc(var(--th)/3);height:calc(var(--th)/3);left:calc(16.667% - var(--tw)/2 - var(--reach));right:calc(16.667% - var(--tw)/2 - var(--reach));border-radius:999px;background:var(--band);box-shadow:inset 0 0 0 1.5px var(--bandEdge)}
+.tracks .t{position:relative;display:flex;justify-content:center}
+.tracks .t i{width:var(--tw);height:var(--th);border-radius:999px;background:var(--track)}
+.pearl{position:absolute;left:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--pearl);top:50%;box-shadow:0 0 0 4px var(--ring,transparent);
+  transform:scale(0);transition:top .7s var(--bounce),transform .5s var(--bounce)}
+.phone .pearl{width:16px;height:16px;margin:-8px 0 0 -8px;box-shadow:0 0 0 3px var(--ring,transparent)}
+.pearl.u{--ring:#80B49E}.night .pearl.u{--ring:#80B49E}
+.phone .toprow .read{margin-top:14px!important}
+.labels em{display:block;font:600 19px var(--rounded);font-style:normal;color:var(--ink2);margin-top:8px}.labels em.q{visibility:hidden}.phone .labels em{font-size:17px;margin-top:4px}
+.in .pearl{transform:none}
+.labels{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin-top:30px}
+.labels span{display:block;font-size:19px;color:var(--ink2)}
+.labels b{display:block;font:600 64px/1.05 var(--rounded);margin-top:6px;letter-spacing:-1.8px}.labels b small{font:600 24px var(--rounded);color:var(--ink2);margin-left:5px;letter-spacing:0}
+.phone .labels{margin-top:20px}.phone .labels span{font-size:17px}.phone .labels b{font-size:36px;letter-spacing:-.8px}.phone .labels b small{font-size:17px;margin-left:3px}
+.c-rec .toprow{display:block}.c-age .toprow{display:block}.c-age .toprow .line{max-width:440px;margin-top:22px}
+.agesplit{display:grid;grid-template-columns:1fr 560px;gap:40px;align-items:center}.phone .agesplit{grid-template-columns:1fr}.c-rec .toprow .line{max-width:620px;margin-top:22px}
+
+/* Sleep: the four-lane night, the page's full width */
+.toprow{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:end}
+.toprow .line{max-width:400px;margin:0 0 6px}
+.phone .toprow .line{margin-top:14px}
+.phone .toprow{grid-template-columns:1fr;gap:6px}
+.night4{margin-top:64px}.phone .night4{margin-top:40px}
+.night4 svg{display:block;overflow:visible}
+
+/* Run: the loop on its dark map, bleeding off the chapter's right edge, the replay one tap away */
+.c-run{min-height:760px;overflow:hidden}
+.map{position:absolute;right:0;top:0;bottom:0;width:60%;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 14%,#000 30%);mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 14%,#000 30%)}
+.phone .map{-webkit-mask-image:none;mask-image:none}
+.phone .map{position:relative;width:auto;height:500px;margin:0}
+.c-run .split{grid-template-columns:480px 1fr}
+.phone .c-run .split{grid-template-columns:1fr}.phone .c-run{padding-bottom:0}
+.map{overflow:hidden}.map .play{z-index:2}
+.map img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 80%}
+.map .credit{position:absolute;right:24px;bottom:20px;z-index:2;font:600 13px var(--text);color:rgba(255,255,255,.86);text-shadow:0 0 6px rgba(0,0,0,.9),0 1px 2px rgba(0,0,0,.8)}
+.phone .map{height:560px}.phone .map img{object-position:50% 100%;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 90px);mask-image:linear-gradient(rgba(0,0,0,0),#000 90px)}.phone .map .credit{bottom:28px;right:20px}
+.c-run .line{max-width:400px}
+.map .play{position:absolute;right:80px;bottom:44px}
+.phone .map .play{right:auto;left:20px;bottom:24px}.phone .map{height:600px}
+.runfacts{display:flex;gap:44px;margin-top:34px}
+.runfacts span{display:block;font-size:19px;color:var(--ink2)}
+.runfacts b{display:block;font:700 64px/1.05 var(--rounded);letter-spacing:-2px;margin-top:6px}.runfacts b small{font:600 24px var(--rounded);color:var(--ink2);margin-left:3px;letter-spacing:0}
+.runfacts em{display:block;font:600 19px var(--text);font-style:normal;color:#80B49E;margin-top:6px}
+.phone .runfacts{flex-direction:column;gap:20px}.phone .runfacts b{font-size:40px;letter-spacing:-1.2px}.phone .runfacts b small{font-size:19px}.phone .runfacts em{font-size:17px}
+
+/* Longevity: the wheel at full size */
+.wheel{width:560px;margin:0}.phone .wheel{width:100%;margin-top:36px}
+.wheel svg{width:100%;height:auto;display:block;overflow:visible}
+
+/* close: back to black */
+.close{background:#000;color:#fff;text-align:center;padding:140px 0 0}
+.close h2{font-size:96px;letter-spacing:-.015em;line-height:1;max-width:900px;margin:0 auto}
+.close .lede{color:rgba(255,255,255,.66);max-width:600px;margin:24px auto 0}
+.phone .close{padding-top:80px}.phone .close h2{font-size:48px;letter-spacing:-.015em}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:40px 72px;margin-top:96px;padding:56px 0 40px;border-top:1px solid rgba(255,255,255,.12);text-align:left}
+.foot .mark{font-size:22px;color:#fff}.foot .mark i{width:28px;height:28px;border-radius:8px}
+.fmark p{font-size:19px;color:rgba(255,255,255,.6);margin:14px 0 0;max-width:300px}
+.fcol,.flang{display:flex;flex-direction:column;gap:12px}
+.fcol b,.flang b{font:600 17px var(--text);color:rgba(255,255,255,.46);margin-bottom:4px}
+.fcol a{font-size:19px;color:rgba(255,255,255,.82);cursor:pointer}.fcol a:hover{color:#fff}
+.seg{display:flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.seg a{font:600 17px var(--text);color:rgba(255,255,255,.66);padding:7px 13px;border-radius:999px;cursor:pointer}.seg a.on{background:rgba(255,255,255,.16);color:#fff}
+.fmark .store{margin-top:24px;display:inline-flex}
+.fbase{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.legal{font-size:17px;color:rgba(255,255,255,.4);margin:0}
+.fbase .lang{display:flex;align-items:center;gap:8px;font:600 17px var(--text);color:rgba(255,255,255,.72);padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);cursor:pointer;white-space:nowrap}.fbase .lang svg{width:17px;height:17px}.fbase .lang .chev{width:14px;height:14px;opacity:.7}
+.phone .fbase{flex-direction:column-reverse;align-items:flex-start}
+.phone .foot{grid-template-columns:1fr 1fr;gap:32px 20px;margin-top:80px;padding-top:40px}
+.phone .fmark{grid-column:1/-1}
+
+/* motion: each chapter arrives as it scrolls in (fade + slide, beats of 60 ms); lines draw; pearls land with one bounce */
+.a{opacity:0;transform:translateY(16px);transition:opacity .7s var(--smooth),transform .7s var(--smooth);transition-delay:calc(var(--b,0)*60ms)}
+.in .a{opacity:1;transform:none}
+.still *{transition:none!important;animation:none!important}
+
+/* Replay page */
+.rooms.site a{padding:8px 14px}.still .burger:before,.still .burger:after{transition:none}
+.c-run .split{min-height:520px}.phone .c-run .split{min-height:0}
+.rp{padding:120px 0 110px}.rp,.page .c-run{--field:#000}.c-run{background:#000}
+.rp .amb{position:absolute;inset:0;background-size:cover;background-position:center;-webkit-mask-image:linear-gradient(#000 40%,rgba(0,0,0,0));mask-image:linear-gradient(#000 40%,rgba(0,0,0,0))}
+
+.rp h1{font-size:84px;letter-spacing:-.015em;line-height:1;text-align:left;margin:0}
+.rp .lede{text-align:left;margin:28px 0 0;max-width:500px}
+.rp .cta{justify-content:flex-start}.rp .free{text-align:left;padding-bottom:0}
+
+.phone .rp{padding:80px 0 56px}.phone .rp .lede{display:none}
+
+.phone .rp h1{font-size:46px;letter-spacing:-.015em;margin-top:0}
+.phone .rp .lede{font-size:20px;margin-top:18px;padding:0}
+
+.frame{position:relative;height:640px;margin-top:56px;overflow:hidden}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.frame .credit,.map .credit{position:absolute;right:24px;bottom:22px;z-index:2;font:600 13px var(--text);color:rgba(255,255,255,.86);text-shadow:0 0 6px rgba(0,0,0,.9)}
+.frame .p,.map .p{display:none}.phone .frame .d,.phone .map .d{display:none}.phone .frame .p,.phone .map .p{display:block}
+.phone .frame{height:520px;margin-top:36px}
+.readout{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;margin-top:44px}
+.readout span{display:block;font-size:19px;color:var(--ink2)}
+.readout b{display:block;font:700 64px/1.05 var(--rounded);letter-spacing:-2px;margin-top:6px;font-variant-numeric:tabular-nums}.readout b small{font:600 24px var(--rounded);color:var(--ink2);margin-left:4px;letter-spacing:0}
+.phone .readout{grid-template-columns:1fr 1fr;gap:22px 16px;margin-top:28px}.phone .readout b{font-size:38px;letter-spacing:-1px}.phone .readout b small{font-size:18px}.phone .readout span{font-size:17px}
+.frame .scrub{position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,.18);z-index:2}
+.scrub i{position:absolute;left:0;top:0;bottom:0;width:40%;background:#F1641C}
+.scrub i:after{content:"";position:absolute;right:-9px;top:-6px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.c-facts{--field:#F3EFE9;--ink:#1C1A17;--ink2:rgba(28,26,23,.66);color:var(--ink)}
+.night .c-facts{--field:#1C1C1E;--ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.64)}
+
+
+
+
+
+/* ---- light and dark: every page follows the viewer's setting (a #still-light / #still-dark render forces one) ---- */
+.day{--runInk:#B8541E;--trendInk:#23773E}.night{--runInk:#F1641C;--trendInk:#3CB464}
+/* the header over paper (light mode on pages that open on paper) */
+.day .top.lt{color:rgba(0,0,0,.88)}
+.day .top.lt:before{opacity:0}
+.day .top.lt .rooms{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.day .top.lt .rooms a{color:rgba(0,0,0,.7)}.day .top.lt .rooms a:hover{color:rgba(0,0,0,.88)}
+.day .top.lt .rooms a.on{background:rgba(0,0,0,.075);color:rgba(0,0,0,.88)}
+.day .top.lt .dl:before{background:#1C1C1E;color:#fff}
+.day .top.lt .burger{background:rgba(0,0,0,.06)}
+.day .top.lt.glass{background:rgba(246,244,239,.76);box-shadow:inset 0 -1px 0 rgba(0,0,0,.08)}
+/* the phone menu: the burger opens the site's pages under the bar */
+.burger{border:0;position:relative;cursor:pointer;color:inherit}
+.burger:before,.burger:after{content:"";position:absolute;left:12px;width:16px;height:2px;border:0;border-radius:1px;background:currentColor;transition:transform .3s var(--smooth),top .3s var(--smooth)}
+.burger:before{top:15px}.burger:after{top:23px}
+.phone .burger{display:block}
+.top.menu-on .burger:before{top:19px;transform:rotate(45deg)}.top.menu-on .burger:after{top:19px;transform:rotate(-45deg)}
+.menu{display:none}
+/* the open menu is a solid sheet down to the bottom of the screen: nothing shows through */
+.top.menu-on{background:#141416;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}.top.menu-on:before{opacity:0}
+.top.menu-on .menu{display:block;position:absolute;left:0;right:0;top:72px;min-height:calc(100vh - 72px);padding:4px 20px 30px;background:#141416}
+.menu a{display:block;font:600 30px/1.2 var(--serif);letter-spacing:-.01em;padding:13px 0;color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer}
+.menu a.on{color:#fff}
+.menu p{display:flex;gap:24px;margin-top:22px}.menu p a{font:600 19px var(--text);letter-spacing:0;padding:0;border:0;color:rgba(255,255,255,.6)}.menu p a.on{color:#fff}
+.day .top.lt.menu-on,.day .top.lt.menu-on .menu{background:#F6F4EF}
+.day .top.lt .menu a{color:rgba(0,0,0,.52);border-color:rgba(0,0,0,.09)}.day .top.lt .menu p a{color:rgba(0,0,0,.52)}.day .top.lt .menu a.on{color:rgba(0,0,0,.9)}
+.rooms.site a{padding:8px 14px}.still .burger:before,.still .burger:after{transition:none}
+
+/* ---- type pass: the app's own faces, nothing small ---- */
+
+/* ---- the live page: one layout by width (phone under 760 px), grounds full width, words in a column ---- */
+html{background:#000}body{display:block;margin:0;padding:0;gap:0;background:#000;-webkit-text-size-adjust:100%}
+.page,.page.desk,.page.phone{width:auto;border-radius:0;overflow:clip;min-height:100vh}
+.desk .wrap{max-width:1440px;margin-left:auto;margin-right:auto;box-sizing:border-box}
+.top.menu-on .menu{min-height:calc(100dvh - 72px)}
+:where(.page a[href]){color:inherit;text-decoration:none}
+a.mark,a.dl,a.store,a.play{color:inherit;text-decoration:none}a.store{color:#fff}
+[data-copy]{cursor:pointer}
+
+/* ---- Replay opens on the flyover itself: the film runs off the right edge, the words sit on black ---- */
+.rp2{position:relative;min-height:780px;display:flex;align-items:center;padding:140px 0 110px;overflow:hidden}
+.rp2 .wrap{position:relative;z-index:1;width:100%}
+.rp2 .rptext{max-width:540px}
+.rp2 .rpbleed{position:absolute;right:0;top:0;bottom:0;width:64%;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 16%,#000 34%);mask-image:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.55) 16%,#000 34%)}
+.rp2 .rpbleed video,.rp2 .rpbleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rp2 .rpbleed:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,0) 24%,rgba(0,0,0,0) 70%,#000);pointer-events:none}
+.desk .rp2+.c-run .map:before{content:"";position:absolute;inset:0 0 auto;height:140px;background:linear-gradient(#000,rgba(0,0,0,0));z-index:1;pointer-events:none}
+.mid .rp2,.phone .rp2{display:block;min-height:0;padding:0 0 80px}
+.mid .rp2 .rpbleed,.phone .rp2 .rpbleed{position:relative;width:auto;height:540px;-webkit-mask-image:linear-gradient(#000 78%,rgba(0,0,0,0));mask-image:linear-gradient(#000 78%,rgba(0,0,0,0))}
+.mid .rp2 .rptext{padding-top:36px;max-width:680px}
+.phone .rp2{padding-bottom:56px}
+.phone .rp2 .rpbleed{height:560px}
+.phone .rp2 .rpbleed video,.phone .rp2 .rpbleed img{object-position:50% 0}
+.phone .rp2 .rptext{padding-top:24px}
+.phone .rp2 .lede{display:block}
+.mid .c-run .split{grid-template-columns:1fr}.mid .c-run{padding-bottom:0}
+.mid .map{position:relative;width:auto;height:560px;margin-top:48px;-webkit-mask-image:linear-gradient(rgba(0,0,0,0),#000 90px);mask-image:linear-gradient(rgba(0,0,0,0),#000 90px)}
+
+.store i svg{display:block;width:24px;height:24px;margin-top:-2px}
+button.burger{padding:0;font:inherit}button.play{border:0;font:inherit;color:#fff}
+.fbase{justify-content:flex-start}
+
+/* ---- the size floor: nothing under 19 px on a desktop, 17 on a phone (the store badge's small line is Apple's own lockup) ---- */
+.desk .rooms a,.desk .dl:before,.desk .fcol b,.desk .legal,.desk .play,.desk .play small,.desk .facts dt,.desk a.watch{font-size:19px}
+.page .credit{font-size:17px}
+.rooms a{white-space:nowrap}.mid .top .wrap{padding:0 32px}.mid .rooms a{padding:8px 12px}
+
+/* ---- on aerahealth.app: a jump to an anchor clears the header; the languages sit at the foot ---- */
+[id]{scroll-margin-top:96px}
+.fbase .flangs{flex-direction:row;gap:24px;margin-left:auto}.phone .fbase .flangs{margin-left:0}
+
+/* ---- round 4: balanced headlines, one sentence per closing line, tablet footer and stacks ---- */
+.mid .c-run .split{min-height:0}.mid .c-run{min-height:0}
+h1,h2{text-wrap:balance}
+.desk .close h2{font-size:min(96px,7.4vw);max-width:none}
+.close h2 .ln{display:block;text-wrap:balance}
+.mid .toprow{grid-template-columns:1fr;gap:20px;align-items:start}
+.mid .foot{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.mid .fmark{grid-column:1/-1}
+.fcol a{white-space:nowrap}
+.desk .credit{font-size:19px}
+
+/* ---- ruled rows: a short lead on the left, the plain sentence on the right ---- */
+.rows{border-bottom:1px solid var(--hair)}
+.rows p{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:baseline;padding:28px 0;border-top:1px solid var(--hair);margin:0;font:400 21px/1.45 var(--text);color:var(--ink2)}
+.rows b{font:600 26px/1.25 var(--text);letter-spacing:-.01em;color:var(--ink)}
+.mid .rows p{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.phone .rows p{grid-template-columns:1fr;gap:6px;padding:20px 0;font-size:19px}
+.phone .rows b{font-size:22px}
+.c-facts h2{margin-bottom:48px}.phone .c-facts h2{margin-bottom:28px}
+
+/* ---- round 7: the real app icon, labels on every chapter ---- */
+.mark i{background:url(/assets/icon-300.png) center/cover no-repeat;border-radius:24%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.14)}
+.close .k{justify-content:center;--room:rgba(255,255,255,.66)}
+
+/* ---- round 11: the app's row mark: the outline symbol on a glass square washed with its hue (SettingsMark); dark glass by night and on the chapters that stay black by day ---- */
+.ic{width:34px;height:34px;flex:none;border-radius:8.5px;--wash:28%;--glass:rgba(255,255,255,.86);
+ background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0) 60%),color-mix(in srgb,currentColor var(--wash),var(--glass));
+ box-shadow:0 0 0 .5px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.5),0 1px 3px rgba(0,0,0,.05)}
+.night .ic,.close .ic,.c-run .ic,.wfilm .ic{--wash:16%;--glass:rgba(255,255,255,.12);
+ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0) 60%),color-mix(in srgb,currentColor var(--wash),var(--glass));
+ box-shadow:inset 0 0 0 .5px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(255,255,255,.1)}
+.ic.g{--wash:0%;color:var(--ink)}
+.close .ic{color:#fff}
+.k,.tp{gap:12px}
+.toc a .ic{width:32px;height:32px;border-radius:8px}
+.toc a:not(:has(svg)){padding-left:44px}
+.phone .ic{width:32px;height:32px;border-radius:8px}
+
+/* ---- round 13: the header in the app's own faces; steadier motion; one cross-fade between pages ---- */
+@font-face{font-family:AeraRounded;font-weight:400;src:local("SF Pro Rounded Regular"),local("SFProRounded-Regular")}
+@font-face{font-family:AeraRounded;font-weight:500;src:local("SF Pro Rounded Medium"),local("SFProRounded-Medium")}
+@font-face{font-family:AeraRounded;font-weight:600;src:local("SF Pro Rounded Semibold"),local("SFProRounded-Semibold")}
+@font-face{font-family:AeraRounded;font-weight:700;src:local("SF Pro Rounded Bold"),local("SFProRounded-Bold")}
+@font-face{font-family:AeraRounded;font-weight:800;src:local("SF Pro Rounded Heavy"),local("SFProRounded-Heavy")}
+@font-face{font-family:AeraRounded;font-weight:900;src:local("SF Pro Rounded Black"),local("SFProRounded-Black")}
+:root{--rounded:ui-rounded,AeraRounded,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;--serif:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif}
+.mark{font:600 22px/1 var(--rounded);letter-spacing:-.01em;gap:10px}
+.mark i{width:30px;height:30px;border-radius:23%}
+.foot .mark{font-size:24px}.foot .mark i{width:32px;height:32px}
+.top{transition:background .45s var(--smooth),box-shadow .45s var(--smooth)}
+.top.glass{background:rgba(12,12,14,.68);-webkit-backdrop-filter:blur(28px) saturate(1.7);backdrop-filter:blur(28px) saturate(1.7)}
+.day .top.lt.glass{background:rgba(246,244,239,.78)}
+.rooms{-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5)}
+.rooms a{transition:background .3s var(--smooth),color .3s var(--smooth)}
+.dl:before{transition:background .25s var(--smooth),transform .25s var(--smooth)}
+.dl:hover:before{background:#E8E8ED}.day .top.lt .dl:hover:before{background:#000}
+.dl:active:before{transform:scale(.96)}
+.store,.play{transition:background .25s var(--smooth),border-color .25s var(--smooth),transform .25s var(--smooth)}
+.store:hover{border-color:rgba(255,255,255,.75)}.play:hover{background:rgba(255,255,255,.24)}
+.store:active,.play:active{transform:scale(.97)}
+.phone .top{height:64px;margin-bottom:-64px}.phone .bar{height:64px}
+.phone .top.menu-on .menu{top:64px;min-height:calc(100dvh - 64px)}
+.phone .mark{font-size:21px}.phone .mark i{width:28px;height:28px}
+.a{transform:translateY(24px);transition:opacity .9s var(--smooth),transform 1.1s var(--smooth);transition-delay:calc(var(--b,0)*80ms)}
+@media (prefers-reduced-motion:no-preference){
+ @view-transition{navigation:auto}
+ ::view-transition-old(root),::view-transition-new(root){animation-duration:.34s;animation-timing-function:cubic-bezier(.23,1,.32,1)}
+ .top{view-transition-name:aera-top}
+}
+</style>
+<style>
+/* the race-link demo: the phone film beside its words, the plain facts under it */
+.open.race{padding:148px 0 120px}.phone .open.race{padding:104px 0 72px}
+.race .pair{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:80px;align-items:center}
+.mid .race .pair{grid-template-columns:minmax(0,1fr) clamp(280px,34vw,340px);gap:48px}
+.phone .race .pair{grid-template-columns:1fr;gap:40px}
+.race h1{font:700 72px/1.04 var(--serif);letter-spacing:-.015em;text-align:left;margin:0}
+.mid .race h1{font-size:clamp(40px,5.2vw,56px)}.phone .open.race h1{font-size:40px;margin-top:0}
+.race .lede{text-align:left;margin:28px 0 0;max-width:560px}
+.race .k{--room:rgba(255,255,255,.66)}
+.race figure{margin:0;justify-self:center;width:100%;max-width:400px}
+.race video,.race figure img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover;border-radius:48px;background:#111;box-shadow:0 0 0 1px rgba(255,255,255,.10)}
+.phone .race figure{max-width:330px}.phone .race video{border-radius:40px}
+.race .play{margin-top:16px}
+.endfoot{background:#000;color:#fff;padding:0}
+
+/* ---- round 18: the header's glass ends in a soft edge, as the app's bars do over scrolling content (text dissolves
+   under it instead of being cut); by day the glass takes the colour of the chapter beneath it ---- */
+.top.glass{background:rgba(12,12,14,.8);height:100px;margin-bottom:-100px;box-shadow:none;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72px,rgba(0,0,0,.55) 84px,rgba(0,0,0,.18) 93px,rgba(0,0,0,0) 100px);mask-image:linear-gradient(#000 72px,rgba(0,0,0,.55) 84px,rgba(0,0,0,.18) 93px,rgba(0,0,0,0) 100px)}
+.phone .top.glass{height:92px;margin-bottom:-92px;-webkit-mask-image:linear-gradient(#000 64px,rgba(0,0,0,.55) 76px,rgba(0,0,0,.18) 85px,rgba(0,0,0,0) 92px);mask-image:linear-gradient(#000 64px,rgba(0,0,0,.55) 76px,rgba(0,0,0,.18) 85px,rgba(0,0,0,0) 92px)}
+.top.glass .bar{pointer-events:auto}
+.top.glass.menu-on{height:72px;margin-bottom:-72px;pointer-events:auto;-webkit-mask-image:none;mask-image:none}
+.phone .top.glass.menu-on{height:64px;margin-bottom:-64px;-webkit-mask-image:none;mask-image:none}
+.day .top.lt.glass{background:rgba(var(--edge,246,244,239),.86);box-shadow:none}
+
+</style>
+</head><body>
+<div class="page" data-page>
+<script>
+const PH0 = innerWidth < 760, MID0 = !PH0 && innerWidth < 1100;
+document.querySelectorAll('[data-page]').forEach(p => { p.classList.add(PH0 ? 'phone' : 'desk'); if (MID0) p.classList.add('mid'); });
+addEventListener('resize', () => { if (!matchMedia('(pointer: fine)').matches) return; const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
+const H = location.hash, still = H.startsWith('#still');
+const themeNow = () => /dark/.test(H) ? 'night' : /light/.test(H) ? 'day'
+  : (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark' ? 'night' : 'day';
+document.querySelectorAll('[data-page]').forEach(p => { p.classList.remove('day', 'night'); p.classList.add(themeNow()); });
+const reTheme = () => { if (!document.querySelector('[data-page].' + themeNow())) location.reload(); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
+</script>
+<div class="top"><div class="wrap"><div class="bar"><a class="mark" href="/" aria-label="Aera, home"><i></i>Aera</a>
+   <nav class="rooms site"><a href="/hu.html#body">A tested</a><a href="/hu.html#replay">Visszajátszás</a><a href="/learn/hu/">Tudástár</a><a href="/ujdonsagok.html">Újdonságok</a></nav>
+   <a class="dl" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=page-verseny&amp;mt=8" aria-label="Az Aera letöltése az App Store-ból"></a><button class="burger" aria-label="Menü" aria-expanded="false"></button></div></div><nav class="menu"><a href="/hu.html#body">A tested</a><a href="/hu.html#replay">Visszajátszás</a><a href="/learn/hu/">Tudástár</a><a href="/ujdonsagok.html">Újdonságok</a><p><a href="/support.html">Támogatás</a><a href="/adatvedelem.html">Adatvédelem</a><a href="/felhasznalasi-feltetelek.html">Feltételek</a></p></nav></div>
+ <section class="open race" data-room><div class="wrap"><div class="pair">
+  <div>
+   <h1 class="a" style="--b:1">Egy link, és a pálya a futó telefonján&nbsp;van.</h1>
+   <p class="lede a" style="--b:2">A szervező megosztja a pálya linkjét. A futó megnyitja, kiválasztja a távját, és az Aera megmutatja a pályát: a hosszát, az emelkedőt, és hogy a saját tempójával mennyi idő alatt futja&nbsp;le.</p>
+  </div>
+  <figure class="a" style="--b:2"><video data-film muted playsinline autoplay loop preload="auto" aria-label="Az Aera a verseny linkjéből megnyitja a Nagyfröccs pályát, majd végigrepüli 3D-ben"></video></figure>
+ </div></div></section>
+
+ <section class="ch c-facts" data-room><div class="wrap">
+  <h2 class="a">Amit a link&nbsp;hoz.</h2>
+  <div class="rows a" style="--b:1">
+   <p><b>Minden táv egy linkben.</b><span>A link a verseny összes távját hozza, a frissítőpontokkal együtt. A futó csak kiválasztja a&nbsp;sajátját.</span></p>
+   <p><b>Az emelkedőt az Aera méri.</b><span>A pálya magasságát a domborzatból olvassa ki, és úgy számolja, ahogy egy óra mérné&nbsp;futás&nbsp;közben.</span></p>
+   <p><b>Saját tempó, saját idő.</b><span>A becsült idő a futó saját edzéseiből jön, a pálya emelkedőivel&nbsp;együtt.</span></p>
+   <p><b>Végigrepülhető előre.</b><span>A Flyover 3D-ben végigrepüli a pályát a valódi terep fölött, még a verseny&nbsp;előtt.</span></p>
+  </div>
+ </div></section>
+
+ <section class="close endfoot" data-room><div class="wrap">
+  <footer class="foot">
+   <div class="fmark"><a class="mark" href="/"><i></i>Aera</a><p>Every reading, against your usual.<br>Free to start, no&nbsp;account.</p></div>
+   <div class="fcol"><b>Az app</b><a href="/hu.html#body">A tested</a><a href="/hu.html#replay">Visszajátszás</a><a href="/ujdonsagok.html">Újdonságok</a></div>
+   <div class="fcol"><b>Olvasnivaló</b><a href="/learn/hu/">Tudástár</a><a href="/guides/#hu">Útmutatók</a></div>
+   <div class="fcol"><b>Segítség</b><a href="/support.html">Támogatás</a><a href="/adatvedelem.html">Adatvédelem</a><a href="/felhasznalasi-feltetelek.html">Felhasználási feltételek</a></div>
+   <div class="fbase"><p class="legal">&#169; 2026 Aera. Az Apple Health és az Apple Watch az Apple&nbsp;Inc. védjegye.</p></div>
+  </footer>
+ </div></section>
+</div>
+<script>
+const FILM = ['/media/web/verseny-e5b57565.mp4', '/media/web/verseny-fdbd3528.jpg'];
+const arrive = room => room.classList.add('in');
+document.querySelectorAll('[data-page]').forEach(page => {
+  if (still) page.classList.add('still');
+  { const top = page.querySelector('.top'), b = page.querySelector('.burger'); if (b) b.onclick = () => b.setAttribute('aria-expanded', String(top.classList.toggle('menu-on'))); }
+  { const v = page.querySelector('[data-film]'), [src, poster] = FILM;
+    if (still) { const i = new Image(); i.src = poster; i.alt = ''; v.replaceWith(i); }
+    else { v.poster = poster; v.src = src; v.play().catch(() => {}); } }
+  if (!still) { const top = page.querySelector('.top'), h = page.querySelector('.open h1');
+    const tick = () => top.classList.toggle('glass', h.getBoundingClientRect().top < top.getBoundingClientRect().bottom + 12);
+    { let q = 0; addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(() => { q = 0; tick(); }); }, {passive: true}); } tick(); }
+  const rooms = page.querySelectorAll('[data-room]');
+  if (still || matchMedia('(prefers-reduced-motion: reduce)').matches) { rooms.forEach(arrive); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arrive(e.target); io.unobserve(e.target); } }), {rootMargin: '0px 0px -18% 0px'});
+  rooms.forEach(r => io.observe(r));
+});
+</script>
+</body></html>
