@@ -36,8 +36,8 @@
 <link rel="alternate" hreflang="hu" href="https://aerahealth.app/hu.html">
 <link rel="alternate" hreflang="de" href="https://aerahealth.app/de.html">
 <link rel="alternate" hreflang="x-default" href="https://aerahealth.app/">
-<link rel="icon" href="assets/icon.png">
-<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "MobileApplication", "@id": "https://aerahealth.app/#app", "name": "Aera", "alternateName": ["Aera fitness app", "Aera health app", "Replay your run. Understand your body."], "applicationCategory": "HealthApplication", "operatingSystem": "iOS, watchOS", "inLanguage": ["en", "hu", "de", "es", "fr", "it", "ja", "pt", "zh-Hant"], "url": "https://aerahealth.app/", "downloadUrl": "https://apps.apple.com/app/id6762456252", "installUrl": "https://apps.apple.com/app/id6762456252", "description": "Aera reads your Apple Watch against your own normal. Each morning it says how today compares, and after a walk, run or ride, what changed. Free, no account.", "screenshot": ["https://aerahealth.app/img/k/hero-pair-1800.webp", "https://aerahealth.app/img/k/art-sleep-light-800.webp", "https://aerahealth.app/img/k/scr-run-light-800.webp", "https://aerahealth.app/img/k/scr-route-800.webp"], "author": {"@id": "https://aerahealth.app/#maker"}, "publisher": {"@id": "https://aerahealth.app/#org"}, "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "free"}}, {"@type": "Person", "@id": "https://aerahealth.app/#maker", "name": "Gergő Varga", "url": "https://aerahealth.app/"}, {"@type": "Organization", "@id": "https://aerahealth.app/#org", "name": "Aera", "url": "https://aerahealth.app/", "logo": "https://aerahealth.app/assets/icon.png", "email": "hello@aerahealth.app", "founder": {"@id": "https://aerahealth.app/#maker"}, "sameAs": ["https://apps.apple.com/app/id6762456252"]}, {"@type": "WebSite", "@id": "https://aerahealth.app/#site", "name": "Aera", "url": "https://aerahealth.app/", "inLanguage": "en", "publisher": {"@id": "https://aerahealth.app/#org"}}, {"@type": "FAQPage", "inLanguage": "en", "mainEntity": [{"@type": "Question", "name": "What does Aera do?", "acceptedAnswer": {"@type": "Answer", "text": "Aera reads what your watch, ring or phone writes to Apple Health and tells you what those numbers mean for you. Sleep, stress, strain and every run are held against your own usual, said in plain words, and each number opens a short article on how it was worked out. It also plans routes with turn-by-turn directions and replays runs in 3D."}}, {"@type": "Question", "name": "Do I need an Apple Watch?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera reads Apple Health, so any watch, ring or app that writes your sleep, heart rate and workouts there will do: Apple Watch, Garmin, Oura, WHOOP and others. With only an iPhone, Aera works from steps and workouts, and the reads that need overnight heart data wait until there is some."}}, {"@type": "Question", "name": "Is Aera free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Your scores every day with their last 30 days, the 3D replay of every run from the past week, the route planner with turn by turn, five saved routes, the Field Guide and the last 30 days of every export are free. Premium keeps your whole history, every replay however old, the replay as a video to share, more saved routes and the longer reports. The yearly plan starts with a free week."}}, {"@type": "Question", "name": "Do I need an account, and where does my data go?", "acceptedAnswer": {"@type": "Answer", "text": "There is no account. Aera reads Apple Health on your iPhone and works out every score there, so health numbers stay on your iPhone. Usage counts stay off until you turn them on (in the UK and Switzerland, until you turn them off), and never include health values."}}, {"@type": "Question", "name": "How does Aera know what is normal for me?", "acceptedAnswer": {"@type": "Answer", "text": "It learns your usual range from your own nights and sessions over several weeks, then compares each new day with it. While your history is thin, it says it is still learning instead of guessing."}}, {"@type": "Question", "name": "Is Aera a medical device?", "acceptedAnswer": {"@type": "Answer", "text": "No. Aera is for everyday wellbeing and training. Watch measurements such as sleep stages are estimates, and every article says where its number stops being reliable."}}, {"@type": "Question", "name": "Which languages does Aera speak?", "acceptedAnswer": {"@type": "Answer", "text": "English, Hungarian, German, Spanish and French in full, and Italian, Japanese, Portuguese and Traditional Chinese in part."}}]}]}</script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
 <style>
@@ -285,6 +285,10 @@ h1,h2{text-wrap:balance}
 .desk .credit{font-size:19px}
 .desk .map .play{right:168px;bottom:28px}.desk .map .credit{bottom:40px}
 .mid .map .play{right:auto;left:80px}
+
+/* ---- round 7: the real app icon, labels on every chapter ---- */
+.mark i{background:url(/assets/icon-300.png) center/cover no-repeat;border-radius:24%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.14)}
+.close .k{justify-content:center;--room:rgba(255,255,255,.66)}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -301,7 +305,7 @@ h1,h2{text-wrap:balance}
  </div>
  </section>
 
- <section class="ch c-rec" data-room><div class="wrap">
+ <section class="ch c-rec" id="body" data-room><div class="wrap">
    <div class="k a"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21.2s-7.6-4.6-10-9.4C.4 8.5 2.4 4.4 6.1 4.4c2.2 0 3.6 1.2 4.5 2.5.7.9 1.2.9 1.9 0 .9-1.3 2.3-2.5 4.5-2.5 3.7 0 5.7 4.1 4.1 7.4-2.4 4.8-10 9.4-10 9.4z" fill="currentColor"/></svg>Recovery</div>
    <div class="toprow"><h2 class="a" style="--b:1">About your usual, after a short&nbsp;night.</h2>
    <p class="line a" style="--b:2">HRV and heart rate sat in your usual, the green band learned from your own nights. Breathing ran a little under it.</p></div>
@@ -326,7 +330,7 @@ h1,h2{text-wrap:balance}
   <div class="night4 a" style="--b:3"><svg data-night></svg></div>
  </div></section>
 
- <section class="ch c-run" data-room><div class="wrap"><div class="split">
+ <section class="ch c-run" id="replay" data-room><div class="wrap"><div class="split">
   <div>
    <div class="k a"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="15.5" cy="3.8" r="2.1" fill="currentColor" stroke="none"/><path d="M8 8.5l4.5-1.6 3 3.6 3.4.9M12.5 6.9l-2.2 6.3 3.6 2.6-1.4 5.4M10.3 13.2l-2.4 3.4-4.2.3"/></svg>Run</div>
    <h2 class="a" style="--b:1">Quicker than your&nbsp;usual.</h2>
@@ -347,7 +351,8 @@ h1,h2{text-wrap:balance}
  </div></section>
 
  <section class="close" data-room><div class="wrap">
-  <h2 class="a">Your health stays on your&nbsp;iPhone.</h2>
+  <div class="k a"><svg class="ic" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10.2V7.6a5 5 0 0 1 10 0v2.6h.4a2.6 2.6 0 0 1 2.6 2.6v6.6a2.6 2.6 0 0 1-2.6 2.6H6.6A2.6 2.6 0 0 1 4 19.4v-6.6a2.6 2.6 0 0 1 2.6-2.6zm2.5 0h5V7.6a2.5 2.5 0 0 0-5 0z"/></svg>Private</div>
+  <h2 class="a" style="--b:1">Your health stays on your&nbsp;iPhone.</h2>
   <p class="lede a" style="--b:1">No account and no health server. Aera reads Apple Health on your phone and does every calculation&nbsp;there.</p>
   <div class="cta a" style="--b:2"><a class="store" href="/get/closing/en/"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></i><div>Download on the<b>App Store</b></div></a></div>
   <footer class="foot">

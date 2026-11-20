@@ -15,7 +15,8 @@
 <link rel="alternate" hreflang="hu" href="https://aerahealth.app/guides/futas-3d-visszajatszas.html">
 <link rel="alternate" hreflang="de" href="https://aerahealth.app/guides/lauf-in-3d-abspielen.html">
 <link rel="alternate" hreflang="x-default" href="https://aerahealth.app/flyover.html">
-<link rel="icon" href="assets/icon.png">
+<link rel="icon" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/icon.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aera","operatingSystem":"iOS, watchOS","applicationCategory":"HealthApplication","url":"https://aerahealth.app/flyover.html","downloadUrl":"https://apps.apple.com/app/id6762456252","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Fly back over your run in 3D over the real ground, with pace, heart rate and elevation. Free for runs from the last seven days."}
 </script>
@@ -320,6 +321,10 @@ h1,h2{text-wrap:balance}
 .phone .rows p{grid-template-columns:1fr;gap:6px;padding:20px 0;font-size:19px}
 .phone .rows b{font-size:22px}
 .c-facts h2{margin-bottom:48px}.phone .c-facts h2{margin-bottom:28px}
+
+/* ---- round 7: the real app icon, labels on every chapter ---- */
+.mark i{background:url(/assets/icon-300.png) center/cover no-repeat;border-radius:24%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.14)}
+.close .k{justify-content:center;--room:rgba(255,255,255,.66)}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -345,7 +350,8 @@ h1,h2{text-wrap:balance}
   </div></div><div class="map a" style="--b:2"><img class="d" src="/media/web/108d4e45cb.jpg" alt="A coastal morning run at Tamarama, Sydney, replayed in 3D in Aera"><img class="p" src="/media/web/f0efb19112.jpg" alt=""><span class="credit">Apple Maps</span></div></section>
 
  <section class="ch c-facts" data-room><div class="wrap">
-  <h2 class="a">The plain&nbsp;facts.</h2>
+  <div class="k a"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.4"/><path d="M12 11.2v5.6"/><path d="M12 7.6v.1"/></svg>Good to know</div>
+  <h2 class="a" style="--b:1">The plain&nbsp;facts.</h2>
   <div class="rows a" style="--b:1">
    <p><b>The last 7 days, free.</b><span>Any run from the past week replays free. Older runs come with&nbsp;Premium.</span></p>
    <p><b>Needs an iPhone and a GPS&nbsp;route.</b><span>A run from a Garmin comes in as a&nbsp;file.</span></p>
