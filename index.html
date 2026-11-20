@@ -395,13 +395,18 @@ h1,h2{text-wrap:balance}
 .open h1{margin-top:72px}.mid .open h1{margin-top:64px}.phone .open h1{margin-top:44px}
 .open h1{line-height:1.03}
 .open .lede{text-wrap:balance}
-.fp{position:absolute;right:80px;top:calc(100% + 16px);z-index:2;width:44px;height:44px;border-radius:50%;border:0;padding:0;cursor:pointer;
+.fp{position:absolute;right:max(0px,calc(var(--fm,80px) - (100vw - 100%) / 2));top:calc(100% + 16px);z-index:2;width:44px;height:44px;border-radius:50%;border:0;padding:0;cursor:pointer;
   display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 .5px rgba(255,255,255,.16);
   transition:background .25s var(--smooth),transform .25s var(--smooth)}
 .fp:hover{background:rgba(255,255,255,.2)}.fp:active{transform:scale(.94)}
 .fp svg{width:18px;height:18px;display:none;fill:currentColor}
 .fp[data-s=pause] .i-pause,.fp[data-s=play] .i-play,.fp[data-s=again] .i-again{display:block}
-.mid .fp{right:48px}.phone .fp{right:20px;top:calc(100% + 12px)}
+.mid .fp{--fm:48px}.phone .fp{--fm:20px;top:calc(100% + 12px)}
+/* the film's own box: the button sits under its corner, or on the page margin when the film runs edge to edge */
+.fw{position:relative;width:min(100%,calc((100svh - 96px) * 16 / 9))}
+.mid .fw{width:min(100%,calc((100svh - 120px) * 9 / 16))}
+.phone .fw{width:min(100%,calc((100svh - 88px) * 9 / 16))}
+.world .fw>video,.world .fw>img{width:100%}
 .still .fp{display:none}
 @supports (animation-timeline:view()){@media (prefers-reduced-motion:no-preference){
  .world video{animation:filmaway linear both;animation-timeline:view();animation-range:exit 15% exit 95%}
@@ -415,7 +420,7 @@ h1,h2{text-wrap:balance}
    <nav class="rooms site"><a class="on" href="/">Your body</a><a href="/flyover.html">Replay</a><a href="/learn/">Articles</a><a href="/whats-new.html">What&#8217;s new</a></nav>
    <a class="dl" href="/get/nav/en/" aria-label="Download Aera on the App Store"></a><button class="burger" aria-label="Menu" aria-expanded="false"></button></div></div><nav class="menu"><a href="/">Your body</a><a href="/flyover.html">Replay</a><a href="/learn/">Articles</a><a href="/whats-new.html">What&#8217;s new</a><p><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/press/">Press</a></p></nav></div>
  <section class="open" data-room>
-  <div class="world"><video data-film muted playsinline preload="auto"></video><button class="fp" type="button" aria-label="Pause the film" data-s="pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.2-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-again" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4.4 4.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+  <div class="world"><div class="fw"><video data-film muted playsinline preload="auto"></video><button class="fp" type="button" aria-label="Pause the film" data-s="pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.2-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-again" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M4.4 4.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
   <div class="wrap">
   <h1 class="a">Every reading, against your&nbsp;usual.</h1>
   <p class="lede a" style="--b:2">Aera reads what your watch writes to Apple Health, and says in plain words what changed and&nbsp;why.</p>
@@ -551,7 +556,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
 new MutationObserver(reTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-const FILM = {desk: ['/media/web/film-site-8bbc93af.mp4', '/media/web/film-site-e0c314e5.jpg'], phone: ['/media/web/film-phone-dbd2f244.mp4', '/media/web/105ee16670.jpg']};
+const FILM = {desk: ['/media/web/film-site-113128bb.mp4', '/media/web/film-site-e7df6bf7.jpg'], phone: ['/media/web/film-phone-dbd2f244.mp4', '/media/web/105ee16670.jpg']};
 
 /* the night (the film's press seed): 6 h 37 m asleep in 402 min, from 23:18 to 06:00 */
 const NIGHT = [['L',12],['D',28],['L',22],['R',14],['L',30],['D',22],['L',26],['R',22],['A',2],['L',30],['D',12],
