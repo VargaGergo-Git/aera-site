@@ -393,6 +393,39 @@ h1,h2{text-wrap:balance}
 .toc a .ic{width:32px;height:32px;border-radius:8px}
 .toc a:not(:has(svg)){padding-left:44px}
 .phone .ic{width:32px;height:32px;border-radius:8px}
+
+/* ---- round 13: the header in the app's own faces; steadier motion; one cross-fade between pages ---- */
+@font-face{font-family:AeraRounded;font-weight:400;src:local("SF Pro Rounded Regular"),local("SFProRounded-Regular")}
+@font-face{font-family:AeraRounded;font-weight:500;src:local("SF Pro Rounded Medium"),local("SFProRounded-Medium")}
+@font-face{font-family:AeraRounded;font-weight:600;src:local("SF Pro Rounded Semibold"),local("SFProRounded-Semibold")}
+@font-face{font-family:AeraRounded;font-weight:700;src:local("SF Pro Rounded Bold"),local("SFProRounded-Bold")}
+@font-face{font-family:AeraRounded;font-weight:800;src:local("SF Pro Rounded Heavy"),local("SFProRounded-Heavy")}
+@font-face{font-family:AeraRounded;font-weight:900;src:local("SF Pro Rounded Black"),local("SFProRounded-Black")}
+:root{--rounded:ui-rounded,AeraRounded,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --text:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;--serif:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif}
+.mark{font:600 22px/1 var(--rounded);letter-spacing:-.01em;gap:10px}
+.mark i{width:30px;height:30px;border-radius:23%}
+.foot .mark{font-size:24px}.foot .mark i{width:32px;height:32px}
+.top{transition:background .45s var(--smooth),box-shadow .45s var(--smooth)}
+.top.glass{background:rgba(12,12,14,.68);-webkit-backdrop-filter:blur(28px) saturate(1.7);backdrop-filter:blur(28px) saturate(1.7)}
+.day .top.lt.glass{background:rgba(246,244,239,.78)}
+.rooms{-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5)}
+.rooms a{transition:background .3s var(--smooth),color .3s var(--smooth)}
+.dl:before{transition:background .25s var(--smooth),transform .25s var(--smooth)}
+.dl:hover:before{background:#E8E8ED}.day .top.lt .dl:hover:before{background:#000}
+.dl:active:before{transform:scale(.96)}
+.store,.play{transition:background .25s var(--smooth),border-color .25s var(--smooth),transform .25s var(--smooth)}
+.store:hover{border-color:rgba(255,255,255,.75)}.play:hover{background:rgba(255,255,255,.24)}
+.store:active,.play:active{transform:scale(.97)}
+.phone .top{height:64px;margin-bottom:-64px}.phone .bar{height:64px}
+.phone .top.menu-on .menu{top:64px;min-height:calc(100dvh - 64px)}
+.phone .mark{font-size:21px}.phone .mark i{width:28px;height:28px}
+.a{transform:translateY(24px);transition:opacity .9s var(--smooth),transform 1.1s var(--smooth);transition-delay:calc(var(--b,0)*80ms)}
+@media (prefers-reduced-motion:no-preference){
+ @view-transition{navigation:auto}
+ ::view-transition-old(root),::view-transition-new(root){animation-duration:.34s;animation-timing-function:cubic-bezier(.23,1,.32,1)}
+ .top{view-transition-name:aera-top}
+}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -434,7 +467,7 @@ h1,h2{text-wrap:balance}
 <script>
 const PH0 = innerWidth < 760, MID0 = !PH0 && innerWidth < 1100;
 document.querySelectorAll('[data-page]').forEach(p => { p.classList.add(PH0 ? 'phone' : 'desk'); if (MID0) p.classList.add('mid'); });
-addEventListener('resize', () => { const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
+addEventListener('resize', () => { if (!matchMedia('(pointer: fine)').matches) return; const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
 
 const H = location.hash, still = H.startsWith('#still');
 const themeNow = () => /dark/.test(H) ? 'night' : /light/.test(H) ? 'day'
@@ -595,7 +628,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
     const tick = () => { const y = top.getBoundingClientRect().bottom;
       const hl = film.querySelector('h1'); top.classList.toggle('glass', hl ? hl.getBoundingClientRect().top < y + 12 : film.getBoundingClientRect().bottom < y + 40);
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
-    addEventListener('scroll', tick, {passive: true}); tick(); }
+    { let q = 0; addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(() => { q = 0; tick(); }); }, {passive: true}); } tick(); }
   const rooms = page.querySelectorAll('[data-room]');
   if (still || matchMedia('(prefers-reduced-motion: reduce)').matches) { rooms.forEach(arrive); return; }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { arrive(e.target); io.unobserve(e.target); } }), {rootMargin: '0px 0px -18% 0px'}); /* a room arrives when its top passes 82% of the screen, however tall it is */
