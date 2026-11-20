@@ -391,6 +391,21 @@ h1,h2{text-wrap:balance}
 .phone .top.glass.menu-on{height:64px;margin-bottom:-64px;-webkit-mask-image:none;mask-image:none}
 .day .top.lt.glass{background:rgba(var(--edge,246,244,239),.86);box-shadow:none}
 
+
+/* ideas for the organiser: the virtual-race mock's three screens, marked as plans */
+.endfoot{display:flow-root}
+.c-ideas{--field:#000;--ink:#fff;--ink2:rgba(255,255,255,.66);color:var(--ink)}
+.c-ideas .sub{font:400 21px/1.45 var(--text);color:var(--ink2);margin:20px 0 56px;max-width:660px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.trio figure{margin:0}
+.trio img{display:block;width:100%;height:auto;aspect-ratio:393/852;object-fit:cover;border-radius:36px;background:#111;box-shadow:0 0 0 1px rgba(255,255,255,.10)}
+.trio b{display:block;font:600 24px/1.25 var(--text);letter-spacing:-.01em;margin:26px 0 8px}
+.trio span{display:block;font:400 19px/1.45 var(--text);color:var(--ink2)}
+.c-ideas .need{font:400 19px/1.45 var(--text);color:var(--ink2);margin:56px 0 0;padding-top:28px;border-top:1px solid rgba(255,255,255,.14)}
+.mid .trio{gap:24px}.mid .trio img{border-radius:28px}.mid .trio b{font-size:21px}
+.phone .c-ideas .sub{font-size:19px;margin:16px 0 40px}
+.phone .trio{grid-template-columns:1fr;gap:56px}.phone .trio img{max-width:300px;border-radius:32px}
+.phone .trio b{font-size:21px;margin-top:22px}.phone .trio span,.phone .c-ideas .need{font-size:17px}
 </style>
 </head><body>
 <div class="page" data-page>
@@ -426,9 +441,20 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
   </div>
  </div></section>
 
+ <section class="ch c-ideas" data-room><div class="wrap">
+  <h2 class="a">Amit együtt megépíthetnénk.</h2>
+  <p class="sub a" style="--b:1">Ötletek a Hegyre Megyeknek. Ezek még nincsenek az appban: a képek tervek, nem a mostani&nbsp;Aera.</p>
+  <div class="trio a" style="--b:2">
+   <figure><img src="/media/web/verseny-otlet1-93d1da70.jpg" width="786" height="1704" loading="lazy" alt="Terv: a Nagyfröccs pályalapja, rajta a választó: Ott leszek vagy Távolról futom."><b>Futás távolról.</b><span>Aki nem jut el Badacsonyba, a versenyhéten a saját útján futja le a 21,1&nbsp;km-t, egyetlen&nbsp;futásban.</span></figure>
+   <figure><img src="/media/web/verseny-otlet2-ac078afd.jpg" width="786" height="1704" loading="lazy" alt="Terv: a Flyover a Nagyfröccs pályáját repüli végig, a futó saját idejével."><b>A futásod az ő pályájukon.</b><span>Utána az Aera a Nagyfröccs pályáján repüli végig a futást, a futó saját tempójával. Azt, hogy hol futott, nem&nbsp;mutatja.</span></figure>
+   <figure><img src="/media/web/verseny-otlet3-1eb0609a.jpg" width="786" height="1704" loading="lazy" alt="Terv: a távolról futók listája, a futó idejével és helyezésével."><b>Lista, csak ha a futó kéri.</b><span>Csak a név és az idő megy a szervezőhöz. Az útvonal és a pulzus a futó telefonján&nbsp;marad.</span></figure>
+  </div>
+  <p class="need a" style="--b:3">Ehhez két dolog kellene: a versenyhét dátumai, és egy hely, ahová a listára kért idők&nbsp;beérkeznek.</p>
+ </div></section>
+
  <section class="close endfoot" data-room><div class="wrap">
   <footer class="foot">
-   <div class="fmark"><a class="mark" href="/"><i></i>Aera</a><p>Every reading, against your usual.<br>Free to start, no&nbsp;account.</p></div>
+   <div class="fmark"><a class="mark" href="/hu.html"><i></i>Aera</a><p>Egészségapp, amelyik megmutatja, hogyan számol. Magyarországon&nbsp;készül.</p></div>
    <div class="fcol"><b>Az app</b><a href="/hu.html#body">A tested</a><a href="/hu.html#replay">Visszajátszás</a><a href="/ujdonsagok.html">Újdonságok</a></div>
    <div class="fcol"><b>Olvasnivaló</b><a href="/learn/hu/">Tudástár</a><a href="/guides/#hu">Útmutatók</a></div>
    <div class="fcol"><b>Segítség</b><a href="/support.html">Támogatás</a><a href="/adatvedelem.html">Adatvédelem</a><a href="/felhasznalasi-feltetelek.html">Felhasználási feltételek</a></div>
