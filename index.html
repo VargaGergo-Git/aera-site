@@ -427,6 +427,60 @@ h1,h2{text-wrap:balance}
 .phone .qa{margin-top:36px}.phone .qa>div{grid-template-columns:1fr;gap:10px;padding:24px 0}
 .phone .qa h3{font-size:20px}.phone .qa p,.phone .qmore{font-size:18px}
 
+
+/* ---- round 16: every number opens an article; the page opens it the way the app's reader does ---- */
+.c-art{--field:var(--paper);--room:var(--ink2);--pen:#005B46}
+.night .c-art{--pen:#76D3B4}
+.arthead,.artbody{display:grid;grid-template-columns:minmax(0,1fr) 560px;gap:80px}
+.arthead{align-items:stretch}
+.arttext{padding-bottom:80px}
+.mid .arttext,.phone .arttext{padding-bottom:0}
+.arttext .line{max-width:none;margin-top:22px}
+.artcta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.c-art .pill{height:54px;padding:0 26px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;font:600 19px var(--text);background:var(--ink);color:var(--paper);white-space:nowrap;text-decoration:none;transition:transform .25s var(--smooth)}
+.c-art .pill.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink3)}
+.c-art .pill:active{transform:scale(.97)}
+.tapn{display:flex;flex-direction:column;align-items:flex-start;padding-top:52px;color:inherit;text-decoration:none}
+.tapn span{font-size:19px;color:var(--ink2)}
+.tapn b{font:600 64px/1.05 var(--rounded);letter-spacing:-1.8px;margin-top:6px;color:var(--ink)}
+.tapn b small{font:600 24px var(--rounded);color:var(--ink2);margin-left:5px;letter-spacing:0}
+.drop{display:block;flex:1;min-height:96px;width:2px;margin:14px 0 0 38px;border-radius:1px 1px 0 0;background:var(--pen);transform-origin:top}
+.drop{position:relative}
+.drop:after{content:"";position:absolute;left:-3px;bottom:-4px;width:8px;height:8px;border-radius:50%;background:var(--pen)}
+.drop.a{transform:scaleY(0)}
+.artd{display:block;color:inherit;text-decoration:none}
+.bandw{height:280px;transform-origin:top}
+.bandw.a{transform:scaleY(.35)}
+.in .drop.a,.in .bandw.a{transform:none}
+.bandw svg{display:block;width:100%;height:100%}
+.night .bandw svg{filter:saturate(1.15) brightness(.84)}
+.sheet{position:relative;margin-top:-40px;padding-top:44px;background:var(--paper);border-radius:40px 40px 0 0}
+.artbody{align-items:start}
+.sheet .meta{font-size:19px;color:var(--ink2)}.sheet .meta span{color:var(--pen);font-weight:600}
+.sheet .ttl{font:700 48px/1.06 var(--serif);letter-spacing:-.015em;color:var(--ink);margin-top:12px}
+.sheet .sf{font-size:22px;line-height:1.45;color:var(--ink);margin-top:18px;max-width:640px}
+.chq{padding-top:4px}
+.chq .rule{display:flex;align-items:center;gap:16px;font:600 19px var(--rounded);color:var(--pen)}
+.chq .rule i{flex:1;height:1px;background:var(--pen);opacity:.28}
+.chq .q{font:600 30px/1.2 var(--serif);letter-spacing:-.01em;color:var(--ink);margin-top:16px}
+.chq .ans{font-size:22px;line-height:1.45;color:var(--ink);margin-top:12px}
+.mid .arthead,.mid .artbody,.phone .arthead,.phone .artbody{grid-template-columns:minmax(0,1fr);gap:0}
+.mid .tapn,.phone .tapn{padding-top:56px}
+.mid .chq{margin-top:48px;max-width:600px}
+.mid .bandw{height:240px}
+.phone .tapn{padding-top:44px}
+.phone .tapn b{font-size:52px}
+.phone .drop{min-height:56px;margin-left:30px}
+.phone .bandw{height:200px}
+.phone .sheet{margin-top:-24px;padding-top:28px;border-radius:24px 24px 0 0}
+.phone .sheet .meta,.phone .chq .rule{font-size:17px}
+.phone .sheet .ttl{font-size:34px}
+.phone .sheet .sf{font-size:19px}
+.phone .chq{margin-top:36px}
+.phone .chq .q{font-size:24px}
+.phone .chq .ans{font-size:19px}
+.phone .artcta{margin-top:28px}
+.phone .c-art .pill{flex:1 1 auto;height:50px;padding:0 20px;font-size:18px}
 </style>
 </head><body>
 <div class="page" data-page>
@@ -471,6 +525,29 @@ new MutationObserver(reTheme).observe(document.documentElement, {attributes: tru
    </div>
   </div>
  </div></section>
+
+ <section class="ch c-art" id="articles" data-room>
+ <div class="wrap arthead">
+  <div class="arttext">
+   <div class="k a"><svg class="ic g" viewBox="-60.36 -74.41 299 299" fill="currentColor" aria-hidden="true"><path d="M0.00 134.50C0.00 142.10 5.07 145.93 11.41 145.93C14.54 145.93 17.00 144.44 20.88 142.13C29.41 136.60 39.19 133.37 49.11 133.46C59.85 133.48 70.18 137.43 78.46 145.21C82.35 148.81 85.52 150.18 89.15 150.18C92.77 150.18 96.02 148.80 99.82 145.21C108.13 137.45 118.43 133.48 129.17 133.46C139.10 133.37 148.95 136.60 157.40 142.13C161.27 144.44 163.74 145.93 166.93 145.93C173.22 145.93 178.28 142.10 178.28 134.50L178.28 28.48C178.28 26.75 178.00 25.21 177.11 23.67C169.52 10.41 150.81 0.00 128.82 0.00C112.43 0.00 97.68 6.16 89.15 15.31C80.60 6.16 65.85 0.00 49.47 0.00C27.54 0.00 8.77 10.41 1.17 23.67C0.29 25.21 0.00 26.75 0.00 28.48ZM17.39 124.30L17.39 31.06C23.50 22.86 36.18 17.39 49.47 17.39C63.16 17.39 75.22 22.92 80.45 31.44L80.45 125.38C72.57 119.89 61.16 116.01 49.47 116.01C37.19 116.01 25.60 119.20 17.39 124.30ZM97.83 125.38L97.83 31.44C103.06 22.92 115.18 17.39 128.82 17.39C142.09 17.39 154.84 22.86 160.90 31.06L160.90 124.30C152.74 119.20 141.09 116.01 128.82 116.01C117.13 116.01 105.76 119.89 97.83 125.38Z"/></svg>Articles</div>
+   <h2 class="a" style="--b:1">Every number opens an&nbsp;article.</h2>
+   <p class="line a" style="--b:2">Tap one to read what it means, with the studies behind&nbsp;it.</p>
+   <div class="artcta a" style="--b:3"><a class="pill" href="/learn/what-is-heart-rate-variability.html">Read this article</a><a class="pill ghost" href="/learn/">All articles</a></div>
+  </div>
+  <a class="tapn" href="/learn/what-is-heart-rate-variability.html" aria-label="HRV 79 ms opens the article Heart rate variability"><span class="a" style="--b:2">HRV</span><b class="a" style="--b:2">79<small>ms</small></b><i class="drop a" style="--b:3"></i></a>
+ </div>
+ <a class="artd" href="/learn/what-is-heart-rate-variability.html" tabindex="-1" aria-hidden="true">
+  <div class="bandw a" style="--b:4"><svg viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hbAir" gradientUnits="userSpaceOnUse" x1="680.0" y1="0" x2="920.0" y2="300"><stop offset="0" stop-color="#74D0B3"/><stop offset=".3" stop-color="#54B697"/><stop offset=".55" stop-color="#49B4AE"/><stop offset=".78" stop-color="#3EB2C4"/><stop offset="1" stop-color="#69A2AA"/></linearGradient><radialGradient id="hbLamp" gradientUnits="userSpaceOnUse" cx="800.0" cy="195.0" r="340"><stop offset="0" stop-color="#77E2DC" stop-opacity=".55"/><stop offset="1" stop-color="#77E2DC" stop-opacity="0"/></radialGradient><radialGradient id="hbVig" cx=".5" cy=".5" r=".62"><stop offset=".42" stop-color="#073E47" stop-opacity="0"/><stop offset="1" stop-color="#073E47" stop-opacity="0.290"/></radialGradient><filter id="hbBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="46"/></filter><clipPath id="hbAll"><rect width="1600" height="300"/></clipPath><clipPath id="hbR0"><rect x="0.00" width="100.50" height="300"/></clipPath><clipPath id="hbR1"><rect x="100.00" width="100.50" height="300"/></clipPath><clipPath id="hbR2"><rect x="200.00" width="100.50" height="300"/></clipPath><clipPath id="hbR3"><rect x="300.00" width="100.50" height="300"/></clipPath><clipPath id="hbR4"><rect x="400.00" width="100.50" height="300"/></clipPath><clipPath id="hbR5"><rect x="500.00" width="100.50" height="300"/></clipPath><clipPath id="hbR6"><rect x="600.00" width="100.50" height="300"/></clipPath><clipPath id="hbR7"><rect x="700.00" width="100.50" height="300"/></clipPath><clipPath id="hbR8"><rect x="800.00" width="100.50" height="300"/></clipPath><clipPath id="hbR9"><rect x="900.00" width="100.50" height="300"/></clipPath><clipPath id="hbR10"><rect x="1000.00" width="100.50" height="300"/></clipPath><clipPath id="hbR11"><rect x="1100.00" width="100.50" height="300"/></clipPath><clipPath id="hbR12"><rect x="1200.00" width="100.50" height="300"/></clipPath><clipPath id="hbR13"><rect x="1300.00" width="100.50" height="300"/></clipPath><clipPath id="hbR14"><rect x="1400.00" width="100.50" height="300"/></clipPath><clipPath id="hbR15"><rect x="1500.00" width="100.50" height="300"/></clipPath><linearGradient id="hbFlute"><stop offset="0" stop-color="#073E47" stop-opacity="0.093"/><stop offset="0.14" stop-color="#073E47" stop-opacity="0.000"/><stop offset="0.22" stop-color="#FFFFFF" stop-opacity="0.000"/><stop offset="0.3" stop-color="#FFFFFF" stop-opacity="0.060"/><stop offset="0.4" stop-color="#FFFFFF" stop-opacity="0.000"/><stop offset="0.62" stop-color="#073E47" stop-opacity="0.000"/><stop offset="1" stop-color="#073E47" stop-opacity="0.128"/></linearGradient><g id="hbBack" clip-path="url(#hbAll)"><rect width="1600" height="300" fill="url(#hbAir)"/><rect width="1600" height="300" fill="url(#hbLamp)"/><ellipse cx="1100.0" cy="300.0" rx="300" ry="150" fill="#52B5C4" opacity=".9" filter="url(#hbBlur)"/><ellipse cx="470.0" cy="30.0" rx="250" ry="120" fill="#84E4B5" opacity=".6" filter="url(#hbBlur)"/><rect width="1600" height="300" fill="url(#hbVig)"/></g></defs><g clip-path="url(#hbR0)"><use href="#hbBack" transform="translate(50.00 0) scale(1.3 1) translate(-50.00 0)"/></g><g clip-path="url(#hbR1)"><use href="#hbBack" transform="translate(150.00 0) scale(1.3 1) translate(-150.00 0)"/></g><g clip-path="url(#hbR2)"><use href="#hbBack" transform="translate(250.00 0) scale(1.3 1) translate(-250.00 0)"/></g><g clip-path="url(#hbR3)"><use href="#hbBack" transform="translate(350.00 0) scale(1.3 1) translate(-350.00 0)"/></g><g clip-path="url(#hbR4)"><use href="#hbBack" transform="translate(450.00 0) scale(1.3 1) translate(-450.00 0)"/></g><g clip-path="url(#hbR5)"><use href="#hbBack" transform="translate(550.00 0) scale(1.3 1) translate(-550.00 0)"/></g><g clip-path="url(#hbR6)"><use href="#hbBack" transform="translate(650.00 0) scale(1.3 1) translate(-650.00 0)"/></g><g clip-path="url(#hbR7)"><use href="#hbBack" transform="translate(750.00 0) scale(1.3 1) translate(-750.00 0)"/></g><g clip-path="url(#hbR8)"><use href="#hbBack" transform="translate(850.00 0) scale(1.3 1) translate(-850.00 0)"/></g><g clip-path="url(#hbR9)"><use href="#hbBack" transform="translate(950.00 0) scale(1.3 1) translate(-950.00 0)"/></g><g clip-path="url(#hbR10)"><use href="#hbBack" transform="translate(1050.00 0) scale(1.3 1) translate(-1050.00 0)"/></g><g clip-path="url(#hbR11)"><use href="#hbBack" transform="translate(1150.00 0) scale(1.3 1) translate(-1150.00 0)"/></g><g clip-path="url(#hbR12)"><use href="#hbBack" transform="translate(1250.00 0) scale(1.3 1) translate(-1250.00 0)"/></g><g clip-path="url(#hbR13)"><use href="#hbBack" transform="translate(1350.00 0) scale(1.3 1) translate(-1350.00 0)"/></g><g clip-path="url(#hbR14)"><use href="#hbBack" transform="translate(1450.00 0) scale(1.3 1) translate(-1450.00 0)"/></g><g clip-path="url(#hbR15)"><use href="#hbBack" transform="translate(1550.00 0) scale(1.3 1) translate(-1550.00 0)"/></g><rect x="0.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="100.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="200.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="300.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="400.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="500.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="600.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="700.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="800.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="900.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1000.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1100.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1200.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1300.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1400.00" width="100.00" height="300" fill="url(#hbFlute)"/><rect x="1500.00" width="100.00" height="300" fill="url(#hbFlute)"/></svg></div>
+  <div class="sheet"><div class="wrap artbody">
+   <div class="artlead a" style="--b:5">
+    <p class="meta"><span>Vitals</span> &#183; Basics &#183; 5 min &#183; 12&nbsp;sources</p>
+    <p class="ttl">Heart rate variability</p>
+    <p class="sf">Heart rate variability is the tiny change in time from one heartbeat to the next, made by the nerves that steer your heart. A healthy heart at rest keeps varying, low variation has gone with early death in heart patients, and your own usual is the fair&nbsp;comparison.</p>
+   </div>
+   <div class="chq a" style="--b:6"><p class="rule"><span>4</span><i></i></p><p class="q">Is a higher number better?</p><p class="ans">After a heart attack, low variation has gone with early death. Among healthy adults, normal covers a huge&nbsp;range.</p></div>
+  </div></div>
+ </a>
+</section>
 
  <section class="ch c-sleep" data-room><div class="wrap">
   <div class="k a"><svg class="ic" viewBox="-70.47 -67.82 299 299" fill="currentColor" aria-hidden="true"><path d="M82.31 161.12C116.09 161.12 144.36 140.88 156.93 113.52C160.44 105.87 155.21 101.28 148.69 103.81C142.29 106.28 132.49 108.28 123.83 108.28C79.13 108.28 53.69 82.90 53.69 38.20C53.69 29.58 55.82 19.52 58.85 12.23C61.99 4.93 56.69 0.00 49.29 3.30C20.83 15.74 0.00 44.64 0.00 78.81C0.00 124.24 36.89 161.12 82.31 161.12ZM82.31 144.94C45.84 144.94 16.22 115.27 16.22 78.81C16.22 59.05 25.78 42.01 38.70 31.16C38.04 34.66 37.64 37.85 37.67 41.51C38.86 92.05 69.76 123.04 120.25 124.32C123.44 124.35 126.54 124.02 129.13 123.64C118.17 136.29 101.57 144.94 82.31 144.94Z"/></svg>Sleep</div>
