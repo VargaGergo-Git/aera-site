@@ -481,6 +481,15 @@ h1,h2{text-wrap:balance}
 .phone .chq .ans{font-size:19px}
 .phone .artcta{margin-top:28px}
 .phone .c-art .pill{flex:1 1 auto;height:50px;padding:0 20px;font-size:18px}
+
+/* ---- round 18: the header's glass ends in a soft edge, as the app's bars do over scrolling content (text dissolves
+   under it instead of being cut); by day the glass takes the colour of the chapter beneath it ---- */
+.top.glass{background:rgba(12,12,14,.8);height:100px;margin-bottom:-100px;box-shadow:none;pointer-events:none;-webkit-mask-image:linear-gradient(#000 72px,rgba(0,0,0,.55) 84px,rgba(0,0,0,.18) 93px,rgba(0,0,0,0) 100px);mask-image:linear-gradient(#000 72px,rgba(0,0,0,.55) 84px,rgba(0,0,0,.18) 93px,rgba(0,0,0,0) 100px)}
+.phone .top.glass{height:92px;margin-bottom:-92px;-webkit-mask-image:linear-gradient(#000 64px,rgba(0,0,0,.55) 76px,rgba(0,0,0,.18) 85px,rgba(0,0,0,0) 92px);mask-image:linear-gradient(#000 64px,rgba(0,0,0,.55) 76px,rgba(0,0,0,.18) 85px,rgba(0,0,0,0) 92px)}
+.top.glass .bar{pointer-events:auto}
+.top.glass.menu-on{height:72px;margin-bottom:-72px;pointer-events:auto;-webkit-mask-image:none;mask-image:none}
+.phone .top.glass.menu-on{height:64px;margin-bottom:-64px;-webkit-mask-image:none;mask-image:none}
+.day .top.lt.glass{background:rgba(var(--edge,246,244,239),.86);box-shadow:none}
 </style>
 </head><body>
 <div class="page" data-page>
@@ -821,8 +830,14 @@ document.querySelectorAll('[data-page]').forEach(page => {
       if (a.dataset.go === 'c-age') c.querySelectorAll('ellipse').forEach((e, i) => e.setAttribute('fill', ['#EF7A3C', '#F0BE45', '#8F8FE6', '#F25B83', '#6C66E6', '#8C8A88'][i])); }
     a.onclick = () => ch.scrollIntoView({behavior: 'smooth'}); });
   if (!still) { const top = page.querySelector('.top'), film = page.querySelector('.open'), links = page.querySelectorAll('.rooms a[data-go]');
-    const tick = () => { const y = top.getBoundingClientRect().bottom;
+    const lt0 = top.classList.contains('lt'), groundAt = y => { for (const s of page.querySelectorAll('[data-room]')) { const b = s.getBoundingClientRect();
+        if (b.top <= y && b.bottom > y) { const c = getComputedStyle(s).backgroundColor.match(/[\d.]+/g).map(Number); if (c.length < 4 || c[3] > 0) return c; } }
+      return getComputedStyle(page).backgroundColor.match(/[\d.]+/g).map(Number); };
+    const tick = () => { const y = top.querySelector('.bar').getBoundingClientRect().bottom;
       const w = film.querySelector('.world'); top.classList.toggle('glass', w ? w.getBoundingClientRect().top < y - 1 : film.getBoundingClientRect().bottom < y + 40);
+      /* by day the glass takes the ground of the chapter beneath it; over black, and at night, it stays dark */
+      const g = top.classList.contains('glass'), c = g && page.classList.contains('day') && groundAt(y + 1), light = !!c && .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > 140;
+      top.classList.toggle('lt', g ? light : lt0); if (light) top.style.setProperty('--edge', c.slice(0, 3).join(','));
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
     { let q = 0; addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(() => { q = 0; tick(); }); }, {passive: true}); } tick(); }
   const rooms = page.querySelectorAll('[data-room]');
