@@ -52,7 +52,7 @@
   --sA:#E0820A;--sR:#1C93CF;--sL:#4F74E0;--sD:#6E52E8;--laneA:.16;--hub:#F3DDD0}
 .night{--paper:#1C1C1E;--ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.64);--ink3:rgba(255,255,255,.46);--hair:rgba(255,255,255,.12);
   --plate:rgba(255,255,255,.07);--track:rgba(255,255,255,.11);--band:#4F675F;--bandEdge:transparent;--pearl:#fff;
-  --fRec:#1F3326;--fSleep:#2C2843;--fAge:#3A2A24;--recInk:#3CB464;--sleepInk:#8E8CF0;--ageInk:#EF8A55;--care:#F1B451;
+  --fRec:#1F3326;--fSleep:#2C2843;--fAge:#2E1D17;--recInk:#3CB464;--sleepInk:#8E8CF0;--ageInk:#EF8A55;--care:#F1B451;
   --sA:#EF951F;--sR:#64D2FF;--sL:#6D92EC;--sD:#8266F0;--laneA:.2;--hub:#3A2A24}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#141210;font-family:var(--text);display:flex;gap:76px;padding:56px;align-items:flex-start}
@@ -273,6 +273,15 @@ button.burger{padding:0;font:inherit}button.play{border:0;font:inherit;color:#ff
 /* ---- on aerahealth.app: a jump to an anchor clears the header; the languages sit at the foot ---- */
 [id]{scroll-margin-top:96px}
 .fbase .flangs{flex-direction:row;gap:24px;margin-left:auto}.phone .fbase .flangs{margin-left:0}
+
+/* ---- round 4: balanced headlines, one sentence per closing line, tablet footer and stacks ---- */
+h1,h2{text-wrap:balance}
+.desk .close h2{font-size:min(96px,7.4vw);max-width:none}
+.close h2 .ln{display:block;text-wrap:balance}
+.mid .toprow{grid-template-columns:1fr;gap:20px;align-items:start}
+.mid .foot{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 48px}
+.mid .fmark{grid-column:1/-1}
+.fcol a{white-space:nowrap}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -420,6 +429,7 @@ function drawNight(svg) {
   wake.forEach((x, i) => { const c = el('circle', {cx: x, cy: Y.A, r: ph ? 7 : 10, class: 'dot', style: 'fill:var(--sA)'});
     c.style.opacity = 0; c.style.transition = `opacity .4s ${1.6 + i * .15}s`; svg.append(c); });
   [['23:18', 0], ['01:00', 102], ['03:00', 222], ['06:00', 402]].forEach(([t, mm], i) => {
+    if (i === 1 && svg.closest('.phone')) return;
     const s = el('text', {x: xmm(mm), y: H - 4, 'text-anchor': i === 0 ? 'start' : i === 3 ? 'end' : 'middle', 'font-size': svg.closest('.phone') ? 17 : 19, 'font-weight': i === 3 ? 600 : 400, style: `fill:${i === 3 ? 'var(--ink)' : 'var(--ink2)'}`}); s.textContent = t; svg.append(s); });
 }
 
