@@ -325,6 +325,20 @@ h1,h2{text-wrap:balance}
 /* ---- round 7: the real app icon, labels on every chapter ---- */
 .mark i{background:url(/assets/icon-300.png) center/cover no-repeat;border-radius:24%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.14)}
 .close .k{justify-content:center;--room:rgba(255,255,255,.66)}
+
+/* ---- round 11: the app's row mark: the outline symbol on a glass square washed with its hue (SettingsMark); dark glass by night and on the chapters that stay black by day ---- */
+.ic{width:34px;height:34px;flex:none;border-radius:8.5px;--wash:28%;--glass:rgba(255,255,255,.86);
+ background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0) 60%),color-mix(in srgb,currentColor var(--wash),var(--glass));
+ box-shadow:0 0 0 .5px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(255,255,255,.5),0 1px 3px rgba(0,0,0,.05)}
+.night .ic,.close .ic,.c-run .ic,.wfilm .ic{--wash:16%;--glass:rgba(255,255,255,.12);
+ background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0) 60%),color-mix(in srgb,currentColor var(--wash),var(--glass));
+ box-shadow:inset 0 0 0 .5px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(255,255,255,.1)}
+.ic.g{--wash:0%;color:var(--ink)}
+.close .ic{color:#fff}
+.k,.tp{gap:12px}
+.toc a .ic{width:32px;height:32px;border-radius:8px}
+.toc a:not(:has(svg)){padding-left:44px}
+.phone .ic{width:32px;height:32px;border-radius:8px}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -343,14 +357,14 @@ h1,h2{text-wrap:balance}
 
  <section class="ch c-run" data-room><div class="wrap"><div class="split">
   <div>
-   <div class="k a"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg>Anywhere</div>
+   <div class="k a"><svg class="ic" viewBox="-117.44 -64.17 299 299" fill="currentColor" aria-hidden="true"><path d="M-0.00 32.18C-0.00 46.83 9.74 59.17 23.13 63.07L23.13 137.25C23.13 157.11 28.73 170.65 32.06 170.65C35.33 170.65 40.85 157.21 40.85 137.25L40.85 63.07C54.33 59.27 64.13 46.83 64.13 32.18C64.13 14.44 49.90 0.00 32.06 0.00C14.25 0.00 -0.00 14.44 -0.00 32.18ZM22.95 34.02C17.13 34.02 11.99 28.90 11.99 22.97C11.99 17.02 17.13 12.01 22.95 12.01C29.00 12.01 33.92 17.02 33.92 22.97C33.92 28.90 29.00 34.02 22.95 34.02Z"/></svg>Anywhere</div>
    <h2 class="a" style="--b:1">Wherever you&nbsp;ran.</h2>
    <p class="line a" style="--b:3">The coast path at Tamarama, Sydney, flown over Apple&#8217;s 3D ground. Every run with a route replays the same&nbsp;way.</p>
   </div>
   </div></div><div class="map a" style="--b:2"><img class="d" src="/media/web/108d4e45cb.jpg" alt="A coastal morning run at Tamarama, Sydney, replayed in 3D in Aera"><img class="p" src="/media/web/f0efb19112.jpg" alt=""><span class="credit">Apple Maps</span></div></section>
 
  <section class="ch c-facts" data-room><div class="wrap">
-  <div class="k a"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.4"/><path d="M12 11.2v5.6"/><path d="M12 7.6v.1"/></svg>Good to know</div>
+  <div class="k a"><svg class="ic g" viewBox="-68.03 -68.06 299 299" fill="currentColor" aria-hidden="true"><path d="M81.44 162.87C126.43 162.87 162.95 126.43 162.95 81.44C162.95 36.44 126.43 0.00 81.44 0.00C36.51 0.00 0.00 36.44 0.00 81.44C0.00 126.43 36.51 162.87 81.44 162.87ZM81.44 145.01C46.30 145.01 17.91 116.57 17.91 81.44C17.91 46.30 46.30 17.87 81.44 17.87C116.59 17.87 145.02 46.30 145.02 81.44C145.02 116.57 116.59 145.01 81.44 145.01ZM64.33 123.14L101.93 123.14C105.57 123.14 108.39 120.53 108.39 116.77C108.39 113.27 105.57 110.51 101.93 110.51L91.02 110.51L91.02 76.50C91.02 71.57 88.57 68.40 83.97 68.40L65.73 68.40C62.05 68.40 59.18 71.19 59.18 74.64C59.18 78.40 62.05 81.01 65.73 81.01L76.76 81.01L76.76 110.51L64.33 110.51C60.70 110.51 57.81 113.27 57.81 116.77C57.81 120.53 60.70 123.14 64.33 123.14ZM81.14 57.66C87.35 57.66 92.29 52.62 92.29 46.51C92.29 40.23 87.35 35.28 81.14 35.28C75.04 35.28 69.94 40.23 69.94 46.51C69.94 52.62 75.04 57.66 81.14 57.66Z"/></svg>Good to know</div>
   <h2 class="a" style="--b:1">The plain&nbsp;facts.</h2>
   <div class="rows a" style="--b:1">
    <p><b>The last 7 days, free.</b><span>Any run from the past week replays free. Older runs come with&nbsp;Premium.</span></p>
