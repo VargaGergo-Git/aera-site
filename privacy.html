@@ -246,9 +246,9 @@ h2{font:700 64px/1.04 var(--serif);letter-spacing:-.015em}
 /* the header over paper (light mode on pages that open on paper) */
 .day .top.lt{color:rgba(0,0,0,.88)}
 .day .top.lt:before{opacity:0}
-.day .top.lt .rooms{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.day .top.lt .rooms{background:rgba(0,0,0,.06);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .day .top.lt .rooms a{color:rgba(0,0,0,.7)}.day .top.lt .rooms a:hover{color:rgba(0,0,0,.88)}
-.day .top.lt .rooms a.on{background:rgba(0,0,0,.075);color:rgba(0,0,0,.88)}
+.day .top.lt .rooms a.on{background:rgba(0,0,0,.095);color:rgba(0,0,0,.88)}
 .day .top.lt .dl:before{background:#1C1C1E;color:#fff}
 .day .top.lt .burger{background:rgba(0,0,0,.06)}
 .day .top.lt.glass{background:rgba(246,244,239,.76);box-shadow:inset 0 -1px 0 rgba(0,0,0,.08)}
@@ -657,7 +657,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
     const tick = () => { const y = top.querySelector('.bar').getBoundingClientRect().bottom;
       const hl = film.querySelector('h1'); top.classList.toggle('glass', hl ? hl.getBoundingClientRect().top < y + 12 : film.getBoundingClientRect().bottom < y + 40);
       /* by day the glass takes the ground of the chapter beneath it; over black, and at night, it stays dark */
-      const g = top.classList.contains('glass'), c = g && page.classList.contains('day') && groundAt(y + 1), light = !!c && .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > 140;
+      const g = top.classList.contains('glass'), c = g && page.classList.contains('day') && groundAt(y / 2), light = !!c && .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > 140;
       top.classList.toggle('lt', g ? light : lt0); if (light) top.style.setProperty('--edge', c.slice(0, 3).join(','));
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
     { let q = 0; addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(() => { q = 0; tick(); }); }, {passive: true}); } tick(); }

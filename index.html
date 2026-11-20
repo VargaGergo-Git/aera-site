@@ -222,9 +222,9 @@ h2{font:700 64px/1.04 var(--serif);letter-spacing:-.015em}
 /* the header over paper (light mode on pages that open on paper) */
 .day .top.lt{color:rgba(0,0,0,.88)}
 .day .top.lt:before{opacity:0}
-.day .top.lt .rooms{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.day .top.lt .rooms{background:rgba(0,0,0,.06);box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
 .day .top.lt .rooms a{color:rgba(0,0,0,.7)}.day .top.lt .rooms a:hover{color:rgba(0,0,0,.88)}
-.day .top.lt .rooms a.on{background:rgba(0,0,0,.075);color:rgba(0,0,0,.88)}
+.day .top.lt .rooms a.on{background:rgba(0,0,0,.095);color:rgba(0,0,0,.88)}
 .day .top.lt .dl:before{background:#1C1C1E;color:#fff}
 .day .top.lt .burger{background:rgba(0,0,0,.06)}
 .day .top.lt.glass{background:rgba(246,244,239,.76);box-shadow:inset 0 -1px 0 rgba(0,0,0,.08)}
@@ -553,7 +553,7 @@ new MutationObserver(reTheme).observe(document.documentElement, {attributes: tru
     <p class="ttl">Heart rate variability</p>
     <p class="sf">Heart rate variability is the tiny change in time from one heartbeat to the next, made by the nerves that steer your heart. A healthy heart at rest keeps varying, low variation has gone with early death in heart patients, and your own usual is the fair&nbsp;comparison.</p>
    </div>
-   <div class="chq a" style="--b:6"><p class="rule"><span>4</span><i></i></p><p class="q">Is a higher number better?</p><p class="ans">After a heart attack, low variation has gone with early death. Among healthy adults, normal covers a huge&nbsp;range.</p></div>
+   <div class="chq a" style="--b:6"><p class="rule"><span>Chapter 4</span><i></i></p><p class="q">Is a higher number better?</p><p class="ans">After a heart attack, low variation has gone with early death. Among healthy adults, normal covers a huge&nbsp;range.</p></div>
   </div></div>
  </a>
 </section>
@@ -671,7 +671,7 @@ new MutationObserver(reTheme).observe(document.documentElement, {attributes: tru
 <script>
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
-const FILM = {desk: ['/media/web/film-site-abfef031.mp4', '/media/web/film-site-1cbbac46.jpg'], phone: ['/media/web/film-phone-018dcf13.mp4', '/media/web/film-phone-de82d110.jpg']};
+const FILM = {desk: ['/media/web/film-site-8ea0670f.mp4', '/media/web/film-site-d7ad921f.jpg'], phone: ['/media/web/film-phone-1e45cdca.mp4', '/media/web/film-phone-414a3d91.jpg']};
 
 /* the night (the film's press seed): 6 h 37 m asleep in 402 min, from 23:18 to 06:00 */
 const NIGHT = [['L',12],['D',28],['L',22],['R',14],['L',30],['D',22],['L',26],['R',22],['A',2],['L',30],['D',12],
@@ -836,7 +836,7 @@ document.querySelectorAll('[data-page]').forEach(page => {
     const tick = () => { const y = top.querySelector('.bar').getBoundingClientRect().bottom;
       const w = film.querySelector('.world'); top.classList.toggle('glass', w ? w.getBoundingClientRect().top < y - 1 : film.getBoundingClientRect().bottom < y + 40);
       /* by day the glass takes the ground of the chapter beneath it; over black, and at night, it stays dark */
-      const g = top.classList.contains('glass'), c = g && page.classList.contains('day') && groundAt(y + 1), light = !!c && .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > 140;
+      const g = top.classList.contains('glass'), c = g && page.classList.contains('day') && groundAt(y / 2), light = !!c && .2126 * c[0] + .7152 * c[1] + .0722 * c[2] > 140;
       top.classList.toggle('lt', g ? light : lt0); if (light) top.style.setProperty('--edge', c.slice(0, 3).join(','));
       links.forEach(a => { const r = page.querySelector('.' + a.dataset.go).getBoundingClientRect(); a.classList.toggle('on', r.top <= y + 1 && r.bottom > y + 1); }); };
     { let q = 0; addEventListener('scroll', () => { if (!q) q = requestAnimationFrame(() => { q = 0; tick(); }); }, {passive: true}); } tick(); }
