@@ -313,19 +313,18 @@ h1,h2{text-wrap:balance}
 .c-watch{--field:var(--fWatch);--room:var(--runInk)}
 .c-watch .toprow{display:block}.c-watch .toprow .line{max-width:620px;margin-top:22px}
 .wpair{display:flex;flex-wrap:wrap;align-items:flex-start;gap:40px;margin-top:56px}
-.wpair .wt{flex:0 1 400px;min-width:360px;height:auto;display:block}
+.wpair .wt{flex:1 1 380px;max-width:440px;position:relative}
 @media (max-width:1439px){.wpair .wstart{display:none}}
 .wpair .o{fill:#F1641C}.wpair .t7{fill:rgba(255,255,255,.74)}.wpair .t6{fill:rgba(255,255,255,.6)}.wpair .dk{fill:#173A12}
 .wpair text{fill:#fff;font-family:var(--text)}
 .wpair .wr{font-family:var(--rounded);font-weight:700}.wpair .w7{font-weight:700}.wpair .w6{font-weight:600}.wpair .w4{font-weight:400}
 .wpair .g{fill:#8E8E93}
-.phone .wpair{gap:28px;margin-top:32px;justify-content:center}.phone .wpair .wt{min-width:0;flex-basis:100%;max-width:400px}
+.phone .wpair{gap:28px;margin-top:32px;justify-content:center}.phone .wpair .wt{min-width:0;flex-basis:100%;max-width:440px}
 .mid .wpair{justify-content:center;gap:32px}
 .mid .wrap,.mid .top .wrap{padding:0 48px}
 .mid .map .play{left:48px}
 
 /* ---- round 9: real watches, staggered; one run's figures; the map without its row and stray dots ---- */
-.wpair .bd{stop-color:#26272B}.night .wpair .bd{stop-color:#303035}
 .wpair .wstart,.wpair .wturn{margin-top:72px}
 .phone .wpair .wstart,.phone .wpair .wturn,.mid .wpair .wturn{margin-top:0}
 .wpair{justify-content:center}.phone .wpair{gap:64px}
@@ -345,6 +344,12 @@ h1,h2{text-wrap:balance}
 .toc a .ic{width:32px;height:32px;border-radius:8px}
 .toc a:not(:has(svg)){padding-left:44px}
 .phone .ic{width:32px;height:32px;border-radius:8px}
+
+/* ---- round 12: Apple's own Series 11 bezel, as is; the page sits under its screen opening at 1:1 ---- */
+.wt img{position:relative;z-index:1;display:block;width:100%;height:auto}
+.wt .wscr{position:absolute;left:12.857%;top:21.818%;width:74.286%;height:56.364%;display:block;clip-path:inset(0 round 21.6% / 18.1%)}  /* r 90: inside the opening's ~105, so only the corners the case does not cover go */
+.wpair{gap:24px}
+.phone .wpair .wt{flex:0 0 calc(100% + 30px);max-width:470px;margin:0 -15px}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -414,19 +419,7 @@ h1,h2{text-wrap:balance}
   <div class="k a"><svg class="ic" viewBox="-89.58 -62.02 299 299" fill="currentColor" aria-hidden="true"><path d="M-0.00 120.36C-0.00 132.57 4.62 141.49 13.70 146.87C18.19 149.46 20.84 152.55 22.59 157.52L25.96 167.18C27.72 172.36 31.70 174.97 37.35 174.97L74.26 174.97C80.05 174.97 83.85 172.42 85.65 167.18L89.09 157.52C90.77 152.55 93.47 149.46 97.88 146.87C106.96 141.49 111.61 132.60 111.61 120.36L111.61 54.61C111.61 42.36 106.96 33.46 97.88 28.10C93.47 25.50 90.77 22.41 89.09 17.44L85.65 7.78C83.97 2.67 79.99 0.00 74.26 0.00L37.35 0.00C31.70 0.00 27.72 2.61 25.96 7.78L22.59 17.44C20.81 22.44 18.14 25.68 13.70 28.10C4.68 33.29 -0.00 42.26 -0.00 54.61ZM15.26 117.28L15.26 57.70C15.26 46.43 21.70 39.77 32.59 39.77L79.04 39.77C89.99 39.77 96.39 46.46 96.39 57.70L96.39 117.28C96.39 128.51 89.99 135.16 79.04 135.16L32.59 135.16C21.70 135.16 15.26 128.54 15.26 117.28ZM108.42 82.47L112.01 82.47C116.66 82.47 119.84 79.19 119.84 74.17L119.84 63.31C119.84 58.29 116.66 54.98 112.01 54.98L108.42 54.98Z"/></svg>Apple Watch</div>
   <div class="toprow"><h2 class="a" style="--b:1">Your pages, on your&nbsp;wrist.</h2>
    <p class="line a" style="--b:2">Pick the pages for each sport and follow turns on the way. Wear a Garmin, Polar or COROS instead? Their runs get full pages&nbsp;too.</p></div>
-  <div class="wpair a" style="--b:3" role="img" aria-label="Aera on Apple Watch: the 4.9 km loop ready to start at 12:55, a turn at Szabadság híd two minutes in, and the run at 36:14 and 4.93 km"><svg class="wt wstart" viewBox="0 0 480 640" aria-hidden="true"><defs>
- <linearGradient id="bt0" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset="0" stop-opacity="0"/><stop class="bd" offset=".5"/></linearGradient>
- <linearGradient id="bb0" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset=".5"/><stop class="bd" offset="1" stop-opacity="0"/></linearGradient>
- <linearGradient id="cs0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A2A2D"/><stop offset=".05" stop-color="#5C5C61"/><stop offset=".16" stop-color="#2C2C2F"/><stop offset=".84" stop-color="#202023"/><stop offset=".95" stop-color="#4E4E53"/><stop offset="1" stop-color="#242427"/></linearGradient>
- <linearGradient id="cr0" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2E2E31"/><stop offset=".5" stop-color="#6A6A70"/><stop offset="1" stop-color="#2A2A2D"/></linearGradient>
- <clipPath id="sc0"><rect width="416" height="496" rx="72"/></clipPath></defs>
- <rect x="88" y="0" width="288" height="72" fill="url(#bt0)"/><rect x="88" y="568" width="288" height="72" fill="url(#bb0)"/>
- <rect x="451" y="174" width="21" height="80" rx="7" fill="url(#cr0)"/><path d="M456 180v68M461 180v68M466 180v68" stroke="rgba(0,0,0,.35)" stroke-width="1.4"/>
- <rect x="452" y="292" width="13" height="98" rx="6.5" fill="url(#cr0)"/>
- <rect x="8" y="56" width="448" height="528" rx="96" fill="url(#cs0)"/>
- <rect x="8.75" y="56.75" width="446.5" height="526.5" rx="95.3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
- <rect x="18" y="66" width="428" height="508" rx="86" fill="#000"/>
- <svg x="24" y="72" width="416" height="496" viewBox="0 0 416 496"><g clip-path="url(#sc0)">
+  <div class="wpair a" style="--b:3" role="img" aria-label="Aera on Apple Watch: the 4.9 km loop ready to start at 12:55, a turn at Szabadság híd two minutes in, and the run at 36:14 and 4.93 km"><div class="wt wstart"><svg class="wscr" viewBox="0 0 416 496" aria-hidden="true">
  <rect width="416" height="496" fill="#000"/>
  <circle cx="64" cy="72" r="34" fill="#2C2C2E"/><path d="M70 58L56 72l14 14" stroke="#fff" stroke-width="5.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
  <circle cx="352" cy="72" r="34" fill="#2C2C2E"/><path d="M338 70a14 14 0 0 1 25-8M366 74a14 14 0 0 1-25 8" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M365 54v9h-9M339 90v-9h9" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
@@ -437,40 +430,16 @@ h1,h2{text-wrap:balance}
  <text x="30" y="306" class="w6" font-size="30">Loop from here</text>
  <text x="30" y="346" class="w4 g" font-size="30">Back by 13:32 · 4.9 km</text>
  <rect x="30" y="374" width="356" height="98" rx="49" fill="#8ED07B"/>
- <text x="208" y="436" class="w7 dk" font-size="34" text-anchor="middle">Start</text></g></svg></svg><svg class="wt wfig" viewBox="0 0 480 640" aria-hidden="true"><defs>
- <linearGradient id="bt1" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset="0" stop-opacity="0"/><stop class="bd" offset=".5"/></linearGradient>
- <linearGradient id="bb1" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset=".5"/><stop class="bd" offset="1" stop-opacity="0"/></linearGradient>
- <linearGradient id="cs1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A2A2D"/><stop offset=".05" stop-color="#5C5C61"/><stop offset=".16" stop-color="#2C2C2F"/><stop offset=".84" stop-color="#202023"/><stop offset=".95" stop-color="#4E4E53"/><stop offset="1" stop-color="#242427"/></linearGradient>
- <linearGradient id="cr1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2E2E31"/><stop offset=".5" stop-color="#6A6A70"/><stop offset="1" stop-color="#2A2A2D"/></linearGradient>
- <clipPath id="sc1"><rect width="416" height="496" rx="72"/></clipPath></defs>
- <rect x="88" y="0" width="288" height="72" fill="url(#bt1)"/><rect x="88" y="568" width="288" height="72" fill="url(#bb1)"/>
- <rect x="451" y="174" width="21" height="80" rx="7" fill="url(#cr1)"/><path d="M456 180v68M461 180v68M466 180v68" stroke="rgba(0,0,0,.35)" stroke-width="1.4"/>
- <rect x="452" y="292" width="13" height="98" rx="6.5" fill="url(#cr1)"/>
- <rect x="8" y="56" width="448" height="528" rx="96" fill="url(#cs1)"/>
- <rect x="8.75" y="56.75" width="446.5" height="526.5" rx="95.3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
- <rect x="18" y="66" width="428" height="508" rx="86" fill="#000"/>
- <svg x="24" y="72" width="416" height="496" viewBox="0 0 416 496"><g clip-path="url(#sc1)">
+ <text x="208" y="436" class="w7 dk" font-size="34" text-anchor="middle">Start</text></svg><img src="/media/web/apple-watch-s11-46mm-space-gray-sport-loop-forest.png" width="560" height="880" alt="" loading="lazy" decoding="async"></div><div class="wt wfig"><svg class="wscr" viewBox="0 0 416 496" aria-hidden="true">
  <defs><linearGradient id="wrun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C3512"/><stop offset=".44" stop-color="#000"/></linearGradient></defs>
  <rect width="416" height="496" fill="url(#wrun)"/>
- <text x="30" y="58" class="w6" font-size="26">Run</text><text x="386" y="58" class="w6" font-size="26" text-anchor="end">13:31</text>
+ <text x="30" y="58" class="w6" font-size="28">Run</text><text x="386" y="58" class="w6" font-size="28" text-anchor="end">13:31</text>
  <text x="26" y="192" class="wr" font-size="104" letter-spacing="-2">36:14</text>
- <text x="30" y="253" class="w6 o" font-size="25">Time</text>
+ <text x="30" y="253" class="w6 o" font-size="28">Time</text>
  <path d="M30 270.5h356" stroke="rgba(255,255,255,.2)"/>
  <text x="30" y="333" class="wr" font-size="46">4.93</text><text x="163" y="333" class="wr" font-size="46">7:21</text><text x="386" y="333" class="wr" font-size="46" text-anchor="end">154</text>
- <text x="30" y="376" class="w6 g" font-size="25">km</text><text x="163" y="376" class="w6 g" font-size="25">Avg pace</text><text x="303" y="376" class="w6 g" font-size="25">bpm</text>
- <text x="208" y="462" class="w6 g" font-size="25" text-anchor="middle">Last km 7:47</text></g></svg></svg><svg class="wt wturn" viewBox="0 0 480 640" aria-hidden="true"><defs>
- <linearGradient id="bt2" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset="0" stop-opacity="0"/><stop class="bd" offset=".5"/></linearGradient>
- <linearGradient id="bb2" x1="0" y1="0" x2="0" y2="1"><stop class="bd" offset=".5"/><stop class="bd" offset="1" stop-opacity="0"/></linearGradient>
- <linearGradient id="cs2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2A2A2D"/><stop offset=".05" stop-color="#5C5C61"/><stop offset=".16" stop-color="#2C2C2F"/><stop offset=".84" stop-color="#202023"/><stop offset=".95" stop-color="#4E4E53"/><stop offset="1" stop-color="#242427"/></linearGradient>
- <linearGradient id="cr2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2E2E31"/><stop offset=".5" stop-color="#6A6A70"/><stop offset="1" stop-color="#2A2A2D"/></linearGradient>
- <clipPath id="sc2"><rect width="416" height="496" rx="72"/></clipPath></defs>
- <rect x="88" y="0" width="288" height="72" fill="url(#bt2)"/><rect x="88" y="568" width="288" height="72" fill="url(#bb2)"/>
- <rect x="451" y="174" width="21" height="80" rx="7" fill="url(#cr2)"/><path d="M456 180v68M461 180v68M466 180v68" stroke="rgba(0,0,0,.35)" stroke-width="1.4"/>
- <rect x="452" y="292" width="13" height="98" rx="6.5" fill="url(#cr2)"/>
- <rect x="8" y="56" width="448" height="528" rx="96" fill="url(#cs2)"/>
- <rect x="8.75" y="56.75" width="446.5" height="526.5" rx="95.3" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
- <rect x="18" y="66" width="428" height="508" rx="86" fill="#000"/>
- <svg x="24" y="72" width="416" height="496" viewBox="0 0 416 496"><g clip-path="url(#sc2)">
+ <text x="30" y="376" class="w6 g" font-size="28">km</text><text x="163" y="376" class="w6 g" font-size="28">Avg pace</text><text x="303" y="376" class="w6 g" font-size="28">bpm</text>
+ <text x="208" y="462" class="w6 g" font-size="28" text-anchor="middle">Last km 7:47</text></svg><img src="/media/web/apple-watch-s11-46mm-space-gray-sport-loop-forest.png" width="560" height="880" alt="" loading="lazy" decoding="async"></div><div class="wt wturn"><svg class="wscr" viewBox="0 0 416 496" aria-hidden="true">
  <rect width="416" height="496" fill="#151C3E"/>
  <path d="M196 496C214 420 240 352 300 300C344 262 390 244 416 236V496z" fill="#1A4A3B"/>
  <path d="M0 336L176 254M70 496L150 318" stroke="#232B52" stroke-width="10" fill="none"/>
@@ -483,9 +452,9 @@ h1,h2{text-wrap:balance}
  <text x="208" y="68" class="w6" font-size="34" text-anchor="middle">12:57</text>
  <rect x="32" y="132" width="352" height="136" rx="36" fill="rgba(44,50,74,.94)" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
  <path d="M104 220L72 188M72 188v26M72 188h26" stroke="#8FB59A" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
- <text x="130" y="190" class="w7" font-size="40">Now</text><text x="130" y="225" class="w6 t7" font-size="25">Fork, keep left</text><text x="130" y="256" class="w4 t6" font-size="25">Szabadság híd</text>
+ <text x="130" y="190" class="w7" font-size="40">Now</text><text x="130" y="225" class="w6 t7" font-size="28">Fork, keep left</text><text x="130" y="256" class="w4 t6" font-size="28">Szabadság híd</text>
  <rect x="118" y="420" width="180" height="58" rx="29" fill="rgba(30,34,54,.92)" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
- <text x="208" y="458" class="w6" font-size="27" text-anchor="middle">92 m to go</text></g></svg></svg></div>
+ <text x="208" y="458" class="w6" font-size="28" text-anchor="middle">92 m to go</text></svg><img src="/media/web/apple-watch-s11-46mm-space-gray-sport-loop-forest.png" width="560" height="880" alt="" loading="lazy" decoding="async"></div></div>
  </div></section>
  <section class="ch c-age" data-room><div class="wrap">
   <div class="agesplit">
