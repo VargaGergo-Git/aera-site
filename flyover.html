@@ -225,10 +225,10 @@ h2{font:700 64px/1.04 var(--serif);letter-spacing:-.015em}
 .scrub i:after{content:"";position:absolute;right:-9px;top:-6px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
 .c-facts{--field:#F3EFE9;--ink:#1C1A17;--ink2:rgba(28,26,23,.66);color:var(--ink)}
 .night .c-facts{--field:#1C1C1E;--ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.64)}
-.facts{margin-top:40px;max-width:820px}
 
-.facts p{font:400 22px/1.45 var(--text);color:var(--ink2);margin-top:14px}
-.phone .facts{margin-top:24px}.phone .facts p{font-size:20px;margin-top:12px}
+
+
+
 
 /* ---- light and dark: every page follows the viewer's setting (a #still-light / #still-dark render forces one) ---- */
 .day{--runInk:#B8541E;--trendInk:#23773E}.night{--runInk:#F1641C;--trendInk:#3CB464}
@@ -311,6 +311,15 @@ h1,h2{text-wrap:balance}
 .mid .fmark{grid-column:1/-1}
 .fcol a{white-space:nowrap}
 .desk .credit{font-size:19px}
+
+/* ---- ruled rows: a short lead on the left, the plain sentence on the right ---- */
+.rows{border-bottom:1px solid var(--hair)}
+.rows p{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:baseline;padding:28px 0;border-top:1px solid var(--hair);margin:0;font:400 21px/1.45 var(--text);color:var(--ink2)}
+.rows b{font:600 26px/1.25 var(--text);letter-spacing:-.01em;color:var(--ink)}
+.mid .rows p{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+.phone .rows p{grid-template-columns:1fr;gap:6px;padding:20px 0;font-size:19px}
+.phone .rows b{font-size:22px}
+.c-facts h2{margin-bottom:48px}.phone .c-facts h2{margin-bottom:28px}
 </style>
 </head><body>
 <div class="page" data-page></div>
@@ -337,10 +346,10 @@ h1,h2{text-wrap:balance}
 
  <section class="ch c-facts" data-room><div class="wrap">
   <h2 class="a">The plain&nbsp;facts.</h2>
-  <div class="facts a" style="--b:1">
-   <p>Free for any run from the last&nbsp;7&nbsp;days. Older runs come with&nbsp;Premium.</p>
-   <p>You need an iPhone and a run with a GPS route. A run from a Garmin comes in as a&nbsp;file.</p>
-   <p>Only as exact as your watch&#8217;s&nbsp;GPS.</p>
+  <div class="rows a" style="--b:1">
+   <p><b>Free for a week.</b><span>Any run from the last 7&nbsp;days replays free. Older runs come with&nbsp;Premium.</span></p>
+   <p><b>Needs a GPS route.</b><span>And an iPhone. A run from a Garmin comes in as a&nbsp;file.</span></p>
+   <p><b>As exact as your watch.</b><span>The replay follows the GPS your watch&nbsp;recorded.</span></p>
   </div>
  </div></section>
 
