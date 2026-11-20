@@ -433,9 +433,23 @@ h1,h2{text-wrap:balance}
  .top{view-transition-name:aera-top}
 }
 </style>
+<noscript><style>.a{opacity:1!important;transform:none!important}</style></noscript>
 </head><body>
-<div class="page" data-page></div>
-<template id="tpl">
+<div class="page" data-page>
+<script>
+const PH0 = innerWidth < 760, MID0 = !PH0 && innerWidth < 1100;
+document.querySelectorAll('[data-page]').forEach(p => { p.classList.add(PH0 ? 'phone' : 'desk'); if (MID0) p.classList.add('mid'); });
+addEventListener('resize', () => { if (!matchMedia('(pointer: fine)').matches) return; const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
+
+const H = location.hash, still = H.startsWith('#still');
+const themeNow = () => /dark/.test(H) ? 'night' : /light/.test(H) ? 'day'
+  : (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark' ? 'night' : 'day';
+document.querySelectorAll('[data-page]').forEach(p => { p.classList.remove('day', 'night'); p.classList.add(themeNow()); });
+/* drawings read the theme when drawn, so a change of setting redraws the page */
+const reTheme = () => { if (!document.querySelector('[data-page].' + themeNow())) location.reload(); };
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
+new MutationObserver(reTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+</script>
 <div class="top lt"><div class="wrap"><div class="bar"><a class="mark" href="/" aria-label="Aera, home"><i></i>Aera</a>
    <nav class="rooms site"><a href="/">Your body</a><a href="/flyover.html">Replay</a><a href="/learn/">Articles</a><a href="/whats-new.html">What&#8217;s new</a></nav>
    <a class="dl" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=press-kit&amp;mt=8" aria-label="Download Aera on the App Store"></a><button class="burger" aria-label="Menu" aria-expanded="false"></button></div></div><nav class="menu"><a href="/">Your body</a><a href="/flyover.html">Replay</a><a href="/learn/">Articles</a><a href="/whats-new.html">What&#8217;s new</a><p><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a class="on" href="/press/">Press</a></p></nav></div>
@@ -462,20 +476,8 @@ h1,h2{text-wrap:balance}
    <div class="fbase"><p class="legal">&#169; 2026 Aera. Apple Health and Apple Watch are trademarks of Apple&nbsp;Inc.</p><div class="fcol flangs"><a href="/hu.html" hreflang="hu" lang="hu">Magyar</a><a href="/de.html" hreflang="de" lang="de">Deutsch</a></div></div>
   </footer>
  </div></section>
-</template>
+</div>
 <script>
-const PH0 = innerWidth < 760, MID0 = !PH0 && innerWidth < 1100;
-document.querySelectorAll('[data-page]').forEach(p => { p.classList.add(PH0 ? 'phone' : 'desk'); if (MID0) p.classList.add('mid'); });
-addEventListener('resize', () => { if (!matchMedia('(pointer: fine)').matches) return; const w = innerWidth; if ((w < 760) !== PH0 || (w >= 760 && w < 1100) !== MID0) location.reload(); });
-
-const H = location.hash, still = H.startsWith('#still');
-const themeNow = () => /dark/.test(H) ? 'night' : /light/.test(H) ? 'day'
-  : (document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark' ? 'night' : 'day';
-document.querySelectorAll('[data-page]').forEach(p => { p.classList.remove('day', 'night'); p.classList.add(themeNow()); });
-/* drawings read the theme when drawn, so a change of setting redraws the page */
-const reTheme = () => { if (!document.querySelector('[data-page].' + themeNow())) location.reload(); };
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
-new MutationObserver(reTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
 const NS = 'http://www.w3.org/2000/svg';
 const el = (n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); return e; };
 const FILM = {desk: ['', ''], phone: ['', '']};
@@ -602,7 +604,6 @@ function arrive(room) {
 }
 
 document.querySelectorAll('[data-page]').forEach(page => {
-  page.innerHTML = document.getElementById('tpl').innerHTML;
   if (still) page.classList.add('still');
   { const top = page.querySelector('.top'), cur = page.querySelector('.rooms a.on');
     if (cur) page.querySelectorAll('.menu a').forEach(a => a.classList.toggle('on', a.textContent === cur.textContent));
