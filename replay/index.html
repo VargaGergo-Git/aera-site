@@ -2,11 +2,12 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>That run, replayed in 3D · Aera</title>
-<meta name="description" content="A run flown again over the real ground, with its pace, heart rate and climb. Shared from Aera, for iPhone and Apple Watch.">
+<title>Fly over it in 3D · Aera</title>
+<meta name="description" content="Aera turns a run, walk or ride into a 3D film over the real ground. For iPhone and Apple Watch.">
 <link rel="canonical" href="https://aerahealth.app/replay/">
-<meta property="og:title" content="That run, replayed in 3D">
-<meta property="og:description" content="A run flown again over the real ground, with its pace, heart rate and climb. Shared from Aera, for iPhone and Apple Watch.">
+<link rel="icon" href="/assets/icon.png">
+<meta property="og:title" content="Where did you run? Fly over it in 3D.">
+<meta property="og:description" content="Aera turns a run, walk or ride into a 3D film over the real ground. For iPhone and Apple Watch.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aera">
 <meta property="og:url" content="https://aerahealth.app/replay/">
@@ -14,20 +15,83 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="That run, replayed in 3D">
-<meta name="twitter:description" content="A run flown again over the real ground, with its pace, heart rate and climb. Shared from Aera, for iPhone and Apple Watch.">
+<meta name="twitter:title" content="Where did you run? Fly over it in 3D.">
+<meta name="twitter:description" content="Aera turns a run, walk or ride into a 3D film over the real ground. For iPhone and Apple Watch.">
 <meta name="twitter:image" content="https://aerahealth.app/assets/share/replay.jpg">
-<meta http-equiv="refresh" content="2; url=https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=share-replay&amp;mt=8">
+<noscript><meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=share-replay&amp;mt=8"></noscript>
 <script>
-// The link that travels beside a shared replay video (the app's ShareAddress.replayCaption).
-// Same pattern as /s and /get: let the Cloudflare beacon report the visit first, then go.
-// Link previews read the meta above and never run this.
+// The link that travels beside a shared Flyover video (the app's ShareAddress.replayCaption; the path stays
+// /replay because builds in people's hands send it). On an iPhone or iPad: on to the App Store after a moment,
+// so the Cloudflare beacon can count the visit first (go anyway at 1.5 s). Anywhere else the App Store can't
+// install an iPhone app, so the page stays: the film, the store picture's line and a code to scan with the
+// iPhone (the scan opens this same page there). Link previews read the meta above and never run this.
 (function () {
-  var go = function () { location.replace("https://apps.apple.com/app/id6762456252?pt=128795793&ct=share-replay&mt=8"); };
-  addEventListener('load', function () { setTimeout(go, 400); });
-  setTimeout(go, 1500);
+  var store = "https://apps.apple.com/app/id6762456252?pt=128795793&ct=share-replay&mt=8";
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) {
+    var go = function () { location.replace(store); };
+    addEventListener('load', function () { setTimeout(go, 400); });
+    setTimeout(go, 1500);
+    return;
+  }
+  document.documentElement.className = 'desk';
+  var words = {
+    en: ["Where did you run?", "Fly over it in 3D.",
+         "Aera turns a run, walk or ride into a 3D film over the real ground. Free for the last 7 days.",
+         "Point your iPhone's camera at the code to get Aera.", "Or open the App Store page",
+         "For iPhone and Apple Watch. Free to start. No account."],
+    hu: ["Merre futottál?", "Repüld végig 3D\u2011ben.",
+         "Az Aera a futásodból, sétádból vagy bringázásodból 3D-s filmet készít a valódi terep fölött. Az elmúlt 7 nap ingyen.",
+         "Irányítsd rá az iPhone-od kameráját, és megnyílik az Aera az App Store-ban.", "Vagy nyisd meg az App Store-oldalt",
+         "iPhone-ra és Apple Watch-ra. Ingyen letölthető. Regisztráció nélkül."],
+    de: ["Wo bist du gelaufen?", "Flieg drüber in 3D.",
+         "Aera macht aus deinem Lauf, deiner Wanderung oder Radtour einen 3D-Film über echtem Gelände. Die letzten 7 Tage kostenlos.",
+         "Richte die Kamera deines iPhones auf den Code, dann öffnet sich Aera im App Store.", "Oder öffne die App-Store-Seite",
+         "Für iPhone und Apple Watch. Kostenlos, ohne Konto."]
+  };
+  var lang = (navigator.language || 'en').slice(0, 2);
+  if (!words[lang]) lang = 'en';
+  addEventListener('DOMContentLoaded', function () {
+    document.documentElement.lang = lang;
+    ['q', 'a', 'line', 'scan', 'link', 'fine'].forEach(function (id, i) { document.getElementById(id).textContent = words[lang][i]; });
+    document.getElementById('film').src = '/assets/share/flyover-' + lang + '.jpg';
+    import('/plan/qr.mjs').then(function (m) {
+      document.getElementById('code').innerHTML = m.qrSvg(location.origin + location.pathname, { dark: '#1c1c1e', light: '#ffffff' });
+    });
+  });
 })();
 </script>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
-</head><body><p><a href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=share-replay&amp;mt=8">Open Aera on the App Store</a></p></body></html>
+<style>
+body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.45 -apple-system,system-ui,sans-serif;background:#0b0b0c;color:#f2f2f2}
+a{color:inherit}
+.panel{display:none}.desk .go{display:none}
+.desk .panel{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:center;max-width:960px;padding:48px 28px;box-sizing:border-box}
+.text{display:grid;gap:14px;justify-items:start}
+.text img.icon{width:56px;height:56px;border-radius:13px}
+#q{margin:6px 0 0;font:600 26px/1.2 -apple-system,system-ui,sans-serif;color:#ff8a4c}
+#a{margin:0;font:700 clamp(40px,5.4vw,60px)/1.04 -apple-system,system-ui,sans-serif;letter-spacing:-.02em;text-wrap:balance}
+#line{margin:0;color:#b9bdc2;max-width:30em}
+.get{display:flex;gap:16px;align-items:center;margin-top:10px}
+#code{width:132px;height:132px;padding:10px;background:#fff;border-radius:18px;flex:none}
+#code svg{display:block;width:100%;height:100%}
+.get p{margin:0;font-size:15px;color:#b9bdc2;max-width:15em}
+.get a{display:block;margin-top:6px;color:#f2f2f2}
+#fine{margin:6px 0 0;font-size:13px;color:#8a8f94}
+#film{width:100%;border-radius:28px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+@media (max-width:760px){.desk .panel{grid-template-columns:minmax(0,1fr);gap:28px}#film{max-width:320px}}
+</style>
+</head><body><p class="go"><a href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=share-replay&amp;mt=8">Open Aera on the App Store</a></p>
+<main class="panel">
+  <div class="text">
+    <img class="icon" src="/assets/icon.png" alt="Aera">
+    <p id="q">Where did you run?</p>
+    <h1 id="a">Fly over it in 3D.</h1>
+    <p id="line">Aera turns a run, walk or ride into a 3D film over the real ground. Free for the last 7 days.</p>
+    <div class="get"><div id="code" role="img" aria-label="Code to open Aera on an iPhone"></div><p><span id="scan">Point your iPhone's camera at the code to get Aera.</span><a id="link" href="https://apps.apple.com/app/id6762456252?pt=128795793&amp;ct=share-replay&amp;mt=8">Or open the App Store page</a></p></div>
+    <p id="fine">For iPhone and Apple Watch. Free to start. No account.</p>
+  </div>
+  <img id="film" src="/assets/share/flyover-en.jpg" alt="A run as a 3D film over the real ground, in Aera">
+</main>
+</body></html>
