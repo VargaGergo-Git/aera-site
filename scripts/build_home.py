@@ -873,13 +873,15 @@ GET_DESK = {
 }
 
 
-def get_page(store, lang, ct):
+def get_page(store, lang, ct, ppid=None):
     """One forwarding page, out of search. On an iPhone or iPad it goes on to that language's
     App Store page with the campaign tags. Anywhere else (a computer, an Android phone) the
     App Store cannot install an iPhone app, so the page stays and shows a code to scan with
     the iPhone; the scan opens this same page there, which counts the path again and goes on.
     Without JavaScript it goes straight on, as before."""
     url = campaign(store, ct)
+    if ppid:  # an Apple-approved custom product page for this channel
+        url += ("&" if "?" in url else "?") + "ppid=" + ppid
     title, link = GET_TEXT.get(lang, GET_TEXT["en"])
     d_title, d_line, d_link, d_fine = GET_DESK.get(lang, GET_DESK["en"])
     beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '

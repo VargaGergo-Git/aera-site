@@ -1,5 +1,5 @@
 {
-  "_about": "Trackable paths for links in letters, posts and listings. Cloudflare Web Analytics drops query strings, so every channel gets its own path. /hi/<channel>/<lang>/ forwards to the homepage in that language; /get/<channel>/<lang>/ forwards to the App Store. Add a channel here (lowercase, a-z 0-9 and -), run python3 scripts/build_outreach_links.py, commit. One channel per letter type, and one per club or outlet that posts about Aera.",
+  "_about": "Trackable paths for links in letters, posts and listings. Cloudflare Web Analytics drops query strings, so every channel gets its own path. /hi/<channel>/<lang>/ forwards to the homepage in that language; /get/<channel>/<lang>/ forwards to the App Store. Add a channel here (lowercase, a-z 0-9 and -), run python3 scripts/build_outreach_links.py, commit. One channel per letter type, and one per club or outlet that posts about Aera. \"pages\" maps a channel to an Apple-approved custom product page per language (ppid); add one only after Apple approves it, then rebuild that channel.",
   "channels": [
     "mail-club",
     "mail-race",
@@ -282,5 +282,6 @@
     "list-kiralyoknyomaban",
     "list-vasemberek",
     "list-vertour"
-  ]
+  ],
+  "pages": {}
 }

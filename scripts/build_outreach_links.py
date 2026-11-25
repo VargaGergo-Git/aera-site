@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Trackable outreach links: hi/<channel>/<lang>/ and get/<channel>/<lang>/.
 
-    python3 scripts/build_outreach_links.py
+    python3 scripts/build_outreach_links.py            # every channel
+    python3 scripts/build_outreach_links.py <channel>  # just that one
 
 Letters, club posts and directory listings link to these paths instead of the bare
 homepage or store, so Cloudflare Web Analytics (which drops query strings and sees no
@@ -43,14 +44,18 @@ def hi_page(lang, url):
 
 
 def main():
-    channels = json.load(open(os.path.join(ROOT, "scripts", "outreach_links.json")))["channels"]
+    spec = json.load(open(os.path.join(ROOT, "scripts", "outreach_links.json")))
+    channels = spec["channels"]
+    pages = spec.get("pages", {})
+    if len(sys.argv) > 1:
+        channels = [ch for ch in channels if ch in sys.argv[1:]]
     n = 0
     for ch in channels:
         if not re.fullmatch(r"[a-z0-9-]+", ch):
             raise SystemExit("bad channel name: %r" % ch)
         for c in COPY.values():
             lang = c["lang"]
-            for kind, body in (("hi", hi_page(lang, HOME[lang])), ("get", get_page(c["store"], lang, "%s-%s" % (ch, lang)))):
+            for kind, body in (("hi", hi_page(lang, HOME[lang])), ("get", get_page(c["store"], lang, "%s-%s" % (ch, lang), pages.get(ch, {}).get(lang)))):
                 d = os.path.join(ROOT, kind, ch, lang)
                 os.makedirs(d, exist_ok=True)
                 with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
