@@ -1,0 +1,177 @@
+# Aera (full text for AI agents)
+
+> Aera is a sleep and running tracker for iPhone and Apple Watch. It reads Apple Health, compares last night and the past week with your own usual range, and replays runs in 3D over the real ground. Every number in the app opens a short article that shows how it was worked out and where it stops being reliable. There is no account, and health numbers are worked out and kept on the iPhone.
+
+Facts, stated plainly:
+
+- Platform: iPhone and Apple Watch (reads Apple Health). Made by one person, Gergő Varga.
+- Price: free to download and free to use. Premium is optional (monthly, yearly with a 7-day trial, or a one-time purchase).
+- Free: Your scores every day with their last 30 days (recovery, stress, strain, sleep); body age; a route planner on real paths with turn-by-turn directions on iPhone or Apple Watch and five saved routes; every workout read and every personal best; the 3D replay of any workout with a GPS route from the last seven days; the last 30 days of every export.
+- Premium: Your whole history; body age month by month; the 3D replay of older workouts, as a video to share, and of a route before you go; more than five saved routes; the report for yourself and the longer reports for your doctor.
+- Privacy: no account, no sign-in, no language model in the app. Usage counts stay off until the user turns them on (in the UK and Switzerland, until the user turns them off), and neither they nor crash reports include health values.
+- Without an Apple Watch, Aera works from what the iPhone records (steps, workouts); reads that need overnight watch data wait until there is data.
+- Not a medical device. Watch measurements such as sleep stages are estimates.
+- Languages: English, Hungarian, German, Spanish and French in full; Italian, Japanese, Portuguese and Traditional Chinese in part.
+
+This file expands https://aerahealth.app/llms.txt. The short version, with every guide and tool, is there; the main English pages are reproduced below, each with its URL. Everything here is taken from the live pages.
+
+---
+
+## Homepage
+
+URL: https://aerahealth.app/ (also in Hungarian at https://aerahealth.app/hu.html and German at https://aerahealth.app/de.html)
+
+### Every reading, against your usual.
+
+Aera reads what your watch writes to Apple Health, and says in plain words what changed and why. Free to start. No account.
+
+### Recovery: About your usual, after a short night.
+
+HRV and heart rate sat in your usual, the green band learned from your own nights. Breathing ran a little under it. (Example readings: HRV 79 ms, usual; heart rate 57 bpm, usual; breathing 14.0 brpm, under.)
+
+### Articles: Every number opens an article.
+
+Tap one to read what it means, with the studies behind it. Example: Heart rate variability (Vitals, Basics, 5 min, 12 sources): heart rate variability is the tiny change in time from one heartbeat to the next, made by the nerves that steer your heart. A healthy heart at rest keeps varying, low variation has gone with early death in heart patients, and your own usual is the fair comparison. All articles: https://aerahealth.app/learn/
+
+### Sleep: A short night, with less deep sleep than usual.
+
+Example: 6 h 37 m asleep, rated Good.
+
+### Run: Quicker than your usual.
+
+Average pace 6:35 /km against a usual of 6:44. Saturday's morning run: 5.23 km, twice round the Reservoir in New York. Every run replays in 3D over the real ground. Watch the replay: https://aerahealth.app/flyover.html
+
+### Map: A loop from where you stand.
+
+Pick a length and Aera draws it on real paths. Ask for trails, hills, flat ground, sights or quiet, or draw your own. Turn by turn on iPhone and Apple Watch.
+
+### Apple Watch: Your pages, on your wrist.
+
+Pick the pages for each sport and follow turns on the way. Wear a Garmin, Polar or COROS instead? Their runs get full pages too.
+
+### Longevity: A body two years younger than the calendar.
+
+Each petal is one part of you. Fitness takes the most: 1 year 5 months.
+
+### Questions: Before you start.
+
+**What does Aera do?**
+It reads what your watch writes to Apple Health and says, in plain words, how your sleep, stress, body age and runs sit against your own usual.
+
+**Do I need an Apple Watch?**
+No. Aera reads Apple Health, so a Garmin, Polar or COROS watch works too. Without one you still get movement, workouts and any sleep your iPhone records; the heart reads lean on a watch.
+
+**Is Aera free?**
+Yes, to start. Your daily readings with their last 30 days, routes, and Flyovers of the last 7 days are free. Premium keeps your whole history and every Flyover.
+
+**Do I need an account, and where does my data go?**
+There is no account. Aera works out every reading on your iPhone, and your health numbers stay there. The privacy policy (https://aerahealth.app/privacy.html) lists what does leave, such as map lookups.
+
+**How does Aera know what is normal for me?**
+It learns your usual from your own nights and sessions over the first weeks. Until it has enough, it says it is still learning instead of guessing.
+
+More answers: https://aerahealth.app/support.html
+
+### Your health stays on your iPhone.
+
+No account and no health server. Aera reads Apple Health on your phone and does every calculation there.
+
+Download: https://apps.apple.com/app/id6762456252
+
+---
+
+## Flyover (3D run replay)
+
+URL: https://aerahealth.app/flyover.html
+
+### Your run, flown back over the real ground.
+
+Finish a run, open it in Aera and tap Flyover. The camera lifts off and flies your route back, your pace and heart rate playing along.
+
+Wherever you ran: the coast path at Tamarama, Sydney, flown over Apple's 3D ground. Every run with a route replays the same way.
+
+The plain facts:
+
+- The last 7 days, free. Any run from the past week replays free. Older runs come with Premium.
+- Needs an iPhone and a GPS route. A run from a Garmin comes in as a file.
+- As exact as your watch. The replay follows the GPS your watch recorded.
+
+Guide for importing Garmin, Polar, COROS or Suunto runs: https://aerahealth.app/guides/replay-a-garmin-run-in-3d.html
+
+---
+
+## Pricing: free and Premium
+
+Source: the facts block of https://aerahealth.app/llms.txt and the homepage FAQ.
+
+- Aera is free to download and free to use. Premium is optional (monthly, yearly with a 7-day trial, or a one-time purchase).
+- Free: Your scores every day with their last 30 days (recovery, stress, strain, sleep); body age; a route planner on real paths with turn-by-turn directions on iPhone or Apple Watch and five saved routes; every workout read and every personal best; the 3D replay of any workout with a GPS route from the last seven days; the last 30 days of every export.
+- Premium: Your whole history; body age month by month; the 3D replay of older workouts, as a video to share, and of a route before you go; more than five saved routes; the report for yourself and the longer reports for your doctor.
+- Cancelling (Support page): open iOS Settings, tap your name at the top, then Subscriptions, Aera, Cancel Subscription. Cancelling takes effect at the end of the period you have already paid for, and you keep access until then.
+- Refunds for App Store purchases are handled by Apple, not by Aera: https://reportaproblem.apple.com
+- Restore a purchase: open Aera, go to Settings and tap Restore Purchases.
+
+More on cost, with Apple Watch only: https://aerahealth.app/guides/apple-watch-sleep-and-training-without-a-subscription.html
+
+---
+
+## Privacy (summary)
+
+URL: https://aerahealth.app/privacy.html (full policy there; last updated November 2026)
+
+### Your health data never leaves your phone.
+
+Aera works everything out on your iPhone. There is no Aera account, and Aera's own servers never see your health data. In short:
+
+- Health data stays here: read from Apple Health and worked out on this phone. Never sent.
+- Usage counts, if you say yes: which screens you open and what you tap, under a random code.
+- Crash reports: sent when something fails, so it gets fixed. No health data.
+- Maps see an area, not you: map services get the place you look at, never your name.
+- Purchases go through Apple: Aera never sees your card or your Apple ID.
+- Your rights: see, erase or object at any time. Just write.
+
+What leaves, and where:
+
+- Usage counts go to Mixpanel in the EU, only if you say yes. In the UK and Switzerland they start on, with a notice, until you turn them off.
+- Crash reports go to Sentry in the EU.
+- Map lookups go to Apple Maps, OpenStreetMap servers, OpenFreeMap, Wikipedia and Amazon Web Services.
+- Workout weather is looked up with Apple Weather.
+- Names you give places go to your own iCloud.
+- Linked devices, like Oura or Polar, send your data to this phone, only if you link them.
+- Purchases go through Apple.
+
+Usage counts and crash reports never include health data, scores, routes, names, anything you type, your email or an advertising ID. No ads, no tracking: we don't sell data, show ads or track you across apps and websites. Aera is rated 9+; if you are under 16, ask a parent before saying yes to usage counts.
+
+Controller: Aera is made by Gergo Varga, Hungary. Contact: Aerahealthapp@gmail.com, or use Contact in Settings. Data protection authority in Hungary: NAIH (naih.hu).
+
+Terms of use: https://aerahealth.app/terms.html
+
+---
+
+## Support and contact
+
+URL: https://aerahealth.app/support.html
+
+Questions, bugs or feedback go straight to a person. Expect a reply within two working days. Email link: on the Support page.
+
+Getting started:
+
+- Aera can't see my health data: open iOS Settings, Privacy & Security, Health, Aera and turn on every category. Aera reads from Apple Health. The only thing it adds is a workout you record in Aera, with its route and effort. It never changes or deletes what is already there. If you chose "Not now" during onboarding, open Aera's own settings and reconnect Apple Health from there.
+- A screen says it is still learning: that is intended, not a fault. Aera compares you to your own past, so each read waits until it has enough of your history to be honest. Roughly: overnight baselines settle after about a week, the recovery baseline uses 28 days, stress uses 42, your bedtime window stays provisional for about two weeks, and a route or place needs at least three runs over the same ground before it appears.
+- Some nights or workouts are missing: Aera can only read what Apple Health holds. If your watch did not record a night, there is nothing to read. Open Aera and pull to refresh, or leave it in the foreground for a few seconds after a sync, and it will catch up on its own.
+- Do I need an Apple Watch? No, but it changes what Aera can say. Without a watch you still get movement, workouts and any sleep your iPhone or another device records. Heart rate variability, sleeping heart rate, wrist temperature and blood oxygen come from a watch, and the recovery and stress reads lean on them.
+
+Your data:
+
+- How do I delete everything? Delete the app. Every score, baseline and log Aera created is stored on your iPhone and goes with it. Your Apple Health data is untouched.
+- Can I get my data out first? Yes. Open the Export Center and choose a range, then export as JSON, a spreadsheet or a PDF report. The file is written on your device and handed to the share sheet, so you decide where it goes.
+- Is any of this medical advice? No. Aera is a wellness and information tool. It does not diagnose or treat anything, and it should not replace a clinician. If something about your health worries you, speak to a licensed healthcare provider.
+
+---
+
+## More
+
+- All guides: https://aerahealth.app/guides/
+- Learn (articles with sources): https://aerahealth.app/learn/
+- Notes feed: https://aerahealth.app/notes/feed.xml
+- App Store: https://apps.apple.com/app/id6762456252

@@ -19,6 +19,7 @@ Facts, stated plainly:
 - [Aera (Magyar)](https://aerahealth.app/hu.html): the homepage in Hungarian
 - [Aera (Deutsch)](https://aerahealth.app/de.html): the homepage in German
 - [Aera on the App Store](https://apps.apple.com/app/id6762456252): download
+- [Aera full text for AI agents](https://aerahealth.app/llms-full.txt): this file expanded with the homepage and its questions and answers, the Flyover page, free and Premium, a privacy summary and support, each with its URL
 
 ## Field notes
 
