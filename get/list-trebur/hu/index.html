@@ -3,16 +3,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Aera az App Store-ban</title>
-<meta http-equiv="refresh" content="2; url=https://apps.apple.com/hu/app/id6762456252?pt=128795793&amp;ct=list-trebur-hu&amp;mt=8">
+<link rel="icon" href="/assets/icon.png">
+<noscript><meta http-equiv="refresh" content="0; url=https://apps.apple.com/hu/app/id6762456252?pt=128795793&amp;ct=list-trebur-hu&amp;mt=8"></noscript>
 <script>
-// Leave a moment after load so the Cloudflare beacon can report the tap first;
-// go anyway at 1.5 s if the beacon is blocked or slow.
+// iPhone or iPad: on to the App Store after a moment, so the Cloudflare beacon can count
+// the tap first (go anyway at 1.5 s). Anything else: stay, and show the scan code.
 (function () {
-  var go = function () { location.replace("https://apps.apple.com/hu/app/id6762456252?pt=128795793&ct=list-trebur-hu&mt=8"); };
-  addEventListener('load', function () { setTimeout(go, 400); });
-  setTimeout(go, 1500);
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) {
+    var go = function () { location.replace("https://apps.apple.com/hu/app/id6762456252?pt=128795793&ct=list-trebur-hu&mt=8"); };
+    addEventListener('load', function () { setTimeout(go, 400); });
+    setTimeout(go, 1500);
+    return;
+  }
+  document.documentElement.className = 'desk';
+  addEventListener('DOMContentLoaded', function () {
+    import('/plan/qr.mjs').then(function (m) {
+      document.getElementById('code').innerHTML = m.qrSvg(location.origin + location.pathname, { dark: '#1c1c1e', light: '#ffffff' });
+    });
+  });
 })();
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4fc0403d67364f1ab92526387bdd0b81"}'></script>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
-</head><body><p><a href="https://apps.apple.com/hu/app/id6762456252?pt=128795793&amp;ct=list-trebur-hu&amp;mt=8">Tovább az App Store-ba</a></p></body></html>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}
+.panel{display:none}.desk .go{display:none}
+.desk .panel{display:grid;justify-items:center;gap:14px;text-align:center;max-width:380px;padding:32px 24px}
+.panel img{width:64px;height:64px;border-radius:15px}
+.panel h1{margin:4px 0 0;font:700 28px/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.01em}
+.panel #code{width:216px;height:216px;padding:12px;background:#fff;border-radius:20px;box-shadow:0 10px 30px -18px rgba(0,0,0,.45)}
+.panel #code svg{display:block;width:100%;height:100%}
+.panel p{margin:0;color:#5f6368}.panel .fine{font-size:14px}
+@media (prefers-color-scheme:dark){.panel p{color:#a0a4a8}}</style>
+</head><body><p class="go"><a href="https://apps.apple.com/hu/app/id6762456252?pt=128795793&amp;ct=list-trebur-hu&amp;mt=8">Tovább az App Store-ba</a></p>
+<main class="panel"><img src="/assets/icon.png" alt=""><h1>Az Aera iPhone-alkalmazás</h1><div id="code" role="img" aria-label="Irányítsd rá az iPhone-od kameráját, és megnyílik az Aera az App Store-ban."></div><p>Irányítsd rá az iPhone-od kameráját, és megnyílik az Aera az App Store-ban.</p><p><a href="https://apps.apple.com/hu/app/id6762456252?pt=128795793&amp;ct=list-trebur-hu&amp;mt=8">Vagy nyisd meg az App Store-oldalt</a></p><p class="fine">Ingyen letölthető. Regisztráció nélkül.</p></main>
+</body></html>
