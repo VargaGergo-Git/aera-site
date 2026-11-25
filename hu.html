@@ -841,7 +841,7 @@ html.mo .wgs > .rv:nth-child(even){--d:110ms}
       // at the end the whole route stands for a moment with its final figures, then the run starts over
       v.addEventListener('ended', () => { scr.classList.remove('live'); paint(END); fk.classList.remove('dim'); clearTimeout(wait); wait = setTimeout(() => { v.currentTime = 0; blend0 = 0; go(); }, 2600); });
       v.addEventListener('error', () => { scr.classList.remove('live'); paint(END); });
-      v.src = 'h/film.mp4';
+      v.src = 'https://media.aerahealth.app/h/film.mp4';
       scr.insertBefore(v, scr.querySelector('.hud'));
       v.load();
     };
