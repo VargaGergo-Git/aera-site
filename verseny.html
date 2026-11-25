@@ -428,7 +428,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
    <h1 class="a" style="--b:1">Egy link, és a pálya ott van a futó&nbsp;telefonján.</h1>
    <p class="lede a" style="--b:2">A szervező megosztja a pálya linkjét, a futó megnyitja és kiválasztja a távját. Az Aera pedig megmutatja, mennyi a táv és az emelkedő, és a saját tempójával nagyjából mennyi idő alatt ér&nbsp;célba.</p>
   </div>
-  <figure class="a" style="--b:2"><video data-film muted playsinline autoplay loop preload="auto" aria-label="Az Aera a verseny linkjéből megnyitja a Nagyfröccs pályát, majd végigrepüli 3D-ben"></video></figure>
+  <figure class="a" style="--b:2"><video data-film muted playsinline autoplay loop preload="metadata" aria-label="Az Aera a verseny linkjéből megnyitja a Nagyfröccs pályát, majd végigrepüli 3D-ben"></video></figure>
  </div></div></section>
 
  <section class="ch c-facts" data-room><div class="wrap">
@@ -463,7 +463,7 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', reTheme);
  </div></section>
 </div>
 <script>
-const FILM = ['/media/web/verseny-e5b57565.mp4', '/media/web/verseny-fdbd3528.jpg'];
+const FILM = ['/media/web/verseny-c19937d1.mp4', '/media/web/verseny-fdbd3528.jpg'];
 const arrive = room => room.classList.add('in');
 document.querySelectorAll('[data-page]').forEach(page => {
   if (still) page.classList.add('still');
