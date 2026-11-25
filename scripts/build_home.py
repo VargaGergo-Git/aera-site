@@ -863,11 +863,25 @@ GET_TEXT = {"en": ("Aera on the App Store", "Open Aera on the App Store"),
             "de": ("Aera im App Store", "Aera im App Store öffnen")}
 
 
+GET_DESK = {
+    "en": ("Aera is an iPhone app", "Point your iPhone's camera at the code to open Aera in the App Store.",
+           "Or open the App Store page", "Free to start. No account."),
+    "hu": ("Az Aera iPhone-alkalmazás", "Irányítsd rá az iPhone-od kameráját, és megnyílik az Aera az App Store-ban.",
+           "Vagy nyisd meg az App Store-oldalt", "Ingyen letölthető. Regisztráció nélkül."),
+    "de": ("Aera ist eine iPhone-App", "Richte die Kamera deines iPhones auf den Code, dann öffnet sich Aera im App Store.",
+           "Oder öffne die App-Store-Seite", "Kostenlos, ohne Konto."),
+}
+
+
 def get_page(store, lang, ct):
-    """One forwarding page: on to that language's App Store page, with
-    the campaign tags once APPSTORE_PT is set. Out of search."""
+    """One forwarding page, out of search. On an iPhone or iPad it goes on to that language's
+    App Store page with the campaign tags. Anywhere else (a computer, an Android phone) the
+    App Store cannot install an iPhone app, so the page stays and shows a code to scan with
+    the iPhone; the scan opens this same page there, which counts the path again and goes on.
+    Without JavaScript it goes straight on, as before."""
     url = campaign(store, ct)
     title, link = GET_TEXT.get(lang, GET_TEXT["en"])
+    d_title, d_line, d_link, d_fine = GET_DESK.get(lang, GET_DESK["en"])
     beacon = ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
               "data-cf-beacon='{\"token\": \"%s\"}'></script>" % CF_BEACON) if CF_BEACON else ""
     return """<!doctype html>
@@ -875,20 +889,43 @@ def get_page(store, lang, ct):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>%(title)s</title>
-<meta http-equiv="refresh" content="2; url=%(url)s">
+<link rel="icon" href="/assets/icon.png">
+<noscript><meta http-equiv="refresh" content="0; url=%(url)s"></noscript>
 <script>
-// Leave a moment after load so the Cloudflare beacon can report the tap first;
-// go anyway at 1.5 s if the beacon is blocked or slow.
+// iPhone or iPad: on to the App Store after a moment, so the Cloudflare beacon can count
+// the tap first (go anyway at 1.5 s). Anything else: stay, and show the scan code.
 (function () {
-  var go = function () { location.replace(%(js)s); };
-  addEventListener('load', function () { setTimeout(go, 400); });
-  setTimeout(go, 1500);
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) {
+    var go = function () { location.replace(%(js)s); };
+    addEventListener('load', function () { setTimeout(go, 400); });
+    setTimeout(go, 1500);
+    return;
+  }
+  document.documentElement.className = 'desk';
+  addEventListener('DOMContentLoaded', function () {
+    import('/plan/qr.mjs').then(function (m) {
+      document.getElementById('code').innerHTML = m.qrSvg(location.origin + location.pathname, { dark: '#1c1c1e', light: '#ffffff' });
+    });
+  });
 })();
 </script>
 %(beacon)s
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}</style>
-</head><body><p><a href="%(url)s">%(link)s</a></p></body></html>
-""" % {"title": title, "link": link, "lang": lang, "url": url.replace("&", "&amp;"), "js": json.dumps(url), "beacon": beacon}
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font:17px/1.4 -apple-system,system-ui,sans-serif;background:#f6f4ef;color:#1c1c1e}@media (prefers-color-scheme:dark){body{background:#0b0b0c;color:#f2f2f2}}a{color:inherit}
+.panel{display:none}.desk .go{display:none}
+.desk .panel{display:grid;justify-items:center;gap:14px;text-align:center;max-width:380px;padding:32px 24px}
+.panel img{width:64px;height:64px;border-radius:15px}
+.panel h1{margin:4px 0 0;font:700 28px/1.15 -apple-system,system-ui,sans-serif;letter-spacing:-.01em}
+.panel #code{width:216px;height:216px;padding:12px;background:#fff;border-radius:20px;box-shadow:0 10px 30px -18px rgba(0,0,0,.45)}
+.panel #code svg{display:block;width:100%%;height:100%%}
+.panel p{margin:0;color:#5f6368}.panel .fine{font-size:14px}
+@media (prefers-color-scheme:dark){.panel p{color:#a0a4a8}}</style>
+</head><body><p class="go"><a href="%(url)s">%(link)s</a></p>
+<main class="panel"><img src="/assets/icon.png" alt=""><h1>%(d_title)s</h1><div id="code" role="img" aria-label="%(d_line)s"></div><p>%(d_line)s</p><p><a href="%(url)s">%(d_link)s</a></p><p class="fine">%(d_fine)s</p></main>
+</body></html>
+""" % {"title": title, "link": link, "lang": lang, "url": url.replace("&", "&amp;"), "js": json.dumps(url), "beacon": beacon,
+       "d_title": d_title, "d_line": d_line, "d_link": d_link, "d_fine": d_fine}
 
 
 def write_get_pages():
