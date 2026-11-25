@@ -21,4 +21,4 @@ Primary sources only. No blog secondary lists.
 Notes:
 - Google-Extended and Applebot-Extended are product/control tokens in robots.txt; they may not send a distinct HTTP User-Agent string.
 - ChatGPT-User and Perplexity-User are often user-initiated; providers note robots.txt may not always apply. Still listed Allow for clarity.
-- No llms.txt. Evidence does not support it.
+- llms.txt: no primary source from the bot operators requires it, but the site publishes one at https://aerahealth.app/llms.txt as a plain summary for AI agents.
