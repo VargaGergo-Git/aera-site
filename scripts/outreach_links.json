@@ -283,5 +283,13 @@
     "list-vasemberek",
     "list-vertour"
   ],
-  "pages": {}
+  "pages": {
+    "race-nikolauslauf-tuebingen": {
+      "de": "2f5523ad-99ff-4534-8587-a1dd4f8a9a82",
+      "en": "2f5523ad-99ff-4534-8587-a1dd4f8a9a82"
+    },
+    "*": {
+      "hu": "adffeb68-8b4f-47de-bad0-d325f6843dd0"
+    }
+  }
 }
