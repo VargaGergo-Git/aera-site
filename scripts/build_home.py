@@ -933,7 +933,11 @@ def get_page(store, lang, ct, ppid=None):
 def write_get_pages():
     """get/<place>/<lang>/index.html for every store button, plus get/index.html
     for a bare /get/ (English store). Site buttons get ct=site-<place>-<lang>;
-    the outside channels already in get/ (list-, mail-, post-) get <place>-<lang>."""
+    the outside channels already in get/ (list-, mail-, post-) get <place>-<lang> and
+    their custom product page from outreach_links.json "pages", as build_outreach_links
+    gives them (site buttons keep the default listing)."""
+    with open(os.path.join(ROOT, "scripts", "outreach_links.json"), encoding="utf-8") as f:
+        pages = json.load(f).get("pages", {})
     places = list(GET_PLACES) + sorted(
         d for d in os.listdir(os.path.join(ROOT, "get"))
         if d not in GET_PLACES and os.path.isdir(os.path.join(ROOT, "get", d)))
@@ -941,10 +945,12 @@ def write_get_pages():
         for place in places:
             ct = ("site-%s-%s" if place in GET_PLACES else "%s-%s") % (place, c["lang"])
             assert len(ct) <= 40 and re.fullmatch(r"[a-z0-9-]+", ct), ct
+            ppid = None if place in GET_PLACES else (
+                pages.get(place, {}).get(c["lang"]) or pages.get("*", {}).get(c["lang"]))
             d = os.path.join(ROOT, "get", place, c["lang"])
             os.makedirs(d, exist_ok=True)
             with open(os.path.join(d, "index.html"), "w", encoding="utf-8") as f:
-                f.write(get_page(c["store"], c["lang"], ct))
+                f.write(get_page(c["store"], c["lang"], ct, ppid))
     with open(os.path.join(ROOT, "get", "index.html"), "w", encoding="utf-8") as f:
         f.write(get_page(COPY["en"]["store"], "en", "site-get-en"))
 
