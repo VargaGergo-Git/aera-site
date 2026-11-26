@@ -10,7 +10,7 @@ Hungarian site copy thread, never written here by hand."""
 K = {
     "en": {
         "title": "Aera: your body, your usual, your next move",
-        "desc": "Aera reads your Apple Watch against your own normal. Each morning it says how today compares, and after a walk, run or ride, what changed. Free, no account.",
+        "desc": "Aera estimates your body age from Apple Health, holds HRV, sleep and every run against your own usual, and replays runs in 3D. Free, no account.",
         "og_title": "Your body, your usual, your next move.",
         "skip": "Skip to content",
         "nav": [("plan/", "Route planner"), ("guides/index.html", "Guides"), ("notes/index.html", "Notes"), ("support.html", "Support")],
@@ -547,8 +547,8 @@ K["de"]["work_link"] = ("guides/guter-schlafscore.html", "Ein Beispiel: der Schl
 # No "Flyover", no coach session, no races or Events (off in 3.4).
 _L34 = {
     "en": {
-        "title": "Aera fitness app: sleep, HRV and runs against your usual",
-        "alt_names": ["Aera fitness app", "Aera health app", "Replay your run. Understand your body."],
+        "title": "Aera: Biological Age &amp; HRV app for iPhone and Apple Watch",
+        "alt_names": ["Aera: Biological Age & HRV", "Aera fitness app", "Aera health app", "Replay your run. Understand your body."],
         "og_title": "Replay your run. Understand your body.",
         "h1": "Replay your run. <br>Understand your body.",
         "close_h2": "Replay your run. <br>Understand your body.",
